@@ -344,6 +344,108 @@ section { padding: 100px 48px; }
   max-width: 1320px;
   margin: 0 auto;
 }
+.corporate-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 28px;
+  align-items: stretch;
+  margin-top: 44px;
+}
+.corporate-lead-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 34px;
+  border-radius: 28px;
+  border: 1px solid rgba(var(--blue-rgb),0.12);
+  background: linear-gradient(180deg, rgba(var(--white-rgb),0.94) 0%, rgba(var(--cream-rgb),0.88) 100%);
+  box-shadow: 0 24px 56px rgba(var(--navy-rgb),0.10);
+}
+.corporate-lead-copy h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  line-height: 1.18;
+  color: var(--navy);
+  margin-bottom: 14px;
+  letter-spacing: -0.4px;
+}
+.corporate-lead-copy p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+.corporate-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.corporate-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(var(--white-rgb),0.84);
+  border: 1px solid rgba(var(--blue-rgb),0.12);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 500;
+}
+.corporate-lead-media,
+.service-card-media,
+.contact-visual-media {
+  position: relative;
+  overflow: hidden;
+}
+.corporate-lead-media {
+  min-height: 420px;
+  border-radius: 28px;
+  box-shadow: var(--shadow-lg);
+}
+.corporate-lead-media::after,
+.service-card-media::after,
+.contact-visual-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.corporate-lead-media::after {
+  background:
+    linear-gradient(180deg, rgba(var(--navy-rgb),0.04) 0%, rgba(var(--navy-rgb),0.18) 100%);
+}
+.section-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.corporate-media-badge {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(var(--white-rgb),0.86);
+  border: 1px solid rgba(var(--white-rgb),0.42);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 14px 30px rgba(var(--navy-rgb),0.12);
+}
+.corporate-media-badge strong {
+  display: block;
+  font-size: 14px;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.corporate-media-badge span {
+  display: block;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
 .portal-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -439,6 +541,24 @@ section { padding: 100px 48px; }
   gap: 24px;
   margin-top: 44px;
 }
+.service-card-media {
+  margin: -28px -28px 20px;
+  aspect-ratio: 16 / 10;
+  border-radius: 24px 24px 18px 18px;
+  background: rgba(var(--cream-rgb),0.9);
+}
+.service-card-media::after {
+  background:
+    linear-gradient(180deg, rgba(var(--white-rgb),0.02) 0%, rgba(var(--navy-rgb),0.16) 100%);
+}
+.service-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.35s ease;
+}
+.service-hub-card:hover .service-card-media img { transform: scale(1.04); }
 .micro-list {
   display: grid;
   gap: 8px;
@@ -893,6 +1013,52 @@ section { padding: 100px 48px; }
 #contact { background: linear-gradient(180deg, var(--white) 0%, var(--gold-pale) 100%); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 56px; }
 .contact-info-block { display: flex; flex-direction: column; gap: 24px; }
+.contact-visual-card {
+  background: var(--white);
+  border-radius: 28px;
+  border: 1px solid rgba(var(--blue-rgb),0.14);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+.contact-visual-media {
+  aspect-ratio: 16 / 11;
+  background: var(--cream-dark);
+}
+.contact-visual-media::after {
+  background:
+    linear-gradient(180deg, rgba(var(--navy-rgb),0.02) 0%, rgba(var(--navy-rgb),0.16) 100%);
+}
+.contact-visual-body {
+  padding: 24px 26px 28px;
+}
+.contact-visual-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.contact-visual-body p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.contact-visual-points {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+.contact-visual-points span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: 16px;
+  background: rgba(var(--cream-rgb),0.88);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  color: var(--navy);
+  font-size: 13px;
+}
 .contact-card {
   background: var(--white); border-radius: var(--radius-lg);
   border: 0.5px solid var(--border); padding: 28px;
@@ -1520,6 +1686,13 @@ footer {
     padding-top: calc(72px + 18px);
   }
   .hero-actions { margin-bottom: 48px; }
+  .corporate-lead {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .corporate-lead-copy,
+  .contact-visual-body { padding: 24px; }
+  .corporate-lead-media { min-height: 360px; }
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .calc-container { grid-template-columns: 1fr; }
@@ -1541,6 +1714,7 @@ footer {
   .footer-grid { gap: 32px; }
   .footer-bottom { gap: 12px; }
   .stat-card { border-radius: 20px !important; }
+  .service-card-media { margin: -24px -24px 18px; }
 }
 
 @media (max-width: 768px) {
@@ -1635,6 +1809,33 @@ footer {
     font-size: 15px;
     line-height: 1.65;
   }
+  .corporate-lead {
+    margin-top: 32px;
+    gap: 18px;
+  }
+  .corporate-lead-copy {
+    padding: 22px;
+    border-radius: 22px;
+  }
+  .corporate-lead-copy h3 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+  .corporate-pill-list { gap: 8px; }
+  .corporate-pill {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+  .corporate-lead-media {
+    min-height: 300px;
+    border-radius: 22px;
+  }
+  .corporate-media-badge {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    padding: 14px 16px;
+  }
   .footer-grid { grid-template-columns: 1fr; }
   .portal-grid,
   .service-hub-grid,
@@ -1689,6 +1890,10 @@ footer {
   .tax-panel h3,
   .formation-card h3,
   .news-item h3 { font-size: 21px; }
+  .service-card-media {
+    margin: -22px -22px 18px;
+    border-radius: 20px 20px 16px 16px;
+  }
   .news-item {
     grid-template-columns: 1fr;
     gap: 14px;
@@ -1767,6 +1972,12 @@ footer {
   .faq-a { font-size: 14px; }
   .contact-grid { gap: 28px; }
   .contact-info-block { gap: 16px; }
+  .contact-visual-body {
+    padding: 20px 22px 22px;
+  }
+  .contact-visual-body h3 {
+    font-size: 24px;
+  }
   .contact-card {
     padding: 20px;
     gap: 14px;
@@ -1839,6 +2050,15 @@ footer {
     padding: 20px 18px;
   }
   .quiz-header { padding: 20px 18px; }
+  .corporate-lead-copy,
+  .contact-visual-body {
+    padding: 20px 18px;
+  }
+  .corporate-lead-copy h3,
+  .contact-visual-body h3 {
+    font-size: 22px;
+  }
+  .corporate-lead-media { min-height: 260px; }
   .quiz-option {
     padding: 14px 16px;
     gap: 12px;
@@ -1853,6 +2073,10 @@ footer {
     flex: none;
   }
   .stats-grid { grid-template-columns: 1fr; }
+  .service-card-media {
+    margin: -20px -18px 16px;
+    aspect-ratio: 16 / 11;
+  }
   .calc-result-row {
     flex-direction: column;
     align-items: flex-start;
@@ -2016,8 +2240,35 @@ footer {
 <section id="corporate">
   <div class="section-shell">
     <div class="section-tag">Kurumsal</div>
-    <h2 class="section-title reveal">Kurumsal yapıyı ve alt başlıkları tek sayfada topladık</h2>
-    <p class="section-sub reveal">Yaşar Kaya markası için kurumsal anlatıyı Hakkımızda, Misyon & Vizyon, Kurumsal Sorumluluk, Değerlerimiz ve Yönetim başlıkları etrafında daha güçlü ve güven veren bir yapıya dönüştürdük.</p>
+    <h2 class="section-title reveal">Yaşar Kaya Danışmanlık'ı yakından tanıyın</h2>
+    <p class="section-sub reveal">Şirket kuruluşu, vergi planlaması ve kurumsal uyum süreçlerinde güvenilir bir yol arkadaşı arayan yatırımcılar için deneyimimizi, çalışma ilkelerimizi ve hizmet yaklaşımımızı açık biçimde paylaşıyoruz.</p>
+
+    <div class="corporate-lead">
+      <div class="corporate-lead-copy reveal-left">
+        <div class="card-kicker"><span class="kicker-dot"></span>Kurumsal Duruş</div>
+        <h3>Yatırımcıyla aynı masaya oturan, net konuşan bir danışmanlık anlayışı</h3>
+        <p>Yaşar Kaya Danışmanlık; süreci karmaşıklaştırmadan anlatan, riskleri önceden gösteren ve her adımda uygulanabilir çözüm sunan bir çalışma disipliniyle hareket eder. İlk görüşmeden tescil sonrasına kadar amacımız size güvenli ve hızlı karar zemini sağlamaktır.</p>
+        <div class="corporate-pill-list">
+          <span class="corporate-pill">Doğal toplantı dili</span>
+          <span class="corporate-pill">Hazırlıklı ekip hissi</span>
+          <span class="corporate-pill">Premium ama sade görünüm</span>
+        </div>
+      </div>
+      <figure class="corporate-lead-media reveal-right">
+        <img
+          class="section-photo"
+          src="https://images.pexels.com/photos/36733322/pexels-photo-36733322.jpeg?auto=compress&cs=tinysrgb&w=1400"
+          width="1400"
+          height="900"
+          alt="Modern ofiste strateji toplantısı yapan profesyonel ekip"
+          loading="lazy"
+          decoding="async">
+        <figcaption class="corporate-media-badge">
+          <strong>Kurumsal güven ilk temasta hissedilir</strong>
+          <span>Hazırlıklı ekip, net süreç yönetimi ve sakin iletişim dili yatırım kararında güven duygusunu güçlendirir.</span>
+        </figcaption>
+      </figure>
+    </div>
 
     <div class="portal-grid">
       <article class="portal-card reveal">
@@ -2056,7 +2307,7 @@ footer {
       <article class="portal-card reveal">
         <div class="card-kicker"><span class="kicker-dot"></span>Değerlerimiz</div>
         <h3>Dürüstlük, itibar ve saygı merkezde</h3>
-        <p>Değerler bölümünde dürüst iş yapma, müşteri itibarını koruma ve insanlara karşı sorumluluk bilinci belirgin biçimde vurgulanıyor. Bu yüzden kurumsal anlatının temelini güven veren ama fazla karmaşık olmayan mesajlarla kurduk.</p>
+        <p>Dürüst iletişim, müşteri itibarını koruma ve uzun vadeli güven ilişkisi bizim için yalnızca kurumsal değer değil, günlük çalışma biçimidir. Attığımız her adımda şeffaf, anlaşılır ve sorumluluk alan bir yaklaşım benimseriz.</p>
         <ul class="detail-list">
           <li>Müşteri ve kurumlarla açık iletişim</li>
           <li>Marka itibarı ile müşteri itibarını birlikte koruma</li>
@@ -2067,7 +2318,7 @@ footer {
       <article class="portal-card reveal">
         <div class="card-kicker"><span class="kicker-dot"></span>Yönetim Kadrosu</div>
         <h3>Kurucu deneyimini görünür kılan liderlik katmanı</h3>
-        <p>Yönetim tarafında Yaşar Kaya'nın saha tecrübesi, mevzuat bilgisi ve yatırımcılarla birebir çalışan danışman yaklaşımı öne çıkar. Bu yapı, siteye daha kişisel ama aynı zamanda profesyonel bir güven duygusu kazandırır.</p>
+        <p>Yaşar Kaya'nın saha tecrübesi, mevzuat bilgisi ve yatırımcılarla birebir çalışan yaklaşımı; sürecin yalnızca teorik değil, uygulamada da doğru yönetilmesini sağlar. Bu sayede müvekkiller kararlarını daha net ve daha güvenli biçimde alır.</p>
         <ul class="detail-list">
           <li>Yerel mevzuat ve uygulama deneyimi</li>
           <li>Yatırımcıyla birebir çalışan kurucu liderlik modeli</li>
@@ -2083,10 +2334,19 @@ footer {
   <div class="section-shell">
     <div class="section-tag">Hizmetler</div>
     <h2 class="section-title reveal">Yaşar Kaya Danışmanlık hizmet alanları</h2>
-    <p class="section-sub reveal">Şirket kuruluşundan vergi planlamasına, muhasebe yönetiminden iş ve sosyal güvenlik süreçlerine kadar ihtiyaç duyulan başlıkları daha net, daha premium ve daha satış odaklı bir servis yapısında topladık.</p>
+    <p class="section-sub reveal">Şirket kuruluşundan vergi planlamasına, muhasebe yönetiminden iş ve sosyal güvenlik süreçlerine kadar ihtiyaç duyduğunuz başlıkları tek çatı altında, net sorumluluk alanlarıyla ve profesyonel takip disipliniyle sunuyoruz.</p>
 
     <div class="service-hub-grid">
       <article class="service-hub-card reveal">
+        <figure class="service-card-media">
+          <img
+            src="https://images.pexels.com/photos/36808682/pexels-photo-36808682.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            width="1200"
+            height="750"
+            alt="Denetim sürecinde incelenen ve imzalanan kurumsal belgeler"
+            loading="lazy"
+            decoding="async">
+        </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Denetim</div>
         <h3>Denetim Hizmetleri</h3>
         <p>Kurumsal gelişim arttıkça şirketlerin şeffaf, güvenilir ve doğrulanabilir finansal tablo ihtiyacı büyür. Denetim alanını bu ihtiyaca cevap veren temel güven katmanı olarak konumladık.</p>
@@ -2098,6 +2358,15 @@ footer {
       </article>
 
       <article class="service-hub-card reveal">
+        <figure class="service-card-media">
+          <img
+            src="https://images.pexels.com/photos/10347149/pexels-photo-10347149.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            width="1200"
+            height="750"
+            alt="Vergi planlaması için açık laptop ve çalışma notları bulunan ofis masası"
+            loading="lazy"
+            decoding="async">
+        </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Vergi</div>
         <h3>Vergi Danışmanlığı</h3>
         <p>Vergi planlaması, beyanname hazırlığı, vergi sonuçlarının analizi ve yeni yatırımlarda avantaj yaratabilecek alanların belirlenmesi bu başlığın ana çerçevesini oluşturuyor.</p>
@@ -2109,6 +2378,15 @@ footer {
       </article>
 
       <article class="service-hub-card reveal">
+        <figure class="service-card-media">
+          <img
+            src="https://images.pexels.com/photos/8085258/pexels-photo-8085258.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            width="1200"
+            height="750"
+            alt="Muhasebe planlaması için hazırlanmış evraklar ve not defteri"
+            loading="lazy"
+            decoding="async">
+        </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Muhasebe</div>
         <h3>Muhasebe ve Mali İşler</h3>
         <p>Sürekli değişen mevzuat ve ekonomik koşullar nedeniyle doğru kayıt sistemi, düzenli raporlama ve eksiksiz mali yükümlülük yönetimi bu alanda öne çıkan ihtiyaçlar arasında yer alıyor.</p>
@@ -2120,6 +2398,15 @@ footer {
       </article>
 
       <article class="service-hub-card reveal">
+        <figure class="service-card-media">
+          <img
+            src="https://images.pexels.com/photos/36733302/pexels-photo-36733302.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            width="1200"
+            height="750"
+            alt="İK ve sosyal güvenlik süreçlerini görüşen iki profesyonel"
+            loading="lazy"
+            decoding="async">
+        </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>İstihdam</div>
         <h3>İş ve Sosyal Güvenlik</h3>
         <p>Çalışanlara ilişkin sosyal sigorta ve sosyal güvenlik yükümlülükleri, bordro akışları ve işveren katkılarının doğru yönetimi bu hizmet grubunda toplanıyor.</p>
@@ -2131,6 +2418,15 @@ footer {
       </article>
 
       <article class="service-hub-card reveal">
+        <figure class="service-card-media">
+          <img
+            src="https://images.pexels.com/photos/11229799/pexels-photo-11229799.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            width="1200"
+            height="750"
+            alt="Kurumsal güven hissi veren modern ofis binaları"
+            loading="lazy"
+            decoding="async">
+        </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Danışmanlık</div>
         <h3>Danışmanlık Hizmetleri</h3>
         <p>Bu bölüm; şirket kuruluşu, kurumsallaşma, ortaklık yapısı ve büyüme kararlarını doğru zemine oturtmak isteyen yatırımcılar için stratejik yönlendirme alanı olarak kurgulandı.</p>
@@ -2142,6 +2438,15 @@ footer {
       </article>
 
       <article class="service-hub-card reveal">
+        <figure class="service-card-media">
+          <img
+            src="https://images.pexels.com/photos/29284262/pexels-photo-29284262.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            width="1200"
+            height="750"
+            alt="Eğitim ve sunum oturumunda ekip çalışması yapan profesyoneller"
+            loading="lazy"
+            decoding="async">
+        </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Eğitim</div>
         <h3>Eğitim Hizmetleri</h3>
         <p>Şirket içi eğitimler, muhasebe ve iş hukuku başlıkları ile kurumun talebine göre sahada veya özel oturumlarda verilen programlar hizmet yelpazesinde önemli bir yer tutuyor.</p>
@@ -2159,15 +2464,15 @@ footer {
 <section id="news-hub">
   <div class="section-shell">
     <div class="section-tag">Haberler</div>
-    <h2 class="section-title reveal">Haberler alanını mevzuat ve duyuru odaklı bir akışa çevirdik</h2>
-    <p class="section-sub reveal">Bu alanı resmi gazete değişiklikleri, vergi duyuruları, çalışma hayatı düzenlemeleri ve asgari ücret güncellemeleri gibi iş dünyasının gerçekten takip ettiği başlıkları öne çıkaracak şekilde hazırladık.</p>
+    <h2 class="section-title reveal">İş dünyası için güncel mevzuat ve resmi duyurular</h2>
+    <p class="section-sub reveal">Resmi gazete değişiklikleri, vergi duyuruları, çalışma hayatı düzenlemeleri ve asgari ücret güncellemeleri gibi şirket kararlarını etkileyen başlıkları tek bakışta takip edin.</p>
 
     <div class="news-list">
       <article class="news-item reveal">
         <div class="news-date">Şubat 2026</div>
         <div>
           <h3>Gelir vergisi kişisel muafiyet ve matrah oranları</h3>
-          <p>Yeni yıl gelir vergisi basamakları ve kişisel muafiyet tutarları, mali planlama yapan yatırımcılar için ilk bakılan başlıklardan biridir. Bu nedenle haber akışında güçlü biçimde yer verdik.</p>
+          <p>Yeni yıl gelir vergisi basamakları ve kişisel muafiyet tutarları, mali planlama yapan yatırımcılar ve işletmeler için yıl başında en çok takip edilen başlıklardan biridir.</p>
         </div>
       </article>
 
@@ -2175,7 +2480,7 @@ footer {
         <div class="news-date">Şubat 2026</div>
         <div>
           <h3>İş Yasası değişiklikleri ve çalışma hayatı düzenlemeleri</h3>
-          <p>İş hukuku tarafında yasa değişiklikleri, mesai uygulamaları ve işveren yükümlülükleriyle ilgili duyurular öne çıkıyor. Bu nedenle haber yapısını sadece finans değil operasyonel uyum açısından da güçlü tuttuk.</p>
+          <p>İş hukuku tarafındaki değişiklikler, mesai uygulamaları ve işveren yükümlülükleri günlük operasyonu doğrudan etkilediği için bu başlık düzenli takip gerektirir.</p>
         </div>
       </article>
 
@@ -2183,7 +2488,7 @@ footer {
         <div class="news-date">Eylül 2021</div>
         <div>
           <h3>Resmi gazete ve bakanlar kurulu kararları</h3>
-          <p>Haber arşivinde resmi gazete kararları ve bakanlar kurulu düzenlemeleri önemli bir yer tutuyor. Biz de bunu sayfada mevzuat takibi yapan kullanıcılar için açık bir başlık olarak yansıttık.</p>
+          <p>Resmi gazete kararları ve bakanlar kurulu düzenlemeleri; şirket kuruluşu, izin süreçleri ve kurumsal uyum açısından dikkatle izlenmesi gereken başlıklar arasında yer alır.</p>
         </div>
       </article>
 
@@ -2199,7 +2504,7 @@ footer {
         <div class="news-date">2018-2020</div>
         <div>
           <h3>Asgari ücret ve sosyal güvenlik duyuruları</h3>
-          <p>Asgari ücret açıklamaları, sosyal güvenlik düzenlemeleri ve kamu çalışma saatleri gibi başlıklar arşivde tekrarlayan şekilde yer alıyor. Bu yüzden haberler alanını işletme sahiplerinin günlük takibine hitap edecek biçimde kurguladık.</p>
+          <p>Asgari ücret açıklamaları, sosyal güvenlik düzenlemeleri ve kamu çalışma saatleri gibi gelişmeler özellikle işverenler için bütçe ve operasyon planlamasında belirleyicidir.</p>
         </div>
       </article>
 
@@ -2207,7 +2512,7 @@ footer {
         <div class="news-date">Sürekli Takip</div>
         <div>
           <h3>Pul vergisi, KDV ve sektör bazlı vergi haberleri</h3>
-          <p>Pul yasası, KDV değişiklikleri ve sektörlere özel vergi uygulamaları da haber akışının önemli bir parçası. Böylece haberler bölümü yalnızca blog değil, pratik mevzuat panosu gibi çalışıyor.</p>
+          <p>Pul vergisi, KDV değişiklikleri ve sektöre özel vergi uygulamaları yatırım kararlarını ve günlük mali işlemleri etkilediği için düzenli izlenmelidir.</p>
         </div>
       </article>
     </div>
@@ -2218,14 +2523,14 @@ footer {
 <section id="formation-hub">
   <div class="section-shell">
     <div class="section-tag" style="color:rgba(255,255,255,0.72);">Şirket Kurma</div>
-    <h2 class="section-title light reveal">Şirket kurma alt sayfalarını bu landing page içinde birleştirdik</h2>
-    <p class="section-sub light reveal">Şirket kuruluş sürecini, aranan temel şartları ve şirket türlerini mevcut hesaplayıcı, süreç ve karşılaştırma alanlarımızla birleştirerek Yaşar Kaya markasına ait tek bir güçlü satış akışına dönüştürdük.</p>
+    <h2 class="section-title light reveal">KKTC'de şirket kuruluş sürecini netleştirin</h2>
+    <p class="section-sub light reveal">Kuruluş şartlarını, şirket türlerini, maliyetleri ve resmi adımları tek ekranda görerek sizin için doğru yapıyı daha hızlı belirleyin.</p>
 
     <div class="formation-grid">
       <article class="formation-card reveal">
         <div class="card-kicker"><span class="kicker-dot"></span>Kuruluşlarda Aranan Temel Şartlar</div>
         <h3>Kuruluşa başlamadan önce bilinmesi gerekenler</h3>
-        <p>Kuruluşa başlamadan önce hissedar sayısı, sermaye eşiği, şube izinleri ve tescil makamı gibi başlıkların netleşmesi gerekir. Bu yüzden bilgileri yatırımcının hızlı karar vereceği biçimde özetledik.</p>
+        <p>Kuruluşa başlamadan önce hissedar sayısı, sermaye eşiği, şube izinleri ve tescil makamı gibi başlıkların netleşmesi sürecin hızlı ve sorunsuz ilerlemesi için önemlidir.</p>
         <ul class="detail-list">
           <li>Özel yerel limited yapı için en az 2 hissedar gerekir</li>
           <li>Halka açık limited yapılarda en az 7 hissedar ve daha geniş yönetim yapısı bulunur</li>
@@ -2242,7 +2547,7 @@ footer {
       <article class="formation-card reveal">
         <div class="card-kicker"><span class="kicker-dot"></span>Şirket Türleri</div>
         <h3>Farklı yatırım tiplerine göre şirket haritası</h3>
-        <p>Şirket kurma bölümünü ziyaretçinin ilk bakışta anlayacağı sade bir yapı mantığıyla kurguladık; böylece her yatırımcı kendine uygun tescil modelini daha hızlı ayırt edebiliyor.</p>
+        <p>Her yatırımcının hedefi farklıdır. Bu nedenle şirket türlerini; faaliyet alanı, vergi avantajı, sorumluluk yapısı ve büyüme planına göre kolay karşılaştırılabilir biçimde sunuyoruz.</p>
         <ul class="detail-list">
           <li>Şahıs işletmesi: tek kişi adına tescil edilen ve yükümlülüklerin doğrudan iş sahibine ait olduğu yapı</li>
           <li>Kollektif ve komandit ortaklıklar: ortakların sorumluluk düzeyine göre değişen ortaklık modeli</li>
@@ -2265,7 +2570,7 @@ footer {
   <div class="section-shell">
     <div class="section-tag">Sektörler</div>
     <h2 class="section-title reveal">Yaşar Kaya'nın hizmet verdiği sektörler</h2>
-    <p class="section-sub reveal">Farklı iş kollarının muhasebe, denetim, raporlama ve vergi ihtiyaçları birbirinden ayrıldığı için sektörler bölümünü özel uzmanlık alanlarını gösterecek şekilde düzenledik.</p>
+    <p class="section-sub reveal">Her sektörün muhasebe, denetim, raporlama ve vergi ihtiyacı farklıdır. Deneyim sahibi olduğumuz alanları görerek işletmenize uygun danışmanlık yaklaşımını daha net değerlendirebilirsiniz.</p>
 
     <div class="sector-grid">
       <article class="sector-card reveal"><h3>Bankacılık</h3><p>Sıkı düzenleme, güvenilir raporlama ve yüksek uyum beklentisi nedeniyle uzman denetim yaklaşımı gerektiren alan.</p></article>
@@ -2291,14 +2596,14 @@ footer {
 <section id="taxes-hub">
   <div class="section-shell">
     <div class="section-tag">Vergiler</div>
-    <h2 class="section-title reveal">Vergi rehberini daha net ve güven veren hale getirdik</h2>
-    <p class="section-sub reveal">Vergi alanını; yürürlükteki yasalar, oranlar, indirilebilen giderler, kurumlar vergisi, KDV, veraset, özel iletişim vergisi, UİŞ ve pul vergileri gibi yatırımcının gerçekten ihtiyaç duyduğu başlıklar etrafında düzenledik.</p>
+    <h2 class="section-title reveal">Vergi başlıklarında net bir yol haritası</h2>
+    <p class="section-sub reveal">Yürürlükteki temel vergi yasalarını, oran başlıklarını ve en çok sorulan vergi konularını bir arada görerek karar sürecinizi daha sağlam temele oturtun.</p>
 
     <div class="tax-grid">
       <article class="tax-panel reveal">
         <div class="card-kicker"><span class="kicker-dot"></span>Vergi ile ilgili bilgiler</div>
         <h3>Temel vergi yasaları ve başvuru çerçevesi</h3>
-        <p>Vergi rehberinin ilk katmanında ana vergi yasalarını toplu halde sunmak, yatırımcının hangi mevzuat kümelerinin devrede olduğunu hızlıca anlamasını sağlar. Bu yüzden bu bölümü sade ve net tuttuk.</p>
+        <p>Şirket kuruluşu ve operasyon sürecinde hangi vergi yasalarının devrede olduğunu erken aşamada görmek, hem mali planlama hem de uyum tarafında doğru adım atmanızı sağlar.</p>
         <ul class="law-list">
           <li>Vergi Usul Yasası (27/1977)</li>
           <li>Gelir Vergisi Yasası (24/1982)</li>
@@ -2313,7 +2618,7 @@ footer {
       <article class="tax-panel reveal">
         <div class="card-kicker"><span class="kicker-dot"></span>Alt başlıklar</div>
         <h3>Vergi konu haritası</h3>
-        <p>Bu alanı sadece oran listesi olarak değil, kullanıcıyı doğru başlığa götüren bir konu navigasyonu gibi kurguladık.</p>
+        <p>En çok ihtiyaç duyulan vergi başlıklarını tek yerde görerek hangi konuda detay desteğe ihtiyaç duyduğunuzu hızlıca belirleyebilirsiniz.</p>
         <div class="topic-grid">
           <div class="topic-chip">2026 yılına ait oranlar ve gelir basamakları</div>
           <div class="topic-chip">İndirilebilen giderler</div>
@@ -2330,7 +2635,7 @@ footer {
           <div class="topic-chip">Pul vergileri emirnamesi</div>
           <div class="topic-chip">Serbest bölge ve personel yükümlülükleri</div>
         </div>
-        <div class="tax-note">Not: Vergi oranları ve basamaklar zamanla güncellendiği için bu bölüm bilgi mimarisi ve konu başlıkları için eklendi. Nihai işlem öncesinde resmi gazete ve güncel mevzuat teyidi yapılmalıdır.</div>
+        <div class="tax-note">Not: Vergi oranları ve basamaklar zaman içinde güncellenebilir. Nihai işlem öncesinde resmi gazete ve güncel mevzuat teyidi yapılması önemlidir.</div>
       </article>
     </div>
   </div>
@@ -2882,6 +3187,28 @@ footer {
 
   <div class="contact-grid">
     <div class="contact-info-block">
+      <article class="contact-visual-card reveal">
+        <figure class="contact-visual-media">
+          <img
+            class="section-photo"
+            src="https://images.pexels.com/photos/36733320/pexels-photo-36733320.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            width="1400"
+            height="900"
+            alt="Danışmanlık görüşmesinde belgeler üzerinden konuşan profesyoneller"
+            loading="lazy"
+            decoding="async">
+        </figure>
+        <div class="contact-visual-body">
+          <div class="card-kicker"><span class="kicker-dot"></span>İlk Görüşme</div>
+          <h3>İlk temastan itibaren sakin, net ve güven veren bir deneyim</h3>
+          <p>İlk görüşmede amacımız sizi doğru anlamak, en uygun şirket yapısını netleştirmek ve sonraki adımları size açık bir planla sunmaktır. Bu nedenle iletişim alanını hızlı ama güven veren bir başlangıç noktası olarak konumlandırıyoruz.</p>
+          <div class="contact-visual-points">
+            <span>Önce ihtiyaçları dinleyen yaklaşım</span>
+            <span>Şirket türü ve vergi planı için net yönlendirme</span>
+            <span>Profesyonel ama sıcak ilk temas hissi</span>
+          </div>
+        </div>
+      </article>
       <div class="contact-card reveal">
         <div class="contact-card-icon">📍</div>
         <div>
