@@ -1,0 +1,2999 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KKTC'de Şirket Kurma | Yaşar Kaya Danışmanlık</title>
+<meta name="description" content="Kuzey Kıbrıs'ta şirket kurmanın en güvenilir adresi. 25 yıllık deneyim, 500+ kurulan şirket.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #FF7A18;
+  --gold-light: #FFB347;
+  --gold-pale: #FFF1E8;
+  --navy: #102347;
+  --navy-mid: #173B7A;
+  --navy-light: #2563EB;
+  --cream: #FFF9F4;
+  --cream-dark: #FFF1E6;
+  --text: #0F2144;
+  --text-muted: #61708E;
+  --white: #FFFFFF;
+  --success: #12C48B;
+  --accent-rgb: 255, 122, 24;
+  --navy-rgb: 16, 35, 71;
+  --blue-rgb: 37, 99, 235;
+  --cream-rgb: 255, 249, 244;
+  --white-rgb: 255, 255, 255;
+  --border: rgba(var(--blue-rgb), 0.16);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 10px 30px rgba(var(--navy-rgb), 0.10);
+  --shadow-lg: 0 24px 60px rgba(var(--navy-rgb), 0.16);
+  --hero-photo: url('https://images.pexels.com/photos/5439470/pexels-photo-5439470.jpeg?auto=compress&cs=tinysrgb&w=1800');
+}
+
+[dir="rtl"] { text-align: right; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+
+/* ── HEADER ── */
+#header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 0 48px;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+}
+#header.scrolled {
+  background: rgba(var(--cream-rgb),0.88);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--border), var(--shadow);
+}
+#header:not(.scrolled) .logo,
+#header:not(.scrolled) nav a {
+  color: var(--navy);
+}
+#header:not(.scrolled) .logo-sub,
+#header:not(.scrolled) nav a.active {
+  color: var(--text-muted);
+}
+#header:not(.scrolled) nav a:hover {
+  color: var(--navy-light);
+}
+#header:not(.scrolled) .lang-switcher {
+  background: rgba(var(--white-rgb),0.74);
+  border-color: rgba(var(--blue-rgb),0.14);
+  backdrop-filter: blur(10px);
+}
+#header:not(.scrolled) .lang-btn {
+  color: var(--text-muted);
+}
+#header:not(.scrolled) .lang-btn.active {
+  background: var(--white);
+  color: var(--navy);
+}
+#header:not(.scrolled) {
+  background: rgba(var(--white-rgb),0.56);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(var(--white-rgb),0.28);
+}
+#header:not(.scrolled) .btn-cta {
+  background: linear-gradient(135deg, var(--gold), #FF5D47);
+  border: none;
+  box-shadow: 0 12px 24px rgba(var(--accent-rgb),0.20);
+  backdrop-filter: none;
+}
+#header:not(.scrolled) .btn-cta:hover {
+  background: linear-gradient(135deg, #FF8A32, #FF6247);
+  box-shadow: 0 16px 28px rgba(var(--accent-rgb),0.24);
+}
+.logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; color: var(--navy);
+}
+.logo-mark {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-mark svg { width: 22px; height: 22px; fill: var(--gold); }
+.logo-text { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+.logo-sub { font-size: 11px; color: var(--text-muted); font-weight: 400; margin-top: -2px; }
+
+nav { display: flex; align-items: center; gap: 20px; }
+nav a {
+  text-decoration: none; font-size: 13px; font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.2s;
+  position: relative;
+}
+nav a:hover { color: var(--navy); }
+nav a.active { color: var(--navy); font-weight: 500; }
+
+.header-actions { display: flex; align-items: center; gap: 16px; }
+
+.lang-switcher {
+  display: flex; align-items: center; gap: 4px;
+  background: var(--cream-dark); border-radius: 8px;
+  padding: 4px; border: 0.5px solid var(--border);
+}
+.lang-btn {
+  padding: 4px 10px; border-radius: 6px; border: none;
+  background: transparent; font-size: 12px; font-weight: 500;
+  color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.lang-btn.active { background: var(--white); color: var(--navy); box-shadow: 0 6px 16px rgba(var(--navy-rgb),0.12); }
+
+.btn-cta {
+  padding: 10px 22px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--navy-light), var(--navy)); color: var(--white);
+  border: none; font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none; display: inline-block;
+  box-shadow: 0 12px 24px rgba(var(--blue-rgb),0.22);
+}
+.btn-cta:hover { background: linear-gradient(135deg, var(--navy), var(--navy-light)); transform: translateY(-1px); box-shadow: 0 16px 28px rgba(var(--blue-rgb),0.28); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  background: #F7F1EB;
+  padding: 0 48px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(255,249,244,0.96) 0%, rgba(255,249,244,0.84) 38%, rgba(255,249,244,0.42) 64%, rgba(255,255,255,0.12) 100%),
+    linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(16,35,71,0.10) 100%),
+    var(--hero-photo);
+  background-size: cover;
+  background-position: center center;
+  transform: scale(1.02);
+}
+.hero-pattern {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 72% 24%, rgba(var(--white-rgb),0.42), transparent 24%),
+    linear-gradient(180deg, rgba(var(--white-rgb),0.06), rgba(var(--accent-rgb),0.08));
+}
+.hero-glow {
+  position: absolute; left: -120px; top: 110px;
+  width: 540px; height: 540px;
+  background: radial-gradient(circle, rgba(var(--accent-rgb),0.14) 0%, rgba(var(--white-rgb),0.10) 38%, transparent 74%);
+  border-radius: 50%;
+  filter: blur(18px);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 720px;
+  padding: 44px;
+  padding-top: calc(72px + 20px);
+  background: linear-gradient(180deg, rgba(var(--white-rgb),0.78), rgba(var(--cream-rgb),0.70));
+  border: 1px solid rgba(var(--white-rgb),0.48);
+  border-radius: 30px;
+  box-shadow: 0 30px 70px rgba(var(--navy-rgb),0.14);
+  backdrop-filter: blur(16px);
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(var(--white-rgb),0.82);
+  border: 0.5px solid rgba(var(--blue-rgb),0.12);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 12px; color: var(--navy);
+  font-weight: 500; margin-bottom: 28px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 12px 28px rgba(var(--navy-rgb),0.08);
+  backdrop-filter: blur(8px);
+}
+.hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 700; line-height: 1.1;
+  color: var(--navy);
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+  text-shadow: none;
+}
+.hero-title span { color: var(--navy); }
+.hero-title .gold-text { color: var(--gold); }
+.hero-sub {
+  font-size: 18px; line-height: 1.7;
+  color: rgba(var(--navy-rgb),0.82);
+  margin-bottom: 40px; max-width: 560px;
+  font-weight: 300;
+  text-shadow: none;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
+.btn-hero-primary {
+  padding: 16px 32px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold), #FF5D47); color: var(--white);
+  border: none; font-size: 15px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: 0 18px 40px rgba(var(--accent-rgb),0.28);
+}
+.btn-hero-primary:hover { background: linear-gradient(135deg, #FF8A32, #FF6247); transform: translateY(-2px); box-shadow: 0 22px 44px rgba(var(--accent-rgb),0.34); }
+.btn-hero-secondary {
+  padding: 16px 32px; border-radius: 12px;
+  background: rgba(var(--white-rgb),0.72); color: var(--navy);
+  border: 1px solid rgba(var(--blue-rgb),0.14);
+  font-size: 15px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-hero-secondary:hover { border-color: rgba(var(--blue-rgb),0.24); background: var(--white); }
+
+.hero-stats {
+  display: flex; gap: 48px; flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid rgba(var(--blue-rgb),0.12);
+}
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 700;
+  color: var(--gold); line-height: 1;
+}
+.hero-stat-label { font-size: 13px; color: rgba(var(--navy-rgb),0.70); margin-top: 4px; font-weight: 400; }
+
+/* ── SECTION BASE ── */
+section { padding: 100px 48px; }
+.section-tag {
+  display: inline-block; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700; line-height: 1.15;
+  color: var(--navy); margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+.section-title.light { color: var(--white); }
+.section-sub {
+  font-size: 17px; color: var(--text-muted);
+  line-height: 1.7; max-width: 580px;
+  font-weight: 300;
+}
+.section-sub.light { color: rgba(var(--white-rgb),0.78); }
+
+.section-shell {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 44px;
+}
+.portal-card,
+.service-hub-card,
+.sector-card,
+.news-item,
+.tax-panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+.portal-card,
+.service-hub-card,
+.sector-card,
+.tax-panel {
+  padding: 28px;
+}
+.portal-card h3,
+.service-hub-card h3,
+.tax-panel h3,
+.formation-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.portal-card p,
+.service-hub-card p,
+.sector-card p,
+.tax-panel p,
+.formation-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.detail-list,
+.law-list,
+.topic-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+.detail-list li,
+.law-list li,
+.topic-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.detail-list li::before,
+.law-list li::before,
+.topic-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.card-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(var(--blue-rgb),0.06);
+  color: var(--navy-light);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.kicker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.service-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 44px;
+}
+.micro-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+.micro-list span {
+  display: block;
+  padding: 11px 14px;
+  border-radius: 14px;
+  background: rgba(var(--cream-rgb),0.82);
+  border: 1px solid rgba(var(--blue-rgb),0.08);
+  color: var(--text);
+  font-size: 13px;
+}
+.news-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 44px;
+}
+.news-item {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 22px;
+  padding: 22px 24px;
+  align-items: start;
+}
+.news-date {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.14), rgba(var(--blue-rgb),0.10));
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+.news-item h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+.news-item p {
+  max-width: none;
+}
+#formation-hub {
+  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+}
+.formation-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 24px;
+  margin-top: 44px;
+}
+.formation-card {
+  padding: 30px;
+  border-radius: 26px;
+  background: rgba(var(--white-rgb),0.96);
+  border: 1px solid rgba(var(--white-rgb),0.14);
+  box-shadow: 0 24px 52px rgba(var(--navy-rgb),0.18);
+}
+.formation-card .detail-list li,
+.formation-card .law-list li,
+.formation-card .topic-list li {
+  color: var(--text);
+}
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+.inline-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(var(--blue-rgb),0.14);
+  color: var(--navy);
+  background: rgba(var(--white-rgb),0.86);
+}
+.inline-link.primary {
+  border: none;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--gold), #FF5D47);
+  box-shadow: 0 14px 28px rgba(var(--accent-rgb),0.22);
+}
+.sector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 44px;
+}
+.sector-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.tax-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 24px;
+  margin-top: 44px;
+}
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.topic-chip {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(var(--cream-rgb),0.88);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.tax-note {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(var(--accent-rgb),0.08);
+  color: var(--navy);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ── QUIZ ── */
+#quiz { background: var(--white); }
+.quiz-container {
+  max-width: 760px; margin: 0 auto;
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+}
+.quiz-header {
+  background: var(--navy);
+  padding: 32px 40px;
+  display: flex; align-items: center; gap: 16px;
+}
+.quiz-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(var(--accent-rgb),0.18);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.quiz-header-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--white); }
+.quiz-header-sub { font-size: 13px; color: rgba(var(--white-rgb),0.74); margin-top: 4px; }
+.quiz-body { padding: 40px; }
+.quiz-step { display: none; animation: fadeIn 0.3s ease; }
+.quiz-step.active { display: block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:none;} }
+.quiz-question { font-size: 18px; font-weight: 500; color: var(--navy); margin-bottom: 24px; }
+.quiz-options { display: flex; flex-direction: column; gap: 12px; }
+.quiz-option {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px; border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--white); cursor: pointer;
+  transition: all 0.18s; font-size: 14px; color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+}
+.quiz-option:hover { border-color: var(--gold); background: var(--gold-pale); }
+.quiz-option.selected { border-color: var(--gold); background: var(--gold-pale); font-weight: 500; }
+.quiz-option-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; }
+.quiz-back {
+  padding: 10px 20px; border-radius: 10px;
+  background: transparent; color: var(--text-muted);
+  border: 0.5px solid var(--border);
+  font-size: 14px; cursor: pointer; transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.quiz-back:hover { border-color: var(--navy); color: var(--navy); }
+.quiz-next {
+  padding: 12px 28px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--navy-light), var(--navy)); color: var(--white);
+  border: none; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+  display: flex; align-items: center; gap: 8px;
+}
+.quiz-next:hover { box-shadow: 0 14px 26px rgba(var(--blue-rgb),0.22); }
+.quiz-next:disabled { opacity: 0.4; cursor: not-allowed; }
+.quiz-progress { display: flex; gap: 6px; }
+.quiz-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cream-dark); transition: all 0.2s; }
+.quiz-dot.active { background: var(--gold); width: 20px; border-radius: 4px; }
+.quiz-dot.done { background: var(--navy); }
+.quiz-result { text-align: center; padding: 8px 0 16px; }
+.quiz-result-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 24px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--navy-light), var(--navy)); color: var(--white);
+  font-size: 20px; font-family: 'Playfair Display', serif;
+  font-weight: 600; margin-bottom: 20px;
+}
+.quiz-result p { color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+.quiz-result-cta {
+  padding: 14px 32px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold), #FF5D47); color: var(--white);
+  border: none; font-size: 14px; font-weight: 600;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+}
+.quiz-result-cta:hover { box-shadow: 0 16px 30px rgba(var(--accent-rgb),0.28); }
+
+/* ── PROCESS ── */
+#process { background: var(--navy); }
+.process-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2px; margin-top: 64px;
+  border: 0.5px solid rgba(var(--white-rgb),0.12);
+  border-radius: var(--radius-lg); overflow: hidden;
+}
+.process-step {
+  background: var(--navy-mid);
+  padding: 40px 32px;
+  position: relative; overflow: hidden;
+  transition: background 0.2s;
+}
+.process-step:hover { background: var(--navy-light); }
+.process-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px; font-weight: 700;
+  color: rgba(var(--accent-rgb),0.16);
+  line-height: 1; margin-bottom: 20px;
+}
+.process-step-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(var(--accent-rgb),0.14);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px; font-size: 22px;
+}
+.process-step-title { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--white); margin-bottom: 10px; }
+.process-step-desc { font-size: 13px; color: rgba(var(--white-rgb),0.72); line-height: 1.6; font-weight: 300; }
+.process-connector {
+  position: absolute; right: -12px; top: 50%;
+  transform: translateY(-50%);
+  width: 24px; height: 24px;
+  background: var(--gold); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+}
+
+/* ── COMPANY TYPES ── */
+#types { background: var(--white); }
+.types-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px; margin-top: 56px;
+}
+.type-card {
+  background: var(--cream);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  transition: all 0.25s;
+  cursor: pointer; position: relative; overflow: hidden;
+}
+.type-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.type-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--gold); }
+.type-card:hover::before { transform: scaleX(1); }
+.type-icon { font-size: 32px; margin-bottom: 16px; }
+.type-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+.type-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+.type-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.type-tag {
+  padding: 4px 12px; border-radius: 100px;
+  font-size: 11px; font-weight: 500;
+  background: var(--cream-dark); color: var(--text-muted);
+  border: 0.5px solid var(--border);
+}
+.type-tag.highlight { background: rgba(var(--accent-rgb),0.12); color: var(--gold); border-color: rgba(var(--accent-rgb),0.24); }
+
+/* ── COMPARISON TABLE ── */
+#comparison { background: var(--cream); }
+.table-wrap { overflow-x: auto; margin-top: 56px; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+.comp-table { width: 100%; border-collapse: collapse; background: var(--white); }
+.comp-table th {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: var(--white);
+  padding: 18px 20px; font-size: 13px; font-weight: 500;
+  text-align: left; white-space: nowrap;
+  font-family: 'DM Sans', sans-serif;
+}
+.comp-table th:first-child { border-radius: 0; }
+.comp-table td {
+  padding: 16px 20px; font-size: 13px; color: var(--text);
+  border-bottom: 0.5px solid var(--border);
+  vertical-align: middle;
+}
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table tr:hover td { background: var(--gold-pale); }
+.comp-table td:first-child { font-weight: 500; color: var(--navy); }
+.check { color: var(--success); font-size: 16px; }
+.cross { color: #ccc; font-size: 16px; }
+.tax-badge {
+  padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 600;
+  background: rgba(29,158,117,0.1); color: var(--success);
+}
+.tax-badge.high { background: rgba(226,75,74,0.1); color: #A32D2D; }
+.tax-badge.mid { background: rgba(186,117,23,0.1); color: #854F0B; }
+
+/* ── CALCULATOR ── */
+#calculator { background: var(--navy); }
+.calc-container {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; margin-top: 56px;
+  max-width: 900px;
+}
+.calc-form { background: rgba(var(--white-rgb),0.07); border-radius: var(--radius-lg); padding: 36px; border: 0.5px solid rgba(var(--white-rgb),0.14); }
+.calc-result { background: linear-gradient(180deg, rgba(var(--accent-rgb),0.14), rgba(var(--white-rgb),0.06)); border-radius: var(--radius-lg); padding: 36px; border: 0.5px solid rgba(var(--accent-rgb),0.22); }
+.calc-label { font-size: 12px; color: rgba(var(--white-rgb),0.74); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; margin-top: 24px; }
+.calc-label:first-child { margin-top: 0; }
+.calc-select, .calc-input {
+  width: 100%; padding: 12px 16px;
+  background: rgba(var(--white-rgb),0.08);
+  border: 0.5px solid rgba(var(--white-rgb),0.18);
+  border-radius: 10px; color: var(--white);
+  font-size: 14px; font-family: 'DM Sans', sans-serif;
+  appearance: none; outline: none;
+}
+.calc-select:focus, .calc-input:focus { border-color: var(--gold); }
+.calc-select option { background: var(--navy); }
+.calc-btn {
+  width: 100%; margin-top: 28px;
+  padding: 14px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--gold), #FF5D47); color: var(--white);
+  border: none; font-size: 14px; font-weight: 600;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+}
+.calc-btn:hover { box-shadow: 0 18px 30px rgba(var(--accent-rgb),0.28); }
+.calc-result-title { font-size: 13px; color: rgba(var(--white-rgb),0.82); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 4px; }
+.calc-result-val { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; color: var(--gold); line-height: 1.1; margin-bottom: 8px; }
+.calc-result-sub { font-size: 12px; color: rgba(var(--white-rgb),0.74); line-height: 1.5; margin-bottom: 28px; }
+.calc-result-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 0.5px solid rgba(var(--white-rgb),0.10); font-size: 13px; }
+.calc-result-row-label { color: rgba(var(--white-rgb),0.76); }
+.calc-result-row-val { color: var(--white); font-weight: 500; }
+.calc-result-note { font-size: 11px; color: rgba(var(--white-rgb),0.62); margin-top: 16px; line-height: 1.6; }
+
+/* ── STATS ── */
+#stats { background: var(--cream-dark); padding: 72px 48px; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.stat-card {
+  background: var(--white);
+  padding: 40px 32px;
+  text-align: center;
+  border: 0.5px solid var(--border);
+}
+.stat-card:first-child { border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
+.stat-card:last-child { border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px; font-weight: 700;
+  color: var(--navy); line-height: 1;
+}
+.stat-num span { color: var(--gold); }
+.stat-label { font-size: 13px; color: var(--text-muted); margin-top: 8px; font-weight: 400; }
+
+/* ── FAQ ── */
+#faq { background: var(--white); }
+.faq-list { max-width: 760px; margin: 56px auto 0; }
+.faq-item {
+  border-bottom: 0.5px solid var(--border);
+  overflow: hidden;
+}
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 0; cursor: pointer;
+  font-size: 16px; font-weight: 500; color: var(--navy);
+  gap: 20px; list-style: none;
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--gold); }
+.faq-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--cream-dark); border: 0.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all 0.2s;
+  font-size: 18px; color: var(--text-muted);
+}
+.faq-item.open .faq-icon { background: var(--navy); color: var(--white); transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s;
+  font-size: 15px; color: var(--text-muted); line-height: 1.75;
+}
+.faq-item.open .faq-a { max-height: 400px; padding-bottom: 24px; }
+
+/* ── TESTIMONIALS ── */
+#testimonials { background: var(--cream); }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 56px; }
+.testi-card {
+  background: var(--white);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+}
+.testi-quote { font-size: 48px; font-family: 'Playfair Display', serif; color: var(--gold-pale); line-height: 0.7; margin-bottom: 16px; }
+.testi-text { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light)); display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 600; color: var(--gold-light);
+  flex-shrink: 0; font-family: 'Playfair Display', serif;
+}
+.testi-name { font-size: 14px; font-weight: 500; color: var(--navy); }
+.testi-country { font-size: 12px; color: var(--text-muted); }
+.testi-stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; margin-bottom: 14px; }
+
+/* ── LAWS ── */
+#laws { background: var(--navy); }
+.laws-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 56px; }
+.law-item {
+  background: rgba(var(--white-rgb),0.05);
+  border: 0.5px solid rgba(var(--white-rgb),0.10);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex; gap: 16px; align-items: flex-start;
+  transition: all 0.2s;
+}
+.law-item:hover { background: rgba(var(--white-rgb),0.08); border-color: rgba(var(--accent-rgb),0.28); }
+.law-num {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(var(--accent-rgb),0.16); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 600; flex-shrink: 0;
+}
+.law-name { font-size: 14px; color: var(--white); font-weight: 500; margin-bottom: 4px; }
+.law-desc { font-size: 12px; color: rgba(var(--white-rgb),0.72); line-height: 1.5; }
+
+/* ── CONTACT ── */
+#contact { background: linear-gradient(180deg, var(--white) 0%, var(--gold-pale) 100%); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 56px; }
+.contact-info-block { display: flex; flex-direction: column; gap: 24px; }
+.contact-card {
+  background: var(--white); border-radius: var(--radius-lg);
+  border: 0.5px solid var(--border); padding: 28px;
+  display: flex; gap: 16px; align-items: flex-start;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.contact-card-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--navy-light), var(--gold)); display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 20px;
+  color: var(--white);
+}
+.contact-card-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 4px; }
+.contact-card-val { font-size: 15px; color: var(--navy); font-weight: 500; }
+.contact-card-val a { color: var(--navy); text-decoration: none; }
+.contact-card-val a:hover { color: var(--gold); }
+
+.form-card {
+  position: relative;
+  background: linear-gradient(135deg, #FF7A18 0%, #FF5D47 55%, #FF9A3D 100%);
+  border-radius: 28px;
+  padding: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.form-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(var(--white-rgb),0.24), transparent 32%),
+    linear-gradient(135deg, rgba(var(--white-rgb),0.08), transparent 55%);
+  pointer-events: none;
+}
+.support-topbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--white);
+}
+.support-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(var(--white-rgb),0.18);
+  border: 1px solid rgba(var(--white-rgb),0.22);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.support-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.support-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3EF089;
+  box-shadow: 0 0 0 6px rgba(62,240,137,0.18);
+}
+#form-wrap {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+  background: rgba(var(--white-rgb),0.97);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 24px 48px rgba(var(--navy-rgb),0.14);
+}
+.form-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin-bottom: 8px; }
+.form-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
+.support-flow {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.support-flow-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(var(--cream-rgb),0.78) 0%, rgba(var(--white-rgb),1) 100%);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+}
+.support-flow-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold), #FF5D47);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+}
+.support-flow-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.support-flow-text strong {
+  font-size: 14px;
+  color: var(--navy);
+}
+.support-flow-text span {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-label { font-size: 12px; font-weight: 600; color: var(--navy); letter-spacing: 0.03em; }
+.form-input {
+  padding: 12px 16px;
+  border: 1px solid rgba(var(--blue-rgb),0.18);
+  border-radius: 10px; font-size: 14px;
+  color: var(--text); background: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.form-input:focus { border-color: var(--navy-light); box-shadow: 0 0 0 4px rgba(var(--blue-rgb),0.12); }
+.form-submit {
+  width: 100%; padding: 15px;
+  background: linear-gradient(135deg, var(--gold), #FF5D47); color: var(--white);
+  border: none; border-radius: 12px;
+  font-size: 15px; font-weight: 500;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin-top: 12px;
+  box-shadow: 0 16px 32px rgba(var(--accent-rgb),0.24);
+}
+.form-submit:hover { transform: translateY(-1px); box-shadow: 0 20px 40px rgba(var(--accent-rgb),0.30); }
+.support-assurance {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ── MAP SECTION ── */
+#map-section { background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 0; }
+.map-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.map-text { padding: 80px 64px; }
+.map-embed {
+  background: var(--navy-mid);
+  min-height: 400px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.map-placeholder {
+  text-align: center; color: rgba(255,255,255,0.3);
+  font-size: 14px; padding: 40px;
+}
+.map-placeholder svg { width: 48px; height: 48px; fill: rgba(255,255,255,0.15); margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto; }
+.map-address-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 20px; }
+.map-address-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+.map-address-text { font-size: 14px; color: rgba(var(--white-rgb),0.8); line-height: 1.6; }
+.map-address-text strong { display: block; color: var(--white); font-weight: 500; margin-bottom: 2px; }
+
+/* ── LIVE SUPPORT WIDGET ── */
+#live-support {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+.live-support-socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.live-support-social {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  text-decoration: none;
+  box-shadow: 0 16px 30px rgba(var(--navy-rgb),0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.live-support-social:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 36px rgba(var(--navy-rgb),0.22);
+}
+.live-support-social.instagram {
+  background: linear-gradient(135deg, #F58529 0%, #DD2A7B 52%, #8134AF 100%);
+}
+.live-support-social.whatsapp {
+  background: linear-gradient(135deg, #29D167 0%, #10B251 100%);
+}
+.live-support-social svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+.live-support-panel {
+  width: min(390px, calc(100vw - 32px));
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 28px 70px rgba(var(--navy-rgb),0.24);
+  overflow: hidden;
+  border: 1px solid rgba(var(--white-rgb),0.55);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(18px) scale(0.97);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+.live-support-panel.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+.live-support-header {
+  padding: 18px 18px 16px;
+  background:
+    radial-gradient(circle at top right, rgba(68,255,109,0.9) 0%, rgba(68,255,109,0.0) 12%),
+    linear-gradient(135deg, #FF7A18 0%, #FF4F45 52%, #D63384 100%);
+  color: var(--white);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.live-support-header-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.live-support-title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.live-support-online {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(var(--white-rgb),0.86);
+}
+.live-support-online-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #3EF089;
+  box-shadow: 0 0 0 5px rgba(62,240,137,0.18);
+}
+.live-support-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--white-rgb),0.18);
+  background: rgba(var(--white-rgb),0.12);
+  color: var(--white);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.live-support-close:hover { background: rgba(var(--white-rgb),0.2); }
+.live-support-body {
+  background: rgba(var(--white-rgb),0.98);
+}
+.live-support-thread {
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background:
+    linear-gradient(180deg, rgba(var(--white-rgb),1) 0%, rgba(var(--cream-rgb),0.78) 100%);
+}
+.live-support-thread::-webkit-scrollbar { width: 8px; }
+.live-support-thread::-webkit-scrollbar-thumb {
+  background: rgba(var(--navy-rgb),0.12);
+  border-radius: 999px;
+}
+.live-support-message {
+  max-width: 86%;
+  padding: 14px 16px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.5;
+  box-shadow: 0 10px 24px rgba(var(--navy-rgb),0.08);
+}
+.live-support-message.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #15C95F 0%, #10B251 100%);
+  color: var(--white);
+  border-bottom-right-radius: 8px;
+}
+.live-support-message.agent {
+  align-self: flex-start;
+  background: var(--white);
+  color: var(--navy);
+  border: 1px solid rgba(var(--blue-rgb),0.12);
+  border-bottom-left-radius: 8px;
+}
+.live-support-helper {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  padding: 0 6px;
+}
+.live-support-lead-card {
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid rgba(var(--blue-rgb),0.14);
+  padding: 16px;
+  box-shadow: 0 16px 32px rgba(var(--navy-rgb),0.08);
+}
+.live-support-lead-grid {
+  display: grid;
+  gap: 12px;
+}
+.live-support-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.live-support-field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.live-support-field input {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(var(--blue-rgb),0.16);
+  outline: none;
+  font-size: 14px;
+  color: var(--navy);
+  background: #FCFDFF;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.live-support-field input:focus {
+  border-color: var(--navy-light);
+  box-shadow: 0 0 0 4px rgba(var(--blue-rgb),0.12);
+}
+.live-support-lead-submit {
+  width: 100%;
+  margin-top: 6px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--gold), #FF5D47);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 14px 28px rgba(var(--accent-rgb),0.22);
+}
+.live-support-lead-submit:hover { transform: translateY(-1px); }
+.live-support-note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+.live-support-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.live-support-quick-replies[hidden] { display: none; }
+.live-support-chip {
+  border: 1px solid rgba(var(--blue-rgb),0.14);
+  background: rgba(var(--white-rgb),0.82);
+  color: var(--navy);
+  border-radius: 999px;
+  padding: 10px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.live-support-chip:hover {
+  border-color: rgba(var(--accent-rgb),0.28);
+  color: var(--gold);
+}
+.live-support-composer {
+  display: none;
+  gap: 10px;
+  align-items: center;
+  padding: 14px 16px 16px;
+  border-top: 1px solid rgba(var(--blue-rgb),0.10);
+  background: var(--white);
+}
+.live-support-panel.chat-ready .live-support-composer {
+  display: flex;
+}
+.live-support-composer input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(var(--blue-rgb),0.14);
+  font-size: 14px;
+  outline: none;
+}
+.live-support-composer input:focus {
+  border-color: var(--navy-light);
+  box-shadow: 0 0 0 4px rgba(var(--blue-rgb),0.10);
+}
+.live-support-send {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(135deg, var(--gold), #FF5D47);
+  color: var(--white);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 26px rgba(var(--accent-rgb),0.24);
+}
+.live-support-send svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+#live-support-launcher {
+  min-width: 188px;
+  height: 58px;
+  border-radius: 18px;
+  border: none;
+  background:
+    radial-gradient(circle at top right, rgba(68,255,109,0.9) 0%, rgba(68,255,109,0.0) 12%),
+    linear-gradient(135deg, #FF7A18 0%, #FF5D47 58%, #C92B87 100%);
+  color: var(--white);
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(var(--accent-rgb),0.24);
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 18px 0 20px;
+  font-weight: 600;
+  font-size: 15px;
+}
+#live-support-launcher:hover { transform: translateY(-2px); }
+.live-support-launcher-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.live-support-launcher-title {
+  line-height: 1.1;
+}
+.live-support-launcher-sub {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(var(--white-rgb),0.82);
+}
+.live-support-launcher-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: rgba(var(--white-rgb),0.14);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.live-support-launcher-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: linear-gradient(180deg, var(--navy) 0%, #0A1730 100%);
+  padding: 64px 48px 32px;
+  border-top: 0.5px solid rgba(255,255,255,0.06);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-logo { margin-bottom: 16px; }
+.footer-logo-text { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--white); }
+.footer-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 260px; }
+.footer-col-title { font-size: 12px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  border-top: 0.5px solid rgba(255,255,255,0.06);
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+}
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal-left.visible { opacity: 1; transform: none; }
+.reveal-right { opacity: 0; transform: translateX(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal-right.visible { opacity: 1; transform: none; }
+
+/* ── MOBILE NAV ── */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { width: 22px; height: 1.5px; background: var(--navy); display: block; transition: all 0.25s; }
+.mobile-nav {
+  display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+  background: var(--cream); z-index: 999;
+  padding: 32px 24px; flex-direction: column; gap: 24px;
+  overflow-y: auto;
+}
+.mobile-nav a { font-size: 22px; font-family: 'Playfair Display', serif; color: var(--navy); text-decoration: none; padding: 12px 0; border-bottom: 0.5px solid var(--border); }
+.mobile-nav.open { display: flex; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .calc-container { grid-template-columns: 1fr; }
+  .map-inner { grid-template-columns: 1fr; }
+  .portal-grid,
+  .formation-grid,
+  .tax-grid { grid-template-columns: 1fr; }
+  .service-hub-grid,
+  .sector-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .stat-card:nth-child(1) { border-radius: var(--radius-lg) 0 0 0; }
+  .stat-card:nth-child(2) { border-radius: 0 var(--radius-lg) 0 0; }
+  .stat-card:nth-child(3) { border-radius: 0 0 0 var(--radius-lg); }
+  .stat-card:nth-child(4) { border-radius: 0 0 var(--radius-lg) 0; }
+}
+@media (max-width: 768px) {
+  #header { padding: 0 20px; }
+  nav { display: none; }
+  .header-actions .btn-cta { display: none; }
+  .lang-switcher { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 72px 20px; }
+  #hero { padding: 0 20px; }
+  .hero-content { padding: 28px; padding-top: calc(72px + 16px); }
+  .hero-stats { gap: 28px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .portal-grid,
+  .service-hub-grid,
+  .formation-grid,
+  .sector-grid,
+  .tax-grid,
+  .topic-grid { grid-template-columns: 1fr; }
+  .news-item { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-card { padding: 20px; }
+  #form-wrap { padding: 22px; }
+  .support-topbar { flex-direction: column; align-items: flex-start; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  #live-support {
+    right: 16px;
+    left: 16px;
+    bottom: 16px;
+    align-items: stretch;
+  }
+  .live-support-panel {
+    width: 100%;
+  }
+  .live-support-thread {
+    max-height: 56vh;
+  }
+  .live-support-socials {
+    justify-content: flex-end;
+  }
+  #live-support-launcher {
+    width: 100%;
+  }
+}
+
+/* ── LANGUAGE CONTENT ── */
+[data-lang] { display: none; }
+[data-lang].lang-active { display: block; }
+[data-lang-inline] { display: none; }
+[data-lang-inline].lang-active { display: inline; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="#hero" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L3 7v10l9 5 9-5V7L12 2zm0 2.3l7 3.9v7.6l-7 3.9-7-3.9V8.2l7-3.9z"/></svg>
+    </div>
+    <div>
+      <div class="logo-text">Yaşar Kaya Danışmanlık</div>
+      <div class="logo-sub" data-tr="Şirket Kurma Danışmanlığı" data-en="Company Formation Advisory" data-ru="Консультации по регистрации" data-ar="استشارات تأسيس الشركات">Şirket Kurma Danışmanlığı</div>
+    </div>
+  </a>
+
+  <nav>
+    <a href="#corporate" class="nav-link" data-tr="Kurumsal" data-en="Corporate" data-ru="Корпоратив" data-ar="المؤسسية">Kurumsal</a>
+    <a href="#services-hub" class="nav-link" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</a>
+    <a href="#news-hub" class="nav-link" data-tr="Haberler" data-en="News" data-ru="Новости" data-ar="الأخبار">Haberler</a>
+    <a href="#formation-hub" class="nav-link" data-tr="Şirket Kurma" data-en="Company Formation" data-ru="Регистрация" data-ar="تأسيس الشركات">Şirket Kurma</a>
+    <a href="#sectors-hub" class="nav-link" data-tr="Sektörler" data-en="Sectors" data-ru="Секторы" data-ar="القطاعات">Sektörler</a>
+    <a href="#taxes-hub" class="nav-link" data-tr="Vergiler" data-en="Taxes" data-ru="Налоги" data-ar="الضرائب">Vergiler</a>
+    <a href="#contact" class="nav-link" data-tr="İletişim" data-en="Contact" data-ru="Контакт" data-ar="تواصل">İletişim</a>
+  </nav>
+
+  <div class="header-actions">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('tr')">TR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ru')">RU</button>
+      <button class="lang-btn" onclick="setLang('ar')">AR</button>
+    </div>
+    <a href="#live-support" class="btn-cta" id="cta-btn" onclick="openLiveSupport(event)" data-tr="Canlı Destek" data-en="Live Support" data-ru="Онлайн поддержка" data-ar="دعم مباشر">Canlı Destek</a>
+    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#corporate" onclick="toggleMobileNav()" data-tr="Kurumsal" data-en="Corporate" data-ru="Корпоратив" data-ar="المؤسسية">Kurumsal</a>
+  <a href="#services-hub" onclick="toggleMobileNav()" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</a>
+  <a href="#news-hub" onclick="toggleMobileNav()" data-tr="Haberler" data-en="News" data-ru="Новости" data-ar="الأخبار">Haberler</a>
+  <a href="#formation-hub" onclick="toggleMobileNav()" data-tr="Şirket Kurma" data-en="Company Formation" data-ru="Регистрация" data-ar="تأسيس الشركات">Şirket Kurma</a>
+  <a href="#sectors-hub" onclick="toggleMobileNav()" data-tr="Sektörler" data-en="Sectors" data-ru="Секторы" data-ar="القطاعات">Sektörler</a>
+  <a href="#taxes-hub" onclick="toggleMobileNav()" data-tr="Vergiler" data-en="Taxes" data-ru="Налоги" data-ar="الضرائب">Vergiler</a>
+  <a href="#contact" onclick="toggleMobileNav()" data-tr="İletişim" data-en="Contact" data-ru="Контакт" data-ar="تواصل">İletişim</a>
+  <a href="#live-support" onclick="openLiveSupport(event); toggleMobileNav();" data-tr="Canlı Desteği Aç →" data-en="Open Live Support →" data-ru="Открыть чат →" data-ar="افتح الدعم المباشر ←">Canlı Desteği Aç →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span data-tr="25+ Yıldır KKTC'de Güvenilir Danışmanlık" data-en="25+ Years of Trusted Advisory in TRNC" data-ru="25+ лет надёжных консультаций на Северном Кипре" data-ar="أكثر من 25 عامًا من الاستشارات الموثوقة">25+ Yıldır KKTC'de Güvenilir Danışmanlık</span>
+    </div>
+    <h1 class="hero-title">
+      <span data-tr="Kuzey Kıbrıs'ta" data-en="Establish Your" data-ru="Откройте компанию" data-ar="أسس شركتك في">Kuzey Kıbrıs'ta</span><br>
+      <span class="gold-text" data-tr="Şirketinizi Kurun" data-en="Company in Northern Cyprus" data-ru="на Северном Кипре" data-ar="شمال قبرص">Şirketinizi Kurun</span>
+    </h1>
+    <p class="hero-sub" data-tr="KKTC'nin gelişen ekonomisinde yatırım yapın. Vergi avantajları, hızlı tescil süreci ve 25 yıllık profesyonel deneyimle yanınızdayız." data-en="Invest in the TRNC's growing economy. We provide tax advantages, fast registration, and 25 years of professional expertise." data-ru="Инвестируйте в развивающуюся экономику Северного Кипра. Налоговые льготы, быстрая регистрация и 25 лет опыта." data-ar="استثمر في اقتصاد شمال قبرص المتنامي. مزايا ضريبية، تسجيل سريع، وخبرة 25 عامًا.">KKTC'nin gelişen ekonomisinde yatırım yapın. Vergi avantajları, hızlı tescil süreci ve 25 yıllık profesyonel deneyimle yanınızdayız.</p>
+    <div class="hero-actions">
+      <a href="#quiz" class="btn-hero-primary">
+        <span data-tr="Hangi Şirket Bana Uygun?" data-en="Which Company Fits Me?" data-ru="Какая компания подходит?" data-ar="أي شركة تناسبني؟">Hangi Şirket Bana Uygun?</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#live-support" class="btn-hero-secondary" onclick="openLiveSupport(event)">
+        <span data-tr="Canlı Desteği Aç" data-en="Open Live Support" data-ru="Открыть чат" data-ar="افتح الدعم المباشر">Canlı Desteği Aç</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num" id="stat1">0</div>
+        <div class="hero-stat-label" data-tr="Yıl Deneyim" data-en="Years Experience" data-ru="Лет опыта" data-ar="سنة خبرة">Yıl Deneyim</div>
+      </div>
+      <div>
+        <div class="hero-stat-num" id="stat2">0</div>
+        <div class="hero-stat-label" data-tr="Kurulan Şirket" data-en="Companies Founded" data-ru="Открытых компаний" data-ar="شركة تأسست">Kurulan Şirket</div>
+      </div>
+      <div>
+        <div class="hero-stat-num" id="stat3">0</div>
+        <div class="hero-stat-label" data-tr="Ülkeden Müvekkil" data-en="Countries Served" data-ru="Обслуженных стран" data-ar="دولة من عملائنا">Ülkeden Müvekkil</div>
+      </div>
+      <div>
+        <div class="hero-stat-num" id="stat4">0</div>
+        <div class="hero-stat-label" data-tr="Uzman Ekip" data-en="Expert Team" data-ru="Специалистов" data-ar="فريق خبراء">Uzman Ekip</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORPORATE -->
+<section id="corporate">
+  <div class="section-shell">
+    <div class="section-tag">Kurumsal</div>
+    <h2 class="section-title reveal">Kurumsal yapıyı ve alt başlıkları tek sayfada topladık</h2>
+    <p class="section-sub reveal">Yaşar Kaya markası için kurumsal anlatıyı Hakkımızda, Misyon & Vizyon, Kurumsal Sorumluluk, Değerlerimiz ve Yönetim başlıkları etrafında daha güçlü ve güven veren bir yapıya dönüştürdük.</p>
+
+    <div class="portal-grid">
+      <article class="portal-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Hakkımızda</div>
+        <h3>KKTC merkezli, çok sektörlü danışmanlık yaklaşımı</h3>
+        <p>Yaşar Kaya Danışmanlık; şirket kuruluşu, vergi, muhasebe ve stratejik danışmanlık hizmetlerini yerel işletmeler ve uluslararası yatırımcılar için tek çatı altında sunan butik ama güçlü bir danışmanlık yapısı olarak konumlanır.</p>
+        <ul class="detail-list">
+          <li>Yerel ve yabancı şirketlere hizmet veren kurumsal profil</li>
+          <li>Bankacılık, sigorta, eğitim, telekom ve inşaat gibi geniş sektör kapsamı</li>
+          <li>Uzun yıllara dayanan deneyim ve itibar odağı</li>
+        </ul>
+      </article>
+
+      <article class="portal-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Misyon & Vizyon</div>
+        <h3>Şeffaf karar desteği ve uzun vadeli güven</h3>
+        <p>Misyon tarafında mevzuata uygun, doğru, zamanında ve güvenilir bilgi sunma çizgisi öne çıkıyor. Vizyon tarafında ise Kuzey Kıbrıs'ta yerel ve uluslararası yatırımcı için referans gösterilen danışmanlık markası olma hedefi hissediliyor.</p>
+        <ul class="detail-list">
+          <li>Yatırımcıya karar aldıran net finansal ve hukuki çerçeve</li>
+          <li>Kurumsal büyüme sürecinde sürdürülebilir rehberlik</li>
+          <li>Yerel mevzuat ile uluslararası beklentileri aynı zeminde buluşturma</li>
+        </ul>
+      </article>
+
+      <article class="portal-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Kurumsal Sorumluluk</div>
+        <h3>Topluma ve mevzuata karşı sorumlu duruş</h3>
+        <p>Kurumsal sorumluluk yaklaşımımız; iş yaparken insan haklarına saygı göstermeyi, çevresel etkiyi gözetmeyi, toplumsal gelişime katkı sunmayı ve mali şeffaflığı savunmayı temel ilke kabul eder.</p>
+        <ul class="detail-list">
+          <li>İnsan hakları ve adil uygulama desteği</li>
+          <li>Eğitim ve hayır işlerine katkı</li>
+          <li>Vergi kaçağı ve yolsuzlukla mücadelede duyarlılık</li>
+        </ul>
+      </article>
+
+      <article class="portal-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Değerlerimiz</div>
+        <h3>Dürüstlük, itibar ve saygı merkezde</h3>
+        <p>Değerler bölümünde dürüst iş yapma, müşteri itibarını koruma ve insanlara karşı sorumluluk bilinci belirgin biçimde vurgulanıyor. Bu yüzden kurumsal anlatının temelini güven veren ama fazla karmaşık olmayan mesajlarla kurduk.</p>
+        <ul class="detail-list">
+          <li>Müşteri ve kurumlarla açık iletişim</li>
+          <li>Marka itibarı ile müşteri itibarını birlikte koruma</li>
+          <li>İnsana ve çevreye saygılı çalışma kültürü</li>
+        </ul>
+      </article>
+
+      <article class="portal-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Yönetim Kadrosu</div>
+        <h3>Kurucu deneyimini görünür kılan liderlik katmanı</h3>
+        <p>Yönetim tarafında Yaşar Kaya'nın saha tecrübesi, mevzuat bilgisi ve yatırımcılarla birebir çalışan danışman yaklaşımı öne çıkar. Bu yapı, siteye daha kişisel ama aynı zamanda profesyonel bir güven duygusu kazandırır.</p>
+        <ul class="detail-list">
+          <li>Yerel mevzuat ve uygulama deneyimi</li>
+          <li>Yatırımcıyla birebir çalışan kurucu liderlik modeli</li>
+          <li>Kurumsal kararları hızlandıran pratik danışmanlık yaklaşımı</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES HUB -->
+<section id="services-hub">
+  <div class="section-shell">
+    <div class="section-tag">Hizmetler</div>
+    <h2 class="section-title reveal">Yaşar Kaya Danışmanlık hizmet alanları</h2>
+    <p class="section-sub reveal">Şirket kuruluşundan vergi planlamasına, muhasebe yönetiminden iş ve sosyal güvenlik süreçlerine kadar ihtiyaç duyulan başlıkları daha net, daha premium ve daha satış odaklı bir servis yapısında topladık.</p>
+
+    <div class="service-hub-grid">
+      <article class="service-hub-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Denetim</div>
+        <h3>Denetim Hizmetleri</h3>
+        <p>Kurumsal gelişim arttıkça şirketlerin şeffaf, güvenilir ve doğrulanabilir finansal tablo ihtiyacı büyür. Denetim alanını bu ihtiyaca cevap veren temel güven katmanı olarak konumladık.</p>
+        <div class="micro-list">
+          <span>Yasal denetim süreçleri</span>
+          <span>Güvenilir finansal tablo desteği</span>
+          <span>Kurumsal güven ve raporlama disiplini</span>
+        </div>
+      </article>
+
+      <article class="service-hub-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Vergi</div>
+        <h3>Vergi Danışmanlığı</h3>
+        <p>Vergi planlaması, beyanname hazırlığı, vergi sonuçlarının analizi ve yeni yatırımlarda avantaj yaratabilecek alanların belirlenmesi bu başlığın ana çerçevesini oluşturuyor.</p>
+        <div class="micro-list">
+          <span>Vergi planlaması ve analiz</span>
+          <span>Beyanname ve rapor takvimi</span>
+          <span>Yeni yatırım kararlarında vergi etkisi</span>
+        </div>
+      </article>
+
+      <article class="service-hub-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Muhasebe</div>
+        <h3>Muhasebe ve Mali İşler</h3>
+        <p>Sürekli değişen mevzuat ve ekonomik koşullar nedeniyle doğru kayıt sistemi, düzenli raporlama ve eksiksiz mali yükümlülük yönetimi bu alanda öne çıkan ihtiyaçlar arasında yer alıyor.</p>
+        <div class="micro-list">
+          <span>Muhasebe kayıt sistemi kurulumu</span>
+          <span>Düzenli mali raporlama</span>
+          <span>Yasal yükümlülüklerin takibi</span>
+        </div>
+      </article>
+
+      <article class="service-hub-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>İstihdam</div>
+        <h3>İş ve Sosyal Güvenlik</h3>
+        <p>Çalışanlara ilişkin sosyal sigorta ve sosyal güvenlik yükümlülükleri, bordro akışları ve işveren katkılarının doğru yönetimi bu hizmet grubunda toplanıyor.</p>
+        <div class="micro-list">
+          <span>Sosyal sigorta ve prim süreçleri</span>
+          <span>İşveren yükümlülük takibi</span>
+          <span>Personel odaklı mevzuat uyumu</span>
+        </div>
+      </article>
+
+      <article class="service-hub-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Danışmanlık</div>
+        <h3>Danışmanlık Hizmetleri</h3>
+        <p>Bu bölüm; şirket kuruluşu, kurumsallaşma, ortaklık yapısı ve büyüme kararlarını doğru zemine oturtmak isteyen yatırımcılar için stratejik yönlendirme alanı olarak kurgulandı.</p>
+        <div class="micro-list">
+          <span>Şirket tescil işlemleri</span>
+          <span>Kurumsallaşma ve yapılandırma</span>
+          <span>Aile şirketi yönetişim desteği</span>
+        </div>
+      </article>
+
+      <article class="service-hub-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Eğitim</div>
+        <h3>Eğitim Hizmetleri</h3>
+        <p>Şirket içi eğitimler, muhasebe ve iş hukuku başlıkları ile kurumun talebine göre sahada veya özel oturumlarda verilen programlar hizmet yelpazesinde önemli bir yer tutuyor.</p>
+        <div class="micro-list">
+          <span>Şirkete özel eğitim oturumları</span>
+          <span>Muhasebe ve iş hukuku içerikleri</span>
+          <span>Sahada veya salonda esnek eğitim modeli</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS HUB -->
+<section id="news-hub">
+  <div class="section-shell">
+    <div class="section-tag">Haberler</div>
+    <h2 class="section-title reveal">Haberler alanını mevzuat ve duyuru odaklı bir akışa çevirdik</h2>
+    <p class="section-sub reveal">Bu alanı resmi gazete değişiklikleri, vergi duyuruları, çalışma hayatı düzenlemeleri ve asgari ücret güncellemeleri gibi iş dünyasının gerçekten takip ettiği başlıkları öne çıkaracak şekilde hazırladık.</p>
+
+    <div class="news-list">
+      <article class="news-item reveal">
+        <div class="news-date">Şubat 2026</div>
+        <div>
+          <h3>Gelir vergisi kişisel muafiyet ve matrah oranları</h3>
+          <p>Yeni yıl gelir vergisi basamakları ve kişisel muafiyet tutarları, mali planlama yapan yatırımcılar için ilk bakılan başlıklardan biridir. Bu nedenle haber akışında güçlü biçimde yer verdik.</p>
+        </div>
+      </article>
+
+      <article class="news-item reveal">
+        <div class="news-date">Şubat 2026</div>
+        <div>
+          <h3>İş Yasası değişiklikleri ve çalışma hayatı düzenlemeleri</h3>
+          <p>İş hukuku tarafında yasa değişiklikleri, mesai uygulamaları ve işveren yükümlülükleriyle ilgili duyurular öne çıkıyor. Bu nedenle haber yapısını sadece finans değil operasyonel uyum açısından da güçlü tuttuk.</p>
+        </div>
+      </article>
+
+      <article class="news-item reveal">
+        <div class="news-date">Eylül 2021</div>
+        <div>
+          <h3>Resmi gazete ve bakanlar kurulu kararları</h3>
+          <p>Haber arşivinde resmi gazete kararları ve bakanlar kurulu düzenlemeleri önemli bir yer tutuyor. Biz de bunu sayfada mevzuat takibi yapan kullanıcılar için açık bir başlık olarak yansıttık.</p>
+        </div>
+      </article>
+
+      <article class="news-item reveal">
+        <div class="news-date">Temmuz 2019</div>
+        <div>
+          <h3>Kira gelir stopajı değişiklikleri</h3>
+          <p>Kira gelirlerinden alınan stopaj oranlarına ilişkin değişiklikler, özellikle yatırım amaçlı gayrimenkul işlemlerinde karar sürecini doğrudan etkilediği için ayrı bir haber başlığı olarak öne çıkarıldı.</p>
+        </div>
+      </article>
+
+      <article class="news-item reveal">
+        <div class="news-date">2018-2020</div>
+        <div>
+          <h3>Asgari ücret ve sosyal güvenlik duyuruları</h3>
+          <p>Asgari ücret açıklamaları, sosyal güvenlik düzenlemeleri ve kamu çalışma saatleri gibi başlıklar arşivde tekrarlayan şekilde yer alıyor. Bu yüzden haberler alanını işletme sahiplerinin günlük takibine hitap edecek biçimde kurguladık.</p>
+        </div>
+      </article>
+
+      <article class="news-item reveal">
+        <div class="news-date">Sürekli Takip</div>
+        <div>
+          <h3>Pul vergisi, KDV ve sektör bazlı vergi haberleri</h3>
+          <p>Pul yasası, KDV değişiklikleri ve sektörlere özel vergi uygulamaları da haber akışının önemli bir parçası. Böylece haberler bölümü yalnızca blog değil, pratik mevzuat panosu gibi çalışıyor.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION HUB -->
+<section id="formation-hub">
+  <div class="section-shell">
+    <div class="section-tag" style="color:rgba(255,255,255,0.72);">Şirket Kurma</div>
+    <h2 class="section-title light reveal">Şirket kurma alt sayfalarını bu landing page içinde birleştirdik</h2>
+    <p class="section-sub light reveal">Şirket kuruluş sürecini, aranan temel şartları ve şirket türlerini mevcut hesaplayıcı, süreç ve karşılaştırma alanlarımızla birleştirerek Yaşar Kaya markasına ait tek bir güçlü satış akışına dönüştürdük.</p>
+
+    <div class="formation-grid">
+      <article class="formation-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Kuruluşlarda Aranan Temel Şartlar</div>
+        <h3>Kuruluşa başlamadan önce bilinmesi gerekenler</h3>
+        <p>Kuruluşa başlamadan önce hissedar sayısı, sermaye eşiği, şube izinleri ve tescil makamı gibi başlıkların netleşmesi gerekir. Bu yüzden bilgileri yatırımcının hızlı karar vereceği biçimde özetledik.</p>
+        <ul class="detail-list">
+          <li>Özel yerel limited yapı için en az 2 hissedar gerekir</li>
+          <li>Halka açık limited yapılarda en az 7 hissedar ve daha geniş yönetim yapısı bulunur</li>
+          <li>Hissedar yapısında yabancı ortak bulunması asgari sermaye beklentisini yükseltebilir</li>
+          <li>Yabancı şirket şubelerinde Bakanlar Kurulu onayı ve ana şirket sermaye şartı öne çıkar</li>
+          <li>Yerel limited şirketler Şirketler Mukayyitliği'nde, serbest liman yapıları ise ilgili bölge yönetiminde tescil edilir</li>
+        </ul>
+        <div class="action-row">
+          <a class="inline-link primary" href="#process">Kuruluş Sürecini İncele</a>
+          <a class="inline-link" href="#comparison">Türleri Karşılaştır</a>
+        </div>
+      </article>
+
+      <article class="formation-card reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Şirket Türleri</div>
+        <h3>Farklı yatırım tiplerine göre şirket haritası</h3>
+        <p>Şirket kurma bölümünü ziyaretçinin ilk bakışta anlayacağı sade bir yapı mantığıyla kurguladık; böylece her yatırımcı kendine uygun tescil modelini daha hızlı ayırt edebiliyor.</p>
+        <ul class="detail-list">
+          <li>Şahıs işletmesi: tek kişi adına tescil edilen ve yükümlülüklerin doğrudan iş sahibine ait olduğu yapı</li>
+          <li>Kollektif ve komandit ortaklıklar: ortakların sorumluluk düzeyine göre değişen ortaklık modeli</li>
+          <li>Yerel limited şirketler: özel ve halka açık olarak iki ana kola ayrılan sınırlı sorumluluk yapısı</li>
+          <li>Yabancı şirket şubeleri: ana merkezi yurt dışında olan işletmeler için şube modeli</li>
+          <li>Serbest liman şirketleri: bölgesel vergi avantajı odağında kurulan yapı</li>
+          <li>Uluslararası işletme şirketleri: faaliyetini yurt dışına yönelten ve düşük kurumlar vergisi avantajı taşıyan yapı</li>
+        </ul>
+        <div class="action-row">
+          <a class="inline-link primary" href="#types">Şirket Türlerini Gör</a>
+          <a class="inline-link" href="#calculator">Maliyeti Hesapla</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS HUB -->
+<section id="sectors-hub">
+  <div class="section-shell">
+    <div class="section-tag">Sektörler</div>
+    <h2 class="section-title reveal">Yaşar Kaya'nın hizmet verdiği sektörler</h2>
+    <p class="section-sub reveal">Farklı iş kollarının muhasebe, denetim, raporlama ve vergi ihtiyaçları birbirinden ayrıldığı için sektörler bölümünü özel uzmanlık alanlarını gösterecek şekilde düzenledik.</p>
+
+    <div class="sector-grid">
+      <article class="sector-card reveal"><h3>Bankacılık</h3><p>Sıkı düzenleme, güvenilir raporlama ve yüksek uyum beklentisi nedeniyle uzman denetim yaklaşımı gerektiren alan.</p></article>
+      <article class="sector-card reveal"><h3>Taşımacılık ve Lojistik</h3><p>Sınır ötesi operasyonlar, maliyet kontrolü ve hareketli sözleşme yapılarıyla özel muhasebe disiplini isteyen sektör.</p></article>
+      <article class="sector-card reveal"><h3>Yolcu Taşımacılığı</h3><p>İzin, tarife, filo ve operasyon sürekliliği tarafında düzenli mali takip gerektiren hizmet alanı.</p></article>
+      <article class="sector-card reveal"><h3>Su Dağıtımı ve Kanalizasyon</h3><p>Kamu yararı yüksek olan bu yapıda stratejik plan, hizmet sürekliliği ve altyapı maliyetleri öne çıkar.</p></article>
+      <article class="sector-card reveal"><h3>Yat Limanı İşletmeciliği</h3><p>Sezonluk gelir akışı, hizmet çeşitliliği ve marina operasyonları nedeniyle detaylı raporlama isteyen yapı.</p></article>
+      <article class="sector-card reveal"><h3>Basın ve Yayın</h3><p>Reklam geliri, içerik üretimi ve operasyonel çeşitlilik nedeniyle farklı mali takip ihtiyaçları doğurur.</p></article>
+      <article class="sector-card reveal"><h3>Sigorta Hizmetleri</h3><p>Rezerv yönetimi, sektör kuralları ve güven esaslı finansal görünürlük ile öne çıkan uzmanlık alanı.</p></article>
+      <article class="sector-card reveal"><h3>Petrol Arama ve Depolama</h3><p>Yüksek risk, büyük ölçekli yatırım ve yoğun mevzuat takibi gerektiren enerji odaklı alan.</p></article>
+      <article class="sector-card reveal"><h3>Telekomünikasyon</h3><p>Lisanslama, düzenli abonelik gelirleri ve altyapı yatırımlarıyla teknik ve finansal kontrolü birlikte ister.</p></article>
+      <article class="sector-card reveal"><h3>Sanayi</h3><p>Üretim maliyetleri, stok yönetimi ve süreç verimliliği nedeniyle kuvvetli mali işler kurgusu gerektirir.</p></article>
+      <article class="sector-card reveal"><h3>Turizm</h3><p>Sezon etkisi yüksek, hizmet gelirleri yoğun ve KDV takibi hassas olan işletme grubu.</p></article>
+      <article class="sector-card reveal"><h3>Eğitim</h3><p>Üniversite ve okul yapılarında tescil, kayıt sistemi ve uzun vadeli kurumsal sürdürülebilirlik öne çıkar.</p></article>
+      <article class="sector-card reveal"><h3>Ticaret</h3><p>Çok sayıda ürün ve iş kolu nedeniyle teşvik, vergi avantajı ve muhasebe yöntemi farklılaşabilen ana sektör.</p></article>
+      <article class="sector-card reveal"><h3>İnşaat</h3><p>Proje bazlı nakit akışı, değişken vergi uygulamaları ve risk yönetimi ihtiyacı nedeniyle yakın takip ister.</p></article>
+      <article class="sector-card reveal"><h3>Elektrik Üretimi ve Dağıtımı</h3><p>Süreklilik, yüksek sorumluluk ve uluslararası raporlama beklentisi ile öne çıkan kritik altyapı alanı.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- TAXES HUB -->
+<section id="taxes-hub">
+  <div class="section-shell">
+    <div class="section-tag">Vergiler</div>
+    <h2 class="section-title reveal">Vergi rehberini daha net ve güven veren hale getirdik</h2>
+    <p class="section-sub reveal">Vergi alanını; yürürlükteki yasalar, oranlar, indirilebilen giderler, kurumlar vergisi, KDV, veraset, özel iletişim vergisi, UİŞ ve pul vergileri gibi yatırımcının gerçekten ihtiyaç duyduğu başlıklar etrafında düzenledik.</p>
+
+    <div class="tax-grid">
+      <article class="tax-panel reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Vergi ile ilgili bilgiler</div>
+        <h3>Temel vergi yasaları ve başvuru çerçevesi</h3>
+        <p>Vergi rehberinin ilk katmanında ana vergi yasalarını toplu halde sunmak, yatırımcının hangi mevzuat kümelerinin devrede olduğunu hızlıca anlamasını sağlar. Bu yüzden bu bölümü sade ve net tuttuk.</p>
+        <ul class="law-list">
+          <li>Vergi Usul Yasası (27/1977)</li>
+          <li>Gelir Vergisi Yasası (24/1982)</li>
+          <li>Kurumlar Vergisi Yasası (41/1976)</li>
+          <li>Katma Değer Vergisi Yasası (47/1992)</li>
+          <li>Banka ve Sigorta Hizmetleri Vergisi (21/1992)</li>
+          <li>Özel İletişim Hizmetleri Vergisi Yasası (62/2007)</li>
+          <li>Veraset Vergisi ile ilgili düzenlemeler (39/2007)</li>
+        </ul>
+      </article>
+
+      <article class="tax-panel reveal">
+        <div class="card-kicker"><span class="kicker-dot"></span>Alt başlıklar</div>
+        <h3>Vergi konu haritası</h3>
+        <p>Bu alanı sadece oran listesi olarak değil, kullanıcıyı doğru başlığa götüren bir konu navigasyonu gibi kurguladık.</p>
+        <div class="topic-grid">
+          <div class="topic-chip">2026 yılına ait oranlar ve gelir basamakları</div>
+          <div class="topic-chip">İndirilebilen giderler</div>
+          <div class="topic-chip">Matrahta indirilmeyen giderler</div>
+          <div class="topic-chip">Kurumlar vergisi ve oranı</div>
+          <div class="topic-chip">Kurumlar vergisinden istisnalar</div>
+          <div class="topic-chip">Kanuni yıpranma payları</div>
+          <div class="topic-chip">Uluslararası işletme şirketleri (UİŞ)</div>
+          <div class="topic-chip">Katma değer vergisi ve oranları</div>
+          <div class="topic-chip">Banka ve sigorta işlemleri vergisi</div>
+          <div class="topic-chip">Veraset vergisi ve muafiyetleri</div>
+          <div class="topic-chip">Özel iletişim vergisi</div>
+          <div class="topic-chip">SSK gelir basamakları</div>
+          <div class="topic-chip">Pul vergileri emirnamesi</div>
+          <div class="topic-chip">Serbest bölge ve personel yükümlülükleri</div>
+        </div>
+        <div class="tax-note">Not: Vergi oranları ve basamaklar zamanla güncellendiği için bu bölüm bilgi mimarisi ve konu başlıkları için eklendi. Nihai işlem öncesinde resmi gazete ve güncel mevzuat teyidi yapılmalıdır.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="section-tag" data-tr="İnteraktif Araç" data-en="Interactive Tool" data-ru="Интерактивный инструмент" data-ar="أداة تفاعلية">İnteraktif Araç</div>
+  <h2 class="section-title reveal" data-tr="Size En Uygun Şirket Türü Hangisi?" data-en="Which Company Type Suits You Best?" data-ru="Какой тип компании вам подходит?" data-ar="أي نوع شركة يناسبك؟">Size En Uygun Şirket Türü Hangisi?</h2>
+  <p class="section-sub reveal" data-tr="3 basit soruyla size en uygun yapıyı bulalım." data-en="Find your ideal structure with 3 simple questions." data-ru="Найдите идеальную структуру с 3 простыми вопросами." data-ar="اعثر على الهيكل المثالي بـ 3 أسئلة بسيطة.">3 basit soruyla size en uygun yapıyı bulalım.</p>
+  
+  <div class="quiz-container reveal" style="margin-top:48px;">
+    <div class="quiz-header">
+      <div class="quiz-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+      </div>
+      <div>
+        <div class="quiz-header-title" data-tr="Şirket Türü Bulucu" data-en="Company Type Finder" data-ru="Подбор типа компании" data-ar="محدد نوع الشركة">Şirket Türü Bulucu</div>
+        <div class="quiz-header-sub" data-tr="Kişiselleştirilmiş öneri alın" data-en="Get a personalized recommendation" data-ru="Получите персональную рекомендацию" data-ar="احصل على توصية شخصية">Kişiselleştirilmiş öneri alın</div>
+      </div>
+    </div>
+    <div class="quiz-body">
+      <!-- Step 1 -->
+      <div class="quiz-step active" id="qstep-1">
+        <div class="quiz-question" data-tr="Faaliyetiniz nerede olacak?" data-en="Where will your business operate?" data-ru="Где будет вести деятельность ваш бизнес?" data-ar="أين سينشط عملك؟">Faaliyetiniz nerede olacak?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this,'q1','local')">
+            <div class="quiz-option-icon">🏢</div>
+            <div>
+              <div style="font-weight:500" data-tr="Sadece KKTC içinde" data-en="Only within TRNC" data-ru="Только в Северном Кипре" data-ar="داخل شمال قبرص فقط">Sadece KKTC içinde</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Yerel pazar odaklı" data-en="Local market focused" data-ru="Ориентация на местный рынок" data-ar="التركيز على السوق المحلية">Yerel pazar odaklı</div>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this,'q1','international')">
+            <div class="quiz-option-icon">🌍</div>
+            <div>
+              <div style="font-weight:500" data-tr="Tamamen yurt dışına yönelik" data-en="Entirely international" data-ru="Полностью за рубежом" data-ar="موجه بالكامل للخارج">Tamamen yurt dışına yönelik</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Küresel pazar" data-en="Global market" data-ru="Глобальный рынок" data-ar="السوق العالمية">Küresel pazar</div>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this,'q1','freezone')">
+            <div class="quiz-option-icon">🏭</div>
+            <div>
+              <div style="font-weight:500" data-tr="Serbest Liman Bölgesinde" data-en="In the Free Zone" data-ru="В свободной зоне" data-ar="في المنطقة الحرة">Serbest Liman Bölgesinde</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Özel vergi avantajları" data-en="Special tax advantages" data-ru="Особые налоговые льготы" data-ar="مزايا ضريبية خاصة">Özel vergi avantajları</div>
+            </div>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <div class="quiz-progress">
+            <div class="quiz-dot active"></div>
+            <div class="quiz-dot"></div>
+            <div class="quiz-dot"></div>
+          </div>
+          <button class="quiz-next" onclick="nextStep(2)" id="qnext-1" disabled data-tr="Devam Et →" data-en="Continue →" data-ru="Далее →" data-ar="متابعة →">Devam Et →</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="quiz-step" id="qstep-2">
+        <div class="quiz-question" data-tr="Kaç kişiyle şirket kuracaksınız?" data-en="How many people will establish the company?" data-ru="Сколько человек будет учреждать компанию?" data-ar="كم شخص سيؤسس الشركة؟">Kaç kişiyle şirket kuracaksınız?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this,'q2','solo')">
+            <div class="quiz-option-icon">👤</div>
+            <div>
+              <div style="font-weight:500" data-tr="Tek başıma" data-en="Just me" data-ru="Только я" data-ar="وحدي فقط">Tek başıma</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Şahıs işletmesi" data-en="Sole proprietorship" data-ru="Индивидуальный предприниматель" data-ar="مؤسسة فردية">Şahıs işletmesi</div>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this,'q2','partner')">
+            <div class="quiz-option-icon">👥</div>
+            <div>
+              <div style="font-weight:500" data-tr="2-6 ortak" data-en="2–6 partners" data-ru="2–6 партнёров" data-ar="من 2 إلى 6 شركاء">2-6 ortak</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Küçük ortaklık" data-en="Small partnership" data-ru="Малое партнёрство" data-ar="شراكة صغيرة">Küçük ortaklık</div>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this,'q2','public')">
+            <div class="quiz-option-icon">🏛️</div>
+            <div>
+              <div style="font-weight:500" data-tr="7+ hissedar" data-en="7+ shareholders" data-ru="7+ акционеров" data-ar="7 مساهمين أو أكثر">7+ hissedar</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Büyük ölçekli" data-en="Large scale" data-ru="Крупный масштаб" data-ar="نطاق واسع">Büyük ölçekli</div>
+            </div>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-back" onclick="prevStep(1)" data-tr="← Geri" data-en="← Back" data-ru="← Назад" data-ar="← رجوع">← Geri</button>
+          <div class="quiz-progress">
+            <div class="quiz-dot done"></div>
+            <div class="quiz-dot active"></div>
+            <div class="quiz-dot"></div>
+          </div>
+          <button class="quiz-next" onclick="nextStep(3)" id="qnext-2" disabled data-tr="Devam Et →" data-en="Continue →" data-ru="Далее →" data-ar="متابعة →">Devam Et →</button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="quiz-step" id="qstep-3">
+        <div class="quiz-question" data-tr="Vergi konusundaki önceliğiniz nedir?" data-en="What is your priority regarding taxes?" data-ru="Каков ваш приоритет в отношении налогов?" data-ar="ما أولويتك بشأن الضرائب؟">Vergi konusundaki önceliğiniz nedir?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this,'q3','mintax')">
+            <div class="quiz-option-icon">💰</div>
+            <div>
+              <div style="font-weight:500" data-tr="En düşük vergi oranı" data-en="Lowest tax rate" data-ru="Минимальная налоговая ставка" data-ar="أدنى معدل ضريبي">En düşük vergi oranı</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="%1 Kurumlar Vergisi" data-en="1% Corporate Tax" data-ru="1% корпоративный налог" data-ar="1% ضريبة على الشركات">%1 Kurumlar Vergisi</div>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this,'q3','zerotax')">
+            <div class="quiz-option-icon">🚀</div>
+            <div>
+              <div style="font-weight:500" data-tr="Sıfır kurumlar vergisi" data-en="Zero corporate tax" data-ru="Нулевой корпоративный налог" data-ar="صفر ضريبة على الشركات">Sıfır kurumlar vergisi</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Serbest Bölge avantajı" data-en="Free Zone advantage" data-ru="Преимущество свободной зоны" data-ar="ميزة المنطقة الحرة">Serbest Bölge avantajı</div>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this,'q3','standard')">
+            <div class="quiz-option-icon">📋</div>
+            <div>
+              <div style="font-weight:500" data-tr="Standart vergi, tam yerel haklar" data-en="Standard tax, full local rights" data-ru="Стандартный налог, все местные права" data-ar="ضريبة عادية، حقوق محلية كاملة">Standart vergi, tam yerel haklar</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Yerel şirket esnekliği" data-en="Local company flexibility" data-ru="Гибкость местной компании" data-ar="مرونة الشركة المحلية">Yerel şirket esnekliği</div>
+            </div>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-back" onclick="prevStep(2)" data-tr="← Geri" data-en="← Back" data-ru="← Назад" data-ar="← رجوع">← Geri</button>
+          <div class="quiz-progress">
+            <div class="quiz-dot done"></div>
+            <div class="quiz-dot done"></div>
+            <div class="quiz-dot active"></div>
+          </div>
+          <button class="quiz-next" onclick="showQuizResult()" id="qnext-3" disabled data-tr="Sonucu Gör →" data-en="See Result →" data-ru="Посмотреть →" data-ar="عرض النتيجة →">Sonucu Gör →</button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="quiz-step" id="qstep-result">
+        <div class="quiz-result">
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px" data-tr="Size en uygun şirket türü:" data-en="Best company type for you:" data-ru="Подходящий тип компании:" data-ar="نوع الشركة الأنسب لك:">Size en uygun şirket türü:</div>
+          <div class="quiz-result-badge" id="quiz-result-title">—</div>
+          <p id="quiz-result-desc" style="max-width:480px;margin:0 auto 24px;"></p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <a href="#contact" class="quiz-result-cta" data-tr="Ücretsiz Danışmanlık Al →" data-en="Get Free Consultation →" data-ru="Получить бесплатную консультацию →" data-ar="احصل على استشارة مجانية →">Ücretsiz Danışmanlık Al →</a>
+            <button class="quiz-back" onclick="resetQuiz()" data-tr="Tekrar Dene" data-en="Try Again" data-ru="Попробовать снова" data-ar="حاول مجدداً">Tekrar Dene</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-tag" data-tr="Nasıl Çalışır?" data-en="How It Works" data-ru="Как это работает" data-ar="كيف يعمل؟">Nasıl Çalışır?</div>
+  <h2 class="section-title light reveal" data-tr="Şirket Kurma Süreci" data-en="The Formation Process" data-ru="Процесс регистрации" data-ar="عملية تأسيس الشركة">Şirket Kurma Süreci</h2>
+  <p class="section-sub light reveal" data-tr="4 adımda şirketiniz hazır. Tüm süreci biz yönetiyoruz." data-en="Your company ready in 4 steps. We manage the entire process." data-ru="Ваша компания готова за 4 шага." data-ar="شركتك جاهزة في 4 خطوات. نحن ندير العملية بأكملها.">4 adımda şirketiniz hazır. Tüm süreci biz yönetiyoruz.</p>
+  
+  <div class="process-grid reveal" style="margin-top:56px;">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <div class="process-step-icon">📞</div>
+      <div class="process-step-title" data-tr="İlk Danışmanlık" data-en="Initial Consultation" data-ru="Первичная консультация" data-ar="الاستشارة الأولية">İlk Danışmanlık</div>
+      <div class="process-step-desc" data-tr="İhtiyaçlarınızı dinler, size en uygun şirket yapısını belirleriz." data-en="We listen to your needs and determine the most suitable structure." data-ru="Выслушаем ваши потребности, определим наилучшую структуру." data-ar="نستمع إلى احتياجاتك ونحدد الهيكل الأنسب.">İhtiyaçlarınızı dinler, size en uygun şirket yapısını belirleriz.</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <div class="process-step-icon">📄</div>
+      <div class="process-step-title" data-tr="Belge Hazırlığı" data-en="Document Preparation" data-ru="Подготовка документов" data-ar="إعداد الوثائق">Belge Hazırlığı</div>
+      <div class="process-step-desc" data-tr="Ana sözleşme, tüzük ve tüm yasal belgeler ekibimiz tarafından hazırlanır." data-en="Articles, bylaws and all legal documents prepared by our team." data-ru="Устав, все юридические документы подготовит наша команда." data-ar="تُعدّ جميع الوثائق القانونية من قِبل فريقنا.">Ana sözleşme, tüzük ve tüm yasal belgeler ekibimiz tarafından hazırlanır.</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <div class="process-step-icon">🏛️</div>
+      <div class="process-step-title" data-tr="Resmi Tescil" data-en="Official Registration" data-ru="Официальная регистрация" data-ar="التسجيل الرسمي">Resmi Tescil</div>
+      <div class="process-step-desc" data-tr="KKTC Şirketler Mukayyitliği'nde tescil işlemlerini tamamlarız." data-en="We complete registration at the TRNC Registrar of Companies." data-ru="Завершаем регистрацию в Регистраторе компаний Северного Кипра." data-ar="نكمل التسجيل في مسجل الشركات.">KKTC Şirketler Mukayyitliği'nde tescil işlemlerini tamamlarız.</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <div class="process-step-icon">✅</div>
+      <div class="process-step-title" data-tr="Şirketiniz Hazır" data-en="Your Company is Ready" data-ru="Ваша компания готова" data-ar="شركتك جاهزة">Şirketiniz Hazır</div>
+      <div class="process-step-desc" data-tr="Vergi kaydı, banka hesabı açılışı ve sonraki adımlarda da yanınızdayız." data-en="Tax registration, bank account opening – we support you at every step." data-ru="Налоговая регистрация, открытие счёта – мы с вами на каждом этапе." data-ar="التسجيل الضريبي، فتح الحساب البنكي - نحن معك في كل خطوة.">Vergi kaydı, banka hesabı açılışı ve sonraki adımlarda da yanınızdayız.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY TYPES -->
+<section id="types">
+  <div class="section-tag" data-tr="Tüm Seçenekler" data-en="All Options" data-ru="Все варианты" data-ar="جميع الخيارات">Tüm Seçenekler</div>
+  <h2 class="section-title reveal" data-tr="Şirket Türleri" data-en="Company Types" data-ru="Типы компаний" data-ar="أنواع الشركات">Şirket Türleri</h2>
+  <p class="section-sub reveal" data-tr="KKTC'de kurulabilecek tüm işletme yapıları ve özellikleri." data-en="All business structures that can be established in the TRNC." data-ru="Все бизнес-структуры, которые можно зарегистрировать в Северном Кипре." data-ar="جميع هياكل الأعمال التي يمكن تأسيسها في شمال قبرص.">KKTC'de kurulabilecek tüm işletme yapıları ve özellikleri.</p>
+  
+  <div class="types-grid">
+    <div class="type-card reveal">
+      <div class="type-icon">👤</div>
+      <div class="type-name" data-tr="Şahıs İşletmesi" data-en="Sole Trader" data-ru="Индивидуальный предприниматель" data-ar="مؤسسة فردية">Şahıs İşletmesi</div>
+      <div class="type-desc" data-tr="Tek bir şahsa ait, tüm sorumluluk sahibine aittir. Ticaret, sanayi, hizmet sektöründe faaliyet gösterebilir." data-en="Owned by one person; all liability belongs to the owner. Can operate in trade, industry, and service sectors." data-ru="Принадлежит одному лицу; вся ответственность на владельце." data-ar="مملوكة لشخص واحد، وكل المسؤولية تقع على المالك.">Tek bir şahsa ait, tüm sorumluluk sahibine aittir. Ticaret, sanayi, hizmet sektöründe faaliyet gösterebilir.</div>
+      <div class="type-tags">
+        <span class="type-tag" data-tr="Kolay Kurulum" data-en="Easy Setup" data-ru="Простая регистрация" data-ar="سهل التأسيس">Kolay Kurulum</span>
+        <span class="type-tag" data-tr="Düşük Maliyet" data-en="Low Cost" data-ru="Низкая стоимость" data-ar="تكلفة منخفضة">Düşük Maliyet</span>
+        <span class="type-tag" data-tr="Sınırsız Sorumluluk" data-en="Unlimited Liability" data-ru="Неограниченная ответственность" data-ar="مسؤولية غير محدودة">Sınırsız Sorumluluk</span>
+      </div>
+    </div>
+
+    <div class="type-card reveal" style="transition-delay:0.1s">
+      <div class="type-icon">🤝</div>
+      <div class="type-name" data-tr="Kollektif / Komandit" data-en="Partnership" data-ru="Партнёрство" data-ar="شركة تضامن / توصية">Kollektif / Komandit</div>
+      <div class="type-desc" data-tr="İki veya daha fazla kişinin kar amacıyla oluşturduğu ortaklık. Kollektifte sorumluluk sınırsız, Komandit'te bazı ortaklar için sınırlıdır." data-en="Partnership of two or more persons for profit. In general partnerships liability is unlimited; in limited partnerships some partners have limited liability." data-ru="Партнёрство двух и более лиц. В полном товариществе ответственность неограничена." data-ar="شراكة شخصين أو أكثر بهدف الربح.">İki veya daha fazla kişinin kar amacıyla oluşturduğu ortaklık. Kollektifte sorumluluk sınırsız, Komandit'te bazı ortaklar için sınırlıdır.</div>
+      <div class="type-tags">
+        <span class="type-tag" data-tr="2+ Ortak" data-en="2+ Partners" data-ru="2+ партнёра" data-ar="شريكان أو أكثر">2+ Ortak</span>
+        <span class="type-tag" data-tr="Vergi Ortaklara Ait" data-en="Tax Per Partner" data-ru="Налог на партнёров" data-ar="الضريبة على الشركاء">Vergi Ortaklara Ait</span>
+      </div>
+    </div>
+
+    <div class="type-card reveal" style="transition-delay:0.15s">
+      <div class="type-icon">🏢</div>
+      <div class="type-name" data-tr="Yerel Limited Şirket" data-en="Local Limited Company" data-ru="Местное ООО" data-ar="شركة ذات مسؤولية محدودة محلية">Yerel Limited Şirket</div>
+      <div class="type-desc" data-tr="KKTC Şirketler Yasası Fasıl 113 altında tescil edilen, hissedar sorumluluğu ödedikleri sermaye ile sınırlı şirket. Özel veya Halka Açık olabilir." data-en="Registered under Companies Law Cap 113; shareholders' liability limited to their paid-in capital. Can be Private or Public." data-ru="Ответственность акционеров ограничена вложенным капиталом." data-ar="تُحدد مسؤولية المساهمين برأس المال المدفوع.">KKTC Şirketler Yasası Fasıl 113 altında tescil edilen, hissedar sorumluluğu ödedikleri sermaye ile sınırlı şirket.</div>
+      <div class="type-tags">
+        <span class="type-tag" data-tr="Min. 2 Hissedar" data-en="Min. 2 Shareholders" data-ru="Мин. 2 акционера" data-ar="2 مساهم على الأقل">Min. 2 Hissedar</span>
+        <span class="type-tag" data-tr="Sınırlı Sorumluluk" data-en="Ltd. Liability" data-ru="Ограниченная ответственность" data-ar="مسؤولية محدودة">Sınırlı Sorumluluk</span>
+        <span class="type-tag highlight" data-tr="En Yaygın" data-en="Most Common" data-ru="Самый популярный" data-ar="الأكثر شيوعاً">En Yaygın</span>
+      </div>
+    </div>
+
+    <div class="type-card reveal" style="transition-delay:0.2s">
+      <div class="type-icon">🌐</div>
+      <div class="type-name" data-tr="Yabancı Şirket Şubesi" data-en="Branch of Foreign Company" data-ru="Филиал иностранной компании" data-ar="فرع شركة أجنبية">Yabancı Şirket Şubesi</div>
+      <div class="type-desc" data-tr="Yönetim merkezi yurt dışında olan şirketin KKTC şubesi. Bakanlar Kurulu kararı ve min. 100.000 USD sermaye şart." data-en="TRNC branch of a company headquartered abroad. Council of Ministers approval and min. $100,000 capital required." data-ru="Филиал компании, головной офис которой за рубежом." data-ar="فرع شركة مقرها الرئيسي خارج شمال قبرص.">Yönetim merkezi yurt dışında olan şirketin KKTC şubesi. Bakanlar Kurulu kararı ve min. 100.000 USD sermaye şart.</div>
+      <div class="type-tags">
+        <span class="type-tag" data-tr="Bakanlar Kurulu Onayı" data-en="Cabinet Approval" data-ru="Одобрение Совета Министров" data-ar="موافقة مجلس الوزراء">Bakanlar Kurulu Onayı</span>
+        <span class="type-tag" data-tr="Min. $100.000" data-en="Min. $100,000" data-ru="Мин. $100 000" data-ar="100,000$ كحد أدنى">Min. $100.000</span>
+      </div>
+    </div>
+
+    <div class="type-card reveal" style="transition-delay:0.25s">
+      <div class="type-icon">🏭</div>
+      <div class="type-name" data-tr="Serbest Liman Şirketi" data-en="Free Zone Company" data-ru="Компания в свободной зоне" data-ar="شركة المنطقة الحرة">Serbest Liman Şirketi</div>
+      <div class="type-desc" data-tr="KDV, Gelir Vergisi ve Kurumlar Vergisinden muaf. Serbest Bölge Yönetimine kayıtlı, yurt dışı ve serbest bölge faaliyetleri için ideal." data-en="Exempt from VAT, income tax and corporate tax. Registered with Free Zone Administration; ideal for international activities." data-ru="Освобождена от НДС и корпоративного налога." data-ar="معفاة من ضريبة القيمة المضافة وضريبة الدخل والشركات.">KDV, Gelir Vergisi ve Kurumlar Vergisinden muaf. Serbest Bölge Yönetimine kayıtlı, yurt dışı ve serbest bölge faaliyetleri için ideal.</div>
+      <div class="type-tags">
+        <span class="type-tag highlight" data-tr="Sıfır KDV" data-en="Zero VAT" data-ru="НДС: 0%" data-ar="صفر ضريبة قيمة مضافة">Sıfır KDV</span>
+        <span class="type-tag highlight" data-tr="Sıfır Kurumlar V." data-en="Zero Corp. Tax" data-ru="Корп. налог: 0%" data-ar="صفر ضريبة شركات">Sıfır Kurumlar V.</span>
+      </div>
+    </div>
+
+    <div class="type-card reveal" style="transition-delay:0.3s">
+      <div class="type-icon">🚀</div>
+      <div class="type-name" data-tr="Uluslararası İşletme Şirketi" data-en="International Business Co." data-ru="Международная бизнес-компания" data-ar="شركة أعمال دولية (UİŞ)">Uluslararası İşletme Şirketi</div>
+      <div class="type-desc" data-tr="Faaliyetlerini tamamen yurt dışına yönelik yürüten şirketler. Yalnızca %1 Kurumlar Vergisi, başka hiçbir vergi yok." data-en="Companies operating entirely outside TRNC. Only 1% corporate tax; no other taxes apply." data-ru="Деятельность исключительно за рубежом. Только 1% корпоративного налога." data-ar="شركات تعمل بالكامل خارج شمال قبرص. ضريبة 1% فقط.">Faaliyetlerini tamamen yurt dışına yönelik yürüten şirketler. Yalnızca %1 Kurumlar Vergisi, başka hiçbir vergi yok.</div>
+      <div class="type-tags">
+        <span class="type-tag highlight" data-tr="%1 Kurumlar Vergisi" data-en="1% Corp. Tax" data-ru="1% корп. налог" data-ar="1% ضريبة شركات">%1 Kurumlar Vergisi</span>
+        <span class="type-tag highlight" data-tr="Global Faaliyet" data-en="Global Operations" data-ru="Глобальная деятельность" data-ar="عمليات عالمية">Global Faaliyet</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section id="comparison">
+  <div class="section-tag" data-tr="Karşılaştırma" data-en="Comparison" data-ru="Сравнение" data-ar="المقارنة">Karşılaştırma</div>
+  <h2 class="section-title reveal" data-tr="Şirket Türleri Karşılaştırması" data-en="Company Types Comparison" data-ru="Сравнение типов компаний" data-ar="مقارنة أنواع الشركات">Şirket Türleri Karşılaştırması</h2>
+  <p class="section-sub reveal" data-tr="Hangi yapının size uygun olduğunu tek bakışta görün." data-en="See at a glance which structure fits you best." data-ru="Увидьте с первого взгляда, какая структура вам подходит." data-ar="اعرف دفعةً واحدة أي هيكل يناسبك.">Hangi yapının size uygun olduğunu tek bakışta görün.</p>
+  
+  <div class="table-wrap reveal">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th data-tr="Şirket Türü" data-en="Company Type" data-ru="Тип компании" data-ar="نوع الشركة">Şirket Türü</th>
+          <th data-tr="Min. Hissedar" data-en="Min. Shareholders" data-ru="Мин. акционеров" data-ar="أقل عدد مساهمين">Min. Hissedar</th>
+          <th data-tr="Sorumluluk" data-en="Liability" data-ru="Ответственность" data-ar="المسؤولية">Sorumluluk</th>
+          <th data-tr="Kurumlar Vergisi" data-en="Corp. Tax" data-ru="Корп. налог" data-ar="ضريبة الشركات">Kurumlar Vergisi</th>
+          <th data-tr="KDV" data-en="VAT" data-ru="НДС" data-ar="ضريبة القيمة المضافة">KDV</th>
+          <th data-tr="Yabancı Sermaye" data-en="Foreign Capital" data-ru="Иностранный капитал" data-ar="رأس المال الأجنبي">Yabancı Sermaye</th>
+          <th data-tr="Tavsiye Edilen Profil" data-en="Recommended For" data-ru="Рекомендуется для" data-ar="موصى به لـ">Tavsiye Edilen Profil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-tr="Şahıs İşletmesi" data-en="Sole Trader" data-ru="ИП" data-ar="مؤسسة فردية">Şahıs İşletmesi</td>
+          <td>1</td>
+          <td data-tr="Sınırsız" data-en="Unlimited" data-ru="Неограниченная" data-ar="غير محدودة">Sınırsız</td>
+          <td><span class="tax-badge high" data-tr="Gelir Vergisi" data-en="Income Tax" data-ru="НДФЛ" data-ar="ضريبة دخل">Gelir Vergisi</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td style="font-size:12px;color:var(--text-muted)" data-tr="Küçük esnaf, serbest meslek" data-en="Small traders, freelancers" data-ru="Малый бизнес, фрилансеры" data-ar="التجار الصغار، العمل الحر">Küçük esnaf, serbest meslek</td>
+        </tr>
+        <tr>
+          <td data-tr="Kollektif Ortaklık" data-en="General Partnership" data-ru="Полное товарищество" data-ar="شركة تضامن">Kollektif Ortaklık</td>
+          <td>2</td>
+          <td data-tr="Sınırsız" data-en="Unlimited" data-ru="Неограниченная" data-ar="غير محدودة">Sınırsız</td>
+          <td><span class="tax-badge high" data-tr="Ortaklara Yansır" data-en="Per Partner" data-ru="На партнёров" data-ar="على الشركاء">Ortaklara Yansır</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td style="font-size:12px;color:var(--text-muted)" data-tr="Aile şirketleri, küçük ortaklıklar" data-en="Family businesses, small groups" data-ru="Семейный бизнес" data-ar="شركات عائلية">Aile şirketleri, küçük ortaklıklar</td>
+        </tr>
+        <tr>
+          <td data-tr="Yerel Limited (Özel)" data-en="Private Limited Co." data-ru="Частное ООО" data-ar="شركة ذات مسؤولية محدودة خاصة">Yerel Limited (Özel)</td>
+          <td>2</td>
+          <td data-tr="Sınırlı" data-en="Limited" data-ru="Ограниченная" data-ar="محدودة">Sınırlı</td>
+          <td><span class="tax-badge mid" data-tr="Standart" data-en="Standard" data-ru="Стандартный" data-ar="عادي">Standart</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td style="font-size:12px;color:var(--text-muted)" data-tr="Çoğu yerli ve yabancı yatırımcı" data-en="Most local & foreign investors" data-ru="Большинство инвесторов" data-ar="معظم المستثمرين المحليين والأجانب">Çoğu yerli ve yabancı yatırımcı</td>
+        </tr>
+        <tr>
+          <td data-tr="Yerel Limited (Halka Açık)" data-en="Public Limited Co." data-ru="Открытое ООО" data-ar="شركة مساهمة عامة">Yerel Limited (Halka Açık)</td>
+          <td>7</td>
+          <td data-tr="Sınırlı" data-en="Limited" data-ru="Ограниченная" data-ar="محدودة">Sınırlı</td>
+          <td><span class="tax-badge mid" data-tr="Standart" data-en="Standard" data-ru="Стандартный" data-ar="عادي">Standart</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td style="font-size:12px;color:var(--text-muted)" data-tr="Büyük ölçekli girişimler" data-en="Large-scale ventures" data-ru="Крупные предприятия" data-ar="المشاريع الكبيرة">Büyük ölçekli girişimler</td>
+        </tr>
+        <tr>
+          <td data-tr="Serbest Liman Şirketi" data-en="Free Zone Company" data-ru="Компания СЭЗ" data-ar="شركة المنطقة الحرة">Serbest Liman Şirketi</td>
+          <td>2</td>
+          <td data-tr="Sınırlı" data-en="Limited" data-ru="Ограниченная" data-ar="محدودة">Sınırlı</td>
+          <td><span class="tax-badge" style="background:rgba(29,158,117,0.1);color:var(--success)" data-tr="%0 (Muaf)" data-en="0% (Exempt)" data-ru="0% (Льгота)" data-ar="0% (معفى)">%0 (Muaf)</span></td>
+          <td><span class="tax-badge" style="background:rgba(29,158,117,0.1);color:var(--success)" data-tr="%0 (Muaf)" data-en="0% (Exempt)" data-ru="0% (Льгота)" data-ar="0% (معفى)">%0 (Muaf)</span></td>
+          <td><span class="check">✓</span></td>
+          <td style="font-size:12px;color:var(--text-muted)" data-tr="İhracat, lojistik, üretim" data-en="Export, logistics, manufacturing" data-ru="Экспорт, логистика, производство" data-ar="التصدير، اللوجستيك، التصنيع">İhracat, lojistik, üretim</td>
+        </tr>
+        <tr>
+          <td data-tr="Uluslararası İşletme Şirketi" data-en="International Business Co." data-ru="МБК" data-ar="شركة أعمال دولية">Uluslararası İşletme Şirketi</td>
+          <td>2</td>
+          <td data-tr="Sınırlı" data-en="Limited" data-ru="Ограниченная" data-ar="محدودة">Sınırlı</td>
+          <td><span class="tax-badge" style="background:rgba(29,158,117,0.1);color:var(--success)" data-tr="%1 Net Kar" data-en="1% Net Profit" data-ru="1% чистой прибыли" data-ar="1% صافي الربح">%1 Net Kar</span></td>
+          <td><span class="tax-badge" style="background:rgba(29,158,117,0.1);color:var(--success)" data-tr="Muaf" data-en="Exempt" data-ru="Льгота" data-ar="معفى">Muaf</span></td>
+          <td><span class="check">✓</span></td>
+          <td style="font-size:12px;color:var(--text-muted)" data-tr="Global işletmeler, dijital şirketler" data-en="Global businesses, digital companies" data-ru="Глобальный бизнес, онлайн" data-ar="الأعمال العالمية، الشركات الرقمية">Global işletmeler, dijital şirketler</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator">
+  <div class="section-tag" data-tr="Maliyet Tahmini" data-en="Cost Estimate" data-ru="Оценка стоимости" data-ar="تقدير التكلفة">Maliyet Tahmini</div>
+  <h2 class="section-title light reveal" data-tr="Maliyet Hesaplayıcı" data-en="Cost Calculator" data-ru="Калькулятор стоимости" data-ar="حاسبة التكاليف">Maliyet Hesaplayıcı</h2>
+  <p class="section-sub light reveal" data-tr="Şirket türünüze göre tahmini kuruluş maliyetini hesaplayın." data-en="Calculate the estimated formation cost for your company type." data-ru="Рассчитайте примерную стоимость регистрации." data-ar="احسب تكلفة التأسيس المقدرة لنوع شركتك.">Şirket türünüze göre tahmini kuruluş maliyetini hesaplayın.</p>
+  
+  <div class="calc-container reveal">
+    <div class="calc-form">
+      <div class="calc-label" data-tr="Şirket Türü" data-en="Company Type" data-ru="Тип компании" data-ar="نوع الشركة">Şirket Türü</div>
+      <select class="calc-select" id="calc-type" onchange="calcEstimate()">
+        <option value="sahis" data-tr="Şahıs İşletmesi" data-en="Sole Trader" data-ru="ИП" data-ar="مؤسسة فردية">Şahıs İşletmesi</option>
+        <option value="kollektif" data-tr="Kollektif Ortaklık" data-en="General Partnership" data-ru="Партнёрство" data-ar="شركة تضامن">Kollektif Ortaklık</option>
+        <option value="limited" data-tr="Yerel Limited Şirket" data-en="Local Limited Co." data-ru="Местное ООО" data-ar="شركة ذات مسؤولية محدودة">Yerel Limited Şirket</option>
+        <option value="yabanci" data-tr="Yabancı Şirket Şubesi" data-en="Branch of Foreign Co." data-ru="Филиал иностр. компании" data-ar="فرع شركة أجنبية">Yabancı Şirket Şubesi</option>
+        <option value="serbest" data-tr="Serbest Liman Şirketi" data-en="Free Zone Company" data-ru="Компания СЭЗ" data-ar="شركة المنطقة الحرة">Serbest Liman Şirketi</option>
+        <option value="uis" data-tr="Uluslararası İşletme Şirketi" data-en="International Business Co." data-ru="МБК" data-ar="شركة أعمال دولية">Uluslararası İşletme Şirketi</option>
+      </select>
+
+      <div class="calc-label" data-tr="Tahmini Yıllık Ciro (USD)" data-en="Estimated Annual Revenue (USD)" data-ru="Ожидаемый годовой оборот (USD)" data-ar="الإيرادات السنوية المتوقعة (USD)">Tahmini Yıllık Ciro (USD)</div>
+      <input class="calc-input" type="number" id="calc-revenue" placeholder="100000" value="100000" oninput="calcEstimate()">
+
+      <div class="calc-label" data-tr="Hissedar Sayısı" data-en="Number of Shareholders" data-ru="Количество акционеров" data-ar="عدد المساهمين">Hissedar Sayısı</div>
+      <select class="calc-select" id="calc-shareholders" onchange="calcEstimate()">
+        <option value="1">1</option>
+        <option value="2" selected>2</option>
+        <option value="3">3</option>
+        <option value="4">4+</option>
+      </select>
+
+      <button class="calc-btn" onclick="calcEstimate()" data-tr="Hesapla" data-en="Calculate" data-ru="Рассчитать" data-ar="احسب">Hesapla</button>
+    </div>
+
+    <div class="calc-result" id="calc-result">
+      <div class="calc-result-title" data-tr="Tahmini Kuruluş Maliyeti" data-en="Est. Formation Cost" data-ru="Ожид. стоимость регистрации" data-ar="تكلفة التأسيس المقدرة">Tahmini Kuruluş Maliyeti</div>
+      <div class="calc-result-val" id="res-cost">$1,500</div>
+      <div class="calc-result-sub" id="res-sub">—</div>
+
+      <div class="calc-result-row">
+        <span class="calc-result-row-label" data-tr="Yıllık Vergi Tahmini" data-en="Annual Tax Estimate" data-ru="Ожид. годовой налог" data-ar="تقدير الضريبة السنوية">Yıllık Vergi Tahmini</span>
+        <span class="calc-result-row-val" id="res-tax">—</span>
+      </div>
+      <div class="calc-result-row">
+        <span class="calc-result-row-label" data-tr="KDV Durumu" data-en="VAT Status" data-ru="Статус НДС" data-ar="حالة ضريبة القيمة المضافة">KDV Durumu</span>
+        <span class="calc-result-row-val" id="res-vat">—</span>
+      </div>
+      <div class="calc-result-row">
+        <span class="calc-result-row-label" data-tr="Tescil Süresi" data-en="Registration Time" data-ru="Срок регистрации" data-ar="مدة التسجيل">Tescil Süresi</span>
+        <span class="calc-result-row-val" id="res-time">—</span>
+      </div>
+      <div class="calc-result-row" style="border-bottom:none">
+        <span class="calc-result-row-label" data-tr="Yıllık Tasarruf Potansiyeli" data-en="Annual Savings Potential" data-ru="Потенциал годовой экономии" data-ar="إمكانات الوفورات السنوية">Yıllık Tasarruf Potansiyeli</span>
+        <span class="calc-result-row-val" id="res-saving" style="color:var(--gold)">—</span>
+      </div>
+      <div class="calc-result-note" id="res-note" data-tr="* Tahminler genel bilgi amaçlıdır. Kesin rakamlar için ücretsiz danışmanlık alın." data-en="* Estimates are for general guidance. Get a free consultation for exact figures." data-ru="* Оценки носят информационный характер. За точными цифрами обращайтесь к нам." data-ar="* التقديرات لأغراض إعلامية عامة. احصل على استشارة مجانية للأرقام الدقيقة.">* Tahminler genel bilgi amaçlıdır. Kesin rakamlar için ücretsiz danışmanlık alın.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid reveal">
+    <div class="stat-card">
+      <div class="stat-num">25<span>+</span></div>
+      <div class="stat-label" data-tr="Yıl Deneyim" data-en="Years Experience" data-ru="Лет опыта" data-ar="سنة خبرة">Yıl Deneyim</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">500<span>+</span></div>
+      <div class="stat-label" data-tr="Kurulan Şirket" data-en="Companies Founded" data-ru="Открытых компаний" data-ar="شركة تأسست">Kurulan Şirket</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">12<span>+</span></div>
+      <div class="stat-label" data-tr="Ülkeden Müvekkil" data-en="Countries Served" data-ru="Обслуженных стран" data-ar="دولة من عملائنا">Ülkeden Müvekkil</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">8</div>
+      <div class="stat-label" data-tr="Uzman Personel" data-en="Expert Staff" data-ru="Специалистов" data-ar="موظف متخصص">Uzman Personel</div>
+    </div>
+  </div>
+</section>
+
+<!-- LAWS -->
+<section id="laws">
+  <div class="section-tag" data-tr="Yasal Çerçeve" data-en="Legal Framework" data-ru="Правовая база" data-ar="الإطار القانوني">Yasal Çerçeve</div>
+  <h2 class="section-title light reveal" data-tr="İlgili Yasalar" data-en="Relevant Laws" data-ru="Применяемые законы" data-ar="القوانين ذات الصلة">İlgili Yasalar</h2>
+  <p class="section-sub light reveal" data-tr="KKTC'de şirket kuruluşunu düzenleyen temel mevzuat." data-en="The key legislation governing company formation in the TRNC." data-ru="Основное законодательство, регулирующее регистрацию компаний." data-ar="التشريعات الرئيسية التي تحكم تأسيس الشركات.">KKTC'de şirket kuruluşunu düzenleyen temel mevzuat.</p>
+  
+  <div class="laws-grid reveal">
+    <div class="law-item"><div class="law-num">1</div><div><div class="law-name" data-tr="KKTC Şirketler Yasası Fasıl 113" data-en="TRNC Companies Law Cap 113" data-ru="Закон о компаниях Сев. Кипра Гл. 113" data-ar="قانون الشركات في شمال قبرص، فصل 113">KKTC Şirketler Yasası Fasıl 113</div><div class="law-desc" data-tr="Tüm şirketlerin tabi olduğu temel yasa" data-en="The fundamental law governing all companies" data-ru="Основной закон для всех компаний" data-ar="القانون الأساسي الذي يحكم جميع الشركات">Tüm şirketlerin tabi olduğu temel yasa</div></div></div>
+    <div class="law-item"><div class="law-num">2</div><div><div class="law-name" data-tr="Kollektif ve Komandit Şirketler Yasası" data-en="Partnership and Trade Names Law" data-ru="Закон о партнёрствах" data-ar="قانون شركات التضامن والتوصية">Kollektif ve Komandit Şirketler Yasası</div><div class="law-desc" data-tr="Ortaklık yapıları için düzenleyici yasa" data-en="Regulates partnership structures" data-ru="Регулирует партнёрские структуры" data-ar="ينظم هياكل الشراكة">Ortaklık yapıları için düzenleyici yasa</div></div></div>
+    <div class="law-item"><div class="law-num">3</div><div><div class="law-name" data-tr="Yabancı Sermaye Yasası" data-en="Foreign Investment Law" data-ru="Закон об иностранных инвестициях" data-ar="قانون الاستثمار الأجنبي">Yabancı Sermaye Yasası</div><div class="law-desc" data-tr="Yabancı yatırımlar için özel düzenlemeler" data-en="Special regulations for foreign investments" data-ru="Специальные правила для иностранных инвестиций" data-ar="لوائح خاصة للاستثمارات الأجنبية">Yabancı yatırımlar için özel düzenlemeler</div></div></div>
+    <div class="law-item"><div class="law-num">4</div><div><div class="law-name" data-tr="KKTC Bankalar Yasası" data-en="TRNC Banking Law" data-ru="Банковский закон Сев. Кипра" data-ar="قانون البنوك في شمال قبرص">KKTC Bankalar Yasası</div><div class="law-desc" data-tr="Bankacılık sektörü düzenlemeleri" data-en="Banking sector regulations" data-ru="Регулирование банковского сектора" data-ar="لوائح القطاع المصرفي">Bankacılık sektörü düzenlemeleri</div></div></div>
+    <div class="law-item"><div class="law-num">5</div><div><div class="law-name" data-tr="Serbest Liman ve Bölge Yasası" data-en="Freezone Law" data-ru="Закон о свободной зоне" data-ar="قانون الميناء الحر والمنطقة الحرة">Serbest Liman ve Bölge Yasası</div><div class="law-desc" data-tr="Serbest bölge şirketlerine özel avantajlar" data-en="Special advantages for free zone companies" data-ru="Особые льготы для компаний СЭЗ" data-ar="مزايا خاصة لشركات المنطقة الحرة">Serbest bölge şirketlerine özel avantajlar</div></div></div>
+    <div class="law-item"><div class="law-num">6</div><div><div class="law-name" data-tr="Uluslararası İşletme Şirketleri Yasası" data-en="International Business Companies Law" data-ru="Закон о МБК" data-ar="قانون شركات الأعمال الدولية">Uluslararası İşletme Şirketleri Yasası</div><div class="law-desc" data-tr="%1 vergi avantajı ile global faaliyet" data-en="1% tax advantage for global operations" data-ru="1% налоговая льгота для глобальной деятельности" data-ar="ميزة ضريبة 1% للعمليات العالمية">%1 vergi avantajı ile global faaliyet</div></div></div>
+    <div class="law-item"><div class="law-num">7</div><div><div class="law-name" data-tr="Uluslararası Bankacılık Birimleri Yasası" data-en="International Banking Units Law" data-ru="Закон о международных банковских единицах" data-ar="قانون وحدات المصارف الدولية">Uluslararası Bankacılık Birimleri Yasası</div><div class="law-desc" data-tr="Uluslararası bankacılık operasyonları" data-en="International banking operations" data-ru="Международные банковские операции" data-ar="العمليات المصرفية الدولية">Uluslararası bankacılık operasyonları</div></div></div>
+    <div class="law-item"><div class="law-num">8</div><div><div class="law-name" data-tr="Sigorta Hizmetleri Yasası" data-en="Insurance Services Law" data-ru="Закон о страховых услугах" data-ar="قانون خدمات التأمين">Sigorta Hizmetleri Yasası</div><div class="law-desc" data-tr="Sigorta şirketi kuruluş ve denetim kuralları" data-en="Insurance company formation and supervision rules" data-ru="Правила создания и надзора страховых компаний" data-ar="قواعد تأسيس ومراقبة شركات التأمين">Sigorta şirketi kuruluş ve denetim kuralları</div></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-tag" data-tr="Sık Sorulan Sorular" data-en="Frequently Asked Questions" data-ru="Часто задаваемые вопросы" data-ar="الأسئلة الشائعة">Sık Sorulan Sorular</div>
+  <h2 class="section-title reveal" data-tr="Her Şeyin Cevabı Burada" data-en="All Your Answers Here" data-ru="Все ответы здесь" data-ar="كل الإجابات هنا">Her Şeyin Cevabı Burada</h2>
+  <p class="section-sub reveal" data-tr="KKTC'de şirket kurmak hakkında en çok sorulan sorular." data-en="Most frequently asked questions about forming a company in the TRNC." data-ru="Самые частые вопросы о регистрации компании в Северном Кипре." data-ar="أكثر الأسئلة شيوعاً حول تأسيس شركة في شمال قبرص.">KKTC'de şirket kurmak hakkında en çok sorulan sorular.</p>
+  
+  <div class="faq-list reveal">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span data-tr="KKTC'de şirket kurmak ne kadar sürer?" data-en="How long does it take to form a company in the TRNC?" data-ru="Сколько времени занимает открытие компании?" data-ar="كم يستغرق تأسيس شركة في شمال قبرص؟">KKTC'de şirket kurmak ne kadar sürer?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a" data-tr="Gerekli belgeler hazırlandıktan sonra yerel limited şirket için ortalama 1-2 hafta, Uluslararası İşletme Şirketi için 2-3 hafta sürmektedir. Yabancı şirket şubeleri için Bakanlar Kurulu onayı gerektiğinden süreç daha uzun olabilir." data-en="After documents are ready, a local limited company typically takes 1–2 weeks, an IBC 2–3 weeks. Branches of foreign companies may take longer due to Cabinet approval." data-ru="После подготовки документов: местное ООО — 1–2 недели, МБК — 2–3 недели. Филиалы иностранных компаний — дольше из-за согласований." data-ar="بعد تجهيز المستندات: الشركة المحلية من 1 إلى 2 أسبوع، وشركة الأعمال الدولية من 2 إلى 3 أسابيع. فروع الشركات الأجنبية قد تستغرق أطول.">Gerekli belgeler hazırlandıktan sonra yerel limited şirket için ortalama 1-2 hafta, Uluslararası İşletme Şirketi için 2-3 hafta sürmektedir.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span data-tr="Yabancı uyruklu biri KKTC'de şirket kurabilir mi?" data-en="Can a foreign national form a company in the TRNC?" data-ru="Может ли иностранец открыть компанию в Северном Кипре?" data-ar="هل يمكن للأجنبي تأسيس شركة في شمال قبرص؟">Yabancı uyruklu biri KKTC'de şirket kurabilir mi?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a" data-tr="Evet, yabancı uyruklu kişiler KKTC'de şirket kurabilir. Yerel Limited Şirket, Uluslararası İşletme Şirketi ve Serbest Liman Şirketi kuruluşu için yabancı sermayeye herhangi bir kısıtlama bulunmamaktadır." data-en="Yes, foreign nationals can form companies in the TRNC. There are no restrictions on foreign capital for Local Limited Companies, IBCs, or Free Zone Companies." data-ru="Да, иностранцы могут открывать компании в Северном Кипре. Ограничений на иностранный капитал для большинства типов компаний нет." data-ar="نعم، يمكن للأجانب تأسيس شركات في شمال قبرص. لا توجد قيود على رأس المال الأجنبي لأغلب أنواع الشركات.">Evet, yabancı uyruklu kişiler KKTC'de şirket kurabilir.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span data-tr="Uluslararası İşletme Şirketinin %1 vergi avantajı nasıl işler?" data-en="How does the 1% tax advantage for IBCs work?" data-ru="Как работает налоговая льгота 1% для МБК?" data-ar="كيف تعمل ميزة الضريبة 1% لشركات الأعمال الدولية؟">Uluslararası İşletme Şirketinin %1 vergi avantajı nasıl işler?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a" data-tr="UİŞ'ler faaliyetlerini tamamen KKTC dışında yürütmeleri koşuluyla yıllık net vergilendirilebilir karları üzerinden yalnızca %1 Kurumlar Vergisi öderler. Bunun dışında KDV, stopaj vergisi veya temettü vergisinden muaftırlar." data-en="IBCs pay only 1% corporate tax on their annual net taxable profit, provided all operations are conducted outside the TRNC. They are exempt from VAT, withholding tax, and dividend tax." data-ru="МБК платят 1% корпоративного налога при условии ведения деятельности исключительно за пределами Северного Кипра. НДС и другие налоги не применяются." data-ar="تدفع شركات الأعمال الدولية 1% فقط من صافي الربح الخاضع للضريبة، شريطة أن تكون جميع عملياتها خارج شمال قبرص.">UİŞ'ler faaliyetlerini tamamen KKTC dışında yürütmeleri koşuluyla yıllık net vergilendirilebilir karları üzerinden yalnızca %1 Kurumlar Vergisi öderler.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span data-tr="Şirket kurulum için hangi belgeler gerekir?" data-en="What documents are needed for company formation?" data-ru="Какие документы нужны для открытия компании?" data-ar="ما المستندات المطلوبة لتأسيس شركة؟">Şirket kurulum için hangi belgeler gerekir?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a" data-tr="Temel belgeler: pasaport / kimlik fotokopisi (tüm hissedarlar ve direktörler için), ikametgah belgesi, şirket unvanı alternatifleri ve imza beyanı. Yabancı sermayeli şirketler için noter onaylı vekâletname de gerekebilir." data-en="Key documents: passport/ID copy for all shareholders and directors, proof of address, company name alternatives, and signature declaration. Notarized power of attorney may also be needed for foreign capital companies." data-ru="Основные документы: копии паспортов акционеров и директоров, подтверждение адреса, варианты названия компании, декларация подписи." data-ar="المستندات الأساسية: نسخ جوازات السفر لجميع المساهمين والمديرين، إثبات العنوان، بدائل اسم الشركة، وإعلان التوقيع.">Temel belgeler: pasaport / kimlik fotokopisi (tüm hissedarlar ve direktörler için), ikametgah belgesi, şirket unvanı alternatifleri ve imza beyanı.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span data-tr="Şirket kuruluşundan sonra muhasebe hizmeti de alabilir miyim?" data-en="Can I also receive accounting services after company formation?" data-ru="Могу ли я получить бухгалтерские услуги после регистрации?" data-ar="هل يمكنني الحصول على خدمات محاسبية بعد تأسيس الشركة؟">Şirket kuruluşundan sonra muhasebe hizmeti de alabilir miyim?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a" data-tr="Evet. Yaşar Kaya Danışmanlık olarak şirket kuruluşunun yanı sıra muhasebe, vergi danışmanlığı, denetim ve yasal uyumluluk hizmetleri de sunuyoruz. Müvekkillerimizin büyük bölümü kuruluş sonrasında da bizimle çalışmaya devam eder." data-en="Yes. Yaşar Kaya Advisory also provides accounting, tax advisory, audit, and compliance services. Most clients continue working with us after formation." data-ru="Да. Yaşar Kaya Advisory также оказывает бухгалтерские, налоговые, аудиторские и compliance-услуги после регистрации." data-ar="نعم. تقدم Yaşar Kaya Advisory أيضاً خدمات المحاسبة والاستشارات الضريبية والتدقيق والامتثال. ويستمر معظم العملاء معنا بعد التأسيس.">Evet. Yaşar Kaya Danışmanlık olarak şirket kuruluşunun yanı sıra muhasebe, vergi danışmanlığı, denetim ve yasal uyumluluk hizmetleri de sunuyoruz.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span data-tr="Serbest Liman Şirketinde minimum sermaye şartı var mı?" data-en="Is there a minimum capital requirement for Free Zone companies?" data-ru="Есть ли минимальный капитал для компаний СЭЗ?" data-ar="هل توجد متطلبات رأس مال أدنى لشركات المنطقة الحرة؟">Serbest Liman Şirketinde minimum sermaye şartı var mı?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a" data-tr="Serbest Liman Şirketleri için belirlenmiş bir asgari sermaye şartı bulunmamaktadır; ancak tescil bedeli ve yönetim ücretleri vardır. Yabancı şirket şubeleri için ise ana şirket sermayesinin minimum 100.000 USD olması gerekmektedir." data-en="There is no specific minimum capital requirement for Free Zone companies, but registration and administration fees apply. For branches of foreign companies, the parent company must have a minimum capital of $100,000." data-ru="Для компаний СЭЗ нет установленного минимального капитала, но есть регистрационные и административные сборы. Для филиалов иностранных компаний — минимум $100 000." data-ar="لا يوجد حد أدنى محدد لرأس المال لشركات المنطقة الحرة، ولكن توجد رسوم تسجيل وإدارة.">Serbest Liman Şirketleri için belirlenmiş bir asgari sermaye şartı bulunmamaktadır.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span data-tr="KKTC'de banka hesabı açmak zor mudur?" data-en="Is it difficult to open a bank account in the TRNC?" data-ru="Сложно ли открыть банковский счёт в Северном Кипре?" data-ar="هل من الصعب فتح حساب مصرفي في شمال قبرص؟">KKTC'de banka hesabı açmak zor mudur?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a" data-tr="Şirket tescilinin tamamlanmasının ardından banka hesabı açılış süreci oldukça hızlıdır. Firmamız bu süreçte de sizlere rehberlik etmekte ve KKTC'deki yerel bankalarla köklü iş ilişkilerimiz aracılığıyla süreci kolaylaştırmaktayız." data-en="After company registration is complete, opening a bank account is quite straightforward. Our firm guides you through the process and facilitates it via our established relationships with TRNC banks." data-ru="После регистрации открытие банковского счёта проходит быстро. Мы помогаем в этом процессе благодаря устоявшимся отношениям с банками Северного Кипра." data-ar="بعد اكتمال تسجيل الشركة، يكون فتح الحساب المصرفي سريعاً نسبياً. تقوم شركتنا بإرشادك خلال هذه العملية.">Şirket tescilinin tamamlanmasının ardından banka hesabı açılış süreci oldukça hızlıdır.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span data-tr="Şirket için fiziksel olarak KKTC'ye gelmem gerekiyor mu?" data-en="Do I need to physically come to the TRNC to form a company?" data-ru="Нужно ли физически приехать в Северный Кипр для открытия компании?" data-ar="هل أحتاج إلى الحضور الجسدي في شمال قبرص لتأسيس شركة؟">Şirket için fiziksel olarak KKTC'ye gelmem gerekiyor mu?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a" data-tr="Çoğu işlem noter onaylı vekâletname ile uzaktan yürütülebilir. Ancak bazı süreçler için fiziki varlık gerekebilir; bu konuda müvekkillerimize süreç başında tam bilgi verilmektedir." data-en="Most procedures can be handled remotely with a notarized power of attorney. However, physical presence may be required for certain steps; clients are fully informed about this at the start of the process." data-ru="Большинство процедур можно выполнить удалённо с нотариально заверенной доверенностью. Физическое присутствие может потребоваться для некоторых шагов." data-ar="معظم الإجراءات يمكن إجراؤها عن بُعد بموجب وكالة قانونية موثقة. قد يكون الحضور الجسدي مطلوباً لبعض الخطوات.">Çoğu işlem noter onaylı vekâletname ile uzaktan yürütülebilir.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-tag" data-tr="Müşteri Referansları" data-en="Client Testimonials" data-ru="Отзывы клиентов" data-ar="شهادات العملاء">Müşteri Referansları</div>
+  <h2 class="section-title reveal" data-tr="Müvekkillerimiz Anlatıyor" data-en="What Our Clients Say" data-ru="Наши клиенты говорят" data-ar="ماذا يقول عملاؤنا">Müvekkillerimiz Anlatıyor</h2>
+  
+  <div class="testi-grid reveal">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <div class="testi-text" data-tr="Yaşar Kaya ekibi, şirket kurma sürecinde bize son derece profesyonel ve hızlı bir hizmet sundu. Vergi ve hukuki adımlar net bir planla yönetildi." data-en="The Yaşar Kaya team provided a highly professional and swift service throughout the company formation process. Tax and legal steps were handled with a clear plan." data-ru="Команда Yaşar Kaya обеспечила профессиональное и быстрое сопровождение. Налоговые и юридические этапы были организованы по чёткому плану." data-ar="قدّم فريق Yaşar Kaya خدمة احترافية وسريعة للغاية أثناء تأسيس الشركة، وتمت إدارة الخطوات القانونية والضريبية بخطة واضحة.">Yaşar Kaya ekibi, şirket kurma sürecinde bize son derece profesyonel ve hızlı bir hizmet sundu.</div>
+      <div class="testi-author">
+        <div class="testi-avatar">AK</div>
+        <div>
+          <div class="testi-name">Ahmet K.</div>
+          <div class="testi-country">🇹🇷 Türkiye</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <div class="testi-text" data-tr="Rusya'dan bir yatırımcı olarak KKTC'deki UİŞ avantajlarından yararlanmak istedim. Yaşar Kaya bana hem vergi hem hukuki konularda güven veren bir yönlendirme sundu." data-en="As an investor from Russia, I wanted to benefit from TRNC IBC advantages. Yaşar Kaya gave me confident guidance on both tax and legal matters." data-ru="Как инвестор из России, я хотел воспользоваться преимуществами МБК в ТРСК. Yaşar Kaya обеспечил уверенное сопровождение по налоговым и юридическим вопросам." data-ar="كمستثمر من روسيا، أردت الاستفادة من مزايا شركة الأعمال الدولية في شمال قبرص، وقدّم Yaşar Kaya توجيهاً موثوقاً في الجوانب القانونية والضريبية.">Rusya'dan bir yatırımcı olarak KKTC'deki UİŞ avantajlarından yararlanmak istedim. Yaşar Kaya bana güven veren bir yönlendirme sundu.</div>
+      <div class="testi-author">
+        <div class="testi-avatar">IV</div>
+        <div>
+          <div class="testi-name">Ivan V.</div>
+          <div class="testi-country">🇷🇺 Rusya</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <div class="testi-text" data-tr="İngiltere'deki şirketimizin KKTC şubesini açtırmak için Yaşar Kaya ile çalıştık. Bakanlar Kurulu sürecinden banka hesabı açılışına kadar her adımda yanımızdaydı." data-en="We worked with Yaşar Kaya to open the TRNC branch of our UK company. He supported us at every stage from Cabinet approval to bank account opening." data-ru="Мы работали с Yaşar Kaya для открытия филиала нашей британской компании в ТРСК. Он сопровождал нас на каждом этапе — от одобрения до открытия банковского счёта." data-ar="عملنا مع Yaşar Kaya لفتح فرع شركتنا البريطانية في شمال قبرص، وكان معنا في كل مرحلة من الموافقة حتى فتح الحساب البنكي.">İngiltere'deki şirketimizin KKTC şubesini açtırmak için Yaşar Kaya ile çalıştık. Her adımda yanımızdaydı.</div>
+      <div class="testi-author">
+        <div class="testi-avatar">JS</div>
+        <div>
+          <div class="testi-name">James S.</div>
+          <div class="testi-country">🇬🇧 İngiltere</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag" data-tr="Canlı Destek" data-en="Live Support" data-ru="Онлайн поддержка" data-ar="دعم مباشر">Canlı Destek</div>
+  <h2 class="section-title reveal" data-tr="Sağ alttan uzman ekibe hemen bağlanın" data-en="Connect with our team instantly from live chat" data-ru="Свяжитесь с нашей командой сразу через чат" data-ar="تواصل فوراً مع فريقنا عبر الدردشة المباشرة">Sağ alttan uzman ekibe hemen bağlanın</h2>
+  <p class="section-sub reveal" data-tr="Canlı sohbeti açın, önce ad soyad ve e-posta bilginizi bırakın, ardından birkaç kısa soruyla size en uygun şirket çözümünü netleştirelim." data-en="Open the live chat, leave your full name and email first, then answer a few short questions so we can guide you to the right company setup." data-ru="Откройте онлайн-чат, сначала оставьте имя и e-mail, затем ответьте на несколько коротких вопросов, чтобы мы предложили вам подходящую структуру компании." data-ar="افتح الدردشة المباشرة، واترك أولاً اسمك الكامل وبريدك الإلكتروني، ثم أجب عن بعض الأسئلة القصيرة لنوجّهك إلى هيكل الشركة الأنسب.">Canlı sohbeti açın, önce ad soyad ve e-posta bilginizi bırakın, ardından birkaç kısa soruyla size en uygun şirket çözümünü netleştirelim.</p>
+
+  <div class="contact-grid">
+    <div class="contact-info-block">
+      <div class="contact-card reveal">
+        <div class="contact-card-icon">📍</div>
+        <div>
+          <div class="contact-card-label" data-tr="Adres" data-en="Address" data-ru="Адрес" data-ar="العنوان">Adres</div>
+          <div class="contact-card-val">41/6, Osmanpaşa Caddesi, Latif Apartmanı, Köşklüçiftlik, Lefkoşa / Kuzey Kıbrıs</div>
+        </div>
+      </div>
+      <div class="contact-card reveal" style="transition-delay:0.1s">
+        <div class="contact-card-icon">📞</div>
+        <div>
+          <div class="contact-card-label" data-tr="Telefon" data-en="Phone" data-ru="Телефон" data-ar="الهاتف">Telefon</div>
+          <div class="contact-card-val">
+            <a href="tel:+903922286708">+90 (392) 228 6708</a><br>
+            <a href="tel:+903922273352">+90 (392) 227 3352</a><br>
+            <a href="tel:+903924448080">+90 (392) 444 8080</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card reveal" style="transition-delay:0.15s">
+        <div class="contact-card-icon">✉️</div>
+        <div>
+          <div class="contact-card-label" data-tr="E-posta" data-en="Email" data-ru="Эл. почта" data-ar="البريد الإلكتروني">E-posta</div>
+          <div class="contact-card-val"><a href="mailto:info@yasarkaya.com">info@yasarkaya.com</a></div>
+        </div>
+      </div>
+      <div class="contact-card reveal" style="transition-delay:0.2s">
+        <div class="contact-card-icon">🕐</div>
+        <div>
+          <div class="contact-card-label" data-tr="Çalışma Saatleri" data-en="Working Hours" data-ru="Часы работы" data-ar="ساعات العمل">Çalışma Saatleri</div>
+          <div class="contact-card-val" data-tr="Pzt–Cum: 08:00–17:00 | Cmt: 09:00–13:00" data-en="Mon–Fri: 08:00–17:00 | Sat: 09:00–13:00" data-ru="Пн–Пт: 08:00–17:00 | Сб: 09:00–13:00" data-ar="الإثنين–الجمعة: 08:00–17:00 | السبت: 09:00–13:00">Pzt–Cum: 08:00–17:00 | Cmt: 09:00–13:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card reveal">
+      <div class="support-topbar">
+        <div class="support-badge" data-tr="Canlı Destek" data-en="Live Support" data-ru="Онлайн поддержка" data-ar="دعم مباشر">Canlı Destek</div>
+        <div class="support-status">
+          <span class="support-status-dot"></span>
+          <span data-tr="Temsilciler çevrimiçi" data-en="Representatives online" data-ru="Операторы онлайн" data-ar="الممثلون متصلون">Temsilciler çevrimiçi</span>
+        </div>
+      </div>
+      <div id="form-wrap">
+        <div class="form-title" data-tr="Tek pencerede lead toplama ve sohbet" data-en="Lead capture and chat in one window" data-ru="Сбор лида и чат в одном окне" data-ar="جمع العملاء والدردشة في نافذة واحدة">Tek pencerede lead toplama ve sohbet</div>
+        <div class="form-sub" data-tr="Sağ alttaki canlı destek butonu açıldığında ziyaretçiden önce ad soyad ve e-posta istenir, ardından ihtiyaçlarını netleştiren kısa sohbet akışı başlar." data-en="When the live support button in the bottom-right opens, visitors are asked for their full name and email first, then a short qualifying chat begins." data-ru="При открытии кнопки поддержки в правом нижнем углу сначала запрашиваются имя и e-mail, затем начинается короткий квалификационный чат." data-ar="عند فتح زر الدعم المباشر في أسفل اليمين، يُطلب أولاً الاسم الكامل والبريد الإلكتروني، ثم تبدأ محادثة قصيرة لتحديد الاحتياج.">Sağ alttaki canlı destek butonu açıldığında ziyaretçiden önce ad soyad ve e-posta istenir, ardından ihtiyaçlarını netleştiren kısa sohbet akışı başlar.</div>
+
+        <div class="support-flow">
+          <div class="support-flow-item">
+            <span class="support-flow-num">1</span>
+            <div class="support-flow-text">
+              <strong data-tr="Ziyaretçiyi tanıyın" data-en="Capture the visitor" data-ru="Узнайте посетителя" data-ar="تعرّف على الزائر">Ziyaretçiyi tanıyın</strong>
+              <span data-tr="Ad soyad ve e-posta ile lead bilgisini ilk adımda toplayın." data-en="Collect the lead with full name and email in the first step." data-ru="Соберите имя и e-mail на первом шаге." data-ar="اجمع الاسم الكامل والبريد الإلكتروني في الخطوة الأولى.">Ad soyad ve e-posta ile lead bilgisini ilk adımda toplayın.</span>
+            </div>
+          </div>
+          <div class="support-flow-item">
+            <span class="support-flow-num">2</span>
+            <div class="support-flow-text">
+              <strong data-tr="İhtiyacı netleştirin" data-en="Qualify the need" data-ru="Уточните потребность" data-ar="حدّد الاحتياج">İhtiyacı netleştirin</strong>
+              <span data-tr="Şirket tipi, bütçe ve başlama zamanı gibi kısa sorularla potansiyeli ölçün." data-en="Measure intent with short questions about company type, budget, and preferred start date." data-ru="Оцените намерение с помощью коротких вопросов о типе компании, бюджете и сроках запуска." data-ar="قِس الجدية عبر أسئلة قصيرة عن نوع الشركة والميزانية وموعد البدء.">Şirket tipi, bütçe ve başlama zamanı gibi kısa sorularla potansiyeli ölçün.</span>
+            </div>
+          </div>
+          <div class="support-flow-item">
+            <span class="support-flow-num">3</span>
+            <div class="support-flow-text">
+              <strong data-tr="Takibe hazır hale getirin" data-en="Prepare for follow-up" data-ru="Подготовьте к последующему контакту" data-ar="جهّزه للمتابعة">Takibe hazır hale getirin</strong>
+              <span data-tr="E-postaya düşecek net bir talep özetiyle satış ekibini hızlandırın." data-en="Give your team a clear request summary for faster follow-up by email." data-ru="Передайте команде чёткое резюме запроса для быстрого ответа по e-mail." data-ar="امنح فريقك ملخصاً واضحاً للطلب لتسريع المتابعة عبر البريد الإلكتروني.">E-postaya düşecek net bir talep özetiyle satış ekibini hızlandırın.</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="form-submit" onclick="openLiveSupport(event)">
+          <span data-tr="Canlı Sohbeti Aç" data-en="Open Live Chat" data-ru="Открыть чат" data-ar="افتح الدردشة المباشرة">Canlı Sohbeti Aç</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="support-assurance" data-tr="Sohbet penceresi sağ alt köşede açılır ve bilgiler aynı akış içinde toplanır." data-en="The chat window opens in the bottom-right and collects the details within the same flow." data-ru="Окно чата открывается в правом нижнем углу, и данные собираются в одном сценарии." data-ar="تفتح نافذة الدردشة في أسفل اليمين ويتم جمع البيانات ضمن نفس المسار.">Sohbet penceresi sağ alt köşede açılır ve bilgiler aynı akış içinde toplanır.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<div id="map-section">
+  <div class="map-inner">
+    <div class="map-text">
+      <div class="section-tag" data-tr="Bizi Ziyaret Edin" data-en="Visit Us" data-ru="Посетите нас" data-ar="قم بزيارتنا">Bizi Ziyaret Edin</div>
+      <h2 class="section-title light" style="margin-bottom:32px" data-tr="Ofisimize Hoş Geldiniz" data-en="Welcome to Our Office" data-ru="Добро пожаловать в наш офис" data-ar="أهلاً بكم في مكتبنا">Ofisimize Hoş Geldiniz</h2>
+      <div class="map-address-item">
+        <div class="map-address-icon">📍</div>
+        <div class="map-address-text"><strong data-tr="Adres" data-en="Address" data-ru="Адрес" data-ar="العنوان">Adres</strong>41/6, Osmanpaşa Caddesi, Latif Apartmanı, Köşklüçiftlik, Lefkoşa</div>
+      </div>
+      <div class="map-address-item">
+        <div class="map-address-icon">📞</div>
+        <div class="map-address-text"><strong data-tr="Telefon" data-en="Phone" data-ru="Телефон" data-ar="الهاتف">Telefon</strong>+90 (392) 228 6708 / 227 3352 / 444 8080</div>
+      </div>
+      <div class="map-address-item">
+        <div class="map-address-icon">✉️</div>
+        <div class="map-address-text"><strong data-tr="E-posta" data-en="Email" data-ru="Эл. почта" data-ar="البريد الإلكتروني">E-posta</strong>info@yasarkaya.com</div>
+      </div>
+      <div class="map-address-item">
+        <div class="map-address-icon">🟢</div>
+        <div class="map-address-text"><strong data-tr="WhatsApp" data-en="WhatsApp" data-ru="WhatsApp" data-ar="واتساب">WhatsApp</strong><a href="https://wa.me/905488893894" style="color:var(--gold-light);text-decoration:none" data-tr="Hemen Mesaj Gönderin" data-en="Send a Message Now" data-ru="Написать сейчас" data-ar="أرسل رسالة الآن">Hemen Mesaj Gönderin</a></div>
+      </div>
+    </div>
+    <div class="map-embed">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.4!2d33.34!3d35.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDEwJzQ4LjAiTiAzM8KwMjAnMjQuMCJF!5e0!3m2!1str!2str!4v1234567890"
+        width="100%" height="100%" style="border:0;min-height:400px;filter:grayscale(40%) contrast(1.1);" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-text">Yaşar Kaya Danışmanlık</div>
+      </div>
+      <div class="footer-desc" data-tr="KKTC'de 25 yılı aşkın deneyimimizle şirket kuruluşu, vergi danışmanlığı ve muhasebe hizmetleri sunuyoruz." data-en="With over 25 years of experience in the TRNC, we provide company formation, tax advisory and accounting services." data-ru="Более 25 лет предоставляем услуги по регистрации компаний, налоговому консалтингу и бухгалтерии в Северном Кипре." data-ar="بأكثر من 25 عامًا من الخبرة في شمال قبرص، نقدم خدمات تأسيس الشركات والاستشارات الضريبية والمحاسبة.">KKTC'de 25 yılı aşkın deneyimimizle şirket kuruluşu, vergi danışmanlığı ve muhasebe hizmetleri sunuyoruz.</div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</div>
+      <div class="footer-links">
+        <a href="#formation-hub" data-tr="Şirket Kuruluşu" data-en="Company Formation" data-ru="Регистрация компании" data-ar="تأسيس الشركة">Şirket Kuruluşu</a>
+        <a href="#taxes-hub" data-tr="Vergi Danışmanlığı" data-en="Tax Advisory" data-ru="Налоговый консалтинг" data-ar="الاستشارات الضريبية">Vergi Danışmanlığı</a>
+        <a href="#services-hub" data-tr="Muhasebe Hizmetleri" data-en="Accounting Services" data-ru="Бухгалтерские услуги" data-ar="خدمات المحاسبة">Muhasebe Hizmetleri</a>
+        <a href="#corporate" data-tr="Kurumsal Yapı" data-en="Corporate Profile" data-ru="Корпоративный профиль" data-ar="الملف المؤسسي">Kurumsal Yapı</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-tr="Şirket Türleri" data-en="Company Types" data-ru="Типы компаний" data-ar="أنواع الشركات">Şirket Türleri</div>
+      <div class="footer-links">
+        <a href="#types" data-tr="Yerel Limited" data-en="Local Limited" data-ru="Местное ООО" data-ar="شركة محلية محدودة">Yerel Limited</a>
+        <a href="#formation-hub" data-tr="UİŞ" data-en="IBC" data-ru="МБК" data-ar="شركة أعمال دولية">Uluslararası İşletme</a>
+        <a href="#formation-hub" data-tr="Serbest Liman" data-en="Free Zone" data-ru="СЭЗ" data-ar="المنطقة الحرة">Serbest Liman</a>
+        <a href="#formation-hub" data-tr="Yabancı Şube" data-en="Foreign Branch" data-ru="Иностр. филиал" data-ar="فرع أجنبي">Yabancı Şube</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-tr="İletişim" data-en="Contact" data-ru="Контакт" data-ar="تواصل">İletişim</div>
+      <div class="footer-links">
+        <a href="tel:+903922286708">+90 (392) 228 6708</a>
+        <a href="tel:+903922273352">+90 (392) 227 3352</a>
+        <a href="mailto:info@yasarkaya.com">info@yasarkaya.com</a>
+        <a href="https://wa.me/905488893894" data-tr="WhatsApp" data-en="WhatsApp" data-ru="WhatsApp" data-ar="واتساب">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-tr="© 2025 Yaşar Kaya Danışmanlık. Tüm hakları saklıdır." data-en="© 2025 Yaşar Kaya Advisory. All rights reserved." data-ru="© 2025 Yaşar Kaya Advisory. Все права защищены." data-ar="© 2025 Yaşar Kaya Advisory. جميع الحقوق محفوظة.">© 2025 Yaşar Kaya Danışmanlık. Tüm hakları saklıdır.</span>
+    <span data-tr="Lefkoşa, Kuzey Kıbrıs" data-en="Nicosia, North Cyprus" data-ru="Никосия, Северный Кипр" data-ar="نيقوسيا، شمال قبرص">Lefkoşa, Kuzey Kıbrıs</span>
+  </div>
+</footer>
+
+<!-- LIVE SUPPORT -->
+<div id="live-support">
+  <div class="live-support-socials">
+    <a class="live-support-social instagram" href="https://www.instagram.com/alitoprakkx/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 6.85A5.15 5.15 0 1 1 6.85 12 5.16 5.16 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 15.35 12 3.35 3.35 0 0 0 12 8.65Z"/>
+      </svg>
+    </a>
+    <a class="live-support-social whatsapp" href="https://wa.me/905488893894" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2a9.84 9.84 0 0 0-8.48 14.82L2 22l5.33-1.47A9.83 9.83 0 1 0 12 2Zm0 17.8a8 8 0 0 1-4.08-1.12l-.29-.17-3.17.87.87-3.09-.19-.31A8 8 0 1 1 12 19.8Zm4.39-6.03c-.24-.12-1.43-.7-1.65-.78-.22-.08-.39-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.29.18-.53.06-.24-.12-1.03-.38-1.96-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.01-.37.11-.49.11-.11.24-.29.37-.43.12-.14.16-.24.24-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.75-1.82-.2-.48-.4-.42-.55-.43h-.47c-.16 0-.43.06-.66.31-.22.24-.86.84-.86 2.04 0 1.2.88 2.36 1 2.52.12.16 1.74 2.66 4.21 3.73.59.25 1.05.4 1.41.51.59.19 1.13.16 1.56.1.48-.07 1.43-.58 1.63-1.14.2-.57.2-1.05.14-1.15-.05-.11-.21-.17-.45-.29Z"/>
+      </svg>
+    </a>
+  </div>
+  <div class="live-support-panel" id="live-support-panel" aria-hidden="true">
+    <div class="live-support-header">
+      <div class="live-support-header-copy">
+        <div class="live-support-title" data-tr="Lütfen mesajınızı girin" data-en="Please enter your message" data-ru="Введите ваше сообщение" data-ar="يرجى إدخال رسالتك">Lütfen mesajınızı girin</div>
+        <div class="live-support-online">
+          <span class="live-support-online-dot"></span>
+          <span data-tr="Temsilciler çevrimiçi" data-en="Representatives online" data-ru="Операторы онлайн" data-ar="الممثلون متصلون">Temsilciler çevrimiçi</span>
+        </div>
+      </div>
+      <button type="button" class="live-support-close" onclick="closeLiveSupport()" aria-label="Close">×</button>
+    </div>
+    <div class="live-support-body">
+      <div class="live-support-thread" id="live-support-thread">
+        <div class="live-support-message user" data-tr="Merhaba, yardıma ihtiyacım var." data-en="Hello, I need help." data-ru="Здравствуйте, мне нужна помощь." data-ar="مرحباً، أحتاج إلى المساعدة.">Merhaba, yardıma ihtiyacım var.</div>
+        <div class="live-support-helper" id="live-support-helper" data-tr="Sizi daha yakından tanıyabilir miyiz?" data-en="Can we get to know you a little better?" data-ru="Можем ли мы узнать вас немного лучше?" data-ar="هل يمكننا التعرّف عليك بشكل أفضل؟">Sizi daha yakından tanıyabilir miyiz?</div>
+        <div class="live-support-lead-card" id="live-support-lead-card">
+          <div class="live-support-lead-grid">
+            <div class="live-support-field">
+              <label for="support-name" data-tr="Ad Soyad" data-en="Full Name" data-ru="ФИО" data-ar="الاسم الكامل">Ad Soyad</label>
+              <input id="support-name" type="text" autocomplete="name" placeholder="Adınız ve soyadınız" data-ph-tr="Adınız ve soyadınız" data-ph-en="Your full name" data-ph-ru="Ваше полное имя" data-ph-ar="اسمك الكامل">
+            </div>
+            <div class="live-support-field">
+              <label for="support-email" data-tr="E-posta adresiniz" data-en="Your email address" data-ru="Ваш e-mail" data-ar="بريدك الإلكتروني">E-posta adresiniz</label>
+              <input id="support-email" type="email" autocomplete="email" placeholder="ornek@email.com" data-ph-tr="ornek@email.com" data-ph-en="name@email.com" data-ph-ru="name@email.com" data-ph-ar="name@email.com">
+            </div>
+          </div>
+          <button type="button" class="live-support-lead-submit" onclick="submitLiveSupportLead()">
+            <span data-tr="Sohbeti Başlat" data-en="Start Chat" data-ru="Начать чат" data-ar="ابدأ المحادثة">Sohbeti Başlat</span>
+          </button>
+          <div class="live-support-note" data-tr="Bilgileriniz, size özel teklif ve geri dönüş hazırlamak için kullanılır." data-en="Your information is used to prepare a tailored follow-up." data-ru="Ваши данные нужны для персонального предложения и обратной связи." data-ar="تُستخدم بياناتك لإعداد عرض ومتابعة مخصصة لك.">Bilgileriniz, size özel teklif ve geri dönüş hazırlamak için kullanılır.</div>
+        </div>
+      </div>
+      <div class="live-support-composer" id="live-support-composer">
+        <input id="live-support-message" type="text" placeholder="Buraya yazın" data-ph-tr="Buraya yazın" data-ph-en="Type here" data-ph-ru="Напишите здесь" data-ph-ar="اكتب هنا">
+        <button type="button" class="live-support-send" onclick="sendLiveSupportMessage()" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 2L11 13"></path><path d="M22 2L15 22L11 13L2 9L22 2Z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button type="button" id="live-support-launcher" onclick="toggleLiveSupport(event)" aria-expanded="false" aria-controls="live-support-panel">
+    <span class="live-support-launcher-copy">
+      <span class="live-support-launcher-title" data-tr="Canlı Destek" data-en="Live Support" data-ru="Онлайн поддержка" data-ar="دعم مباشر">Canlı Destek</span>
+      <span class="live-support-launcher-sub" data-tr="Temsilciler çevrimiçi" data-en="Representatives online" data-ru="Операторы онлайн" data-ar="الممثلون متصلون">Temsilciler çevrimiçi</span>
+    </span>
+    <span class="live-support-launcher-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2h9A3.5 3.5 0 0 1 20 5.5v6A3.5 3.5 0 0 1 16.5 15H10l-4.5 4v-4.25A3.49 3.49 0 0 1 4 11.5z"/></svg>
+    </span>
+  </button>
+</div>
+
+<script>
+// ── CURRENT LANGUAGE ──
+let currentLang = 'tr';
+const liveSupportState = {
+  open: false,
+  leadCaptured: false,
+  leadName: '',
+  leadEmail: '',
+  replyStep: 0,
+};
+
+const liveSupportCopy = {
+  tr: {
+    leadAlert: 'Lütfen ad soyad ve e-posta alanlarını doldurun.',
+    invalidEmail: 'Lütfen geçerli bir e-posta adresi girin.',
+    leadQualifiedPrompt: 'Bilgileriniz alındı. Temsilcimize iletmek istediğiniz mesajı yazabilirsiniz.',
+  },
+  en: {
+    leadAlert: 'Please fill in your full name and email.',
+    invalidEmail: 'Please enter a valid email address.',
+    leadQualifiedPrompt: 'Your details have been received. You can now type the message you want our representative to see.',
+  },
+  ru: {
+    leadAlert: 'Пожалуйста, заполните имя и e-mail.',
+    invalidEmail: 'Пожалуйста, укажите корректный e-mail.',
+    leadQualifiedPrompt: 'Ваши данные получены. Теперь вы можете написать сообщение для представителя.',
+  },
+  ar: {
+    leadAlert: 'يرجى إدخال الاسم الكامل والبريد الإلكتروني.',
+    invalidEmail: 'يرجى إدخال بريد إلكتروني صالح.',
+    leadQualifiedPrompt: 'تم استلام بياناتك. يمكنك الآن كتابة رسالتك ليطّلع عليها ممثلنا.',
+  }
+};
+
+function getLiveSupportCopy(key, ...args) {
+  const locale = liveSupportCopy[currentLang] || liveSupportCopy.tr;
+  const value = locale[key] || liveSupportCopy.tr[key];
+  return typeof value === 'function' ? value(...args) : value;
+}
+
+function syncLiveSupportUI() {
+  const panel = document.getElementById('live-support-panel');
+  const launcher = document.getElementById('live-support-launcher');
+  const leadCard = document.getElementById('live-support-lead-card');
+  const composer = document.getElementById('live-support-composer');
+  const helper = document.getElementById('live-support-helper');
+
+  if (!panel || !launcher) return;
+
+  panel.classList.toggle('open', liveSupportState.open);
+  panel.classList.toggle('chat-ready', liveSupportState.leadCaptured);
+  panel.setAttribute('aria-hidden', String(!liveSupportState.open));
+  launcher.setAttribute('aria-expanded', String(liveSupportState.open));
+
+  if (leadCard) leadCard.style.display = liveSupportState.leadCaptured ? 'none' : 'block';
+  if (composer) composer.hidden = !liveSupportState.leadCaptured;
+  if (helper && liveSupportState.leadCaptured) helper.textContent = getLiveSupportCopy('leadQualifiedPrompt');
+}
+
+function scrollLiveSupportToBottom() {
+  const thread = document.getElementById('live-support-thread');
+  if (!thread) return;
+  thread.scrollTop = thread.scrollHeight;
+}
+
+function appendLiveSupportMessage(role, text) {
+  const thread = document.getElementById('live-support-thread');
+  if (!thread || !text) return;
+  const bubble = document.createElement('div');
+  bubble.className = `live-support-message ${role}`;
+  bubble.textContent = text;
+  thread.appendChild(bubble);
+  scrollLiveSupportToBottom();
+}
+
+function openLiveSupport(event) {
+  if (event) event.preventDefault();
+  liveSupportState.open = true;
+  syncLiveSupportUI();
+  document.getElementById('mobile-nav')?.classList.remove('open');
+  setTimeout(() => {
+    const focusTarget = liveSupportState.leadCaptured
+      ? document.getElementById('live-support-message')
+      : document.getElementById('support-name');
+    focusTarget?.focus();
+    scrollLiveSupportToBottom();
+  }, 120);
+}
+
+function closeLiveSupport() {
+  liveSupportState.open = false;
+  syncLiveSupportUI();
+}
+
+function toggleLiveSupport(event) {
+  if (event) event.preventDefault();
+  if (liveSupportState.open) {
+    closeLiveSupport();
+    return;
+  }
+  openLiveSupport();
+}
+
+function submitLiveSupportLead() {
+  const nameInput = document.getElementById('support-name');
+  const emailInput = document.getElementById('support-email');
+  const name = nameInput?.value.trim() || '';
+  const email = emailInput?.value.trim() || '';
+
+  if (!name || !email) {
+    alert(getLiveSupportCopy('leadAlert'));
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert(getLiveSupportCopy('invalidEmail'));
+    return;
+  }
+
+  liveSupportState.leadCaptured = true;
+  liveSupportState.leadName = name;
+  liveSupportState.leadEmail = email;
+  syncLiveSupportUI();
+  setTimeout(() => document.getElementById('live-support-message')?.focus(), 100);
+}
+
+function sendLiveSupportMessage(forcedText) {
+  if (!liveSupportState.leadCaptured) {
+    document.getElementById('support-name')?.focus();
+    return;
+  }
+
+  const input = document.getElementById('live-support-message');
+  const text = (forcedText ?? input?.value ?? '').trim();
+  if (!text) return;
+
+  appendLiveSupportMessage('user', text);
+  if (!forcedText && input) input.value = '';
+}
+
+// ── LANGUAGE SYSTEM ──
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+  // Update all lang buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+  });
+
+  // Update all data-tr/en/ru/ar elements
+  document.querySelectorAll('[data-tr]').forEach(el => {
+    const val = el.getAttribute('data-' + lang) || el.getAttribute('data-tr');
+    if (val) el.textContent = val;
+  });
+
+  // Update select options
+  document.querySelectorAll('select option[data-tr]').forEach(opt => {
+    const val = opt.getAttribute('data-' + lang) || opt.getAttribute('data-tr');
+    if (val) opt.textContent = val;
+  });
+
+  // Update form placeholders
+  document.querySelectorAll('[data-ph-tr]').forEach(input => {
+    const val = input.getAttribute('data-ph-' + lang) || input.getAttribute('data-ph-tr');
+    if (val) input.placeholder = val;
+  });
+
+  // Re-run calculator to update labels
+  calcEstimate();
+  syncLiveSupportUI();
+}
+
+// ── SCROLL HEADER ──
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── COUNTER ANIMATION ──
+function animateCounter(el, target, suffix='') {
+  let start = 0;
+  const duration = 1800;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) { start = target; clearInterval(timer); }
+    el.textContent = Math.floor(start) + suffix;
+  }, 16);
+}
+
+let statsAnimated = false;
+function checkStats() {
+  if (statsAnimated) return;
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+  const rect = hero.getBoundingClientRect();
+  if (rect.top < window.innerHeight) {
+    statsAnimated = true;
+    setTimeout(() => animateCounter(document.getElementById('stat1'), 25, '+'), 400);
+    setTimeout(() => animateCounter(document.getElementById('stat2'), 500, '+'), 600);
+    setTimeout(() => animateCounter(document.getElementById('stat3'), 12, '+'), 800);
+    setTimeout(() => animateCounter(document.getElementById('stat4'), 8, ''), 1000);
+  }
+}
+window.addEventListener('scroll', checkStats);
+setTimeout(checkStats, 600);
+
+// ── SCROLL REVEAL ──
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+
+// ── QUIZ ──
+const quizAnswers = {};
+function selectOption(el, q, val) {
+  el.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  quizAnswers[q] = val;
+  const stepNum = q.replace('q','');
+  const nextBtn = document.getElementById('qnext-' + stepNum);
+  if (nextBtn) nextBtn.disabled = false;
+}
+function nextStep(num) {
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('qstep-' + num).classList.add('active');
+}
+function prevStep(num) { nextStep(num); }
+function resetQuiz() {
+  Object.keys(quizAnswers).forEach(k => delete quizAnswers[k]);
+  document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.quiz-next').forEach(b => b.disabled = true);
+  nextStep(1);
+}
+
+const quizResults = {
+  tr: {
+    uis:   { name: '🚀 Uluslararası İşletme Şirketi', desc: 'Global faaliyetler ve %1 vergi avantajı sizin için en uygun seçim. Faaliyetlerinizi tamamen yurt dışına yönlendirerek maksimum vergi tasarrufu sağlayabilirsiniz.' },
+    serbest: { name: '🏭 Serbest Liman Şirketi', desc: 'Serbest bölgede sıfır KDV ve kurumlar vergisi avantajıyla faaliyet göstermek sizin için ideal. İhracat, lojistik ve üretim sektörlerine özellikle uygundur.' },
+    limited: { name: '🏢 Yerel Limited Şirket', desc: 'KKTC iç pazarına yönelik faaliyetler için en yaygın ve esnek yapı. Hissedar sorumluluğu sınırlı, tam yerel piyasa hakları.' },
+    sahis:  { name: '👤 Şahıs İşletmesi', desc: 'Küçük ölçekli veya bireysel faaliyetler için en basit ve hızlı kurulum seçeneği. Minimum bürokratik yük ile hemen faaliyete başlayabilirsiniz.' },
+  },
+  en: {
+    uis:   { name: '🚀 International Business Co.', desc: 'The IBC offers the ideal structure for global operations with 1% corporate tax. Direct all activities outside TRNC for maximum tax savings.' },
+    serbest: { name: '🏭 Free Zone Company', desc: 'Zero VAT and zero corporate tax in the Free Zone. Ideal for export, logistics, and manufacturing industries.' },
+    limited: { name: '🏢 Local Limited Company', desc: 'The most common and flexible structure for TRNC domestic market operations. Limited liability and full local market rights.' },
+    sahis:  { name: '👤 Sole Trader', desc: 'The simplest and fastest setup for small-scale or individual activities. Minimum bureaucratic burden.' },
+  },
+  ru: {
+    uis:   { name: '🚀 МБК', desc: 'Идеальная структура для глобального бизнеса с 1% налогом. Ведите деятельность за пределами Северного Кипра для максимальной налоговой экономии.' },
+    serbest: { name: '🏭 Компания СЭЗ', desc: 'Нулевой НДС и корпоративный налог. Идеально для экспорта, логистики и производства.' },
+    limited: { name: '🏢 Местное ООО', desc: 'Наиболее распространённая структура для местного рынка. Ограниченная ответственность и полные права.' },
+    sahis:  { name: '👤 ИП', desc: 'Простейший вариант для малого бизнеса. Минимальная бюрократия.' },
+  },
+  ar: {
+    uis:   { name: '🚀 شركة أعمال دولية', desc: 'الهيكل المثالي للأعمال العالمية مع ضريبة 1%. وجّه جميع أنشطتك خارج شمال قبرص لأقصى توفير ضريبي.' },
+    serbest: { name: '🏭 شركة المنطقة الحرة', desc: 'ضريبة قيمة مضافة صفرية وضريبة شركات صفرية. مثالية للتصدير واللوجستيك والتصنيع.' },
+    limited: { name: '🏢 شركة محلية محدودة', desc: 'الهيكل الأكثر شيوعًا للسوق المحلية. مسؤولية محدودة وحقوق محلية كاملة.' },
+    sahis:  { name: '👤 مؤسسة فردية', desc: 'الأبسط والأسرع للنشاط الصغير أو الفردي. الحد الأدنى من الإجراءات البيروقراطية.' },
+  }
+};
+
+function showQuizResult() {
+  const loc = quizAnswers.q1;
+  const tax = quizAnswers.q3;
+  let key = 'limited';
+  if (loc === 'international' || tax === 'mintax') key = 'uis';
+  else if (loc === 'freezone' || tax === 'zerotax') key = 'serbest';
+  else if (quizAnswers.q2 === 'solo') key = 'sahis';
+
+  const lang = currentLang;
+  const res = (quizResults[lang] || quizResults.tr)[key];
+  document.getElementById('quiz-result-title').textContent = res.name;
+  document.getElementById('quiz-result-desc').textContent = res.desc;
+
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('qstep-result').classList.add('active');
+}
+
+// ── CALCULATOR ──
+const calcData = {
+  sahis:    { cost: 800,   taxRate: 0.20, vat: true,  time: '3-5 gün / days', savingsBase: 0 },
+  kollektif:{ cost: 1200,  taxRate: 0.20, vat: true,  time: '1 hafta / week', savingsBase: 0 },
+  limited:  { cost: 1800,  taxRate: 0.125,vat: true,  time: '1-2 hafta / weeks', savingsBase: 0.075 },
+  yabanci:  { cost: 3500,  taxRate: 0.125,vat: true,  time: '4-8 hafta / weeks', savingsBase: 0 },
+  serbest:  { cost: 2500,  taxRate: 0,    vat: false, time: '2-3 hafta / weeks', savingsBase: 0.20 },
+  uis:      { cost: 2200,  taxRate: 0.01, vat: false, time: '2-3 hafta / weeks', savingsBase: 0.19 },
+};
+function calcEstimate() {
+  const type = document.getElementById('calc-type').value;
+  const revenue = parseFloat(document.getElementById('calc-revenue').value) || 100000;
+  const d = calcData[type];
+  if (!d) return;
+  const tax = Math.round(revenue * d.taxRate);
+  const saving = Math.round(revenue * d.savingsBase);
+  const vatStr = {
+    tr: d.vat ? 'Uygulanır' : 'Muaf',
+    en: d.vat ? 'Applicable' : 'Exempt',
+    ru: d.vat ? 'Применяется' : 'Освобождено',
+    ar: d.vat ? 'مطبقة' : 'معفاة'
+  }[currentLang] || (d.vat ? 'Uygulanır' : 'Muaf');
+  const subMap = {
+    sahis: {tr:'Şahıs işletmesi — basit kurulum',en:'Sole trader — simple setup',ru:'ИП — простая регистрация',ar:'مؤسسة فردية — تأسيس بسيط'},
+    kollektif: {tr:'Ortaklık — yazılı anlaşma önerilir',en:'Partnership — written agreement recommended',ru:'Партнёрство — рекомендуется соглашение',ar:'شراكة — يوصى باتفاقية مكتوبة'},
+    limited: {tr:'Yerel limited — en yaygın yapı',en:'Local limited — most common structure',ru:'Местное ООО — наиболее распространённая структура',ar:'شركة محلية محدودة — الأكثر شيوعاً'},
+    yabanci: {tr:'Yabancı şube — Bakanlar Kurulu onayı gerekli',en:'Foreign branch — Cabinet approval required',ru:'Иностр. филиал — требуется одобрение',ar:'فرع أجنبي — موافقة مجلس الوزراء مطلوبة'},
+    serbest: {tr:'Serbest bölge — sıfır vergi avantajı',en:'Free zone — zero tax advantage',ru:'СЭЗ — нулевой налог',ar:'منطقة حرة — ميزة ضريبية صفرية'},
+    uis: {tr:'Uluslararası — %1 kurumlar vergisi',en:'International — 1% corporate tax',ru:'МБК — 1% корпоративный налог',ar:'دولية — 1% ضريبة شركات'},
+  };
+  const sub = (subMap[type]||{})[currentLang] || (subMap[type]||{}).tr || '';
+  document.getElementById('res-cost').textContent = '$' + d.cost.toLocaleString();
+  document.getElementById('res-sub').textContent = sub;
+  document.getElementById('res-tax').textContent = '$' + tax.toLocaleString() + ' (~' + (d.taxRate*100).toFixed(0) + '%)';
+  document.getElementById('res-vat').textContent = vatStr;
+  document.getElementById('res-time').textContent = d.time;
+  document.getElementById('res-saving').textContent = saving > 0 ? '$' + saving.toLocaleString() + '/yıl' : '—';
+}
+calcEstimate();
+
+// ── FAQ ──
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── FORM ──
+function submitForm() {
+  openLiveSupport();
+}
+
+// ── MOBILE NAV ──
+function toggleMobileNav() {
+  document.getElementById('mobile-nav').classList.toggle('open');
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && liveSupportState.open) closeLiveSupport();
+});
+
+document.getElementById('support-name')?.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    document.getElementById('support-email')?.focus();
+  }
+});
+
+document.getElementById('support-email')?.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    submitLiveSupportLead();
+  }
+});
+
+document.getElementById('live-support-message')?.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    sendLiveSupportMessage();
+  }
+});
+
+// ── INITIAL LANG ──
+setLang('tr');
+</script>
+</body>
+</html>
