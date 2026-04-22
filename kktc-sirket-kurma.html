@@ -1016,10 +1016,12 @@ section { padding: 100px 48px; }
   right: 24px;
   bottom: 24px;
   z-index: 1200;
+}
+.live-support-dock {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 14px;
+  gap: 12px;
 }
 .live-support-socials {
   display: flex;
@@ -1054,6 +1056,9 @@ section { padding: 100px 48px; }
   fill: currentColor;
 }
 .live-support-panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 14px);
   width: min(390px, calc(100vw - 32px));
   background: var(--white);
   border-radius: 24px;
@@ -1422,8 +1427,8 @@ footer {
     right: 16px;
     left: 16px;
     bottom: 16px;
-    align-items: stretch;
   }
+  .live-support-dock { align-items: stretch; }
   .live-support-panel {
     width: 100%;
   }
@@ -2567,18 +2572,6 @@ footer {
 
 <!-- LIVE SUPPORT -->
 <div id="live-support">
-  <div class="live-support-socials">
-    <a class="live-support-social instagram" href="https://www.instagram.com/alitoprakkx/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 6.85A5.15 5.15 0 1 1 6.85 12 5.16 5.16 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 15.35 12 3.35 3.35 0 0 0 12 8.65Z"/>
-      </svg>
-    </a>
-    <a class="live-support-social whatsapp" href="https://wa.me/905488893894" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2a9.84 9.84 0 0 0-8.48 14.82L2 22l5.33-1.47A9.83 9.83 0 1 0 12 2Zm0 17.8a8 8 0 0 1-4.08-1.12l-.29-.17-3.17.87.87-3.09-.19-.31A8 8 0 1 1 12 19.8Zm4.39-6.03c-.24-.12-1.43-.7-1.65-.78-.22-.08-.39-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.29.18-.53.06-.24-.12-1.03-.38-1.96-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.01-.37.11-.49.11-.11.24-.29.37-.43.12-.14.16-.24.24-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.75-1.82-.2-.48-.4-.42-.55-.43h-.47c-.16 0-.43.06-.66.31-.22.24-.86.84-.86 2.04 0 1.2.88 2.36 1 2.52.12.16 1.74 2.66 4.21 3.73.59.25 1.05.4 1.41.51.59.19 1.13.16 1.56.1.48-.07 1.43-.58 1.63-1.14.2-.57.2-1.05.14-1.15-.05-.11-.21-.17-.45-.29Z"/>
-      </svg>
-    </a>
-  </div>
   <div class="live-support-panel" id="live-support-panel" aria-hidden="true">
     <div class="live-support-header">
       <div class="live-support-header-copy">
@@ -2619,15 +2612,29 @@ footer {
       </div>
     </div>
   </div>
-  <button type="button" id="live-support-launcher" onclick="toggleLiveSupport(event)" aria-expanded="false" aria-controls="live-support-panel">
-    <span class="live-support-launcher-copy">
-      <span class="live-support-launcher-title" data-tr="Canlı Destek" data-en="Live Support" data-ru="Онлайн поддержка" data-ar="دعم مباشر">Canlı Destek</span>
-      <span class="live-support-launcher-sub" data-tr="Temsilciler çevrimiçi" data-en="Representatives online" data-ru="Операторы онлайн" data-ar="الممثلون متصلون">Temsilciler çevrimiçi</span>
-    </span>
-    <span class="live-support-launcher-icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2h9A3.5 3.5 0 0 1 20 5.5v6A3.5 3.5 0 0 1 16.5 15H10l-4.5 4v-4.25A3.49 3.49 0 0 1 4 11.5z"/></svg>
-    </span>
-  </button>
+  <div class="live-support-dock">
+    <div class="live-support-socials">
+      <a class="live-support-social instagram" href="https://www.instagram.com/alitoprakkx/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 6.85A5.15 5.15 0 1 1 6.85 12 5.16 5.16 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 15.35 12 3.35 3.35 0 0 0 12 8.65Z"/>
+        </svg>
+      </a>
+      <a class="live-support-social whatsapp" href="https://wa.me/905488893894" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2a9.84 9.84 0 0 0-8.48 14.82L2 22l5.33-1.47A9.83 9.83 0 1 0 12 2Zm0 17.8a8 8 0 0 1-4.08-1.12l-.29-.17-3.17.87.87-3.09-.19-.31A8 8 0 1 1 12 19.8Zm4.39-6.03c-.24-.12-1.43-.7-1.65-.78-.22-.08-.39-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.29.18-.53.06-.24-.12-1.03-.38-1.96-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.01-.37.11-.49.11-.11.24-.29.37-.43.12-.14.16-.24.24-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.75-1.82-.2-.48-.4-.42-.55-.43h-.47c-.16 0-.43.06-.66.31-.22.24-.86.84-.86 2.04 0 1.2.88 2.36 1 2.52.12.16 1.74 2.66 4.21 3.73.59.25 1.05.4 1.41.51.59.19 1.13.16 1.56.1.48-.07 1.43-.58 1.63-1.14.2-.57.2-1.05.14-1.15-.05-.11-.21-.17-.45-.29Z"/>
+        </svg>
+      </a>
+    </div>
+    <button type="button" id="live-support-launcher" onclick="toggleLiveSupport(event)" aria-expanded="false" aria-controls="live-support-panel">
+      <span class="live-support-launcher-copy">
+        <span class="live-support-launcher-title" data-tr="Canlı Destek" data-en="Live Support" data-ru="Онлайн поддержка" data-ar="دعم مباشر">Canlı Destek</span>
+        <span class="live-support-launcher-sub" data-tr="Temsilciler çevrimiçi" data-en="Representatives online" data-ru="Операторы онлайн" data-ar="الممثلون متصلون">Temsilciler çevrimiçi</span>
+      </span>
+      <span class="live-support-launcher-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2h9A3.5 3.5 0 0 1 20 5.5v6A3.5 3.5 0 0 1 16.5 15H10l-4.5 4v-4.25A3.49 3.49 0 0 1 4 11.5z"/></svg>
+      </span>
+    </button>
+  </div>
 </div>
 
 <script>
