@@ -842,6 +842,67 @@ section { padding: 100px 48px; }
   color: var(--text-muted);
   line-height: 1.72;
 }
+.accounting-support-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.accounting-support-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 182px;
+  border-radius: 22px;
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: 0 18px 38px rgba(var(--navy-rgb),0.09);
+  background: rgba(var(--cream-rgb),0.88);
+}
+.accounting-support-card.wide {
+  grid-column: 1 / -1;
+  min-height: 220px;
+}
+.accounting-support-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(var(--white-rgb),0.04) 0%, rgba(var(--navy-rgb),0.18) 56%, rgba(var(--navy-rgb),0.38) 100%);
+}
+.accounting-support-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.accounting-support-card:hover img {
+  transform: scale(1.04);
+}
+.accounting-support-copy {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
+  padding: 14px 15px;
+  border-radius: 18px;
+  background: rgba(var(--white-rgb),0.92);
+  border: 1px solid rgba(var(--white-rgb),0.62);
+  box-shadow: 0 14px 30px rgba(var(--navy-rgb),0.12);
+}
+.accounting-support-copy strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 15px;
+  color: var(--navy);
+}
+.accounting-support-copy span {
+  display: block;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
 .accounting-intro-ribbon {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1018,22 +1079,43 @@ section { padding: 100px 48px; }
   align-content: start;
 }
 .accounting-highlight-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px 18px;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
   border-radius: 18px;
   background: rgba(var(--white-rgb),0.82);
   border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: 0 14px 28px rgba(var(--navy-rgb),0.06);
 }
 .accounting-highlight-item::before {
+  display: none;
+}
+.accounting-highlight-thumb {
+  position: relative;
+  overflow: hidden;
+  min-height: 102px;
+  border-radius: 16px;
+  background: rgba(var(--cream-rgb),0.88);
+}
+.accounting-highlight-thumb::after {
   content: '';
-  width: 10px;
-  height: 10px;
-  margin-top: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  background: linear-gradient(135deg, var(--accent), #FF5D47);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(var(--white-rgb),0.04) 0%, rgba(var(--navy-rgb),0.16) 100%);
+}
+.accounting-highlight-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.accounting-highlight-text {
+  min-width: 0;
 }
 .accounting-highlight-item strong {
   display: block;
@@ -2139,6 +2221,79 @@ section { padding: 100px 48px; }
   gap: 20px;
   margin-top: 44px;
 }
+.sector-card-media {
+  position: relative;
+  overflow: hidden;
+  margin: -28px -28px 18px;
+  aspect-ratio: 16 / 10;
+  border-radius: 24px 24px 18px 18px;
+  background: rgba(var(--cream-rgb),0.90);
+}
+.sector-card-media.is-fallback {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(var(--white-rgb),0.82) 0%, rgba(var(--white-rgb),0) 34%),
+    linear-gradient(135deg, var(--sector-start, #e9f1ff) 0%, var(--sector-end, #ffe7d4) 100%);
+}
+.sector-card-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(var(--white-rgb),0.02) 0%, rgba(var(--navy-rgb),0.14) 100%);
+}
+.sector-card-media.is-fallback::after {
+  background:
+    linear-gradient(180deg, rgba(var(--white-rgb),0.14) 0%, rgba(var(--navy-rgb),0.12) 100%),
+    repeating-linear-gradient(135deg, rgba(var(--white-rgb),0.18) 0 14px, rgba(var(--white-rgb),0) 14px 32px);
+}
+.sector-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.sector-card-media.is-fallback img {
+  display: none;
+}
+.sector-card:hover .sector-card-media img {
+  transform: scale(1.04);
+}
+.sector-card-fallback {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(var(--white-rgb),0.55);
+  background: rgba(var(--white-rgb),0.90);
+  box-shadow: 0 18px 40px rgba(var(--navy-rgb),0.12);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.sector-card-media.is-fallback .sector-card-fallback {
+  opacity: 1;
+  transform: translateY(0);
+}
+.sector-card-fallback strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(var(--navy-rgb),0.98);
+}
+.sector-card-fallback span {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(var(--navy-rgb),0.72);
+}
 .sector-card h3 {
   font-size: 20px;
   margin-bottom: 10px;
@@ -3197,7 +3352,8 @@ footer {
   .footer-bottom { gap: 12px; }
   .stat-card { border-radius: 20px !important; }
   .service-card-media,
-  .portal-card-media { margin: -24px -24px 18px; }
+  .portal-card-media,
+  .sector-card-media { margin: -24px -24px 18px; }
   .accounting-showcase {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3390,7 +3546,8 @@ footer {
   .formation-card h3,
   .news-item h3 { font-size: 21px; }
   .service-card-media,
-  .portal-card-media {
+  .portal-card-media,
+  .sector-card-media {
     margin: -22px -22px 18px;
     border-radius: 20px 20px 16px 16px;
   }
@@ -3426,6 +3583,9 @@ footer {
     padding: 18px;
     border-radius: 20px;
   }
+  .accounting-support-card.wide {
+    min-height: 196px;
+  }
   .accounting-intro-ribbon {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3443,7 +3603,13 @@ footer {
   }
   .accounting-intro-trust-card strong { font-size: 22px; }
   .accounting-intro-copy h3 { font-size: 28px; }
-  .accounting-highlight-item { padding: 14px 16px; }
+  .accounting-highlight-item {
+    grid-template-columns: 96px minmax(0, 1fr);
+    padding: 14px 16px;
+  }
+  .accounting-highlight-thumb {
+    min-height: 92px;
+  }
   .accounting-card-media {
     margin: -22px -22px 18px;
     border-radius: 20px 20px 16px 16px;
@@ -3699,6 +3865,22 @@ footer {
   .accounting-intro-ribbon {
     grid-template-columns: 1fr;
   }
+  .accounting-support-gallery {
+    grid-template-columns: 1fr;
+  }
+  .accounting-support-card,
+  .accounting-support-card.wide {
+    min-height: 190px;
+    border-radius: 18px;
+    grid-column: auto;
+  }
+  .accounting-support-copy {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 13px 14px;
+    border-radius: 16px;
+  }
   .accounting-intro-ribbon-item {
     padding: 13px 14px;
     border-radius: 16px;
@@ -3717,8 +3899,12 @@ footer {
   }
   .accounting-intro-trust-card strong { font-size: 20px; }
   .accounting-highlight-item {
+    grid-template-columns: 1fr;
     padding: 13px 14px;
     border-radius: 16px;
+  }
+  .accounting-highlight-thumb {
+    min-height: 128px;
   }
   .accounting-card-media {
     margin: -20px -18px 16px;
@@ -3824,7 +4010,8 @@ footer {
   }
   .stats-grid { grid-template-columns: 1fr; }
   .service-card-media,
-  .portal-card-media {
+  .portal-card-media,
+  .sector-card-media {
     margin: -20px -18px 16px;
     aspect-ratio: 16 / 11;
   }
@@ -4410,6 +4597,47 @@ footer {
           <p data-tr="Düzenli muhasebe takibi, nakit akışını, gider yapısını ve vergi yükünü daha net görmeyi sağlar." data-en="Regular accounting follow-up helps you see cash flow, expense structure and tax burden more clearly." data-ru="Регулярное бухгалтерское сопровождение помогает яснее видеть денежный поток, структуру расходов и налоговую нагрузку." data-ar="تساعد المتابعة المحاسبية المنتظمة على رؤية التدفق النقدي وهيكل المصروفات والعبء الضريبي بشكل أوضح.">Düzenli muhasebe takibi, nakit akışını, gider yapısını ve vergi yükünü daha net görmeyi sağlar.</p>
           <p data-tr="Bu yüzden muhasebe, bordro, vergi planlaması ve resmi kayıt süreçlerini tek bir sistem içinde birlikte yönetiyoruz." data-en="That is why we manage accounting, payroll, tax planning and official registration processes together within one system." data-ru="Поэтому мы ведём бухгалтерию, зарплату, налоговое планирование и официальную регистрацию вместе в одной системе." data-ar="ولهذا ندير المحاسبة والرواتب والتخطيط الضريبي والتسجيلات الرسمية معًا ضمن نظام واحد.">Bu yüzden muhasebe, bordro, vergi planlaması ve resmi kayıt süreçlerini tek bir sistem içinde birlikte yönetiyoruz.</p>
         </div>
+        <div class="accounting-support-gallery">
+          <article class="accounting-support-card wide">
+            <img
+              src="https://images.pexels.com/photos/8296970/pexels-photo-8296970.jpeg?auto=compress&cs=tinysrgb&w=1400"
+              width="1400"
+              height="934"
+              alt="Muhasebe belgelerini inceleyen profesyonel çalışma sahnesi"
+              loading="lazy"
+              decoding="async">
+            <div class="accounting-support-copy">
+              <strong data-tr="Günlük kayıt akışı kontrollü ilerler" data-en="Daily records move under control" data-ru="Ежедневный учет ведется под контролем" data-ar="يتقدم تدفق السجلات اليومية تحت رقابة منتظمة">Günlük kayıt akışı kontrollü ilerler</strong>
+              <span data-tr="Evrak, hesap planı ve dönem içi hareketler tek sistem içinde daha okunur hale gelir." data-en="Documents, chart of accounts and in-period movements become easier to read within one system." data-ru="Документы, план счетов и движения внутри периода становятся более наглядными в единой системе." data-ar="تصبح المستندات ومخطط الحسابات وحركات الفترة أكثر وضوحًا داخل نظام واحد.">Evrak, hesap planı ve dönem içi hareketler tek sistem içinde daha okunur hale gelir.</span>
+            </div>
+          </article>
+          <article class="accounting-support-card">
+            <img
+              src="https://images.pexels.com/photos/6801683/pexels-photo-6801683.jpeg?auto=compress&cs=tinysrgb&w=1400"
+              width="1400"
+              height="933"
+              alt="Hesap makinesi ve belgelerle bordro hesaplama sürecini temsil eden masa"
+              loading="lazy"
+              decoding="async">
+            <div class="accounting-support-copy">
+              <strong data-tr="Bordro ve ödeme planı" data-en="Payroll and payment planning" data-ru="Планирование payroll и выплат" data-ar="تخطيط الرواتب والمدفوعات">Bordro ve ödeme planı</strong>
+              <span data-tr="Brüt, kesinti ve net ödeme dengesi düzenli takip edildiğinde operasyon rahatlar." data-en="Operations become smoother when gross pay, deductions and net payments are tracked regularly." data-ru="Операционные процессы упрощаются, когда начисления, удержания и чистые выплаты регулярно отслеживаются." data-ar="تصبح العمليات أكثر سلاسة عندما تتم متابعة الإجمالي والاستقطاعات وصافي المدفوعات بانتظام.">Brüt, kesinti ve net ödeme dengesi düzenli takip edildiğinde operasyon rahatlar.</span>
+            </div>
+          </article>
+          <article class="accounting-support-card">
+            <img
+              src="https://images.pexels.com/photos/8205060/pexels-photo-8205060.jpeg?auto=compress&cs=tinysrgb&w=1400"
+              width="1400"
+              height="935"
+              alt="Resmi belge imzalama ve tescil işlemlerini temsil eden çalışma anı"
+              loading="lazy"
+              decoding="async">
+            <div class="accounting-support-copy">
+              <strong data-tr="Resmi adımlar görünür kalır" data-en="Official steps stay visible" data-ru="Официальные шаги остаются прозрачными" data-ar="تبقى الخطوات الرسمية واضحة ومتابعة">Resmi adımlar görünür kalır</strong>
+              <span data-tr="Tescil, kurum kayıtları ve başvuru dosyaları düzenli ilerlediğinde süreç hız kazanır." data-en="Registration, institutional filings and application files move faster when managed in order." data-ru="Регистрация, постановка на учет и пакет документов идут быстрее при системной организации." data-ar="تتسارع العملية عندما تتم إدارة التسجيلات والملفات الرسمية والطلبات بشكل منظم.">Tescil, kurum kayıtları ve başvuru dosyaları düzenli ilerlediğinde süreç hız kazanır.</span>
+            </div>
+          </article>
+        </div>
         <div class="accounting-intro-framework">
           <div class="accounting-intro-framework-head">
             <div>
@@ -4468,19 +4696,46 @@ footer {
         </figure>
         <div class="accounting-highlight-list">
           <div class="accounting-highlight-item">
-            <div>
+            <figure class="accounting-highlight-thumb">
+              <img
+                src="https://images.pexels.com/photos/10347149/pexels-photo-10347149.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                width="1200"
+                height="800"
+                alt="Muhasebe hizmetlerini temsil eden çalışma masası ve finans notları"
+                loading="lazy"
+                decoding="async">
+            </figure>
+            <div class="accounting-highlight-text">
               <strong>Temel Hizmet Başlıkları</strong>
               <span>Muhasebe, bordro, kurumlar vergisi, katma değer vergisi, vergi muhasebesi ve tescil işlemleri aynı hizmet akışı içinde yönetilir.</span>
             </div>
           </div>
           <div class="accounting-highlight-item">
-            <div>
+            <figure class="accounting-highlight-thumb">
+              <img
+                src="https://images.pexels.com/photos/36733320/pexels-photo-36733320.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                width="1200"
+                height="771"
+                alt="İşletmeye özel danışmanlık yaklaşımını temsil eden profesyonel görüşme"
+                loading="lazy"
+                decoding="async">
+            </figure>
+            <div class="accounting-highlight-text">
               <strong>Sektöre Uygun Kurgu</strong>
               <span>İşletmenin faaliyet alanı, büyüklüğü ve iç yapısı dikkate alınarak kayıt sistemi ve raporlama çerçevesi özel olarak şekillendirilir.</span>
             </div>
           </div>
           <div class="accounting-highlight-item">
-            <div>
+            <figure class="accounting-highlight-thumb">
+              <img
+                src="https://images.pexels.com/photos/8205060/pexels-photo-8205060.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                width="1200"
+                height="801"
+                alt="Vergi ve resmi yükümlülük takibini temsil eden belge imzalama süreci"
+                loading="lazy"
+                decoding="async">
+            </figure>
+            <div class="accounting-highlight-text">
               <strong>Eksiksiz Yükümlülük Takibi</strong>
               <span>Vergi dairesi, sosyal sigorta ve ihtiyat sandığı süreçleriyle ilgili kritik adımlar düzenli ve kontrollü biçimde yürütülür.</span>
             </div>
@@ -4799,21 +5054,126 @@ footer {
     <p class="section-sub reveal">Her sektörün muhasebe, denetim, raporlama ve vergi ihtiyacı farklıdır. Deneyim sahibi olduğumuz alanları görerek işletmenize uygun danışmanlık yaklaşımını daha net değerlendirebilirsiniz.</p>
 
     <div class="sector-grid">
-      <article class="sector-card reveal"><h3>Bankacılık</h3><p>Sıkı düzenleme, güvenilir raporlama ve yüksek uyum beklentisi nedeniyle uzman denetim yaklaşımı gerektiren alan.</p></article>
-      <article class="sector-card reveal"><h3>Taşımacılık ve Lojistik</h3><p>Sınır ötesi operasyonlar, maliyet kontrolü ve hareketli sözleşme yapılarıyla özel muhasebe disiplini isteyen sektör.</p></article>
-      <article class="sector-card reveal"><h3>Yolcu Taşımacılığı</h3><p>İzin, tarife, filo ve operasyon sürekliliği tarafında düzenli mali takip gerektiren hizmet alanı.</p></article>
-      <article class="sector-card reveal"><h3>Su Dağıtımı ve Kanalizasyon</h3><p>Kamu yararı yüksek olan bu yapıda stratejik plan, hizmet sürekliliği ve altyapı maliyetleri öne çıkar.</p></article>
-      <article class="sector-card reveal"><h3>Yat Limanı İşletmeciliği</h3><p>Sezonluk gelir akışı, hizmet çeşitliliği ve marina operasyonları nedeniyle detaylı raporlama isteyen yapı.</p></article>
-      <article class="sector-card reveal"><h3>Basın ve Yayın</h3><p>Reklam geliri, içerik üretimi ve operasyonel çeşitlilik nedeniyle farklı mali takip ihtiyaçları doğurur.</p></article>
-      <article class="sector-card reveal"><h3>Sigorta Hizmetleri</h3><p>Rezerv yönetimi, sektör kuralları ve güven esaslı finansal görünürlük ile öne çıkan uzmanlık alanı.</p></article>
-      <article class="sector-card reveal"><h3>Petrol Arama ve Depolama</h3><p>Yüksek risk, büyük ölçekli yatırım ve yoğun mevzuat takibi gerektiren enerji odaklı alan.</p></article>
-      <article class="sector-card reveal"><h3>Telekomünikasyon</h3><p>Lisanslama, düzenli abonelik gelirleri ve altyapı yatırımlarıyla teknik ve finansal kontrolü birlikte ister.</p></article>
-      <article class="sector-card reveal"><h3>Sanayi</h3><p>Üretim maliyetleri, stok yönetimi ve süreç verimliliği nedeniyle kuvvetli mali işler kurgusu gerektirir.</p></article>
-      <article class="sector-card reveal"><h3>Turizm</h3><p>Sezon etkisi yüksek, hizmet gelirleri yoğun ve KDV takibi hassas olan işletme grubu.</p></article>
-      <article class="sector-card reveal"><h3>Eğitim</h3><p>Üniversite ve okul yapılarında tescil, kayıt sistemi ve uzun vadeli kurumsal sürdürülebilirlik öne çıkar.</p></article>
-      <article class="sector-card reveal"><h3>Ticaret</h3><p>Çok sayıda ürün ve iş kolu nedeniyle teşvik, vergi avantajı ve muhasebe yöntemi farklılaşabilen ana sektör.</p></article>
-      <article class="sector-card reveal"><h3>İnşaat</h3><p>Proje bazlı nakit akışı, değişken vergi uygulamaları ve risk yönetimi ihtiyacı nedeniyle yakın takip ister.</p></article>
-      <article class="sector-card reveal"><h3>Elektrik Üretimi ve Dağıtımı</h3><p>Süreklilik, yüksek sorumluluk ve uluslararası raporlama beklentisi ile öne çıkan kritik altyapı alanı.</p></article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#e4ecff; --sector-end:#dce7ff;">
+          <img src="https://images.pexels.com/photos/36733322/pexels-photo-36733322.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Bankacılık sektörünü temsil eden modern finans ofisi" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Finans ve Uyum Odağı</strong><span>Düzenli raporlama, güven ve kurumsal kontrol yapısı.</span></div>
+        </figure>
+        <h3>Bankacılık</h3>
+        <p>Sıkı düzenleme, güvenilir raporlama ve yüksek uyum beklentisi nedeniyle uzman denetim yaklaşımı gerektiren alan.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#e5f4ff; --sector-end:#ffe4cf;">
+          <img src="https://images.pexels.com/photos/20862827/pexels-photo-20862827.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Taşımacılık ve lojistik sektörünü temsil eden yük taşımacılığı görseli" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Operasyon ve Maliyet Kontrolu</strong><span>Hareketli is akisi, filolar ve sinir otesi surecler icin net takip.</span></div>
+        </figure>
+        <h3>Taşımacılık ve Lojistik</h3>
+        <p>Sınır ötesi operasyonlar, maliyet kontrolü ve hareketli sözleşme yapılarıyla özel muhasebe disiplini isteyen sektör.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#edf3ff; --sector-end:#ffe7d9;">
+          <img src="https://images.pexels.com/photos/20718430/pexels-photo-20718430.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Yolcu taşımacılığı sektörünü temsil eden toplu taşıma görseli" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Tarife ve Filo Takibi</strong><span>Sefer planlari, gelir akisi ve operasyon surekliligi birlikte yonetilir.</span></div>
+        </figure>
+        <h3>Yolcu Taşımacılığı</h3>
+        <p>İzin, tarife, filo ve operasyon sürekliliği tarafında düzenli mali takip gerektiren hizmet alanı.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#e6fbff; --sector-end:#e6f0ff;">
+          <img src="https://images.pexels.com/photos/12726229/pexels-photo-12726229.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Su dağıtımı ve kanalizasyon sektörünü temsil eden altyapı görseli" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Altyapi ve Hizmet Surekliligi</strong><span>Kamu yarari yuksek alanlarda plan, butce ve saha uyumu on planda.</span></div>
+        </figure>
+        <h3>Su Dağıtımı ve Kanalizasyon</h3>
+        <p>Kamu yararı yüksek olan bu yapıda stratejik plan, hizmet sürekliliği ve altyapı maliyetleri öne çıkar.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#e8f5ff; --sector-end:#dff0ff;">
+          <img src="https://images.pexels.com/photos/19750413/pexels-photo-19750413.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Yat limanı işletmeciliğini temsil eden marina görseli" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Marina Gelir Yapisi</strong><span>Sezonluk hareketlilik ve hizmet cesitliligi icin ayrintili raporlama.</span></div>
+        </figure>
+        <h3>Yat Limanı İşletmeciliği</h3>
+        <p>Sezonluk gelir akışı, hizmet çeşitliliği ve marina operasyonları nedeniyle detaylı raporlama isteyen yapı.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#efe9ff; --sector-end:#ffe6db;">
+          <img src="https://images.pexels.com/photos/10347149/pexels-photo-10347149.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Basın ve yayın sektörünü temsil eden medya çalışma alanı" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Icerik ve Reklam Akisi</strong><span>Medya operasyonlarinda gelir cesitliligi ve surec kontrolu onemlidir.</span></div>
+        </figure>
+        <h3>Basın ve Yayın</h3>
+        <p>Reklam geliri, içerik üretimi ve operasyonel çeşitlilik nedeniyle farklı mali takip ihtiyaçları doğurur.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#edf4ff; --sector-end:#ffe6d8;">
+          <img src="https://images.pexels.com/photos/36733334/pexels-photo-36733334.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Sigorta hizmetleri sektörünü temsil eden profesyonel ofis görüşmesi" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Rezerv ve Guven Dengesi</strong><span>Sozlesme, risk ve musteri guveni ayni finansal cati altinda ilerler.</span></div>
+        </figure>
+        <h3>Sigorta Hizmetleri</h3>
+        <p>Rezerv yönetimi, sektör kuralları ve güven esaslı finansal görünürlük ile öne çıkan uzmanlık alanı.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#eef2ff; --sector-end:#ffd9c8;">
+          <img src="https://images.pexels.com/photos/27722780/pexels-photo-27722780.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Petrol arama ve depolama sektörünü temsil eden enerji depolama tesisi" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Enerji Yatirimi ve Risk</strong><span>Yuksek sermaye, depolama ve mevzuat takibi bir arada yonetilir.</span></div>
+        </figure>
+        <h3>Petrol Arama ve Depolama</h3>
+        <p>Yüksek risk, büyük ölçekli yatırım ve yoğun mevzuat takibi gerektiren enerji odaklı alan.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#e8f0ff; --sector-end:#e7fbff;">
+          <img src="https://images.pexels.com/photos/12351609/pexels-photo-12351609.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Telekomünikasyon sektörünü temsil eden ağ ve iletişim teknolojisi görseli" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Abonelik ve Altyapi Takibi</strong><span>Duzenli gelir, lisans ve teknik yatirimlar icin net kontrol gerekir.</span></div>
+        </figure>
+        <h3>Telekomünikasyon</h3>
+        <p>Lisanslama, düzenli abonelik gelirleri ve altyapı yatırımlarıyla teknik ve finansal kontrolü birlikte ister.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#eef4ff; --sector-end:#ffe3d1;">
+          <img src="https://images.pexels.com/photos/5953729/pexels-photo-5953729.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Sanayi sektörünü temsil eden üretim tesisi görseli" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Uretim Maliyeti ve Stok</strong><span>Verimli uretim icin maliyet, stok ve surec raporlamasi birlikte kurulur.</span></div>
+        </figure>
+        <h3>Sanayi</h3>
+        <p>Üretim maliyetleri, stok yönetimi ve süreç verimliliği nedeniyle kuvvetli mali işler kurgusu gerektirir.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#e6f5ff; --sector-end:#ffe8d6;">
+          <img src="https://images.pexels.com/photos/15948113/pexels-photo-15948113.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Turizm sektörünü temsil eden otel ve konaklama görseli" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Sezon ve Konaklama Geliri</strong><span>Turizm yapisinda KDV, rezervasyon ve hizmet gelirleri hassas takip ister.</span></div>
+        </figure>
+        <h3>Turizm</h3>
+        <p>Sezon etkisi yüksek, hizmet gelirleri yoğun ve KDV takibi hassas olan işletme grubu.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#edf1ff; --sector-end:#fff0df;">
+          <img src="https://images.pexels.com/photos/5676741/pexels-photo-5676741.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Eğitim sektörünü temsil eden sınıf veya üniversite ortamı" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Kayit ve Kurumsal Sureklilik</strong><span>Okul ve universite yapilarinda duzenli sistem ve uzun vadeli planlama one cikar.</span></div>
+        </figure>
+        <h3>Eğitim</h3>
+        <p>Üniversite ve okul yapılarında tescil, kayıt sistemi ve uzun vadeli kurumsal sürdürülebilirlik öne çıkar.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#eff4ff; --sector-end:#ffe8da;">
+          <img src="https://images.pexels.com/photos/10907746/pexels-photo-10907746.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Ticaret sektörünü temsil eden mağaza ve ürün yönetimi görseli" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Urun ve Gelir Akisi</strong><span>Coklu urun, stok ve satis yapisinda net ticari muhasebe kurulumu gerekir.</span></div>
+        </figure>
+        <h3>Ticaret</h3>
+        <p>Çok sayıda ürün ve iş kolu nedeniyle teşvik, vergi avantajı ve muhasebe yöntemi farklılaşabilen ana sektör.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#edf1ff; --sector-end:#ffe1ce;">
+          <img src="https://images.pexels.com/photos/26989055/pexels-photo-26989055.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="İnşaat sektörünü temsil eden şantiye ve yapı görseli" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Proje Bazli Takip</strong><span>Santiye harcamalari, nakit akisi ve vergi uygulamalari yakin izlenir.</span></div>
+        </figure>
+        <h3>İnşaat</h3>
+        <p>Proje bazlı nakit akışı, değişken vergi uygulamaları ve risk yönetimi ihtiyacı nedeniyle yakın takip ister.</p>
+      </article>
+      <article class="sector-card reveal">
+        <figure class="sector-card-media" style="--sector-start:#ebf1ff; --sector-end:#fff1dd;">
+          <img src="https://images.pexels.com/photos/16607161/pexels-photo-16607161.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Elektrik üretimi ve dağıtımını temsil eden enerji altyapısı görseli" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');">
+          <div class="sector-card-fallback"><strong>Kritik Altyapi Yonetimi</strong><span>Sureklilik, sorumluluk ve guclu raporlama beklentisiyle one cikan alan.</span></div>
+        </figure>
+        <h3>Elektrik Üretimi ve Dağıtımı</h3>
+        <p>Süreklilik, yüksek sorumluluk ve uluslararası raporlama beklentisi ile öne çıkan kritik altyapı alanı.</p>
+      </article>
     </div>
   </div>
 </section>
