@@ -761,6 +761,65 @@ section { padding: 100px 48px; }
   border: 1px solid rgba(var(--blue-rgb),0.08);
   box-shadow: 0 28px 56px rgba(var(--navy-rgb),0.08);
 }
+.accounting-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 34px;
+}
+.accounting-showcase-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 228px;
+  border-radius: 24px;
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: 0 20px 40px rgba(var(--navy-rgb),0.10);
+  background: rgba(var(--cream-rgb),0.88);
+}
+.accounting-showcase-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(var(--white-rgb),0.02) 0%, rgba(var(--navy-rgb),0.12) 44%, rgba(var(--navy-rgb),0.38) 100%);
+}
+.accounting-showcase-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.accounting-showcase-card:hover img {
+  transform: scale(1.04);
+}
+.accounting-showcase-copy {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1;
+  padding: 15px 16px;
+  border-radius: 18px;
+  background: rgba(var(--white-rgb),0.90);
+  border: 1px solid rgba(var(--white-rgb),0.54);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 14px 28px rgba(var(--navy-rgb),0.12);
+}
+.accounting-showcase-copy strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: var(--navy);
+}
+.accounting-showcase-copy span {
+  display: block;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
 .accounting-intro-copy h3 {
   font-size: 32px;
   margin-bottom: 14px;
@@ -1023,6 +1082,42 @@ section { padding: 100px 48px; }
   pointer-events: none;
   background:
     linear-gradient(180deg, rgba(var(--white-rgb),0.03) 0%, rgba(var(--navy-rgb),0.15) 100%);
+}
+.accounting-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.accounting-detail-card:hover .accounting-card-media img {
+  transform: scale(1.04);
+}
+.accounting-card-photo-badge {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1;
+  padding: 15px 16px;
+  border-radius: 18px;
+  background: rgba(var(--white-rgb),0.92);
+  border: 1px solid rgba(var(--white-rgb),0.58);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 14px 28px rgba(var(--navy-rgb),0.12);
+}
+.accounting-card-photo-badge strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 15px;
+  color: var(--navy);
+}
+.accounting-card-photo-badge span {
+  display: block;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.55;
 }
 .accounting-visual {
   position: relative;
@@ -3103,6 +3198,12 @@ footer {
   .stat-card { border-radius: 20px !important; }
   .service-card-media,
   .portal-card-media { margin: -24px -24px 18px; }
+  .accounting-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .accounting-showcase-card.featured {
+    grid-column: 1 / -1;
+  }
   .accounting-intro,
   .accounting-detail-grid { grid-template-columns: 1fr; }
   .section-visual-grid { grid-template-columns: 1fr; }
@@ -3299,6 +3400,21 @@ footer {
     margin-top: 32px;
     border-radius: 22px;
   }
+  .accounting-showcase {
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .accounting-showcase-card {
+    min-height: 210px;
+    border-radius: 20px;
+  }
+  .accounting-showcase-copy {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    padding: 14px 15px;
+    border-radius: 16px;
+  }
   .accounting-intro-media { min-height: 250px; }
   .accounting-intro-badge {
     left: 14px;
@@ -3331,6 +3447,13 @@ footer {
   .accounting-card-media {
     margin: -22px -22px 18px;
     border-radius: 20px 20px 16px 16px;
+  }
+  .accounting-card-photo-badge {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    padding: 14px 15px;
+    border-radius: 16px;
   }
   .ledger-columns,
   .ledger-entry {
@@ -3544,6 +3667,23 @@ footer {
     padding: 20px 18px;
     border-radius: 20px;
   }
+  .accounting-showcase {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .accounting-showcase-card,
+  .accounting-showcase-card.featured {
+    min-height: 200px;
+    border-radius: 18px;
+    grid-column: auto;
+  }
+  .accounting-showcase-copy {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 13px 14px;
+  }
   .accounting-intro-media {
     min-height: 220px;
     border-radius: 20px;
@@ -3583,6 +3723,12 @@ footer {
   .accounting-card-media {
     margin: -20px -18px 16px;
     aspect-ratio: 16 / 11;
+  }
+  .accounting-card-photo-badge {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 13px 14px;
   }
   .ledger-chip,
   .payroll-chip,
@@ -4193,13 +4339,55 @@ footer {
   <div class="section-shell">
     <div class="section-tag" data-tr="Muhasebe Danışmanlığı" data-en="Accounting Advisory" data-ru="Бухгалтерский консалтинг" data-ar="الاستشارات المحاسبية">Muhasebe Danışmanlığı</div>
     <h2 class="section-title reveal" data-tr="Muhasebe ve Mali İşler Hizmetleri" data-en="Accounting and Financial Operations Services" data-ru="Услуги по бухгалтерии и финансовому сопровождению" data-ar="خدمات المحاسبة والأعمال المالية">Muhasebe ve Mali İşler Hizmetleri</h2>
-    <p class="section-sub reveal" data-tr="İş dünyasında faaliyet gösteren gerçek ve tüzel kişilerin, değişen mevzuat ve ekonomik koşullar karşısında kayıt sistemlerini doğru yönetmeleri ve yasal yükümlülüklerini eksiksiz yerine getirmeleri için kapsamlı muhasebe desteği sağlıyoruz." data-en="We provide comprehensive accounting support so that individuals and companies operating in business life can manage their record systems correctly and fulfill their legal obligations under changing legislation and economic conditions." data-ru="Мы обеспечиваем комплексную бухгалтерскую поддержку, чтобы физические и юридические лица могли правильно вести учёт и полностью выполнять свои обязательства в условиях меняющегося законодательства и экономики." data-ar="نقدم دعماً محاسبياً متكاملاً حتى تتمكن الأفراد والشركات العاملة في عالم الأعمال من إدارة أنظمة السجلات بشكل صحيح والوفاء بالتزاماتها القانونية بالكامل في ظل تغير التشريعات والظروف الاقتصادية.">İş dünyasında faaliyet gösteren gerçek ve tüzel kişilerin, değişen mevzuat ve ekonomik koşullar karşısında kayıt sistemlerini doğru yönetmeleri ve yasal yükümlülüklerini eksiksiz yerine getirmeleri için kapsamlı muhasebe desteği sağlıyoruz.</p>
+    <p class="section-sub reveal" data-tr="Değişen mevzuat ve ekonomik koşullar içinde işletmelerin kayıt düzenini doğru kurması ve yasal yükümlülüklerini düzenli yürütmesi için kapsamlı muhasebe desteği sunuyoruz." data-en="We provide comprehensive accounting support so businesses can build the right record structure and manage their legal obligations smoothly under changing legislation and economic conditions." data-ru="Мы предоставляем комплексную бухгалтерскую поддержку, чтобы компании могли выстроить правильную систему учета и стабильно выполнять свои юридические обязательства в условиях меняющегося законодательства и экономики." data-ar="نقدّم دعماً محاسبياً متكاملاً حتى تتمكن الشركات من بناء نظام سجلات صحيح وإدارة التزاماتها القانونية بانتظام في ظل تغيّر التشريعات والظروف الاقتصادية.">Değişen mevzuat ve ekonomik koşullar içinde işletmelerin kayıt düzenini doğru kurması ve yasal yükümlülüklerini düzenli yürütmesi için kapsamlı muhasebe desteği sunuyoruz.</p>
+
+    <div class="accounting-showcase reveal">
+      <article class="accounting-showcase-card featured">
+        <img
+          src="https://images.pexels.com/photos/10347149/pexels-photo-10347149.jpeg?auto=compress&cs=tinysrgb&w=1400"
+          width="1400"
+          height="875"
+          alt="Muhasebe ve mali işler hizmetlerini destekleyen profesyonel çalışma masası, finans notları ve dizüstü bilgisayar"
+          loading="lazy"
+          decoding="async">
+        <div class="accounting-showcase-copy">
+          <strong data-tr="Mali görünürlüğü güçlendiren çalışma düzeni" data-en="A work setup that strengthens financial visibility" data-ru="Рабочая среда, усиливающая финансовую прозрачность" data-ar="بيئة عمل تعزّز الوضوح المالي">Mali görünürlüğü güçlendiren çalışma düzeni</strong>
+          <span data-tr="Belge akışı, hesap kontrolü ve düzenli raporlama aynı çerçevede ilerlediğinde işletme daha güvenli hareket eder." data-en="When document flow, account control and regular reporting move within the same framework, the business operates more confidently." data-ru="Когда документооборот, контроль счетов и регулярная отчётность идут в одной системе, бизнес действует увереннее." data-ar="عندما يسير تدفق المستندات ومراقبة الحسابات والتقارير المنتظمة ضمن إطار واحد، يتحرك العمل بثقة أكبر.">Belge akışı, hesap kontrolü ve düzenli raporlama aynı çerçevede ilerlediğinde işletme daha güvenli hareket eder.</span>
+        </div>
+      </article>
+      <article class="accounting-showcase-card">
+        <img
+          src="https://images.pexels.com/photos/36733320/pexels-photo-36733320.jpeg?auto=compress&cs=tinysrgb&w=1400"
+          width="1400"
+          height="900"
+          alt="Muhasebe danışmanlığını destekleyen profesyonel birebir iş görüşmesi"
+          loading="lazy"
+          decoding="async">
+        <div class="accounting-showcase-copy">
+          <strong data-tr="Birebir danışmanlık akışı" data-en="One-to-one advisory flow" data-ru="Персональный консультационный процесс" data-ar="مسار استشاري فردي">Birebir danışmanlık akışı</strong>
+          <span data-tr="Yöneticinin ihtiyacına göre yapılan net görüşmeler, muhasebe ve vergi tarafında doğru adımların daha hızlı atılmasını sağlar." data-en="Clear meetings shaped around management needs help the right accounting and tax steps happen faster." data-ru="Чёткие встречи, выстроенные под нужды руководства, помогают быстрее принимать верные бухгалтерские и налоговые решения." data-ar="تساعد الاجتماعات الواضحة المبنية على احتياج الإدارة على اتخاذ الخطوات الصحيحة في المحاسبة والضرائب بشكل أسرع.">Yöneticinin ihtiyacına göre yapılan net görüşmeler, muhasebe ve vergi tarafında doğru adımların daha hızlı atılmasını sağlar.</span>
+        </div>
+      </article>
+      <article class="accounting-showcase-card">
+        <img
+          src="https://images.pexels.com/photos/5439470/pexels-photo-5439470.jpeg?auto=compress&cs=tinysrgb&w=1400"
+          width="1400"
+          height="933"
+          alt="Güven veren iş ilişkisini temsil eden profesyonel tokalaşma"
+          loading="lazy"
+          decoding="async">
+        <div class="accounting-showcase-copy">
+          <strong data-tr="Güven veren mali iş ortaklığı" data-en="A trust-based financial partnership" data-ru="Финансовое партнёрство, основанное на доверии" data-ar="شراكة مالية مبنية على الثقة">Güven veren mali iş ortaklığı</strong>
+          <span data-tr="Muhasebe desteği yalnızca kayıt değil; uzun vadeli güven, şeffaf iletişim ve sürdürülebilir iş ilişkisi anlamına gelir." data-en="Accounting support is not only about records; it also means long-term trust, transparent communication and a sustainable business relationship." data-ru="Бухгалтерская поддержка — это не только учёт, но и долгосрочное доверие, прозрачное общение и устойчивое деловое партнёрство." data-ar="لا تعني المحاسبة مجرد السجلات، بل تعني أيضًا الثقة طويلة الأمد والتواصل الشفاف وعلاقة عمل مستدامة.">Muhasebe desteği yalnızca kayıt değil; uzun vadeli güven, şeffaf iletişim ve sürdürülebilir iş ilişkisi anlamına gelir.</span>
+        </div>
+      </article>
+    </div>
 
     <div class="accounting-intro reveal">
       <div class="accounting-intro-copy">
         <div class="card-kicker" data-tr="Muhasebe Altyapısı" data-en="Accounting Infrastructure" data-ru="Бухгалтерская инфраструктура" data-ar="البنية المحاسبية"><span class="kicker-dot"></span>Muhasebe Altyapısı</div>
         <h3 data-tr="Şirketinizin mali düzenini daha net, güvenli ve sürdürülebilir hale getirin" data-en="Make your company’s financial order clearer, safer and more sustainable" data-ru="Сделайте финансовый порядок вашей компании более ясным, безопасным и устойчивым" data-ar="اجعل النظام المالي لشركتك أكثر وضوحًا وأمانًا واستدامة">Şirketinizin mali düzenini daha net, güvenli ve sürdürülebilir hale getirin</h3>
-        <p data-tr="Yaşar Kaya Muhasebe Danışmanlığı olarak farklı sektörlerde faaliyet gösteren işletmelere muhasebe, bordro, vergi muhasebesi ve tescil işlemleri başlıklarında düzenli, kontrol edilebilir ve mevzuata uyumlu destek sunuyoruz. Amaç yalnızca kayıt tutmak değil; şirketin mali yapısını yönetime yardımcı olacak şekilde daha görünür, daha güvenli ve daha sürdürülebilir hale getirmektir." data-en="At Yasar Kaya Accounting Advisory, we provide regular, controllable and compliant support in accounting, payroll, tax accounting and registration for businesses across different sectors. The goal is not only to keep records, but to make the company’s financial structure more visible, safer and more sustainable for management." data-ru="В Yaşar Kaya Accounting Advisory мы предоставляем регулярную, контролируемую и соответствующую нормам поддержку по бухгалтерии, зарплате, налоговому учёту и регистрации для компаний из разных отраслей. Цель — не просто вести записи, а сделать финансовую структуру компании более прозрачной, безопасной и устойчивой для управления." data-ar="في Yaşar Kaya Accounting Advisory نقدم دعماً منتظماً وقابلاً للمتابعة ومتوافقاً مع التشريعات في المحاسبة والرواتب والمحاسبة الضريبية والتسجيل للشركات في مختلف القطاعات. والهدف ليس مجرد حفظ السجلات، بل جعل البنية المالية للشركة أكثر وضوحًا وأمانًا واستدامة للإدارة.">Yaşar Kaya Muhasebe Danışmanlığı olarak farklı sektörlerde faaliyet gösteren işletmelere muhasebe, bordro, vergi muhasebesi ve tescil işlemleri başlıklarında düzenli, kontrol edilebilir ve mevzuata uyumlu destek sunuyoruz. Amaç yalnızca kayıt tutmak değil; şirketin mali yapısını yönetime yardımcı olacak şekilde daha görünür, daha güvenli ve daha sürdürülebilir hale getirmektir.</p>
+        <p data-tr="Yaşar Kaya Muhasebe Danışmanlığı olarak işletmelere muhasebe, bordro, vergi muhasebesi ve tescil işlemlerinde düzenli ve mevzuata uyumlu destek veriyoruz. Hedefimiz, mali yapınızı daha görünür, daha güvenli ve daha yönetilebilir hale getirmektir." data-en="At Yasar Kaya Accounting Advisory, we support businesses in accounting, payroll, tax accounting and registration with a regular and compliant approach. Our goal is to make your financial structure clearer, safer and easier to manage." data-ru="В Yaşar Kaya Accounting Advisory мы поддерживаем компании в бухгалтерии, зарплате, налоговом учёте и регистрации с регулярным и соответствующим требованиям подходом. Наша цель — сделать финансовую структуру более понятной, безопасной и управляемой." data-ar="في Yaşar Kaya Accounting Advisory ندعم الشركات في المحاسبة والرواتب والمحاسبة الضريبية والتسجيل بنهج منتظم ومتوافق مع التشريعات. هدفنا هو جعل البنية المالية أكثر وضوحًا وأمانًا وأسهل في الإدارة.">Yaşar Kaya Muhasebe Danışmanlığı olarak işletmelere muhasebe, bordro, vergi muhasebesi ve tescil işlemlerinde düzenli ve mevzuata uyumlu destek veriyoruz. Hedefimiz, mali yapınızı daha görünür, daha güvenli ve daha yönetilebilir hale getirmektir.</p>
         <div class="accounting-intro-ribbon">
           <div class="accounting-intro-ribbon-item">
             <strong data-tr="Muhasebe Düzeni" data-en="Accounting Order" data-ru="Бухгалтерский порядок" data-ar="تنظيم المحاسبة">Muhasebe Düzeni</strong>
@@ -4219,9 +4407,8 @@ footer {
           </div>
         </div>
         <div class="accounting-intro-extra">
-          <p data-tr="Düzenli muhasebe takibi, yalnızca yasal yükümlülükleri yerine getirmek için değil; şirket sahibinin nakit akışını, gider yapısını ve vergi yükünü daha sağlıklı görmesi için de kritik öneme sahiptir." data-en="Regular accounting follow-up is critical not only for meeting legal obligations, but also for helping the business owner see cash flow, expense structure and tax burden more clearly." data-ru="Регулярное бухгалтерское сопровождение важно не только для выполнения юридических обязательств, но и для того, чтобы владелец бизнеса лучше видел денежный поток, структуру расходов и налоговую нагрузку." data-ar="تُعد المتابعة المحاسبية المنتظمة مهمة ليس فقط للوفاء بالالتزامات القانونية، بل أيضًا لتمكين صاحب العمل من رؤية التدفق النقدي وهيكل المصروفات والعبء الضريبي بشكل أوضح.">Düzenli muhasebe takibi, yalnızca yasal yükümlülükleri yerine getirmek için değil; şirket sahibinin nakit akışını, gider yapısını ve vergi yükünü daha sağlıklı görmesi için de kritik öneme sahiptir.</p>
-          <p data-tr="Bu nedenle hizmet yaklaşımımızı belge hazırlama veya beyan gönderme ile sınırlamıyor; mali tablo düzeni, bordro takibi, vergi planlaması ve resmi kayıt süreçlerini birbirini tamamlayan tek bir sistem içinde ele alıyoruz." data-en="That is why we do not limit our service approach to document preparation or filing declarations; we handle financial statement structure, payroll follow-up, tax planning and official registration processes as one connected system." data-ru="Поэтому мы не ограничиваем наш подход подготовкой документов или подачей деклараций; мы рассматриваем финансовую отчётность, сопровождение зарплат, налоговое планирование и официальную регистрацию как единую взаимосвязанную систему." data-ar="ولهذا لا نحصر نهجنا الخدمي في إعداد المستندات أو إرسال التصاريح فقط، بل نتعامل مع تنظيم القوائم المالية ومتابعة الرواتب والتخطيط الضريبي والتسجيلات الرسمية كنظام واحد مترابط.">Bu nedenle hizmet yaklaşımımızı belge hazırlama veya beyan gönderme ile sınırlamıyor; mali tablo düzeni, bordro takibi, vergi planlaması ve resmi kayıt süreçlerini birbirini tamamlayan tek bir sistem içinde ele alıyoruz.</p>
-          <p data-tr="İşletme büyüdükçe bu yapı, yönetim kararlarını hızlandıran ve olası hataları erkenden görünür kılan güçlü bir mali zemin oluşturur." data-en="As the business grows, this structure creates a strong financial foundation that speeds up management decisions and makes possible errors visible at an early stage." data-ru="По мере роста бизнеса такая структура формирует сильную финансовую основу, ускоряющую управленческие решения и заранее показывающую возможные ошибки." data-ar="ومع نمو العمل، يوفّر هذا الهيكل أساسًا ماليًا قويًا يسرّع قرارات الإدارة ويجعل الأخطاء المحتملة مرئية في مرحلة مبكرة.">İşletme büyüdükçe bu yapı, yönetim kararlarını hızlandıran ve olası hataları erkenden görünür kılan güçlü bir mali zemin oluşturur.</p>
+          <p data-tr="Düzenli muhasebe takibi, nakit akışını, gider yapısını ve vergi yükünü daha net görmeyi sağlar." data-en="Regular accounting follow-up helps you see cash flow, expense structure and tax burden more clearly." data-ru="Регулярное бухгалтерское сопровождение помогает яснее видеть денежный поток, структуру расходов и налоговую нагрузку." data-ar="تساعد المتابعة المحاسبية المنتظمة على رؤية التدفق النقدي وهيكل المصروفات والعبء الضريبي بشكل أوضح.">Düzenli muhasebe takibi, nakit akışını, gider yapısını ve vergi yükünü daha net görmeyi sağlar.</p>
+          <p data-tr="Bu yüzden muhasebe, bordro, vergi planlaması ve resmi kayıt süreçlerini tek bir sistem içinde birlikte yönetiyoruz." data-en="That is why we manage accounting, payroll, tax planning and official registration processes together within one system." data-ru="Поэтому мы ведём бухгалтерию, зарплату, налоговое планирование и официальную регистрацию вместе в одной системе." data-ar="ولهذا ندير المحاسبة والرواتب والتخطيط الضريبي والتسجيلات الرسمية معًا ضمن نظام واحد.">Bu yüzden muhasebe, bordro, vergi planlaması ve resmi kayıt süreçlerini tek bir sistem içinde birlikte yönetiyoruz.</p>
         </div>
         <div class="accounting-intro-framework">
           <div class="accounting-intro-framework-head">
@@ -4305,50 +4492,18 @@ footer {
     <div class="accounting-detail-grid">
       <article class="accounting-detail-card reveal">
         <figure class="accounting-card-media">
-          <div class="accounting-visual ledger-visual" role="img" aria-label="Muhasebe hizmetlerini temsil eden yevmiye kayıtları, hesap planı ve aylık kapanış özeti">
-            <div class="accounting-float-pill" style="top: 18px; right: 18px;"><span></span>Muhasebe Sistemi</div>
-            <div class="ledger-sheet">
-              <div class="ledger-title-row">
-                <div class="ledger-title">Yevmiye ve Defter Takibi</div>
-                <div class="ledger-chip">Tek Düzen</div>
-              </div>
-              <div class="ledger-columns">
-                <span>Hesap</span>
-                <span>Borç</span>
-                <span>Alacak</span>
-                <span>Bakiye</span>
-              </div>
-              <div class="ledger-entry">
-                <span>320.01 Satıcılar</span>
-                <strong>28.500</strong>
-                <strong>-</strong>
-                <strong>28.500</strong>
-              </div>
-              <div class="ledger-entry">
-                <span>120.10 Alıcılar</span>
-                <strong>-</strong>
-                <strong>41.200</strong>
-                <strong>41.200</strong>
-              </div>
-              <div class="ledger-entry">
-                <span>770.02 Genel Gider</span>
-                <strong>9.480</strong>
-                <strong>-</strong>
-                <strong>9.480</strong>
-              </div>
-              <div class="ledger-entry total">
-                <span>Aylık Kapanış</span>
-                <strong>37.980</strong>
-                <strong>41.200</strong>
-                <strong>3.220</strong>
-              </div>
-            </div>
-            <div class="ledger-summary">
-              <div class="ledger-title">Aylık Kapanış</div>
-              <strong>3 Dosya</strong>
-              <small>Yevmiye, kebir ve mali tablo kontrolü</small>
-            </div>
-          </div>
+          <img
+            src="https://images.pexels.com/photos/8296970/pexels-photo-8296970.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            width="1400"
+            height="934"
+            alt="Muhasebe kayıtları ve finansal evraklar üzerinde çalışan profesyonel"
+            loading="lazy"
+            decoding="async">
+          <div class="accounting-float-pill" style="top: 18px; right: 18px;" data-tr="Muhasebe" data-en="Accounting" data-ru="Бухгалтерия" data-ar="المحاسبة"><span></span>Muhasebe</div>
+          <figcaption class="accounting-card-photo-badge">
+            <strong data-tr="Muhasebe süreci dikkat ve kontrol ister" data-en="Accounting requires precision and control" data-ru="Бухгалтерия требует точности и контроля" data-ar="تتطلب المحاسبة دقةً ورقابة">Muhasebe süreci dikkat ve kontrol ister</strong>
+            <span data-tr="Kayıtların doğru kurulması ve düzenli kontrolü, şirketin mali temelini daha güçlü hale getirir." data-en="Accurate setup and regular review of records make the company’s financial foundation stronger." data-ru="Правильная постановка учета и регулярный контроль делают финансовую основу компании сильнее." data-ar="إن بناء السجلات بشكل صحيح ومراجعتها بانتظام يجعل الأساس المالي للشركة أقوى.">Kayıtların doğru kurulması ve düzenli kontrolü, şirketin mali temelini daha güçlü hale getirir.</span>
+          </figcaption>
         </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Muhasebe</div>
         <h3>Muhasebe</h3>
@@ -4365,43 +4520,18 @@ footer {
 
       <article class="accounting-detail-card reveal">
         <figure class="accounting-card-media">
-          <div class="accounting-visual payroll-visual" role="img" aria-label="Bordro hizmetlerini temsil eden maaş bordrosu, kesinti kalemleri ve kurum bildirimi görseli">
-            <div class="accounting-float-pill" style="top: 18px; right: 18px;"><span></span>Maaş Bordrosu</div>
-            <div class="payroll-card">
-              <div class="payroll-title-row">
-                <div class="payroll-title">Personel Bordrosu</div>
-                <div class="payroll-chip">Nisan</div>
-              </div>
-              <div class="payroll-person">
-                <strong>Net ücret ve yasal kesinti dengesi</strong>
-                <span>Brüt maaş, çalışan kesintileri ve işveren yükümlülükleri tek dökümde izlenir.</span>
-              </div>
-              <div class="payroll-breakdown">
-                <div class="payroll-breakdown-row">
-                  <span>Brüt Ücret</span>
-                  <strong>58.000 TL</strong>
-                </div>
-                <div class="payroll-breakdown-row">
-                  <span>Kesintiler</span>
-                  <strong>8.450 TL</strong>
-                </div>
-                <div class="payroll-breakdown-row">
-                  <span>Net Ödeme</span>
-                  <strong>49.550 TL</strong>
-                </div>
-              </div>
-            </div>
-            <div class="payroll-calendar">
-              <div class="payroll-title">Kurum Bildirimi</div>
-              <div class="payroll-stamps">
-                <span>Sosyal Sigorta</span>
-                <span>İhtiyat Sandığı</span>
-                <span>İşe Giriş / Çıkış</span>
-              </div>
-              <small>Aylık bordro ile birlikte resmi kurum bildirim akışı da takip edilir.</small>
-            </div>
-            <div class="payroll-tag">Brüt + Kesinti + Net</div>
-          </div>
+          <img
+            src="https://images.pexels.com/photos/6801683/pexels-photo-6801683.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            width="1400"
+            height="934"
+            alt="Bordro hesaplamaları için hesap makinesi ve evraklarla çalışan profesyonel"
+            loading="lazy"
+            decoding="async">
+          <div class="accounting-float-pill" style="top: 18px; right: 18px;" data-tr="Bordro" data-en="Payroll" data-ru="Зарплата" data-ar="الرواتب"><span></span>Bordro</div>
+          <figcaption class="accounting-card-photo-badge">
+            <strong data-tr="Bordro akışı düzenli hesaplama ister" data-en="Payroll requires consistent calculation" data-ru="Зарплата требует системного расчёта" data-ar="تتطلب الرواتب حسابًا منتظمًا">Bordro akışı düzenli hesaplama ister</strong>
+            <span data-tr="Personel kayıtları, kesintiler ve resmi bildirimler aynı akış içinde doğru planlandığında süreç güvenli ilerler." data-en="When personnel records, deductions and official filings are planned in one flow, the process moves securely." data-ru="Когда кадровые записи, удержания и официальные уведомления планируются в одном потоке, процесс идёт надёжно." data-ar="عندما تُخطط سجلات الموظفين والاستقطاعات والإشعارات الرسمية ضمن مسار واحد، تسير العملية بأمان.">Personel kayıtları, kesintiler ve resmi bildirimler aynı akış içinde doğru planlandığında süreç güvenli ilerler.</span>
+          </figcaption>
         </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Bordro</div>
         <h3>Bordro</h3>
@@ -4417,36 +4547,18 @@ footer {
 
       <article class="accounting-detail-card reveal">
         <figure class="accounting-card-media">
-          <div class="accounting-visual tax-visual" role="img" aria-label="Vergi muhasebesini temsil eden beyanname takibi, vergi türleri ve son tarih paneli">
-            <div class="accounting-float-pill" style="top: 18px; right: 18px;"><span></span>Vergi Takvimi</div>
-            <div class="tax-card">
-              <div class="tax-title-row">
-                <div class="tax-title">Beyanname Kontrolü</div>
-                <div class="tax-chip">KKTC</div>
-              </div>
-              <div class="tax-return-list">
-                <div class="tax-return-row">
-                  <span>KDV Beyanı</span>
-                  <strong>Hazır</strong>
-                </div>
-                <div class="tax-return-row">
-                  <span>Stopaj Beyanı</span>
-                  <strong>Kontrol</strong>
-                </div>
-                <div class="tax-return-row">
-                  <span>Kurumlar Vergisi</span>
-                  <strong>Takipte</strong>
-                </div>
-              </div>
-              <div class="tax-note">Matrah kontrolü, vergi hesaplaması ve beyan hazırlığı aynı hizmet akışında ilerler.</div>
-            </div>
-            <div class="tax-meter">
-              <div class="tax-title">Son Tarih</div>
-              <span class="tax-status-value">15</span>
-              <span class="tax-status-label">Aylık beyan günü</span>
-              <small>Hesaplama, kontrol ve zamanında gönderim planı</small>
-            </div>
-          </div>
+          <img
+            src="https://images.pexels.com/photos/6863203/pexels-photo-6863203.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            width="1400"
+            height="933"
+            alt="Vergi belgeleri, hesap makinesi ve ofis araçlarıyla hazırlanmış vergi muhasebesi görseli"
+            loading="lazy"
+            decoding="async">
+          <div class="accounting-float-pill" style="top: 18px; right: 18px;" data-tr="Vergi" data-en="Tax" data-ru="Налоги" data-ar="الضرائب"><span></span>Vergi</div>
+          <figcaption class="accounting-card-photo-badge">
+            <strong data-tr="Vergi dönemleri planlı ilerlemelidir" data-en="Tax periods must move with a clear plan" data-ru="Налоговые периоды должны идти по чёткому плану" data-ar="يجب أن تسير الفترات الضريبية وفق خطة واضحة">Vergi dönemleri planlı ilerlemelidir</strong>
+            <span data-tr="Beyanname hazırlığı, hesaplama ve zamanında gönderim aynı düzen içinde yürütüldüğünde risk azalır." data-en="When return preparation, calculation and timely filing are handled within one system, risk is reduced." data-ru="Когда подготовка деклараций, расчёты и своевременная подача ведутся в одной системе, риски снижаются." data-ar="عندما تُدار الإقرارات والحسابات والتقديم في موعده ضمن نظام واحد، تنخفض المخاطر.">Beyanname hazırlığı, hesaplama ve zamanında gönderim aynı düzen içinde yürütüldüğünde risk azalır.</span>
+          </figcaption>
         </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Vergi Muhasebesi</div>
         <h3>Vergi Muhasebesi</h3>
@@ -4461,43 +4573,18 @@ footer {
 
       <article class="accounting-detail-card reveal">
         <figure class="accounting-card-media">
-          <div class="accounting-visual registration-visual" role="img" aria-label="Tescil işlemlerini temsil eden kurum kayıt checklisti ve başvuru dosyası">
-            <div class="accounting-float-pill" style="top: 18px; right: 18px;"><span></span>Kurum Kaydı</div>
-            <div class="registration-paper">
-              <div class="registration-title-row">
-                <div class="registration-title">Tescil Dosyası</div>
-                <div class="registration-chip">Başvuru</div>
-              </div>
-              <div class="registration-checklist">
-                <div class="registration-check-item">
-                  <span class="registration-dot done"></span>
-                  <div>
-                    <strong>Vergi Dairesi</strong>
-                    <small>İlk kayıt formu ve mükellefiyet açılışı hazırlandı.</small>
-                  </div>
-                </div>
-                <div class="registration-check-item">
-                  <span class="registration-dot done"></span>
-                  <div>
-                    <strong>Sosyal Sigortalar</strong>
-                    <small>İşyeri bildirimi ve personel açılış süreci eşleştirildi.</small>
-                  </div>
-                </div>
-                <div class="registration-check-item">
-                  <span class="registration-dot done"></span>
-                  <div>
-                    <strong>İhtiyat Sandığı</strong>
-                    <small>Kurum kaydı ve bordro bağlantısı aynı dosya akışına alındı.</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="registration-badge">
-              <div class="registration-check">✓</div>
-              <strong>3 Kurum</strong>
-              <small>Vergi, sosyal sigorta ve ihtiyat sandığı dosyaları hazırlandı.</small>
-            </div>
-          </div>
+          <img
+            src="https://images.pexels.com/photos/8205060/pexels-photo-8205060.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            width="1400"
+            height="933"
+            alt="Resmi belge imzalama sürecini gösteren tescil işlemleri görseli"
+            loading="lazy"
+            decoding="async">
+          <div class="accounting-float-pill" style="top: 18px; right: 18px;" data-tr="Tescil" data-en="Registration" data-ru="Регистрация" data-ar="التسجيل"><span></span>Tescil</div>
+          <figcaption class="accounting-card-photo-badge">
+            <strong data-tr="Tescil süreci doğru evrakla başlar" data-en="Registration starts with the right documents" data-ru="Регистрация начинается с правильных документов" data-ar="تبدأ عملية التسجيل بالمستندات الصحيحة">Tescil süreci doğru evrakla başlar</strong>
+            <span data-tr="Vergi, sosyal sigorta ve diğer resmi kayıt adımları eksiksiz ilerlediğinde sonraki süreçler daha sağlam kurulur." data-en="When tax, social insurance and official registration steps are completed properly, the next stages are built on stronger ground." data-ru="Когда налоговые, страховые и официальные регистрационные шаги выполнены правильно, следующие этапы строятся на более прочной основе." data-ar="عندما تُنجز خطوات الضرائب والتأمين الاجتماعي والتسجيل الرسمي بشكل صحيح، تُبنى المراحل التالية على أساس أقوى.">Vergi, sosyal sigorta ve diğer resmi kayıt adımları eksiksiz ilerlediğinde sonraki süreçler daha sağlam kurulur.</span>
+          </figcaption>
         </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Tescil İşlemleri</div>
         <h3>Tescil İşlemleri</h3>
