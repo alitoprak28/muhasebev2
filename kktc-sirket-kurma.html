@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KKTC'de Şirket Kurma | Yaşar Kaya Danışmanlık</title>
-<meta name="description" content="Kuzey Kıbrıs'ta şirket kurmanın en güvenilir adresi. 25 yıllık deneyim, 500+ kurulan şirket.">
+<title>Yaşar Kaya Muhasebe Danışmanlığı | Vergi, Bordro ve Mali Hizmetler</title>
+<meta name="description" content="KKTC'de muhasebe, vergi, bordro, tescil ve mali danışmanlık hizmetleri. 25+ yıllık deneyimle işletmeler için güvenilir mali destek.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -393,6 +393,7 @@ section { padding: 100px 48px; }
 }
 .corporate-lead-media,
 .service-card-media,
+.portal-card-media,
 .contact-visual-media {
   position: relative;
   overflow: hidden;
@@ -403,6 +404,7 @@ section { padding: 100px 48px; }
   box-shadow: var(--shadow-lg);
 }
 .corporate-lead-media::after,
+.portal-card-media::after,
 .service-card-media::after,
 .contact-visual-media::after {
   content: '';
@@ -547,10 +549,21 @@ section { padding: 100px 48px; }
   border-radius: 24px 24px 18px 18px;
   background: rgba(var(--cream-rgb),0.9);
 }
+.portal-card-media {
+  margin: -28px -28px 20px;
+  aspect-ratio: 16 / 10;
+  border-radius: 24px 24px 18px 18px;
+  background: rgba(var(--cream-rgb),0.92);
+}
+.portal-card-media::after {
+  background:
+    linear-gradient(180deg, rgba(var(--white-rgb),0.02) 0%, rgba(var(--navy-rgb),0.14) 100%);
+}
 .service-card-media::after {
   background:
     linear-gradient(180deg, rgba(var(--white-rgb),0.02) 0%, rgba(var(--navy-rgb),0.16) 100%);
 }
+.portal-card-media img,
 .service-card-media img {
   width: 100%;
   height: 100%;
@@ -558,6 +571,7 @@ section { padding: 100px 48px; }
   object-position: center;
   transition: transform 0.35s ease;
 }
+.portal-card:hover .portal-card-media img { transform: scale(1.04); }
 .service-hub-card:hover .service-card-media img { transform: scale(1.04); }
 .audit-visual {
   position: relative;
@@ -734,6 +748,819 @@ section { padding: 100px 48px; }
   border: 1px solid rgba(var(--blue-rgb),0.08);
   color: var(--text);
   font-size: 13px;
+}
+.accounting-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: 26px;
+  margin-top: 44px;
+  padding: 30px;
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(var(--white-rgb),0.96) 0%, rgba(var(--cream-rgb),0.92) 100%);
+  border: 1px solid rgba(var(--blue-rgb),0.08);
+  box-shadow: 0 28px 56px rgba(var(--navy-rgb),0.08);
+}
+.accounting-intro-copy h3 {
+  font-size: 32px;
+  margin-bottom: 14px;
+}
+.accounting-intro-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.accounting-intro-copy p {
+  max-width: 62ch;
+  margin-bottom: 0;
+}
+.accounting-intro-extra {
+  display: grid;
+  gap: 12px;
+}
+.accounting-intro-extra p {
+  margin-bottom: 0;
+  color: var(--text-muted);
+  line-height: 1.72;
+}
+.accounting-intro-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.accounting-intro-ribbon-item {
+  padding: 14px 14px 13px;
+  border-radius: 18px;
+  background: rgba(var(--white-rgb),0.86);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: 0 14px 28px rgba(var(--navy-rgb),0.05);
+}
+.accounting-intro-ribbon-item strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: var(--navy);
+}
+.accounting-intro-ribbon-item span {
+  display: block;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.accounting-intro-framework {
+  padding: 22px;
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(var(--navy-rgb),0.04) 0%, rgba(var(--white-rgb),0.92) 32%, rgba(var(--cream-rgb),0.92) 100%);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: 0 16px 32px rgba(var(--navy-rgb),0.07);
+}
+.accounting-intro-framework-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.accounting-intro-framework-head strong {
+  display: block;
+  font-size: 18px;
+  color: var(--navy);
+}
+.accounting-intro-framework-head span {
+  display: block;
+  max-width: 42ch;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.accounting-intro-framework-pill {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 94px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--orange) 0%, #ff8f5a 100%);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 16px 30px rgba(var(--orange-rgb),0.22);
+}
+.accounting-intro-framework-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.accounting-intro-framework-item {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(var(--white-rgb),0.84);
+  border: 1px solid rgba(var(--blue-rgb),0.08);
+}
+.accounting-intro-framework-item strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 15px;
+  color: var(--navy);
+}
+.accounting-intro-framework-item span {
+  display: block;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.accounting-intro-trust {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+.accounting-intro-trust-card {
+  padding: 18px 16px;
+  border-radius: 18px;
+  background: rgba(var(--white-rgb),0.86);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: 0 14px 28px rgba(var(--navy-rgb),0.06);
+}
+.accounting-intro-trust-card strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--navy);
+}
+.accounting-intro-trust-card span {
+  display: block;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.accounting-intro-side {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+.accounting-intro-media {
+  position: relative;
+  overflow: hidden;
+  min-height: 290px;
+  border-radius: 24px;
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: 0 22px 44px rgba(var(--navy-rgb),0.12);
+  background: rgba(var(--cream-rgb),0.88);
+}
+.accounting-intro-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(var(--white-rgb),0.02) 0%, rgba(var(--navy-rgb),0.20) 100%);
+}
+.accounting-intro-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.35s ease;
+}
+.accounting-intro:hover .accounting-intro-media img { transform: scale(1.04); }
+.accounting-intro-badge {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(var(--white-rgb),0.92);
+  border: 1px solid rgba(var(--white-rgb),0.70);
+  box-shadow: 0 14px 30px rgba(var(--navy-rgb),0.12);
+}
+.accounting-intro-badge strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: var(--navy);
+}
+.accounting-intro-badge span {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.accounting-highlight-list {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.accounting-highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(var(--white-rgb),0.82);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+}
+.accounting-highlight-item::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  margin-top: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--accent), #FF5D47);
+}
+.accounting-highlight-item strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--navy);
+  font-size: 15px;
+}
+.accounting-highlight-item span {
+  display: block;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.accounting-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+.accounting-detail-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border-radius: 24px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+.accounting-detail-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--blue-rgb),0.16);
+  box-shadow: 0 18px 42px rgba(var(--navy-rgb),0.12);
+}
+.accounting-card-media {
+  position: relative;
+  overflow: hidden;
+  margin: -28px -28px 20px;
+  aspect-ratio: 16 / 10;
+  border-radius: 24px 24px 18px 18px;
+}
+.accounting-card-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(var(--white-rgb),0.03) 0%, rgba(var(--navy-rgb),0.15) 100%);
+}
+.accounting-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.accounting-float-pill {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(var(--white-rgb),0.90);
+  border: 1px solid rgba(var(--white-rgb),0.66);
+  box-shadow: 0 12px 24px rgba(var(--navy-rgb),0.12);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+  z-index: 1;
+}
+.accounting-float-pill span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange) 0%, #ff9261 100%);
+}
+.ledger-visual {
+  background:
+    radial-gradient(circle at top left, rgba(var(--white-rgb),0.42), transparent 28%),
+    linear-gradient(135deg, #F7EFE5 0%, #E8EEF9 52%, #DDE7FA 100%);
+}
+.ledger-sheet,
+.ledger-summary {
+  position: absolute;
+  background: rgba(var(--white-rgb),0.88);
+  border: 1px solid rgba(var(--blue-rgb),0.09);
+  box-shadow: 0 18px 32px rgba(var(--navy-rgb),0.10);
+}
+.ledger-sheet {
+  left: 24px;
+  top: 28px;
+  width: calc(100% - 130px);
+  height: calc(100% - 54px);
+  padding: 18px;
+  border-radius: 22px;
+}
+.ledger-summary {
+  right: 22px;
+  bottom: 24px;
+  width: 110px;
+  padding: 14px 12px;
+  border-radius: 18px;
+}
+.ledger-title,
+.payroll-title,
+.tax-title,
+.registration-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.ledger-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 16px;
+}
+.ledger-grid span,
+.registration-lines span,
+.tax-lines span {
+  display: block;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(var(--blue-rgb),0.10);
+}
+.ledger-grid span:nth-child(5n),
+.tax-lines span:nth-child(2n) {
+  background: rgba(var(--orange-rgb),0.16);
+}
+.ledger-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 68px;
+  margin-top: 18px;
+}
+.ledger-bars span {
+  flex: 1;
+  border-radius: 12px 12px 6px 6px;
+  background: linear-gradient(180deg, rgba(var(--blue-rgb),0.28) 0%, rgba(var(--blue-rgb),0.74) 100%);
+}
+.ledger-bars span:nth-child(1) { height: 36px; }
+.ledger-bars span:nth-child(2) { height: 52px; }
+.ledger-bars span:nth-child(3) { height: 44px; }
+.ledger-bars span:nth-child(4) { height: 62px; }
+.ledger-bars span:nth-child(5) { height: 54px; }
+.ledger-summary strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--orange);
+}
+.ledger-summary small {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.ledger-title-row,
+.payroll-title-row,
+.tax-title-row,
+.registration-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.ledger-chip,
+.payroll-chip,
+.tax-chip,
+.registration-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(var(--blue-rgb),0.08);
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.ledger-columns,
+.ledger-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) repeat(3, minmax(0, 0.8fr));
+  gap: 8px;
+  align-items: center;
+}
+.ledger-columns {
+  margin-top: 16px;
+  padding: 0 2px;
+}
+.ledger-columns span {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+.ledger-entry {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(var(--blue-rgb),0.06);
+  border: 1px solid rgba(var(--blue-rgb),0.08);
+}
+.ledger-entry span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.ledger-entry strong {
+  font-size: 12px;
+  text-align: right;
+  color: var(--navy);
+}
+.ledger-entry.total {
+  margin-top: 12px;
+  background: linear-gradient(135deg, rgba(var(--orange-rgb),0.10) 0%, rgba(var(--blue-rgb),0.08) 100%);
+  border-color: rgba(var(--orange-rgb),0.16);
+}
+.payroll-visual {
+  background:
+    radial-gradient(circle at top left, rgba(var(--white-rgb),0.36), transparent 28%),
+    linear-gradient(135deg, #F5F9FF 0%, #EAF1FC 48%, #FBE6D8 100%);
+}
+.payroll-card,
+.payroll-calendar {
+  position: absolute;
+  background: rgba(var(--white-rgb),0.90);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: 0 18px 32px rgba(var(--navy-rgb),0.10);
+}
+.payroll-card {
+  left: 24px;
+  top: 28px;
+  width: calc(100% - 132px);
+  height: calc(100% - 56px);
+  border-radius: 22px;
+  padding: 18px;
+}
+.payroll-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(var(--blue-rgb),0.18) 0%, rgba(var(--orange-rgb),0.18) 100%);
+}
+.payroll-lines {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.payroll-lines span {
+  display: block;
+  height: 11px;
+  border-radius: 999px;
+  background: rgba(var(--blue-rgb),0.10);
+}
+.payroll-lines span:last-child {
+  width: 72%;
+  background: rgba(var(--orange-rgb),0.16);
+}
+.payroll-calendar {
+  right: 24px;
+  bottom: 24px;
+  width: 108px;
+  border-radius: 18px;
+  padding: 12px;
+}
+.payroll-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 12px;
+}
+.payroll-calendar-grid span {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: rgba(var(--blue-rgb),0.10);
+}
+.payroll-calendar-grid span:nth-child(6),
+.payroll-calendar-grid span:nth-child(11) {
+  background: rgba(var(--orange-rgb),0.24);
+}
+.payroll-tag {
+  position: absolute;
+  left: 22px;
+  bottom: 24px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--orange) 0%, #ff8f5a 100%);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 16px 30px rgba(var(--orange-rgb),0.24);
+}
+.payroll-person {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(var(--orange-rgb),0.08);
+  border: 1px solid rgba(var(--orange-rgb),0.12);
+}
+.payroll-person strong {
+  display: block;
+  font-size: 15px;
+  color: var(--navy);
+}
+.payroll-person span {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.payroll-breakdown {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+.payroll-breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(var(--blue-rgb),0.06);
+  border: 1px solid rgba(var(--blue-rgb),0.08);
+}
+.payroll-breakdown-row span,
+.payroll-breakdown-row strong {
+  font-size: 12px;
+  color: var(--navy);
+}
+.payroll-stamps {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+.payroll-stamps span {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(var(--orange-rgb),0.10);
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+}
+.payroll-calendar small {
+  display: block;
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: left;
+}
+.tax-visual {
+  background:
+    radial-gradient(circle at top left, rgba(var(--white-rgb),0.36), transparent 28%),
+    linear-gradient(135deg, #EEF4FF 0%, #E4ECFB 46%, #F3E4DA 100%);
+}
+.tax-card,
+.tax-meter {
+  position: absolute;
+  background: rgba(var(--white-rgb),0.90);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: 0 18px 32px rgba(var(--navy-rgb),0.10);
+}
+.tax-card {
+  inset: 30px 126px 30px 24px;
+  border-radius: 22px;
+  padding: 18px;
+}
+.tax-lines {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.tax-meter {
+  right: 22px;
+  top: 30px;
+  bottom: 30px;
+  width: 104px;
+  border-radius: 18px;
+  padding: 14px 12px;
+}
+.tax-ring {
+  width: 64px;
+  height: 64px;
+  margin: 14px auto 12px;
+  border-radius: 50%;
+  background:
+    conic-gradient(var(--orange) 0 68%, rgba(var(--blue-rgb),0.12) 68% 100%);
+  position: relative;
+}
+.tax-ring::after {
+  content: '68%';
+  position: absolute;
+  inset: 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(var(--white-rgb),0.94);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.tax-meter small,
+.registration-badge small {
+  display: block;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.tax-return-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+.tax-return-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(var(--blue-rgb),0.06);
+  border: 1px solid rgba(var(--blue-rgb),0.08);
+}
+.tax-return-row span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.tax-return-row strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(var(--orange-rgb),0.12);
+  color: var(--orange);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.tax-note {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(var(--orange-rgb),0.08);
+  border: 1px solid rgba(var(--orange-rgb),0.12);
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.tax-status-value {
+  display: block;
+  margin: 18px 0 6px;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 800;
+  text-align: center;
+  color: var(--orange);
+}
+.tax-status-label {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.registration-visual {
+  background:
+    radial-gradient(circle at top left, rgba(var(--white-rgb),0.34), transparent 28%),
+    linear-gradient(135deg, #F8F1E8 0%, #EDE9FF 48%, #DDE9FB 100%);
+}
+.registration-paper,
+.registration-badge {
+  position: absolute;
+  background: rgba(var(--white-rgb),0.90);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: 0 18px 32px rgba(var(--navy-rgb),0.10);
+}
+.registration-paper {
+  left: 24px;
+  right: 108px;
+  top: 28px;
+  bottom: 24px;
+  border-radius: 22px;
+  padding: 18px;
+}
+.registration-lines {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.registration-lines span:last-child {
+  width: 78%;
+}
+.registration-badge {
+  right: 22px;
+  top: 54px;
+  width: 110px;
+  border-radius: 18px;
+  padding: 14px 12px;
+  text-align: center;
+}
+.registration-badge strong {
+  display: block;
+  margin: 12px 0 6px;
+  font-size: 15px;
+  color: var(--navy);
+}
+.registration-check {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(var(--orange-rgb),0.18) 0%, rgba(var(--blue-rgb),0.14) 100%);
+  color: var(--orange);
+  font-size: 24px;
+  font-weight: 800;
+}
+.registration-checklist {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.registration-check-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 12px;
+  align-items: start;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(var(--blue-rgb),0.06);
+  border: 1px solid rgba(var(--blue-rgb),0.08);
+}
+.registration-dot {
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: rgba(var(--blue-rgb),0.18);
+}
+.registration-dot.done {
+  background: linear-gradient(135deg, var(--orange) 0%, #ff8f5a 100%);
+  box-shadow: 0 0 0 4px rgba(var(--orange-rgb),0.12);
+}
+.registration-check-item strong {
+  display: block;
+  font-size: 13px;
+  color: var(--navy);
+}
+.registration-check-item small {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--text-muted);
+}
+.accounting-detail-card h3 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+.accounting-detail-card p {
+  color: var(--text-muted);
+  line-height: 1.72;
+}
+.accounting-detail-card .detail-list {
+  gap: 12px;
+}
+.accounting-detail-card .detail-list li {
+  font-size: 14px;
 }
 .news-list {
   display: grid;
@@ -2274,7 +3101,10 @@ footer {
   .footer-grid { gap: 32px; }
   .footer-bottom { gap: 12px; }
   .stat-card { border-radius: 20px !important; }
-  .service-card-media { margin: -24px -24px 18px; }
+  .service-card-media,
+  .portal-card-media { margin: -24px -24px 18px; }
+  .accounting-intro,
+  .accounting-detail-grid { grid-template-columns: 1fr; }
   .section-visual-grid { grid-template-columns: 1fr; }
   .section-visual-art { min-height: 260px; }
   .formation-media,
@@ -2403,6 +3233,7 @@ footer {
   .footer-grid { grid-template-columns: 1fr; }
   .portal-grid,
   .service-hub-grid,
+  .accounting-detail-grid,
   .formation-grid,
   .sector-grid,
   .tax-grid,
@@ -2412,6 +3243,7 @@ footer {
   .testi-grid { grid-template-columns: 1fr; }
   .portal-grid,
   .service-hub-grid,
+  .accounting-detail-grid,
   .formation-grid,
   .sector-grid,
   .tax-grid,
@@ -2423,6 +3255,7 @@ footer {
   .footer-grid { gap: 16px; }
   .portal-grid,
   .service-hub-grid,
+  .accounting-detail-grid,
   .formation-grid,
   .sector-grid,
   .tax-grid,
@@ -2435,6 +3268,7 @@ footer {
   .contact-grid { margin-top: 32px; }
   .portal-card,
   .service-hub-card,
+  .accounting-detail-card,
   .sector-card,
   .tax-panel,
   .formation-card,
@@ -2454,10 +3288,93 @@ footer {
   .tax-panel h3,
   .formation-card h3,
   .news-item h3 { font-size: 21px; }
-  .service-card-media {
+  .service-card-media,
+  .portal-card-media {
     margin: -22px -22px 18px;
     border-radius: 20px 20px 16px 16px;
   }
+  .accounting-intro {
+    padding: 22px;
+    gap: 18px;
+    margin-top: 32px;
+    border-radius: 22px;
+  }
+  .accounting-intro-media { min-height: 250px; }
+  .accounting-intro-badge {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    padding: 14px 15px;
+  }
+  .accounting-intro-framework {
+    padding: 18px;
+    border-radius: 20px;
+  }
+  .accounting-intro-ribbon {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .accounting-intro-framework-head {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .accounting-intro-framework-grid {
+    grid-template-columns: 1fr;
+  }
+  .accounting-intro-trust {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .accounting-intro-trust-card strong { font-size: 22px; }
+  .accounting-intro-copy h3 { font-size: 28px; }
+  .accounting-highlight-item { padding: 14px 16px; }
+  .accounting-card-media {
+    margin: -22px -22px 18px;
+    border-radius: 20px 20px 16px 16px;
+  }
+  .ledger-columns,
+  .ledger-entry {
+    grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, 0.72fr));
+    gap: 6px;
+  }
+  .ledger-entry,
+  .payroll-breakdown-row,
+  .tax-return-row,
+  .registration-check-item {
+    padding: 9px 10px;
+  }
+  .ledger-sheet,
+  .payroll-card,
+  .tax-card,
+  .registration-paper {
+    left: 18px;
+  }
+  .ledger-sheet {
+    width: calc(100% - 112px);
+    padding: 16px;
+  }
+  .payroll-card {
+    width: calc(100% - 116px);
+    padding: 16px;
+  }
+  .tax-card {
+    inset: 24px 112px 24px 18px;
+    padding: 16px;
+  }
+  .registration-paper {
+    right: 96px;
+    top: 24px;
+    bottom: 20px;
+    padding: 16px;
+  }
+  .ledger-summary,
+  .payroll-calendar,
+  .tax-meter,
+  .registration-badge {
+    right: 18px;
+    width: 94px;
+  }
+  .ledger-summary strong { font-size: 20px; }
   .audit-paper {
     padding: 14px 14px 12px;
     border-radius: 18px;
@@ -2607,6 +3524,7 @@ footer {
   .section-title { font-size: clamp(26px, 8.8vw, 34px); }
   .portal-card,
   .service-hub-card,
+  .accounting-detail-card,
   .sector-card,
   .tax-panel,
   .formation-card,
@@ -2622,6 +3540,120 @@ footer {
     padding: 20px 18px;
   }
   .quiz-header { padding: 20px 18px; }
+  .accounting-intro {
+    padding: 20px 18px;
+    border-radius: 20px;
+  }
+  .accounting-intro-media {
+    min-height: 220px;
+    border-radius: 20px;
+  }
+  .accounting-intro-badge {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 13px 14px;
+    border-radius: 16px;
+  }
+  .accounting-intro-copy h3 { font-size: 24px; }
+  .accounting-intro-ribbon {
+    grid-template-columns: 1fr;
+  }
+  .accounting-intro-ribbon-item {
+    padding: 13px 14px;
+    border-radius: 16px;
+  }
+  .accounting-intro-framework {
+    padding: 16px 14px;
+    border-radius: 18px;
+  }
+  .accounting-intro-framework-item {
+    padding: 14px;
+    border-radius: 16px;
+  }
+  .accounting-intro-trust-card {
+    padding: 16px 14px;
+    border-radius: 16px;
+  }
+  .accounting-intro-trust-card strong { font-size: 20px; }
+  .accounting-highlight-item {
+    padding: 13px 14px;
+    border-radius: 16px;
+  }
+  .accounting-card-media {
+    margin: -20px -18px 16px;
+    aspect-ratio: 16 / 11;
+  }
+  .ledger-chip,
+  .payroll-chip,
+  .tax-chip,
+  .registration-chip {
+    padding: 5px 8px;
+    font-size: 9px;
+  }
+  .ledger-columns,
+  .ledger-entry {
+    grid-template-columns: minmax(0, 1.15fr) repeat(3, minmax(34px, 0.75fr));
+    gap: 6px;
+  }
+  .ledger-columns span,
+  .ledger-entry span,
+  .ledger-entry strong,
+  .payroll-breakdown-row span,
+  .payroll-breakdown-row strong,
+  .tax-return-row span,
+  .registration-check-item strong,
+  .registration-check-item small {
+    font-size: 10px;
+  }
+  .tax-return-row strong {
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+  .payroll-person,
+  .tax-note,
+  .registration-check-item {
+    padding: 10px 11px;
+  }
+  .accounting-float-pill {
+    left: 14px !important;
+    top: 14px !important;
+    right: auto !important;
+    bottom: auto !important;
+    font-size: 10px;
+    padding: 7px 10px;
+  }
+  .ledger-sheet,
+  .payroll-card,
+  .tax-card,
+  .registration-paper {
+    left: 14px;
+    top: 44px;
+    padding: 14px;
+    border-radius: 18px;
+  }
+  .ledger-sheet {
+    width: calc(100% - 28px);
+    height: calc(100% - 58px);
+  }
+  .payroll-card {
+    width: calc(100% - 28px);
+    height: calc(100% - 58px);
+  }
+  .tax-card {
+    inset: 44px 14px 14px 14px;
+  }
+  .registration-paper {
+    right: 14px;
+    bottom: 14px;
+  }
+  .ledger-summary,
+  .payroll-calendar,
+  .tax-meter,
+  .registration-badge,
+  .payroll-tag {
+    display: none;
+  }
   .corporate-lead-copy,
   .contact-visual-body {
     padding: 20px 18px;
@@ -2645,7 +3677,8 @@ footer {
     flex: none;
   }
   .stats-grid { grid-template-columns: 1fr; }
-  .service-card-media {
+  .service-card-media,
+  .portal-card-media {
     margin: -20px -18px 16px;
     aspect-ratio: 16 / 11;
   }
@@ -2812,7 +3845,7 @@ footer {
     </div>
     <div>
       <div class="logo-text">Yaşar Kaya Danışmanlık</div>
-      <div class="logo-sub" data-tr="Şirket Kurma Danışmanlığı" data-en="Company Formation Advisory" data-ru="Консультации по регистрации" data-ar="استشارات تأسيس الشركات">Şirket Kurma Danışmanlığı</div>
+      <div class="logo-sub" data-tr="Muhasebe Danışmanlığı" data-en="Accounting Advisory" data-ru="Консультации по бухгалтерии" data-ar="استشارات محاسبية">Muhasebe Danışmanlığı</div>
     </div>
   </a>
 
@@ -2820,9 +3853,9 @@ footer {
     <a href="#corporate" class="nav-link" data-tr="Kurumsal" data-en="Corporate" data-ru="Корпоратив" data-ar="المؤسسية">Kurumsal</a>
     <a href="#services-hub" class="nav-link" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</a>
     <a href="#news-hub" class="nav-link" data-tr="Haberler" data-en="News" data-ru="Новости" data-ar="الأخبار">Haberler</a>
-    <a href="#formation-hub" class="nav-link" data-tr="Şirket Kurma" data-en="Company Formation" data-ru="Регистрация" data-ar="تأسيس الشركات">Şirket Kurma</a>
     <a href="#sectors-hub" class="nav-link" data-tr="Sektörler" data-en="Sectors" data-ru="Секторы" data-ar="القطاعات">Sektörler</a>
     <a href="#taxes-hub" class="nav-link" data-tr="Vergiler" data-en="Taxes" data-ru="Налоги" data-ar="الضرائب">Vergiler</a>
+    <a href="#formation-hub" class="nav-link" data-tr="Kuruluş & Tescil" data-en="Setup & Registration" data-ru="Создание и регистрация" data-ar="التأسيس والتسجيل">Kuruluş & Tescil</a>
     <a href="#contact" class="nav-link" data-tr="İletişim" data-en="Contact" data-ru="Контакт" data-ar="تواصل">İletişim</a>
   </nav>
 
@@ -2852,9 +3885,9 @@ footer {
   <a href="#corporate" onclick="toggleMobileNav()" data-tr="Kurumsal" data-en="Corporate" data-ru="Корпоратив" data-ar="المؤسسية">Kurumsal</a>
   <a href="#services-hub" onclick="toggleMobileNav()" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</a>
   <a href="#news-hub" onclick="toggleMobileNav()" data-tr="Haberler" data-en="News" data-ru="Новости" data-ar="الأخبار">Haberler</a>
-  <a href="#formation-hub" onclick="toggleMobileNav()" data-tr="Şirket Kurma" data-en="Company Formation" data-ru="Регистрация" data-ar="تأسيس الشركات">Şirket Kurma</a>
   <a href="#sectors-hub" onclick="toggleMobileNav()" data-tr="Sektörler" data-en="Sectors" data-ru="Секторы" data-ar="القطاعات">Sektörler</a>
   <a href="#taxes-hub" onclick="toggleMobileNav()" data-tr="Vergiler" data-en="Taxes" data-ru="Налоги" data-ar="الضرائب">Vergiler</a>
+  <a href="#formation-hub" onclick="toggleMobileNav()" data-tr="Kuruluş & Tescil" data-en="Setup & Registration" data-ru="Создание и регистрация" data-ar="التأسيس والتسجيل">Kuruluş & Tescil</a>
   <a href="#contact" onclick="toggleMobileNav()" data-tr="İletişim" data-en="Contact" data-ru="Контакт" data-ar="تواصل">İletişim</a>
   <a href="#live-support" class="mobile-nav-live" onclick="openLiveSupport(event)" data-tr="Canlı Desteği Aç →" data-en="Open Live Support →" data-ru="Открыть чат →" data-ar="افتح الدعم المباشر ←">Canlı Desteği Aç →</a>
 </div>
@@ -2867,16 +3900,16 @@ footer {
   <div class="hero-content">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
-      <span data-tr="25+ Yıldır KKTC'de Güvenilir Danışmanlık" data-en="25+ Years of Trusted Advisory in TRNC" data-ru="25+ лет надёжных консультаций на Северном Кипре" data-ar="أكثر من 25 عامًا من الاستشارات الموثوقة">25+ Yıldır KKTC'de Güvenilir Danışmanlık</span>
+      <span data-tr="25+ Yıldır KKTC'de Güvenilir Muhasebe Desteği" data-en="25+ Years of Trusted Accounting Support in TRNC" data-ru="25+ лет надёжной бухгалтерской поддержки на Северном Кипре" data-ar="أكثر من 25 عامًا من الدعم المحاسبي الموثوق في شمال قبرص">25+ Yıldır KKTC'de Güvenilir Muhasebe Desteği</span>
     </div>
     <h1 class="hero-title">
-      <span data-tr="Kuzey Kıbrıs'ta" data-en="Establish Your" data-ru="Откройте компанию" data-ar="أسس شركتك في">Kuzey Kıbrıs'ta</span><br>
-      <span class="gold-text" data-tr="Şirketinizi Kurun" data-en="Company in Northern Cyprus" data-ru="на Северном Кипре" data-ar="شمال قبرص">Şirketinizi Kurun</span>
+      <span data-tr="KKTC'de Güvenilir" data-en="Trusted" data-ru="Надёжное" data-ar="موثوقة في شمال قبرص">KKTC'de Güvenilir</span><br>
+      <span class="gold-text" data-tr="Muhasebe Danışmanlığı" data-en="Accounting Advisory" data-ru="Бухгалтерское консультирование" data-ar="الاستشارات المحاسبية">Muhasebe Danışmanlığı</span>
     </h1>
-    <p class="hero-sub" data-tr="KKTC'nin gelişen ekonomisinde yatırım yapın. Vergi avantajları, hızlı tescil süreci ve 25 yıllık profesyonel deneyimle yanınızdayız." data-en="Invest in the TRNC's growing economy. We provide tax advantages, fast registration, and 25 years of professional expertise." data-ru="Инвестируйте в развивающуюся экономику Северного Кипра. Налоговые льготы, быстрая регистрация и 25 лет опыта." data-ar="استثمر في اقتصاد شمال قبرص المتنامي. مزايا ضريبية، تسجيل سريع، وخبرة 25 عامًا.">KKTC'nin gelişen ekonomisinde yatırım yapın. Vergi avantajları, hızlı tescil süreci ve 25 yıllık profesyonel deneyimle yanınızdayız.</p>
+    <p class="hero-sub" data-tr="Muhasebe, vergi, bordro, tescil ve mali raporlama başlıklarında işletmenize düzenli, anlaşılır ve güven veren danışmanlık desteği sunuyoruz." data-en="We provide clear and reliable advisory support for your business across accounting, tax, payroll, registration and financial reporting." data-ru="Мы предлагаем понятную и надёжную поддержку по бухгалтерии, налогам, зарплате, регистрации и финансовой отчётности." data-ar="نقدم دعماً استشارياً واضحاً وموثوقاً لأعمالك في المحاسبة والضرائب والرواتب والتسجيل والتقارير المالية.">Muhasebe, vergi, bordro, tescil ve mali raporlama başlıklarında işletmenize düzenli, anlaşılır ve güven veren danışmanlık desteği sunuyoruz.</p>
     <div class="hero-actions">
-      <a href="#quiz" class="btn-hero-primary">
-        <span data-tr="Hangi Şirket Bana Uygun?" data-en="Which Company Fits Me?" data-ru="Какая компания подходит?" data-ar="أي شركة تناسبني؟">Hangi Şirket Bana Uygun?</span>
+      <a href="#accounting-services" class="btn-hero-primary">
+        <span data-tr="Muhasebe Hizmetlerini İncele" data-en="Explore Accounting Services" data-ru="Смотреть бухгалтерские услуги" data-ar="استعرض خدمات المحاسبة">Muhasebe Hizmetlerini İncele</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
       <a href="#live-support" class="btn-hero-secondary" onclick="openLiveSupport(event)">
@@ -2890,7 +3923,7 @@ footer {
       </div>
       <div>
         <div class="hero-stat-num" id="stat2">0</div>
-        <div class="hero-stat-label" data-tr="Kurulan Şirket" data-en="Companies Founded" data-ru="Открытых компаний" data-ar="شركة تأسست">Kurulan Şirket</div>
+        <div class="hero-stat-label" data-tr="Destek Verilen İşletme" data-en="Businesses Supported" data-ru="Компаний на сопровождении" data-ar="شركات نتولى دعمها">Destek Verilen İşletme</div>
       </div>
       <div>
         <div class="hero-stat-num" id="stat3">0</div>
@@ -2907,19 +3940,19 @@ footer {
 <!-- CORPORATE -->
 <section id="corporate">
   <div class="section-shell">
-    <div class="section-tag">Kurumsal</div>
-    <h2 class="section-title reveal">Yaşar Kaya Danışmanlık'ı yakından tanıyın</h2>
-    <p class="section-sub reveal">Şirket kuruluşu, vergi planlaması ve kurumsal uyum süreçlerinde güvenilir bir yol arkadaşı arayan yatırımcılar için deneyimimizi, çalışma ilkelerimizi ve hizmet yaklaşımımızı açık biçimde paylaşıyoruz.</p>
+    <div class="section-tag" data-tr="Kurumsal" data-en="Corporate" data-ru="Корпоративный профиль" data-ar="الهيكل المؤسسي">Kurumsal</div>
+    <h2 class="section-title reveal" data-tr="Yaşar Kaya Muhasebe Danışmanlığı'nı yakından tanıyın" data-en="Get to know Yasar Kaya Accounting Advisory" data-ru="Познакомьтесь с бухгалтерским консалтингом Yaşar Kaya" data-ar="تعرّف عن قرب على Yaşar Kaya للاستشارات المحاسبية">Yaşar Kaya Muhasebe Danışmanlığı'nı yakından tanıyın</h2>
+    <p class="section-sub reveal" data-tr="Yaşar Kaya Muhasebe Danışmanlığı; KKTC'de muhasebe, vergi, bordro ve mali danışmanlık alanlarında güçlü, güven veren ve sonuç odaklı bir iş ortağı arayan işletmeler için profesyonel bir çözüm zemini sunar." data-en="Yasar Kaya Accounting Advisory offers a professional solution ground for businesses seeking a strong, trusted and results-oriented partner in accounting, tax, payroll and financial advisory services in Northern Cyprus." data-ru="Yaşar Kaya Accounting Advisory предлагает профессиональную платформу решений для компаний, которым на Северном Кипре нужен сильный, надёжный и ориентированный на результат партнёр по бухгалтерии, налогам, зарплатным процессам и финансовому консалтингу." data-ar="توفّر Yaşar Kaya للاستشارات المحاسبية أرضية حلول مهنية للشركات التي تبحث في شمال قبرص عن شريك قوي وموثوق وذو توجه نحو النتائج في المحاسبة والضرائب والرواتب والاستشارات المالية.">Yaşar Kaya Muhasebe Danışmanlığı; KKTC'de muhasebe, vergi, bordro ve mali danışmanlık alanlarında güçlü, güven veren ve sonuç odaklı bir iş ortağı arayan işletmeler için profesyonel bir çözüm zemini sunar.</p>
 
     <div class="corporate-lead">
       <div class="corporate-lead-copy reveal-left">
         <div class="card-kicker"><span class="kicker-dot"></span>Kurumsal Duruş</div>
-        <h3>Yatırımcıyla aynı masaya oturan, net konuşan bir danışmanlık anlayışı</h3>
-        <p>Yaşar Kaya Danışmanlık; süreci karmaşıklaştırmadan anlatan, riskleri önceden gösteren ve her adımda uygulanabilir çözüm sunan bir çalışma disipliniyle hareket eder. İlk görüşmeden tescil sonrasına kadar amacımız size güvenli ve hızlı karar zemini sağlamaktır.</p>
+        <h3 data-tr="Güçlü kurumsal duruş, net mali rehberlik ve güven veren danışmanlık" data-en="A strong corporate stance, clear financial guidance and confidence-building advisory" data-ru="Сильная корпоративная позиция, ясное финансовое сопровождение и консультации, внушающие доверие" data-ar="حضور مؤسسي قوي وإرشاد مالي واضح واستشارات تبني الثقة">Güçlü kurumsal duruş, net mali rehberlik ve güven veren danışmanlık</h3>
+        <p data-tr="Yaşar Kaya Muhasebe Danışmanlığı; sahip olduğu bilgi birikimi, saha deneyimi ve çözüm odaklı çalışma disipliniyle yerel işletmelere, kurumsal yapılara ve büyüme hedefi taşıyan şirketlere profesyonel muhasebe, vergi ve danışmanlık desteği sunar. Amacımız yalnızca işlemleri yürütmek değil; işletmenize daha güçlü, daha görünür ve daha güvenli bir mali yapı kazandırmaktır." data-en="Yasar Kaya Accounting Advisory delivers professional accounting, tax and advisory support to local businesses, corporate structures and growth-focused companies through deep expertise, field experience and a solution-oriented discipline. Our goal is not only to run the process, but to help your business gain a stronger, clearer and more secure financial structure." data-ru="Yaşar Kaya Accounting Advisory предоставляет профессиональную поддержку в бухгалтерии, налогах и консалтинге местному бизнесу, корпоративным структурам и компаниям, нацеленным на рост, опираясь на глубокую экспертизу, практический опыт и ориентированную на решение дисциплину. Наша цель — не просто вести процессы, а помочь вашему бизнесу получить более сильную, прозрачную и надёжную финансовую структуру." data-ar="تقدّم Yaşar Kaya للاستشارات المحاسبية دعماً مهنياً في المحاسبة والضرائب والاستشارات للشركات المحلية والكيانات المؤسسية والشركات الطامحة للنمو، اعتماداً على الخبرة والمعرفة العملية ونهج يركّز على الحلول. هدفنا ليس فقط إدارة الإجراءات، بل مساعدة أعمالكم على امتلاك هيكل مالي أقوى وأكثر وضوحاً وأعلى أماناً.">Yaşar Kaya Muhasebe Danışmanlığı; sahip olduğu bilgi birikimi, saha deneyimi ve çözüm odaklı çalışma disipliniyle yerel işletmelere, kurumsal yapılara ve büyüme hedefi taşıyan şirketlere profesyonel muhasebe, vergi ve danışmanlık desteği sunar. Amacımız yalnızca işlemleri yürütmek değil; işletmenize daha güçlü, daha görünür ve daha güvenli bir mali yapı kazandırmaktır.</p>
         <div class="corporate-pill-list">
-          <span class="corporate-pill">Doğal toplantı dili</span>
-          <span class="corporate-pill">Hazırlıklı ekip hissi</span>
-          <span class="corporate-pill">Premium ama sade görünüm</span>
+          <span class="corporate-pill" data-tr="Güven veren kurumsal iletişim" data-en="Confidence-building corporate communication" data-ru="Корпоративная коммуникация, внушающая доверие" data-ar="تواصل مؤسسي يعزّز الثقة">Güven veren kurumsal iletişim</span>
+          <span class="corporate-pill" data-tr="Tecrübeli ekip yaklaşımı" data-en="Experienced team approach" data-ru="Подход опытной команды" data-ar="نهج فريق ذي خبرة">Tecrübeli ekip yaklaşımı</span>
+          <span class="corporate-pill" data-tr="Sonuç odaklı mali rehberlik" data-en="Results-driven financial guidance" data-ru="Финансовое сопровождение с ориентацией на результат" data-ar="إرشاد مالي موجّه نحو النتائج">Sonuç odaklı mali rehberlik</span>
         </div>
       </div>
       <figure class="corporate-lead-media reveal-right">
@@ -2932,36 +3965,63 @@ footer {
           loading="lazy"
           decoding="async">
         <figcaption class="corporate-media-badge">
-          <strong>Kurumsal güven ilk temasta hissedilir</strong>
-          <span>Hazırlıklı ekip, net süreç yönetimi ve sakin iletişim dili yatırım kararında güven duygusunu güçlendirir.</span>
+          <strong data-tr="Kurumsal güven düzenli mali takipte hissedilir" data-en="Corporate trust is felt through consistent financial follow-up" data-ru="Корпоративное доверие чувствуется через регулярное финансовое сопровождение" data-ar="تُبنى الثقة المؤسسية من خلال المتابعة المالية المنتظمة">Kurumsal güven düzenli mali takipte hissedilir</strong>
+          <span data-tr="Hazırlıklı ekip, net raporlama dili ve sakin süreç yönetimi işletmeler için güven duygusunu güçlendirir." data-en="A prepared team, clear reporting language and calm process management strengthen trust for businesses." data-ru="Подготовленная команда, понятная отчётность и спокойное управление процессом усиливают доверие бизнеса." data-ar="يعزّز الفريق الجاهز ولغة التقارير الواضحة وإدارة العملية الهادئة شعور الثقة لدى الشركات.">Hazırlıklı ekip, net raporlama dili ve sakin süreç yönetimi işletmeler için güven duygusunu güçlendirir.</span>
         </figcaption>
       </figure>
     </div>
 
     <div class="portal-grid">
       <article class="portal-card reveal">
+        <figure class="portal-card-media">
+          <img
+            src="https://images.pexels.com/photos/18127766/pexels-photo-18127766.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            width="1400"
+            height="933"
+            alt="Hakkımızda bölümünü destekleyen modern cam cepheli kurumsal ofis binası"
+            loading="lazy"
+            decoding="async">
+        </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Hakkımızda</div>
-        <h3>KKTC merkezli, çok sektörlü danışmanlık yaklaşımı</h3>
-        <p>Yaşar Kaya Danışmanlık; şirket kuruluşu, vergi, muhasebe ve stratejik danışmanlık hizmetlerini yerel işletmeler ve uluslararası yatırımcılar için tek çatı altında sunan butik ama güçlü bir danışmanlık yapısı olarak konumlanır.</p>
+        <h3 data-tr="KKTC'de güçlü muhasebe, vergi ve danışmanlık altyapısı" data-en="A strong accounting, tax and advisory foundation in Northern Cyprus" data-ru="Сильная основа в бухгалтерии, налогах и консалтинге на Северном Кипре" data-ar="بنية قوية في المحاسبة والضرائب والاستشارات في شمال قبرص">KKTC'de güçlü muhasebe, vergi ve danışmanlık altyapısı</h3>
+        <p data-tr="Yaşar Kaya Muhasebe Danışmanlığı, KKTC'de muhasebe, vergi, bordro, denetim bakışı ve danışmanlık başlıklarında güçlü hizmet kapasitesiyle öne çıkan profesyonel yapılardan biri olmayı hedefleyen; bilgi birikimi, deneyim ve itibar odağıyla hareket eden kurumsal bir danışmanlık markasıdır. Yerel işletmelere, kurumsal yapılara ve büyüme hedefi taşıyan şirketlere tek çatı altında güven veren mali rehberlik sunar." data-en="Yasar Kaya Accounting Advisory is a corporate advisory brand driven by expertise, experience and reputation, aiming to stand out as one of the strong professional structures in Northern Cyprus across accounting, tax, payroll, audit-minded oversight and advisory services. It provides trusted financial guidance under one roof for local businesses, corporate organizations and companies with growth ambitions." data-ru="Yaşar Kaya Accounting Advisory — это корпоративный консалтинговый бренд, который опирается на экспертизу, опыт и репутацию и стремится выделяться как одна из сильных профессиональных структур Северного Кипра в области бухгалтерии, налогов, зарплатных процессов, контроля с аудиторским подходом и консультационных услуг. Компания предоставляет надёжное финансовое сопровождение под одной крышей местному бизнесу, корпоративным структурам и компаниям с амбициями роста." data-ar="تُعد Yaşar Kaya للاستشارات المحاسبية علامة استشارية مؤسسية تتحرك بالاعتماد على الخبرة والمعرفة والسمعة، وتهدف إلى التميّز كإحدى الجهات المهنية القوية في شمال قبرص في مجالات المحاسبة والضرائب والرواتب والنظرة التدقيقية والخدمات الاستشارية. وهي تقدّم إرشاداً مالياً موثوقاً تحت سقف واحد للشركات المحلية والكيانات المؤسسية والشركات الطامحة للنمو.">Yaşar Kaya Muhasebe Danışmanlığı, KKTC'de muhasebe, vergi, bordro, denetim bakışı ve danışmanlık başlıklarında güçlü hizmet kapasitesiyle öne çıkan profesyonel yapılardan biri olmayı hedefleyen; bilgi birikimi, deneyim ve itibar odağıyla hareket eden kurumsal bir danışmanlık markasıdır. Yerel işletmelere, kurumsal yapılara ve büyüme hedefi taşıyan şirketlere tek çatı altında güven veren mali rehberlik sunar.</p>
         <ul class="detail-list">
-          <li>Yerel ve yabancı şirketlere hizmet veren kurumsal profil</li>
-          <li>Bankacılık, sigorta, eğitim, telekom ve inşaat gibi geniş sektör kapsamı</li>
-          <li>Uzun yıllara dayanan deneyim ve itibar odağı</li>
+          <li data-tr="Yerel işletmelerden kurumsal yapılara uzanan güçlü hizmet kapasitesi" data-en="Strong service capacity ranging from local businesses to corporate structures" data-ru="Сильный сервисный потенциал — от местного бизнеса до корпоративных структур" data-ar="قدرة خدمية قوية تمتد من الشركات المحلية إلى الكيانات المؤسسية">Yerel işletmelerden kurumsal yapılara uzanan güçlü hizmet kapasitesi</li>
+          <li data-tr="Muhasebe, vergi, bordro ve danışmanlıkta tek çatı altında profesyonel çözüm" data-en="Professional solutions in accounting, tax, payroll and advisory under one roof" data-ru="Профессиональные решения по бухгалтерии, налогам, зарплате и консалтингу под одной крышей" data-ar="حلول مهنية في المحاسبة والضرائب والرواتب والاستشارات تحت سقف واحد">Muhasebe, vergi, bordro ve danışmanlıkta tek çatı altında profesyonel çözüm</li>
+          <li data-tr="Tecrübe, itibar ve güven odaklı uzun vadeli çalışma yaklaşımı" data-en="A long-term working approach built on experience, reputation and trust" data-ru="Долгосрочный подход к работе, основанный на опыте, репутации и доверии" data-ar="نهج عمل طويل الأمد قائم على الخبرة والسمعة والثقة">Tecrübe, itibar ve güven odaklı uzun vadeli çalışma yaklaşımı</li>
         </ul>
       </article>
 
       <article class="portal-card reveal">
+        <figure class="portal-card-media">
+          <img
+            src="https://images.pexels.com/photos/8970671/pexels-photo-8970671.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            width="1400"
+            height="933"
+            alt="Misyon ve vizyon bölümünü destekleyen iş planı, dizüstü bilgisayar ve strateji belgeleri bulunan masa"
+            loading="lazy"
+            decoding="async">
+        </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Misyon & Vizyon</div>
-        <h3>Şeffaf karar desteği ve uzun vadeli güven</h3>
-        <p>Misyon tarafında mevzuata uygun, doğru, zamanında ve güvenilir bilgi sunma çizgisi öne çıkıyor. Vizyon tarafında ise Kuzey Kıbrıs'ta yerel ve uluslararası yatırımcı için referans gösterilen danışmanlık markası olma hedefi hissediliyor.</p>
+        <h3 data-tr="Şeffaf mali rehberlik ve uzun vadeli güven ortaklığı" data-en="Transparent financial guidance and long-term trust partnership" data-ru="Прозрачное финансовое сопровождение и долгосрочное партнёрство доверия" data-ar="إرشاد مالي شفاف وشراكة ثقة طويلة الأمد">Şeffaf mali rehberlik ve uzun vadeli güven ortaklığı</h3>
+        <p data-tr="Misyonumuz; işletmelere mevzuata uygun, doğru, zamanında ve güvenilir mali bilgi sunarak karar süreçlerini güçlendirmektir. Vizyonumuz ise KKTC'de muhasebe ve mali danışmanlık denildiğinde güven, profesyonellik ve sonuç odaklı çalışma anlayışıyla ilk akla gelen markalardan biri olmaktır." data-en="Our mission is to strengthen business decisions by delivering compliant, accurate, timely and reliable financial information. Our vision is to become one of the first names associated with trust, professionalism and results-driven accounting and financial advisory services in Northern Cyprus." data-ru="Наша миссия — усиливать управленческие решения бизнеса, предоставляя соответствующую требованиям, точную, своевременную и надёжную финансовую информацию. Наше видение — стать одним из первых брендов, с которыми в Северном Кипре ассоциируются доверие, профессионализм и ориентированный на результат бухгалтерский и финансовый консалтинг." data-ar="تتمثل رسالتنا في دعم قرارات الشركات من خلال تقديم معلومات مالية دقيقة وموثوقة وفي الوقت المناسب ومتوافقة مع التشريعات. أما رؤيتنا فهي أن نكون من أوائل الأسماء التي ترتبط بالثقة والاحترافية والعمل الموجّه نحو النتائج في مجال المحاسبة والاستشارات المالية في شمال قبرص.">Misyonumuz; işletmelere mevzuata uygun, doğru, zamanında ve güvenilir mali bilgi sunarak karar süreçlerini güçlendirmektir. Vizyonumuz ise KKTC'de muhasebe ve mali danışmanlık denildiğinde güven, profesyonellik ve sonuç odaklı çalışma anlayışıyla ilk akla gelen markalardan biri olmaktır.</p>
         <ul class="detail-list">
-          <li>Yatırımcıya karar aldıran net finansal ve hukuki çerçeve</li>
-          <li>Kurumsal büyüme sürecinde sürdürülebilir rehberlik</li>
-          <li>Yerel mevzuat ile uluslararası beklentileri aynı zeminde buluşturma</li>
+          <li data-tr="Yönetime karar aldıran net finansal çerçeve" data-en="A clear financial framework that supports management decisions" data-ru="Чёткая финансовая база для управленческих решений" data-ar="إطار مالي واضح يدعم قرارات الإدارة">Yönetime karar aldıran net finansal çerçeve</li>
+          <li data-tr="Kurumsal büyümeyi destekleyen sürdürülebilir rehberlik" data-en="Sustainable guidance that supports corporate growth" data-ru="Устойчивое сопровождение, поддерживающее рост компании" data-ar="إرشاد مستدام يدعم النمو المؤسسي">Kurumsal büyümeyi destekleyen sürdürülebilir rehberlik</li>
+          <li data-tr="Yerel mevzuat ile iş hedeflerini aynı zeminde buluşturma" data-en="Aligning local regulations with business goals" data-ru="Сочетание местного регулирования с бизнес-целями" data-ar="مواءمة التشريعات المحلية مع أهداف الأعمال">Yerel mevzuat ile iş hedeflerini aynı zeminde buluşturma</li>
         </ul>
       </article>
 
       <article class="portal-card reveal">
+        <figure class="portal-card-media">
+          <img
+            src="https://images.pexels.com/photos/8276215/pexels-photo-8276215.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            width="1400"
+            height="933"
+            alt="Kurumsal sorumluluk bölümünü destekleyen iş masası üzerinde birleşen ekip elleri"
+            loading="lazy"
+            decoding="async">
+        </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Kurumsal Sorumluluk</div>
         <h3>Topluma ve mevzuata karşı sorumlu duruş</h3>
         <p>Kurumsal sorumluluk yaklaşımımız; iş yaparken insan haklarına saygı göstermeyi, çevresel etkiyi gözetmeyi, toplumsal gelişime katkı sunmayı ve mali şeffaflığı savunmayı temel ilke kabul eder.</p>
@@ -2973,6 +4033,15 @@ footer {
       </article>
 
       <article class="portal-card reveal">
+        <figure class="portal-card-media">
+          <img
+            src="https://images.pexels.com/photos/6044845/pexels-photo-6044845.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            width="1400"
+            height="933"
+            alt="Değerlerimiz bölümünü destekleyen sade, düzenli ve profesyonel toplantı odası"
+            loading="lazy"
+            decoding="async">
+        </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Değerlerimiz</div>
         <h3>Dürüstlük, itibar ve saygı merkezde</h3>
         <p>Dürüst iletişim, müşteri itibarını koruma ve uzun vadeli güven ilişkisi bizim için yalnızca kurumsal değer değil, günlük çalışma biçimidir. Attığımız her adımda şeffaf, anlaşılır ve sorumluluk alan bir yaklaşım benimseriz.</p>
@@ -2984,6 +4053,15 @@ footer {
       </article>
 
       <article class="portal-card reveal">
+        <figure class="portal-card-media">
+          <img
+            src="https://images.pexels.com/photos/36733320/pexels-photo-36733320.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            width="1400"
+            height="900"
+            alt="Yönetim kadrosu bölümünü destekleyen modern ofiste danışmanlık görüşmesi yapan profesyoneller"
+            loading="lazy"
+            decoding="async">
+        </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Yönetim Kadrosu</div>
         <h3>Kurucu deneyimini görünür kılan liderlik katmanı</h3>
         <p>Yaşar Kaya'nın saha tecrübesi, mevzuat bilgisi ve yatırımcılarla birebir çalışan yaklaşımı; sürecin yalnızca teorik değil, uygulamada da doğru yönetilmesini sağlar. Bu sayede müvekkiller kararlarını daha net ve daha güvenli biçimde alır.</p>
@@ -3000,39 +4078,39 @@ footer {
 <!-- SERVICES HUB -->
 <section id="services-hub">
   <div class="section-shell">
-    <div class="section-tag">Hizmetler</div>
-    <h2 class="section-title reveal">Yaşar Kaya Danışmanlık hizmet alanları</h2>
-    <p class="section-sub reveal">Şirket kuruluşundan vergi planlamasına, muhasebe yönetiminden iş ve sosyal güvenlik süreçlerine kadar ihtiyaç duyduğunuz başlıkları tek çatı altında, net sorumluluk alanlarıyla ve profesyonel takip disipliniyle sunuyoruz.</p>
+    <div class="section-tag" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</div>
+    <h2 class="section-title reveal" data-tr="Muhasebe, vergi ve mali danışmanlık hizmet alanlarımız" data-en="Our accounting, tax and financial advisory services" data-ru="Наши услуги по бухгалтерии, налогам и финансовому консалтингу" data-ar="مجالات خدماتنا في المحاسبة والضرائب والاستشارات المالية">Muhasebe, vergi ve mali danışmanlık hizmet alanlarımız</h2>
+    <p class="section-sub reveal" data-tr="Muhasebe yönetiminden vergi planlamasına, bordro takibinden resmi kayıt süreçlerine kadar ihtiyaç duyduğunuz başlıkları tek çatı altında, net sorumluluk alanlarıyla ve profesyonel takip disipliniyle sunuyoruz." data-en="From accounting management to tax planning, from payroll follow-up to official registration processes, we deliver the services your business needs under one roof with clear responsibility and professional follow-through." data-ru="От ведения бухгалтерии до налогового планирования, от сопровождения зарплат до официальных регистрационных процессов — мы предоставляем все нужные бизнесу услуги в одном месте, с чёткой ответственностью и профессиональным сопровождением." data-ar="من إدارة المحاسبة إلى التخطيط الضريبي، ومن متابعة الرواتب إلى إجراءات التسجيل الرسمية، نقدم الخدمات التي يحتاجها عملك تحت سقف واحد بمسؤوليات واضحة ومتابعة مهنية.">Muhasebe yönetiminden vergi planlamasına, bordro takibinden resmi kayıt süreçlerine kadar ihtiyaç duyduğunuz başlıkları tek çatı altında, net sorumluluk alanlarıyla ve profesyonel takip disipliniyle sunuyoruz.</p>
 
     <div class="service-hub-grid">
       <article class="service-hub-card reveal">
         <figure class="service-card-media">
-          <div class="audit-visual" role="img" aria-label="Denetim hizmetlerini temsil eden belge kontrol ve onay görseli">
-            <div class="audit-visual-badge"><span></span>Audit</div>
+          <div class="audit-visual" role="img" aria-label="Vergi ve tasdik hizmetlerini temsil eden belge kontrol ve onay görseli">
+            <div class="audit-visual-badge"><span></span>Tasdik</div>
             <div class="audit-paper primary">
               <div class="audit-paper-top">
-                <div class="audit-paper-title">Rapor Kontrol</div>
+                <div class="audit-paper-title">Vergi Dosyası</div>
                 <div class="audit-paper-pill"></div>
               </div>
               <div class="audit-line"></div>
               <div class="audit-line mid"></div>
               <div class="audit-line short"></div>
               <div class="audit-checks">
-                <div class="audit-check">Finansal tablo kontrolü</div>
-                <div class="audit-check">Uyum ve risk taraması</div>
+                <div class="audit-check">Tam tasdik ve özel raporlar</div>
+                <div class="audit-check">KDV ve ÖTV süreç kontrolü</div>
               </div>
             </div>
             <div class="audit-paper secondary">
               <div class="audit-paper-top">
-                <div class="audit-paper-title">Denetim Notları</div>
+                <div class="audit-paper-title">Onay Süreci</div>
                 <div class="audit-paper-pill"></div>
               </div>
               <div class="audit-line mid"></div>
               <div class="audit-line"></div>
               <div class="audit-line short"></div>
               <div class="audit-checks">
-                <div class="audit-check">İç kontrol başlıkları</div>
-                <div class="audit-check">Onay ve raporlama</div>
+                <div class="audit-check">Sermaye ve yatırım raporları</div>
+                <div class="audit-check">Ar-Ge ve teşvik tasdikleri</div>
               </div>
             </div>
             <div class="audit-seal" aria-hidden="true">
@@ -3040,14 +4118,19 @@ footer {
             </div>
           </div>
         </figure>
-        <div class="card-kicker"><span class="kicker-dot"></span>Denetim</div>
-        <h3>Denetim Hizmetleri</h3>
-        <p>Kurumsal gelişim arttıkça şirketlerin şeffaf, güvenilir ve doğrulanabilir finansal tablo ihtiyacı büyür. Denetim alanını bu ihtiyaca cevap veren temel güven katmanı olarak konumladık.</p>
-        <div class="micro-list">
-          <span>Yasal denetim süreçleri</span>
-          <span>Güvenilir finansal tablo desteği</span>
-          <span>Kurumsal güven ve raporlama disiplini</span>
-        </div>
+        <div class="card-kicker"><span class="kicker-dot"></span>Vergi ve Tasdik</div>
+        <h3>Vergi ve Tasdik Hizmetleri</h3>
+        <p>Vergi uyumu, resmi tasdik süreçleri ve özel amaçlı raporlamalar için şirketlerin ihtiyaç duyduğu denetim ve onay başlıklarını tek çatı altında, mevzuata uygun ve düzenli biçimde yürütüyoruz.</p>
+        <ul class="detail-list">
+          <li>Tam Tasdik</li>
+          <li>KDV İade Tasdiki</li>
+          <li>Yerli İmalat Durum Belgesi Tasdiki</li>
+          <li>ÖTV Tecil-Terkin Tasdiki</li>
+          <li>Yatırım İndirimi Tasdiki</li>
+          <li>Ödenmiş Sermaye Tespiti ve Sermaye Artırım Raporları</li>
+          <li>TÜBİTAK, Avrupa Birliği Kaynaklı Ar-Ge Harcamalarının Tasdiki</li>
+          <li>Özel Amaçlı Diğer Tasdikler</li>
+        </ul>
       </article>
 
       <article class="service-hub-card reveal">
@@ -3056,18 +4139,24 @@ footer {
             src="https://images.pexels.com/photos/10347149/pexels-photo-10347149.jpeg?auto=compress&cs=tinysrgb&w=1200"
             width="1200"
             height="750"
-            alt="Vergi planlaması için açık laptop ve çalışma notları bulunan ofis masası"
+            alt="Mali danışmanlık hizmetlerini temsil eden çalışma masası, laptop ve finans notları"
             loading="lazy"
             decoding="async">
         </figure>
-        <div class="card-kicker"><span class="kicker-dot"></span>Vergi</div>
-        <h3>Vergi Danışmanlığı</h3>
-        <p>Vergi planlaması, beyanname hazırlığı, vergi sonuçlarının analizi ve yeni yatırımlarda avantaj yaratabilecek alanların belirlenmesi bu başlığın ana çerçevesini oluşturuyor.</p>
-        <div class="micro-list">
-          <span>Vergi planlaması ve analiz</span>
-          <span>Beyanname ve rapor takvimi</span>
-          <span>Yeni yatırım kararlarında vergi etkisi</span>
-        </div>
+        <div class="card-kicker"><span class="kicker-dot"></span>Mali Danışmanlık</div>
+        <h3>Mali Danışmanlık Hizmetleri</h3>
+        <p>Vergi stratejisi, teşvik yapıları, yabancı şirketler için mali yönlendirme ve vergi uyuşmazlıkları gibi kritik konularda, karar sürecini güvenli hale getiren kapsamlı danışmanlık desteği sunuyoruz.</p>
+        <ul class="detail-list">
+          <li>Kurumsal Vergi Danışmanlığı</li>
+          <li>Bireysel Vergi Danışmanlığı</li>
+          <li>Vergisel Teşvikler, İstisna ve Muafiyet Danışmanlığı</li>
+          <li>Serbest Bölgeler Uygulama Danışmanlığı</li>
+          <li>Teknoparklar ve Ar-Ge İndirimleri Danışmanlıkları</li>
+          <li>Vergi Anlaşmaları Danışmanlığı</li>
+          <li>Vergi Uyuşmazlıkları Danışmanlığı</li>
+          <li>Revizyon Hizmetleri</li>
+          <li>Yabancı Şirketlere Mali Danışmanlık Hizmetleri</li>
+        </ul>
       </article>
 
       <article class="service-hub-card reveal">
@@ -3076,78 +4165,348 @@ footer {
             src="https://images.pexels.com/photos/8085258/pexels-photo-8085258.jpeg?auto=compress&cs=tinysrgb&w=1200"
             width="1200"
             height="750"
-            alt="Muhasebe planlaması için hazırlanmış evraklar ve not defteri"
+            alt="Diğer danışmanlık hizmetlerini temsil eden evraklar, planlama notları ve çalışma masası"
             loading="lazy"
             decoding="async">
+        </figure>
+        <div class="card-kicker"><span class="kicker-dot"></span>Diğer Danışmanlık</div>
+        <h3>Diğer Danışmanlık Hizmetleri</h3>
+        <p data-tr="Muhasebe sistemlerinin kurulmasından iç kontrol yapılarına, birleşme-devir süreçlerinden kuruluş ve tescil işlemlerine kadar kurumsal yapılanmayı güçlendiren geniş bir danışmanlık alanında çalışıyoruz." data-en="We work across a broad advisory field that strengthens corporate structure, from building accounting systems and internal controls to mergers, transfers and setup-registration processes." data-ru="Мы работаем в широком поле консалтинга, усиливающем корпоративную структуру: от построения бухгалтерских систем и внутреннего контроля до слияний, передач бизнеса и процессов регистрации." data-ar="نعمل في نطاق استشاري واسع يعزز البنية المؤسسية، من بناء الأنظمة المحاسبية والرقابة الداخلية إلى الاندماج ونقل الملكية وعمليات التأسيس والتسجيل.">Muhasebe sistemlerinin kurulmasından iç kontrol yapılarına, birleşme-devir süreçlerinden kuruluş ve tescil işlemlerine kadar kurumsal yapılanmayı güçlendiren geniş bir danışmanlık alanında çalışıyoruz.</p>
+        <ul class="detail-list">
+          <li>Muhasebe Sistemi Kurulumu ve Yeniden Yapılandırılması</li>
+          <li>Kamu İç Kontrol Standartları Kapsamında İç Kontrol Sistemi Kurulumu</li>
+          <li>İç Denetim-İç Kontrol Sistemi Danışmanlığı</li>
+          <li>Maliyet Kontrol Sistemleri Danışmanlığı</li>
+          <li>Şirket Satın Alma, Devir, Birleşme ve Bölünme Danışmanlığı</li>
+          <li>Yeniden Yapılandırma (Revizyon)</li>
+          <li>Sermaye Piyasası, Sosyal Güvenlik Mevzuatı ve Yatırım Teşvik Mevzuatı Danışmanlıkları</li>
+          <li>Yerli-Yabancı Şirket Kuruluşları</li>
+          <li>Şirketler Hukuku ve Şirketler Muhasebesi Danışmanlığı</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOUNTING SERVICES DETAIL -->
+<section id="accounting-services">
+  <div class="section-shell">
+    <div class="section-tag" data-tr="Muhasebe Danışmanlığı" data-en="Accounting Advisory" data-ru="Бухгалтерский консалтинг" data-ar="الاستشارات المحاسبية">Muhasebe Danışmanlığı</div>
+    <h2 class="section-title reveal" data-tr="Muhasebe ve Mali İşler Hizmetleri" data-en="Accounting and Financial Operations Services" data-ru="Услуги по бухгалтерии и финансовому сопровождению" data-ar="خدمات المحاسبة والأعمال المالية">Muhasebe ve Mali İşler Hizmetleri</h2>
+    <p class="section-sub reveal" data-tr="İş dünyasında faaliyet gösteren gerçek ve tüzel kişilerin, değişen mevzuat ve ekonomik koşullar karşısında kayıt sistemlerini doğru yönetmeleri ve yasal yükümlülüklerini eksiksiz yerine getirmeleri için kapsamlı muhasebe desteği sağlıyoruz." data-en="We provide comprehensive accounting support so that individuals and companies operating in business life can manage their record systems correctly and fulfill their legal obligations under changing legislation and economic conditions." data-ru="Мы обеспечиваем комплексную бухгалтерскую поддержку, чтобы физические и юридические лица могли правильно вести учёт и полностью выполнять свои обязательства в условиях меняющегося законодательства и экономики." data-ar="نقدم دعماً محاسبياً متكاملاً حتى تتمكن الأفراد والشركات العاملة في عالم الأعمال من إدارة أنظمة السجلات بشكل صحيح والوفاء بالتزاماتها القانونية بالكامل في ظل تغير التشريعات والظروف الاقتصادية.">İş dünyasında faaliyet gösteren gerçek ve tüzel kişilerin, değişen mevzuat ve ekonomik koşullar karşısında kayıt sistemlerini doğru yönetmeleri ve yasal yükümlülüklerini eksiksiz yerine getirmeleri için kapsamlı muhasebe desteği sağlıyoruz.</p>
+
+    <div class="accounting-intro reveal">
+      <div class="accounting-intro-copy">
+        <div class="card-kicker" data-tr="Muhasebe Altyapısı" data-en="Accounting Infrastructure" data-ru="Бухгалтерская инфраструктура" data-ar="البنية المحاسبية"><span class="kicker-dot"></span>Muhasebe Altyapısı</div>
+        <h3 data-tr="Şirketinizin mali düzenini daha net, güvenli ve sürdürülebilir hale getirin" data-en="Make your company’s financial order clearer, safer and more sustainable" data-ru="Сделайте финансовый порядок вашей компании более ясным, безопасным и устойчивым" data-ar="اجعل النظام المالي لشركتك أكثر وضوحًا وأمانًا واستدامة">Şirketinizin mali düzenini daha net, güvenli ve sürdürülebilir hale getirin</h3>
+        <p data-tr="Yaşar Kaya Muhasebe Danışmanlığı olarak farklı sektörlerde faaliyet gösteren işletmelere muhasebe, bordro, vergi muhasebesi ve tescil işlemleri başlıklarında düzenli, kontrol edilebilir ve mevzuata uyumlu destek sunuyoruz. Amaç yalnızca kayıt tutmak değil; şirketin mali yapısını yönetime yardımcı olacak şekilde daha görünür, daha güvenli ve daha sürdürülebilir hale getirmektir." data-en="At Yasar Kaya Accounting Advisory, we provide regular, controllable and compliant support in accounting, payroll, tax accounting and registration for businesses across different sectors. The goal is not only to keep records, but to make the company’s financial structure more visible, safer and more sustainable for management." data-ru="В Yaşar Kaya Accounting Advisory мы предоставляем регулярную, контролируемую и соответствующую нормам поддержку по бухгалтерии, зарплате, налоговому учёту и регистрации для компаний из разных отраслей. Цель — не просто вести записи, а сделать финансовую структуру компании более прозрачной, безопасной и устойчивой для управления." data-ar="في Yaşar Kaya Accounting Advisory نقدم دعماً منتظماً وقابلاً للمتابعة ومتوافقاً مع التشريعات في المحاسبة والرواتب والمحاسبة الضريبية والتسجيل للشركات في مختلف القطاعات. والهدف ليس مجرد حفظ السجلات، بل جعل البنية المالية للشركة أكثر وضوحًا وأمانًا واستدامة للإدارة.">Yaşar Kaya Muhasebe Danışmanlığı olarak farklı sektörlerde faaliyet gösteren işletmelere muhasebe, bordro, vergi muhasebesi ve tescil işlemleri başlıklarında düzenli, kontrol edilebilir ve mevzuata uyumlu destek sunuyoruz. Amaç yalnızca kayıt tutmak değil; şirketin mali yapısını yönetime yardımcı olacak şekilde daha görünür, daha güvenli ve daha sürdürülebilir hale getirmektir.</p>
+        <div class="accounting-intro-ribbon">
+          <div class="accounting-intro-ribbon-item">
+            <strong data-tr="Muhasebe Düzeni" data-en="Accounting Order" data-ru="Бухгалтерский порядок" data-ar="تنظيم المحاسبة">Muhasebe Düzeni</strong>
+            <span data-tr="Günlük kayıt akışı ve hesap planı aynı sistem içinde ilerler." data-en="Daily record flow and chart of accounts move within the same system." data-ru="Ежедневный учёт и план счетов ведутся в единой системе." data-ar="يتقدّم تدفق السجلات اليومية ومخطط الحسابات ضمن نظام واحد.">Günlük kayıt akışı ve hesap planı aynı sistem içinde ilerler.</span>
+          </div>
+          <div class="accounting-intro-ribbon-item">
+            <strong data-tr="Bordro Akışı" data-en="Payroll Flow" data-ru="Зарплатный поток" data-ar="مسار الرواتب">Bordro Akışı</strong>
+            <span data-tr="Personel süreçleri, sosyal sigorta ve ihtiyat sandığı takibi birlikte yürür." data-en="Personnel processes, social insurance and provident fund tracking move together." data-ru="Кадровые процессы, соцстрахование и пенсионный фонд сопровождаются вместе." data-ar="تُدار إجراءات الموظفين والضمان الاجتماعي وصندوق الادخار معًا.">Personel süreçleri, sosyal sigorta ve ihtiyat sandığı takibi birlikte yürür.</span>
+          </div>
+          <div class="accounting-intro-ribbon-item">
+            <strong data-tr="Vergi Takibi" data-en="Tax Follow-Up" data-ru="Налоговое сопровождение" data-ar="متابعة الضرائب">Vergi Takibi</strong>
+            <span data-tr="Beyan dönemleri ve hesaplamalar zamanında ilerleyecek şekilde planlanır." data-en="Declaration periods and calculations are planned to progress on time." data-ru="Периоды деклараций и расчёты планируются так, чтобы всё шло вовремя." data-ar="تُخطَّط فترات التصاريح والحسابات بحيث تسير في موعدها.">Beyan dönemleri ve hesaplamalar zamanında ilerleyecek şekilde planlanır.</span>
+          </div>
+          <div class="accounting-intro-ribbon-item">
+            <strong data-tr="Tescil Süreci" data-en="Registration Process" data-ru="Процесс регистрации" data-ar="عملية التسجيل">Tescil Süreci</strong>
+            <span data-tr="Resmi açılış, kurum kayıtları ve başvuru adımları düzenli biçimde takip edilir." data-en="Official setup, institutional registrations and application steps are followed regularly." data-ru="Официальное открытие, регистрация в учреждениях и этапы подачи отслеживаются системно." data-ar="تتم متابعة الافتتاح الرسمي والتسجيلات المؤسسية وخطوات التقديم بشكل منتظم.">Resmi açılış, kurum kayıtları ve başvuru adımları düzenli biçimde takip edilir.</span>
+          </div>
+        </div>
+        <div class="accounting-intro-extra">
+          <p data-tr="Düzenli muhasebe takibi, yalnızca yasal yükümlülükleri yerine getirmek için değil; şirket sahibinin nakit akışını, gider yapısını ve vergi yükünü daha sağlıklı görmesi için de kritik öneme sahiptir." data-en="Regular accounting follow-up is critical not only for meeting legal obligations, but also for helping the business owner see cash flow, expense structure and tax burden more clearly." data-ru="Регулярное бухгалтерское сопровождение важно не только для выполнения юридических обязательств, но и для того, чтобы владелец бизнеса лучше видел денежный поток, структуру расходов и налоговую нагрузку." data-ar="تُعد المتابعة المحاسبية المنتظمة مهمة ليس فقط للوفاء بالالتزامات القانونية، بل أيضًا لتمكين صاحب العمل من رؤية التدفق النقدي وهيكل المصروفات والعبء الضريبي بشكل أوضح.">Düzenli muhasebe takibi, yalnızca yasal yükümlülükleri yerine getirmek için değil; şirket sahibinin nakit akışını, gider yapısını ve vergi yükünü daha sağlıklı görmesi için de kritik öneme sahiptir.</p>
+          <p data-tr="Bu nedenle hizmet yaklaşımımızı belge hazırlama veya beyan gönderme ile sınırlamıyor; mali tablo düzeni, bordro takibi, vergi planlaması ve resmi kayıt süreçlerini birbirini tamamlayan tek bir sistem içinde ele alıyoruz." data-en="That is why we do not limit our service approach to document preparation or filing declarations; we handle financial statement structure, payroll follow-up, tax planning and official registration processes as one connected system." data-ru="Поэтому мы не ограничиваем наш подход подготовкой документов или подачей деклараций; мы рассматриваем финансовую отчётность, сопровождение зарплат, налоговое планирование и официальную регистрацию как единую взаимосвязанную систему." data-ar="ولهذا لا نحصر نهجنا الخدمي في إعداد المستندات أو إرسال التصاريح فقط، بل نتعامل مع تنظيم القوائم المالية ومتابعة الرواتب والتخطيط الضريبي والتسجيلات الرسمية كنظام واحد مترابط.">Bu nedenle hizmet yaklaşımımızı belge hazırlama veya beyan gönderme ile sınırlamıyor; mali tablo düzeni, bordro takibi, vergi planlaması ve resmi kayıt süreçlerini birbirini tamamlayan tek bir sistem içinde ele alıyoruz.</p>
+          <p data-tr="İşletme büyüdükçe bu yapı, yönetim kararlarını hızlandıran ve olası hataları erkenden görünür kılan güçlü bir mali zemin oluşturur." data-en="As the business grows, this structure creates a strong financial foundation that speeds up management decisions and makes possible errors visible at an early stage." data-ru="По мере роста бизнеса такая структура формирует сильную финансовую основу, ускоряющую управленческие решения и заранее показывающую возможные ошибки." data-ar="ومع نمو العمل، يوفّر هذا الهيكل أساسًا ماليًا قويًا يسرّع قرارات الإدارة ويجعل الأخطاء المحتملة مرئية في مرحلة مبكرة.">İşletme büyüdükçe bu yapı, yönetim kararlarını hızlandıran ve olası hataları erkenden görünür kılan güçlü bir mali zemin oluşturur.</p>
+        </div>
+        <div class="accounting-intro-framework">
+          <div class="accounting-intro-framework-head">
+            <div>
+              <strong data-tr="Muhasebe takip çerçevemiz" data-en="Our accounting follow-up framework" data-ru="Наша схема бухгалтерского сопровождения" data-ar="إطار المتابعة المحاسبية لدينا">Muhasebe takip çerçevemiz</strong>
+              <span data-tr="İşletmenin günlük mali akışını daha düzenli yönetebilmesi için ana başlıkları birlikte takip ediyoruz." data-en="We follow the key areas together so the business can manage its daily financial flow more smoothly." data-ru="Мы совместно контролируем ключевые направления, чтобы бизнес мог стабильнее управлять ежедневным финансовым потоком." data-ar="نتابع معًا المحاور الأساسية حتى يتمكن العمل من إدارة تدفقه المالي اليومي بشكل أكثر انتظامًا.">İşletmenin günlük mali akışını daha düzenli yönetebilmesi için ana başlıkları birlikte takip ediyoruz.</span>
+            </div>
+            <div class="accounting-intro-framework-pill" data-tr="4 Alan" data-en="4 Areas" data-ru="4 блока" data-ar="4 محاور">4 Alan</div>
+          </div>
+          <div class="accounting-intro-framework-grid">
+            <div class="accounting-intro-framework-item">
+              <strong data-tr="Nakit Akışı" data-en="Cash Flow" data-ru="Денежный поток" data-ar="التدفق النقدي">Nakit Akışı</strong>
+              <span data-tr="Gider, tahsilat ve dönemsel hareketlerin daha okunur hale gelmesine yardımcı oluruz." data-en="We help make expenses, collections and period-based movements easier to read." data-ru="Мы помогаем сделать расходы, поступления и периодические движения более понятными." data-ar="نساعد على جعل المصروفات والتحصيلات والحركات الدورية أكثر وضوحًا.">Gider, tahsilat ve dönemsel hareketlerin daha okunur hale gelmesine yardımcı oluruz.</span>
+            </div>
+            <div class="accounting-intro-framework-item">
+              <strong data-tr="Vergi Planı" data-en="Tax Plan" data-ru="Налоговый план" data-ar="الخطة الضريبية">Vergi Planı</strong>
+              <span data-tr="Beyan dönemleri, yükümlülükler ve hesaplamalar aynı takvim içinde düzenlenir." data-en="Declaration periods, obligations and calculations are organized within the same calendar." data-ru="Периоды деклараций, обязательства и расчёты организуются в одном календаре." data-ar="تُنظَّم فترات التصاريح والالتزامات والحسابات ضمن تقويم واحد.">Beyan dönemleri, yükümlülükler ve hesaplamalar aynı takvim içinde düzenlenir.</span>
+            </div>
+            <div class="accounting-intro-framework-item">
+              <strong data-tr="Bordro Takibi" data-en="Payroll Follow-Up" data-ru="Сопровождение зарплат" data-ar="متابعة الرواتب">Bordro Takibi</strong>
+              <span data-tr="Personel kayıtları, sosyal sigorta ve ihtiyat sandığı süreçleri birlikte ele alınır." data-en="Employee records, social insurance and provident fund processes are handled together." data-ru="Учёт персонала, социальное страхование и пенсионный фонд ведутся совместно." data-ar="تُدار سجلات الموظفين والضمان الاجتماعي وصندوق الادخار معًا.">Personel kayıtları, sosyal sigorta ve ihtiyat sandığı süreçleri birlikte ele alınır.</span>
+            </div>
+            <div class="accounting-intro-framework-item">
+              <strong data-tr="Karar Desteği" data-en="Decision Support" data-ru="Поддержка решений" data-ar="دعم القرار">Karar Desteği</strong>
+              <span data-tr="Mali tablo düzeni sayesinde işletme sahibi daha hızlı ve güvenli karar alabilir." data-en="With structured financial statements, the business owner can make faster and safer decisions." data-ru="Благодаря понятной финансовой отчётности владелец бизнеса может принимать более быстрые и безопасные решения." data-ar="بفضل تنظيم القوائم المالية يمكن لصاحب العمل اتخاذ قرارات أسرع وأكثر أمانًا.">Mali tablo düzeni sayesinde işletme sahibi daha hızlı ve güvenli karar alabilir.</span>
+            </div>
+          </div>
+        </div>
+        <div class="accounting-intro-trust">
+          <div class="accounting-intro-trust-card">
+            <strong data-tr="Aylık" data-en="Monthly" data-ru="Ежемесячно" data-ar="شهريًا">Aylık</strong>
+            <span data-tr="Düzenli beyan, raporlama ve kontrol takibiyle işletme ritmi korunur." data-en="The business rhythm is protected with regular declarations, reporting and control follow-up." data-ru="Ритм бизнеса сохраняется благодаря регулярным декларациям, отчётности и контрольному сопровождению." data-ar="يُحافَظ على إيقاع العمل من خلال المتابعة المنتظمة للتصاريح والتقارير والرقابة.">Düzenli beyan, raporlama ve kontrol takibiyle işletme ritmi korunur.</span>
+          </div>
+          <div class="accounting-intro-trust-card">
+            <strong data-tr="Net" data-en="Clear" data-ru="Понятно" data-ar="واضح">Net</strong>
+            <span data-tr="İşletme sahibi için anlaşılır mali görünürlük ve sade danışmanlık dili sunulur." data-en="Clear financial visibility and a simple advisory language are delivered for the business owner." data-ru="Для владельца бизнеса обеспечиваются понятная финансовая картина и простой язык консультаций." data-ar="نوفّر لصاحب العمل وضوحًا ماليًا مفهومًا ولغة استشارية بسيطة.">İşletme sahibi için anlaşılır mali görünürlük ve sade danışmanlık dili sunulur.</span>
+          </div>
+          <div class="accounting-intro-trust-card">
+            <strong data-tr="Uyum" data-en="Compliance" data-ru="Соответствие" data-ar="امتثال">Uyum</strong>
+            <span data-tr="Vergi, bordro ve resmi kayıt süreçleri aynı çerçevede ilerletilir." data-en="Tax, payroll and official registration processes are advanced within the same framework." data-ru="Налоги, зарплата и официальная регистрация ведутся в единой системе." data-ar="تُدار الضرائب والرواتب والتسجيلات الرسمية ضمن إطار واحد متكامل.">Vergi, bordro ve resmi kayıt süreçleri aynı çerçevede ilerletilir.</span>
+          </div>
+        </div>
+      </div>
+      <div class="accounting-intro-side">
+        <figure class="accounting-intro-media">
+          <img
+            src="https://images.pexels.com/photos/8085258/pexels-photo-8085258.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            width="1200"
+            height="900"
+            alt="Muhasebe danışmanlığı için evraklar, çalışma notları ve dizüstü bilgisayar bulunan masa"
+            loading="lazy"
+            decoding="async">
+          <figcaption class="accounting-intro-badge">
+            <strong>Raporlama, kontrol ve yasal uyum aynı çerçevede ilerler</strong>
+            <span>Düzenli kayıt yapısı, zamanında beyan ve net mali görünürlük; şirket yönetiminde güven duygusunu güçlendirir.</span>
+          </figcaption>
+        </figure>
+        <div class="accounting-highlight-list">
+          <div class="accounting-highlight-item">
+            <div>
+              <strong>Temel Hizmet Başlıkları</strong>
+              <span>Muhasebe, bordro, kurumlar vergisi, katma değer vergisi, vergi muhasebesi ve tescil işlemleri aynı hizmet akışı içinde yönetilir.</span>
+            </div>
+          </div>
+          <div class="accounting-highlight-item">
+            <div>
+              <strong>Sektöre Uygun Kurgu</strong>
+              <span>İşletmenin faaliyet alanı, büyüklüğü ve iç yapısı dikkate alınarak kayıt sistemi ve raporlama çerçevesi özel olarak şekillendirilir.</span>
+            </div>
+          </div>
+          <div class="accounting-highlight-item">
+            <div>
+              <strong>Eksiksiz Yükümlülük Takibi</strong>
+              <span>Vergi dairesi, sosyal sigorta ve ihtiyat sandığı süreçleriyle ilgili kritik adımlar düzenli ve kontrollü biçimde yürütülür.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accounting-detail-grid">
+      <article class="accounting-detail-card reveal">
+        <figure class="accounting-card-media">
+          <div class="accounting-visual ledger-visual" role="img" aria-label="Muhasebe hizmetlerini temsil eden yevmiye kayıtları, hesap planı ve aylık kapanış özeti">
+            <div class="accounting-float-pill" style="top: 18px; right: 18px;"><span></span>Muhasebe Sistemi</div>
+            <div class="ledger-sheet">
+              <div class="ledger-title-row">
+                <div class="ledger-title">Yevmiye ve Defter Takibi</div>
+                <div class="ledger-chip">Tek Düzen</div>
+              </div>
+              <div class="ledger-columns">
+                <span>Hesap</span>
+                <span>Borç</span>
+                <span>Alacak</span>
+                <span>Bakiye</span>
+              </div>
+              <div class="ledger-entry">
+                <span>320.01 Satıcılar</span>
+                <strong>28.500</strong>
+                <strong>-</strong>
+                <strong>28.500</strong>
+              </div>
+              <div class="ledger-entry">
+                <span>120.10 Alıcılar</span>
+                <strong>-</strong>
+                <strong>41.200</strong>
+                <strong>41.200</strong>
+              </div>
+              <div class="ledger-entry">
+                <span>770.02 Genel Gider</span>
+                <strong>9.480</strong>
+                <strong>-</strong>
+                <strong>9.480</strong>
+              </div>
+              <div class="ledger-entry total">
+                <span>Aylık Kapanış</span>
+                <strong>37.980</strong>
+                <strong>41.200</strong>
+                <strong>3.220</strong>
+              </div>
+            </div>
+            <div class="ledger-summary">
+              <div class="ledger-title">Aylık Kapanış</div>
+              <strong>3 Dosya</strong>
+              <small>Yevmiye, kebir ve mali tablo kontrolü</small>
+            </div>
+          </div>
         </figure>
         <div class="card-kicker"><span class="kicker-dot"></span>Muhasebe</div>
-        <h3>Muhasebe ve Mali İşler</h3>
-        <p>Sürekli değişen mevzuat ve ekonomik koşullar nedeniyle doğru kayıt sistemi, düzenli raporlama ve eksiksiz mali yükümlülük yönetimi bu alanda öne çıkan ihtiyaçlar arasında yer alıyor.</p>
-        <div class="micro-list">
-          <span>Muhasebe kayıt sistemi kurulumu</span>
-          <span>Düzenli mali raporlama</span>
-          <span>Yasal yükümlülüklerin takibi</span>
-        </div>
+        <h3>Muhasebe</h3>
+        <p>İşletmelerin ihtiyaçlarını ve faaliyet gösterdikleri sektörü dikkate alarak muhasebe sistemlerini doğru zeminde kuruyor, kayıtların hatasız ilerlemesi için mesleki destek sağlıyoruz. Bu kapsamda öne çıkan hizmetlerimiz şunlardır:</p>
+        <ul class="detail-list">
+          <li>Tek Düzen Hesap Planı ile uyumlu muhasebe kayıtları</li>
+          <li>Yevmiye Defteri, Defter-i Kebir ve Muavin Defterlerin tutulması</li>
+          <li>Şirketler Yasası ve Tek Düzen Hesap Planı ile uyumlu mali tabloların hazırlanması</li>
+          <li>Muhasebe kontrol hizmetleri</li>
+          <li>Duran varlık muhasebesi, kayıt ve raporlama</li>
+          <li>Hesap planının oluşturulması</li>
+        </ul>
       </article>
 
-      <article class="service-hub-card reveal">
-        <figure class="service-card-media">
-          <img
-            src="https://images.pexels.com/photos/36733302/pexels-photo-36733302.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            width="1200"
-            height="750"
-            alt="İK ve sosyal güvenlik süreçlerini görüşen iki profesyonel"
-            loading="lazy"
-            decoding="async">
+      <article class="accounting-detail-card reveal">
+        <figure class="accounting-card-media">
+          <div class="accounting-visual payroll-visual" role="img" aria-label="Bordro hizmetlerini temsil eden maaş bordrosu, kesinti kalemleri ve kurum bildirimi görseli">
+            <div class="accounting-float-pill" style="top: 18px; right: 18px;"><span></span>Maaş Bordrosu</div>
+            <div class="payroll-card">
+              <div class="payroll-title-row">
+                <div class="payroll-title">Personel Bordrosu</div>
+                <div class="payroll-chip">Nisan</div>
+              </div>
+              <div class="payroll-person">
+                <strong>Net ücret ve yasal kesinti dengesi</strong>
+                <span>Brüt maaş, çalışan kesintileri ve işveren yükümlülükleri tek dökümde izlenir.</span>
+              </div>
+              <div class="payroll-breakdown">
+                <div class="payroll-breakdown-row">
+                  <span>Brüt Ücret</span>
+                  <strong>58.000 TL</strong>
+                </div>
+                <div class="payroll-breakdown-row">
+                  <span>Kesintiler</span>
+                  <strong>8.450 TL</strong>
+                </div>
+                <div class="payroll-breakdown-row">
+                  <span>Net Ödeme</span>
+                  <strong>49.550 TL</strong>
+                </div>
+              </div>
+            </div>
+            <div class="payroll-calendar">
+              <div class="payroll-title">Kurum Bildirimi</div>
+              <div class="payroll-stamps">
+                <span>Sosyal Sigorta</span>
+                <span>İhtiyat Sandığı</span>
+                <span>İşe Giriş / Çıkış</span>
+              </div>
+              <small>Aylık bordro ile birlikte resmi kurum bildirim akışı da takip edilir.</small>
+            </div>
+            <div class="payroll-tag">Brüt + Kesinti + Net</div>
+          </div>
         </figure>
-        <div class="card-kicker"><span class="kicker-dot"></span>İstihdam</div>
-        <h3>İş ve Sosyal Güvenlik</h3>
-        <p>Çalışanlara ilişkin sosyal sigorta ve sosyal güvenlik yükümlülükleri, bordro akışları ve işveren katkılarının doğru yönetimi bu hizmet grubunda toplanıyor.</p>
-        <div class="micro-list">
-          <span>Sosyal sigorta ve prim süreçleri</span>
-          <span>İşveren yükümlülük takibi</span>
-          <span>Personel odaklı mevzuat uyumu</span>
-        </div>
+        <div class="card-kicker"><span class="kicker-dot"></span>Bordro</div>
+        <h3>Bordro</h3>
+        <p>Çeşitli sektörlerde faaliyet gösteren şirketler için maaş bordrolarının hazırlanması, personel kayıtlarının açılması ve ilgili resmi kurumlara doğru beyanların verilmesi tarafında düzenli operasyon desteği veriyoruz.</p>
+        <ul class="detail-list">
+          <li>Bordro hazırlanması ve mevzuat gerekleri ile ilgili danışmanlık</li>
+          <li>Personel kayıtlarının yapılması</li>
+          <li>Sosyal sigorta kayıtlarının yapılması</li>
+          <li>İhtiyat Sandığı kayıtlarının yapılması</li>
+          <li>İşe giren veya işten çıkan personelle ilgili resmi kurumlara beyanname sunulması</li>
+        </ul>
       </article>
 
-      <article class="service-hub-card reveal">
-        <figure class="service-card-media">
-          <img
-            src="https://images.pexels.com/photos/11229799/pexels-photo-11229799.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            width="1200"
-            height="750"
-            alt="Kurumsal güven hissi veren modern ofis binaları"
-            loading="lazy"
-            decoding="async">
+      <article class="accounting-detail-card reveal">
+        <figure class="accounting-card-media">
+          <div class="accounting-visual tax-visual" role="img" aria-label="Vergi muhasebesini temsil eden beyanname takibi, vergi türleri ve son tarih paneli">
+            <div class="accounting-float-pill" style="top: 18px; right: 18px;"><span></span>Vergi Takvimi</div>
+            <div class="tax-card">
+              <div class="tax-title-row">
+                <div class="tax-title">Beyanname Kontrolü</div>
+                <div class="tax-chip">KKTC</div>
+              </div>
+              <div class="tax-return-list">
+                <div class="tax-return-row">
+                  <span>KDV Beyanı</span>
+                  <strong>Hazır</strong>
+                </div>
+                <div class="tax-return-row">
+                  <span>Stopaj Beyanı</span>
+                  <strong>Kontrol</strong>
+                </div>
+                <div class="tax-return-row">
+                  <span>Kurumlar Vergisi</span>
+                  <strong>Takipte</strong>
+                </div>
+              </div>
+              <div class="tax-note">Matrah kontrolü, vergi hesaplaması ve beyan hazırlığı aynı hizmet akışında ilerler.</div>
+            </div>
+            <div class="tax-meter">
+              <div class="tax-title">Son Tarih</div>
+              <span class="tax-status-value">15</span>
+              <span class="tax-status-label">Aylık beyan günü</span>
+              <small>Hesaplama, kontrol ve zamanında gönderim planı</small>
+            </div>
+          </div>
         </figure>
-        <div class="card-kicker"><span class="kicker-dot"></span>Danışmanlık</div>
-        <h3>Danışmanlık Hizmetleri</h3>
-        <p>Bu bölüm; şirket kuruluşu, kurumsallaşma, ortaklık yapısı ve büyüme kararlarını doğru zemine oturtmak isteyen yatırımcılar için stratejik yönlendirme alanı olarak kurgulandı.</p>
-        <div class="micro-list">
-          <span>Şirket tescil işlemleri</span>
-          <span>Kurumsallaşma ve yapılandırma</span>
-          <span>Aile şirketi yönetişim desteği</span>
-        </div>
+        <div class="card-kicker"><span class="kicker-dot"></span>Vergi Muhasebesi</div>
+        <h3>Vergi Muhasebesi</h3>
+        <p>KKTC’de tutulan muhasebe kayıtları, hem şirket genel kurullarına sunulan mali tabloların hem de vergi matrahının belirlenmesinde temel oluşturur. Bu nedenle kayıtların vergi mevzuatına uygun ilerlemesi için gerekli mesleki desteği sağlıyoruz.</p>
+        <ul class="detail-list">
+          <li>Kurumlar Vergisi beyannamelerinin hazırlanması</li>
+          <li>Gelir Vergisi stopaj beyannamelerinin hazırlanması</li>
+          <li>Katma Değer Vergisi beyannamelerinin hazırlanması</li>
+          <li>Vergi hesaplamaları ve vergi beyannamelerinin incelenmesi</li>
+        </ul>
       </article>
 
-      <article class="service-hub-card reveal">
-        <figure class="service-card-media">
-          <img
-            src="https://images.pexels.com/photos/29284262/pexels-photo-29284262.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            width="1200"
-            height="750"
-            alt="Eğitim ve sunum oturumunda ekip çalışması yapan profesyoneller"
-            loading="lazy"
-            decoding="async">
+      <article class="accounting-detail-card reveal">
+        <figure class="accounting-card-media">
+          <div class="accounting-visual registration-visual" role="img" aria-label="Tescil işlemlerini temsil eden kurum kayıt checklisti ve başvuru dosyası">
+            <div class="accounting-float-pill" style="top: 18px; right: 18px;"><span></span>Kurum Kaydı</div>
+            <div class="registration-paper">
+              <div class="registration-title-row">
+                <div class="registration-title">Tescil Dosyası</div>
+                <div class="registration-chip">Başvuru</div>
+              </div>
+              <div class="registration-checklist">
+                <div class="registration-check-item">
+                  <span class="registration-dot done"></span>
+                  <div>
+                    <strong>Vergi Dairesi</strong>
+                    <small>İlk kayıt formu ve mükellefiyet açılışı hazırlandı.</small>
+                  </div>
+                </div>
+                <div class="registration-check-item">
+                  <span class="registration-dot done"></span>
+                  <div>
+                    <strong>Sosyal Sigortalar</strong>
+                    <small>İşyeri bildirimi ve personel açılış süreci eşleştirildi.</small>
+                  </div>
+                </div>
+                <div class="registration-check-item">
+                  <span class="registration-dot done"></span>
+                  <div>
+                    <strong>İhtiyat Sandığı</strong>
+                    <small>Kurum kaydı ve bordro bağlantısı aynı dosya akışına alındı.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="registration-badge">
+              <div class="registration-check">✓</div>
+              <strong>3 Kurum</strong>
+              <small>Vergi, sosyal sigorta ve ihtiyat sandığı dosyaları hazırlandı.</small>
+            </div>
+          </div>
         </figure>
-        <div class="card-kicker"><span class="kicker-dot"></span>Eğitim</div>
-        <h3>Eğitim Hizmetleri</h3>
-        <p>Şirket içi eğitimler, muhasebe ve iş hukuku başlıkları ile kurumun talebine göre sahada veya özel oturumlarda verilen programlar hizmet yelpazesinde önemli bir yer tutuyor.</p>
-        <div class="micro-list">
-          <span>Şirkete özel eğitim oturumları</span>
-          <span>Muhasebe ve iş hukuku içerikleri</span>
-          <span>Sahada veya salonda esnek eğitim modeli</span>
-        </div>
+        <div class="card-kicker"><span class="kicker-dot"></span>Tescil İşlemleri</div>
+        <h3>Tescil İşlemleri</h3>
+        <p>İşletmenin resmi yükümlülüklerini başlangıç aşamasından itibaren doğru kurmak, sonraki muhasebe ve vergi akışının sağlıklı ilerlemesi için kritik öneme sahiptir. Bu nedenle tescil işlemlerini de muhasebe danışmanlığı kapsamında takip ediyoruz.</p>
+        <ul class="detail-list">
+          <li>Vergi Dairesi’ne kayıt (tescil)</li>
+          <li>Sosyal Sigortalar Dairesi’ne kayıt (tescil)</li>
+          <li>İhtiyat Sandığı Dairesi’ne kayıt (tescil)</li>
+        </ul>
       </article>
     </div>
   </div>
@@ -3165,7 +4524,7 @@ footer {
         <div class="section-visual-copy">
           <div class="card-kicker"><span class="kicker-dot"></span>Güncellemeleri izleyin</div>
           <h3>Karar verirken hangi başlıkların hareket ettiğini önceden görün</h3>
-          <p>Vergi, istihdam ve resmi duyurular tarafında oluşan değişimleri erkenden görmek; kuruluş, bütçe ve operasyon planlamasında sizi daha güvenli hareket ettirir.</p>
+          <p data-tr="Vergi, istihdam ve resmi duyurular tarafında oluşan değişimleri erkenden görmek; bütçe, bordro ve operasyon planlamasında sizi daha güvenli hareket ettirir." data-en="Seeing changes early across tax, employment and official announcements helps you move more confidently in budgeting, payroll and operational planning." data-ru="Раннее понимание изменений в налогах, занятости и официальных уведомлениях помогает увереннее планировать бюджет, зарплаты и операционную деятельность." data-ar="إن رؤية التغييرات مبكرًا في الضرائب والعمالة والإعلانات الرسمية تساعدك على التحرك بثقة أكبر في تخطيط الميزانية والرواتب والعمليات.">Vergi, istihdam ve resmi duyurular tarafında oluşan değişimleri erkenden görmek; bütçe, bordro ve operasyon planlamasında sizi daha güvenli hareket ettirir.</p>
           <div class="section-visual-points">
             <span>Vergi ve bordro etkisini erken fark edin</span>
             <span>Resmi duyuruları operasyon kararına dönüştürün</span>
@@ -3193,7 +4552,7 @@ footer {
               </div>
             </div>
           </div>
-          <div class="insight-note">Doğru zamanda alınan bilgi, şirket kuruluşu ve operasyon planlamasında gereksiz maliyet riskini azaltır.</div>
+          <div class="insight-note" data-tr="Doğru zamanda alınan bilgi, mali planlama ve operasyon yönetiminde gereksiz maliyet riskini azaltır." data-en="Information received at the right time reduces unnecessary cost risk in financial planning and operational management." data-ru="Информация, полученная вовремя, снижает риск лишних затрат в финансовом планировании и операционном управлении." data-ar="المعلومة التي تصل في الوقت الصحيح تقلل مخاطر التكاليف غير الضرورية في التخطيط المالي وإدارة العمليات.">Doğru zamanda alınan bilgi, mali planlama ve operasyon yönetiminde gereksiz maliyet riskini azaltır.</div>
           <div class="insight-orb" aria-hidden="true"></div>
         </div>
       </div>
@@ -3254,9 +4613,9 @@ footer {
 <!-- FORMATION HUB -->
 <section id="formation-hub">
   <div class="section-shell">
-    <div class="section-tag" style="color:rgba(255,255,255,0.72);">Şirket Kurma</div>
-    <h2 class="section-title light reveal">KKTC'de şirket kuruluş sürecini netleştirin</h2>
-    <p class="section-sub light reveal">Kuruluş şartlarını, şirket türlerini, maliyetleri ve resmi adımları tek ekranda görerek sizin için doğru yapıyı daha hızlı belirleyin.</p>
+    <div class="section-tag" style="color:rgba(255,255,255,0.72);" data-tr="Kuruluş & Tescil" data-en="Setup & Registration" data-ru="Создание и регистрация" data-ar="التأسيس والتسجيل">Kuruluş & Tescil</div>
+    <h2 class="section-title light reveal" data-tr="Kuruluş ve tescil süreçlerini netleştirin" data-en="Clarify setup and registration processes" data-ru="Уточните процессы создания и регистрации" data-ar="وضّح إجراءات التأسيس والتسجيل">Kuruluş ve tescil süreçlerini netleştirin</h2>
+    <p class="section-sub light reveal" data-tr="Yeni şirket kuracak veya işletmesini resmileştirecek müşteriler için kuruluş şartlarını, yapı seçeneklerini, maliyetleri ve resmi adımları tek ekranda özetliyoruz." data-en="For clients planning a new company or formalizing an existing business, we summarize setup requirements, structure options, costs and official steps on one screen." data-ru="Для клиентов, которые создают новую компанию или оформляют уже существующий бизнес, мы показываем на одном экране требования, варианты структуры, расходы и официальные шаги." data-ar="للعملاء الذين يخططون لتأسيس شركة جديدة أو تقنين أعمالهم الحالية، نلخّص في شاشة واحدة المتطلبات والخيارات والتكاليف والخطوات الرسمية.">Yeni şirket kuracak veya işletmesini resmileştirecek müşteriler için kuruluş şartlarını, yapı seçeneklerini, maliyetleri ve resmi adımları tek ekranda özetliyoruz.</p>
 
     <div class="formation-grid">
       <article class="formation-card reveal">
@@ -3288,9 +4647,9 @@ footer {
           </div>
           <div class="formation-flow-chip">Süreç Netleştirildi</div>
         </div>
-        <div class="card-kicker"><span class="kicker-dot"></span>Kuruluşlarda Aranan Temel Şartlar</div>
-        <h3>Kuruluşa başlamadan önce bilinmesi gerekenler</h3>
-        <p>Kuruluşa başlamadan önce hissedar sayısı, sermaye eşiği, şube izinleri ve tescil makamı gibi başlıkların netleşmesi sürecin hızlı ve sorunsuz ilerlemesi için önemlidir.</p>
+        <div class="card-kicker" data-tr="Kuruluş ve Tescilde Temel Başlıklar" data-en="Core Topics in Setup and Registration" data-ru="Ключевые темы запуска и регистрации" data-ar="المحاور الأساسية في التأسيس والتسجيل"><span class="kicker-dot"></span>Kuruluş ve Tescilde Temel Başlıklar</div>
+        <h3 data-tr="Resmi sürece başlamadan önce bilinmesi gerekenler" data-en="What to know before starting the official process" data-ru="Что важно знать до начала официального процесса" data-ar="ما يجب معرفته قبل بدء الإجراءات الرسمية">Resmi sürece başlamadan önce bilinmesi gerekenler</h3>
+        <p data-tr="Yeni bir yapı kurulacaksa hissedar sayısı, sermaye eşiği, şube izinleri ve tescil makamı gibi başlıkların netleşmesi sürecin hızlı ilerlemesi ve sonraki muhasebe altyapısının doğru kurulması için önemlidir." data-en="If a new structure is being set up, clarifying shareholder count, capital thresholds, branch permits and the registration authority is important both for speed and for building the accounting foundation correctly." data-ru="Если создаётся новая структура, важно заранее определить число участников, порог капитала, разрешения на филиалы и орган регистрации — это ускоряет процесс и помогает правильно выстроить бухгалтерскую базу." data-ar="إذا كان سيتم إنشاء هيكل جديد، فإن توضيح عدد الشركاء وحدود رأس المال وتصاريح الفروع والجهة المسؤولة عن التسجيل مهم لتسريع العملية وبناء الأساس المحاسبي بشكل صحيح.">Yeni bir yapı kurulacaksa hissedar sayısı, sermaye eşiği, şube izinleri ve tescil makamı gibi başlıkların netleşmesi sürecin hızlı ilerlemesi ve sonraki muhasebe altyapısının doğru kurulması için önemlidir.</p>
         <ul class="detail-list">
           <li>Özel yerel limited yapı için en az 2 hissedar gerekir</li>
           <li>Halka açık limited yapılarda en az 7 hissedar ve daha geniş yönetim yapısı bulunur</li>
@@ -3299,8 +4658,8 @@ footer {
           <li>Yerel limited şirketler Şirketler Mukayyitliği'nde, serbest liman yapıları ise ilgili bölge yönetiminde tescil edilir</li>
         </ul>
         <div class="action-row">
-          <a class="inline-link primary" href="#process">Kuruluş Sürecini İncele</a>
-          <a class="inline-link" href="#comparison">Türleri Karşılaştır</a>
+          <a class="inline-link primary" href="#process" data-tr="Kuruluş Adımlarını İncele" data-en="Review Setup Steps" data-ru="Изучить этапы запуска" data-ar="استعرض خطوات التأسيس">Kuruluş Adımlarını İncele</a>
+          <a class="inline-link" href="#comparison" data-tr="Yapıları Karşılaştır" data-en="Compare Structures" data-ru="Сравнить структуры" data-ar="قارن الهياكل">Yapıları Karşılaştır</a>
         </div>
       </article>
 
@@ -3325,9 +4684,9 @@ footer {
             <div class="formation-mini-badge">3 Ana Model</div>
           </div>
         </div>
-        <div class="card-kicker"><span class="kicker-dot"></span>Şirket Türleri</div>
-        <h3>Farklı yatırım tiplerine göre şirket haritası</h3>
-        <p>Her yatırımcının hedefi farklıdır. Bu nedenle şirket türlerini; faaliyet alanı, vergi avantajı, sorumluluk yapısı ve büyüme planına göre kolay karşılaştırılabilir biçimde sunuyoruz.</p>
+        <div class="card-kicker" data-tr="İşletme Yapıları" data-en="Business Structures" data-ru="Бизнес-структуры" data-ar="هياكل الأعمال"><span class="kicker-dot"></span>İşletme Yapıları</div>
+        <h3 data-tr="Farklı işletme yapılarını tek bakışta değerlendirin" data-en="Evaluate different business structures at a glance" data-ru="Оцените разные структуры бизнеса с первого взгляда" data-ar="قيّم هياكل الأعمال المختلفة بنظرة واحدة">Farklı işletme yapılarını tek bakışta değerlendirin</h3>
+        <p data-tr="Yeni kuruluş veya yeniden yapılanma ihtiyacı varsa işletme yapılarını; faaliyet alanı, vergi etkisi, sorumluluk yapısı ve büyüme planına göre kolay karşılaştırılabilir biçimde sunuyoruz." data-en="If a new setup or restructuring is needed, we present business structures in a way that is easy to compare by activity area, tax impact, liability model and growth plan." data-ru="Если требуется новый запуск или реструктуризация, мы показываем бизнес-структуры так, чтобы их было легко сравнить по виду деятельности, налоговому эффекту, модели ответственности и плану роста." data-ar="إذا كانت هناك حاجة إلى تأسيس جديد أو إعادة هيكلة، فنحن نعرض هياكل الأعمال بطريقة سهلة المقارنة بحسب مجال النشاط والأثر الضريبي ونموذج المسؤولية وخطة النمو.">Yeni kuruluş veya yeniden yapılanma ihtiyacı varsa işletme yapılarını; faaliyet alanı, vergi etkisi, sorumluluk yapısı ve büyüme planına göre kolay karşılaştırılabilir biçimde sunuyoruz.</p>
         <ul class="detail-list">
           <li>Şahıs işletmesi: tek kişi adına tescil edilen ve yükümlülüklerin doğrudan iş sahibine ait olduğu yapı</li>
           <li>Kollektif ve komandit ortaklıklar: ortakların sorumluluk düzeyine göre değişen ortaklık modeli</li>
@@ -3337,8 +4696,8 @@ footer {
           <li>Uluslararası işletme şirketleri: faaliyetini yurt dışına yönelten ve düşük kurumlar vergisi avantajı taşıyan yapı</li>
         </ul>
         <div class="action-row">
-          <a class="inline-link primary" href="#types">Şirket Türlerini Gör</a>
-          <a class="inline-link" href="#calculator">Maliyeti Hesapla</a>
+          <a class="inline-link primary" href="#types" data-tr="Yapıları Gör" data-en="See Structures" data-ru="Смотреть структуры" data-ar="اعرض الهياكل">Yapıları Gör</a>
+          <a class="inline-link" href="#calculator" data-tr="Kuruluş Maliyetini Planla" data-en="Plan Setup Cost" data-ru="Спланировать стоимость запуска" data-ar="خطط تكلفة التأسيس">Kuruluş Maliyetini Planla</a>
         </div>
       </article>
     </div>
@@ -3400,7 +4759,7 @@ footer {
         </div>
         <div class="card-kicker"><span class="kicker-dot"></span>Vergi ile ilgili bilgiler</div>
         <h3>Temel vergi yasaları ve başvuru çerçevesi</h3>
-        <p>Şirket kuruluşu ve operasyon sürecinde hangi vergi yasalarının devrede olduğunu erken aşamada görmek, hem mali planlama hem de uyum tarafında doğru adım atmanızı sağlar.</p>
+          <p data-tr="İşletmenin kuruluşundan günlük operasyonuna kadar hangi vergi yasalarının devrede olduğunu erken aşamada görmek, hem mali planlama hem de uyum tarafında doğru adım atmanızı sağlar." data-en="Seeing early which tax laws apply from setup through daily operations helps you take the right steps in both financial planning and compliance." data-ru="Раннее понимание того, какие налоговые законы действуют от запуска бизнеса до ежедневной деятельности, помогает принимать верные решения и в финансовом планировании, и в комплаенсе." data-ar="إن معرفة القوانين الضريبية السارية مبكرًا من مرحلة التأسيس حتى التشغيل اليومي تساعدك على اتخاذ الخطوات الصحيحة في التخطيط المالي والامتثال.">İşletmenin kuruluşundan günlük operasyonuna kadar hangi vergi yasalarının devrede olduğunu erken aşamada görmek, hem mali planlama hem de uyum tarafında doğru adım atmanızı sağlar.</p>
         <ul class="law-list">
           <li>Vergi Usul Yasası (27/1977)</li>
           <li>Gelir Vergisi Yasası (24/1982)</li>
@@ -3457,9 +4816,9 @@ footer {
 
 <!-- QUIZ -->
 <section id="quiz">
-  <div class="section-tag" data-tr="İnteraktif Araç" data-en="Interactive Tool" data-ru="Интерактивный инструмент" data-ar="أداة تفاعلية">İnteraktif Araç</div>
-  <h2 class="section-title reveal" data-tr="Size En Uygun Şirket Türü Hangisi?" data-en="Which Company Type Suits You Best?" data-ru="Какой тип компании вам подходит?" data-ar="أي نوع شركة يناسبك؟">Size En Uygun Şirket Türü Hangisi?</h2>
-  <p class="section-sub reveal" data-tr="3 basit soruyla size en uygun yapıyı bulalım." data-en="Find your ideal structure with 3 simple questions." data-ru="Найдите идеальную структуру с 3 простыми вопросами." data-ar="اعثر على الهيكل المثالي بـ 3 أسئلة بسيطة.">3 basit soruyla size en uygun yapıyı bulalım.</p>
+  <div class="section-tag" data-tr="Ekstra Araç" data-en="Extra Tool" data-ru="Дополнительный инструмент" data-ar="أداة إضافية">Ekstra Araç</div>
+  <h2 class="section-title reveal" data-tr="Yeni kuruluş için hangi yapı daha uygun?" data-en="Which structure fits a new setup best?" data-ru="Какая структура лучше подходит для нового запуска?" data-ar="أي هيكل أنسب للتأسيس الجديد؟">Yeni kuruluş için hangi yapı daha uygun?</h2>
+  <p class="section-sub reveal" data-tr="Yeni şirket kurmayı planlıyorsanız 3 basit soruyla size en uygun yapıyı hızlıca görün." data-en="If you are planning a new company, use 3 simple questions to quickly see the most suitable structure." data-ru="Если вы планируете новую компанию, ответьте на 3 простых вопроса, чтобы быстро увидеть подходящую структуру." data-ar="إذا كنت تخطط لتأسيس شركة جديدة، أجب عن 3 أسئلة بسيطة لرؤية الهيكل الأنسب بسرعة.">Yeni şirket kurmayı planlıyorsanız 3 basit soruyla size en uygun yapıyı hızlıca görün.</p>
   
   <div class="quiz-container reveal" style="margin-top:48px;">
     <div class="quiz-header">
@@ -3467,8 +4826,8 @@ footer {
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
       </div>
       <div>
-        <div class="quiz-header-title" data-tr="Şirket Türü Bulucu" data-en="Company Type Finder" data-ru="Подбор типа компании" data-ar="محدد نوع الشركة">Şirket Türü Bulucu</div>
-        <div class="quiz-header-sub" data-tr="Kişiselleştirilmiş öneri alın" data-en="Get a personalized recommendation" data-ru="Получите персональную рекомендацию" data-ar="احصل على توصية شخصية">Kişiselleştirilmiş öneri alın</div>
+        <div class="quiz-header-title" data-tr="Yapı Öneri Aracı" data-en="Structure Recommendation Tool" data-ru="Инструмент подбора структуры" data-ar="أداة اقتراح الهيكل">Yapı Öneri Aracı</div>
+        <div class="quiz-header-sub" data-tr="Kuruluş öncesi hızlı yönlendirme alın" data-en="Get quick guidance before setup" data-ru="Получите быстрое направление до регистрации" data-ar="احصل على توجيه سريع قبل التأسيس">Kuruluş öncesi hızlı yönlendirme alın</div>
       </div>
     </div>
     <div class="quiz-body">
@@ -3585,11 +4944,11 @@ footer {
       <!-- Result -->
       <div class="quiz-step" id="qstep-result">
         <div class="quiz-result">
-          <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px" data-tr="Size en uygun şirket türü:" data-en="Best company type for you:" data-ru="Подходящий тип компании:" data-ar="نوع الشركة الأنسب لك:">Size en uygun şirket türü:</div>
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px" data-tr="Size önerilen yapı:" data-en="Recommended structure for you:" data-ru="Рекомендуемая структура:" data-ar="الهيكل المقترح لك:">Size önerilen yapı:</div>
           <div class="quiz-result-badge" id="quiz-result-title">—</div>
           <p id="quiz-result-desc" style="max-width:480px;margin:0 auto 24px;"></p>
           <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-            <a href="#contact" class="quiz-result-cta" data-tr="Ücretsiz Danışmanlık Al →" data-en="Get Free Consultation →" data-ru="Получить бесплатную консультацию →" data-ar="احصل على استشارة مجانية →">Ücretsiz Danışmanlık Al →</a>
+            <a href="#contact" class="quiz-result-cta" data-tr="Danışmanlık İsteyin →" data-en="Request Advisory Support →" data-ru="Запросить консультацию →" data-ar="اطلب استشارة →">Danışmanlık İsteyin →</a>
             <button class="quiz-back" onclick="resetQuiz()" data-tr="Tekrar Dene" data-en="Try Again" data-ru="Попробовать снова" data-ar="حاول مجدداً">Tekrar Dene</button>
           </div>
         </div>
@@ -3600,22 +4959,22 @@ footer {
 
 <!-- PROCESS -->
 <section id="process">
-  <div class="section-tag" data-tr="Nasıl Çalışır?" data-en="How It Works" data-ru="Как это работает" data-ar="كيف يعمل؟">Nasıl Çalışır?</div>
-  <h2 class="section-title light reveal" data-tr="Şirket Kurma Süreci" data-en="The Formation Process" data-ru="Процесс регистрации" data-ar="عملية تأسيس الشركة">Şirket Kurma Süreci</h2>
-  <p class="section-sub light reveal" data-tr="4 adımda şirketiniz hazır. Tüm süreci biz yönetiyoruz." data-en="Your company ready in 4 steps. We manage the entire process." data-ru="Ваша компания готова за 4 шага." data-ar="شركتك جاهزة في 4 خطوات. نحن ندير العملية بأكملها.">4 adımda şirketiniz hazır. Tüm süreci biz yönetiyoruz.</p>
+  <div class="section-tag" data-tr="Destek Süreci" data-en="Support Process" data-ru="Процесс сопровождения" data-ar="مسار الدعم">Destek Süreci</div>
+  <h2 class="section-title light reveal" data-tr="Kuruluş ve resmi işlem desteği" data-en="Setup and official registration support" data-ru="Поддержка по запуску и официальной регистрации" data-ar="دعم التأسيس والإجراءات الرسمية">Kuruluş ve resmi işlem desteği</h2>
+  <p class="section-sub light reveal" data-tr="Yeni şirket kuracak müşteriler için resmi süreci 4 adımda yönetiyor, ardından muhasebe düzeninin sağlıklı kurulmasına eşlik ediyoruz." data-en="For clients setting up a new company, we manage the official process in 4 steps and then support the accounting setup." data-ru="Для клиентов, создающих новую компанию, мы ведём официальный процесс в 4 шага, а затем сопровождаем настройку бухгалтерии." data-ar="للعملاء الذين يؤسسون شركة جديدة، ندير العملية الرسمية في 4 خطوات ثم نرافق إعداد النظام المحاسبي.">Yeni şirket kuracak müşteriler için resmi süreci 4 adımda yönetiyor, ardından muhasebe düzeninin sağlıklı kurulmasına eşlik ediyoruz.</p>
   
   <div class="process-grid reveal" style="margin-top:56px;">
     <div class="process-step">
       <div class="process-num">01</div>
       <div class="process-step-icon">📞</div>
-      <div class="process-step-title" data-tr="İlk Danışmanlık" data-en="Initial Consultation" data-ru="Первичная консультация" data-ar="الاستشارة الأولية">İlk Danışmanlık</div>
-      <div class="process-step-desc" data-tr="İhtiyaçlarınızı dinler, size en uygun şirket yapısını belirleriz." data-en="We listen to your needs and determine the most suitable structure." data-ru="Выслушаем ваши потребности, определим наилучшую структуру." data-ar="نستمع إلى احتياجاتك ونحدد الهيكل الأنسب.">İhtiyaçlarınızı dinler, size en uygun şirket yapısını belirleriz.</div>
+      <div class="process-step-title" data-tr="İlk Görüşme" data-en="Initial Meeting" data-ru="Первая встреча" data-ar="الاجتماع الأول">İlk Görüşme</div>
+      <div class="process-step-desc" data-tr="İhtiyaçlarınızı dinler, işletmeniz için uygun yapı ve kayıt planını birlikte netleştiririz." data-en="We listen to your needs and clarify the right structure and registration plan for your business." data-ru="Мы изучаем ваши потребности и вместе определяем подходящую структуру и план регистрации для бизнеса." data-ar="نستمع إلى احتياجاتك ونحدد معًا الهيكل المناسب وخطة التسجيل لعملك.">İhtiyaçlarınızı dinler, işletmeniz için uygun yapı ve kayıt planını birlikte netleştiririz.</div>
     </div>
     <div class="process-step">
       <div class="process-num">02</div>
       <div class="process-step-icon">📄</div>
       <div class="process-step-title" data-tr="Belge Hazırlığı" data-en="Document Preparation" data-ru="Подготовка документов" data-ar="إعداد الوثائق">Belge Hazırlığı</div>
-      <div class="process-step-desc" data-tr="Ana sözleşme, tüzük ve tüm yasal belgeler ekibimiz tarafından hazırlanır." data-en="Articles, bylaws and all legal documents prepared by our team." data-ru="Устав, все юридические документы подготовит наша команда." data-ar="تُعدّ جميع الوثائق القانونية من قِبل فريقنا.">Ana sözleşme, tüzük ve tüm yasal belgeler ekibimiz tarafından hazırlanır.</div>
+      <div class="process-step-desc" data-tr="Ana sözleşme, kayıt evrakları ve ilgili resmi belgeler ekibimiz tarafından hazırlanır." data-en="Articles, registration documents and related official papers are prepared by our team." data-ru="Учредительные документы, регистрационные бумаги и все официальные документы готовит наша команда." data-ar="يُعد فريقنا عقد التأسيس ومستندات التسجيل والوثائق الرسمية ذات الصلة.">Ana sözleşme, kayıt evrakları ve ilgili resmi belgeler ekibimiz tarafından hazırlanır.</div>
     </div>
     <div class="process-step">
       <div class="process-num">03</div>
@@ -3626,17 +4985,17 @@ footer {
     <div class="process-step">
       <div class="process-num">04</div>
       <div class="process-step-icon">✅</div>
-      <div class="process-step-title" data-tr="Şirketiniz Hazır" data-en="Your Company is Ready" data-ru="Ваша компания готова" data-ar="شركتك جاهزة">Şirketiniz Hazır</div>
-      <div class="process-step-desc" data-tr="Vergi kaydı, banka hesabı açılışı ve sonraki adımlarda da yanınızdayız." data-en="Tax registration, bank account opening – we support you at every step." data-ru="Налоговая регистрация, открытие счёта – мы с вами на каждом этапе." data-ar="التسجيل الضريبي، فتح الحساب البنكي - نحن معك في كل خطوة.">Vergi kaydı, banka hesabı açılışı ve sonraki adımlarda da yanınızdayız.</div>
+      <div class="process-step-title" data-tr="Muhasebe Başlangıcı" data-en="Accounting Kickoff" data-ru="Запуск бухгалтерии" data-ar="بدء المحاسبة">Muhasebe Başlangıcı</div>
+      <div class="process-step-desc" data-tr="Vergi kaydı, banka hesabı açılışı ve sonraki muhasebe düzeninin kurulmasında da yanınızdayız." data-en="We also support tax registration, bank account opening and the setup of the accounting routine." data-ru="Мы сопровождаем налоговую регистрацию, открытие счёта и запуск бухгалтерского порядка." data-ar="نرافقك كذلك في التسجيل الضريبي وفتح الحساب البنكي وبدء النظام المحاسبي.">Vergi kaydı, banka hesabı açılışı ve sonraki muhasebe düzeninin kurulmasında da yanınızdayız.</div>
     </div>
   </div>
 </section>
 
 <!-- COMPANY TYPES -->
 <section id="types">
-  <div class="section-tag" data-tr="Tüm Seçenekler" data-en="All Options" data-ru="Все варианты" data-ar="جميع الخيارات">Tüm Seçenekler</div>
-  <h2 class="section-title reveal" data-tr="Şirket Türleri" data-en="Company Types" data-ru="Типы компаний" data-ar="أنواع الشركات">Şirket Türleri</h2>
-  <p class="section-sub reveal" data-tr="KKTC'de kurulabilecek tüm işletme yapıları ve özellikleri." data-en="All business structures that can be established in the TRNC." data-ru="Все бизнес-структуры, которые можно зарегистрировать в Северном Кипре." data-ar="جميع هياكل الأعمال التي يمكن تأسيسها في شمال قبرص.">KKTC'de kurulabilecek tüm işletme yapıları ve özellikleri.</p>
+  <div class="section-tag" data-tr="Destek Hizmeti" data-en="Support Service" data-ru="Дополнительная услуга" data-ar="خدمة داعمة">Destek Hizmeti</div>
+  <h2 class="section-title reveal" data-tr="İşletme Yapıları" data-en="Business Structures" data-ru="Структуры бизнеса" data-ar="هياكل الأعمال">İşletme Yapıları</h2>
+  <p class="section-sub reveal" data-tr="Kuruluş ihtiyacı olan müşteriler için değerlendirilebilecek temel işletme yapıları ve özellikleri." data-en="Core business structures and their features for clients who need a new setup." data-ru="Основные структуры бизнеса и их особенности для клиентов, которым нужен новый запуск." data-ar="الهياكل الأساسية للأعمال وخصائصها للعملاء الذين يحتاجون إلى تأسيس جديد.">Kuruluş ihtiyacı olan müşteriler için değerlendirilebilecek temel işletme yapıları ve özellikleri.</p>
   
   <div class="types-grid">
     <div class="type-card reveal">
@@ -3706,8 +5065,8 @@ footer {
 <!-- COMPARISON TABLE -->
 <section id="comparison">
   <div class="section-tag" data-tr="Karşılaştırma" data-en="Comparison" data-ru="Сравнение" data-ar="المقارنة">Karşılaştırma</div>
-  <h2 class="section-title reveal" data-tr="Şirket Türleri Karşılaştırması" data-en="Company Types Comparison" data-ru="Сравнение типов компаний" data-ar="مقارنة أنواع الشركات">Şirket Türleri Karşılaştırması</h2>
-  <p class="section-sub reveal" data-tr="Hangi yapının size uygun olduğunu tek bakışta görün." data-en="See at a glance which structure fits you best." data-ru="Увидьте с первого взгляда, какая структура вам подходит." data-ar="اعرف دفعةً واحدة أي هيكل يناسبك.">Hangi yapının size uygun olduğunu tek bakışta görün.</p>
+  <h2 class="section-title reveal" data-tr="İşletme Yapıları Karşılaştırması" data-en="Business Structures Comparison" data-ru="Сравнение бизнес-структур" data-ar="مقارنة هياكل الأعمال">İşletme Yapıları Karşılaştırması</h2>
+  <p class="section-sub reveal" data-tr="Yeni kuruluş planlıyorsanız hangi yapının size daha yakın olduğunu tek bakışta görün." data-en="If you are planning a new setup, see at a glance which structure is closer to your needs." data-ru="Если вы планируете новый запуск, быстро сравните, какая структура ближе вашим потребностям." data-ar="إذا كنت تخطط لتأسيس جديد، فاعرف بسرعة أي هيكل أقرب إلى احتياجاتك.">Yeni kuruluş planlıyorsanız hangi yapının size daha yakın olduğunu tek bakışta görün.</p>
   
   <div class="table-wrap reveal">
     <table class="comp-table">
@@ -3784,13 +5143,13 @@ footer {
 
 <!-- CALCULATOR -->
 <section id="calculator">
-  <div class="section-tag" data-tr="Maliyet Tahmini" data-en="Cost Estimate" data-ru="Оценка стоимости" data-ar="تقدير التكلفة">Maliyet Tahmini</div>
-  <h2 class="section-title light reveal" data-tr="Maliyet Hesaplayıcı" data-en="Cost Calculator" data-ru="Калькулятор стоимости" data-ar="حاسبة التكاليف">Maliyet Hesaplayıcı</h2>
-  <p class="section-sub light reveal" data-tr="Şirket türünüze göre tahmini kuruluş maliyetini hesaplayın." data-en="Calculate the estimated formation cost for your company type." data-ru="Рассчитайте примерную стоимость регистрации." data-ar="احسب تكلفة التأسيس المقدرة لنوع شركتك.">Şirket türünüze göre tahmini kuruluş maliyetini hesaplayın.</p>
+  <div class="section-tag" data-tr="Planlama Aracı" data-en="Planning Tool" data-ru="Инструмент планирования" data-ar="أداة تخطيط">Planlama Aracı</div>
+  <h2 class="section-title light reveal" data-tr="Kuruluş ve Tescil Maliyet Planlayıcısı" data-en="Setup and Registration Cost Planner" data-ru="Планировщик затрат на запуск и регистрацию" data-ar="مخطط تكاليف التأسيس والتسجيل">Kuruluş ve Tescil Maliyet Planlayıcısı</h2>
+  <p class="section-sub light reveal" data-tr="Yeni bir yapı kurulacaksa işletme türünüze göre tahmini başlangıç maliyetini hesaplayın." data-en="If a new structure will be set up, calculate the estimated startup cost based on your business type." data-ru="Если планируется новая структура, рассчитайте примерную стартовую стоимость по типу бизнеса." data-ar="إذا كنت ستنشئ هيكلاً جديدًا، فاحسب التكلفة التقديرية للبداية حسب نوع عملك.">Yeni bir yapı kurulacaksa işletme türünüze göre tahmini başlangıç maliyetini hesaplayın.</p>
   
   <div class="calc-container reveal">
     <div class="calc-form">
-      <div class="calc-label" data-tr="Şirket Türü" data-en="Company Type" data-ru="Тип компании" data-ar="نوع الشركة">Şirket Türü</div>
+      <div class="calc-label" data-tr="İşletme Yapısı" data-en="Business Structure" data-ru="Структура бизнеса" data-ar="هيكل العمل">İşletme Yapısı</div>
       <select class="calc-select" id="calc-type" onchange="calcEstimate()">
         <option value="sahis" data-tr="Şahıs İşletmesi" data-en="Sole Trader" data-ru="ИП" data-ar="مؤسسة فردية">Şahıs İşletmesi</option>
         <option value="kollektif" data-tr="Kollektif Ortaklık" data-en="General Partnership" data-ru="Партнёрство" data-ar="شركة تضامن">Kollektif Ortaklık</option>
@@ -3815,7 +5174,7 @@ footer {
     </div>
 
     <div class="calc-result" id="calc-result">
-      <div class="calc-result-title" data-tr="Tahmini Kuruluş Maliyeti" data-en="Est. Formation Cost" data-ru="Ожид. стоимость регистрации" data-ar="تكلفة التأسيس المقدرة">Tahmini Kuruluş Maliyeti</div>
+      <div class="calc-result-title" data-tr="Tahmini Başlangıç Maliyeti" data-en="Estimated Startup Cost" data-ru="Ориентировочная стартовая стоимость" data-ar="التكلفة التقديرية للبداية">Tahmini Başlangıç Maliyeti</div>
       <div class="calc-result-val" id="res-cost">$1,500</div>
       <div class="calc-result-sub" id="res-sub">—</div>
 
@@ -3849,7 +5208,7 @@ footer {
     </div>
     <div class="stat-card">
       <div class="stat-num">500<span>+</span></div>
-      <div class="stat-label" data-tr="Kurulan Şirket" data-en="Companies Founded" data-ru="Открытых компаний" data-ar="شركة تأسست">Kurulan Şirket</div>
+      <div class="stat-label" data-tr="Destek Verilen İşletme" data-en="Businesses Supported" data-ru="Компаний на сопровождении" data-ar="شركات نتولى دعمها">Destek Verilen İşletme</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">12<span>+</span></div>
@@ -3884,7 +5243,7 @@ footer {
 <section id="faq">
   <div class="section-tag" data-tr="Sık Sorulan Sorular" data-en="Frequently Asked Questions" data-ru="Часто задаваемые вопросы" data-ar="الأسئلة الشائعة">Sık Sorulan Sorular</div>
   <h2 class="section-title reveal" data-tr="Her Şeyin Cevabı Burada" data-en="All Your Answers Here" data-ru="Все ответы здесь" data-ar="كل الإجابات هنا">Her Şeyin Cevabı Burada</h2>
-  <p class="section-sub reveal" data-tr="KKTC'de şirket kurmak hakkında en çok sorulan sorular." data-en="Most frequently asked questions about forming a company in the TRNC." data-ru="Самые частые вопросы о регистрации компании в Северном Кипре." data-ar="أكثر الأسئلة شيوعاً حول تأسيس شركة في شمال قبرص.">KKTC'de şirket kurmak hakkında en çok sorulan sorular.</p>
+  <p class="section-sub reveal" data-tr="Muhasebe, vergi, bordro ve kuruluş süreçleri hakkında en çok sorulan sorular." data-en="Most frequently asked questions about accounting, tax, payroll and setup processes." data-ru="Самые частые вопросы о бухгалтерии, налогах, зарплате и процессах регистрации." data-ar="أكثر الأسئلة شيوعاً حول المحاسبة والضرائب والرواتب وإجراءات التأسيس.">Muhasebe, vergi, bordro ve kuruluş süreçleri hakkında en çok sorulan sorular.</p>
   
   <div class="faq-list reveal">
     <div class="faq-item" onclick="toggleFaq(this)">
@@ -3896,10 +5255,10 @@ footer {
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
-        <span data-tr="Yabancı uyruklu biri KKTC'de şirket kurabilir mi?" data-en="Can a foreign national form a company in the TRNC?" data-ru="Может ли иностранец открыть компанию в Северном Кипре?" data-ar="هل يمكن للأجنبي تأسيس شركة في شمال قبرص؟">Yabancı uyruklu biri KKTC'de şirket kurabilir mi?</span>
+        <span data-tr="Muhasebe kayıtları ne sıklıkla kontrol edilmeli?" data-en="How often should accounting records be reviewed?" data-ru="Как часто нужно проверять бухгалтерские записи?" data-ar="كم مرة يجب مراجعة السجلات المحاسبية؟">Muhasebe kayıtları ne sıklıkla kontrol edilmeli?</span>
         <div class="faq-icon">+</div>
       </div>
-      <div class="faq-a" data-tr="Evet, yabancı uyruklu kişiler KKTC'de şirket kurabilir. Yerel Limited Şirket, Uluslararası İşletme Şirketi ve Serbest Liman Şirketi kuruluşu için yabancı sermayeye herhangi bir kısıtlama bulunmamaktadır." data-en="Yes, foreign nationals can form companies in the TRNC. There are no restrictions on foreign capital for Local Limited Companies, IBCs, or Free Zone Companies." data-ru="Да, иностранцы могут открывать компании в Северном Кипре. Ограничений на иностранный капитал для большинства типов компаний нет." data-ar="نعم، يمكن للأجانب تأسيس شركات في شمال قبرص. لا توجد قيود على رأس المال الأجنبي لأغلب أنواع الشركات.">Evet, yabancı uyruklu kişiler KKTC'de şirket kurabilir.</div>
+      <div class="faq-a" data-tr="İşletmenin işlem yoğunluğuna göre değişmekle birlikte muhasebe kayıtlarının aylık olarak kontrol edilmesi en sağlıklı yöntemdir. Bu sayede gelir-gider dengesi, vergi yükümlülükleri ve eksik evraklar yıl sonunu beklemeden görülebilir." data-en="Although it depends on transaction volume, reviewing accounting records monthly is usually the healthiest approach. This helps reveal income-expense balance, tax obligations and missing documents before year-end." data-ru="Хотя это зависит от объема операций, наиболее правильный подход — проверять бухгалтерские записи ежемесячно. Это позволяет заранее видеть баланс доходов и расходов, налоговые обязательства и недостающие документы." data-ar="رغم أن ذلك يعتمد على حجم العمليات، فإن مراجعة السجلات المحاسبية شهريًا تُعد أفضل نهج. فهذا يساعد على رؤية توازن الإيرادات والمصروفات والالتزامات الضريبية والنواقص في المستندات قبل نهاية السنة.">İşletmenin işlem yoğunluğuna göre değişmekle birlikte muhasebe kayıtlarının aylık olarak kontrol edilmesi en sağlıklı yöntemdir. Bu sayede gelir-gider dengesi, vergi yükümlülükleri ve eksik evraklar yıl sonunu beklemeden görülebilir.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
@@ -3910,10 +5269,10 @@ footer {
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
-        <span data-tr="Şirket kurulum için hangi belgeler gerekir?" data-en="What documents are needed for company formation?" data-ru="Какие документы нужны для открытия компании?" data-ar="ما المستندات المطلوبة لتأسيس شركة؟">Şirket kurulum için hangi belgeler gerekir?</span>
+        <span data-tr="Bordro hizmeti işletmeye ne kazandırır?" data-en="What does payroll service add to a business?" data-ru="Что даёт бизнесу payroll-сопровождение?" data-ar="ما الذي تضيفه خدمة الرواتب إلى العمل؟">Bordro hizmeti işletmeye ne kazandırır?</span>
         <div class="faq-icon">+</div>
       </div>
-      <div class="faq-a" data-tr="Temel belgeler: pasaport / kimlik fotokopisi (tüm hissedarlar ve direktörler için), ikametgah belgesi, şirket unvanı alternatifleri ve imza beyanı. Yabancı sermayeli şirketler için noter onaylı vekâletname de gerekebilir." data-en="Key documents: passport/ID copy for all shareholders and directors, proof of address, company name alternatives, and signature declaration. Notarized power of attorney may also be needed for foreign capital companies." data-ru="Основные документы: копии паспортов акционеров и директоров, подтверждение адреса, варианты названия компании, декларация подписи." data-ar="المستندات الأساسية: نسخ جوازات السفر لجميع المساهمين والمديرين، إثبات العنوان، بدائل اسم الشركة، وإعلان التوقيع.">Temel belgeler: pasaport / kimlik fotokopisi (tüm hissedarlar ve direktörler için), ikametgah belgesi, şirket unvanı alternatifleri ve imza beyanı.</div>
+      <div class="faq-a" data-tr="Düzenli bordro hizmeti; maaş hesaplamalarının doğru yapılmasını, sosyal sigorta ve ihtiyat sandığı yükümlülüklerinin zamanında izlenmesini ve personel giriş-çıkış süreçlerinin daha güvenli yürütülmesini sağlar. Özellikle büyüyen işletmeler için ciddi operasyon kolaylığı sunar." data-en="Regular payroll service ensures accurate salary calculations, timely tracking of social insurance and provident fund obligations, and safer management of employee onboarding and exits. It provides major operational ease for growing businesses." data-ru="Регулярное payroll-сопровождение обеспечивает корректный расчет зарплат, своевременный контроль соцстраха и пенсионных обязательств, а также более безопасное ведение кадровых процессов. Для растущего бизнеса это даёт серьёзное операционное удобство." data-ar="تضمن خدمة الرواتب المنتظمة صحة احتساب الرواتب، ومتابعة التزامات الضمان الاجتماعي وصندوق الادخار في وقتها، وإدارة إجراءات دخول وخروج الموظفين بشكل أكثر أمانًا. وهي تمنح الشركات المتنامية سهولة تشغيلية كبيرة.">Düzenli bordro hizmeti; maaş hesaplamalarının doğru yapılmasını, sosyal sigorta ve ihtiyat sandığı yükümlülüklerinin zamanında izlenmesini ve personel giriş-çıkış süreçlerinin daha güvenli yürütülmesini sağlar. Özellikle büyüyen işletmeler için ciddi operasyon kolaylığı sunar.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
@@ -3924,17 +5283,17 @@ footer {
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
-        <span data-tr="Serbest Liman Şirketinde minimum sermaye şartı var mı?" data-en="Is there a minimum capital requirement for Free Zone companies?" data-ru="Есть ли минимальный капитал для компаний СЭЗ?" data-ar="هل توجد متطلبات رأس مال أدنى لشركات المنطقة الحرة؟">Serbest Liman Şirketinde minimum sermaye şartı var mı?</span>
+        <span data-tr="Vergi muhasebesi ile genel muhasebe arasındaki fark nedir?" data-en="What is the difference between tax accounting and general accounting?" data-ru="В чем разница между налоговым и общим бухгалтерским учетом?" data-ar="ما الفرق بين المحاسبة الضريبية والمحاسبة العامة؟">Vergi muhasebesi ile genel muhasebe arasındaki fark nedir?</span>
         <div class="faq-icon">+</div>
       </div>
-      <div class="faq-a" data-tr="Serbest Liman Şirketleri için belirlenmiş bir asgari sermaye şartı bulunmamaktadır; ancak tescil bedeli ve yönetim ücretleri vardır. Yabancı şirket şubeleri için ise ana şirket sermayesinin minimum 100.000 USD olması gerekmektedir." data-en="There is no specific minimum capital requirement for Free Zone companies, but registration and administration fees apply. For branches of foreign companies, the parent company must have a minimum capital of $100,000." data-ru="Для компаний СЭЗ нет установленного минимального капитала, но есть регистрационные и административные сборы. Для филиалов иностранных компаний — минимум $100 000." data-ar="لا يوجد حد أدنى محدد لرأس المال لشركات المنطقة الحرة، ولكن توجد رسوم تسجيل وإدارة.">Serbest Liman Şirketleri için belirlenmiş bir asgari sermaye şartı bulunmamaktadır.</div>
+      <div class="faq-a" data-tr="Genel muhasebe işletmenin tüm mali hareketlerini kayıt altına alır ve yönetim için görünürlük sağlar. Vergi muhasebesi ise bu kayıtların vergi mevzuatına uygun şekilde değerlendirilmesi, beyanname hazırlığı ve vergi yükümlülüklerinin doğru hesaplanması tarafına odaklanır." data-en="General accounting records all financial movements of the business and provides visibility for management. Tax accounting focuses on evaluating those records in line with tax legislation, preparing returns and calculating tax obligations correctly." data-ru="Общий бухгалтерский учет фиксирует все финансовые движения бизнеса и даёт управлению прозрачность. Налоговый учет сосредоточен на соответствии этих записей налоговому законодательству, подготовке деклараций и правильном расчете налоговых обязательств." data-ar="تسجل المحاسبة العامة جميع الحركات المالية للعمل وتوفر وضوحًا للإدارة. أما المحاسبة الضريبية فتركز على تقييم هذه السجلات وفق التشريعات الضريبية وإعداد الإقرارات واحتساب الالتزامات الضريبية بشكل صحيح.">Genel muhasebe işletmenin tüm mali hareketlerini kayıt altına alır ve yönetim için görünürlük sağlar. Vergi muhasebesi ise bu kayıtların vergi mevzuatına uygun şekilde değerlendirilmesi, beyanname hazırlığı ve vergi yükümlülüklerinin doğru hesaplanması tarafına odaklanır.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
-        <span data-tr="KKTC'de banka hesabı açmak zor mudur?" data-en="Is it difficult to open a bank account in the TRNC?" data-ru="Сложно ли открыть банковский счёт в Северном Кипре?" data-ar="هل من الصعب فتح حساب مصرفي في شمال قبرص؟">KKTC'de banka hesabı açmak zor mudur?</span>
+        <span data-tr="Muhasebe danışmanlığı sadece kayıt tutmak mı demektir?" data-en="Is accounting advisory only about bookkeeping?" data-ru="Означает ли бухгалтерский консалтинг только ведение записей?" data-ar="هل تعني الاستشارات المحاسبية مجرد مسك الدفاتر؟">Muhasebe danışmanlığı sadece kayıt tutmak mı demektir?</span>
         <div class="faq-icon">+</div>
       </div>
-      <div class="faq-a" data-tr="Şirket tescilinin tamamlanmasının ardından banka hesabı açılış süreci oldukça hızlıdır. Firmamız bu süreçte de sizlere rehberlik etmekte ve KKTC'deki yerel bankalarla köklü iş ilişkilerimiz aracılığıyla süreci kolaylaştırmaktayız." data-en="After company registration is complete, opening a bank account is quite straightforward. Our firm guides you through the process and facilitates it via our established relationships with TRNC banks." data-ru="После регистрации открытие банковского счёта проходит быстро. Мы помогаем в этом процессе благодаря устоявшимся отношениям с банками Северного Кипра." data-ar="بعد اكتمال تسجيل الشركة، يكون فتح الحساب المصرفي سريعاً نسبياً. تقوم شركتنا بإرشادك خلال هذه العملية.">Şirket tescilinin tamamlanmasının ardından banka hesabı açılış süreci oldukça hızlıdır.</div>
+      <div class="faq-a" data-tr="Hayır. Güçlü bir muhasebe danışmanlığı; kayıt düzeninin kurulması, vergi ve bordro süreçlerinin izlenmesi, resmi yükümlülüklerin kontrolü, mali tabloların daha anlaşılır hale getirilmesi ve işletme sahibine karar desteği sağlanması gibi daha geniş bir hizmet alanını kapsar." data-en="No. Strong accounting advisory covers a wider service area such as setting up the record structure, tracking tax and payroll processes, controlling official obligations, making financial statements easier to understand and supporting management decisions." data-ru="Нет. Сильный бухгалтерский консалтинг охватывает более широкий спектр: постановку учета, сопровождение налогов и payroll, контроль официальных обязательств, упрощение финансовой отчетности и поддержку управленческих решений." data-ar="لا. فالاستشارات المحاسبية القوية تشمل نطاقًا أوسع مثل تنظيم السجلات ومتابعة الضرائب والرواتب ومراقبة الالتزامات الرسمية وتبسيط القوائم المالية ودعم قرارات الإدارة.">Hayır. Güçlü bir muhasebe danışmanlığı; kayıt düzeninin kurulması, vergi ve bordro süreçlerinin izlenmesi, resmi yükümlülüklerin kontrolü, mali tabloların daha anlaşılır hale getirilmesi ve işletme sahibine karar desteği sağlanması gibi daha geniş bir hizmet alanını kapsar.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
@@ -3955,7 +5314,7 @@ footer {
     <div class="testi-card">
       <div class="testi-stars">★★★★★</div>
       <div class="testi-quote">"</div>
-      <div class="testi-text" data-tr="Yaşar Kaya ekibi, şirket kurma sürecinde bize son derece profesyonel ve hızlı bir hizmet sundu. Vergi ve hukuki adımlar net bir planla yönetildi." data-en="The Yaşar Kaya team provided a highly professional and swift service throughout the company formation process. Tax and legal steps were handled with a clear plan." data-ru="Команда Yaşar Kaya обеспечила профессиональное и быстрое сопровождение. Налоговые и юридические этапы были организованы по чёткому плану." data-ar="قدّم فريق Yaşar Kaya خدمة احترافية وسريعة للغاية أثناء تأسيس الشركة، وتمت إدارة الخطوات القانونية والضريبية بخطة واضحة.">Yaşar Kaya ekibi, şirket kurma sürecinde bize son derece profesyonel ve hızlı bir hizmet sundu.</div>
+      <div class="testi-text" data-tr="Yaşar Kaya ekibi muhasebe sistemimizi çok daha düzenli ve kontrol edilebilir hale getirdi. Artık gelir-gider akışımızı, kayıtlarımızı ve aylık yükümlülüklerimizi çok daha net görüyoruz." data-en="The Yasar Kaya team made our accounting system far more organized and controllable. We can now see our income-expense flow, records and monthly obligations much more clearly." data-ru="После работы с Yaşar Kaya наша бухгалтерская система стала намного более организованной и управляемой. Теперь мы гораздо яснее видим доходы, расходы, учет и ежемесячные обязательства." data-ar="جعل فريق Yaşar Kaya نظامنا المحاسبي أكثر تنظيمًا وقابلية للمتابعة بكثير. وأصبحنا الآن نرى تدفق الإيرادات والمصروفات والسجلات والالتزامات الشهرية بشكل أوضح بكثير.">Yaşar Kaya ekibi muhasebe sistemimizi çok daha düzenli ve kontrol edilebilir hale getirdi. Artık gelir-gider akışımızı, kayıtlarımızı ve aylık yükümlülüklerimizi çok daha net görüyoruz.</div>
       <div class="testi-author">
         <div class="testi-avatar">AK</div>
         <div>
@@ -3968,7 +5327,7 @@ footer {
     <div class="testi-card">
       <div class="testi-stars">★★★★★</div>
       <div class="testi-quote">"</div>
-      <div class="testi-text" data-tr="Rusya'dan bir yatırımcı olarak KKTC'deki UİŞ avantajlarından yararlanmak istedim. Yaşar Kaya bana hem vergi hem hukuki konularda güven veren bir yönlendirme sundu." data-en="As an investor from Russia, I wanted to benefit from TRNC IBC advantages. Yaşar Kaya gave me confident guidance on both tax and legal matters." data-ru="Как инвестор из России, я хотел воспользоваться преимуществами МБК в ТРСК. Yaşar Kaya обеспечил уверенное сопровождение по налоговым и юридическим вопросам." data-ar="كمستثمر من روسيا، أردت الاستفادة من مزايا شركة الأعمال الدولية في شمال قبرص، وقدّم Yaşar Kaya توجيهاً موثوقاً في الجوانب القانونية والضريبية.">Rusya'dan bir yatırımcı olarak KKTC'deki UİŞ avantajlarından yararlanmak istedim. Yaşar Kaya bana güven veren bir yönlendirme sundu.</div>
+      <div class="testi-text" data-tr="En çok memnun kaldığımız nokta, muhasebe sisteminin bize sade ve anlaşılır biçimde kurulmuş olmasıydı. Bordro, vergi ve raporlama tarafında her şey tek düzen içinde ilerlediği için yönetim kararlarımız da hızlandı." data-en="What pleased us most was how simply and clearly the accounting system was set up for us. Because payroll, tax and reporting all moved within one structure, our management decisions also became faster." data-ru="Больше всего нас порадовало то, что бухгалтерская система была выстроена для нас просто и понятно. Зарплата, налоги и отчетность велись в одной логике, поэтому управленческие решения стали приниматься быстрее." data-ar="أكثر ما أعجبنا هو أن النظام المحاسبي تم تنظيمه لنا بشكل بسيط وواضح. ولأن الرواتب والضرائب والتقارير كانت تسير ضمن هيكل واحد، أصبحت قرارات الإدارة أسرع أيضًا.">En çok memnun kaldığımız nokta, muhasebe sisteminin bize sade ve anlaşılır biçimde kurulmuş olmasıydı. Bordro, vergi ve raporlama tarafında her şey tek düzen içinde ilerlediği için yönetim kararlarımız da hızlandı.</div>
       <div class="testi-author">
         <div class="testi-avatar">IV</div>
         <div>
@@ -3981,7 +5340,7 @@ footer {
     <div class="testi-card">
       <div class="testi-stars">★★★★★</div>
       <div class="testi-quote">"</div>
-      <div class="testi-text" data-tr="İngiltere'deki şirketimizin KKTC şubesini açtırmak için Yaşar Kaya ile çalıştık. Bakanlar Kurulu sürecinden banka hesabı açılışına kadar her adımda yanımızdaydı." data-en="We worked with Yaşar Kaya to open the TRNC branch of our UK company. He supported us at every stage from Cabinet approval to bank account opening." data-ru="Мы работали с Yaşar Kaya для открытия филиала нашей британской компании в ТРСК. Он сопровождал нас на каждом этапе — от одобрения до открытия банковского счёта." data-ar="عملنا مع Yaşar Kaya لفتح فرع شركتنا البريطانية في شمال قبرص، وكان معنا في كل مرحلة من الموافقة حتى فتح الحساب البنكي.">İngiltere'deki şirketimizin KKTC şubesini açtırmak için Yaşar Kaya ile çalıştık. Her adımda yanımızdaydı.</div>
+      <div class="testi-text" data-tr="Muhasebe altyapımız kurulduktan sonra işletme içindeki dağınıklık ciddi biçimde azaldı. Beyan dönemleri, resmi kayıtlar ve finansal görünürlük aynı sistem içinde toplandığı için artık süreci çok daha güvenle yönetiyoruz." data-en="After our accounting infrastructure was set up, the internal disorder in the business decreased significantly. Since declaration periods, official records and financial visibility were gathered in the same system, we now manage the process with much more confidence." data-ru="После настройки нашей бухгалтерской инфраструктуры внутренний хаос в компании заметно сократился. Периоды деклараций, официальные регистрации и финансовая прозрачность были собраны в одной системе, поэтому теперь мы управляем процессом гораздо увереннее." data-ar="بعد إعداد بنيتنا المحاسبية انخفضت الفوضى داخل العمل بشكل كبير. ولأن فترات الإقرارات والسجلات الرسمية والوضوح المالي أصبحت ضمن نظام واحد، فإننا ندير العملية الآن بثقة أكبر بكثير.">Muhasebe altyapımız kurulduktan sonra işletme içindeki dağınıklık ciddi biçimde azaldı. Beyan dönemleri, resmi kayıtlar ve finansal görünürlük aynı sistem içinde toplandığı için artık süreci çok daha güvenle yönetiyoruz.</div>
       <div class="testi-author">
         <div class="testi-avatar">JS</div>
         <div>
@@ -4142,19 +5501,19 @@ footer {
       <div class="footer-logo">
         <div class="footer-logo-text">Yaşar Kaya Danışmanlık</div>
       </div>
-      <div class="footer-desc" data-tr="KKTC'de 25 yılı aşkın deneyimimizle şirket kuruluşu, vergi danışmanlığı ve muhasebe hizmetleri sunuyoruz." data-en="With over 25 years of experience in the TRNC, we provide company formation, tax advisory and accounting services." data-ru="Более 25 лет предоставляем услуги по регистрации компаний, налоговому консалтингу и бухгалтерии в Северном Кипре." data-ar="بأكثر من 25 عامًا من الخبرة في شمال قبرص، نقدم خدمات تأسيس الشركات والاستشارات الضريبية والمحاسبة.">KKTC'de 25 yılı aşkın deneyimimizle şirket kuruluşu, vergi danışmanlığı ve muhasebe hizmetleri sunuyoruz.</div>
+      <div class="footer-desc" data-tr="KKTC'de 25 yılı aşkın deneyimimizle muhasebe, vergi, bordro, tescil ve mali danışmanlık hizmetleri sunuyoruz." data-en="With more than 25 years of experience in the TRNC, we provide accounting, tax, payroll, registration and financial advisory services." data-ru="Более 25 лет мы предоставляем в ТРСК услуги по бухгалтерии, налогам, зарплате, регистрации и финансовому консалтингу." data-ar="بأكثر من 25 عامًا من الخبرة في شمال قبرص، نقدم خدمات المحاسبة والضرائب والرواتب والتسجيل والاستشارات المالية.">KKTC'de 25 yılı aşkın deneyimimizle muhasebe, vergi, bordro, tescil ve mali danışmanlık hizmetleri sunuyoruz.</div>
     </div>
     <div>
       <div class="footer-col-title" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</div>
       <div class="footer-links">
-        <a href="#formation-hub" data-tr="Şirket Kuruluşu" data-en="Company Formation" data-ru="Регистрация компании" data-ar="تأسيس الشركة">Şirket Kuruluşu</a>
+        <a href="#formation-hub" data-tr="Kuruluş & Tescil" data-en="Setup & Registration" data-ru="Создание и регистрация" data-ar="التأسيس والتسجيل">Kuruluş & Tescil</a>
         <a href="#taxes-hub" data-tr="Vergi Danışmanlığı" data-en="Tax Advisory" data-ru="Налоговый консалтинг" data-ar="الاستشارات الضريبية">Vergi Danışmanlığı</a>
         <a href="#services-hub" data-tr="Muhasebe Hizmetleri" data-en="Accounting Services" data-ru="Бухгалтерские услуги" data-ar="خدمات المحاسبة">Muhasebe Hizmetleri</a>
         <a href="#corporate" data-tr="Kurumsal Yapı" data-en="Corporate Profile" data-ru="Корпоративный профиль" data-ar="الملف المؤسسي">Kurumsal Yapı</a>
       </div>
     </div>
     <div>
-      <div class="footer-col-title" data-tr="Şirket Türleri" data-en="Company Types" data-ru="Типы компаний" data-ar="أنواع الشركات">Şirket Türleri</div>
+      <div class="footer-col-title" data-tr="İşletme Yapıları" data-en="Business Structures" data-ru="Структуры бизнеса" data-ar="هياكل الأعمال">İşletme Yapıları</div>
       <div class="footer-links">
         <a href="#types" data-tr="Yerel Limited" data-en="Local Limited" data-ru="Местное ООО" data-ar="شركة محلية محدودة">Yerel Limited</a>
         <a href="#formation-hub" data-tr="UİŞ" data-en="IBC" data-ru="МБК" data-ar="شركة أعمال دولية">Uluslararası İşletme</a>
@@ -4453,9 +5812,6 @@ function applyLiteralTranslations(lang) {
     });
   });
 
-  const serviceTrainingKicker = ({ tr: 'Eğitim', en: 'Training', ru: 'Обучение', ar: 'التدريب' })[lang] || 'Eğitim';
-  setDecoratedText(document.querySelector('#services-hub .service-hub-card:last-child .card-kicker'), serviceTrainingKicker);
-
   document.querySelectorAll('#news-hub .section-visual-art, #formation-hub .formation-flow, #formation-hub .formation-visual, #taxes-hub .tax-visual').forEach(el => {
     const base = el.dataset.i18nAriaBase || el.getAttribute('aria-label') || '';
     if (!base) return;
@@ -4522,6 +5878,48 @@ Object.assign(literalTranslations, {
   'Yasal denetim süreçleri': { en: 'Statutory audit processes', ru: 'Обязательные аудиторские процессы', ar: 'عمليات التدقيق القانونية' },
   'Güvenilir finansal tablo desteği': { en: 'Reliable financial statement support', ru: 'Поддержка по надёжной отчётности', ar: 'دعم القوائم المالية الموثوقة' },
   'Kurumsal güven ve raporlama disiplini': { en: 'Corporate trust and reporting discipline', ru: 'Дисциплина доверия и отчётности', ar: 'انضباط الثقة والتقارير' },
+  'Vergi ve Tasdik': { en: 'Tax and Certification', ru: 'Налоги и подтверждение', ar: 'الضرائب والتصديقات' },
+  'Tasdik': { en: 'Certification', ru: 'Подтверждение', ar: 'تصديق' },
+  'Vergi Dosyası': { en: 'Tax File', ru: 'Налоговое досье', ar: 'ملف ضريبي' },
+  'Tam tasdik ve özel raporlar': { en: 'Full certification and special reports', ru: 'Полное подтверждение и специальные отчёты', ar: 'تصديق كامل وتقارير خاصة' },
+  'KDV ve ÖTV süreç kontrolü': { en: 'VAT and SCT process control', ru: 'Контроль процессов НДС и спецналога', ar: 'متابعة إجراءات ضريبة القيمة المضافة والضريبة الخاصة' },
+  'Onay Süreci': { en: 'Approval Process', ru: 'Процесс согласования', ar: 'مسار الاعتماد' },
+  'Sermaye ve yatırım raporları': { en: 'Capital and investment reports', ru: 'Отчёты по капиталу и инвестициям', ar: 'تقارير رأس المال والاستثمار' },
+  'Ar-Ge ve teşvik tasdikleri': { en: 'R&D and incentive certifications', ru: 'Подтверждения по НИОКР и льготам', ar: 'تصديقات البحث والتطوير والحوافز' },
+  'Vergi ve Tasdik Hizmetleri': { en: 'Tax and Certification Services', ru: 'Услуги по налогам и подтверждению', ar: 'خدمات الضرائب والتصديقات' },
+  'Vergi uyumu, resmi tasdik süreçleri ve özel amaçlı raporlamalar için şirketlerin ihtiyaç duyduğu denetim ve onay başlıklarını tek çatı altında, mevzuata uygun ve düzenli biçimde yürütüyoruz.': { en: 'We manage the audit and approval processes companies need for tax compliance, formal certification procedures and special-purpose reporting under one roof in a compliant and orderly way.', ru: 'Мы ведём необходимые компаниям процессы контроля и утверждения по налоговому соответствию, официальным процедурам подтверждения и специальной отчётности в единой и соответствующей законодательству структуре.', ar: 'ندير تحت سقف واحد وبشكل منظم ومتوافق مع التشريعات عمليات الفحص والاعتماد التي تحتاجها الشركات للامتثال الضريبي وإجراءات التصديق الرسمية والتقارير ذات الأغراض الخاصة.' },
+  'Tam Tasdik': { en: 'Full Certification', ru: 'Полное подтверждение', ar: 'التصديق الكامل' },
+  'KDV İade Tasdiki': { en: 'VAT Refund Certification', ru: 'Подтверждение возврата НДС', ar: 'تصديق استرداد ضريبة القيمة المضافة' },
+  'Yerli İmalat Durum Belgesi Tasdiki': { en: 'Domestic Manufacturing Status Certificate Certification', ru: 'Подтверждение сертификата местного производства', ar: 'تصديق شهادة حالة التصنيع المحلي' },
+  'ÖTV Tecil-Terkin Tasdiki': { en: 'SCT Deferral-Relief Certification', ru: 'Подтверждение отсрочки-списания спецналога', ar: 'تصديق تأجيل وإلغاء الضريبة الخاصة' },
+  'Yatırım İndirimi Tasdiki': { en: 'Investment Allowance Certification', ru: 'Подтверждение инвестиционного вычета', ar: 'تصديق خصم الاستثمار' },
+  'Ödenmiş Sermaye Tespiti ve Sermaye Artırım Raporları': { en: 'Paid-in Capital Determination and Capital Increase Reports', ru: 'Отчёты по определению оплаченного капитала и увеличению капитала', ar: 'تقارير تحديد رأس المال المدفوع وزيادة رأس المال' },
+  'TÜBİTAK, Avrupa Birliği Kaynaklı Ar-Ge Harcamalarının Tasdiki': { en: 'Certification of TUBITAK and EU-Funded R&D Expenditures', ru: 'Подтверждение расходов на НИОКР, финансируемых TÜBİTAK и ЕС', ar: 'تصديق نفقات البحث والتطوير الممولة من توبيتاك والاتحاد الأوروبي' },
+  'Özel Amaçlı Diğer Tasdikler': { en: 'Other Special-Purpose Certifications', ru: 'Другие специальные подтверждения', ar: 'تصديقات خاصة أخرى' },
+  'Mali Danışmanlık': { en: 'Financial Advisory', ru: 'Финансовый консалтинг', ar: 'الاستشارات المالية' },
+  'Mali Danışmanlık Hizmetleri': { en: 'Financial Advisory Services', ru: 'Услуги финансового консалтинга', ar: 'خدمات الاستشارات المالية' },
+  'Vergi stratejisi, teşvik yapıları, yabancı şirketler için mali yönlendirme ve vergi uyuşmazlıkları gibi kritik konularda, karar sürecini güvenli hale getiren kapsamlı danışmanlık desteği sunuyoruz.': { en: 'We provide comprehensive advisory support that makes decision-making safer in critical areas such as tax strategy, incentive structures, financial guidance for foreign companies and tax disputes.', ru: 'Мы предоставляем комплексную консультационную поддержку, делающую принятие решений безопаснее в таких критических темах, как налоговая стратегия, льготные механизмы, финансовое сопровождение иностранных компаний и налоговые споры.', ar: 'نقدم دعماً استشارياً شاملاً يجعل اتخاذ القرار أكثر أماناً في موضوعات حساسة مثل الاستراتيجية الضريبية، وهياكل الحوافز، والتوجيه المالي للشركات الأجنبية، والنزاعات الضريبية.' },
+  'Kurumsal Vergi Danışmanlığı': { en: 'Corporate Tax Advisory', ru: 'Корпоративный налоговый консалтинг', ar: 'الاستشارات الضريبية للشركات' },
+  'Bireysel Vergi Danışmanlığı': { en: 'Individual Tax Advisory', ru: 'Индивидуальный налоговый консалтинг', ar: 'الاستشارات الضريبية الفردية' },
+  'Vergisel Teşvikler, İstisna ve Muafiyet Danışmanlığı': { en: 'Tax Incentives, Exemptions and Relief Advisory', ru: 'Консалтинг по налоговым льготам, исключениям и освобождениям', ar: 'الاستشارات الخاصة بالحوافز والإعفاءات والاستثناءات الضريبية' },
+  'Serbest Bölgeler Uygulama Danışmanlığı': { en: 'Free Zone Implementation Advisory', ru: 'Консалтинг по применению режимов свободных зон', ar: 'الاستشارات الخاصة بتطبيقات المناطق الحرة' },
+  'Teknoparklar ve Ar-Ge İndirimleri Danışmanlıkları': { en: 'Technopark and R&D Deduction Advisory', ru: 'Консалтинг по технопаркам и вычетам на НИОКР', ar: 'الاستشارات الخاصة بالتكنوبارك وخصومات البحث والتطوير' },
+  'Vergi Anlaşmaları Danışmanlığı': { en: 'Tax Treaty Advisory', ru: 'Консалтинг по налоговым соглашениям', ar: 'الاستشارات الخاصة بالاتفاقيات الضريبية' },
+  'Vergi Uyuşmazlıkları Danışmanlığı': { en: 'Tax Dispute Advisory', ru: 'Консалтинг по налоговым спорам', ar: 'الاستشارات الخاصة بالمنازعات الضريبية' },
+  'Revizyon Hizmetleri': { en: 'Revision Services', ru: 'Услуги ревизии', ar: 'خدمات المراجعة التصحيحية' },
+  'Yabancı Şirketlere Mali Danışmanlık Hizmetleri': { en: 'Financial Advisory Services for Foreign Companies', ru: 'Финансовый консалтинг для иностранных компаний', ar: 'خدمات الاستشارات المالية للشركات الأجنبية' },
+  'Diğer Danışmanlık': { en: 'Other Advisory', ru: 'Прочий консалтинг', ar: 'استشارات أخرى' },
+  'Diğer Danışmanlık Hizmetleri': { en: 'Other Advisory Services', ru: 'Прочие консультационные услуги', ar: 'خدمات استشارية أخرى' },
+  'Muhasebe sistemlerinin kurulmasından iç kontrol yapılarına, birleşme-devir süreçlerinden yerli ve yabancı şirket kuruluşlarına kadar kurumsal yapılanmayı güçlendiren geniş bir danışmanlık alanında çalışıyoruz.': { en: 'We work across a wide advisory scope that strengthens corporate structuring, from accounting system setup to internal control frameworks, and from mergers and transfers to local and foreign company formation.', ru: 'Мы работаем в широком спектре консультационных направлений, усиливающих корпоративную структуру: от настройки учётных систем и внутреннего контроля до слияний, передач и регистрации местных и иностранных компаний.', ar: 'نعمل ضمن نطاق استشاري واسع يعزز البنية المؤسسية، من تأسيس الأنظمة المحاسبية إلى هياكل الرقابة الداخلية، ومن الاندماج ونقل الملكية إلى تأسيس الشركات المحلية والأجنبية.' },
+  'Muhasebe Sistemi Kurulumu ve Yeniden Yapılandırılması': { en: 'Accounting System Setup and Restructuring', ru: 'Настройка и реструктуризация бухгалтерской системы', ar: 'تأسيس النظام المحاسبي وإعادة هيكلته' },
+  'Kamu İç Kontrol Standartları Kapsamında İç Kontrol Sistemi Kurulumu': { en: 'Internal Control System Setup under Public Internal Control Standards', ru: 'Построение системы внутреннего контроля в рамках государственных стандартов', ar: 'إنشاء نظام الرقابة الداخلية ضمن معايير الرقابة الداخلية العامة' },
+  'İç Denetim-İç Kontrol Sistemi Danışmanlığı': { en: 'Internal Audit and Internal Control System Advisory', ru: 'Консалтинг по внутреннему аудиту и системе внутреннего контроля', ar: 'استشارات التدقيق الداخلي ونظام الرقابة الداخلية' },
+  'Maliyet Kontrol Sistemleri Danışmanlığı': { en: 'Cost Control Systems Advisory', ru: 'Консалтинг по системам контроля затрат', ar: 'استشارات أنظمة مراقبة التكاليف' },
+  'Şirket Satın Alma, Devir, Birleşme ve Bölünme Danışmanlığı': { en: 'Company Acquisition, Transfer, Merger and Split Advisory', ru: 'Консалтинг по покупке, передаче, слиянию и разделению компаний', ar: 'استشارات شراء الشركات ونقلها واندماجها وانقسامها' },
+  'Yeniden Yapılandırma (Revizyon)': { en: 'Restructuring (Revision)', ru: 'Реструктуризация (ревизия)', ar: 'إعادة الهيكلة (مراجعة)' },
+  'Sermaye Piyasası, Sosyal Güvenlik Mevzuatı ve Yatırım Teşvik Mevzuatı Danışmanlıkları': { en: 'Capital Markets, Social Security and Investment Incentive Legislation Advisory', ru: 'Консалтинг по законодательству о рынках капитала, соцобеспечении и инвестиционных стимулах', ar: 'استشارات تشريعات أسواق رأس المال والضمان الاجتماعي وحوافز الاستثمار' },
+  'Yerli-Yabancı Şirket Kuruluşları': { en: 'Local and Foreign Company Formation', ru: 'Регистрация местных и иностранных компаний', ar: 'تأسيس الشركات المحلية والأجنبية' },
+  'Şirketler Hukuku ve Şirketler Muhasebesi Danışmanlığı': { en: 'Corporate Law and Corporate Accounting Advisory', ru: 'Консалтинг по корпоративному праву и корпоративному учёту', ar: 'استشارات قانون الشركات ومحاسبة الشركات' },
   'Vergi': { en: 'Tax', ru: 'Налоги', ar: 'الضرائب' },
   'Vergi Danışmanlığı': { en: 'Tax Advisory', ru: 'Налоговый консалтинг', ar: 'الاستشارات الضريبية' },
   'Vergi planlaması, beyanname hazırlığı, vergi sonuçlarının analizi ve yeni yatırımlarda avantaj yaratabilecek alanların belirlenmesi bu başlığın ana çerçevesini oluşturuyor.': { en: 'Tax planning, return preparation, tax outcome analysis and identifying areas that may create an advantage for new investments form the core framework of this service.', ru: 'Налоговое планирование, подготовка деклараций, анализ налоговых результатов и поиск зон преимущества для новых инвестиций составляют основу этого направления.', ar: 'يشكل التخطيط الضريبي، وإعداد الإقرارات، وتحليل النتائج الضريبية، وتحديد المجالات التي قد تخلق ميزة للاستثمارات الجديدة الإطار الرئيسي لهذا المجال.' },
@@ -4690,6 +6088,7 @@ Object.assign(literalTranslations, {
 });
 
 Object.assign(attrTranslations, {
+  'Vergi ve tasdik hizmetlerini temsil eden belge kontrol ve onay görseli': { en: 'Document review and approval visual representing tax and certification services', ru: 'Визуал проверки и утверждения документов, представляющий услуги по налогам и подтверждению', ar: 'تصور لفحص واعتماد المستندات يمثل خدمات الضرائب والتصديقات' },
   'Güncel duyuruları ve mevzuat takibini temsil eden özet gösterge paneli': { en: 'Summary dashboard representing current updates and legislation tracking', ru: 'Сводная панель, отражающая текущие уведомления и отслеживание законодательства', ar: 'لوحة ملخص تمثل متابعة التحديثات والتشريعات' },
   'Şirket kuruluş sürecini adım adım gösteren kurumsal akış görseli': { en: 'Corporate flow visual showing the company formation process step by step', ru: 'Корпоративная схема, пошагово показывающая процесс регистрации компании', ar: 'تصور مؤسسي يوضح خطوات تأسيس الشركة مرحلةً بمرحلة' },
   'Farklı şirket türlerini temsil eden karar ve seçim kartları': { en: 'Decision and selection cards representing different company types', ru: 'Карточки выбора и решения, представляющие разные типы компаний', ar: 'بطاقات قرار واختيار تمثل أنواع الشركات المختلفة' },
