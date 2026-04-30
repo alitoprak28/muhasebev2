@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaya Plus | Canlı Destek Paneli</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0e;
+      --panel: rgba(18, 18, 18, 0.96);
+      --panel-soft: rgba(255, 255, 255, 0.04);
+      --line: rgba(197, 160, 77, 0.16);
+      --gold: #c5a04d;
+      --gold-deep: #8d6d2f;
+      --text: #f7f1e7;
+      --muted: #b8ad98;
+      --green: #2ea76c;
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(197, 160, 77, 0.16), transparent 28%),
+        linear-gradient(180deg, #0d0d0e 0%, #151210 58%, #201913 100%);
+      color: var(--text);
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .admin-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 22px;
+      padding: 24px;
+    }
+
+    .panel {
+      min-width: 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .sidebar {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      min-height: calc(100vh - 48px);
+      overflow: hidden;
+    }
+
+    .brand {
+      padding: 24px 24px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(197, 160, 77, 0.10);
+      color: #e7c97f;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-title {
+      margin: 16px 0 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      line-height: 1.05;
+    }
+
+    .brand-sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stat {
+      padding: 14px 12px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(197, 160, 77, 0.08));
+      border: 1px solid rgba(197, 160, 77, 0.16);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .conversation-list {
+      overflow: auto;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .conversation-item {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid rgba(197, 160, 77, 0.12);
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(197, 160, 77, 0.06));
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .conversation-item:hover,
+    .conversation-item.active {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.18);
+      border-color: rgba(197, 160, 77, 0.40);
+    }
+
+    .conversation-top,
+    .conversation-meta {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .conversation-top {
+      margin-bottom: 10px;
+    }
+
+    .conversation-name {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .conversation-email,
+    .conversation-preview,
+    .conversation-time {
+      color: var(--muted);
+    }
+
+    .conversation-email {
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .conversation-preview {
+      min-height: 42px;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .conversation-meta {
+      margin-top: 12px;
+    }
+
+    .status-pill,
+    .unread-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .status-pill.open {
+      color: #daf3e4;
+      background: rgba(46, 167, 108, 0.16);
+    }
+
+    .status-pill.closed {
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .unread-pill {
+      min-width: 28px;
+      color: #0d0d0e;
+      background: linear-gradient(135deg, var(--gold), #e2c179);
+    }
+
+    .main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      min-height: calc(100vh - 48px);
+      overflow: hidden;
+    }
+
+    .main-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 24px 28px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .main-head h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.15;
+    }
+
+    .main-head p {
+      margin: 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .main-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .outline-btn,
+    .solid-btn {
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(197, 160, 77, 0.16);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .solid-btn {
+      border: none;
+      color: #111111;
+      background: linear-gradient(135deg, var(--gold), #e0be72);
+      box-shadow: 0 18px 34px rgba(141, 109, 47, 0.28);
+    }
+
+    .outline-btn:hover,
+    .solid-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .lead-card {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .lead-stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(197, 160, 77, 0.08));
+      border: 1px solid rgba(197, 160, 77, 0.14);
+    }
+
+    .lead-stat label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lead-stat strong,
+    .lead-stat span {
+      display: block;
+      font-size: 15px;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    .messages-wrap {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      overflow: auto;
+      padding: 26px 28px;
+      background: linear-gradient(180deg, rgba(20, 20, 20, 0.96), rgba(27, 22, 18, 0.94));
+    }
+
+    .message-bubble {
+      max-width: min(78%, 620px);
+      padding: 14px 16px;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+    }
+
+    .message-bubble.user {
+      margin-right: auto;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(197, 160, 77, 0.12);
+    }
+
+    .message-bubble.agent {
+      margin-left: auto;
+      color: #111111;
+      background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    }
+
+    .message-bubble strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.82;
+    }
+
+    .message-bubble p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .message-bubble time {
+      display: block;
+      margin-top: 8px;
+      font-size: 12px;
+      opacity: 0.76;
+    }
+
+    .reply-card {
+      padding: 18px 28px 24px;
+      border-top: 1px solid var(--line);
+      background: rgba(14, 14, 14, 0.92);
+    }
+
+    .reply-card form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .reply-card textarea {
+      width: 100%;
+      min-height: 112px;
+      resize: vertical;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(197, 160, 77, 0.18);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    .reply-card textarea:focus {
+      border-color: rgba(197, 160, 77, 0.55);
+      box-shadow: 0 0 0 4px rgba(197, 160, 77, 0.10);
+    }
+
+    .reply-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .reply-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .empty-state {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .empty-state strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--text);
+      font-size: 22px;
+    }
+
+    .mini-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 1100px) {
+      .admin-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar,
+      .main {
+        min-height: auto;
+      }
+
+      .lead-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .admin-shell {
+        padding: 14px;
+        gap: 14px;
+      }
+
+      .brand-title {
+        font-size: 28px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .main-head,
+      .lead-card,
+      .messages-wrap,
+      .reply-card {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .main-head {
+        padding-top: 20px;
+      }
+
+      .message-bubble {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="panel sidebar">
+      <div class="brand">
+        <span class="brand-kicker">Kaya Plus Destek Yönetimi</span>
+        <h1 class="brand-title">Kaya Plus Admin Paneli</h1>
+        <p class="brand-sub">Bu ekran üzerinden mükellef bilgilerini, yeni görüşmeleri ve canlı destek cevaplarını Kaya Plus markasına uygun tek akışta yönetebilirsiniz.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <strong id="stat-total">0</strong>
+          <span>Toplam görüşme</span>
+        </div>
+        <div class="stat">
+          <strong id="stat-open">0</strong>
+          <span>Açık görüşme</span>
+        </div>
+        <div class="stat">
+          <strong id="stat-unread">0</strong>
+          <span>Okunmamış mesaj</span>
+        </div>
+      </div>
+
+      <div class="conversation-list" id="conversation-list"></div>
+    </aside>
+
+    <main class="panel main">
+      <div class="main-head">
+        <div>
+          <h1 id="detail-title">Görüşme bekleniyor</h1>
+          <p id="detail-sub">Soldaki listeden bir mükellef görüşmesi seçildiğinde tüm mesaj akışı ve iletişim bilgileri burada görüntülenir.</p>
+        </div>
+        <div class="main-actions">
+          <button type="button" class="outline-btn" id="status-toggle" hidden>Durumu Güncelle</button>
+          <a href="kktc-sirket-kurma.html" class="outline-btn mini-link">Siteye Dön</a>
+        </div>
+      </div>
+
+      <div class="lead-card" id="lead-card" hidden>
+        <div class="lead-stat">
+          <label>Mükellef</label>
+          <strong id="lead-name">-</strong>
+        </div>
+        <div class="lead-stat">
+          <label>E-posta</label>
+          <span id="lead-email">-</span>
+        </div>
+        <div class="lead-stat">
+          <label>Durum</label>
+          <span id="lead-status">-</span>
+        </div>
+      </div>
+
+      <div class="messages-wrap" id="messages-wrap">
+        <div class="empty-state" id="empty-state">
+          <div>
+            <strong>Henüz görüşme yok</strong>
+            <span>Kullanıcı canlı destekten formu doldurup mesaj attığında burada görünecek.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reply-card" id="reply-card" hidden>
+        <form id="reply-form">
+          <textarea id="reply-message" placeholder="Mükellefe göndermek istediğiniz Kaya Plus cevabını buraya yazın"></textarea>
+          <div class="reply-actions">
+            <div class="reply-note">Buradan yazdığınız cevap, aynı origin üzerinde açık olan Kaya Plus canlı destek ekranına anında yansır.</div>
+            <button type="submit" class="solid-btn">Cevabı Gönder</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="support-system.js"></script>
+  <script>
+    let selectedConversationId = '';
+
+    const elements = {
+      total: document.getElementById('stat-total'),
+      open: document.getElementById('stat-open'),
+      unread: document.getElementById('stat-unread'),
+      list: document.getElementById('conversation-list'),
+      detailTitle: document.getElementById('detail-title'),
+      detailSub: document.getElementById('detail-sub'),
+      statusToggle: document.getElementById('status-toggle'),
+      leadCard: document.getElementById('lead-card'),
+      leadName: document.getElementById('lead-name'),
+      leadEmail: document.getElementById('lead-email'),
+      leadStatus: document.getElementById('lead-status'),
+      messagesWrap: document.getElementById('messages-wrap'),
+      emptyState: document.getElementById('empty-state'),
+      replyCard: document.getElementById('reply-card'),
+      replyForm: document.getElementById('reply-form'),
+      replyMessage: document.getElementById('reply-message')
+    };
+
+    function formatDate(value) {
+      if (!value) return '-';
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return '-';
+      return new Intl.DateTimeFormat('tr-TR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      }).format(date);
+    }
+
+    function getSelectedConversation() {
+      return selectedConversationId ? window.SupportStore.getConversation(selectedConversationId) : null;
+    }
+
+    function selectConversation(id) {
+      selectedConversationId = id;
+      if (id) {
+        window.SupportStore.markRead(id, 'admin');
+      }
+      renderAll();
+    }
+
+    function renderStats() {
+      const stats = window.SupportStore.getStats();
+      elements.total.textContent = stats.total;
+      elements.open.textContent = stats.open;
+      elements.unread.textContent = stats.unread;
+    }
+
+    function renderConversationList() {
+      const conversations = window.SupportStore.listConversations();
+      elements.list.innerHTML = '';
+
+      if (!selectedConversationId && conversations.length) {
+        selectedConversationId = conversations[0].id;
+      }
+
+      if (selectedConversationId && !conversations.find(item => item.id === selectedConversationId)) {
+        selectedConversationId = conversations[0] ? conversations[0].id : '';
+      }
+
+      if (!conversations.length) {
+        const empty = document.createElement('div');
+        empty.className = 'empty-state';
+        empty.innerHTML = '<div><strong>Konuşma listesi boş</strong><span>Canlı destekten yeni kayıt geldiğinde burada görünecek.</span></div>';
+        elements.list.appendChild(empty);
+        return;
+      }
+
+      conversations.forEach(conversation => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'conversation-item' + (conversation.id === selectedConversationId ? ' active' : '');
+        button.addEventListener('click', function () {
+          selectConversation(conversation.id);
+        });
+
+        const top = document.createElement('div');
+        top.className = 'conversation-top';
+
+        const identity = document.createElement('div');
+        const name = document.createElement('div');
+        name.className = 'conversation-name';
+        name.textContent = conversation.leadName || 'İsimsiz ziyaretçi';
+        const email = document.createElement('div');
+        email.className = 'conversation-email';
+        email.textContent = conversation.leadEmail || 'E-posta girilmedi';
+        identity.appendChild(name);
+        identity.appendChild(email);
+        top.appendChild(identity);
+
+        if (conversation.unreadForAdmin > 0) {
+          const unread = document.createElement('span');
+          unread.className = 'unread-pill';
+          unread.textContent = conversation.unreadForAdmin;
+          top.appendChild(unread);
+        }
+
+        const preview = document.createElement('div');
+        preview.className = 'conversation-preview';
+        preview.textContent = conversation.lastMessage || 'Henüz mesaj yok';
+
+        const meta = document.createElement('div');
+        meta.className = 'conversation-meta';
+
+        const status = document.createElement('span');
+        status.className = 'status-pill ' + (conversation.status === 'closed' ? 'closed' : 'open');
+        status.textContent = conversation.status === 'closed' ? 'KAPALI' : 'AÇIK';
+
+        const time = document.createElement('span');
+        time.className = 'conversation-time';
+        time.textContent = formatDate(conversation.updatedAt);
+
+        meta.appendChild(status);
+        meta.appendChild(time);
+        button.appendChild(top);
+        button.appendChild(preview);
+        button.appendChild(meta);
+        elements.list.appendChild(button);
+      });
+    }
+
+    function renderConversationDetail() {
+      const conversation = getSelectedConversation();
+
+      if (!conversation) {
+        elements.detailTitle.textContent = 'Görüşme bekleniyor';
+        elements.detailSub.textContent = 'Soldaki listeden bir mükellef görüşmesi seçildiğinde tüm mesaj akışı ve iletişim bilgileri burada görüntülenir.';
+        elements.leadCard.hidden = true;
+        elements.replyCard.hidden = true;
+        elements.statusToggle.hidden = true;
+        elements.messagesWrap.innerHTML = '';
+        elements.messagesWrap.appendChild(elements.emptyState);
+        elements.emptyState.hidden = false;
+        return;
+      }
+
+      elements.detailTitle.textContent = conversation.leadName || 'İsimsiz ziyaretçi';
+      elements.detailSub.textContent = 'Mükellef bilgileri ve konuşma geçmişi aşağıda listelenir. Buradan yazdığınız cevap, canlı destek ekranına anında düşer.';
+      elements.leadCard.hidden = false;
+      elements.replyCard.hidden = false;
+      elements.statusToggle.hidden = false;
+      elements.statusToggle.textContent = conversation.status === 'closed' ? 'Görüşmeyi Yeniden Aç' : 'Görüşmeyi Kapat';
+
+      elements.leadName.textContent = conversation.leadName || '-';
+      elements.leadEmail.textContent = conversation.leadEmail || '-';
+      elements.leadStatus.textContent = conversation.status === 'closed' ? 'Kapalı' : 'Açık';
+
+      elements.messagesWrap.innerHTML = '';
+
+      if (!conversation.messages.length) {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'empty-state';
+        placeholder.innerHTML = '<div><strong>Mesaj bekleniyor</strong><span>Mükellef ilk mesajını attığında konuşma geçmişi burada görünecek.</span></div>';
+        elements.messagesWrap.appendChild(placeholder);
+      } else {
+        conversation.messages.forEach(message => {
+          const bubble = document.createElement('div');
+          bubble.className = 'message-bubble ' + (message.sender === 'agent' ? 'agent' : 'user');
+
+          const sender = document.createElement('strong');
+          sender.textContent = message.sender === 'agent' ? 'Kaya Plus' : 'Mükellef';
+
+          const content = document.createElement('p');
+          content.textContent = message.text;
+
+          const time = document.createElement('time');
+          time.textContent = formatDate(message.createdAt);
+
+          bubble.appendChild(sender);
+          bubble.appendChild(content);
+          bubble.appendChild(time);
+          elements.messagesWrap.appendChild(bubble);
+        });
+      }
+
+      elements.messagesWrap.scrollTop = elements.messagesWrap.scrollHeight;
+    }
+
+    function renderAll() {
+      renderStats();
+      renderConversationList();
+      renderConversationDetail();
+    }
+
+    elements.statusToggle.addEventListener('click', function () {
+      const conversation = getSelectedConversation();
+      if (!conversation) return;
+      const nextStatus = conversation.status === 'closed' ? 'open' : 'closed';
+      window.SupportStore.updateConversationStatus(conversation.id, nextStatus);
+      renderAll();
+    });
+
+    elements.replyForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const conversation = getSelectedConversation();
+      const message = elements.replyMessage.value.trim();
+      if (!conversation || !message) return;
+      window.SupportStore.appendMessage(conversation.id, 'agent', message);
+      window.SupportStore.markRead(conversation.id, 'admin');
+      elements.replyMessage.value = '';
+      renderAll();
+      elements.replyMessage.focus();
+    });
+
+    window.SupportStore.subscribe(function () {
+      const conversation = getSelectedConversation();
+      if (conversation) {
+        window.SupportStore.markRead(conversation.id, 'admin');
+      }
+      renderAll();
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>
