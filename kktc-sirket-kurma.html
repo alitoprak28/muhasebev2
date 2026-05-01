@@ -5459,7 +5459,7 @@ footer {
 <body class="intro-active">
 
 <div class="intro-overlay" id="site-intro" aria-hidden="false">
-  <video id="site-intro-video" autoplay muted playsinline preload="auto">
+  <video id="site-intro-video" autoplay playsinline preload="auto">
     <source src="assets/site-intro.mp4" type="video/mp4">
   </video>
 </div>
@@ -8475,6 +8475,7 @@ function initSiteIntro() {
   }
 
   let introClosed = false;
+  let introStartedMuted = false;
 
   const closeIntro = () => {
     if (introClosed) return;
@@ -8489,16 +8490,44 @@ function initSiteIntro() {
 
   introVideo.addEventListener('ended', closeIntro, { once: true });
   introVideo.addEventListener('error', closeIntro, { once: true });
-  introVideo.muted = true;
-  introVideo.defaultMuted = true;
-  introVideo.setAttribute('muted', '');
+  introVideo.muted = false;
+  introVideo.defaultMuted = false;
+  introVideo.removeAttribute('muted');
+  introVideo.volume = 1;
   introVideo.playsInline = true;
   const playPromise = introVideo.play();
   if (playPromise && typeof playPromise.catch === 'function') {
     playPromise.catch(() => {
-      closeIntro();
+      introStartedMuted = true;
+      introVideo.muted = true;
+      introVideo.defaultMuted = true;
+      introVideo.setAttribute('muted', '');
+      const mutedPlayPromise = introVideo.play();
+      if (mutedPlayPromise && typeof mutedPlayPromise.catch === 'function') {
+        mutedPlayPromise.catch(() => {
+          closeIntro();
+        });
+      }
     });
   }
+
+  intro.addEventListener('pointerdown', () => {
+    if (!introStartedMuted || introClosed) return;
+    introStartedMuted = false;
+    introVideo.muted = false;
+    introVideo.defaultMuted = false;
+    introVideo.removeAttribute('muted');
+    introVideo.volume = 1;
+    const resumePromise = introVideo.play();
+    if (resumePromise && typeof resumePromise.catch === 'function') {
+      resumePromise.catch(() => {
+        introStartedMuted = true;
+        introVideo.muted = true;
+        introVideo.defaultMuted = true;
+        introVideo.setAttribute('muted', '');
+      });
+    }
+  });
 }
 
 // ── INITIAL LANG ──
