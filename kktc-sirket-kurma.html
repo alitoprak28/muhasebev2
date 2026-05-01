@@ -84,95 +84,9 @@ body.intro-active {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-
-.intro-overlay::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    radial-gradient(circle at 18% 20%, rgba(var(--accent-rgb),0.18), transparent 24%),
-    linear-gradient(180deg, rgba(5,5,5,0.22) 0%, rgba(5,5,5,0.34) 50%, rgba(5,5,5,0.74) 100%);
-}
-
-.intro-overlay-content {
-  position: relative;
-  z-index: 2;
-  width: min(100%, 1220px);
-  min-height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 28px 32px 36px;
-}
-
-.intro-overlay-brand {
-  max-width: 420px;
-  display: grid;
-  gap: 8px;
-}
-
-.intro-overlay-brand strong {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 4vw, 48px);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: var(--gold-pale);
-}
-
-.intro-overlay-brand span {
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(var(--white-rgb),0.76);
-}
-
-.intro-skip {
-  border: 1px solid rgba(var(--accent-rgb),0.34);
-  background: linear-gradient(135deg, rgba(16,16,16,0.72), rgba(33,27,21,0.82));
-  color: var(--gold-pale);
-  padding: 12px 18px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 16px 28px rgba(0,0,0,0.22);
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-  font-family: 'DM Sans', sans-serif;
-}
-
-.intro-skip:hover {
-  transform: translateY(-1px);
-  border-color: rgba(var(--accent-rgb),0.52);
-  background: linear-gradient(135deg, rgba(22,22,22,0.82), rgba(42,34,27,0.92));
-}
-
-@media (max-width: 768px) {
-  .intro-overlay-content {
-    padding: 20px 16px 24px;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-end;
-    gap: 16px;
-  }
-
-  .intro-overlay-brand {
-    max-width: none;
-  }
-
-  .intro-overlay-brand strong {
-    font-size: clamp(24px, 9vw, 36px);
-  }
-
-  .intro-overlay-brand span {
-    font-size: 13px;
-  }
-
-  .intro-skip {
-    width: 100%;
-  }
+  object-fit: contain;
+  object-position: center;
+  background: #000;
 }
 
 section[id] { scroll-margin-top: 96px; }
@@ -5545,16 +5459,9 @@ footer {
 <body class="intro-active">
 
 <div class="intro-overlay" id="site-intro" aria-hidden="false">
-  <video id="site-intro-video" autoplay playsinline preload="auto">
+  <video id="site-intro-video" autoplay muted playsinline preload="auto">
     <source src="assets/site-intro.mp4" type="video/mp4">
   </video>
-  <div class="intro-overlay-content">
-    <div class="intro-overlay-brand">
-      <strong>Kaya Plus</strong>
-      <span data-tr="Muhasebe ve Mali Danışmanlık" data-en="Accounting and Financial Advisory" data-ru="Бухгалтерский и финансовый консалтинг" data-ar="المحاسبة والاستشارات المالية">Muhasebe ve Mali Danışmanlık</span>
-    </div>
-    <button type="button" class="intro-skip" id="intro-skip" data-tr="Intro'yu Geç" data-en="Skip Intro" data-ru="Пропустить интро" data-ar="تخطي المقدمة" data-start-tr="Sesiyle Başlat" data-start-en="Start With Sound">Intro'yu Geç</button>
-  </div>
 </div>
 
 <!-- HEADER -->
@@ -8561,22 +8468,11 @@ document.getElementById('live-support-message')?.addEventListener('keydown', (ev
 function initSiteIntro() {
   const intro = document.getElementById('site-intro');
   const introVideo = document.getElementById('site-intro-video');
-  const introSkip = document.getElementById('intro-skip');
-  const introSeenKey = 'kayaplus-intro-seen';
 
   if (!intro || !introVideo) {
     document.body.classList.remove('intro-active');
     return;
   }
-
-  if (window.localStorage.getItem(introSeenKey) === '1') {
-    intro.style.display = 'none';
-    intro.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('intro-active');
-    return;
-  }
-
-  window.localStorage.setItem(introSeenKey, '1');
 
   let introClosed = false;
 
@@ -8593,40 +8489,14 @@ function initSiteIntro() {
 
   introVideo.addEventListener('ended', closeIntro, { once: true });
   introVideo.addEventListener('error', closeIntro, { once: true });
-
-  introSkip?.addEventListener('click', () => {
-    if (introVideo.paused || introVideo.muted) {
-      introVideo.muted = false;
-      introVideo.volume = 1;
-      const resumePromise = introVideo.play();
-      if (resumePromise && typeof resumePromise.catch === 'function') {
-        resumePromise.catch(() => {
-          closeIntro();
-        });
-      }
-      return;
-    }
-    introVideo.pause();
-    closeIntro();
-  });
-
-  window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !introClosed) {
-      introVideo.pause();
-      closeIntro();
-    }
-  });
-
-  introVideo.muted = false;
-  introVideo.volume = 1;
+  introVideo.muted = true;
+  introVideo.defaultMuted = true;
+  introVideo.setAttribute('muted', '');
+  introVideo.playsInline = true;
   const playPromise = introVideo.play();
   if (playPromise && typeof playPromise.catch === 'function') {
     playPromise.catch(() => {
-      introVideo.pause();
-      introVideo.currentTime = 0;
-      if (introSkip) {
-        introSkip.textContent = introSkip.getAttribute('data-start-tr') || 'Sesiyle Başlat';
-      }
+      closeIntro();
     });
   }
 }
