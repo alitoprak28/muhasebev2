@@ -57,7 +57,7 @@ p {
 }
 
 .page-shell {
-  width: min(1180px, calc(100% - 32px));
+  width: min(1320px, calc(100% - clamp(32px, 6vw, 96px)));
   margin: 0 auto;
 }
 
@@ -71,7 +71,7 @@ p {
 }
 
 .topbar-inner {
-  width: min(1180px, calc(100% - 32px));
+  width: min(1320px, calc(100% - clamp(32px, 6vw, 96px)));
   margin: 0 auto;
   min-height: 76px;
   display: flex;
@@ -136,13 +136,13 @@ p {
 }
 
 main {
-  padding: 34px 0 72px;
+  padding: 40px 0 84px;
 }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-  gap: 28px;
+  grid-template-columns: minmax(0, 1.02fr) minmax(380px, 0.98fr);
+  gap: 32px;
   align-items: stretch;
 }
 
@@ -159,7 +159,7 @@ main {
 }
 
 .hero-copy {
-  padding: 38px;
+  padding: 44px;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -190,7 +190,7 @@ main {
 }
 
 .hero-copy h1 {
-  font-size: clamp(38px, 4vw, 58px);
+  font-size: clamp(40px, 4vw, 60px);
   color: var(--gold-pale);
   line-height: 1.08;
 }
@@ -316,7 +316,7 @@ main {
 }
 
 .section-card {
-  padding: 32px;
+  padding: 36px;
 }
 
 .section-head {
@@ -627,6 +627,11 @@ td {
 }
 
 @media (max-width: 760px) {
+  .page-shell,
+  .topbar-inner {
+    width: min(100%, calc(100% - 32px));
+  }
+
   .topbar-inner {
     padding: 16px 0;
     align-items: flex-start;
