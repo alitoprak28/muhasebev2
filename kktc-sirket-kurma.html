@@ -37,7 +37,7 @@
   --radius-lg: 20px;
   --shadow: 0 10px 30px rgba(var(--navy-rgb), 0.08);
   --shadow-lg: 0 24px 60px rgba(var(--navy-rgb), 0.14);
-  --hero-photo: url('assets/kayaplus-office-wall.jpeg');
+  --hero-photo: url('assets/hero-handshake.jpg');
 }
 
 [dir="rtl"] { text-align: right; }
@@ -55,6 +55,124 @@ body {
   color: var(--text);
   overflow-x: hidden;
   min-width: 320px;
+}
+
+body.intro-active {
+  overflow: hidden;
+}
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #050505;
+  isolation: isolate;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.intro-overlay.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-overlay video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.intro-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(var(--accent-rgb),0.18), transparent 24%),
+    linear-gradient(180deg, rgba(5,5,5,0.22) 0%, rgba(5,5,5,0.34) 50%, rgba(5,5,5,0.74) 100%);
+}
+
+.intro-overlay-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1220px);
+  min-height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px 32px 36px;
+}
+
+.intro-overlay-brand {
+  max-width: 420px;
+  display: grid;
+  gap: 8px;
+}
+
+.intro-overlay-brand strong {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--gold-pale);
+}
+
+.intro-overlay-brand span {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(var(--white-rgb),0.76);
+}
+
+.intro-skip {
+  border: 1px solid rgba(var(--accent-rgb),0.34);
+  background: linear-gradient(135deg, rgba(16,16,16,0.72), rgba(33,27,21,0.82));
+  color: var(--gold-pale);
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 16px 28px rgba(0,0,0,0.22);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.intro-skip:hover {
+  transform: translateY(-1px);
+  border-color: rgba(var(--accent-rgb),0.52);
+  background: linear-gradient(135deg, rgba(22,22,22,0.82), rgba(42,34,27,0.92));
+}
+
+@media (max-width: 768px) {
+  .intro-overlay-content {
+    padding: 20px 16px 24px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+
+  .intro-overlay-brand {
+    max-width: none;
+  }
+
+  .intro-overlay-brand strong {
+    font-size: clamp(24px, 9vw, 36px);
+  }
+
+  .intro-overlay-brand span {
+    font-size: 13px;
+  }
+
+  .intro-skip {
+    width: 100%;
+  }
 }
 
 section[id] { scroll-margin-top: 96px; }
@@ -94,6 +212,7 @@ svg { max-width: 100%; }
   .live-support-panel,
   .footer-grid > *,
   .portal-grid > *,
+  .team-grid > *,
   .service-hub-grid > *,
   .formation-grid > *,
   .sector-grid > *,
@@ -224,8 +343,8 @@ nav a.active { color: var(--navy); font-weight: 500; }
 .hero-bg {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(90deg, rgba(247,241,232,0.96) 0%, rgba(247,241,232,0.88) 36%, rgba(247,241,232,0.52) 62%, rgba(255,255,255,0.12) 100%),
-    linear-gradient(180deg, rgba(197,160,77,0.10) 0%, rgba(17,17,17,0.18) 100%),
+    linear-gradient(90deg, rgba(247,241,232,0.94) 0%, rgba(247,241,232,0.82) 32%, rgba(247,241,232,0.36) 58%, rgba(255,255,255,0.08) 100%),
+    linear-gradient(180deg, rgba(197,160,77,0.08) 0%, rgba(17,17,17,0.14) 100%),
     var(--hero-photo);
   background-size: cover;
   background-position: center center;
@@ -575,6 +694,248 @@ section { padding: 100px 48px; }
 
 #office-gallery {
   background: linear-gradient(180deg, rgba(var(--white-rgb),0.88) 0%, rgba(var(--gold-pale),0.78) 100%);
+}
+#team {
+  padding: 0 0 110px;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(var(--accent-rgb),0.10), transparent 24%),
+    linear-gradient(180deg, #1b1612 0%, #14110f 100%);
+}
+.team-hero {
+  position: relative;
+  min-height: 260px;
+  display: flex;
+  align-items: flex-end;
+  padding: 132px 48px 42px;
+  background-image:
+    linear-gradient(90deg, rgba(var(--navy-rgb),0.92) 0%, rgba(33,24,16,0.86) 44%, rgba(33,24,16,0.54) 100%),
+    url('assets/kayaplus-office-wall.jpeg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.team-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 16% 26%, rgba(var(--accent-rgb),0.18), transparent 28%),
+    linear-gradient(180deg, rgba(var(--navy-rgb),0.08), rgba(var(--navy-rgb),0.18));
+}
+.team-hero .section-shell {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.team-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: rgba(var(--white-rgb),0.72);
+  font-size: 12px;
+  font-weight: 500;
+}
+.team-breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+.team-breadcrumb strong {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+.team-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 4.8vw, 58px);
+  line-height: 1.04;
+  color: var(--white);
+  letter-spacing: -0.8px;
+  margin-bottom: 14px;
+}
+.team-hero-sub {
+  max-width: 660px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(var(--white-rgb),0.80);
+}
+.team-surface {
+  padding: 52px 48px 0;
+}
+.team-intro {
+  max-width: 720px;
+  margin: 0 auto 38px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.75;
+  color: rgba(var(--white-rgb),0.74);
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.team-grid.team-grid-focus {
+  grid-template-columns: minmax(280px, 440px);
+  justify-content: center;
+}
+.team-card {
+  overflow: hidden;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(24,20,17,0.98) 0%, rgba(33,28,23,0.98) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.18);
+  box-shadow: 0 22px 48px rgba(0,0,0,0.28);
+}
+.team-card-media {
+  position: relative;
+  min-height: 322px;
+  overflow: hidden;
+  background: rgba(var(--navy-rgb),0.92);
+}
+.team-card-founder .team-card-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 68% 24%, rgba(var(--accent-rgb),0.18), transparent 28%),
+    linear-gradient(180deg, rgba(12,10,8,0.82) 0%, rgba(16,13,10,0.36) 34%, rgba(12,10,8,0.74) 100%);
+  pointer-events: none;
+}
+.team-card-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(var(--navy-rgb),0.04) 0%, rgba(var(--navy-rgb),0.12) 40%, rgba(var(--navy-rgb),0.66) 100%);
+  pointer-events: none;
+}
+.team-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.4s ease;
+}
+.team-card-founder .team-card-media img {
+  object-position: center 36%;
+  filter: brightness(0.74) saturate(0.88) contrast(1.06);
+  transform: scale(1.1);
+}
+.team-card:hover .team-card-media img {
+  transform: scale(1.04);
+}
+.team-card-founder:hover .team-card-media img {
+  transform: scale(1.14);
+}
+.team-card-pill {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(var(--white-rgb),0.16);
+  border: 1px solid rgba(var(--white-rgb),0.24);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+.team-card-pill::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-light);
+}
+.team-card-actions {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.team-action {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  text-decoration: none;
+  background: rgba(var(--white-rgb),0.18);
+  border: 1px solid rgba(var(--white-rgb),0.26);
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.team-action:hover {
+  transform: translateY(-2px);
+  background: rgba(var(--white-rgb),0.28);
+  border-color: rgba(var(--white-rgb),0.42);
+}
+.team-action svg {
+  width: 16px;
+  height: 16px;
+}
+.team-card-body {
+  padding: 24px 22px 26px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(28,23,19,0.98) 0%, rgba(18,15,12,0.98) 100%);
+  border-top: 1px solid rgba(var(--accent-rgb),0.14);
+}
+.team-card-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  line-height: 1.14;
+  color: var(--gold-pale);
+  margin-bottom: 8px;
+  letter-spacing: -0.35px;
+}
+.team-card-role {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--gold-light);
+  font-size: 14px;
+  font-weight: 600;
+}
+.team-card-body p {
+  font-size: 14px;
+  line-height: 1.78;
+  color: rgba(var(--cream-rgb),0.78);
+}
+.team-section-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 34px;
+}
+.team-section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(34,28,23,0.98) 0%, rgba(19,16,13,0.98) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.24);
+  color: var(--gold-pale);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.22);
+}
+.team-section-link:hover {
+  background: linear-gradient(135deg, rgba(44,36,30,0.98) 0%, rgba(24,20,16,0.98) 100%);
+  border-color: rgba(var(--accent-rgb),0.34);
 }
 .office-gallery-grid {
   display: grid;
@@ -2244,6 +2605,243 @@ section { padding: 100px 48px; }
   background: linear-gradient(135deg, var(--gold-light), var(--gold-deep));
   box-shadow: 0 0 0 4px rgba(var(--accent-rgb),0.10);
 }
+.formation-card.featured-advantage {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 28px;
+  align-items: center;
+}
+.formation-card.featured-advantage .formation-media {
+  margin: 0;
+  min-height: 420px;
+  height: 100%;
+  border-radius: 22px;
+}
+.formation-advantage-media {
+  min-height: 420px;
+}
+.formation-advantage-copy {
+  display: grid;
+  gap: 18px;
+}
+.formation-advantage-copy p {
+  margin: 0;
+}
+.formation-advantage-list {
+  margin-top: 0;
+}
+.formation-advantage-cta {
+  margin-top: 2px;
+}
+.formation-card.foreign-investor-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+.foreign-investor-media {
+  margin: 0;
+  min-height: 360px;
+  height: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+}
+.foreign-investor-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.foreign-investor-copy {
+  display: grid;
+  gap: 18px;
+}
+.foreign-investor-copy p {
+  margin: 0;
+}
+.foreign-investor-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.foreign-investor-pill {
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(var(--accent-rgb),0.10) 0%, rgba(var(--accent-rgb),0.04) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+#company-requirements {
+  background: linear-gradient(180deg, rgba(16,13,11,0.98) 0%, rgba(24,20,17,1) 100%);
+}
+.requirements-law-card {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: 24px;
+  padding: 30px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(31,27,23,0.94) 0%, rgba(38,33,28,0.92) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.18);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.18);
+}
+.requirements-law-copy {
+  display: grid;
+  gap: 16px;
+}
+.requirements-law-copy p {
+  margin: 0;
+  color: rgba(240,225,186,0.84);
+  line-height: 1.8;
+}
+.requirements-law-panel {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(24,20,17,0.96) 0%, rgba(32,27,22,0.92) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.16);
+}
+.requirements-law-note {
+  margin: 0;
+  color: rgba(246,238,220,0.9);
+  line-height: 1.75;
+}
+.requirements-law-panel .law-list {
+  margin-top: 0;
+}
+.requirements-law-panel .law-list li {
+  color: rgba(246,238,220,0.92);
+}
+.requirements-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 24px;
+  margin-top: 42px;
+  align-items: start;
+}
+.requirements-summary {
+  overflow: hidden;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(31,27,23,0.94) 0%, rgba(38,33,28,0.92) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.18);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.18);
+}
+.requirements-summary-media {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+}
+.requirements-summary-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(12,10,8,0.10) 0%, rgba(12,10,8,0.52) 100%),
+    radial-gradient(circle at 78% 18%, rgba(var(--accent-rgb),0.18), transparent 26%);
+}
+.requirements-summary-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.9) contrast(1.02) brightness(0.88);
+}
+.requirements-summary-copy {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+}
+.requirements-summary-copy p {
+  margin: 0;
+  color: rgba(240,225,186,0.84);
+}
+.requirements-summary-points {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+.requirements-summary-points li {
+  position: relative;
+  padding-left: 18px;
+  color: rgba(246,238,220,0.9);
+  line-height: 1.65;
+}
+.requirements-summary-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-deep));
+}
+.requirements-list {
+  display: grid;
+  gap: 16px;
+}
+.requirement-item {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(31,27,23,0.94) 0%, rgba(38,33,28,0.92) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.16);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.14);
+}
+.requirement-num {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.18), rgba(var(--accent-rgb),0.08));
+  border: 1px solid rgba(var(--accent-rgb),0.22);
+  color: var(--gold-pale);
+  font-weight: 700;
+}
+.requirement-copy h3 {
+  margin-bottom: 8px;
+  color: var(--gold-pale);
+  font-size: 22px;
+  line-height: 1.35;
+}
+.requirement-copy p {
+  margin: 0;
+  color: rgba(240,225,186,0.84);
+  line-height: 1.75;
+}
+@media (max-width: 980px) {
+  .formation-card.featured-advantage {
+    grid-template-columns: 1fr;
+  }
+  .formation-card.foreign-investor-card {
+    grid-template-columns: 1fr;
+  }
+  .formation-card.featured-advantage .formation-media {
+    min-height: 260px;
+  }
+  .foreign-investor-media {
+    min-height: 260px;
+  }
+  .foreign-investor-highlights {
+    grid-template-columns: 1fr;
+  }
+  .requirements-law-card {
+    grid-template-columns: 1fr;
+  }
+  .requirements-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .tax-media {
   margin: -30px -30px 22px;
   min-height: 210px;
@@ -3540,6 +4138,9 @@ footer {
   .contact-grid { gap: 40px; }
   .hero-focus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .office-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .team-hero,
+  .team-surface { padding-left: 32px; padding-right: 32px; }
 }
 
 @media (max-width: 1024px) {
@@ -3547,7 +4148,10 @@ footer {
   nav { gap: 16px; }
   nav a { font-size: 12px; }
   .header-actions { gap: 12px; }
-  #hero { padding: 0 24px; min-height: auto; }
+  #hero {
+    padding: 0 24px;
+    min-height: auto;
+  }
   section { padding: 88px 24px; }
   footer { padding: 56px 24px 28px; }
   .hero-content {
@@ -3602,6 +4206,13 @@ footer {
   .section-visual-art { min-height: 260px; }
   .formation-media,
   .tax-media { margin: -24px -24px 20px; }
+  .team-hero {
+    min-height: 232px;
+    padding-top: 118px;
+    padding-bottom: 34px;
+  }
+  .team-surface { padding-top: 44px; }
+  .team-card-body h3 { font-size: 24px; }
 }
 
 @media (max-width: 768px) {
@@ -3640,7 +4251,7 @@ footer {
   }
   .hero-bg {
     transform: none;
-    background-position: 60% center;
+    background-position: center top;
   }
   .hero-glow {
     left: -110px;
@@ -3735,7 +4346,8 @@ footer {
   .types-grid,
   .laws-grid,
   .testi-grid,
-  .office-gallery-grid { grid-template-columns: 1fr; }
+  .office-gallery-grid,
+  .team-grid { grid-template-columns: 1fr; }
   .portal-grid,
   .service-hub-grid,
   .accounting-detail-grid,
@@ -4247,6 +4859,10 @@ footer {
     flex: none;
   }
   .stats-grid { grid-template-columns: 1fr; }
+  .team-hero { padding-top: 96px; }
+  .team-card-body h3 { font-size: 22px; }
+  .team-card-role,
+  .team-card-body p { font-size: 13px; }
   .service-card-media,
   .portal-card-media,
   .sector-card-media {
@@ -4333,6 +4949,38 @@ footer {
     padding: 20px 16px calc(28px + env(safe-area-inset-bottom));
   }
   .mobile-nav a { font-size: 19px; }
+  #team { padding-bottom: 86px; }
+  .team-hero {
+    min-height: 208px;
+    padding: 102px 16px 28px;
+  }
+  .team-hero-title {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+  .team-hero-sub {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .team-surface {
+    padding: 36px 16px 0;
+  }
+  .team-intro {
+    font-size: 16px;
+    margin-bottom: 28px;
+  }
+  .team-card-media { min-height: 300px; }
+  .team-card-body {
+    padding: 22px 18px 24px;
+  }
+  .team-card-actions {
+    left: 14px;
+    right: 14px;
+    gap: 8px;
+  }
+  .team-action {
+    width: 38px;
+    height: 38px;
+  }
   #live-support {
     left: 12px;
     right: 12px;
@@ -4894,7 +5542,20 @@ footer {
 
 </style>
 </head>
-<body>
+<body class="intro-active">
+
+<div class="intro-overlay" id="site-intro" aria-hidden="false">
+  <video id="site-intro-video" autoplay playsinline preload="auto">
+    <source src="assets/site-intro.mp4" type="video/mp4">
+  </video>
+  <div class="intro-overlay-content">
+    <div class="intro-overlay-brand">
+      <strong>Kaya Plus</strong>
+      <span data-tr="Muhasebe ve Mali Danışmanlık" data-en="Accounting and Financial Advisory" data-ru="Бухгалтерский и финансовый консалтинг" data-ar="المحاسبة والاستشارات المالية">Muhasebe ve Mali Danışmanlık</span>
+    </div>
+    <button type="button" class="intro-skip" id="intro-skip" data-tr="Intro'yu Geç" data-en="Skip Intro" data-ru="Пропустить интро" data-ar="تخطي المقدمة" data-start-tr="Sesiyle Başlat" data-start-en="Start With Sound">Intro'yu Geç</button>
+  </div>
+</div>
 
 <!-- HEADER -->
 <header id="header">
@@ -4919,7 +5580,9 @@ footer {
     <a href="#accounting-services" class="nav-link" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</a>
     <a href="#sectors-hub" class="nav-link" data-tr="Sektörler" data-en="Sectors" data-ru="Секторы" data-ar="القطاعات">Sektörler</a>
     <a href="#taxes-hub" class="nav-link" data-tr="Vergiler" data-en="Taxes" data-ru="Налоги" data-ar="الضرائب">Vergiler</a>
-    <a href="#formation-hub" class="nav-link" data-tr="Kuruluş & Tescil" data-en="Setup & Registration" data-ru="Создание и регистрация" data-ar="التأسيس والتسجيل">Kuruluş & Tescil</a>
+    <a href="#formation-hub" class="nav-link" data-tr="KKTC'de Şirket Kurma" data-en="Starting a Company in TRNC" data-ru="Открытие компании в ТРСК" data-ar="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</a>
+    <a href="./sirket-kurmanin-temel-sartlari.html" class="nav-link" data-tr="Şirket Kurmanın Temel Şartları" data-en="Basic Company Formation Requirements" data-ru="Основные условия регистрации компании" data-ar="الشروط الأساسية لتأسيس الشركة">Şirket Kurmanın Temel Şartları</a>
+    <a href="#team" class="nav-link" data-tr="Ekibimiz" data-en="Our Team" data-ru="Наша команда" data-ar="فريقنا">Ekibimiz</a>
     <a href="#testimonials" class="nav-link" data-tr="Mükelleflerimiz" data-en="Testimonials" data-ru="Отзывы" data-ar="آراء العملاء">Mükelleflerimiz</a>
     <a href="#faq" class="nav-link" data-tr="SSS" data-en="FAQ" data-ru="FAQ" data-ar="الأسئلة الشائعة">SSS</a>
     <a href="#contact" class="nav-link" data-tr="İletişim" data-en="Contact" data-ru="Контакт" data-ar="تواصل">İletişim</a>
@@ -4952,7 +5615,9 @@ footer {
     <a href="#accounting-services" onclick="toggleMobileNav()" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</a>
     <a href="#sectors-hub" onclick="toggleMobileNav()" data-tr="Sektörler" data-en="Sectors" data-ru="Секторы" data-ar="القطاعات">Sektörler</a>
     <a href="#taxes-hub" onclick="toggleMobileNav()" data-tr="Vergiler" data-en="Taxes" data-ru="Налоги" data-ar="الضرائب">Vergiler</a>
-    <a href="#formation-hub" onclick="toggleMobileNav()" data-tr="Kuruluş & Tescil" data-en="Setup & Registration" data-ru="Создание и регистрация" data-ar="التأسيس والتسجيل">Kuruluş & Tescil</a>
+    <a href="#formation-hub" onclick="toggleMobileNav()" data-tr="KKTC'de Şirket Kurma" data-en="Starting a Company in TRNC" data-ru="Открытие компании в ТРСК" data-ar="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</a>
+    <a href="./sirket-kurmanin-temel-sartlari.html" onclick="toggleMobileNav()" data-tr="Şirket Kurmanın Temel Şartları" data-en="Basic Company Formation Requirements" data-ru="Основные условия регистрации компании" data-ar="الشروط الأساسية لتأسيس الشركة">Şirket Kurmanın Temel Şartları</a>
+    <a href="#team" onclick="toggleMobileNav()" data-tr="Ekibimiz" data-en="Our Team" data-ru="Наша команда" data-ar="فريقنا">Ekibimiz</a>
     <a href="#testimonials" onclick="toggleMobileNav()" data-tr="Mükelleflerimiz" data-en="Testimonials" data-ru="Отзывы" data-ar="آراء العملاء">Mükelleflerimiz</a>
     <a href="#faq" onclick="toggleMobileNav()" data-tr="SSS" data-en="FAQ" data-ru="FAQ" data-ar="الأسئلة الشائعة">SSS</a>
     <a href="#contact" onclick="toggleMobileNav()" data-tr="İletişim" data-en="Contact" data-ru="Контакт" data-ar="تواصل">İletişim</a>
@@ -5777,14 +6442,156 @@ footer {
   </div>
 </section>
 
+<!-- COMPANY REQUIREMENTS -->
+<section id="company-requirements">
+  <div class="section-shell">
+    <div class="section-tag" data-tr="Kuruluş Şartları" data-en="Formation Requirements" data-ru="Требования к регистрации" data-ar="شروط التأسيس">Kuruluş Şartları</div>
+    <h2 class="section-title reveal" data-tr="KKTC'de şirket kurmak için gerekli temel şartlar" data-en="Basic requirements for starting a company in the TRNC" data-ru="Основные требования для открытия компании в ТРСК" data-ar="المتطلبات الأساسية لتأسيس شركة في شمال قبرص">KKTC'de şirket kurmak için gerekli temel şartlar</h2>
+    <p class="section-sub reveal" data-tr="Şirketler farklı yasal düzenlemelere bağlı olarak faaliyet gösterebilir; ancak temel kuruluş yapısı bakımından KKTC Şirketler Yasası'nda belirtilen ana şartlara bağlı kalmak zorundadır. Buna göre KKTC'de temsil edilen her şirket, yabancı şirket şubeleri hariç, aşağıdaki koşulları yerine getirmelidir." data-en="Companies may operate under different legal structures, yet they must comply with the core requirements of the TRNC Companies Law. Accordingly, every company represented in the TRNC, except branches of foreign companies, must meet the following conditions." data-ru="Компании могут действовать в рамках разных правовых режимов, однако обязаны соблюдать основные требования Закона о компаниях ТРСК. Соответственно, каждая компания, представленная в ТРСК, за исключением филиалов иностранных компаний, должна выполнять следующие условия." data-ar="قد تعمل الشركات وفق أطر قانونية مختلفة، لكنها تظل ملزمة بالمتطلبات الأساسية الواردة في قانون الشركات في شمال قبرص. وبناءً على ذلك، يجب على كل شركة ممثلة في شمال قبرص، باستثناء فروع الشركات الأجنبية، استيفاء الشروط التالية.">Şirketler farklı yasal düzenlemelere bağlı olarak faaliyet gösterebilir; ancak temel kuruluş yapısı bakımından KKTC Şirketler Yasası'nda belirtilen ana şartlara bağlı kalmak zorundadır. Buna göre KKTC'de temsil edilen her şirket, yabancı şirket şubeleri hariç, aşağıdaki koşulları yerine getirmelidir.</p>
+
+    <article class="requirements-law-card reveal">
+      <div class="requirements-law-copy">
+        <div class="card-kicker"><span class="kicker-dot"></span>Şirket Kurmak İçin Temel Yasalar</div>
+        <h3>Kuzey Kıbrıs'ta şirket kuruluşunu belirleyen yasal çerçeve</h3>
+        <p>Kuzey Kıbrıs Türk Cumhuriyeti'nde (KKTC) iş yapmak isteyen kişiler veya kurumlar kendi adlarına gerçek kişilik temelinde veya tüzel kişiliğe haiz işletmeler kurup işletebilirler. İşletmelerin hukuki yapıları, KKTC'nde yürürlükte olan yasalara göre belirlenmiştir.</p>
+        <p>Kuzey Kıbrıs Türk Cumhuriyeti'nde şirket kuruluşu ve faaliyetleri, başta Şirketler Yasası (Fasıl 113) olmak üzere Gelir ve Vergi Yasası, Katma Değer Vergisi (KDV) Yasası, Vergi Usul Yasası, Sosyal Sigortalar Yasası ve İhtiyat Sandığı Yasası kapsamında düzenlenmektedir. Şirket kurmak isteyen girişimcilerin ticaret siciline kayıt yaptırması, şirket ana sözleşmesini hazırlaması ve faaliyet alanına göre gerekli lisans ve izinleri alması zorunludur.</p>
+        <p>Kuruluş sonrası süreçte şirketlerin Vergi Dairesi'ne kayıt olması, vergi numarası alması ve düzenli beyanname vermesi gerekir. Ayrıca çalışan istihdam eden işletmeler için Sosyal Sigorta ve İhtiyat Sandığı yükümlülükleri bulunmaktadır. Şirketlerin muhasebe kayıtlarını yasalara uygun şekilde tutması ve yıllık mali raporlarını düzenli olarak sunması zorunludur.</p>
+        <p>Yabancı yatırımcılar açısından da yasal çerçeve açıktır; gerekli izinler doğrultusunda yabancı sermayeli şirket kurulabilir. Tüm bu süreçlerin doğru ve eksiksiz yürütülmesi için profesyonel mali danışmanlık desteği büyük önem taşır.</p>
+      </div>
+      <div class="requirements-law-panel">
+        <p class="requirements-law-note">KKTC'nde işletmelerin hukuki yapısına ve çalışma şartlarını düzenleyen farklı yasalar vardır. Bu yasalar içerisinde temel yasa KKTC Şirketler Yasası Fasıl 113'tür. İşletmelerin hukuki yapı ve çalışma şartlarını belirleyen yasalar şunlardır.</p>
+        <ul class="law-list">
+          <li>KKTC Şirketler Yasası Fasıl 113</li>
+          <li>Kollektif ve Komandit Şirketler ve Ticari Ünvanlar Yasası</li>
+          <li>Yabancı Sermaye Yasası</li>
+          <li>KKTC Bankalar Yasası</li>
+          <li>Uluslararası Bankacılık Birimleri Yasası</li>
+          <li>Serbest Liman ve Bölge Yasası</li>
+          <li>Uluslararası İşletme Şirketleri Yasası</li>
+          <li>Sigorta Hizmetleri (Düzenleme Denetim) Yasası</li>
+        </ul>
+      </div>
+    </article>
+
+    <div class="requirements-grid reveal">
+      <article class="requirements-summary">
+        <div class="requirements-summary-media">
+          <img
+            src="assets/kayaplus-office-wall.jpeg"
+            width="1080"
+            height="1350"
+            alt="Kaya Plus çalışma alanı ve kurumsal ofis görünümü"
+            loading="lazy"
+            decoding="async">
+        </div>
+        <div class="requirements-summary-copy">
+          <div class="card-kicker" data-tr="İlk Kontrol Listesi" data-en="First Checklist" data-ru="Первичный чек-лист" data-ar="قائمة التحقق الأولى"><span class="kicker-dot"></span>İlk Kontrol Listesi</div>
+          <p data-tr="Kuruluş başvurusu öncesinde ortaklık yapısı, yönetim kadrosu, sekreter tanımı ve şirketin kayıtlı adresi netleştirilmelidir. Bu dört başlık, resmi dosyanın omurgasını oluşturur." data-en="Before the application, the shareholder structure, management, secretary role and registered office address should be clarified. These four points form the backbone of the official file." data-ru="До подачи заявки необходимо определить структуру акционеров, состав управления, роль секретаря и зарегистрированный адрес компании. Эти четыре пункта составляют основу официального досье." data-ar="قبل تقديم طلب التأسيس يجب تحديد هيكل الشركاء والإدارة وتعريف السكرتير والعنوان المسجل للشركة. فهذه العناصر الأربعة تشكل العمود الفقري للملف الرسمي.">Kuruluş başvurusu öncesinde ortaklık yapısı, yönetim kadrosu, sekreter tanımı ve şirketin kayıtlı adresi netleştirilmelidir. Bu dört başlık, resmi dosyanın omurgasını oluşturur.</p>
+          <ul class="requirements-summary-points">
+            <li>Ortak sayısı ve pay dağılımı baştan belirlenmelidir</li>
+            <li>Direktör görevi ve temsil yetkisi net tanımlanmalıdır</li>
+            <li>Sekreter bilgisi hukuki evrak akışı için hazır olmalıdır</li>
+            <li>KKTC içinde resmi kayıtlı adres gösterilmelidir</li>
+          </ul>
+        </div>
+      </article>
+
+      <div class="requirements-list">
+        <article class="requirement-item">
+          <div class="requirement-num">1</div>
+          <div class="requirement-copy">
+            <h3>En az 2 hissedar bulunmalıdır</h3>
+            <p>Şirketlerin en az 2 (iki) hissedarı yani ortağı olmalıdır. Ortaklık yapısı, kuruluş türüne göre pay dağılımı ve temsil düzeniyle birlikte baştan planlanmalıdır.</p>
+          </div>
+        </article>
+
+        <article class="requirement-item">
+          <div class="requirement-num">2</div>
+          <div class="requirement-copy">
+            <h3>En az 1 direktör atanmalıdır</h3>
+            <p>Şirketlerin en az 1 (bir) direktörü yani yönetim kurulu üyesi olmalıdır. Direktör, şirketin idari ve hukuki karar süreçlerinde temsil sorumluluğu taşır.</p>
+          </div>
+        </article>
+
+        <article class="requirement-item">
+          <div class="requirement-num">3</div>
+          <div class="requirement-copy">
+            <h3>Şirket sekreteri belirlenmelidir</h3>
+            <p>Şirketlerin 1 (bir) sekreteri olmalıdır. KKTC Şirketler Yasası'nda belirtilen sekreter tanımı, şirketin hukuki belgelerini sunan ve resmi evrak akışını takip eden kişiyi ifade eder.</p>
+          </div>
+        </article>
+
+        <article class="requirement-item">
+          <div class="requirement-num">4</div>
+          <div class="requirement-copy">
+            <h3>KKTC'de kayıtlı adres gösterilmelidir</h3>
+            <p>Şirketin KKTC sınırları içerisinde resmi bir kayıtlı adresi olmalıdır. Bu adres, şirketin yasal tebligatları ve resmi başvuru dosyaları açısından zorunlu kabul edilir.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FORMATION HUB -->
 <section id="formation-hub">
   <div class="section-shell">
-    <div class="section-tag" style="color:rgba(255,255,255,0.72);" data-tr="Kuruluş & Tescil" data-en="Setup & Registration" data-ru="Создание и регистрация" data-ar="التأسيس والتسجيل">Kuruluş & Tescil</div>
+    <div class="section-tag" style="color:rgba(255,255,255,0.72);" data-tr="KKTC'de Şirket Kurma" data-en="Starting a Company in TRNC" data-ru="Открытие компании в ТРСК" data-ar="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</div>
     <h2 class="section-title light reveal" data-tr="Şirket kuruluşu, yabancı şirket ve uluslararası yapı seçenekleri" data-en="Company setup, foreign company and international structure options" data-ru="Учреждение компании, иностранные компании и международные структуры" data-ar="خيارات تأسيس الشركات والشركات الأجنبية والهياكل الدولية">Şirket kuruluşu, yabancı şirket ve uluslararası yapı seçenekleri</h2>
     <p class="section-sub light reveal" data-tr="KKTC'de yeni şirket kuracak, yabancı şirket şubesi açacak veya uluslararası işletme yapısını değerlendirecek müvekkiller için avantajları, resmi şartları ve doğru yapı seçeneklerini tek akışta özetliyoruz." data-en="For clients planning a new company in the TRNC, opening a foreign branch or evaluating an international business structure, we summarize the advantages, official requirements and the right setup options in one flow." data-ru="Для клиентов, которые планируют новую компанию в ТРСК, открытие филиала иностранной компании или международную бизнес-структуру, мы в одном потоке показываем преимущества, официальные требования и подходящие варианты." data-ar="للعملاء الذين يخططون لتأسيس شركة جديدة في شمال قبرص أو فتح فرع لشركة أجنبية أو تقييم هيكل أعمال دولي، نلخّص المزايا والمتطلبات الرسمية وخيارات التأسيس المناسبة ضمن مسار واحد.">KKTC'de yeni şirket kuracak, yabancı şirket şubesi açacak veya uluslararası işletme yapısını değerlendirecek müvekkiller için avantajları, resmi şartları ve doğru yapı seçeneklerini tek akışta özetliyoruz.</p>
 
     <div class="formation-grid">
+      <article class="formation-card featured-advantage reveal">
+        <div class="section-visual-art formation-media formation-photo-scene formation-advantage-media" role="img" aria-label="Kuzey Kıbrıs'ta iş kurma ve günlük iş hayatını temsil eden ofis girişi görseli">
+          <img
+            src="assets/kayaplus-office-front.jpeg"
+            width="960"
+            height="1280"
+            alt="Kaya Plus ofis girişi ve günlük iş hayatı görünümü"
+            loading="lazy"
+            decoding="async">
+        </div>
+        <div class="formation-advantage-copy">
+          <div class="card-kicker" data-tr="KKTC'de Şirket Kurma Avantajları" data-en="Advantages of Starting a Company in TRNC" data-ru="Преимущества открытия компании в ТРСК" data-ar="مزايا تأسيس شركة في شمال قبرص"><span class="kicker-dot"></span>KKTC'de Şirket Kurma Avantajları</div>
+          <h3 data-tr="Kuzey Kıbrıs'ta şirket kurmanın avantajları" data-en="Advantages of starting a company in Northern Cyprus" data-ru="Преимущества открытия компании в Северном Кипре" data-ar="مزايا تأسيس شركة في شمال قبرص">Kuzey Kıbrıs'ta şirket kurmanın avantajları</h3>
+          <p data-tr="Kuzey Kıbrıs Türk Cumhuriyeti; düşük vergi oranları, esnek şirket yapıları ve hızlı kurulum süreciyle girişimciler için güçlü bir başlangıç zemini sunar." data-en="The Turkish Republic of Northern Cyprus offers entrepreneurs a strong starting ground with low tax rates, flexible company structures and a fast setup process." data-ru="Турецкая Республика Северного Кипра предлагает предпринимателям сильную стартовую площадку благодаря низким налогам, гибким структурам компании и быстрому процессу запуска." data-ar="توفّر جمهورية شمال قبرص التركية نقطة انطلاق قوية لرواد الأعمال بفضل انخفاض الضرائب ومرونة هياكل الشركات وسرعة إجراءات التأسيس.">Kuzey Kıbrıs Türk Cumhuriyeti; düşük vergi oranları, esnek şirket yapıları ve hızlı kurulum süreciyle girişimciler için güçlü bir başlangıç zemini sunar.</p>
+          <ul class="detail-list formation-advantage-list">
+            <li>Düşük vergi oranları ve uygun işletme maliyetleri sayesinde yatırım planı daha kontrollü ilerler</li>
+            <li>Bürokratik işlemler daha pratik yürüdüğü için şirket kurulum süreci kısa sürede tamamlanabilir</li>
+            <li>Stratejik konum sayesinde Türkiye, Avrupa ve Orta Doğu pazarlarına daha rahat açılma imkanı sağlar</li>
+            <li>Yabancı yatırımcılar için esnek şirket yapıları ve tek ortaklı şirket kurabilme seçeneği sunar</li>
+            <li>Turizm, eğitim, gayrimenkul ve hizmet sektörlerinde yüksek büyüme potansiyeli barındırır</li>
+            <li>Güvenli yaşam koşulları ve yüksek yaşam kalitesi, işinizi büyütürken konforlu bir hayat kurmanıza destek olur</li>
+          </ul>
+          <div class="action-row formation-advantage-cta">
+            <a class="inline-link primary" href="./sirket-kurmanin-temel-sartlari.html" data-tr="Şirket kuruluşunda gerekli temel şartları gör" data-en="See the basic requirements for company formation" data-ru="Посмотреть базовые требования для регистрации компании" data-ar="اعرض المتطلبات الأساسية لتأسيس الشركة">Şirket kuruluşunda gerekli temel şartları gör</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="formation-card foreign-investor-card reveal">
+        <div class="section-visual-art formation-media foreign-investor-media" role="img" aria-label="Yabancı yatırımcılar için güven ve profesyonel iş birliğini temsil eden kurumsal görsel">
+          <img
+            src="assets/hero-handshake.jpg"
+            width="1920"
+            height="1200"
+            alt="Yabancı yatırımcılar için güven veren tokalaşma görseli"
+            loading="lazy"
+            decoding="async">
+        </div>
+        <div class="foreign-investor-copy">
+          <div class="card-kicker"><span class="kicker-dot"></span>Kıbrıs'ta Yabancı Şirket Kurma</div>
+          <h3>Kuzey Kıbrıs'ta yabancı yatırımcılar için kolay ve avantajlı şirket kurulumu</h3>
+          <p>Kuzey Kıbrıs Türk Cumhuriyeti, yabancı yatırımcılar için kolay ve avantajlı şirket kurulum imkânı sunar. Esnek mevzuat yapısı sayesinde yabancı ortaklı veya tamamen yabancı sermayeli şirketler hızlı bir şekilde kurulabilir. Düşük maliyetler, basit prosedürler ve stratejik konum avantajı ile uluslararası pazarlara açılmak isteyen girişimciler için ideal bir merkezdir. Profesyonel danışmanlık desteği ile tüm süreç sorunsuz ve güvenli şekilde yönetilir.</p>
+          <div class="foreign-investor-highlights">
+            <div class="foreign-investor-pill">Yabancı ortaklı veya tamamen yabancı sermayeli yapı kurma imkânı sunar.</div>
+            <div class="foreign-investor-pill">Düşük maliyet ve basit prosedürlerle süreç daha hızlı ve daha kontrollü ilerler.</div>
+            <div class="foreign-investor-pill">Stratejik konum sayesinde uluslararası pazarlara açılmak isteyen girişimciler için güçlü bir merkezdir.</div>
+            <div class="foreign-investor-pill">Profesyonel danışmanlık desteğiyle kuruluş süreci sorunsuz ve güvenli şekilde yönetilir.</div>
+          </div>
+        </div>
+      </article>
+
       <article class="formation-card reveal">
         <div class="section-visual-art formation-media formation-flow formation-photo-scene" role="img" aria-label="Şirket kuruluş sürecini adım adım gösteren kurumsal akış görseli">
           <img
@@ -5794,11 +6601,6 @@ footer {
             alt="Danışmanlık görüşmesi yapan iki profesyonel"
             loading="lazy"
             decoding="async">
-          <div class="formation-photo-chip">Yatırımcı Profili</div>
-          <div class="formation-photo-badge">
-            <strong>Yerel girişimci, yabancı ortak veya yurt dışı merkezli yapı</strong>
-            <span>Kuruluşa başlamadan önce kimin hangi modelle ilerleyeceği gündelik iş akışı içinde netleşir.</span>
-          </div>
         </div>
         <div class="card-kicker" data-tr="Kuruluş ve Tescilde Temel Başlıklar" data-en="Core Topics in Setup and Registration" data-ru="Ключевые темы запуска и регистрации" data-ar="المحاور الأساسية في التأسيس والتسجيل"><span class="kicker-dot"></span>Kuruluş ve Tescilde Temel Başlıklar</div>
         <h3 data-tr="Kıbrıs'ta kimler şirket kurabilir?" data-en="Who can establish a company in Cyprus?" data-ru="Кто может открыть компанию на Кипре?" data-ar="من يمكنه تأسيس شركة في قبرص؟">Kıbrıs'ta kimler şirket kurabilir?</h3>
@@ -5825,11 +6627,6 @@ footer {
             alt="Belge ve notlar üzerinde çalışan profesyonel"
             loading="lazy"
             decoding="async">
-          <div class="formation-photo-chip">Yapı Karşılaştırması</div>
-          <div class="formation-photo-badge">
-            <strong>Şirket türleri günlük operasyon, vergi ve sorumluluk yapısına göre seçilir</strong>
-            <span>Yerel limited, şube, serbest liman ve UİŞ seçeneklerini daha gerçek hayat odağında kıyaslayabilirsiniz.</span>
-          </div>
         </div>
         <div class="card-kicker" data-tr="İşletme Yapıları" data-en="Business Structures" data-ru="Бизнес-структуры" data-ar="هياكل الأعمال"><span class="kicker-dot"></span>İşletme Yapıları</div>
         <h3 data-tr="Kıbrıs'taki şirket türlerini tek bakışta değerlendirin" data-en="Evaluate company types in Cyprus at a glance" data-ru="Оцените типы компаний на Кипре с первого взгляда" data-ar="قيّم أنواع الشركات في قبرص بنظرة واحدة">Kıbrıs'taki şirket türlerini tek bakışta değerlendirin</h3>
@@ -6434,6 +7231,59 @@ footer {
   </div>
 </section>
 
+<!-- TEAM -->
+<section id="team">
+  <div class="team-hero">
+    <div class="section-shell">
+      <div class="team-breadcrumb">
+        <a href="#hero" data-tr="Ana Sayfa" data-en="Home">Ana Sayfa</a>
+        <span>›</span>
+        <strong data-tr="Ekibimiz" data-en="Our Team">Ekibimiz</strong>
+      </div>
+      <h2 class="team-hero-title" data-tr="Ekibimiz" data-en="Our Team">Ekibimiz</h2>
+      <p class="team-hero-sub" data-tr="Kuruluştan günlük operasyona kadar müvekkil dosyalarını sahiplenen, sakin ve düzenli ilerleyen ekip yapımızı ana hatlarıyla görün." data-en="Meet the team structure that owns client files from company formation to day-to-day operations with a calm and disciplined workflow.">Kuruluştan günlük operasyona kadar müvekkil dosyalarını sahiplenen, sakin ve düzenli ilerleyen ekip yapımızı ana hatlarıyla görün.</p>
+    </div>
+  </div>
+
+  <div class="team-surface">
+    <div class="section-shell">
+      <p class="team-intro reveal" data-tr="Ekibimiz bölümünde yalnızca gerçek ekip fotoğrafları ve o kişilere ait bilgiler yer alır. Şu anda kurucu kimliğiyle Yaşar Kaya'yı öne çıkarıyoruz." data-en="The team section features only real team photos and information belonging to those people. For now, we are highlighting Yasar Kaya in his founder role.">Ekibimiz bölümünde yalnızca gerçek ekip fotoğrafları ve o kişilere ait bilgiler yer alır. Şu anda kurucu kimliğiyle Yaşar Kaya'yı öne çıkarıyoruz.</p>
+
+      <div class="team-grid team-grid-focus">
+        <article class="team-card team-card-founder reveal">
+          <div class="team-card-media">
+            <img src="assets/yasar-kaya-portrait.jpeg" alt="Yaşar Kaya ofis portresi" loading="lazy" decoding="async">
+            <span class="team-card-pill" data-tr="Kurucu" data-en="Founder">Kurucu</span>
+            <div class="team-card-actions">
+              <a class="team-action" href="mailto:info@kayaplus.net" aria-label="E-posta gönder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="m4 8 8 6 8-6"/></svg>
+              </a>
+              <a class="team-action" href="tel:+905338616552" aria-label="Telefon et">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72l.38 2.66a2 2 0 0 1-.57 1.73l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 1.73-.57l2.66.38A2 2 0 0 1 22 16.92z"/></svg>
+              </a>
+              <a class="team-action" href="https://wa.me/905338616552" aria-label="WhatsApp ile iletişime geç">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.54 0 .24 5.3.24 11.83c0 2.08.54 4.12 1.57 5.92L0 24l6.43-1.68a11.8 11.8 0 0 0 5.63 1.43h.01c6.52 0 11.82-5.3 11.82-11.83 0-3.16-1.23-6.13-3.37-8.44Z"/><path d="M8.76 7.3c-.22-.5-.45-.51-.66-.52h-.56c-.2 0-.52.08-.79.37-.27.3-1.04 1.02-1.04 2.49s1.06 2.88 1.21 3.08c.15.2 2.09 3.36 5.16 4.58 2.55 1.01 3.07.81 3.62.76.55-.05 1.79-.73 2.04-1.43.25-.7.25-1.3.18-1.43-.07-.13-.25-.2-.52-.34-.27-.13-1.62-.8-1.87-.89-.25-.1-.43-.13-.61.14-.18.27-.7.89-.86 1.07-.16.18-.31.2-.58.07-.27-.13-1.13-.41-2.16-1.3-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.11-.56.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.61-1.57-.84-2.15Z"/></svg>
+              </a>
+              <a class="team-action" href="#contact" aria-label="İletişim formuna git">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="team-card-body">
+            <h3>Yaşar Kaya</h3>
+            <span class="team-card-role" data-tr="Kurucu" data-en="Founder">Kurucu</span>
+            <p data-tr="Yaşar Kaya, Kaya Plus'ın kurucu çizgisini temsil eder. Müvekkil ilişkilerinde güven veren yaklaşımı, süreçlerde düzeni önceleyen yönetim anlayışı ve markanın siyah-altın duruşunu sahaya taşıyan net liderlik diliyle öne çıkar." data-en="Yasar Kaya represents the founder-led direction of Kaya Plus. He stands out with a confidence-building client approach, a management style centered on process discipline and a clear leadership voice that carries the brand’s black-and-gold identity into practice.">Yaşar Kaya, Kaya Plus'ın kurucu çizgisini temsil eder. Müvekkil ilişkilerinde güven veren yaklaşımı, süreçlerde düzeni önceleyen yönetim anlayışı ve markanın siyah-altın duruşunu sahaya taşıyan net liderlik diliyle öne çıkar.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="team-section-cta reveal">
+        <a class="team-section-link" href="./ekip-ve-referanslar.html" data-tr="Ekibimizin çalışma modelini detaylı incele" data-en="Explore our team model in detail">Ekibimizin çalışma modelini detaylı incele</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="section-tag" data-tr="Mükellef Yorumları" data-en="Client Testimonials" data-ru="Отзывы клиентов" data-ar="آراء العملاء">Mükellef Yorumları</div>
@@ -6597,7 +7447,7 @@ footer {
         <div class="contact-card-icon">✉️</div>
         <div>
           <div class="contact-card-label" data-tr="E-posta" data-en="Email" data-ru="Эл. почта" data-ar="البريد الإلكتروني">E-posta</div>
-          <div class="contact-card-val"><a href="mailto:yasar@kayaplus.net">yasar@kayaplus.net</a></div>
+          <div class="contact-card-val"><a href="mailto:info@kayaplus.net">info@kayaplus.net</a></div>
         </div>
       </div>
       <div class="contact-card reveal" style="transition-delay:0.2s">
@@ -6671,7 +7521,7 @@ footer {
       </div>
       <div class="map-address-item">
         <div class="map-address-icon">✉️</div>
-        <div class="map-address-text"><strong data-tr="E-posta" data-en="Email" data-ru="Эл. почта" data-ar="البريد الإلكتروني">E-posta</strong>yasar@kayaplus.net</div>
+      <div class="map-address-text"><strong data-tr="E-posta" data-en="Email" data-ru="Эл. почта" data-ar="البريد الإلكتروني">E-posta</strong>info@kayaplus.net</div>
       </div>
       <div class="map-address-item">
         <div class="map-address-icon">🟢</div>
@@ -6726,7 +7576,8 @@ footer {
     <div>
       <div class="footer-col-title" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</div>
       <div class="footer-links">
-        <a href="#formation-hub" data-tr="Kuruluş & Tescil" data-en="Setup & Registration" data-ru="Создание и регистрация" data-ar="التأسيس والتسجيل">Kuruluş & Tescil</a>
+        <a href="#formation-hub" data-tr="KKTC'de Şirket Kurma" data-en="Starting a Company in TRNC" data-ru="Открытие компании в ТРСК" data-ar="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</a>
+        <a href="./sirket-kurmanin-temel-sartlari.html" data-tr="Şirket Kurmanın Temel Şartları" data-en="Basic Company Formation Requirements" data-ru="Основные условия регистрации компании" data-ar="الشروط الأساسية لتأسيس الشركة">Şirket Kurmanın Temel Şartları</a>
         <a href="#taxes-hub" data-tr="Vergi Danışmanlığı" data-en="Tax Advisory" data-ru="Налоговый консалтинг" data-ar="الاستشارات الضريبية">Vergi Danışmanlığı</a>
         <a href="#services-hub" data-tr="Muhasebe Hizmetleri" data-en="Accounting Services" data-ru="Бухгалтерские услуги" data-ar="خدمات المحاسبة">Muhasebe Hizmetleri</a>
         <a href="#corporate" data-tr="Kurumsal Yapı" data-en="Corporate Profile" data-ru="Корпоративный профиль" data-ar="الملف المؤسسي">Kurumsal Yapı</a>
@@ -6748,14 +7599,15 @@ footer {
         <a href="./yabanci-sirket-subesi-rehberi.html" data-tr="Yabancı Şirket Şubesi" data-en="Foreign Branch Guide" data-ru="Гид по иностранному филиалу" data-ar="دليل فرع الشركة الأجنبية">Yabancı Şirket Şubesi</a>
         <a href="./yerel-limited-uis-yabanci-sube-karsilastirma.html" data-tr="Yapı Karşılaştırması" data-en="Structure Comparison" data-ru="Сравнение структур" data-ar="مقارنة الهياكل">Yapı Karşılaştırması</a>
         <a href="./mevzuat-rehberi.html" data-tr="Mevzuat Rehberi" data-en="Legislation Guide" data-ru="Гид по законодательству" data-ar="دليل التشريعات">Mevzuat Rehberi</a>
-        <a href="./ekip-ve-referanslar.html" data-tr="Ekip & Referanslar" data-en="Team & References" data-ru="Команда и рекомендации" data-ar="الفريق والمراجع">Ekip & Referanslar</a>
+        <a href="./sirket-kurmanin-temel-sartlari.html" data-tr="Temel Şartlar" data-en="Basic Requirements" data-ru="Основные условия" data-ar="الشروط الأساسية">Temel Şartlar</a>
+        <a href="#team" data-tr="Ekibimiz" data-en="Our Team" data-ru="Наша команда" data-ar="فريقنا">Ekibimiz</a>
       </div>
     </div>
     <div>
       <div class="footer-col-title" data-tr="İletişim" data-en="Contact" data-ru="Контакт" data-ar="تواصل">İletişim</div>
       <div class="footer-links">
         <a href="tel:+905338616552">+90 533 861 65 52</a>
-        <a href="mailto:yasar@kayaplus.net">yasar@kayaplus.net</a>
+      <a href="mailto:info@kayaplus.net">info@kayaplus.net</a>
         <a href="https://wa.me/905338616552" data-tr="WhatsApp" data-en="WhatsApp" data-ru="WhatsApp" data-ar="واتساب">WhatsApp</a>
         <a href="#office-gallery" data-tr="Ofisimiz" data-en="Our Office" data-ru="Наш офис" data-ar="مكتبنا">Ofisimiz</a>
       </div>
@@ -7705,10 +8557,85 @@ document.getElementById('live-support-message')?.addEventListener('keydown', (ev
   }
 });
 
+// ── SITE INTRO ──
+function initSiteIntro() {
+  const intro = document.getElementById('site-intro');
+  const introVideo = document.getElementById('site-intro-video');
+  const introSkip = document.getElementById('intro-skip');
+  const introSeenKey = 'kayaplus-intro-seen';
+
+  if (!intro || !introVideo) {
+    document.body.classList.remove('intro-active');
+    return;
+  }
+
+  if (window.localStorage.getItem(introSeenKey) === '1') {
+    intro.style.display = 'none';
+    intro.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('intro-active');
+    return;
+  }
+
+  window.localStorage.setItem(introSeenKey, '1');
+
+  let introClosed = false;
+
+  const closeIntro = () => {
+    if (introClosed) return;
+    introClosed = true;
+    intro.classList.add('is-hidden');
+    intro.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('intro-active');
+    window.setTimeout(() => {
+      intro.style.display = 'none';
+    }, 820);
+  };
+
+  introVideo.addEventListener('ended', closeIntro, { once: true });
+  introVideo.addEventListener('error', closeIntro, { once: true });
+
+  introSkip?.addEventListener('click', () => {
+    if (introVideo.paused || introVideo.muted) {
+      introVideo.muted = false;
+      introVideo.volume = 1;
+      const resumePromise = introVideo.play();
+      if (resumePromise && typeof resumePromise.catch === 'function') {
+        resumePromise.catch(() => {
+          closeIntro();
+        });
+      }
+      return;
+    }
+    introVideo.pause();
+    closeIntro();
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !introClosed) {
+      introVideo.pause();
+      closeIntro();
+    }
+  });
+
+  introVideo.muted = false;
+  introVideo.volume = 1;
+  const playPromise = introVideo.play();
+  if (playPromise && typeof playPromise.catch === 'function') {
+    playPromise.catch(() => {
+      introVideo.pause();
+      introVideo.currentTime = 0;
+      if (introSkip) {
+        introSkip.textContent = introSkip.getAttribute('data-start-tr') || 'Sesiyle Başlat';
+      }
+    });
+  }
+}
+
 // ── INITIAL LANG ──
 setLang('tr');
 bindSupportStore();
 hydrateLiveSupportConversation();
+initSiteIntro();
 </script>
 </body>
 </html>
