@@ -10,33 +10,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --gold: #C5A04D;
-  --gold-deep: #8E6A24;
-  --gold-rich: #D7B76C;
-  --gold-light: #E6CC8E;
-  --gold-pale: #F6EEDC;
-  --navy: #111111;
-  --navy-mid: #1A1A1A;
-  --navy-light: #2A2A2A;
-  --cream: #F7F1E8;
-  --cream-dark: #EDE3D0;
-  --text: #191612;
-  --text-muted: #6E665B;
+  --gold: #B89245;
+  --gold-deep: #7A5D24;
+  --gold-rich: #CCAF6B;
+  --gold-light: #DDC38B;
+  --gold-pale: #F7F0E3;
+  --navy: #101010;
+  --navy-mid: #181818;
+  --navy-light: #262626;
+  --cream: #FFFFFF;
+  --cream-dark: #FFFFFF;
+  --text: #171411;
+  --text-muted: #625A50;
   --white: #FFFFFF;
-  --success: #1F9D63;
-  --accent-rgb: 197, 160, 77;
-  --navy-rgb: 17, 17, 17;
-  --blue-rgb: 42, 42, 42;
-  --cream-rgb: 247, 241, 232;
+  --success: #2C8E5E;
+  --accent: #B89245;
+  --accent-rgb: 184, 146, 69;
+  --navy-rgb: 16, 16, 16;
+  --blue-rgb: 38, 38, 38;
+  --cream-rgb: 255, 255, 255;
   --white-rgb: 255, 255, 255;
-  --orange: #C5A04D;
-  --orange-rgb: 197, 160, 77;
-  --text-soft: #CBBEAB;
+  --orange: #B89245;
+  --orange-rgb: 184, 146, 69;
+  --text-soft: #C8B89A;
   --border: rgba(var(--accent-rgb), 0.16);
   --radius: 12px;
   --radius-lg: 20px;
-  --shadow: 0 10px 30px rgba(var(--navy-rgb), 0.08);
-  --shadow-lg: 0 24px 60px rgba(var(--navy-rgb), 0.14);
+  --shadow: 0 14px 34px rgba(var(--navy-rgb), 0.09);
+  --shadow-lg: 0 26px 64px rgba(var(--navy-rgb), 0.15);
+  --layout-max: 1320px;
+  --layout-gutter: clamp(32px, 6vw, 96px);
+  --layout-inline: max(calc((100% - var(--layout-max)) / 2), calc(var(--layout-gutter) / 2));
+  --section-space: clamp(72px, 8vw, 96px);
+  --section-gap: clamp(24px, 3vw, 32px);
+  --hero-height: clamp(560px, 74vh, 700px);
+  --hero-panel-height: clamp(500px, 68vh, 620px);
   --hero-photo: url('assets/hero-handshake.jpg');
 }
 
@@ -149,7 +157,10 @@ h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   padding: 0 48px;
   height: 72px;
-  display: flex; align-items: center; justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 18px;
   transition: background 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
 }
 #header.scrolled {
@@ -198,6 +209,7 @@ h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
 .logo {
   display: flex; align-items: center; gap: 12px;
   text-decoration: none; color: var(--navy);
+  flex-shrink: 0;
 }
 .logo-mark {
   width: 40px; height: 40px;
@@ -210,17 +222,27 @@ h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
 .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; letter-spacing: -0.35px; }
 .logo-sub { font-size: 11px; color: var(--text-muted); font-weight: 500; margin-top: -2px; }
 
-nav { display: flex; align-items: center; gap: 20px; }
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-width: 0;
+  flex-wrap: nowrap;
+}
 nav a {
-  text-decoration: none; font-size: 13px; font-weight: 500;
+  text-decoration: none; font-size: 12px; font-weight: 500;
   color: var(--text-muted);
   transition: color 0.2s;
   position: relative;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  letter-spacing: -0.01em;
 }
 nav a:hover { color: var(--navy); }
 nav a.active { color: var(--navy); font-weight: 500; }
 
-.header-actions { display: flex; align-items: center; gap: 16px; }
+.header-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 
 .lang-switcher {
   display: flex; align-items: center; gap: 4px;
@@ -248,11 +270,11 @@ nav a.active { color: var(--navy); font-weight: 500; }
 
 /* ── HERO ── */
 #hero {
-  min-height: 100vh;
+  min-height: var(--hero-height);
   display: flex; align-items: center;
   position: relative; overflow: hidden;
   background: #F7F1EB;
-  padding: 0 48px;
+  padding: clamp(96px, 11vw, 128px) var(--layout-inline) clamp(56px, 8vw, 80px);
 }
 .hero-bg {
   position: absolute; inset: 0;
@@ -279,14 +301,19 @@ nav a.active { color: var(--navy); font-weight: 500; }
 }
 .hero-content {
   position: relative; z-index: 2;
-  max-width: 840px;
-  padding: 44px;
-  padding-top: calc(72px + 20px);
+  width: min(var(--layout-max), 100%);
+  max-width: none;
+  min-height: var(--hero-panel-height);
+  padding: clamp(28px, 3.2vw, 44px);
+  padding-top: calc(72px + 12px);
   background: linear-gradient(180deg, rgba(var(--white-rgb),0.84), rgba(var(--cream-rgb),0.74));
   border: 1px solid rgba(var(--white-rgb),0.52);
   border-radius: 30px;
   box-shadow: 0 30px 70px rgba(var(--navy-rgb),0.14);
   backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -323,7 +350,7 @@ nav a.active { color: var(--navy); font-weight: 500; }
   font-weight: 300;
   text-shadow: none;
 }
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
 .btn-hero-primary {
   padding: 16px 32px; border-radius: 12px;
   background: linear-gradient(135deg, var(--gold), #8E6A24); color: var(--white);
@@ -348,8 +375,8 @@ nav a.active { color: var(--navy); font-weight: 500; }
 .hero-focus-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin: 0 0 36px;
+  gap: 16px;
+  margin: 0 0 32px;
 }
 .hero-focus-card {
   display: block;
@@ -382,7 +409,7 @@ nav a.active { color: var(--navy); font-weight: 500; }
 
 .hero-stats {
   display: flex; gap: 48px; flex-wrap: wrap;
-  padding-top: 32px;
+  padding-top: 24px;
   border-top: 1px solid rgba(var(--blue-rgb),0.12);
 }
 .hero-stat-num {
@@ -393,7 +420,18 @@ nav a.active { color: var(--navy); font-weight: 500; }
 .hero-stat-label { font-size: 13px; color: rgba(var(--navy-rgb),0.70); margin-top: 4px; font-weight: 400; }
 
 /* ── SECTION BASE ── */
-section { padding: 100px 48px; }
+section { padding: var(--section-space) 0; }
+#quiz,
+#process,
+#types,
+#comparison,
+#calculator,
+#laws,
+#testimonials,
+#faq,
+#contact {
+  padding-inline: var(--layout-inline);
+}
 .section-tag {
   display: inline-block; font-size: 11px; font-weight: 600;
   letter-spacing: 0.12em; text-transform: uppercase;
@@ -415,15 +453,16 @@ section { padding: 100px 48px; }
 .section-sub.light { color: rgba(var(--white-rgb),0.78); }
 
 .section-shell {
-  max-width: 1320px;
+  width: min(var(--layout-max), calc(100% - var(--layout-gutter)));
+  max-width: none;
   margin: 0 auto;
 }
 .corporate-lead {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-  gap: 28px;
+  gap: var(--section-gap);
   align-items: stretch;
-  margin-top: 44px;
+  margin-top: clamp(28px, 4vw, 44px);
 }
 .corporate-lead-copy {
   display: flex;
@@ -525,8 +564,8 @@ section { padding: 100px 48px; }
 .portal-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 44px;
+  gap: var(--section-gap);
+  margin-top: clamp(28px, 4vw, 44px);
 }
 .portal-card,
 .service-hub-card,
@@ -620,7 +659,7 @@ section { padding: 100px 48px; }
   min-height: 260px;
   display: flex;
   align-items: flex-end;
-  padding: 132px 48px 42px;
+  padding: 132px var(--layout-inline) 42px;
   background-image:
     linear-gradient(90deg, rgba(var(--navy-rgb),0.92) 0%, rgba(33,24,16,0.86) 44%, rgba(33,24,16,0.54) 100%),
     url('assets/kayaplus-office-wall.jpeg');
@@ -639,6 +678,9 @@ section { padding: 100px 48px; }
 .team-hero .section-shell {
   position: relative;
   z-index: 1;
+  width: 100%;
+}
+.team-surface .section-shell {
   width: 100%;
 }
 .team-breadcrumb {
@@ -673,7 +715,7 @@ section { padding: 100px 48px; }
   color: rgba(var(--white-rgb),0.80);
 }
 .team-surface {
-  padding: 52px 48px 0;
+  padding: 52px var(--layout-inline) 0;
 }
 .team-intro {
   max-width: 720px;
@@ -686,7 +728,7 @@ section { padding: 100px 48px; }
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+  gap: var(--section-gap);
 }
 .team-grid.team-grid-focus {
   grid-template-columns: minmax(280px, 440px);
@@ -895,8 +937,8 @@ section { padding: 100px 48px; }
 .service-hub-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 44px;
+  gap: var(--section-gap);
+  margin-top: clamp(28px, 4vw, 44px);
 }
 .service-card-media {
   margin: -28px -28px 20px;
@@ -2519,25 +2561,72 @@ section { padding: 100px 48px; }
   background: linear-gradient(135deg, var(--gold-light), var(--gold-deep));
   box-shadow: 0 0 0 4px rgba(var(--accent-rgb),0.10);
 }
-.formation-card.featured-advantage {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 28px;
-  align-items: center;
+.formation-card.showcase-formation-card {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 18px 18px 24px;
 }
-.formation-card.featured-advantage .formation-media {
+.formation-card.featured-advantage,
+.formation-card.foreign-investor-card {
+  grid-column: auto;
+}
+.formation-card.showcase-formation-card .formation-media {
   margin: 0;
-  min-height: 420px;
-  height: 100%;
+  min-height: clamp(250px, 25vw, 312px);
+  height: clamp(250px, 25vw, 312px);
   border-radius: 22px;
 }
-.formation-advantage-media {
-  min-height: 420px;
+.formation-card.showcase-formation-card .formation-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-.formation-advantage-copy {
+.formation-showcase-note {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  padding: 15px 16px;
+  border-radius: 18px;
+  background: rgba(var(--white-rgb),0.92);
+  border: 1px solid rgba(var(--white-rgb),0.56);
+  box-shadow: 0 16px 34px rgba(var(--navy-rgb),0.16);
+  backdrop-filter: blur(12px);
+}
+.formation-showcase-note strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--navy);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.formation-showcase-note span {
+  display: block;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.formation-advantage-media {
+  min-height: clamp(250px, 25vw, 312px);
+}
+.formation-advantage-copy,
+.foreign-investor-copy {
   display: grid;
   gap: 18px;
+}
+.formation-card.showcase-formation-card .formation-advantage-copy,
+.formation-card.showcase-formation-card .foreign-investor-copy {
+  gap: 16px;
+  align-content: start;
+  padding: 0 4px;
+}
+.formation-card.showcase-formation-card .card-kicker,
+.formation-card.showcase-formation-card h3,
+.formation-card.showcase-formation-card p {
+  margin: 0;
 }
 .formation-advantage-copy p {
   margin: 0;
@@ -2548,29 +2637,8 @@ section { padding: 100px 48px; }
 .formation-advantage-cta {
   margin-top: 2px;
 }
-.formation-card.foreign-investor-card {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 28px;
-  align-items: center;
-}
 .foreign-investor-media {
-  margin: 0;
-  min-height: 360px;
-  height: 100%;
-  border-radius: 22px;
   overflow: hidden;
-}
-.foreign-investor-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.foreign-investor-copy {
-  display: grid;
-  gap: 18px;
 }
 .foreign-investor-copy p {
   margin: 0;
@@ -2580,6 +2648,10 @@ section { padding: 100px 48px; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
+.formation-card.showcase-formation-card .foreign-investor-highlights {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
 .foreign-investor-pill {
   padding: 14px 16px;
   border-radius: 18px;
@@ -2588,6 +2660,172 @@ section { padding: 100px 48px; }
   color: var(--text);
   font-size: 14px;
   line-height: 1.6;
+}
+.formation-card.offshore-service-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 28px;
+  align-items: start;
+}
+.offshore-service-media {
+  margin: 0;
+  min-height: 420px;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+}
+.offshore-service-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+.offshore-service-copy {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+.offshore-service-copy p,
+.offshore-service-copy h4 {
+  margin: 0;
+}
+.offshore-service-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.offshore-service-highlight {
+  padding: 16px 16px 15px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(var(--accent-rgb),0.10) 0%, rgba(var(--white-rgb),0.96) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+}
+.offshore-service-highlight strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: var(--navy);
+}
+.offshore-service-highlight span {
+  display: block;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.offshore-service-disclosure {
+  display: grid;
+  gap: 12px;
+}
+.offshore-service-toggle {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(var(--accent-rgb),0.10) 0%, rgba(var(--white-rgb),0.98) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+  cursor: pointer;
+  user-select: none;
+}
+.offshore-service-toggle::-webkit-details-marker {
+  display: none;
+}
+.offshore-service-toggle-copy {
+  display: grid;
+  gap: 4px;
+}
+.offshore-service-toggle-copy strong {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--navy);
+}
+.offshore-service-toggle-copy small {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.offshore-service-toggle-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 700;
+}
+.offshore-service-toggle-open,
+.offshore-service-toggle-close {
+  white-space: nowrap;
+}
+.offshore-service-toggle-close {
+  display: none;
+}
+.offshore-service-disclosure[open] .offshore-service-toggle-open {
+  display: none;
+}
+.offshore-service-disclosure[open] .offshore-service-toggle-close {
+  display: inline;
+}
+.offshore-service-toggle-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--white-rgb),0.9);
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+  box-shadow: 0 10px 22px rgba(var(--navy-rgb),0.08);
+  transition: transform 0.25s ease;
+}
+.offshore-service-toggle-icon::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+}
+.offshore-service-disclosure[open] .offshore-service-toggle-icon {
+  transform: rotate(180deg);
+}
+.offshore-service-flow {
+  display: grid;
+  gap: 18px;
+  padding: 22px 24px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(var(--accent-rgb),0.07) 0%, rgba(var(--white-rgb),0.98) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+  animation: offshoreFlowReveal 0.28s ease;
+}
+.offshore-service-group {
+  display: grid;
+  gap: 10px;
+}
+.offshore-service-group h4 {
+  font-size: 16px;
+  color: var(--navy);
+}
+.offshore-service-group p {
+  color: var(--text);
+  line-height: 1.75;
+}
+.offshore-service-list {
+  margin-top: 0;
+}
+@keyframes offshoreFlowReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 #company-requirements {
   background: linear-gradient(180deg, rgba(16,13,11,0.98) 0%, rgba(24,20,17,1) 100%);
@@ -2630,6 +2868,38 @@ section { padding: 100px 48px; }
 }
 .requirements-law-panel .law-list li {
   color: rgba(246,238,220,0.92);
+}
+.requirements-law-panel .tax-law-accordion {
+  margin-top: 0;
+}
+.requirements-law-panel .tax-law-item {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(var(--accent-rgb),0.16);
+}
+.requirements-law-panel .tax-law-item[open] {
+  box-shadow: 0 18px 34px rgba(0,0,0,0.18);
+}
+.requirements-law-panel .tax-law-summary {
+  padding: 15px 16px;
+}
+.requirements-law-panel .tax-law-icon {
+  background: linear-gradient(135deg, var(--gold) 0%, #FF5D47 100%);
+}
+.requirements-law-panel .tax-law-icon::before,
+.requirements-law-panel .tax-law-icon::after {
+  background: rgba(var(--white-rgb),0.96);
+}
+.requirements-law-panel .tax-law-title {
+  color: rgba(246,238,220,0.96);
+}
+.requirements-law-panel .tax-law-body {
+  padding: 0 16px 16px 16px;
+}
+.requirements-law-panel .tax-law-body p {
+  color: rgba(240,225,186,0.82);
+}
+.requirements-law-panel .tax-law-body .inline-link {
+  background: rgba(var(--white-rgb),0.92);
 }
 .requirements-grid {
   display: grid;
@@ -2734,10 +3004,9 @@ section { padding: 100px 48px; }
   line-height: 1.75;
 }
 @media (max-width: 980px) {
-  .formation-card.featured-advantage {
-    grid-template-columns: 1fr;
-  }
-  .formation-card.foreign-investor-card {
+  .formation-card.foreign-investor-card,
+  .formation-card.offshore-service-card {
+    grid-column: 1 / -1;
     grid-template-columns: 1fr;
   }
   .formation-card.featured-advantage .formation-media {
@@ -2745,6 +3014,19 @@ section { padding: 100px 48px; }
   }
   .foreign-investor-media {
     min-height: 260px;
+  }
+  .offshore-service-media {
+    min-height: 260px;
+  }
+  .foreign-investor-media img {
+    height: 260px;
+  }
+  .offshore-service-media img {
+    height: 260px;
+    min-height: 260px;
+  }
+  .offshore-service-highlights {
+    grid-template-columns: 1fr;
   }
   .foreign-investor-highlights {
     grid-template-columns: 1fr;
@@ -2837,14 +3119,202 @@ section { padding: 100px 48px; }
 .news-item p {
   max-width: none;
 }
+.updates-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  margin: 36px 0 28px;
+}
+.updates-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 0 18px;
+  border-radius: 18px;
+  background: rgba(var(--white-rgb),0.94);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: var(--shadow);
+}
+.updates-search-icon {
+  font-size: 16px;
+  color: var(--gold);
+}
+.updates-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  color: var(--navy);
+}
+.updates-search input::placeholder { color: var(--text-muted); }
+.updates-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.updates-chip {
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--accent-rgb),0.16);
+  background: rgba(var(--white-rgb),0.74);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.updates-chip:hover,
+.updates-chip.active {
+  transform: translateY(-1px);
+  border-color: rgba(var(--accent-rgb),0.34);
+  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.18), rgba(var(--orange-rgb),0.18));
+  box-shadow: 0 12px 24px rgba(var(--accent-rgb),0.14);
+}
+.updates-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.updates-card {
+  padding: 24px;
+  border-radius: 22px;
+  background: rgba(var(--white-rgb),0.95);
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.updates-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.updates-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(var(--accent-rgb),0.12);
+  color: var(--gold-deep);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.updates-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), #FF7A18);
+}
+.updates-date {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.updates-card h3 {
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--navy);
+}
+.updates-card p {
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+.updates-rate-grid,
+.updates-mini-list {
+  display: grid;
+  gap: 10px;
+}
+.updates-rate-row,
+.updates-mini-item {
+  display: grid;
+  grid-template-columns: minmax(86px, 1fr) repeat(2, minmax(92px, auto));
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(var(--cream-rgb),0.90);
+  border: 1px solid rgba(var(--blue-rgb),0.08);
+}
+.updates-mini-item {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.updates-rate-row span,
+.updates-mini-item span {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.updates-rate-row strong,
+.updates-mini-item strong {
+  font-size: 15px;
+  color: var(--navy);
+  text-align: right;
+}
+.updates-rate-row strong small {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 10px;
+  line-height: 1.1;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.updates-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+}
+.updates-source {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.updates-note {
+  margin-top: 24px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: rgba(var(--white-rgb),0.82);
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.updates-empty {
+  margin-top: 22px;
+  padding: 26px 22px;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(var(--white-rgb),0.82);
+  border: 1px dashed rgba(var(--accent-rgb),0.22);
+  color: var(--text-muted);
+}
+.updates-card[hidden],
+.updates-empty[hidden] {
+  display: none !important;
+}
 #formation-hub {
   background: linear-gradient(135deg, var(--navy), var(--navy-mid));
 }
 .formation-grid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 24px;
-  margin-top: 44px;
+  gap: var(--section-gap);
+  margin-top: clamp(28px, 4vw, 44px);
 }
 .formation-card {
   padding: 30px;
@@ -2886,8 +3356,8 @@ section { padding: 100px 48px; }
 .sector-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  margin-top: 44px;
+  gap: var(--section-gap);
+  margin-top: clamp(28px, 4vw, 44px);
 }
 .sector-card-media {
   position: relative;
@@ -2969,14 +3439,14 @@ section { padding: 100px 48px; }
 .tax-grid {
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
-  gap: 24px;
-  margin-top: 44px;
+  gap: var(--section-gap);
+  margin-top: clamp(28px, 4vw, 44px);
 }
 .topic-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 18px;
+  gap: 16px;
+  margin-top: 20px;
 }
 .topic-chip {
   padding: 14px 16px;
@@ -2986,6 +3456,87 @@ section { padding: 100px 48px; }
   color: var(--text);
   font-size: 14px;
   line-height: 1.5;
+}
+.tax-law-accordion {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+.tax-law-item {
+  border-radius: 18px;
+  border: 1px solid rgba(var(--blue-rgb),0.10);
+  background: rgba(var(--cream-rgb),0.9);
+  overflow: hidden;
+}
+.tax-law-item[open] {
+  box-shadow: 0 18px 34px rgba(var(--navy-rgb),0.08);
+}
+.tax-law-summary {
+  list-style: none;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 15px 16px;
+  cursor: pointer;
+}
+.tax-law-summary::-webkit-details-marker {
+  display: none;
+}
+.tax-law-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(var(--navy-rgb),0.96) 0%, rgba(var(--blue-rgb),0.88) 100%);
+  position: relative;
+  flex-shrink: 0;
+}
+.tax-law-icon::before,
+.tax-law-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--gold-light);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+}
+.tax-law-icon::before {
+  width: 14px;
+  height: 2px;
+}
+.tax-law-icon::after {
+  width: 2px;
+  height: 14px;
+}
+.tax-law-item[open] .tax-law-icon::after {
+  opacity: 0;
+}
+.tax-law-title {
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.tax-law-body {
+  display: grid;
+  gap: 12px;
+  padding: 0 16px 16px 64px;
+}
+.tax-law-body p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.tax-law-body .inline-link {
+  width: fit-content;
+}
+.tax-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
 }
 .tax-note {
   margin-top: 18px;
@@ -3000,7 +3551,7 @@ section { padding: 100px 48px; }
 /* ── QUIZ ── */
 #quiz { background: var(--white); }
 .quiz-container {
-  max-width: 760px; margin: 0 auto;
+  max-width: 760px; margin: clamp(28px, 4vw, 44px) auto 0;
   background: var(--cream);
   border-radius: var(--radius-lg);
   border: 0.5px solid var(--border);
@@ -3081,7 +3632,7 @@ section { padding: 100px 48px; }
 #process { background: var(--navy); }
 .process-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2px; margin-top: 64px;
+  gap: 2px; margin-top: clamp(28px, 4vw, 44px);
   border: 0.5px solid rgba(var(--white-rgb),0.12);
   border-radius: var(--radius-lg); overflow: hidden;
 }
@@ -3119,7 +3670,7 @@ section { padding: 100px 48px; }
 #types { background: var(--white); }
 .types-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px; margin-top: 56px;
+  gap: var(--section-gap); margin-top: clamp(28px, 4vw, 44px);
 }
 .type-card {
   background: var(--cream);
@@ -3153,7 +3704,7 @@ section { padding: 100px 48px; }
 #comparison { background: var(--cream); }
 .table-wrap {
   overflow-x: auto;
-  margin-top: 56px;
+  margin-top: clamp(28px, 4vw, 44px);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   -webkit-overflow-scrolling: touch;
@@ -3187,7 +3738,7 @@ section { padding: 100px 48px; }
 #calculator { background: var(--navy); }
 .calc-container {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 40px; margin-top: 56px;
+  gap: var(--section-gap); margin-top: clamp(28px, 4vw, 44px);
   max-width: 900px;
 }
 .calc-form { background: rgba(var(--white-rgb),0.07); border-radius: var(--radius-lg); padding: 36px; border: 0.5px solid rgba(var(--white-rgb),0.14); }
@@ -3222,7 +3773,7 @@ section { padding: 100px 48px; }
 .calc-result-note { font-size: 11px; color: rgba(var(--white-rgb),0.62); margin-top: 16px; line-height: 1.6; }
 
 /* ── STATS ── */
-#stats { background: var(--cream-dark); padding: 72px 48px; }
+#stats { background: var(--cream-dark); padding: var(--section-space) var(--layout-inline); }
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
 .stat-card {
   background: var(--white);
@@ -3242,7 +3793,7 @@ section { padding: 100px 48px; }
 
 /* ── FAQ ── */
 #faq { background: var(--white); }
-.faq-list { max-width: 760px; margin: 56px auto 0; }
+.faq-list { max-width: 760px; margin: clamp(28px, 4vw, 44px) auto 0; }
 .faq-item {
   border-bottom: 0.5px solid var(--border);
   overflow: hidden;
@@ -3272,7 +3823,7 @@ section { padding: 100px 48px; }
 
 /* ── TESTIMONIALS ── */
 #testimonials { background: var(--cream); }
-.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 56px; }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--section-gap); margin-top: clamp(28px, 4vw, 44px); }
 .testi-card {
   background: var(--white);
   border: 0.5px solid var(--border);
@@ -3295,7 +3846,7 @@ section { padding: 100px 48px; }
 
 /* ── LAWS ── */
 #laws { background: var(--navy); }
-.laws-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 56px; }
+.laws-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--section-gap); margin-top: clamp(28px, 4vw, 44px); }
 .law-item {
   background: rgba(var(--white-rgb),0.05);
   border: 0.5px solid rgba(var(--white-rgb),0.10);
@@ -3316,7 +3867,7 @@ section { padding: 100px 48px; }
 
 /* ── CONTACT ── */
 #contact { background: linear-gradient(180deg, var(--white) 0%, var(--gold-pale) 100%); }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 56px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 44px); margin-top: clamp(28px, 4vw, 44px); }
 .contact-info-block { display: flex; flex-direction: column; gap: 24px; }
 .contact-visual-card {
   background: var(--white);
@@ -3382,6 +3933,38 @@ section { padding: 100px 48px; }
 .contact-card-val { font-size: 15px; color: var(--navy); font-weight: 500; }
 .contact-card-val a { color: var(--navy); text-decoration: none; }
 .contact-card-val a:hover { color: var(--gold); }
+.contact-social-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+.contact-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid rgba(var(--blue-rgb),0.12);
+  color: var(--navy);
+  background: rgba(var(--cream-rgb),0.92);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.contact-social-link.primary {
+  color: var(--white);
+  border: none;
+  background: linear-gradient(135deg, #1877F2, #2851A3);
+  box-shadow: 0 16px 32px rgba(24, 119, 242, 0.20);
+}
+.contact-social-link:hover {
+  transform: translateY(-1px);
+  border-color: rgba(var(--accent-rgb),0.24);
+  box-shadow: 0 12px 24px rgba(var(--navy-rgb),0.10);
+}
 
 .form-card {
   position: relative;
@@ -3636,8 +4219,14 @@ section { padding: 100px 48px; }
 .live-support-social.instagram {
   background: linear-gradient(135deg, #F58529 0%, #DD2A7B 52%, #8134AF 100%);
 }
+.live-support-social.facebook {
+  background: linear-gradient(135deg, #1877F2 0%, #2851A3 100%);
+}
 .live-support-social.whatsapp {
   background: linear-gradient(135deg, #29D167 0%, #10B251 100%);
+}
+.live-support-social.mail {
+  background: linear-gradient(135deg, #D8A83E 0%, #7D5417 100%);
 }
 .live-support-social svg {
   width: 22px;
@@ -4045,16 +4634,36 @@ footer {
 /* ── RESPONSIVE ── */
 @media (max-width: 1200px) {
   #header { padding: 0 32px; }
-  #hero { padding: 0 32px; }
-  section { padding: 96px 32px; }
+  #hero { padding: 96px var(--layout-inline) 56px; }
+  section { padding: 96px 0; }
   footer { padding: 60px 32px 28px; }
   .service-hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contact-grid { gap: 40px; }
+  .updates-grid { grid-template-columns: 1fr; }
   .hero-focus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .office-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .team-hero,
-  .team-surface { padding-left: 32px; padding-right: 32px; }
+  .team-surface { padding-left: var(--layout-inline); padding-right: var(--layout-inline); }
+}
+
+@media (max-width: 1440px) {
+  #header {
+    padding: 0 28px;
+    column-gap: 14px;
+  }
+  nav {
+    gap: 14px;
+  }
+  nav a {
+    font-size: 11px;
+  }
+  .header-actions {
+    gap: 10px;
+  }
+  .lang-btn {
+    padding: 4px 8px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -4063,15 +4672,17 @@ footer {
   nav a { font-size: 12px; }
   .header-actions { gap: 12px; }
   #hero {
-    padding: 0 24px;
+    padding: 92px var(--layout-inline) 52px;
     min-height: auto;
   }
-  section { padding: 88px 24px; }
+  section { padding: 88px 0; }
   footer { padding: 56px 24px 28px; }
   .hero-content {
-    max-width: 660px;
+    max-width: none;
+    width: 100%;
     padding: 36px;
     padding-top: calc(72px + 18px);
+    min-height: auto;
   }
   .hero-actions { margin-bottom: 48px; }
   .hero-focus-grid { grid-template-columns: 1fr; }
@@ -4084,6 +4695,8 @@ footer {
   .corporate-lead-media { min-height: 360px; }
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .updates-toolbar { grid-template-columns: 1fr; }
+  .updates-filters { justify-content: flex-start; }
   .calc-container { grid-template-columns: 1fr; }
   .map-inner { grid-template-columns: 1fr; }
   .portal-grid,
@@ -4157,11 +4770,11 @@ footer {
     font-size: 20px;
     padding: 14px 0;
   }
-  section { padding: 72px 20px; }
+  section { padding: 72px 0; }
   #hero {
     min-height: auto;
     align-items: flex-end;
-    padding: 92px 20px 52px;
+    padding: 92px var(--layout-inline) 52px;
   }
   .hero-bg {
     transform: none;
@@ -4262,6 +4875,7 @@ footer {
   .testi-grid,
   .office-gallery-grid,
   .team-grid { grid-template-columns: 1fr; }
+  .tax-law-body { padding: 0 16px 16px 16px; }
   .portal-grid,
   .service-hub-grid,
   .accounting-detail-grid,
@@ -4309,6 +4923,13 @@ footer {
   .tax-panel h3,
   .formation-card h3,
   .news-item h3 { font-size: 21px; }
+  .offshore-service-toggle {
+    grid-template-columns: 1fr;
+  }
+  .offshore-service-toggle-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
   .service-card-media,
   .portal-card-media,
   .sector-card-media {
@@ -4512,6 +5133,9 @@ footer {
     font-size: 15px;
   }
   .faq-a { font-size: 14px; }
+  .updates-toolbar { margin: 28px 0 22px; }
+  .updates-search { min-height: 52px; padding: 0 14px; }
+  .updates-chip { min-height: 38px; padding: 0 14px; }
   .contact-grid { gap: 28px; }
   .contact-info-block { gap: 16px; }
   .contact-visual-body {
@@ -4520,6 +5144,7 @@ footer {
   .contact-visual-body h3 {
     font-size: 24px;
   }
+  .updates-card h3 { font-size: 22px; }
   .contact-card {
     padding: 20px;
     gap: 14px;
@@ -4565,8 +5190,8 @@ footer {
 
 @media (max-width: 480px) {
   #header { padding: 0 14px; }
-  section { padding: 64px 16px; }
-  #hero { padding: 88px 16px 44px; }
+  section { padding: 64px 0; }
+  #hero { padding: 88px var(--layout-inline) 44px; }
   .hero-content {
     padding: 22px 18px;
     border-radius: 20px;
@@ -4585,6 +5210,7 @@ footer {
   .testi-card,
   .law-item,
   .contact-card,
+  .updates-card,
   #form-wrap,
   .quiz-body,
   .calc-form,
@@ -4624,6 +5250,15 @@ footer {
     bottom: 12px;
     padding: 13px 14px;
     border-radius: 16px;
+  }
+  .contact-social-row { flex-direction: column; }
+  .updates-rate-row,
+  .updates-mini-item {
+    grid-template-columns: 1fr;
+  }
+  .updates-rate-row strong,
+  .updates-mini-item strong {
+    text-align: left;
   }
   .accounting-intro-copy h3 { font-size: 24px; }
   .accounting-intro-ribbon {
@@ -4866,7 +5501,7 @@ footer {
   #team { padding-bottom: 86px; }
   .team-hero {
     min-height: 208px;
-    padding: 102px 16px 28px;
+    padding: 102px var(--layout-inline) 28px;
   }
   .team-hero-title {
     font-size: clamp(32px, 9vw, 42px);
@@ -4876,7 +5511,7 @@ footer {
     line-height: 1.7;
   }
   .team-surface {
-    padding: 36px 16px 0;
+    padding: 36px var(--layout-inline) 0;
   }
   .team-intro {
     font-size: 16px;
@@ -4968,142 +5603,176 @@ footer {
 [data-lang-inline].lang-active { display: inline; }
 /* ── KAYA PLUS THEME BOOST ── */
 body {
-  background:
-    radial-gradient(circle at top left, rgba(var(--accent-rgb),0.10), transparent 24%),
-    radial-gradient(circle at 82% 12%, rgba(46, 125, 50, 0.08), transparent 18%),
-    linear-gradient(180deg, #1b1714 0%, #221c17 34%, #2a221c 100%);
-  color: rgba(var(--white-rgb),0.90);
+  background: #FFFFFF;
+  color: var(--text);
 }
 
 #header.scrolled,
 #header:not(.scrolled) {
-  background: rgba(24,21,18,0.78);
+  background: rgba(var(--white-rgb),0.94);
   backdrop-filter: blur(18px);
-  box-shadow: 0 1px 0 rgba(var(--accent-rgb),0.14), 0 18px 40px rgba(0,0,0,0.28);
+  box-shadow: 0 1px 0 rgba(var(--accent-rgb),0.12), 0 14px 34px rgba(0,0,0,0.08);
 }
 
 #header .logo,
 #header nav a,
 #header:not(.scrolled) .logo,
 #header:not(.scrolled) nav a {
-  color: var(--gold-light) !important;
-  text-shadow: 0 0 18px rgba(var(--accent-rgb),0.08);
+  color: var(--navy) !important;
+  text-shadow: none;
 }
 
 #header nav a.active,
 #header:not(.scrolled) nav a.active,
 .logo-sub,
 #header:not(.scrolled) .logo-sub {
-  color: var(--gold-rich) !important;
+  color: var(--gold-light) !important;
 }
 
 #header nav a:hover,
 #header:not(.scrolled) nav a:hover {
-  color: #f1d48f !important;
+  color: var(--gold-deep) !important;
 }
 
 #header .lang-switcher,
 #header:not(.scrolled) .lang-switcher {
-  background: rgba(var(--white-rgb),0.06);
-  border-color: rgba(var(--accent-rgb),0.22);
+  background: rgba(var(--white-rgb),0.9);
+  border-color: rgba(var(--accent-rgb),0.16);
 }
 
 #header .lang-btn,
 #header:not(.scrolled) .lang-btn {
-  color: rgba(var(--white-rgb),0.72);
+  color: var(--navy);
 }
 
 #header .lang-btn.active,
 #header:not(.scrolled) .lang-btn.active {
-  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.24), rgba(var(--white-rgb),0.06));
-  color: var(--gold-light);
+  background: rgba(var(--accent-rgb),0.10);
+  color: var(--gold-deep);
   box-shadow: none;
 }
 
 #hero {
-  background: #191512;
+  background: var(--cream);
 }
 
 .hero-bg {
   background-image:
-    linear-gradient(90deg, rgba(23,19,16,0.88) 0%, rgba(23,19,16,0.82) 32%, rgba(23,19,16,0.62) 58%, rgba(23,19,16,0.28) 100%),
-    linear-gradient(180deg, rgba(197,160,77,0.18) 0%, rgba(17,17,17,0.28) 100%),
+    linear-gradient(90deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.90) 34%, rgba(255,255,255,0.60) 58%, rgba(255,255,255,0.20) 100%),
     var(--hero-photo);
 }
 
 .hero-pattern {
-  background:
-    radial-gradient(circle at 74% 20%, rgba(var(--accent-rgb),0.16), transparent 22%),
-    linear-gradient(180deg, rgba(var(--white-rgb),0.04), rgba(var(--accent-rgb),0.05));
+  background: none;
 }
 
 .hero-glow {
-  background: radial-gradient(circle, rgba(var(--accent-rgb),0.20) 0%, rgba(var(--accent-rgb),0.08) 34%, transparent 74%);
+  display: none;
 }
 
 .hero-content {
-  background: linear-gradient(180deg, rgba(30,26,22,0.84), rgba(24,20,17,0.80));
+  background: linear-gradient(180deg, rgba(var(--white-rgb),0.96), rgba(var(--white-rgb),0.94));
   border: 1px solid rgba(var(--accent-rgb),0.18);
-  box-shadow: 0 28px 60px rgba(0,0,0,0.26);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.12);
 }
 
 .hero-badge,
 .hero-focus-card,
 .btn-hero-secondary {
-  background: linear-gradient(180deg, rgba(var(--white-rgb),0.08) 0%, rgba(var(--accent-rgb),0.08) 100%);
-  border-color: rgba(var(--accent-rgb),0.24);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.14);
+  background: rgba(var(--white-rgb),0.94);
+  border-color: rgba(var(--accent-rgb),0.12);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.05);
 }
 
 .hero-badge,
 .hero-title,
 .hero-title span,
 .hero-focus-card strong {
-  color: var(--white);
+  color: var(--navy);
 }
 
 .hero-sub,
 .hero-focus-card span,
 .hero-stat-label {
-  color: rgba(var(--white-rgb),0.72);
+  color: var(--text);
 }
 
 .hero-focus-card strong,
 .formation-card h3,
-.type-name,
-.section-title.light {
-  text-shadow: 0 0 24px rgba(var(--accent-rgb),0.08);
+.type-name {
+  text-shadow: none;
 }
 
 .hero-badge-dot {
-  background: var(--success);
+  background: var(--gold);
 }
 
 .btn-cta,
 #header:not(.scrolled) .btn-cta,
 .btn-hero-primary,
 .live-support-lead-submit,
-.form-submit {
+.form-submit,
+.quiz-next,
+.quiz-restart,
+.calc-btn,
+.live-support-send,
+.inline-link.primary {
   background: linear-gradient(135deg, var(--gold-rich), var(--gold-deep));
-  color: #1a1208;
-  box-shadow: 0 18px 36px rgba(141,109,47,0.34);
+  color: #130F0A !important;
+  box-shadow: 0 16px 34px rgba(122,93,36,0.26);
 }
 
 .btn-cta:hover,
 #header:not(.scrolled) .btn-cta:hover,
 .btn-hero-primary:hover,
 .live-support-lead-submit:hover,
-.form-submit:hover {
-  background: linear-gradient(135deg, #ecd08a, #aa7d29);
+.form-submit:hover,
+.quiz-next:hover,
+.quiz-restart:hover,
+.calc-btn:hover,
+.live-support-send:hover,
+.inline-link.primary:hover {
+  background: linear-gradient(135deg, #E3CB97, #9F782E);
 }
 
-.btn-hero-secondary {
-  color: var(--gold-pale);
+.btn-hero-secondary,
+.inline-link,
+.quiz-back,
+.corporate-pill,
+.accounting-intro-ribbon-item,
+.accounting-intro-framework-item,
+.contact-visual-points span,
+.support-assurance {
+  background: rgba(var(--white-rgb),0.96) !important;
+  border-color: rgba(var(--accent-rgb),0.12) !important;
+  color: var(--navy) !important;
 }
 
-.btn-hero-secondary:hover {
-  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.20) 0%, rgba(var(--white-rgb),0.12) 100%);
-  color: var(--white);
+.btn-hero-secondary:hover,
+.inline-link:hover,
+.quiz-back:hover {
+  background: rgba(var(--white-rgb),0.96) !important;
+  border-color: rgba(var(--accent-rgb),0.30) !important;
+}
+
+.accounting-intro-framework-pill,
+.payroll-tag {
+  background: linear-gradient(135deg, var(--gold-rich), var(--gold-deep)) !important;
+  color: #130F0A !important;
+  box-shadow: 0 14px 28px rgba(122,93,36,0.22) !important;
+}
+
+.audit-visual-badge span,
+.audit-check::before,
+.updates-badge::before,
+.support-flow-num,
+.accounting-float-pill span,
+.registration-dot.done {
+  background: linear-gradient(135deg, var(--gold), var(--gold-deep)) !important;
+}
+
+.support-flow-num {
+  color: #130F0A !important;
 }
 
 #corporate,
@@ -5115,12 +5784,20 @@ body {
 #taxes-hub,
 #quiz,
 #comparison,
-#calculator,
 #faq,
 #testimonials,
 #contact,
 #types,
-#laws {
+#team,
+#process,
+#calculator,
+#laws,
+#map-section,
+#company-requirements,
+#formation-hub,
+#stats,
+#mission-vision,
+footer {
   background: transparent !important;
 }
 
@@ -5128,7 +5805,7 @@ body {
 .card-kicker,
 .support-badge,
 .footer-col-title {
-  color: var(--gold-light) !important;
+  color: var(--navy) !important;
 }
 
 .section-shell,
@@ -5148,6 +5825,8 @@ body {
 .calc-result,
 .testi-card,
 .law-item,
+.process-step,
+.stat-card,
 .contact-card,
 .form-card,
 .contact-visual-card,
@@ -5159,9 +5838,9 @@ body {
 .accounting-showcase-card,
 .accounting-support-card,
 .support-flow-item {
-  background: linear-gradient(180deg, rgba(31,27,23,0.92) 0%, rgba(39,33,28,0.90) 100%) !important;
+  background: linear-gradient(180deg, rgba(var(--white-rgb),0.98) 0%, rgba(var(--white-rgb),0.96) 100%) !important;
   border-color: rgba(var(--accent-rgb),0.16) !important;
-  box-shadow: 0 22px 48px rgba(0,0,0,0.18) !important;
+  box-shadow: 0 22px 48px rgba(0,0,0,0.10) !important;
 }
 
 .accounting-showcase-copy,
@@ -5177,14 +5856,18 @@ body {
 .registration-paper,
 .registration-badge,
 .registration-check-item,
-.section-visual-points span {
-  background: linear-gradient(180deg, rgba(34,29,24,0.94) 0%, rgba(45,38,31,0.92) 100%) !important;
-  border-color: rgba(var(--accent-rgb),0.18) !important;
-  box-shadow: 0 18px 36px rgba(0,0,0,0.18) !important;
+.section-visual-points span,
+.live-support-lead-card,
+.live-support-chip,
+.live-support-composer,
+.live-support-end {
+  background: rgba(var(--white-rgb),0.96) !important;
+  border-color: rgba(var(--accent-rgb),0.16) !important;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.06) !important;
 }
 
 .section-visual-art {
-  background: linear-gradient(135deg, rgba(44,37,30,0.96) 0%, rgba(28,24,20,0.96) 100%) !important;
+  background: rgba(var(--white-rgb),0.98) !important;
   border-color: rgba(var(--accent-rgb),0.16) !important;
 }
 
@@ -5192,62 +5875,47 @@ body {
 .accounting-showcase-card::after,
 .accounting-support-card::after {
   background:
-    linear-gradient(180deg, rgba(var(--white-rgb),0.02) 0%, rgba(var(--navy-rgb),0.24) 44%, rgba(var(--navy-rgb),0.54) 100%) !important;
+    linear-gradient(180deg, rgba(var(--white-rgb),0.02) 0%, rgba(var(--navy-rgb),0.10) 44%, rgba(var(--navy-rgb),0.24) 100%) !important;
 }
 
 .table-wrap {
   border: 1px solid rgba(var(--accent-rgb),0.16);
-  box-shadow: 0 24px 52px rgba(0,0,0,0.22) !important;
+  box-shadow: 0 22px 48px rgba(0,0,0,0.10) !important;
 }
 
 .comp-table {
-  background: linear-gradient(180deg, rgba(31,27,23,0.98) 0%, rgba(39,33,28,0.98) 100%) !important;
+  background: rgba(var(--white-rgb),0.98) !important;
+}
+
+.comp-table th,
+.comp-table td:first-child {
+  color: var(--navy) !important;
 }
 
 .comp-table td {
-  color: rgba(246,238,220,0.88) !important;
+  color: var(--text) !important;
   border-bottom-color: rgba(var(--accent-rgb),0.12) !important;
-  background: rgba(255,255,255,0.01);
-}
-
-.comp-table td:first-child,
-.comp-table th {
-  color: var(--gold-pale) !important;
+  background: rgba(var(--white-rgb),0.82);
 }
 
 .comp-table tr:hover td {
-  background: rgba(var(--accent-rgb),0.10) !important;
+  background: rgba(var(--white-rgb),0.98) !important;
 }
 
-.tax-badge {
-  background: rgba(var(--accent-rgb),0.16) !important;
-  color: var(--gold-pale) !important;
-}
-
+.tax-badge,
 .tax-badge.high,
 .tax-badge.mid {
-  background: rgba(var(--accent-rgb),0.16) !important;
-  color: var(--gold-pale) !important;
+  background: rgba(var(--white-rgb),0.96) !important;
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+  color: var(--navy) !important;
 }
 
 .check {
-  color: var(--gold-rich) !important;
+  color: var(--gold-deep) !important;
 }
 
 .cross {
-  color: rgba(230,204,142,0.46) !important;
-}
-
-.corporate-pill,
-.accounting-intro-ribbon-item,
-.accounting-intro-framework-item,
-.hero-focus-card,
-.contact-visual-points span,
-.support-assurance,
-.quiz-back {
-  background: rgba(var(--white-rgb),0.06) !important;
-  border-color: rgba(var(--accent-rgb),0.16) !important;
-  color: rgba(var(--white-rgb),0.84) !important;
+  color: rgba(var(--navy-rgb),0.38) !important;
 }
 
 .section-title:not(.light),
@@ -5270,10 +5938,7 @@ body {
 .office-gallery-copy strong,
 .faq-q,
 .contact-card-val,
-.contact-card-val a {
-  color: var(--gold-pale) !important;
-}
-
+.contact-card-val a,
 .quiz-header-title,
 .quiz-question,
 .quiz-result p,
@@ -5283,7 +5948,17 @@ body {
 .sector-card-fallback strong,
 .topic-chip,
 .micro-list span {
-  color: var(--gold-pale) !important;
+  color: var(--navy) !important;
+}
+
+.section-title.light,
+#company-requirements .section-title,
+#formation-hub .section-title,
+#team .section-title,
+#process .section-title,
+#calculator .section-title,
+#laws .section-title {
+  color: var(--navy) !important;
 }
 
 .section-sub:not(.light),
@@ -5313,26 +5988,8 @@ body {
 .support-flow-text span,
 .form-sub,
 .support-assurance,
-.footer-desc,
-.footer-links a,
 .live-support-helper,
-.live-support-note {
-  color: rgba(230,204,142,0.88) !important;
-}
-
-.accounting-intro-badge span,
-.accounting-card-photo-badge span,
-.accounting-showcase-copy span,
-.accounting-support-copy span,
-.sector-card-fallback span,
-.quiz-header-sub,
-.quiz-option div[style*='font-size:12px'],
-.quiz-result p,
-.registration-check-item small,
-.tax-note {
-  color: rgba(230,204,142,0.80) !important;
-}
-
+.live-support-note,
 .detail-list li,
 .law-desc,
 .type-tag,
@@ -5342,7 +5999,31 @@ body {
 .map-address-text a,
 .support-flow-text strong,
 .comp-table td:last-child {
-  color: rgba(var(--white-rgb),0.76);
+  color: var(--text-muted) !important;
+}
+
+.section-sub.light,
+#team .section-sub,
+#process .section-sub,
+#calculator .section-sub,
+#laws .section-sub,
+#company-requirements .section-sub,
+#formation-hub .section-sub,
+.footer-links a,
+.footer-desc {
+  color: var(--text) !important;
+}
+
+.accounting-intro-badge span,
+.accounting-card-photo-badge span,
+.accounting-showcase-copy span,
+.accounting-support-copy span,
+.sector-card-fallback span,
+.quiz-header-sub,
+.quiz-option div[style*='font-size:12px'],
+.registration-check-item small,
+.tax-note {
+  color: rgba(var(--navy-rgb),0.60) !important;
 }
 
 .formation-card .detail-list li,
@@ -5351,26 +6032,78 @@ body {
 .type-card .type-desc,
 .type-card .type-tag,
 .quiz-option {
-  color: rgba(246,238,220,0.88) !important;
+  color: var(--text-muted) !important;
 }
 
 .detail-list li::before,
 .kicker-dot,
 .contact-card-icon,
 .support-status-dot {
-  color: var(--gold-rich);
+  color: var(--gold);
 }
 
-.inline-link {
-  background: rgba(var(--white-rgb),0.06) !important;
-  border-color: rgba(var(--accent-rgb),0.24) !important;
-  color: var(--gold-pale) !important;
+.process-grid {
+  border-color: rgba(var(--accent-rgb),0.14) !important;
 }
 
-.inline-link.primary {
-  background: linear-gradient(135deg, var(--gold-rich), #b98229) !important;
-  color: #1a1208 !important;
-  box-shadow: 0 16px 32px rgba(141,109,47,0.28);
+.process-step-title,
+.law-name,
+.calc-result-row-val,
+.calc-result-title,
+.calc-result-val,
+.map-address-text strong,
+.footer-brand {
+  color: var(--navy) !important;
+}
+
+.process-step-desc,
+.calc-label,
+.calc-result-sub,
+.calc-result-row-label,
+.calc-result-note,
+.stat-label,
+.law-desc,
+.footer-bottom,
+.footer-links a,
+.footer-desc {
+  color: var(--text) !important;
+}
+
+.process-step,
+.calc-select,
+.calc-input,
+.live-support-field input,
+#live-support-message {
+  background: rgba(var(--white-rgb),0.98) !important;
+}
+
+.process-step:hover {
+  background: rgba(var(--white-rgb),0.96) !important;
+}
+
+.process-step-icon,
+.law-num,
+.faq-icon,
+.type-tag.highlight {
+  background: rgba(var(--white-rgb),0.98) !important;
+  color: var(--navy) !important;
+}
+
+.law-num {
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+}
+
+.section-tag,
+.card-kicker,
+.support-badge,
+.type-tag,
+.faq-icon,
+.map-address-text,
+.map-address-text a,
+.hero-badge,
+.hero-focus-card span,
+.hero-stat-label {
+  color: var(--text) !important;
 }
 
 .quiz-option,
@@ -5383,7 +6116,7 @@ body {
 .tax-panel:hover,
 .news-item:hover,
 .office-gallery-card:hover {
-  border-color: rgba(var(--accent-rgb),0.30) !important;
+  border-color: rgba(var(--accent-rgb),0.28) !important;
 }
 
 .faq-item {
@@ -5399,7 +6132,7 @@ body {
 .footer-links a:hover,
 .map-address-text a:hover,
 .faq-q:hover {
-  color: var(--gold-light) !important;
+  color: var(--gold) !important;
 }
 
 .sector-card-media,
@@ -5408,50 +6141,144 @@ body {
 .contact-visual-media,
 .corporate-lead-media,
 .accounting-intro-media {
-  box-shadow: 0 24px 54px rgba(0,0,0,0.32);
+  box-shadow: 0 20px 42px rgba(0,0,0,0.10);
 }
 
 .live-support-panel {
-  background: linear-gradient(180deg, rgba(31,27,23,0.98) 0%, rgba(36,31,26,0.98) 100%);
-  border: 1px solid rgba(var(--accent-rgb),0.18);
+  background: linear-gradient(180deg, rgba(var(--white-rgb),0.98) 0%, rgba(var(--white-rgb),0.96) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.16);
 }
 
 .live-support-header,
 #live-support-launcher {
-  background: linear-gradient(135deg, #2a231c 0%, #7b5b20 100%);
+  background: linear-gradient(135deg, rgba(var(--white-rgb),0.98) 0%, rgba(var(--white-rgb),0.96) 100%);
+  border: 1px solid rgba(var(--accent-rgb),0.14);
 }
 
 .live-support-title,
 .live-support-online,
 .live-support-launcher-title,
 .live-support-launcher-sub {
-  color: var(--white);
+  color: var(--navy);
 }
 
 .live-support-field input,
 #live-support-message {
-  background: rgba(var(--white-rgb),0.08);
+  background: rgba(var(--white-rgb),0.98);
   border-color: rgba(var(--accent-rgb),0.18);
-  color: var(--white);
+  color: var(--navy);
 }
 
 .live-support-field input::placeholder,
 #live-support-message::placeholder {
-  color: rgba(var(--white-rgb),0.40);
+  color: rgba(var(--navy-rgb),0.40);
 }
 
-.live-support-send {
-  background: linear-gradient(135deg, var(--gold), var(--gold-deep));
-  color: #111111;
+.team-card,
+.team-card-body,
+.team-section-link {
+  background: linear-gradient(180deg, rgba(var(--white-rgb),0.98) 0%, rgba(var(--white-rgb),0.96) 100%);
+  border-color: rgba(var(--accent-rgb),0.14) !important;
+  box-shadow: 0 18px 38px rgba(0,0,0,0.08);
 }
 
+.team-hero {
+  background-image:
+    linear-gradient(90deg, rgba(var(--white-rgb),0.94) 0%, rgba(var(--white-rgb),0.84) 44%, rgba(var(--white-rgb),0.62) 100%),
+    url('assets/kayaplus-office-wall.jpeg');
+}
+
+.team-hero::after {
+  background: linear-gradient(180deg, rgba(var(--white-rgb),0.04), rgba(var(--white-rgb),0.00));
+}
+
+.team-card-body h3,
+.team-hero-title {
+  color: var(--navy);
+}
+
+.team-card-role,
+.team-card-pill::before,
+.team-breadcrumb strong {
+  color: var(--gold-deep);
+}
+
+.team-card-body p,
+.team-hero-sub,
+.team-intro,
+.team-breadcrumb,
+.quote-author span {
+  color: var(--text);
+}
+
+.team-card-pill,
+.team-action {
+  background: rgba(var(--white-rgb),0.88) !important;
+  border-color: rgba(var(--accent-rgb),0.16) !important;
+  color: var(--navy) !important;
+}
+
+#hero,
+#corporate,
+#office-gallery,
+#services-hub,
+#news-hub,
+#accounting-services,
+#sectors-hub,
+#taxes-hub,
+#quiz,
+#comparison,
+#calculator,
+#faq,
+#testimonials,
+#contact,
+#types,
+#team,
+#process,
+#laws,
+#map-section,
+#company-requirements,
+#formation-hub,
+#stats,
+#mission-vision,
 footer {
-  background: linear-gradient(180deg, #080808 0%, #120f0d 100%);
+  background: #FFFFFF !important;
 }
 
-.footer-links a,
-.footer-desc {
-  color: rgba(var(--white-rgb),0.62) !important;
+.corporate-lead-copy,
+.portal-card,
+.service-hub-card,
+.sector-card,
+.tax-panel,
+.news-item,
+.quiz-container,
+.type-card,
+.calc-form,
+.calc-result,
+.law-item,
+.contact-card,
+.form-card,
+.contact-visual-card,
+.office-gallery-card,
+.accounting-intro,
+.accounting-detail-card,
+.accounting-showcase-card,
+.accounting-support-card,
+.support-flow-item,
+.formation-card,
+.team-card,
+.team-card-body,
+.team-section-link,
+.stat-card,
+.process-step,
+.live-support-panel,
+.live-support-header,
+#live-support-launcher,
+.live-support-lead-card,
+.live-support-composer,
+.live-support-end,
+#form-wrap {
+  background: #FFFFFF !important;
 }
 
 </style>
@@ -5486,13 +6313,14 @@ footer {
     <a href="#corporate" class="nav-link" data-tr="Neden Kaya Plus?" data-en="Why Kaya Plus?" data-ru="Почему Kaya Plus?" data-ar="لماذا كايا بلس؟">Neden Kaya Plus?</a>
     <a href="#accounting-services" class="nav-link" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</a>
     <a href="#sectors-hub" class="nav-link" data-tr="Sektörler" data-en="Sectors" data-ru="Секторы" data-ar="القطاعات">Sektörler</a>
-    <a href="#taxes-hub" class="nav-link" data-tr="Vergiler" data-en="Taxes" data-ru="Налоги" data-ar="الضرائب">Vergiler</a>
+<a href="#taxes-hub" class="nav-link" data-tr="Yasalar/Vergiler" data-en="Laws/Taxes" data-ru="Законы/Налоги" data-ar="القوانين/الضرائب">Yasalar/Vergiler</a>
+    <a href="#news-hub" class="nav-link" data-tr="Haberler" data-en="News" data-ru="Новости" data-ar="الأخبار">Haberler</a>
     <a href="#formation-hub" class="nav-link" data-tr="KKTC'de Şirket Kurma" data-en="Starting a Company in TRNC" data-ru="Открытие компании в ТРСК" data-ar="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</a>
     <a href="./sirket-kurmanin-temel-sartlari.html" class="nav-link" data-tr="Şirket Kurmanın Temel Şartları" data-en="Basic Company Formation Requirements" data-ru="Основные условия регистрации компании" data-ar="الشروط الأساسية لتأسيس الشركة">Şirket Kurmanın Temel Şartları</a>
     <a href="#team" class="nav-link" data-tr="Ekibimiz" data-en="Our Team" data-ru="Наша команда" data-ar="فريقنا">Ekibimiz</a>
     <a href="#testimonials" class="nav-link" data-tr="Mükelleflerimiz" data-en="Testimonials" data-ru="Отзывы" data-ar="آراء العملاء">Mükelleflerimiz</a>
     <a href="#faq" class="nav-link" data-tr="SSS" data-en="FAQ" data-ru="FAQ" data-ar="الأسئلة الشائعة">SSS</a>
-    <a href="#contact" class="nav-link" data-tr="İletişim" data-en="Contact" data-ru="Контакт" data-ar="تواصل">İletişim</a>
+    <a href="#contact" class="nav-link" data-tr="Bize Ulaşın" data-en="Contact Us" data-ru="Свяжитесь с нами" data-ar="تواصل معنا">Bize Ulaşın</a>
   </nav>
 
   <div class="header-actions">
@@ -5521,13 +6349,14 @@ footer {
     <a href="#corporate" onclick="toggleMobileNav()" data-tr="Neden Kaya Plus?" data-en="Why Kaya Plus?" data-ru="Почему Kaya Plus?" data-ar="لماذا كايا بلس؟">Neden Kaya Plus?</a>
     <a href="#accounting-services" onclick="toggleMobileNav()" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Hizmetler</a>
     <a href="#sectors-hub" onclick="toggleMobileNav()" data-tr="Sektörler" data-en="Sectors" data-ru="Секторы" data-ar="القطاعات">Sektörler</a>
-    <a href="#taxes-hub" onclick="toggleMobileNav()" data-tr="Vergiler" data-en="Taxes" data-ru="Налоги" data-ar="الضرائب">Vergiler</a>
+<a href="#taxes-hub" onclick="toggleMobileNav()" data-tr="Yasalar/Vergiler" data-en="Laws/Taxes" data-ru="Законы/Налоги" data-ar="القوانين/الضرائب">Yasalar/Vergiler</a>
+    <a href="#news-hub" onclick="toggleMobileNav()" data-tr="Haberler" data-en="News" data-ru="Новости" data-ar="الأخبار">Haberler</a>
     <a href="#formation-hub" onclick="toggleMobileNav()" data-tr="KKTC'de Şirket Kurma" data-en="Starting a Company in TRNC" data-ru="Открытие компании в ТРСК" data-ar="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</a>
     <a href="./sirket-kurmanin-temel-sartlari.html" onclick="toggleMobileNav()" data-tr="Şirket Kurmanın Temel Şartları" data-en="Basic Company Formation Requirements" data-ru="Основные условия регистрации компании" data-ar="الشروط الأساسية لتأسيس الشركة">Şirket Kurmanın Temel Şartları</a>
     <a href="#team" onclick="toggleMobileNav()" data-tr="Ekibimiz" data-en="Our Team" data-ru="Наша команда" data-ar="فريقنا">Ekibimiz</a>
     <a href="#testimonials" onclick="toggleMobileNav()" data-tr="Mükelleflerimiz" data-en="Testimonials" data-ru="Отзывы" data-ar="آراء العملاء">Mükelleflerimiz</a>
     <a href="#faq" onclick="toggleMobileNav()" data-tr="SSS" data-en="FAQ" data-ru="FAQ" data-ar="الأسئلة الشائعة">SSS</a>
-    <a href="#contact" onclick="toggleMobileNav()" data-tr="İletişim" data-en="Contact" data-ru="Контакт" data-ar="تواصل">İletişim</a>
+    <a href="#contact" onclick="toggleMobileNav()" data-tr="Bize Ulaşın" data-en="Contact Us" data-ru="Свяжитесь с нами" data-ar="تواصل معنا">Bize Ulaşın</a>
   <a href="#live-support" class="mobile-nav-live" onclick="openLiveSupport(event)" data-tr="Canlı Desteği Aç →" data-en="Open Live Support →" data-ru="Открыть чат →" data-ar="افتح الدعم المباشر ←">Canlı Desteği Aç →</a>
 </div>
 
@@ -5872,7 +6701,7 @@ footer {
       <article class="accounting-detail-card reveal">
         <figure class="accounting-card-media">
           <img
-            src="https://images.pexels.com/photos/6863203/pexels-photo-6863203.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            src="https://images.pexels.com/photos/19750413/pexels-photo-19750413.jpeg?auto=compress&cs=tinysrgb&w=1400"
             width="1400"
             height="933"
             alt="Vergi belgeleri, hesap makinesi ve ofis araçlarıyla hazırlanmış vergi muhasebesi görseli"
@@ -6171,22 +7000,22 @@ footer {
 <!-- TAXES HUB -->
 <section id="taxes-hub">
   <div class="section-shell">
-    <div class="section-tag">Vergiler</div>
-    <h2 class="section-title reveal">Vergi başlıklarında net bir yol haritası</h2>
-    <p class="section-sub reveal">Yürürlükteki temel vergi yasalarını, oran başlıklarını ve en çok sorulan vergi konularını bir arada görerek karar sürecinizi daha sağlam temele oturtun.</p>
+    <div class="section-tag">Yasalar / Vergiler</div>
+    <h2 class="section-title reveal">KKTC vergi mevzuatını açılır rehber yapısında inceleyin</h2>
+    <p class="section-sub reveal">Temel yasa başlıklarını kısa özetlerle açıp okuyun, detay sayfasından tüm çerçeveyi tek yerde görün ve hangi başlıkta desteğe ihtiyaç duyduğunuzu hızlıca ayırın.</p>
 
     <div class="tax-grid">
       <article class="tax-panel reveal">
         <div class="section-visual-art tax-media tax-visual" role="img" aria-label="Vergi takvimini ve temel yasa başlıklarını temsil eden kurumsal bilgi kartları">
           <div class="tax-stack-card primary">
-            <h4>Vergi Takvimi</h4>
-            <div class="tax-rate-row"><span>Beyan dönemi</span><strong class="tax-rate-value">Q1</strong></div>
+            <h4>Yasa Rehberi</h4>
+            <div class="tax-rate-row"><span>Temel başlık</span><strong class="tax-rate-value">7 Yasa</strong></div>
             <div class="audit-line"></div>
             <div class="audit-line mid"></div>
             <div class="audit-line short"></div>
           </div>
           <div class="tax-stack-card secondary">
-            <h4>Temel Yasalar</h4>
+            <h4>Açılır Sistem</h4>
             <div class="formation-mini-lines">
               <span></span>
               <span></span>
@@ -6194,31 +7023,97 @@ footer {
             </div>
           </div>
         </div>
-        <div class="card-kicker"><span class="kicker-dot"></span>Vergi ile ilgili bilgiler</div>
-        <h3>Temel vergi yasaları ve başvuru çerçevesi</h3>
-          <p data-tr="İşletmenin kuruluşundan günlük operasyonuna kadar hangi vergi yasalarının devrede olduğunu erken aşamada görmek, hem mali planlama hem de uyum tarafında doğru adım atmanızı sağlar." data-en="Seeing early which tax laws apply from setup through daily operations helps you take the right steps in both financial planning and compliance." data-ru="Раннее понимание того, какие налоговые законы действуют от запуска бизнеса до ежедневной деятельности, помогает принимать верные решения и в финансовом планировании, и в комплаенсе." data-ar="إن معرفة القوانين الضريبية السارية مبكرًا من مرحلة التأسيس حتى التشغيل اليومي تساعدك على اتخاذ الخطوات الصحيحة في التخطيط المالي والامتثال.">İşletmenin kuruluşundan günlük operasyonuna kadar hangi vergi yasalarının devrede olduğunu erken aşamada görmek, hem mali planlama hem de uyum tarafında doğru adım atmanızı sağlar.</p>
-        <ul class="law-list">
-          <li>Vergi Usul Yasası (27/1977)</li>
-          <li>Gelir Vergisi Yasası (24/1982)</li>
-          <li>Kurumlar Vergisi Yasası (41/1976)</li>
-          <li>Katma Değer Vergisi Yasası (47/1992)</li>
-          <li>Banka ve Sigorta Hizmetleri Vergisi (21/1992)</li>
-          <li>Özel İletişim Hizmetleri Vergisi Yasası (62/2007)</li>
-          <li>Veraset Vergisi ile ilgili düzenlemeler (39/2007)</li>
-        </ul>
+        <div class="card-kicker"><span class="kicker-dot"></span>Yasa rehberi</div>
+        <h3>Temel vergi yasalarını açıp kısa özetlerle inceleyin</h3>
+        <p>Kuruluş ve operasyon dönemlerinde hangi vergi mevzuatının devreye girdiğini baştan görmek, hem planlama hem de uyum tarafında daha kontrollü hareket etmenizi sağlar.</p>
+        <div class="tax-law-accordion">
+          <details class="tax-law-item" open>
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Vergi Usul Yasası (27/1977)</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Verginin doğuşu, beyan düzeni, tahakkuk, tahsil, denetim ve ceza hükümlerini belirleyen ana çerçeve mevzuattır.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#vergi-usul-yasasi">Detayı sayfada incele</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Gelir Vergisi Yasası (24/1982)</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Gerçek kişilerin ücret, ticari kazanç, kira ve serbest meslek gelirleri üzerinden nasıl vergilendirileceğini düzenler.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#gelir-vergisi-yasasi">Detayı sayfada incele</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Kurumlar Vergisi Yasası (41/1976)</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Şirketlerin ve diğer tüzel kişiliklerin elde ettiği net kazanç üzerinden doğan vergi yükümlülüklerini tanımlar.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#kurumlar-vergisi-yasasi">Detayı sayfada incele</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Katma Değer Vergisi Yasası (47/1992)</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Mal ve hizmet teslimleri ile ithalat işlemleri üzerinden alınan dolaylı verginin işleyişini açıklar.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#katma-deger-vergisi-yasasi">Detayı sayfada incele</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Özel İletişim Hizmetleri Vergisi Yasası (62/2007)</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Mobil iletişim, internet ve benzeri haberleşme hizmetlerinden doğan özel vergi yükümlülüklerini kapsar.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#ozel-iletisim-hizmetleri-vergisi-yasasi">Detayı sayfada incele</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Banka ve Sigorta İşlemleri Vergisi Yasası (21/1992)</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Bankacılık, sigortacılık ve finansal işlem gelirleri üzerinden uygulanan sektörel vergi düzenini içerir.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#banka-ve-sigorta-islemleri-vergisi-yasasi">Detayı sayfada incele</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Vefat ve Miras Vergilendirmesi (39/2007)</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Vefat eden kişilere ait gelirler ile miras yoluyla devredilen malvarlığının vergisel çerçevesini düzenler.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#vefat-ve-miras-vergilendirmesi">Detayı sayfada incele</a>
+            </div>
+          </details>
+        </div>
+        <div class="tax-actions">
+          <a class="inline-link primary" href="./yasalar-vergiler.html">Yasalar / Vergiler sayfasını aç</a>
+        </div>
       </article>
 
       <article class="tax-panel reveal">
         <div class="section-visual-art tax-media tax-visual" role="img" aria-label="Vergi başlıklarını ve oran takibini temsil eden özet karar panosu">
           <div class="tax-stack-card primary">
-            <h4>Oran Görünümü</h4>
-            <div class="tax-rate-row"><span>Kurumlar vergisi</span><strong class="tax-rate-value">%23</strong></div>
+            <h4>Başlık Haritası</h4>
+            <div class="tax-rate-row"><span>Odak alanı</span><strong class="tax-rate-value">Uyum</strong></div>
             <div class="audit-line mid"></div>
             <div class="audit-line"></div>
             <div class="audit-line short"></div>
           </div>
           <div class="tax-stack-card secondary">
-            <h4>Konu Haritası</h4>
+            <h4>Detay Sayfası</h4>
             <div class="formation-mini-lines">
               <span></span>
               <span></span>
@@ -6226,26 +7121,24 @@ footer {
             </div>
           </div>
         </div>
-        <div class="card-kicker"><span class="kicker-dot"></span>Alt başlıklar</div>
-        <h3>Vergi konu haritası</h3>
-        <p>En çok ihtiyaç duyulan vergi başlıklarını tek yerde görerek hangi konuda detay desteğe ihtiyaç duyduğunuzu hızlıca belirleyebilirsiniz.</p>
+        <div class="card-kicker"><span class="kicker-dot"></span>Detay alanı</div>
+        <h3>Yeni Yasalar / Vergiler sayfasında sizi neler bekliyor?</h3>
+        <p>Vergi başlıklarının yanına şirket kuruluşu, yabancı yatırım, bankacılık, serbest bölge ve sigorta mevzuatını da ekleyerek bu alanı daha bütünlüklü bir rehbere dönüştürdük.</p>
         <div class="topic-grid">
-          <div class="topic-chip">2026 yılına ait oranlar ve gelir basamakları</div>
-          <div class="topic-chip">İndirilebilen giderler</div>
-          <div class="topic-chip">Matrahta indirilmeyen giderler</div>
-          <div class="topic-chip">Kurumlar vergisi ve oranı</div>
-          <div class="topic-chip">Kurumlar vergisinden istisnalar</div>
-          <div class="topic-chip">Kanuni yıpranma payları</div>
-          <div class="topic-chip">Uluslararası işletme şirketleri (UİŞ)</div>
-          <div class="topic-chip">Katma değer vergisi ve oranları</div>
-          <div class="topic-chip">Banka ve sigorta işlemleri vergisi</div>
-          <div class="topic-chip">Veraset vergisi ve muafiyetleri</div>
-          <div class="topic-chip">Özel iletişim vergisi</div>
-          <div class="topic-chip">SSK gelir basamakları</div>
-          <div class="topic-chip">Pul vergileri emirnamesi</div>
-          <div class="topic-chip">Serbest bölge ve personel yükümlülükleri</div>
+          <div class="topic-chip">Vergi usul ve beyan süreçleri</div>
+          <div class="topic-chip">Gerçek kişilerin gelir vergisi kapsamı</div>
+          <div class="topic-chip">Şirketler için kurumlar vergisi çerçevesi</div>
+          <div class="topic-chip">KDV ve ithalat işlemleri</div>
+          <div class="topic-chip">Şirketler Yasası Fasıl 113 ve ortaklık yapıları</div>
+          <div class="topic-chip">Yabancı sermaye ve kuruluş prosedürleri</div>
+          <div class="topic-chip">Bankacılık ve uluslararası bankacılık birimleri</div>
+          <div class="topic-chip">Serbest liman, bölge ve sigorta mevzuatı</div>
         </div>
-        <div class="tax-note">Not: Vergi oranları ve basamaklar zaman içinde güncellenebilir. Nihai işlem öncesinde resmi gazete ve güncel mevzuat teyidi yapılması önemlidir.</div>
+        <div class="tax-note">Not: Bu alan genel yönlendirme içindir. Nihai işlem öncesinde resmi gazete, güncel mevzuat ve dosyanıza özel uygulama şartlarının ayrıca teyit edilmesi gerekir.</div>
+        <div class="tax-actions">
+          <a class="inline-link primary" href="./yasalar-vergiler.html">Tüm başlıkları detaylı incele</a>
+          <a class="inline-link" href="#contact">Dosyanıza göre değerlendirelim</a>
+        </div>
       </article>
     </div>
   </div>
@@ -6254,9 +7147,9 @@ footer {
 <!-- NEWS HUB -->
 <section id="news-hub">
   <div class="section-shell">
-    <div class="section-tag">Haberler</div>
-    <h2 class="section-title reveal">İş dünyası için güncel mevzuat ve resmi duyurular</h2>
-    <p class="section-sub reveal">Resmi gazete değişiklikleri, vergi duyuruları, çalışma hayatı düzenlemeleri ve asgari ücret güncellemeleri gibi şirket kararlarını etkileyen başlıkları tek bakışta takip edin.</p>
+    <div class="section-tag" data-tr="Haberler" data-en="News" data-ru="Новости" data-ar="الأخبار">Haberler</div>
+    <h2 class="section-title reveal" data-tr="İş dünyası için güncel mevzuat ve resmi duyurular" data-en="Current legislation and official updates for business decisions" data-ru="Актуальные изменения в законодательстве и официальные уведомления для бизнеса" data-ar="التشريعات الحالية والإعلانات الرسمية المهمة لقرارات الأعمال">İş dünyası için güncel mevzuat ve resmi duyurular</h2>
+    <p class="section-sub reveal" data-tr="Resmi gazete değişiklikleri, vergi duyuruları, çalışma hayatı düzenlemeleri ve asgari ücret güncellemeleri gibi şirket kararlarını etkileyen başlıkları tek bakışta takip edin." data-en="Track the headlines that shape company decisions at a glance, from official gazette changes to tax notices, labor updates and minimum wage announcements." data-ru="Отслеживайте в одном месте изменения, влияющие на решения компаний: официальные публикации, налоговые уведомления, трудовые нормы и обновления по минимальной зарплате." data-ar="تابع في مكان واحد العناوين التي تؤثر في قرارات الشركات، من تغييرات الجريدة الرسمية إلى الإشعارات الضريبية وتنظيمات العمل وتحديثات الحد الأدنى للأجور.">Resmi gazete değişiklikleri, vergi duyuruları, çalışma hayatı düzenlemeleri ve asgari ücret güncellemeleri gibi şirket kararlarını etkileyen başlıkları tek bakışta takip edin.</p>
 
     <div class="section-visual-panel reveal">
       <div class="section-visual-grid">
@@ -6349,6 +7242,108 @@ footer {
   </div>
 </section>
 
+<!-- UPDATES DESK -->
+<section id="updates-desk">
+  <div class="section-shell">
+    <div class="section-tag" data-tr="Güncel Takip" data-en="Update Desk" data-ru="Актуальный контроль" data-ar="متابعة محدثة">Güncel Takip</div>
+    <h2 class="section-title reveal" data-tr="Kurlar ve resmi tarihler için güncel takip merkezi" data-en="An update desk for rates and official dates" data-ru="Центр актуального контроля курсов и официальных дат" data-ar="مركز متابعة محدث للأسعار والتواريخ الرسمية">Kurlar ve resmi tarihler için güncel takip merkezi</h2>
+    <p class="section-sub reveal" data-tr="Kurlar, vergi takvimi, başvuru duyuruları ve resmi tatilleri tek bölümde topladık. Bu alan hızlı ön kontrol içindir; işlem öncesinde resmi kaynak bağlantılarından son teyit yapılmalıdır." data-en="Rates, the tax calendar, filing notices and public holidays are gathered in one section. This desk is for quick pre-checks; final verification should always be made through the official source links before action." data-ru="Курсы, налоговый календарь, уведомления о сроках и официальные праздники собраны в одном разделе. Этот блок предназначен для быстрой предварительной проверки; перед действием нужно свериться с официальными источниками." data-ar="جمعنا أسعار الصرف والتقويم الضريبي وإعلانات المواعيد والعطل الرسمية في قسم واحد. هذا القسم للفحص السريع فقط؛ ويجب التأكد النهائي من الروابط الرسمية قبل أي إجراء.">Kurlar, vergi takvimi, başvuru duyuruları ve resmi tatilleri tek bölümde topladık. Bu alan hızlı ön kontrol içindir; işlem öncesinde resmi kaynak bağlantılarından son teyit yapılmalıdır.</p>
+
+    <div class="updates-toolbar reveal">
+      <label class="updates-search" for="updates-search">
+        <span class="updates-search-icon" aria-hidden="true">⌕</span>
+        <input id="updates-search" type="search" placeholder="Kur, vergi, tatil veya başvuru ara" data-ph-tr="Kur, vergi, tatil veya başvuru ara" data-ph-en="Search rates, tax, holidays or deadlines" data-ph-ru="Ищите курс, налоги, праздники или сроки" data-ph-ar="ابحث عن الأسعار أو الضرائب أو العطل أو المواعيد">
+      </label>
+      <div class="updates-filters" role="group" aria-label="Bilgi filtresi">
+        <button type="button" class="updates-chip active" data-filter="all" aria-pressed="true" data-tr="Tümü" data-en="All" data-ru="Все" data-ar="الكل">Tümü</button>
+        <button type="button" class="updates-chip" data-filter="kur" aria-pressed="false" data-tr="Kurlar" data-en="Rates" data-ru="Курсы" data-ar="الأسعار">Kurlar</button>
+        <button type="button" class="updates-chip" data-filter="vergi" aria-pressed="false" data-tr="Vergi" data-en="Tax" data-ru="Налоги" data-ar="الضرائب">Vergi</button>
+        <button type="button" class="updates-chip" data-filter="basvuru" aria-pressed="false" data-tr="Başvuru" data-en="Deadlines" data-ru="Сроки" data-ar="المواعيد">Başvuru</button>
+        <button type="button" class="updates-chip" data-filter="tatil" aria-pressed="false" data-tr="Tatiller" data-en="Holidays" data-ru="Праздники" data-ar="العطل">Tatiller</button>
+      </div>
+    </div>
+
+    <div class="updates-grid">
+      <article class="updates-card reveal" data-category="kur" data-search="kktc merkez bankası kur usd eur gbp döviz exchange rates">
+        <div class="updates-card-head">
+          <div class="updates-badge" data-tr="Kurlar" data-en="Rates" data-ru="Курсы" data-ar="الأسعار">Kurlar</div>
+          <div class="updates-date" data-tr="Son kontrol: 2 Mayıs 2026" data-en="Last checked: May 2, 2026" data-ru="Проверено: 2 мая 2026" data-ar="آخر تحقق: 2 مايو 2026">Son kontrol: 2 Mayıs 2026</div>
+        </div>
+        <h3 data-tr="KKTC Merkez Bankası gösterge kurları" data-en="TRNC Central Bank benchmark rates" data-ru="Официальные курсы Центрального банка ТРСК" data-ar="الأسعار الإرشادية للبنك المركزي في شمال قبرص">KKTC Merkez Bankası gösterge kurları</h3>
+        <p data-tr="KKTC Merkez Bankası kur sorgulama ekranındaki son iş günü verileri yatırım dosyaları, sözleşme hazırlıkları ve dövizli mali planlar için hızlı referans sağlar." data-en="The latest business-day figures from the TRNC Central Bank rate screen provide a quick reference for investment files, contract preparation and foreign-currency financial planning." data-ru="Данные последнего рабочего дня из официального экрана курсов Центрального банка ТРСК дают быстрый ориентир для инвестиционных досье, договоров и валютного финансового планирования." data-ar="توفر بيانات آخر يوم عمل من شاشة أسعار البنك المركزي في شمال قبرص مرجعًا سريعًا لملفات الاستثمار وإعداد العقود والتخطيط المالي بالعملات الأجنبية.">KKTC Merkez Bankası kur sorgulama ekranındaki son iş günü verileri yatırım dosyaları, sözleşme hazırlıkları ve dövizli mali planlar için hızlı referans sağlar.</p>
+        <div class="updates-rate-grid">
+          <div class="updates-rate-row"><span>USD</span><strong><small data-tr="Alış" data-en="Buy" data-ru="Покупка" data-ar="شراء">Alış</small>44.9850</strong><strong><small data-tr="Satış" data-en="Sell" data-ru="Продажа" data-ar="بيع">Satış</small>45.0661</strong></div>
+          <div class="updates-rate-row"><span>EUR</span><strong><small data-tr="Alış" data-en="Buy" data-ru="Покупка" data-ar="شراء">Alış</small>52.6433</strong><strong><small data-tr="Satış" data-en="Sell" data-ru="Продажа" data-ar="بيع">Satış</small>52.7382</strong></div>
+          <div class="updates-rate-row"><span>GBP</span><strong><small data-tr="Alış" data-en="Buy" data-ru="Покупка" data-ar="شراء">Alış</small>60.6463</strong><strong><small data-tr="Satış" data-en="Sell" data-ru="Продажа" data-ar="بيع">Satış</small>60.9624</strong></div>
+        </div>
+        <div class="updates-source" data-tr="Kaynak: KKTC Merkez Bankası resmi kur sorgulama ekranı." data-en="Source: TRNC Central Bank official rate lookup screen." data-ru="Источник: официальный экран курсов Центрального банка ТРСК." data-ar="المصدر: شاشة أسعار البنك المركزي الرسمية في شمال قبرص.">Kaynak: KKTC Merkez Bankası resmi kur sorgulama ekranı.</div>
+        <div class="updates-card-actions">
+          <a class="inline-link" href="https://www.kktcmerkezbankasi.org/tr/veriler/doviz_kurlari/kur_sorgulama" target="_blank" rel="noopener noreferrer" data-tr="Resmi Kur Sayfası" data-en="Official Rate Page" data-ru="Официальная страница курсов" data-ar="صفحة الأسعار الرسمية">Resmi Kur Sayfası</a>
+        </div>
+      </article>
+
+      <article class="updates-card reveal" data-category="vergi basvuru" data-search="vergi takvimi beyanname gelir kurumlar vergisi mayıs 2026 deadline tax calendar">
+        <div class="updates-card-head">
+          <div class="updates-badge" data-tr="Vergi Takvimi" data-en="Tax Calendar" data-ru="Налоговый календарь" data-ar="التقويم الضريبي">Vergi Takvimi</div>
+          <div class="updates-date" data-tr="Resmi duyuru: 29 Nisan 2026" data-en="Official notice: Apr 29, 2026" data-ru="Офиц. уведомление: 29 апр. 2026" data-ar="إعلان رسمي: 29 أبريل 2026">Resmi duyuru: 29 Nisan 2026</div>
+        </div>
+        <h3 data-tr="Öne çıkan vergi takvimi ve beyan gündemi" data-en="Highlighted tax calendar and filing agenda" data-ru="Ключевые даты налогового календаря и подачи деклараций" data-ar="أبرز مواعيد التقويم الضريبي والإقرارات">Öne çıkan vergi takvimi ve beyan gündemi</h3>
+        <p data-tr="KKTC Vergi Dairesi duyurusuna göre 2025 yılı Gelir Vergisi ve Kurumlar Vergisi beyannameleri için öne çıkan tarih 25 Mayıs 2026 mesai bitimidir." data-en="According to the TRNC Tax Department notice, the highlighted date for 2025 Income Tax and Corporate Tax filings is the end of business on May 25, 2026." data-ru="Согласно уведомлению Налогового управления ТРСК, ключевая дата для деклараций по подоходному и корпоративному налогу за 2025 год - конец рабочего дня 25 мая 2026 года." data-ar="وفقًا لإعلان دائرة الضرائب في شمال قبرص، فإن التاريخ الأبرز لإقرارات ضريبة الدخل والشركات لعام 2025 هو نهاية دوام 25 مايو 2026.">KKTC Vergi Dairesi duyurusuna göre 2025 yılı Gelir Vergisi ve Kurumlar Vergisi beyannameleri için öne çıkan tarih 25 Mayıs 2026 mesai bitimidir.</p>
+        <div class="updates-mini-list">
+          <div class="updates-mini-item"><span data-tr="2025 GV/KV Beyanı" data-en="2025 IT/CT Return" data-ru="Декларации НД/КН за 2025" data-ar="إقرارا ضريبة الدخل والشركات 2025">2025 GV/KV Beyanı</span><strong>25 Mayıs 2026</strong></div>
+          <div class="updates-mini-item"><span data-tr="Vergi takvimi dokümanı" data-en="Tax calendar document" data-ru="Документ налогового календаря" data-ar="مستند التقويم الضريبي">Vergi takvimi dokümanı</span><strong data-tr="Resmi sitede" data-en="On official site" data-ru="На официальном сайте" data-ar="على الموقع الرسمي">Resmi sitede</strong></div>
+        </div>
+        <div class="updates-source" data-tr="Kaynak: KKTC Vergi Dairesi duyuru ve takvim sayfaları." data-en="Source: TRNC Tax Department announcements and calendar pages." data-ru="Источник: уведомления и календарь Налогового управления ТРСК." data-ar="المصدر: إعلانات وتقويم دائرة الضرائب في شمال قبرص.">Kaynak: KKTC Vergi Dairesi duyuru ve takvim sayfaları.</div>
+        <div class="updates-card-actions">
+          <a class="inline-link" href="https://vergi.gov.ct.tr/?q=content%2Fvergi-beyanname-verme-ve-%C3%B6deme-takvimi" target="_blank" rel="noopener noreferrer" data-tr="Vergi Takvimini Aç" data-en="Open Tax Calendar" data-ru="Открыть налоговый календарь" data-ar="افتح التقويم الضريبي">Vergi Takvimini Aç</a>
+        </div>
+      </article>
+
+      <article class="updates-card reveal" data-category="basvuru vergi" data-search="son başvuru tarihleri yetkili matbaa online vergi dairesi e-fatura deadline application">
+        <div class="updates-card-head">
+          <div class="updates-badge" data-tr="Son Başvuru Tarihleri" data-en="Key Deadlines" data-ru="Ключевые сроки" data-ar="المواعيد النهائية">Son Başvuru Tarihleri</div>
+          <div class="updates-date" data-tr="2026 takip listesi" data-en="2026 watch list" data-ru="Список контроля 2026" data-ar="قائمة متابعة 2026">2026 takip listesi</div>
+        </div>
+        <h3 data-tr="Yakın takip gerektiren başvuru ve işlem başlıkları" data-en="Application and process items that need close tracking" data-ru="Заявления и процессы, требующие внимательного контроля" data-ar="طلبات وإجراءات تحتاج متابعة دقيقة">Yakın takip gerektiren başvuru ve işlem başlıkları</h3>
+        <p data-tr="Beyan uzatmaları, yetki başvuruları ve portal duyuruları yıl içinde ayrı kararlarla değişebilir. Bu nedenle başvuru aksiyonlarında resmi ekranı doğrudan kontrol etmek en güvenli akıştır." data-en="Filing extensions, authorization requests and portal notices can change through separate decisions during the year. For application actions, checking the official screen directly is the safest flow." data-ru="Продления сроков, заявки на полномочия и портальные уведомления могут меняться отдельными решениями в течение года. Поэтому для действий по заявкам безопаснее напрямую проверять официальный экран." data-ar="قد تتغير تمديدات الإقرارات وطلبات التفويض وإعلانات البوابات خلال العام بقرارات منفصلة. لذلك فإن فحص الشاشة الرسمية مباشرة هو المسار الأكثر أمانًا قبل أي إجراء.">Beyan uzatmaları, yetki başvuruları ve portal duyuruları yıl içinde ayrı kararlarla değişebilir. Bu nedenle başvuru aksiyonlarında resmi ekranı doğrudan kontrol etmek en güvenli akıştır.</p>
+        <div class="updates-mini-list">
+          <div class="updates-mini-item"><span data-tr="Gelir/Kurumlar Vergisi uzatması" data-en="Income/Corporate Tax extension" data-ru="Продление по подоходному/корпоративному налогу" data-ar="تمديد ضريبة الدخل/الشركات">Gelir/Kurumlar Vergisi uzatması</span><strong>25 Mayıs 2026</strong></div>
+          <div class="updates-mini-item"><span data-tr="Vergi portalı ve e-tebligat" data-en="Tax portal and e-notice" data-ru="Налоговый портал и e-уведомления" data-ar="بوابة الضرائب والإشعارات الإلكترونية">Vergi portalı ve e-tebligat</span><strong data-tr="Düzenli kontrol" data-en="Check regularly" data-ru="Проверять регулярно" data-ar="تحقق بانتظام">Düzenli kontrol</strong></div>
+          <div class="updates-mini-item"><span data-tr="Yetkili matbaa / özel duyurular" data-en="Authorized printing house / special notices" data-ru="Уполномоченные типографии / спецуведомления" data-ar="المطابع المعتمدة / الإشعارات الخاصة">Yetkili matbaa / özel duyurular</span><strong data-tr="Duyuru bazlı" data-en="Notice-based" data-ru="По объявлениям" data-ar="بحسب الإعلانات">Duyuru bazlı</strong></div>
+        </div>
+        <div class="updates-source" data-tr="Kaynak: Vergi Dairesi ve ilgili resmi online portallar." data-en="Source: Tax Department and relevant official online portals." data-ru="Источник: Налоговое управление и соответствующие официальные онлайн-порталы." data-ar="المصدر: دائرة الضرائب والبوابات الرسمية ذات الصلة.">Kaynak: Vergi Dairesi ve ilgili resmi online portallar.</div>
+        <div class="updates-card-actions">
+          <a class="inline-link" href="https://www.vergi.gov.ct.tr/" target="_blank" rel="noopener noreferrer" data-tr="Vergi Dairesi Duyuruları" data-en="Tax Office Announcements" data-ru="Объявления налогового управления" data-ar="إعلانات دائرة الضرائب">Vergi Dairesi Duyuruları</a>
+          <a class="inline-link" href="https://online.ihtiyat.gov.ct.tr/" target="_blank" rel="noopener noreferrer" data-tr="İhtiyat Online" data-en="Provident Fund Online" data-ru="Онлайн-фонд обеспечения" data-ar="صندوق الادخار الإلكتروني">İhtiyat Online</a>
+        </div>
+      </article>
+
+      <article class="updates-card reveal" data-category="tatil" data-search="resmi tatiller 2026 yılbaşı barış özgürlük toplumsal direniş 15 kasım ramazan kurban holiday public holiday">
+        <div class="updates-card-head">
+          <div class="updates-badge" data-tr="Resmi Tatiller" data-en="Public Holidays" data-ru="Официальные праздники" data-ar="العطل الرسمية">Resmi Tatiller</div>
+          <div class="updates-date" data-tr="2026 planlama" data-en="2026 planning" data-ru="Планирование 2026" data-ar="تخطيط 2026">2026 planlama</div>
+        </div>
+        <h3 data-tr="Planlamada özellikle öne çıkan resmi tatiller" data-en="Public holidays that stand out most in planning" data-ru="Праздники, наиболее важные для планирования" data-ar="العطل الرسمية الأهم في التخطيط">Planlamada özellikle öne çıkan resmi tatiller</h3>
+        <p data-tr="Bordro, ödeme planı ve resmi kurum randevuları için sabit resmi tatiller erken planlanmalıdır. Dini bayram tarihleri her yıl ayrıca ilan edildiği için işlem takvimine alınmadan önce yeniden teyit edilmelidir." data-en="Fixed public holidays should be planned early for payroll, payment schedules and public office appointments. Religious holiday dates are announced separately each year and should be reconfirmed before they are added to any action calendar." data-ru="Фиксированные официальные праздники нужно заранее учитывать для payroll, графиков платежей и визитов в госорганы. Даты религиозных праздников объявляются отдельно каждый год и должны подтверждаться перед включением в рабочий календарь." data-ar="يجب التخطيط للعطل الرسمية الثابتة مسبقًا لأغراض الرواتب وجدولة المدفوعات ومواعيد الدوائر الرسمية. أما الأعياد الدينية فتُعلن كل عام بشكل منفصل ويجب تأكيدها قبل إدراجها في جدول الإجراءات.">Bordro, ödeme planı ve resmi kurum randevuları için sabit resmi tatiller erken planlanmalıdır. Dini bayram tarihleri her yıl ayrıca ilan edildiği için işlem takvimine alınmadan önce yeniden teyit edilmelidir.</p>
+        <div class="updates-mini-list">
+          <div class="updates-mini-item"><span data-tr="Yılbaşı" data-en="New Year" data-ru="Новый год" data-ar="رأس السنة">Yılbaşı</span><strong>1 Ocak 2026</strong></div>
+          <div class="updates-mini-item"><span data-tr="Barış ve Özgürlük Bayramı" data-en="Peace and Freedom Day" data-ru="День мира и свободы" data-ar="يوم السلام والحرية">Barış ve Özgürlük Bayramı</span><strong>20 Temmuz 2026</strong></div>
+          <div class="updates-mini-item"><span data-tr="Toplumsal Direniş Bayramı" data-en="Communal Resistance Day" data-ru="День общественного сопротивления" data-ar="يوم المقاومة المجتمعية">Toplumsal Direniş Bayramı</span><strong>1 Ağustos 2026</strong></div>
+          <div class="updates-mini-item"><span data-tr="Cumhuriyet Bayramı (KKTC)" data-en="Republic Day (TRNC)" data-ru="День Республики (ТРСК)" data-ar="عيد الجمهورية (شمال قبرص)">Cumhuriyet Bayramı (KKTC)</span><strong>15 Kasım 2026</strong></div>
+        </div>
+        <div class="updates-source" data-tr="Kaynak: KKTC resmi duyuruları; dini bayram tarihleri ayrıca teyit edilmelidir." data-en="Source: TRNC official notices; religious holiday dates should be reconfirmed separately." data-ru="Источник: официальные уведомления ТРСК; даты религиозных праздников следует подтверждать отдельно." data-ar="المصدر: الإعلانات الرسمية في شمال قبرص؛ ويجب تأكيد تواريخ الأعياد الدينية بشكل منفصل.">Kaynak: KKTC resmi duyuruları; dini bayram tarihleri ayrıca teyit edilmelidir.</div>
+        <div class="updates-card-actions">
+          <a class="inline-link" href="https://pio.mfa.gov.ct.tr/kktcnin-42nci-yili-torenlerle-kutlanacak/" target="_blank" rel="noopener noreferrer" data-tr="15 Kasım Kutlama Notu" data-en="November 15 Notes" data-ru="Заметки по 15 ноября" data-ar="ملاحظات 15 نوفمبر">15 Kasım Kutlama Notu</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="updates-empty" id="updates-empty" hidden data-tr="Aradığınız başlık için eşleşen kart bulunamadı. Farklı bir kelime deneyin veya filtreyi genişletin." data-en="No matching card was found for your search. Try another keyword or broaden the filter." data-ru="По вашему запросу ничего не найдено. Попробуйте другое слово или расширьте фильтр." data-ar="لم يتم العثور على بطاقة مطابقة لبحثك. جرّب كلمة أخرى أو وسّع الفلتر.">Aradığınız başlık için eşleşen kart bulunamadı. Farklı bir kelime deneyin veya filtreyi genişletin.</div>
+
+    <div class="updates-note reveal" data-tr="Not: Bu özet alanı 2 Mayıs 2026 itibarıyla resmi ve kamusal kaynaklarda görünen başlıklara göre düzenlendi. Özellikle vergi, beyan ve dini tatil tarihlerinde nihai işlemden önce resmi bağlantı üzerinden son kontrol yapılmalıdır." data-en="Note: This summary desk was arranged based on official and public sources visible as of May 2, 2026. Especially for tax, filing and religious holiday dates, make a final check on the official source before taking action." data-ru="Примечание: этот блок подготовлен по официальным и открытым источникам, доступным на 2 мая 2026 года. Особенно по налогам, срокам подачи и религиозным праздникам перед действием нужно сделать финальную проверку по официальной ссылке." data-ar="ملاحظة: تم إعداد هذا الملخص وفق المصادر الرسمية والعامة المتاحة حتى 2 مايو 2026. وخاصة في تواريخ الضرائب والإقرارات والعطل الدينية يجب إجراء التحقق الأخير من الرابط الرسمي قبل أي إجراء.">Not: Bu özet alanı 2 Mayıs 2026 itibarıyla resmi ve kamusal kaynaklarda görünen başlıklara göre düzenlendi. Özellikle vergi, beyan ve dini tatil tarihlerinde nihai işlemden önce resmi bağlantı üzerinden son kontrol yapılmalıdır.</div>
+  </div>
+</section>
+
 <!-- COMPANY REQUIREMENTS -->
 <section id="company-requirements">
   <div class="section-shell">
@@ -6366,17 +7361,92 @@ footer {
         <p>Yabancı yatırımcılar açısından da yasal çerçeve açıktır; gerekli izinler doğrultusunda yabancı sermayeli şirket kurulabilir. Tüm bu süreçlerin doğru ve eksiksiz yürütülmesi için profesyonel mali danışmanlık desteği büyük önem taşır.</p>
       </div>
       <div class="requirements-law-panel">
-        <p class="requirements-law-note">KKTC'nde işletmelerin hukuki yapısına ve çalışma şartlarını düzenleyen farklı yasalar vardır. Bu yasalar içerisinde temel yasa KKTC Şirketler Yasası Fasıl 113'tür. İşletmelerin hukuki yapı ve çalışma şartlarını belirleyen yasalar şunlardır.</p>
-        <ul class="law-list">
-          <li>KKTC Şirketler Yasası Fasıl 113</li>
-          <li>Kollektif ve Komandit Şirketler ve Ticari Ünvanlar Yasası</li>
-          <li>Yabancı Sermaye Yasası</li>
-          <li>KKTC Bankalar Yasası</li>
-          <li>Uluslararası Bankacılık Birimleri Yasası</li>
-          <li>Serbest Liman ve Bölge Yasası</li>
-          <li>Uluslararası İşletme Şirketleri Yasası</li>
-          <li>Sigorta Hizmetleri (Düzenleme Denetim) Yasası</li>
-        </ul>
+        <p class="requirements-law-note">KKTC'nde işletmelerin hukuki yapısına ve çalışma şartlarını düzenleyen farklı yasalar vardır. Bu yasalar içerisinde temel yasa KKTC Şirketler Yasası Fasıl 113'tür. Aşağıdaki başlıkları açarak şirket, yatırım ve finans mevzuatının kısa özetlerini görebilirsiniz.</p>
+        <div class="tax-law-accordion">
+          <details class="tax-law-item" open>
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">KKTC Şirketler Yasası Fasıl 113</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Limited şirket kuruluşu, ana sözleşme, tescil, unvan, faaliyet alanı ve sermaye yapısının temel çerçevesini belirler.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#sirketler-yasasi-fasil-113">Detayı yasalar sayfasında aç</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Kollektif ve Komandit Şirketler ve Ticari Ünvanlar Yasası</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Ortaklık esasına dayalı şirket modellerinde temsil yetkilerini, sorumluluk sınırlarını ve ortak yükümlülüklerini düzenler.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#kollektif-ve-komandit-sirketler-yasasi">Detayı yasalar sayfasında aç</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Uluslararası İşletme Şirketleri Yasası</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Yabancı sermayeyi teşvik eden, vergisel avantajlar ve uluslararası faaliyet kolaylığı sağlayan özel şirket yapısını açıklar.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#uluslararasi-isletme-sirketleri-yasasi">Detayı yasalar sayfasında aç</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Yabancı Sermaye Çerçevesi ve Kuruluş Prosedürleri</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Şirket ismi ön onayı, ana sözleşme başvurusu, ortak-yönetici belgeleri ve gerekli bakanlık onaylarını kapsayan idari akışı özetler.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#yabanci-sermaye-kurulus-prosedurleri">Detayı yasalar sayfasında aç</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">KKTC Bankalar Yasası</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Bankaların lisans, sermaye yeterliliği, risk yönetimi ve Merkez Bankası denetimi altındaki faaliyet esaslarını belirler.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#kktc-bankalar-yasasi">Detayı yasalar sayfasında aç</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Uluslararası Bankacılık Birimleri Yasası</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Yurt dışına yönelik bankacılık hizmetleri ve yabancı yatırımcılar için özel finansal yapı kurulmasını düzenler.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#uluslararasi-bankacilik-birimleri-yasasi">Detayı yasalar sayfasında aç</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Serbest Liman ve Bölge Yasası</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Serbest bölgelerde ithalat, ihracat ve üretim faaliyetleri için vergi avantajı ve operasyonel kolaylık sağlayan sistemi tanımlar.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#serbest-liman-ve-bolge-yasasi">Detayı yasalar sayfasında aç</a>
+            </div>
+          </details>
+          <details class="tax-law-item">
+            <summary class="tax-law-summary">
+              <span class="tax-law-icon" aria-hidden="true"></span>
+              <span class="tax-law-title">Sigorta Hizmetleri (Düzenleme ve Denetim) Yasası</span>
+            </summary>
+            <div class="tax-law-body">
+              <p>Sigorta şirketleri için sermaye şartlarını, lisans zorunluluğunu ve düzenli denetim esaslarını belirleyen temel mevzuattır.</p>
+              <a class="inline-link" href="./yasalar-vergiler.html#sigorta-hizmetleri-yasasi">Detayı yasalar sayfasında aç</a>
+            </div>
+          </details>
+        </div>
+        <div class="tax-actions">
+          <a class="inline-link primary" href="./yasalar-vergiler.html">Tüm yasa detaylarını aç</a>
+        </div>
       </div>
     </article>
 
@@ -6448,15 +7518,19 @@ footer {
     <p class="section-sub light reveal" data-tr="KKTC'de yeni şirket kuracak, yabancı şirket şubesi açacak veya uluslararası işletme yapısını değerlendirecek müvekkiller için avantajları, resmi şartları ve doğru yapı seçeneklerini tek akışta özetliyoruz." data-en="For clients planning a new company in the TRNC, opening a foreign branch or evaluating an international business structure, we summarize the advantages, official requirements and the right setup options in one flow." data-ru="Для клиентов, которые планируют новую компанию в ТРСК, открытие филиала иностранной компании или международную бизнес-структуру, мы в одном потоке показываем преимущества, официальные требования и подходящие варианты." data-ar="للعملاء الذين يخططون لتأسيس شركة جديدة في شمال قبرص أو فتح فرع لشركة أجنبية أو تقييم هيكل أعمال دولي، نلخّص المزايا والمتطلبات الرسمية وخيارات التأسيس المناسبة ضمن مسار واحد.">KKTC'de yeni şirket kuracak, yabancı şirket şubesi açacak veya uluslararası işletme yapısını değerlendirecek müvekkiller için avantajları, resmi şartları ve doğru yapı seçeneklerini tek akışta özetliyoruz.</p>
 
     <div class="formation-grid">
-      <article class="formation-card featured-advantage reveal">
-        <div class="section-visual-art formation-media formation-photo-scene formation-advantage-media" role="img" aria-label="Kuzey Kıbrıs'ta iş kurma ve günlük iş hayatını temsil eden ofis girişi görseli">
+      <article class="formation-card showcase-formation-card featured-advantage reveal">
+        <div class="section-visual-art formation-media formation-photo-scene formation-advantage-media" role="img" aria-label="Kıbrıs kıyısı ve liman hattını gösteren görsel">
           <img
-            src="assets/kayaplus-office-front.jpeg"
-            width="960"
-            height="1280"
-            alt="Kaya Plus ofis girişi ve günlük iş hayatı görünümü"
+            src="https://images.pexels.com/photos/13109732/pexels-photo-13109732.jpeg?cs=srgb&dl=pexels-sezer-uzunoglu-1349466-13109732.jpg&fm=jpg&v=20260503b"
+            width="1400"
+            height="900"
+            alt="Kıbrıs kıyısı, tekneler ve liman atmosferini gösteren görünüm"
             loading="lazy"
             decoding="async">
+          <div class="formation-showcase-note">
+            <strong>Kuruluş planı daha kontrollü ilerler</strong>
+            <span>Düşük maliyet, esnek yapı ve hızlı başvuru akışı yatırım kararlarını güçlendirir.</span>
+          </div>
         </div>
         <div class="formation-advantage-copy">
           <div class="card-kicker" data-tr="KKTC'de Şirket Kurma Avantajları" data-en="Advantages of Starting a Company in TRNC" data-ru="Преимущества открытия компании в ТРСК" data-ar="مزايا تأسيس شركة في شمال قبرص"><span class="kicker-dot"></span>KKTC'de Şirket Kurma Avantajları</div>
@@ -6476,7 +7550,7 @@ footer {
         </div>
       </article>
 
-      <article class="formation-card foreign-investor-card reveal">
+      <article class="formation-card showcase-formation-card foreign-investor-card reveal">
         <div class="section-visual-art formation-media foreign-investor-media" role="img" aria-label="Yabancı yatırımcılar için güven ve profesyonel iş birliğini temsil eden kurumsal görsel">
           <img
             src="assets/hero-handshake.jpg"
@@ -6485,6 +7559,10 @@ footer {
             alt="Yabancı yatırımcılar için güven veren tokalaşma görseli"
             loading="lazy"
             decoding="async">
+          <div class="formation-showcase-note">
+            <strong>Yabancı sermaye için net kurulum akışı</strong>
+            <span>Doğru yapı seçimi ve profesyonel destekle süreç daha güvenli ve hızlı yönetilir.</span>
+          </div>
         </div>
         <div class="foreign-investor-copy">
           <div class="card-kicker"><span class="kicker-dot"></span>Kıbrıs'ta Yabancı Şirket Kurma</div>
@@ -6495,6 +7573,113 @@ footer {
             <div class="foreign-investor-pill">Düşük maliyet ve basit prosedürlerle süreç daha hızlı ve daha kontrollü ilerler.</div>
             <div class="foreign-investor-pill">Stratejik konum sayesinde uluslararası pazarlara açılmak isteyen girişimciler için güçlü bir merkezdir.</div>
             <div class="foreign-investor-pill">Profesyonel danışmanlık desteğiyle kuruluş süreci sorunsuz ve güvenli şekilde yönetilir.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="formation-card offshore-service-card reveal">
+        <div class="section-visual-art formation-media offshore-service-media formation-photo-scene" role="img" aria-label="Girne limanı manzarası eşliğinde uluslararası iş planlaması yapan profesyonelleri gösteren görsel">
+          <img
+            src="assets/offshore-global-cyprus-card.jpg"
+            width="1680"
+            height="945"
+            alt="Girne limanı manzarası eşliğinde uluslararası iş planlaması yapan profesyoneller"
+            loading="eager"
+            decoding="async">
+          <div class="formation-photo-chip">Global Company Setup</div>
+        </div>
+        <div class="offshore-service-copy">
+          <div class="card-kicker"><span class="kicker-dot"></span>ULUSLARARASI (OFFSHORE) ŞİRKET KURULUM HİZMETİ</div>
+          <h3>KKTC'de kurulan Uluslararası İşletme Şirketleri ile işinizi global seviyeye taşıyın.</h3>
+          <p>Uluslararası İşletme Şirketi yapısı; yurt dışına odaklı ticaret, hizmet ve yatırım faaliyetlerini daha verimli kurgulamak isteyen girişimciler için KKTC'de güçlü bir çözüm sunar. Kaya Plus olarak kuruluş, izin, tescil ve operasyon hazırlıklarını tek dosyada yönetiyoruz.</p>
+          <div class="offshore-service-highlights">
+            <div class="offshore-service-highlight">
+              <strong>%1 kurumlar vergisi</strong>
+              <span>Uluslararası işletme şirketleri için güçlü vergi avantajı sunar.</span>
+            </div>
+            <div class="offshore-service-highlight">
+              <strong>3-4 hafta hedef süre</strong>
+              <span>Ön izin, tescil ve operasyon hazırlığı tek akışta planlanır.</span>
+            </div>
+            <div class="offshore-service-highlight">
+              <strong>20.000 EUR sermaye</strong>
+              <span>Minimum sermaye şartı şirket içinde kalır ve yapının temelini oluşturur.</span>
+            </div>
+          </div>
+
+          <details class="offshore-service-disclosure">
+            <summary class="offshore-service-toggle">
+              <span class="offshore-service-toggle-copy">
+                <strong>Avantajlar, giderler, süreç ve hizmet kapsamının tamamını açın</strong>
+                <small>Bu yapının size uygun olup olmadığını tüm detaylarıyla hızlıca değerlendirin.</small>
+              </span>
+              <span class="offshore-service-toggle-meta">
+                <span class="offshore-service-toggle-open">Devamını Oku</span>
+                <span class="offshore-service-toggle-close">Daha Az Göster</span>
+                <span class="offshore-service-toggle-icon" aria-hidden="true"></span>
+              </span>
+            </summary>
+
+            <div class="offshore-service-flow">
+              <div class="offshore-service-group">
+                <h4>Avantajlar</h4>
+                <ul class="detail-list offshore-service-list">
+                  <li>%1 kurumlar vergisi</li>
+                  <li>Yurt dışı gelirlerde vergi muafiyetleri</li>
+                  <li>Temettü dağıtımında vergi yok</li>
+                  <li>Uluslararası ticaret imkanı</li>
+                  <li>Döviz ile çalışma serbestisi</li>
+                </ul>
+              </div>
+
+              <div class="offshore-service-group">
+                <h4>Hizmet Kapsamımız</h4>
+                <ul class="detail-list offshore-service-list">
+                  <li>Şirket kuruluş başvurusu</li>
+                  <li>Bakanlık ön izin süreci</li>
+                  <li>Mukayyitlik tescil işlemleri</li>
+                  <li>Ana sözleşme ve tüzük hazırlanması</li>
+                  <li>Faaliyet izni alınması</li>
+                  <li>Vergi ve muhasebe kaydı açılışı</li>
+                  <li>Banka hesap açılış desteği</li>
+                  <li>Yasal temsilcilik ve muhasebe takibi</li>
+                </ul>
+              </div>
+
+              <div class="offshore-service-group">
+                <h4>Devlet Giderleri</h4>
+                <ul class="detail-list offshore-service-list">
+                  <li>500 EUR başvuru harcı</li>
+                  <li>5.000 EUR yıllık işletme harcı</li>
+                  <li>Minimum 20.000 EUR sermaye şartı bulunur ve bu tutar şirket içinde kalır</li>
+                </ul>
+              </div>
+
+              <div class="offshore-service-group">
+                <h4>Süreç</h4>
+                <ul class="detail-list offshore-service-list">
+                  <li>Ön izin: 1-2 hafta</li>
+                  <li>Kurulum ve tescil: 2-3 hafta</li>
+                  <li>Toplam hedef süre: 3-4 hafta</li>
+                </ul>
+                <p>Süreç boyunca resmi başvuru takibi, dosya koordinasyonu ve sonraki muhasebe açılışı tarafımızdan planlı şekilde yürütülür.</p>
+              </div>
+
+              <div class="offshore-service-group">
+                <h4>Önemli Bilgiler</h4>
+                <ul class="detail-list offshore-service-list">
+                  <li>Faaliyetler sadece yurt dışına yönelik olmalıdır</li>
+                  <li>KKTC içinde ticaret yapılamaz</li>
+                  <li>Şirket adresi ve yasal temsilci zorunludur</li>
+                  <li>En az 1 yerel personel gerekliliği doğabilir</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <div class="action-row">
+            <a class="inline-link primary" href="#contact">Uluslararası şirket kurulumu için danışmanlık alın</a>
+            <a class="inline-link" href="https://wa.me/905338616552" target="_blank" rel="noopener noreferrer">WhatsApp'tan bilgi alın</a>
           </div>
         </div>
       </article>
@@ -7306,9 +8491,9 @@ footer {
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-tag" data-tr="Canlı Destek" data-en="Live Support" data-ru="Онлайн поддержка" data-ar="دعم مباشر">Canlı Destek</div>
-  <h2 class="section-title reveal" data-tr="Kaya Plus ekibine sağ alttan hemen bağlanın" data-en="Connect with the Kaya Plus team instantly from live chat" data-ru="Свяжитесь с командой Kaya Plus сразу через чат" data-ar="تواصل فوراً مع فريق كايا بلس عبر الدردشة المباشرة">Kaya Plus ekibine sağ alttan hemen bağlanın</h2>
-  <p class="section-sub reveal" data-tr="Canlı sohbeti açın, önce ad soyad ve e-posta bilginizi bırakın, ardından birkaç kısa soruyla size en uygun muhasebe, vergi, bordro veya kuruluş çözümünü netleştirelim." data-en="Open the live chat, leave your full name and email first, then answer a few short questions so we can guide you to the right accounting, tax, payroll or company setup solution." data-ru="Откройте онлайн-чат, сначала оставьте имя и e-mail, затем ответьте на несколько коротких вопросов, чтобы мы предложили вам подходящее решение по бухгалтерии, налогам, payroll или регистрации." data-ar="افتح الدردشة المباشرة، واترك أولاً اسمك الكامل وبريدك الإلكتروني، ثم أجب عن بعض الأسئلة القصيرة لنوجّهك إلى الحل الأنسب في المحاسبة أو الضرائب أو الرواتب أو التأسيس.">Canlı sohbeti açın, önce ad soyad ve e-posta bilginizi bırakın, ardından birkaç kısa soruyla size en uygun muhasebe, vergi, bordro veya kuruluş çözümünü netleştirelim.</p>
+  <div class="section-tag" data-tr="Bize Ulaşın" data-en="Contact Us" data-ru="Свяжитесь с нами" data-ar="تواصل معنا">Bize Ulaşın</div>
+  <h2 class="section-title reveal" data-tr="Kaya Plus ekibine doğrudan ulaşın" data-en="Reach the Kaya Plus team directly" data-ru="Свяжитесь с командой Kaya Plus напрямую" data-ar="تواصل مباشرة مع فريق كايا بلس">Kaya Plus ekibine doğrudan ulaşın</h2>
+  <p class="section-sub reveal" data-tr="Telefon, e-posta, WhatsApp, Facebook veya canlı destek üzerinden bize ulaşın. Talebinizi aldıktan sonra muhasebe, vergi, bordro ya da kuruluş süreciniz için en doğru ilk adımı birlikte netleştirelim." data-en="Reach us by phone, email, WhatsApp, Facebook or live support. Once we receive your request, we will clarify the right first step for your accounting, tax, payroll or company setup process." data-ru="Свяжитесь с нами по телефону, e-mail, WhatsApp, Facebook или через онлайн-поддержку. Получив запрос, мы поможем определить правильный первый шаг по бухгалтерии, налогам, payroll или регистрации компании." data-ar="تواصل معنا عبر الهاتف أو البريد الإلكتروني أو واتساب أو فيسبوك أو الدعم المباشر. بعد استلام طلبك نحدد معًا الخطوة الأولى الأنسب للمحاسبة أو الضرائب أو الرواتب أو تأسيس الشركة.">Telefon, e-posta, WhatsApp, Facebook veya canlı destek üzerinden bize ulaşın. Talebinizi aldıktan sonra muhasebe, vergi, bordro ya da kuruluş süreciniz için en doğru ilk adımı birlikte netleştirelim.</p>
 
   <div class="contact-grid">
     <div class="contact-info-block">
@@ -7325,12 +8510,16 @@ footer {
         </figure>
         <div class="contact-visual-body">
           <div class="card-kicker"><span class="kicker-dot"></span>Kaya Plus Ofisi</div>
-          <h3>İlk temastan itibaren net, güven veren ve düzenli bir danışmanlık akışı</h3>
+          <h3 data-tr="İlk temastan itibaren net ve güven veren iletişim" data-en="Clear and trustworthy communication from the first touch" data-ru="Понятная и надёжная коммуникация с первого контакта" data-ar="تواصل واضح وموثوق منذ اللحظة الأولى">İlk temastan itibaren net ve güven veren iletişim</h3>
           <p>Kaya Plus'ta ilk görüşmenin amacı yalnızca bilgi almak değil; işletmenizin muhasebe, vergi, bordro veya kuruluş tarafında tam olarak hangi desteğe ihtiyaç duyduğunu doğru tespit etmektir. Bu nedenle iletişim alanını gerçek ofis hissi veren güçlü bir karşılama noktası olarak kurguladık.</p>
           <div class="contact-visual-points">
             <span>Muhasebe ve vergi ihtiyaçlarını doğru dinleyen ilk temas</span>
             <span>Kuruluş, bordro ve resmi süreçler için net yönlendirme</span>
             <span>Gerçek ofis, gerçek ekip ve güven veren marka hissi</span>
+          </div>
+          <div class="contact-social-row">
+            <a class="contact-social-link primary" href="https://www.facebook.com/search/top/?q=Kaya%20Plus%20Muhasebe%20ve%20Mali%20Dan%C4%B1%C5%9Fmanl%C4%B1k" target="_blank" rel="noopener noreferrer" data-tr="Facebook" data-en="Facebook" data-ru="Facebook" data-ar="فيسبوك">Facebook</a>
+            <a class="contact-social-link" href="https://wa.me/905338616552" target="_blank" rel="noopener noreferrer" data-tr="WhatsApp'tan Yaz" data-en="Message on WhatsApp" data-ru="Написать в WhatsApp" data-ar="راسلنا عبر واتساب">WhatsApp'tan Yaz</a>
           </div>
         </div>
       </article>
@@ -7368,7 +8557,7 @@ footer {
 
     <div class="form-card reveal">
       <div class="support-topbar">
-        <div class="support-badge" data-tr="Canlı Destek" data-en="Live Support" data-ru="Онлайн поддержка" data-ar="دعم مباشر">Canlı Destek</div>
+        <div class="support-badge" data-tr="Bize Ulaşın" data-en="Contact Us" data-ru="Свяжитесь с нами" data-ar="تواصل معنا">Bize Ulaşın</div>
         <div class="support-status">
           <span class="support-status-dot"></span>
           <span data-tr="Temsilciler çevrimiçi" data-en="Representatives online" data-ru="Операторы онлайн" data-ar="الممثلون متصلون">Temsilciler çevrimiçi</span>
@@ -7505,17 +8694,19 @@ footer {
         <a href="./uis-rehberi.html" data-tr="UİŞ Rehberi" data-en="IBC Guide" data-ru="Гид по МБК" data-ar="دليل شركة الأعمال الدولية">UİŞ Rehberi</a>
         <a href="./yabanci-sirket-subesi-rehberi.html" data-tr="Yabancı Şirket Şubesi" data-en="Foreign Branch Guide" data-ru="Гид по иностранному филиалу" data-ar="دليل فرع الشركة الأجنبية">Yabancı Şirket Şubesi</a>
         <a href="./yerel-limited-uis-yabanci-sube-karsilastirma.html" data-tr="Yapı Karşılaştırması" data-en="Structure Comparison" data-ru="Сравнение структур" data-ar="مقارنة الهياكل">Yapı Karşılaştırması</a>
-        <a href="./mevzuat-rehberi.html" data-tr="Mevzuat Rehberi" data-en="Legislation Guide" data-ru="Гид по законодательству" data-ar="دليل التشريعات">Mevzuat Rehberi</a>
+        <a href="./yasalar-vergiler.html" data-tr="Yasalar / Vergiler" data-en="Laws / Taxes" data-ru="Законы / Налоги" data-ar="القوانين / الضرائب">Yasalar / Vergiler</a>
         <a href="./sirket-kurmanin-temel-sartlari.html" data-tr="Temel Şartlar" data-en="Basic Requirements" data-ru="Основные условия" data-ar="الشروط الأساسية">Temel Şartlar</a>
+        <a href="#news-hub" data-tr="Haberler" data-en="News" data-ru="Новости" data-ar="الأخبار">Haberler</a>
         <a href="#team" data-tr="Ekibimiz" data-en="Our Team" data-ru="Наша команда" data-ar="فريقنا">Ekibimiz</a>
       </div>
     </div>
     <div>
-      <div class="footer-col-title" data-tr="İletişim" data-en="Contact" data-ru="Контакт" data-ar="تواصل">İletişim</div>
+      <div class="footer-col-title" data-tr="Bize Ulaşın" data-en="Contact Us" data-ru="Свяжитесь с нами" data-ar="تواصل معنا">Bize Ulaşın</div>
       <div class="footer-links">
         <a href="tel:+905338616552">+90 533 861 65 52</a>
-      <a href="mailto:info@kayaplus.net">info@kayaplus.net</a>
+        <a href="mailto:info@kayaplus.net">info@kayaplus.net</a>
         <a href="https://wa.me/905338616552" data-tr="WhatsApp" data-en="WhatsApp" data-ru="WhatsApp" data-ar="واتساب">WhatsApp</a>
+        <a href="https://www.facebook.com/search/top/?q=Kaya%20Plus%20Muhasebe%20ve%20Mali%20Dan%C4%B1%C5%9Fmanl%C4%B1k" target="_blank" rel="noopener noreferrer" data-tr="Facebook" data-en="Facebook" data-ru="Facebook" data-ar="فيسبوك">Facebook</a>
         <a href="#office-gallery" data-tr="Ofisimiz" data-en="Our Office" data-ru="Наш офис" data-ar="مكتبنا">Ofisimiz</a>
       </div>
     </div>
@@ -7579,9 +8770,19 @@ footer {
           <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 6.85A5.15 5.15 0 1 1 6.85 12 5.16 5.16 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 15.35 12 3.35 3.35 0 0 0 12 8.65Z"/>
         </svg>
       </a>
+      <a class="live-support-social facebook" href="https://www.facebook.com/search/top/?q=Kaya%20Plus%20Muhasebe%20ve%20Mali%20Dan%C4%B1%C5%9Fmanl%C4%B1k" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14.2 8.15V6.6c0-.74.48-.91.82-.91h2.08V2.18L14.24 2C11.05 2 10.33 4.38 10.33 5.9v2.25H7.82v3.92h2.51V22h4.12v-9.93h2.77l.36-3.92H14.2Z"/>
+        </svg>
+      </a>
       <a class="live-support-social whatsapp" href="https://wa.me/905338616552" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2a9.84 9.84 0 0 0-8.48 14.82L2 22l5.33-1.47A9.83 9.83 0 1 0 12 2Zm0 17.8a8 8 0 0 1-4.08-1.12l-.29-.17-3.17.87.87-3.09-.19-.31A8 8 0 1 1 12 19.8Zm4.39-6.03c-.24-.12-1.43-.7-1.65-.78-.22-.08-.39-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.29.18-.53.06-.24-.12-1.03-.38-1.96-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.01-.37.11-.49.11-.11.24-.29.37-.43.12-.14.16-.24.24-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.75-1.82-.2-.48-.4-.42-.55-.43h-.47c-.16 0-.43.06-.66.31-.22.24-.86.84-.86 2.04 0 1.2.88 2.36 1 2.52.12.16 1.74 2.66 4.21 3.73.59.25 1.05.4 1.41.51.59.19 1.13.16 1.56.1.48-.07 1.43-.58 1.63-1.14.2-.57.2-1.05.14-1.15-.05-.11-.21-.17-.45-.29Z"/>
+        </svg>
+      </a>
+      <a class="live-support-social mail" href="mailto:info@kayaplus.net" aria-label="E-posta">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.75 5h14.5A2.75 2.75 0 0 1 22 7.75v8.5A2.75 2.75 0 0 1 19.25 19H4.75A2.75 2.75 0 0 1 2 16.25v-8.5A2.75 2.75 0 0 1 4.75 5Zm.05 2 6.35 5.08c.5.4 1.2.4 1.7 0L19.2 7H4.8Zm15.2 1.78-5.9 4.72a3.38 3.38 0 0 1-4.2 0L4 8.78v7.47c0 .41.34.75.75.75h14.5c.41 0 .75-.34.75-.75V8.78Z"/>
         </svg>
       </a>
     </div>
@@ -8269,6 +9470,55 @@ function setLang(lang) {
   syncLiveSupportUI();
 }
 
+function initUpdatesDesk() {
+  const desk = document.getElementById('updates-desk');
+  if (!desk) return;
+
+  const searchInput = document.getElementById('updates-search');
+  const filterButtons = Array.from(desk.querySelectorAll('.updates-chip'));
+  const cards = Array.from(desk.querySelectorAll('.updates-card'));
+  const emptyState = document.getElementById('updates-empty');
+  let activeFilter = 'all';
+
+  const normalize = (value) => (value || '')
+    .toLocaleLowerCase('tr-TR')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+
+  const applyFilter = () => {
+    const query = normalize(searchInput?.value || '');
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      const categories = (card.dataset.category || '').split(/\s+/).filter(Boolean);
+      const searchPool = normalize(`${card.dataset.search || ''} ${card.textContent || ''}`);
+      const matchesFilter = activeFilter === 'all' || categories.includes(activeFilter);
+      const matchesQuery = !query || searchPool.includes(query);
+      const isVisible = matchesFilter && matchesQuery;
+
+      card.hidden = !isVisible;
+      if (isVisible) visibleCount += 1;
+    });
+
+    if (emptyState) emptyState.hidden = visibleCount !== 0;
+  };
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      activeFilter = button.dataset.filter || 'all';
+      filterButtons.forEach((btn) => {
+        const isActive = btn === button;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      applyFilter();
+    });
+  });
+
+  searchInput?.addEventListener('input', applyFilter);
+  applyFilter();
+}
+
 // ── SCROLL HEADER ──
 window.addEventListener('scroll', () => {
   document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
@@ -8532,6 +9782,7 @@ function initSiteIntro() {
 
 // ── INITIAL LANG ──
 setLang('tr');
+initUpdatesDesk();
 bindSupportStore();
 hydrateLiveSupportConversation();
 initSiteIntro();
