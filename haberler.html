@@ -1,0 +1,1084 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haberler | Kaya Plus</title>
+  <meta name="description" content="İş dünyası için güncel mevzuat, resmi duyurular, kur takibi ve kritik tarihler başlıklarını Kaya Plus haber sayfasında görün.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/guide-pages.css">
+  <style>
+    .newsroom-stage {
+      padding: clamp(26px, 3vw, 36px);
+      overflow: hidden;
+    }
+
+    .newsroom-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .newsroom-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      color: #8f7327;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .newsroom-kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d7b14c, #111111);
+    }
+
+    .newsroom-head h2 {
+      font-size: clamp(30px, 3vw, 42px);
+      color: var(--ink);
+      line-height: 1.08;
+      max-width: 16ch;
+      margin-bottom: 12px;
+    }
+
+    .newsroom-head p {
+      max-width: 70ch;
+      color: var(--ink-soft);
+    }
+
+    .newsroom-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+      flex: 0 0 auto;
+    }
+
+    .newsroom-columns {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .newsroom-column {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .newsroom-column-accent {
+      position: relative;
+    }
+
+    .newsroom-column-accent::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at top right, rgba(215, 177, 76, 0.16), transparent 34%),
+        linear-gradient(180deg, rgba(17, 17, 17, 0.02) 0%, rgba(17, 17, 17, 0.05) 100%);
+      pointer-events: none;
+    }
+
+    .newsroom-column-head {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    }
+
+    .newsroom-column-head h3 {
+      font-size: 28px;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .newsroom-column-head p {
+      max-width: 32ch;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      text-align: right;
+    }
+
+    .newsroom-feed {
+      display: grid;
+      gap: 16px;
+    }
+
+    .newsroom-post {
+      display: grid;
+      grid-template-columns: 188px minmax(0, 1fr);
+      gap: 18px;
+      padding: 16px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      box-shadow: 0 16px 36px rgba(17, 17, 17, 0.06);
+      align-items: stretch;
+    }
+
+    .newsroom-post[hidden] {
+      display: none !important;
+    }
+
+    .newsroom-post-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .newsroom-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7c6a49;
+    }
+
+    .newsroom-meta span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(17, 17, 17, 0.04);
+    }
+
+    .newsroom-post h4 {
+      font-size: 22px;
+      line-height: 1.18;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .newsroom-post p {
+      color: var(--ink-soft);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .newsroom-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin-top: auto;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .newsroom-link::after {
+      content: "›";
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .newsroom-media {
+      position: relative;
+      overflow: hidden;
+      min-height: 160px;
+      border-radius: 20px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #f8f1df 0%, #ead9b1 48%, #151515 100%);
+      color: #111111;
+      isolation: isolate;
+    }
+
+    .newsroom-media::before,
+    .newsroom-media::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .newsroom-media::before {
+      width: 180px;
+      height: 180px;
+      right: -64px;
+      top: -70px;
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .newsroom-media::after {
+      width: 128px;
+      height: 128px;
+      left: -44px;
+      bottom: -50px;
+      background: rgba(17, 17, 17, 0.08);
+    }
+
+    .newsroom-media.media-tax {
+      background: linear-gradient(135deg, #fbf5e6 0%, #efcf84 54%, #141414 100%);
+    }
+
+    .newsroom-media.media-labor {
+      background: linear-gradient(135deg, #f7f1e4 0%, #dbd6cd 46%, #141414 100%);
+    }
+
+    .newsroom-media.media-gazette {
+      background: linear-gradient(135deg, #f5efe2 0%, #d9cfc0 42%, #141414 100%);
+    }
+
+    .newsroom-media.media-sector {
+      background: linear-gradient(135deg, #f8f3eb 0%, #d7b77b 44%, #141414 100%);
+    }
+
+    .newsroom-media.media-rates {
+      background: linear-gradient(135deg, #111111 0%, #1b1b1b 48%, #d7b14c 100%);
+      color: #ffffff;
+    }
+
+    .newsroom-media.media-calendar {
+      background: linear-gradient(135deg, #161616 0%, #262626 46%, #e8d39a 100%);
+      color: #ffffff;
+    }
+
+    .newsroom-media.media-deadline {
+      background: linear-gradient(135deg, #171717 0%, #28201a 44%, #e3c15d 100%);
+      color: #ffffff;
+    }
+
+    .newsroom-media.media-holiday {
+      background: linear-gradient(135deg, #171717 0%, #202020 48%, #d9c082 100%);
+      color: #ffffff;
+    }
+
+    .newsroom-media.media-sources {
+      background: linear-gradient(135deg, #171717 0%, #252525 52%, #f1e1b4 100%);
+      color: #ffffff;
+    }
+
+    .newsroom-media-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      color: #111111;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .media-rates .newsroom-media-badge,
+    .media-calendar .newsroom-media-badge,
+    .media-deadline .newsroom-media-badge,
+    .media-holiday .newsroom-media-badge,
+    .media-sources .newsroom-media-badge {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff2cd;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .newsroom-media-strong {
+      display: block;
+      max-width: 8ch;
+      font-family: "Playfair Display", serif;
+      font-size: 31px;
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .newsroom-media-note {
+      display: block;
+      max-width: 14ch;
+      font-size: 13px;
+      line-height: 1.45;
+      color: inherit;
+      opacity: 0.86;
+    }
+
+    .newsroom-points,
+    .newsroom-links,
+    .newsroom-rate-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .newsroom-point,
+    .newsroom-link-row,
+    .newsroom-rate-row {
+      display: grid;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(17, 17, 17, 0.03);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+    }
+
+    .newsroom-point,
+    .newsroom-link-row {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .newsroom-rate-row {
+      grid-template-columns: minmax(72px, 1fr) repeat(2, minmax(90px, auto));
+    }
+
+    .newsroom-point span,
+    .newsroom-link-row span,
+    .newsroom-rate-row span {
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+
+    .newsroom-point strong,
+    .newsroom-link-row strong,
+    .newsroom-rate-row strong {
+      color: var(--ink);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .newsroom-rate-row strong small {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7c6a49;
+    }
+
+    .newsroom-rate-source {
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .newsroom-rate-status {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(17, 17, 17, 0.04);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+
+    .newsroom-rate-status[data-state="live"] {
+      background: rgba(215, 177, 76, 0.1);
+      border-color: rgba(215, 177, 76, 0.16);
+    }
+
+    .newsroom-rate-status[data-state="error"] {
+      background: rgba(153, 43, 43, 0.08);
+      border-color: rgba(153, 43, 43, 0.16);
+      color: #7a2f2f;
+    }
+
+    .newsroom-more {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      width: 100%;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #191919, #111111);
+      color: #ffffff;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 16px 30px rgba(17, 17, 17, 0.14);
+    }
+
+    .newsroom-more:hover {
+      background: linear-gradient(135deg, #272727, #161616);
+    }
+
+    @media (max-width: 1180px) {
+      .newsroom-head,
+      .newsroom-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .newsroom-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .newsroom-actions {
+        justify-content: flex-start;
+      }
+
+      .newsroom-column-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .newsroom-column-head p {
+        max-width: none;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .newsroom-post {
+        grid-template-columns: 1fr;
+      }
+
+      .newsroom-media {
+        min-height: 180px;
+      }
+
+      .newsroom-media-strong {
+        max-width: none;
+      }
+
+      .newsroom-rate-row {
+        grid-template-columns: 1fr;
+      }
+
+      .newsroom-rate-row strong {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./kktc-sirket-kurma.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="5" width="4.5" height="15" rx="1.2" fill="#C5A04D"/>
+            <rect x="10.5" y="5" width="4.5" height="19" rx="1.2" fill="#C5A04D"/>
+            <rect x="17" y="5" width="4.5" height="12" rx="1.2" fill="#C5A04D"/>
+            <path d="M8 23.5c6-5.8 9.8-9.2 18-14.5" fill="none" stroke="#C5A04D" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M11.2 26.5c5.6-5 9.8-8.2 16.8-12.3" fill="none" stroke="#E6CC8E" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-title">Kaya Plus</span>
+          <span class="brand-sub">Şirket Kurma ve Mali Danışmanlık</span>
+        </span>
+      </a>
+      <nav class="topbar-links">
+        <a href="./kktc-sirket-kurma.html">Ana Sayfa</a>
+        <a href="./neden-kaya-plus.html">Neden Kaya Plus?</a>
+        <a href="./hizmetler.html">Hizmetler</a>
+        <a href="./yasalar-vergiler.html">Yasalar/Vergiler</a>
+        <a href="./kktcde-sirket-kurma.html">KKTC'de Şirket Kurma</a>
+        <a href="./sirket-kurmanin-temel-sartlari.html">Şirket Kurmanın Şartları</a>
+        <a href="./bize-ulasin.html">İletişim</a>
+      </nav>
+      <div class="topbar-actions">
+        <div class="guide-lang-switcher" aria-label="Language switcher">
+          <button type="button" class="guide-lang-btn active" data-lang="tr">TR</button>
+          <button type="button" class="guide-lang-btn" data-lang="en">EN</button>
+          <button type="button" class="guide-lang-btn" data-lang="ru">RU</button>
+          <button type="button" class="guide-lang-btn" data-lang="fa">FA</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <article class="hero-copy">
+        <span class="eyebrow">Haberler</span>
+        <h1>İş dünyası için güncel mevzuat ve resmi duyurular</h1>
+        <p class="lead">Vergi duyuruları, çalışma hayatı düzenlemeleri, kur akışı ve resmi tarihler gibi kararları etkileyen başlıkları tek odaklı sayfada topladık. Bu yapı ana sayfayı uzatmadan güncel takip mantığını korur.</p>
+        <div class="hero-facts">
+          <div class="fact-card">
+            <div class="fact-label">Mevzuat</div>
+            <strong>Resmi duyuru ve değişiklik akışı</strong>
+          </div>
+          <div class="fact-card">
+            <div class="fact-label">Takvim</div>
+            <strong>Vergi ve başvuru tarihlerine ön bakış</strong>
+          </div>
+          <div class="fact-card">
+            <div class="fact-label">Kur</div>
+            <strong>Planlamayı etkileyen günlük başlıklar</strong>
+          </div>
+        </div>
+      </article>
+      <figure class="hero-media">
+        <img src="https://images.pexels.com/photos/6863334/pexels-photo-6863334.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Güncel duyurular ve masaüstü takibi">
+        <figcaption class="hero-media-badge">
+          <strong>Doğru bilgi doğru zamanda değerlidir</strong>
+          <span>Özellikle vergi, bordro ve resmi tarih başlıklarında erken fark edilen değişim işletmenin karar kalitesini yükseltir.</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="section">
+      <article class="section-card newsroom-stage">
+        <div class="newsroom-head">
+          <div>
+            <div class="newsroom-kicker" data-copy-tr="Takip Merkezi" data-copy-en="Tracking Desk" data-copy-ru="Центр мониторинга" data-copy-ar="مركز المتابعة">Takip Merkezi</div>
+            <h2 data-copy-tr="Haberler ve güncel takip tek editoryal akışta" data-copy-en="News and current tracking in one editorial flow" data-copy-ru="Новости и актуальный контроль в едином редакционном потоке" data-copy-ar="الأخبار والمتابعة الحالية في تدفق تحريري واحد">Haberler ve güncel takip tek editoryal akışta</h2>
+            <p data-copy-tr="Vergi gündemi, iş hayatı düzenlemeleri, kur akışı ve resmi son tarihler artık aynı sayfada iki net kolon halinde okunabiliyor. Yapıyı, karar verirken hız kazandıracak ama kurumsal görünümü zayıflatmayacak şekilde kurguladık." data-copy-en="Tax agenda, labor updates, exchange-rate flow and official deadlines can now be read on the same page in two clear columns. The structure is designed to speed up decision-making without weakening the corporate look." data-copy-ru="Налоговая повестка, изменения в трудовой сфере, поток курсов и официальные сроки теперь собраны на одной странице в двух ясных колонках. Структура задумана так, чтобы ускорять принятие решений и сохранять корпоративный вид." data-copy-ar="يمكن الآن قراءة الأجندة الضريبية وتحديثات العمل وحركة أسعار الصرف والمواعيد الرسمية في الصفحة نفسها عبر عمودين واضحين. صممنا هذا الهيكل ليمنح سرعة في اتخاذ القرار من دون إضعاف الحضور المؤسسي.">Vergi gündemi, iş hayatı düzenlemeleri, kur akışı ve resmi son tarihler artık aynı sayfada iki net kolon halinde okunabiliyor. Yapıyı, karar verirken hız kazandıracak ama kurumsal görünümü zayıflatmayacak şekilde kurguladık.</p>
+          </div>
+          <div class="newsroom-actions">
+            <a class="btn-primary" href="./yasalar-vergiler.html" data-copy-tr="Vergi ve Mevzuat Rehberi" data-copy-en="Tax and Legislation Guide" data-copy-ru="Гид по налогам и законодательству" data-copy-ar="دليل الضرائب والتشريعات">Vergi ve Mevzuat Rehberi</a>
+            <a class="btn-secondary" href="./bize-ulasin.html" data-copy-tr="Ekiple Görüş" data-copy-en="Speak with the Team" data-copy-ru="Связаться с командой" data-copy-ar="تحدث مع الفريق">Ekiple Görüş</a>
+          </div>
+        </div>
+
+        <div class="newsroom-columns">
+          <section class="newsroom-column">
+            <div class="newsroom-column-head">
+              <h3 data-copy-tr="Haberler" data-copy-en="News" data-copy-ru="Новости" data-copy-ar="الأخبار">Haberler</h3>
+              <p data-copy-tr="Mevzuat, çalışma hayatı ve finansal kararları etkileyen başlıkları kısa, okunabilir kartlarda topladık." data-copy-en="We gathered the items affecting legislation, working life and financial decisions into short readable cards." data-copy-ru="Мы собрали темы, влияющие на законодательство, трудовую жизнь и финансовые решения, в короткие читаемые карточки." data-copy-ar="جمعنا العناوين المؤثرة في التشريعات والحياة العملية والقرارات المالية داخل بطاقات قصيرة سهلة القراءة.">Mevzuat, çalışma hayatı ve finansal kararları etkileyen başlıkları kısa, okunabilir kartlarda topladık.</p>
+            </div>
+
+            <div class="newsroom-feed" id="newsroom-news-feed">
+              <article class="newsroom-post reveal">
+                <div class="newsroom-media media-tax">
+                  <span class="newsroom-media-badge" data-copy-tr="Vergi" data-copy-en="Tax" data-copy-ru="Налоги" data-copy-ar="الضرائب">Vergi</span>
+                  <strong class="newsroom-media-strong" data-copy-tr="2026 Planı" data-copy-en="2026 Plan" data-copy-ru="План 2026" data-copy-ar="خطة 2026">2026 Planı</strong>
+                  <span class="newsroom-media-note" data-copy-tr="Matrah, muafiyet ve kurumlar vergisi görünümü" data-copy-en="Tax base, exemptions and corporate tax outlook" data-copy-ru="База, льготы и обзор корпоративного налога" data-copy-ar="نظرة على الوعاء والإعفاءات وضريبة الشركات">Matrah, muafiyet ve kurumlar vergisi görünümü</span>
+                </div>
+                <div class="newsroom-post-copy">
+                  <div class="newsroom-meta">
+                    <span data-copy-tr="Şubat 2026" data-copy-en="February 2026" data-copy-ru="Февраль 2026" data-copy-ar="فبراير 2026">Şubat 2026</span>
+                    <span data-copy-tr="Öne çıkan" data-copy-en="Featured" data-copy-ru="Ключевое" data-copy-ar="الأبرز">Öne çıkan</span>
+                  </div>
+                  <h4 data-copy-tr="Gelir vergisi kişisel muafiyet ve matrah görünümü" data-copy-en="Personal income tax exemption and tax-base outlook" data-copy-ru="Личные льготы по подоходному налогу и обзор базы" data-copy-ar="نظرة على الإعفاء الشخصي من ضريبة الدخل والوعاء">Gelir vergisi kişisel muafiyet ve matrah görünümü</h4>
+                  <p data-copy-tr="Yıl başında netleşen muafiyet ve basamak yapısı özellikle ücret bordrosu, ortak dağıtımı ve yıl içi vergi planı yapan işletmeler için ana referans olur." data-copy-en="The exemption and bracket structure clarified at the beginning of the year becomes a core reference for payroll, partner distribution and annual tax planning." data-copy-ru="Структура льгот и диапазонов, проясняемая в начале года, становится ключевым ориентиром для payroll, распределения прибыли и годового налогового планирования." data-copy-ar="تشكل بنية الإعفاءات والشرائح التي تتضح في بداية العام مرجعًا أساسيًا للرواتب وتوزيع الشركاء والتخطيط الضريبي السنوي.">Yıl başında netleşen muafiyet ve basamak yapısı özellikle ücret bordrosu, ortak dağıtımı ve yıl içi vergi planı yapan işletmeler için ana referans olur.</p>
+                  <a class="newsroom-link" href="./yasalar-vergiler.html" data-copy-tr="Detaya Geç" data-copy-en="See Details" data-copy-ru="Перейти к деталям" data-copy-ar="اعرض التفاصيل">Detaya Geç</a>
+                </div>
+              </article>
+
+              <article class="newsroom-post reveal">
+                <div class="newsroom-media media-labor">
+                  <span class="newsroom-media-badge" data-copy-tr="Bordro" data-copy-en="Payroll" data-copy-ru="Payroll" data-copy-ar="الرواتب">Bordro</span>
+                  <strong class="newsroom-media-strong" data-copy-tr="İşveren Yükü" data-copy-en="Employer Cost" data-copy-ru="Нагрузка работодателя" data-copy-ar="تكلفة صاحب العمل">İşveren Yükü</strong>
+                  <span class="newsroom-media-note" data-copy-tr="Asgari ücret ve sosyal güvenlik etkisi" data-copy-en="Minimum wage and social security impact" data-copy-ru="Влияние минимальной зарплаты и соцстраха" data-copy-ar="أثر الحد الأدنى للأجور والضمان الاجتماعي">Asgari ücret ve sosyal güvenlik etkisi</span>
+                </div>
+                <div class="newsroom-post-copy">
+                  <div class="newsroom-meta">
+                    <span data-copy-tr="Operasyon" data-copy-en="Operations" data-copy-ru="Операции" data-copy-ar="العمليات">Operasyon</span>
+                    <span data-copy-tr="Maliyet" data-copy-en="Cost" data-copy-ru="Стоимость" data-copy-ar="التكلفة">Maliyet</span>
+                  </div>
+                  <h4 data-copy-tr="Asgari ücret, bordro planı ve işveren maliyetleri" data-copy-en="Minimum wage, payroll planning and employer costs" data-copy-ru="Минимальная зарплата, payroll-план и затраты работодателя" data-copy-ar="الحد الأدنى للأجور وتخطيط الرواتب وتكلفة صاحب العمل">Asgari ücret, bordro planı ve işveren maliyetleri</h4>
+                  <p data-copy-tr="Asgari ücret ve sigorta çarpanlarındaki değişiklikler bordro düzeni, nakit akışı ve aylık personel planlamasında doğrudan etkili olduğu için ayrı bir haber akışı gibi izlenmelidir." data-copy-en="Changes in minimum wage and insurance multipliers should be followed almost like a dedicated news stream because they directly affect payroll order, cash flow and monthly staffing plans." data-copy-ru="Изменения минимальной зарплаты и страховых коэффициентов стоит отслеживать как отдельный поток новостей, потому что они напрямую влияют на payroll, cash flow и ежемесячное планирование персонала." data-copy-ar="يجب متابعة تغيرات الحد الأدنى للأجور ومعاملات التأمين كما لو كانت تدفق أخبار مستقل لأنها تؤثر مباشرة في نظام الرواتب والتدفق النقدي وتخطيط الموظفين الشهري.">Asgari ücret ve sigorta çarpanlarındaki değişiklikler bordro düzeni, nakit akışı ve aylık personel planlamasında doğrudan etkili olduğu için ayrı bir haber akışı gibi izlenmelidir.</p>
+                  <a class="newsroom-link" href="./hizmetler.html" data-copy-tr="İlgili Hizmeti Gör" data-copy-en="View Related Service" data-copy-ru="Открыть связанную услугу" data-copy-ar="اعرض الخدمة المرتبطة">İlgili Hizmeti Gör</a>
+                </div>
+              </article>
+
+              <article class="newsroom-post reveal">
+                <div class="newsroom-media media-gazette">
+                  <span class="newsroom-media-badge" data-copy-tr="Resmi Gazete" data-copy-en="Official Gazette" data-copy-ru="Официальная газета" data-copy-ar="الجريدة الرسمية">Resmi Gazete</span>
+                  <strong class="newsroom-media-strong" data-copy-tr="Karar Akışı" data-copy-en="Decision Flow" data-copy-ru="Поток решений" data-copy-ar="تدفق القرارات">Karar Akışı</strong>
+                  <span class="newsroom-media-note" data-copy-tr="Tüzük, kurul ve mevzuat güncellemeleri" data-copy-en="Regulation, board and legislation updates" data-copy-ru="Обновления по положениям, советам и законодательству" data-copy-ar="تحديثات اللوائح والمجالس والتشريعات">Tüzük, kurul ve mevzuat güncellemeleri</span>
+                </div>
+                <div class="newsroom-post-copy">
+                  <div class="newsroom-meta">
+                    <span data-copy-tr="Uyum" data-copy-en="Compliance" data-copy-ru="Комплаенс" data-copy-ar="الامتثال">Uyum</span>
+                    <span data-copy-tr="Resmi akış" data-copy-en="Official flow" data-copy-ru="Официальный поток" data-copy-ar="المسار الرسمي">Resmi akış</span>
+                  </div>
+                  <h4 data-copy-tr="Resmi gazete, tüzük ve kurul kararlarının etkisi" data-copy-en="The effect of official gazette, regulation and board decisions" data-copy-ru="Влияние официальной газеты, положений и решений советов" data-copy-ar="أثر الجريدة الرسمية واللوائح وقرارات المجالس">Resmi gazete, tüzük ve kurul kararlarının etkisi</h4>
+                  <p data-copy-tr="Kuruluş, izin, personel ve beyan süreçleri çoğu zaman tek büyük yasa değişikliğinden değil küçük kurul ve tüzük kararlarından etkilenir; bu yüzden kısa özet akış önemlidir." data-copy-en="Formation, licensing, personnel and filing processes are often shaped not by one major law change but by smaller board and regulation decisions, so a concise digest matters." data-copy-ru="Процессы регистрации, лицензий, персонала и отчётности часто меняются не одним крупным законом, а небольшими решениями советов и положений, поэтому важен краткий сводный поток." data-copy-ar="غالبًا ما تتأثر إجراءات التأسيس والتراخيص والموظفين والإقرارات ليس بقانون ضخم واحد بل بقرارات ولوائح أصغر، لذلك يظل الملخص المختصر مهمًا.">Kuruluş, izin, personel ve beyan süreçleri çoğu zaman tek büyük yasa değişikliğinden değil küçük kurul ve tüzük kararlarından etkilenir; bu yüzden kısa özet akış önemlidir.</p>
+                  <a class="newsroom-link" href="./mevzuat-rehberi.html" data-copy-tr="Mevzuat Rehberine Git" data-copy-en="Open the Legislation Guide" data-copy-ru="Открыть гид по законодательству" data-copy-ar="افتح دليل التشريعات">Mevzuat Rehberine Git</a>
+                </div>
+              </article>
+
+              <article class="newsroom-post reveal">
+                <div class="newsroom-media media-sector">
+                  <span class="newsroom-media-badge" data-copy-tr="Sektör" data-copy-en="Sector" data-copy-ru="Сектор" data-copy-ar="القطاع">Sektör</span>
+                  <strong class="newsroom-media-strong" data-copy-tr="Lisans ve Vergi" data-copy-en="Licensing and Tax" data-copy-ru="Лицензии и налоги" data-copy-ar="الترخيص والضرائب">Lisans ve Vergi</strong>
+                  <span class="newsroom-media-note" data-copy-tr="Faaliyete göre değişen başlıklar" data-copy-en="Items shifting by activity type" data-copy-ru="Темы, меняющиеся по виду деятельности" data-copy-ar="عناوين تتغير حسب نوع النشاط">Faaliyete göre değişen başlıklar</span>
+                </div>
+                <div class="newsroom-post-copy">
+                  <div class="newsroom-meta">
+                    <span data-copy-tr="Sürekli izleme" data-copy-en="Continuous watch" data-copy-ru="Постоянный контроль" data-copy-ar="مراقبة مستمرة">Sürekli izleme</span>
+                    <span data-copy-tr="Sektörel etki" data-copy-en="Sector impact" data-copy-ru="Отраслевое влияние" data-copy-ar="أثر قطاعي">Sektörel etki</span>
+                  </div>
+                  <h4 data-copy-tr="Sektörel vergi, lisans ve operasyon düzenlemeleri" data-copy-en="Sector-specific tax, licensing and operating regulations" data-copy-ru="Отраслевые налоги, лицензии и операционные правила" data-copy-ar="الضرائب والترخيص والتنظيمات التشغيلية حسب القطاع">Sektörel vergi, lisans ve operasyon düzenlemeleri</h4>
+                  <p data-copy-tr="Turizm, ithalat, inşaat, enerji ve hizmet sektörlerinde aynı vergi çerçevesi yeterli olmaz. Sektöre özel kararlar ayrı haber kartlarıyla izlenmelidir." data-copy-en="Tourism, import, construction, energy and service businesses cannot rely on one generic tax frame. Sector-specific decisions deserve their own monitoring cards." data-copy-ru="Туризм, импорт, строительство, энергетика и сервисный бизнес не могут опираться на единый общий налоговый каркас. Отраслевые решения стоит отслеживать отдельными карточками." data-copy-ar="لا يكفي إطار ضريبي عام واحد للسياحة والاستيراد والإنشاء والطاقة والخدمات. لذلك يجب متابعة القرارات الخاصة بكل قطاع عبر بطاقات مستقلة.">Turizm, ithalat, inşaat, enerji ve hizmet sektörlerinde aynı vergi çerçevesi yeterli olmaz. Sektöre özel kararlar ayrı haber kartlarıyla izlenmelidir.</p>
+                  <a class="newsroom-link" href="./sektorler.html" data-copy-tr="Sektör Başlıklarını Aç" data-copy-en="Open Sector Topics" data-copy-ru="Открыть отраслевые темы" data-copy-ar="افتح عناوين القطاعات">Sektör Başlıklarını Aç</a>
+                </div>
+              </article>
+
+              <article class="newsroom-post reveal" hidden data-initially-hidden="true">
+                <div class="newsroom-media media-tax">
+                  <span class="newsroom-media-badge" data-copy-tr="Yatırım" data-copy-en="Investment" data-copy-ru="Инвестиции" data-copy-ar="الاستثمار">Yatırım</span>
+                  <strong class="newsroom-media-strong" data-copy-tr="Kur ve Sözleşme" data-copy-en="Rates and Contracts" data-copy-ru="Курсы и договоры" data-copy-ar="الأسعار والعقود">Kur ve Sözleşme</strong>
+                  <span class="newsroom-media-note" data-copy-tr="Dövizli dosyalarda karar hızı" data-copy-en="Decision speed in FX-based files" data-copy-ru="Скорость решения в валютных досье" data-copy-ar="سرعة القرار في الملفات ذات العملات الأجنبية">Dövizli dosyalarda karar hızı</span>
+                </div>
+                <div class="newsroom-post-copy">
+                  <div class="newsroom-meta">
+                    <span data-copy-tr="Kur etkisi" data-copy-en="FX impact" data-copy-ru="Валютное влияние" data-copy-ar="أثر العملات">Kur etkisi</span>
+                    <span data-copy-tr="Sözleşme" data-copy-en="Contracts" data-copy-ru="Договоры" data-copy-ar="العقود">Sözleşme</span>
+                  </div>
+                  <h4 data-copy-tr="Yatırım dosyalarında kur hareketi ve sözleşme dili" data-copy-en="Exchange-rate movement and contract language in investment files" data-copy-ru="Движение курса и язык договоров в инвестиционных досье" data-copy-ar="حركة سعر الصرف ولغة العقود في ملفات الاستثمار">Yatırım dosyalarında kur hareketi ve sözleşme dili</h4>
+                  <p data-copy-tr="Dövizli kira, sermaye ve hizmet sözleşmeleri hazırlanırken kur yönü tek başına fiyat değil, nakit akışı ve ödeme temposu açısından da yeniden okunmalıdır." data-copy-en="When FX-based rent, capital and service contracts are prepared, exchange direction should be reconsidered not only for price but also for cash flow and payment rhythm." data-copy-ru="При подготовке валютных договоров аренды, капитала и услуг курс нужно перечитывать не только с точки зрения цены, но и cash flow и графика платежей." data-copy-ar="عند إعداد عقود الإيجار ورأس المال والخدمات المقومة بالعملات الأجنبية يجب إعادة قراءة اتجاه السعر ليس من ناحية السعر فقط بل من ناحية التدفق النقدي وإيقاع السداد أيضًا.">Dövizli kira, sermaye ve hizmet sözleşmeleri hazırlanırken kur yönü tek başına fiyat değil, nakit akışı ve ödeme temposu açısından da yeniden okunmalıdır.</p>
+                  <a class="newsroom-link" href="./kktcde-sirket-kurma.html" data-copy-tr="Kuruluş Akışına Git" data-copy-en="Open Formation Flow" data-copy-ru="Открыть процесс регистрации" data-copy-ar="افتح مسار التأسيس">Kuruluş Akışına Git</a>
+                </div>
+              </article>
+
+              <article class="newsroom-post reveal" hidden data-initially-hidden="true">
+                <div class="newsroom-media media-labor">
+                  <span class="newsroom-media-badge" data-copy-tr="Çalışma Hayatı" data-copy-en="Working Life" data-copy-ru="Трудовая жизнь" data-copy-ar="الحياة العملية">Çalışma Hayatı</span>
+                  <strong class="newsroom-media-strong" data-copy-tr="İş Yasası" data-copy-en="Labor Law" data-copy-ru="Трудовое право" data-copy-ar="قانون العمل">İş Yasası</strong>
+                  <span class="newsroom-media-note" data-copy-tr="Mesai, izin ve işveren yükümlülükleri" data-copy-en="Overtime, leave and employer obligations" data-copy-ru="Сверхурочные, отпуска и обязанности работодателя" data-copy-ar="ساعات العمل والإجازات والتزامات صاحب العمل">Mesai, izin ve işveren yükümlülükleri</span>
+                </div>
+                <div class="newsroom-post-copy">
+                  <div class="newsroom-meta">
+                    <span data-copy-tr="İK" data-copy-en="HR" data-copy-ru="HR" data-copy-ar="الموارد البشرية">İK</span>
+                    <span data-copy-tr="Günlük uygulama" data-copy-en="Daily practice" data-copy-ru="Ежедневная практика" data-copy-ar="التطبيق اليومي">Günlük uygulama</span>
+                  </div>
+                  <h4 data-copy-tr="Mesai, izin ve personel düzenlemelerinde güncel okuma ihtiyacı" data-copy-en="The need for current reading in overtime, leave and staffing rules" data-copy-ru="Необходимость актуального чтения правил по сверхурочной работе, отпускам и персоналу" data-copy-ar="الحاجة إلى قراءة محدثة لقواعد الدوام والإجازات والموظفين">Mesai, izin ve personel düzenlemelerinde güncel okuma ihtiyacı</h4>
+                  <p data-copy-tr="Küçük metin değişiklikleri dahi işveren uygulamasını, bordro kalemlerini ve sözleşme dipnotlarını etkileyebildiği için bu alan sadece hukuk değil operasyon takibidir." data-copy-en="Even small wording changes can affect employer practice, payroll lines and contract footnotes, so this field is not only legal but also operational monitoring." data-copy-ru="Даже небольшие изменения формулировок могут влиять на практику работодателя, строки payroll и примечания в договорах, поэтому это не только право, но и операционный мониторинг." data-copy-ar="حتى التغييرات الصغيرة في الصياغة قد تؤثر في ممارسة صاحب العمل وبنود الرواتب وهوامش العقود، لذلك فهذا المجال ليس قانونيًا فقط بل متابعة تشغيلية أيضًا.">Küçük metin değişiklikleri dahi işveren uygulamasını, bordro kalemlerini ve sözleşme dipnotlarını etkileyebildiği için bu alan sadece hukuk değil operasyon takibidir.</p>
+                  <a class="newsroom-link" href="./sss.html" data-copy-tr="SSS ve Süreçleri Aç" data-copy-en="Open FAQ and Processes" data-copy-ru="Открыть FAQ и процессы" data-copy-ar="افتح الأسئلة الشائعة والإجراءات">SSS ve Süreçleri Aç</a>
+                </div>
+              </article>
+            </div>
+
+            <button class="newsroom-more" type="button" data-feed-target="newsroom-news-feed" data-copy-tr="Daha Fazla Haber Göster" data-copy-en="Load More News" data-copy-ru="Показать больше новостей" data-copy-ar="اعرض المزيد من الأخبار">Daha Fazla Haber Göster</button>
+          </section>
+
+          <section class="newsroom-column newsroom-column-accent">
+            <div class="newsroom-column-head">
+              <h3 data-copy-tr="Güncel Takip" data-copy-en="Current Tracking" data-copy-ru="Актуальный контроль" data-copy-ar="المتابعة الحالية">Güncel Takip</h3>
+              <p data-copy-tr="Kurlar, vergi takvimi, son başvuru tarihleri ve resmi doğrulama akışını tek bakışta izleyin." data-copy-en="Track rates, tax calendar, key deadlines and official verification flow at a glance." data-copy-ru="Следите за курсами, налоговым календарём, ключевыми сроками и официальным потоком проверки одним взглядом." data-copy-ar="تابع الأسعار والتقويم الضريبي والمواعيد النهائية ومسار التحقق الرسمي بنظرة واحدة.">Kurlar, vergi takvimi, son başvuru tarihleri ve resmi doğrulama akışını tek bakışta izleyin.</p>
+            </div>
+
+            <div class="newsroom-feed" id="newsroom-notice-feed">
+              <article class="newsroom-post reveal">
+                <div class="newsroom-media media-rates">
+                  <span class="newsroom-media-badge" data-copy-tr="Canlı Kur" data-copy-en="Live Rates" data-copy-ru="Живые курсы" data-copy-ar="الأسعار المباشرة">Canlı Kur</span>
+                  <strong class="newsroom-media-strong">USD<br>EUR<br>GBP</strong>
+                  <span class="newsroom-media-note" data-copy-tr="KKTC Merkez Bankası XML akışı" data-copy-en="TRNC Central Bank XML feed" data-copy-ru="XML-поток Центрального банка ТРСК" data-copy-ar="موجز XML للبنك المركزي في شمال قبرص">KKTC Merkez Bankası XML akışı</span>
+                </div>
+                <div class="newsroom-post-copy">
+                  <div class="newsroom-meta">
+                    <span data-copy-tr="Kur Takibi" data-copy-en="Rate Watch" data-copy-ru="Мониторинг курсов" data-copy-ar="متابعة الأسعار">Kur Takibi</span>
+                    <span id="newsroom-rates-date">Son kontrol: yükleniyor...</span>
+                  </div>
+                  <h4 data-copy-tr="KKTC Merkez Bankası gösterge kurları" data-copy-en="TRNC Central Bank benchmark rates" data-copy-ru="Официальные курсы Центрального банка ТРСК" data-copy-ar="الأسعار الإرشادية للبنك المركزي في شمال قبرص">KKTC Merkez Bankası gösterge kurları</h4>
+                  <p data-copy-tr="Kur kartı resmi XML kaynağından beslenir ve sayfa açık kaldıkça düzenli aralıklarla yeniden kontrol edilir." data-copy-en="This rate card is fed by the official XML source and checks again at regular intervals while the page remains open." data-copy-ru="Карточка курсов получает данные из официального XML-источника и перепроверяется через регулярные интервалы, пока страница открыта." data-copy-ar="تتغذى بطاقة الأسعار من مصدر XML الرسمي وتعيد التحقق على فترات منتظمة ما دامت الصفحة مفتوحة.">Kur kartı resmi XML kaynağından beslenir ve sayfa açık kaldıkça düzenli aralıklarla yeniden kontrol edilir.</p>
+                  <div class="newsroom-rate-grid" id="newsroom-rates-grid">
+                    <div class="newsroom-rate-row" data-currency-code="USD"><span>USD</span><strong><small data-copy-tr="Alış" data-copy-en="Buy" data-copy-ru="Покупка" data-copy-ar="شراء">Alış</small><span data-rate-role="buy">--</span></strong><strong><small data-copy-tr="Satış" data-copy-en="Sell" data-copy-ru="Продажа" data-copy-ar="بيع">Satış</small><span data-rate-role="sell">--</span></strong></div>
+                    <div class="newsroom-rate-row" data-currency-code="EUR"><span>EUR</span><strong><small data-copy-tr="Alış" data-copy-en="Buy" data-copy-ru="Покупка" data-copy-ar="شراء">Alış</small><span data-rate-role="buy">--</span></strong><strong><small data-copy-tr="Satış" data-copy-en="Sell" data-copy-ru="Продажа" data-copy-ar="بيع">Satış</small><span data-rate-role="sell">--</span></strong></div>
+                    <div class="newsroom-rate-row" data-currency-code="GBP"><span>GBP</span><strong><small data-copy-tr="Alış" data-copy-en="Buy" data-copy-ru="Покупка" data-copy-ar="شراء">Alış</small><span data-rate-role="buy">--</span></strong><strong><small data-copy-tr="Satış" data-copy-en="Sell" data-copy-ru="Продажа" data-copy-ar="بيع">Satış</small><span data-rate-role="sell">--</span></strong></div>
+                  </div>
+                  <div class="newsroom-rate-source" id="newsroom-rates-source">Kaynak: KKTC Merkez Bankası resmi XML yayını.</div>
+                  <div class="newsroom-rate-status" id="newsroom-rates-status" data-state="loading">Canlı kur verisi yükleniyor...</div>
+                  <a class="newsroom-link" href="https://mb.gov.ct.tr/kur/gunluk.xml" target="_blank" rel="noopener noreferrer" data-copy-tr="XML Kaynağını Aç" data-copy-en="Open XML Feed" data-copy-ru="Открыть XML-источник" data-copy-ar="افتح مصدر XML">XML Kaynağını Aç</a>
+                </div>
+              </article>
+
+              <article class="newsroom-post reveal">
+                <div class="newsroom-media media-calendar">
+                  <span class="newsroom-media-badge" data-copy-tr="Vergi Takvimi" data-copy-en="Tax Calendar" data-copy-ru="Налоговый календарь" data-copy-ar="التقويم الضريبي">Vergi Takvimi</span>
+                  <strong class="newsroom-media-strong" data-copy-tr="25 Mayıs" data-copy-en="May 25" data-copy-ru="25 мая" data-copy-ar="25 مايو">25 Mayıs</strong>
+                  <span class="newsroom-media-note" data-copy-tr="2025 GV/KV beyanı için öne çıkan tarih" data-copy-en="Key date for 2025 IT/CT filing" data-copy-ru="Ключевая дата по декларациям НД/КН за 2025" data-copy-ar="التاريخ الأبرز لإقرارات 2025">2025 GV/KV beyanı için öne çıkan tarih</span>
+                </div>
+                <div class="newsroom-post-copy">
+                  <div class="newsroom-meta">
+                    <span data-copy-tr="Resmi takvim" data-copy-en="Official calendar" data-copy-ru="Официальный календарь" data-copy-ar="التقويم الرسمي">Resmi takvim</span>
+                    <span data-copy-tr="2026" data-copy-en="2026" data-copy-ru="2026" data-copy-ar="2026">2026</span>
+                  </div>
+                  <h4 data-copy-tr="Öne çıkan vergi takvimi ve beyan gündemi" data-copy-en="Highlighted tax calendar and filing agenda" data-copy-ru="Ключевой налоговый календарь и повестка подачи" data-copy-ar="أبرز مواعيد التقويم الضريبي والإقرارات">Öne çıkan vergi takvimi ve beyan gündemi</h4>
+                  <p data-copy-tr="Beyan tarihleri, resmi uzatma kararları ve takvim dokümanları işletme sahiplerinin ay sonu akışında erken görülmesi gereken başlıklardır." data-copy-en="Filing dates, official extension decisions and calendar documents are items business owners should see early in their month-end flow." data-copy-ru="Сроки подачи, официальные решения о продлении и календарные документы — это темы, которые владельцы бизнеса должны видеть заранее в своём месячном потоке." data-copy-ar="تاريخ الإقرارات وقرارات التمديد الرسمية ووثائق التقويم من العناوين التي يجب أن يراها أصحاب الأعمال مبكرًا ضمن مسارهم الشهري.">Beyan tarihleri, resmi uzatma kararları ve takvim dokümanları işletme sahiplerinin ay sonu akışında erken görülmesi gereken başlıklardır.</p>
+                  <div class="newsroom-points">
+                    <div class="newsroom-point"><span data-copy-tr="2025 GV/KV Beyanı" data-copy-en="2025 IT/CT Return" data-copy-ru="Декларации НД/КН за 2025" data-copy-ar="إقرارا ضريبة الدخل والشركات 2025">2025 GV/KV Beyanı</span><strong>25 Mayıs 2026</strong></div>
+                    <div class="newsroom-point"><span data-copy-tr="Vergi takvimi dokümanı" data-copy-en="Tax calendar document" data-copy-ru="Документ налогового календаря" data-copy-ar="مستند التقويم الضريبي">Vergi takvimi dokümanı</span><strong data-copy-tr="Resmi sitede" data-copy-en="On official site" data-copy-ru="На официальном сайте" data-copy-ar="على الموقع الرسمي">Resmi sitede</strong></div>
+                  </div>
+                  <a class="newsroom-link" href="https://vergi.gov.ct.tr/?q=content%2Fvergi-beyanname-verme-ve-%C3%B6deme-takvimi" target="_blank" rel="noopener noreferrer" data-copy-tr="Vergi Takvimini Aç" data-copy-en="Open Tax Calendar" data-copy-ru="Открыть налоговый календарь" data-copy-ar="افتح التقويم الضريبي">Vergi Takvimini Aç</a>
+                </div>
+              </article>
+
+              <article class="newsroom-post reveal">
+                <div class="newsroom-media media-deadline">
+                  <span class="newsroom-media-badge" data-copy-tr="Başvuru" data-copy-en="Deadlines" data-copy-ru="Сроки" data-copy-ar="المواعيد">Başvuru</span>
+                  <strong class="newsroom-media-strong" data-copy-tr="Portal ve Son Tarih" data-copy-en="Portal and Deadline" data-copy-ru="Портал и сроки" data-copy-ar="البوابة والمواعيد">Portal ve Son Tarih</strong>
+                  <span class="newsroom-media-note" data-copy-tr="Yetkili ekranlar ve duyuru akışı" data-copy-en="Authorized screens and notice flow" data-copy-ru="Уполномоченные экраны и поток объявлений" data-copy-ar="الشاشات المعتمدة وتدفق الإعلانات">Yetkili ekranlar ve duyuru akışı</span>
+                </div>
+                <div class="newsroom-post-copy">
+                  <div class="newsroom-meta">
+                    <span data-copy-tr="Yakın takip" data-copy-en="Close watch" data-copy-ru="Близкий контроль" data-copy-ar="متابعة قريبة">Yakın takip</span>
+                    <span data-copy-tr="Portal" data-copy-en="Portal" data-copy-ru="Портал" data-copy-ar="البوابة">Portal</span>
+                  </div>
+                  <h4 data-copy-tr="Yakın takip gerektiren başvuru ve işlem başlıkları" data-copy-en="Application and process items that need close tracking" data-copy-ru="Заявления и процессы, требующие внимательного контроля" data-copy-ar="طلبات وإجراءات تحتاج متابعة دقيقة">Yakın takip gerektiren başvuru ve işlem başlıkları</h4>
+                  <p data-copy-tr="Beyan uzatmaları, portal duyuruları ve kurum bazlı işlem ekranları yıl içinde ani değişebildiği için bu kart operasyon ekipleri için günlük kısa kontrol listesi gibi çalışır." data-copy-en="Filing extensions, portal notices and institution-specific action screens can shift during the year, so this card works like a daily short control list for operations teams." data-copy-ru="Продления сроков, портальные объявления и экраны действий по учреждениям могут резко меняться в течение года, поэтому эта карточка работает как ежедневный краткий чек-лист для операционных команд." data-copy-ar="قد تتغير تمديدات الإقرارات وإعلانات البوابات وشاشات الإجراءات الخاصة بالمؤسسات خلال العام بسرعة، لذلك تعمل هذه البطاقة كقائمة فحص يومية مختصرة لفرق التشغيل.">Beyan uzatmaları, portal duyuruları ve kurum bazlı işlem ekranları yıl içinde ani değişebildiği için bu kart operasyon ekipleri için günlük kısa kontrol listesi gibi çalışır.</p>
+                  <div class="newsroom-points">
+                    <div class="newsroom-point"><span data-copy-tr="Gelir/Kurumlar Vergisi uzatması" data-copy-en="Income/Corporate Tax extension" data-copy-ru="Продление по подоходному/корпоративному налогу" data-copy-ar="تمديد ضريبة الدخل/الشركات">Gelir/Kurumlar Vergisi uzatması</span><strong>25 Mayıs 2026</strong></div>
+                    <div class="newsroom-point"><span data-copy-tr="Vergi portalı ve e-tebligat" data-copy-en="Tax portal and e-notice" data-copy-ru="Налоговый портал и e-уведомления" data-copy-ar="بوابة الضرائب والإشعارات الإلكترونية">Vergi portalı ve e-tebligat</span><strong data-copy-tr="Düzenli kontrol" data-copy-en="Check regularly" data-copy-ru="Проверять регулярно" data-copy-ar="تحقق بانتظام">Düzenli kontrol</strong></div>
+                  </div>
+                  <a class="newsroom-link" href="https://www.vergi.gov.ct.tr/" target="_blank" rel="noopener noreferrer" data-copy-tr="Vergi Duyurularını Aç" data-copy-en="Open Tax Notices" data-copy-ru="Открыть налоговые объявления" data-copy-ar="افتح الإعلانات الضريبية">Vergi Duyurularını Aç</a>
+                </div>
+              </article>
+
+              <article class="newsroom-post reveal" hidden data-initially-hidden="true">
+                <div class="newsroom-media media-holiday">
+                  <span class="newsroom-media-badge" data-copy-tr="Resmi Tarihler" data-copy-en="Official Dates" data-copy-ru="Официальные даты" data-copy-ar="التواريخ الرسمية">Resmi Tarihler</span>
+                  <strong class="newsroom-media-strong" data-copy-tr="Tatil Planı" data-copy-en="Holiday Plan" data-copy-ru="План праздников" data-copy-ar="خطة العطل">Tatil Planı</strong>
+                  <span class="newsroom-media-note" data-copy-tr="Bordro ve ödeme akışına etki eden günler" data-copy-en="Days affecting payroll and payment flow" data-copy-ru="Дни, влияющие на payroll и платёжный поток" data-copy-ar="أيام تؤثر في الرواتب وتدفق السداد">Bordro ve ödeme akışına etki eden günler</span>
+                </div>
+                <div class="newsroom-post-copy">
+                  <div class="newsroom-meta">
+                    <span data-copy-tr="Planlama" data-copy-en="Planning" data-copy-ru="Планирование" data-copy-ar="التخطيط">Planlama</span>
+                    <span data-copy-tr="2026" data-copy-en="2026" data-copy-ru="2026" data-copy-ar="2026">2026</span>
+                  </div>
+                  <h4 data-copy-tr="Planlamada öne çıkan resmi tatiller ve işlem günleri" data-copy-en="Public holidays and key action days that matter in planning" data-copy-ru="Праздники и ключевые рабочие дни, важные для планирования" data-copy-ar="العطل الرسمية وأيام الإجراءات المهمة في التخطيط">Planlamada öne çıkan resmi tatiller ve işlem günleri</h4>
+                  <p data-copy-tr="Resmi tatiller yalnızca çalışma günü takvimi değil; bordro kapanışı, ödeme temposu, banka hareketi ve resmi randevu yoğunluğu açısından da önceden okunmalıdır." data-copy-en="Public holidays matter not only for working-day count, but also for payroll close, payment rhythm, bank movement and public appointment density." data-copy-ru="Официальные праздники важны не только для количества рабочих дней, но и для закрытия payroll, ритма платежей, банковских движений и загруженности госвстреч." data-copy-ar="لا تهم العطل الرسمية فقط من ناحية عدد أيام العمل، بل أيضًا من ناحية إغلاق الرواتب وإيقاع المدفوعات وحركة البنوك وكثافة المواعيد الرسمية.">Resmi tatiller yalnızca çalışma günü takvimi değil; bordro kapanışı, ödeme temposu, banka hareketi ve resmi randevu yoğunluğu açısından da önceden okunmalıdır.</p>
+                  <div class="newsroom-points">
+                    <div class="newsroom-point"><span data-copy-tr="Barış ve Özgürlük Bayramı" data-copy-en="Peace and Freedom Day" data-copy-ru="День мира и свободы" data-copy-ar="يوم السلام والحرية">Barış ve Özgürlük Bayramı</span><strong>20 Temmuz 2026</strong></div>
+                    <div class="newsroom-point"><span data-copy-tr="Cumhuriyet Bayramı (KKTC)" data-copy-en="Republic Day (TRNC)" data-copy-ru="День Республики (ТРСК)" data-copy-ar="عيد الجمهورية (شمال قبرص)">Cumhuriyet Bayramı (KKTC)</span><strong>15 Kasım 2026</strong></div>
+                  </div>
+                  <a class="newsroom-link" href="./bize-ulasin.html" data-copy-tr="Planlama Desteği Al" data-copy-en="Get Planning Support" data-copy-ru="Получить поддержку по планированию" data-copy-ar="احصل على دعم التخطيط">Planlama Desteği Al</a>
+                </div>
+              </article>
+
+              <article class="newsroom-post reveal" hidden data-initially-hidden="true">
+                <div class="newsroom-media media-sources">
+                  <span class="newsroom-media-badge" data-copy-tr="Resmi Kaynaklar" data-copy-en="Official Sources" data-copy-ru="Официальные источники" data-copy-ar="المصادر الرسمية">Resmi Kaynaklar</span>
+                  <strong class="newsroom-media-strong" data-copy-tr="Doğrulama Akışı" data-copy-en="Verification Flow" data-copy-ru="Поток проверки" data-copy-ar="مسار التحقق">Doğrulama Akışı</strong>
+                  <span class="newsroom-media-note" data-copy-tr="Nihai işlem öncesi son kontrol hattı" data-copy-en="Final check line before action" data-copy-ru="Финальная линия проверки перед действием" data-copy-ar="خط التحقق الأخير قبل الإجراء">Nihai işlem öncesi son kontrol hattı</span>
+                </div>
+                <div class="newsroom-post-copy">
+                  <div class="newsroom-meta">
+                    <span data-copy-tr="Kontrol listesi" data-copy-en="Checklist" data-copy-ru="Чек-лист" data-copy-ar="قائمة التحقق">Kontrol listesi</span>
+                    <span data-copy-tr="Resmi ekran" data-copy-en="Official screen" data-copy-ru="Официальный экран" data-copy-ar="الشاشة الرسمية">Resmi ekran</span>
+                  </div>
+                  <h4 data-copy-tr="Nihai işlem öncesi kontrol edilmesi gereken kaynaklar" data-copy-en="Sources that should be checked before final action" data-copy-ru="Источники, которые нужно проверить перед финальным действием" data-copy-ar="المصادر التي يجب فحصها قبل الإجراء النهائي">Nihai işlem öncesi kontrol edilmesi gereken kaynaklar</h4>
+                  <p data-copy-tr="Bu bölüm hızlı ön okuma sunar; kesin işlem öncesinde resmi kur sayfası, vergi duyurusu, e-tebligat ekranı ve ilgili kurum portalı mutlaka son kez açılmalıdır." data-copy-en="This page offers a fast pre-read; before any final action, the official rate page, tax notice, e-notice screen and related authority portal should always be opened one last time." data-copy-ru="Эта страница даёт быстрый предварительный обзор; перед финальным действием всегда нужно ещё раз открыть официальную страницу курсов, налоговое уведомление, e-notice и портал соответствующего органа." data-copy-ar="تقدم هذه الصفحة قراءة تمهيدية سريعة؛ وقبل أي إجراء نهائي يجب دائمًا فتح صفحة الأسعار الرسمية والإعلان الضريبي وشاشة الإشعارات الإلكترونية وبوابة الجهة المعنية مرة أخيرة.">Bu bölüm hızlı ön okuma sunar; kesin işlem öncesinde resmi kur sayfası, vergi duyurusu, e-tebligat ekranı ve ilgili kurum portalı mutlaka son kez açılmalıdır.</p>
+                  <div class="newsroom-links">
+                    <div class="newsroom-link-row"><span data-copy-tr="KKTC Merkez Bankası" data-copy-en="TRNC Central Bank" data-copy-ru="Центральный банк ТРСК" data-copy-ar="البنك المركزي في شمال قبرص">KKTC Merkez Bankası</span><strong data-copy-tr="Kur ekranı" data-copy-en="Rate screen" data-copy-ru="Экран курсов" data-copy-ar="شاشة الأسعار">Kur ekranı</strong></div>
+                    <div class="newsroom-link-row"><span data-copy-tr="Vergi Dairesi" data-copy-en="Tax Office" data-copy-ru="Налоговое управление" data-copy-ar="دائرة الضرائب">Vergi Dairesi</span><strong data-copy-tr="Duyuru ve takvim" data-copy-en="Notices and calendar" data-copy-ru="Объявления и календарь" data-copy-ar="الإعلانات والتقويم">Duyuru ve takvim</strong></div>
+                  </div>
+                  <a class="newsroom-link" href="./yasalar-vergiler.html" data-copy-tr="Kaynak Çerçevesini Gör" data-copy-en="View the Source Framework" data-copy-ru="Открыть рамку источников" data-copy-ar="اعرض إطار المصادر">Kaynak Çerçevesini Gör</a>
+                </div>
+              </article>
+            </div>
+
+            <button class="newsroom-more" type="button" data-feed-target="newsroom-notice-feed" data-copy-tr="Daha Fazla Duyuru Göster" data-copy-en="Load More Notices" data-copy-ru="Показать больше уведомлений" data-copy-ar="اعرض المزيد من الإشعارات">Daha Fazla Duyuru Göster</button>
+          </section>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="notice" data-copy-tr="Not: Bu haber merkezi hızlı takip ve ilk değerlendirme amacıyla kurgulandı. Özellikle vergi, beyan, son başvuru ve dini tatil tarihlerinde nihai işlemden önce resmi kaynaktan son doğrulama yapılmalıdır." data-copy-en="Note: This news desk is designed for fast tracking and initial evaluation. Especially for tax, filing, deadline and religious holiday dates, a final confirmation should be made from the official source before action." data-copy-ru="Примечание: этот новостной центр создан для быстрого мониторинга и первичной оценки. Особенно по налогам, подаче, срокам и религиозным праздникам перед действием нужно сделать финальную проверку по официальному источнику." data-copy-ar="ملاحظة: صُمم هذا المركز الإخباري للمتابعة السريعة والتقييم الأولي. وخاصة في تواريخ الضرائب والإقرارات والمواعيد النهائية والأعياد الدينية يجب إجراء التحقق الأخير من المصدر الرسمي قبل أي إجراء.">Not: Bu haber merkezi hızlı takip ve ilk değerlendirme amacıyla kurgulandı. Özellikle vergi, beyan, son başvuru ve dini tatil tarihlerinde nihai işlemden önce resmi kaynaktan son doğrulama yapılmalıdır.</div>
+    </section>
+
+    <section class="section">
+      <div class="cta-band">
+        <div>
+          <h3 data-copy-tr="Haber akışını mevzuat rehberiyle birlikte okuyun" data-copy-en="Read the news flow together with the legislation guide" data-copy-ru="Читайте новостной поток вместе с гидом по законодательству" data-copy-ar="اقرأ تدفق الأخبار مع دليل التشريعات">Haber akışını mevzuat rehberiyle birlikte okuyun</h3>
+          <p data-copy-tr="Hangi duyurunun hangi yasa başlığına temas ettiğini daha net ayırmak için Yasalar / Vergiler sayfasıyla birlikte ilerlemek karar kalitesini yükseltir." data-copy-en="Following this page together with the Laws / Taxes page helps you separate which notice touches which legal heading and improves decision quality." data-copy-ru="Если идти по этой странице вместе с разделом Законы / Налоги, легче отделять, какое уведомление связано с каким правовым блоком, и качество решений повышается." data-copy-ar="يساعدك التقدم في هذه الصفحة مع صفحة القوانين / الضرائب على التمييز بوضوح بين كل إعلان والعنوان القانوني الذي يمسه، ما يرفع جودة القرار.">Hangi duyurunun hangi yasa başlığına temas ettiğini daha net ayırmak için Yasalar / Vergiler sayfasıyla birlikte ilerlemek karar kalitesini yükseltir.</p>
+        </div>
+        <a class="btn-primary" href="./yasalar-vergiler.html" data-copy-tr="Yasalar / Vergiler Sayfası" data-copy-en="Open Laws / Taxes Page" data-copy-ru="Открыть страницу Законы / Налоги" data-copy-ar="افتح صفحة القوانين / الضرائب">Yasalar / Vergiler Sayfası</a>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <div class="page-footer-row">
+        <span>© 2026 Kaya Plus Muhasebe ve Mali Danışmanlık</span>
+        <span>Lefkoşa, Kuzey Kıbrıs</span>
+      </div>
+    </footer>
+  </main>
+  <script src="./assets/guide-language.js"></script>
+  <script>
+    const NEWSROOM_RATES_ENDPOINT = "/api/exchange-rates";
+    const NEWSROOM_RATES_REFRESH_MS = 15 * 60 * 1000;
+    const NEWSROOM_RATE_LOCALES = {
+      tr: "tr-TR",
+      en: "en-GB",
+      ru: "ru-RU",
+      fa: "fa-IR",
+    };
+    const NEWSROOM_RATE_TEXT = {
+      tr: {
+        source: "Kaynak: KKTC Merkez Bankası resmi XML yayını.",
+        loadingDate: "Son kontrol: yükleniyor...",
+        loadingStatus: "Canlı kur verisi yükleniyor...",
+        checkedAt(value) { return `Son kontrol: ${value}`; },
+        liveStatus(value, minutes) { return `Resmi kur tarihi ${value}. Kart ${minutes} dakikada bir yeniden kontrol edilir.`; },
+        errorStatus(value) { return `Canlı yenileme şu an tamamlanamadı. Son resmi tarih ${value}. Lütfen işlem öncesi resmi kaynağı da açın.`; },
+        unavailable: "Kur verisi şu anda alınamadı. Lütfen biraz sonra tekrar deneyin.",
+      },
+      en: {
+        source: "Source: TRNC Central Bank official XML feed.",
+        loadingDate: "Last checked: loading...",
+        loadingStatus: "Live exchange-rate data is loading...",
+        checkedAt(value) { return `Last checked: ${value}`; },
+        liveStatus(value, minutes) { return `Official rate date ${value}. The card checks again every ${minutes} minutes.`; },
+        errorStatus(value) { return `Live refresh could not be completed right now. Latest official date is ${value}. Please also open the official source before action.`; },
+        unavailable: "Exchange-rate data is unavailable right now. Please try again shortly.",
+      },
+      ru: {
+        source: "Источник: официальный XML-канал Центрального банка ТРСК.",
+        loadingDate: "Последняя проверка: загрузка...",
+        loadingStatus: "Загружаются актуальные курсы...",
+        checkedAt(value) { return `Последняя проверка: ${value}`; },
+        liveStatus(value, minutes) { return `Официальная дата курсов ${value}. Карточка перепроверяет данные каждые ${minutes} минут.`; },
+        errorStatus(value) { return `Сейчас не удалось завершить обновление. Последняя официальная дата ${value}. Перед действием откройте и официальный источник.`; },
+        unavailable: "Данные по курсам сейчас недоступны. Пожалуйста, попробуйте позже.",
+      },
+      fa: {
+        source: "المصدر: موجز XML الرسمي للبنك المركزي في شمال قبرص.",
+        loadingDate: "آخر تحقق: جارٍ التحميل...",
+        loadingStatus: "جارٍ تحميل بيانات أسعار الصرف المباشرة...",
+        checkedAt(value) { return `آخر تحقق: ${value}`; },
+        liveStatus(value, minutes) { return `تاريخ السعر الرسمي ${value}. تتم إعادة التحقق من البطاقة كل ${minutes} دقيقة.`; },
+        errorStatus(value) { return `تعذر إكمال التحديث المباشر الآن. آخر تاريخ رسمي هو ${value}. يرجى أيضًا فتح المصدر الرسمي قبل أي إجراء.`; },
+        unavailable: "بيانات أسعار الصرف غير متاحة الآن. يرجى المحاولة بعد قليل.",
+      },
+    };
+
+    const newsroomRatesState = {
+      data: null,
+      lastError: "",
+      isLoading: false,
+      timerId: null,
+      lastAttemptAt: 0,
+      initialized: false,
+    };
+
+    function getNewsroomLang() {
+      return document.documentElement.lang || document.querySelector(".guide-lang-btn.active")?.dataset.lang || "tr";
+    }
+
+    function syncNewsroomCopy() {
+      const lang = getNewsroomLang();
+      document.querySelectorAll("[data-copy-tr]").forEach((el) => {
+        const value = el.getAttribute(`data-copy-${lang}`) || el.getAttribute("data-copy-tr");
+        if (value) el.textContent = value;
+      });
+    }
+
+    function initNewsroomLoadMore() {
+      document.querySelectorAll(".newsroom-more").forEach((button) => {
+        const feed = document.getElementById(button.dataset.feedTarget || "");
+        if (!feed) {
+          button.hidden = true;
+          return;
+        }
+
+        const hiddenCards = Array.from(feed.querySelectorAll("[data-initially-hidden=\"true\"]"));
+        if (!hiddenCards.length) {
+          button.hidden = true;
+          return;
+        }
+
+        button.addEventListener("click", () => {
+          hiddenCards.forEach((card) => {
+            card.hidden = false;
+          });
+          button.hidden = true;
+        });
+      });
+    }
+
+    function getNewsroomRateElements() {
+      const grid = document.getElementById("newsroom-rates-grid");
+      if (!grid) return null;
+
+      return {
+        date: document.getElementById("newsroom-rates-date"),
+        source: document.getElementById("newsroom-rates-source"),
+        status: document.getElementById("newsroom-rates-status"),
+        rows: Array.from(grid.querySelectorAll("[data-currency-code]")).reduce((acc, row) => {
+          const code = row.dataset.currencyCode;
+          if (!code) return acc;
+          acc[code] = {
+            buy: row.querySelector("[data-rate-role=\"buy\"]"),
+            sell: row.querySelector("[data-rate-role=\"sell\"]"),
+          };
+          return acc;
+        }, {}),
+      };
+    }
+
+    function normalizeNewsroomRateDate(value) {
+      if (!value) return null;
+      if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+        return new Date(`${value}T12:00:00+03:00`);
+      }
+      const dottedMatch = value.match(/^(\d{2})[./-](\d{2})[./-](\d{4})$/);
+      if (dottedMatch) {
+        const [, day, month, year] = dottedMatch;
+        return new Date(`${year}-${month}-${day}T12:00:00+03:00`);
+      }
+      const parsed = new Date(value);
+      return Number.isNaN(parsed.getTime()) ? null : parsed;
+    }
+
+    function formatNewsroomRateDay(value) {
+      const parsed = normalizeNewsroomRateDate(value);
+      if (!parsed) return value || "--";
+      return new Intl.DateTimeFormat(NEWSROOM_RATE_LOCALES[getNewsroomLang()] || NEWSROOM_RATE_LOCALES.tr, {
+        dateStyle: "long",
+        timeZone: "Europe/Istanbul",
+      }).format(parsed);
+    }
+
+    function formatNewsroomRateDateTime(value) {
+      if (!value) return "--";
+      const parsed = new Date(value);
+      if (Number.isNaN(parsed.getTime())) return value;
+      return new Intl.DateTimeFormat(NEWSROOM_RATE_LOCALES[getNewsroomLang()] || NEWSROOM_RATE_LOCALES.tr, {
+        dateStyle: "long",
+        timeStyle: "short",
+        timeZone: "Europe/Istanbul",
+      }).format(parsed);
+    }
+
+    function formatNewsroomRateNumber(value) {
+      const number = Number.parseFloat(String(value || "").replace(",", "."));
+      if (!Number.isFinite(number)) return "--";
+      return number.toLocaleString(NEWSROOM_RATE_LOCALES[getNewsroomLang()] || NEWSROOM_RATE_LOCALES.tr, {
+        minimumFractionDigits: 4,
+        maximumFractionDigits: 4,
+      });
+    }
+
+    function syncNewsroomRatesUI() {
+      const elements = getNewsroomRateElements();
+      if (!elements) return;
+
+      const text = NEWSROOM_RATE_TEXT[getNewsroomLang()] || NEWSROOM_RATE_TEXT.tr;
+      elements.source.textContent = text.source;
+
+      if (!newsroomRatesState.data) {
+        elements.date.textContent = text.loadingDate;
+        elements.status.dataset.state = newsroomRatesState.lastError ? "error" : "loading";
+        elements.status.textContent = newsroomRatesState.lastError ? text.unavailable : text.loadingStatus;
+        return;
+      }
+
+      Object.entries(elements.rows).forEach(([code, row]) => {
+        const currency = newsroomRatesState.data?.currencies?.[code];
+        if (!currency) return;
+        if (row.buy) row.buy.textContent = formatNewsroomRateNumber(currency.buy);
+        if (row.sell) row.sell.textContent = formatNewsroomRateNumber(currency.sell);
+      });
+
+      elements.date.textContent = text.checkedAt(formatNewsroomRateDateTime(newsroomRatesState.data.fetchedAt));
+
+      const officialDate = formatNewsroomRateDay(newsroomRatesState.data.officialDate);
+      const refreshMinutes = newsroomRatesState.data.refreshIntervalMinutes || 15;
+
+      if (newsroomRatesState.lastError) {
+        elements.status.dataset.state = "error";
+        elements.status.textContent = text.errorStatus(officialDate);
+        return;
+      }
+
+      elements.status.dataset.state = "live";
+      elements.status.textContent = text.liveStatus(officialDate, refreshMinutes);
+    }
+
+    async function refreshNewsroomRates(options = {}) {
+      const elements = getNewsroomRateElements();
+      if (!elements || newsroomRatesState.isLoading) return;
+
+      newsroomRatesState.isLoading = true;
+      newsroomRatesState.lastAttemptAt = Date.now();
+
+      if (!options.silent || !newsroomRatesState.data) {
+        newsroomRatesState.lastError = "";
+        syncNewsroomRatesUI();
+      }
+
+      try {
+        const response = await fetch(NEWSROOM_RATES_ENDPOINT, {
+          headers: { Accept: "application/json" },
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const payload = await response.json();
+        if (!payload?.currencies?.USD?.buy || !payload?.currencies?.EUR?.buy || !payload?.currencies?.GBP?.buy) {
+          throw new Error("Incomplete exchange-rate payload.");
+        }
+
+        newsroomRatesState.data = payload;
+        newsroomRatesState.lastError = "";
+      } catch (error) {
+        console.warn("Newsroom exchange rates could not be refreshed.", error);
+        newsroomRatesState.lastError = error instanceof Error ? error.message : "fetch_failed";
+      } finally {
+        newsroomRatesState.isLoading = false;
+        syncNewsroomRatesUI();
+      }
+    }
+
+    function initNewsroomRates() {
+      if (newsroomRatesState.initialized) return;
+      const elements = getNewsroomRateElements();
+      if (!elements) return;
+
+      newsroomRatesState.initialized = true;
+      syncNewsroomRatesUI();
+      refreshNewsroomRates();
+
+      newsroomRatesState.timerId = window.setInterval(() => {
+        if (document.visibilityState === "visible") {
+          refreshNewsroomRates({ silent: true });
+        }
+      }, NEWSROOM_RATES_REFRESH_MS);
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState !== "visible") return;
+        if (Date.now() - newsroomRatesState.lastAttemptAt < 60 * 1000) return;
+        refreshNewsroomRates({ silent: true });
+      });
+    }
+
+    syncNewsroomCopy();
+    initNewsroomLoadMore();
+    initNewsroomRates();
+
+    document.querySelectorAll(".guide-lang-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        window.requestAnimationFrame(() => {
+          syncNewsroomCopy();
+          syncNewsroomRatesUI();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
