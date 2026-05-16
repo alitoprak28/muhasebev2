@@ -1019,6 +1019,193 @@ section { padding: var(--section-space) 0; }
   gap: var(--section-gap);
   margin-top: clamp(28px, 4vw, 44px);
 }
+.service-stack {
+  margin-top: clamp(28px, 4vw, 44px);
+  padding: clamp(28px, 3vw, 38px);
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(var(--white-rgb),0.99) 0%, rgba(var(--cream-rgb),0.92) 100%);
+  box-shadow: var(--shadow);
+}
+.service-stack-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 24px;
+  align-items: end;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(var(--blue-rgb),0.10);
+}
+.service-stack-copy h3 {
+  margin-top: 14px;
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.08;
+  color: var(--navy);
+}
+.service-stack-copy p {
+  margin-top: 12px;
+  max-width: 760px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+.service-stack-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+.service-stack-points span,
+.service-accordion-pills span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+  background: rgba(var(--white-rgb),0.9);
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.service-accordion {
+  margin-top: 22px;
+  display: grid;
+  gap: 16px;
+}
+.service-accordion-item {
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+  border-radius: 24px;
+  background: rgba(var(--white-rgb),0.84);
+  overflow: hidden;
+}
+.service-accordion-item summary {
+  list-style: none;
+}
+.service-accordion-item summary::-webkit-details-marker {
+  display: none;
+}
+.service-accordion-summary {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) 44px;
+  gap: 18px;
+  align-items: start;
+  padding: 22px 24px;
+  cursor: pointer;
+}
+.service-accordion-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.16), rgba(var(--accent-rgb),0.08));
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+  color: var(--navy);
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+}
+.service-accordion-head {
+  min-width: 0;
+}
+.service-accordion-kicker {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: var(--navy-light);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.service-accordion-head strong {
+  display: block;
+  color: var(--navy);
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  line-height: 1.16;
+}
+.service-accordion-head p {
+  margin-top: 10px;
+  max-width: 58ch;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.72;
+}
+.service-accordion-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--accent-rgb),0.14);
+  background: rgba(var(--white-rgb),0.92);
+}
+.service-accordion-toggle::before,
+.service-accordion-toggle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+}
+.service-accordion-toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.service-accordion-item[open] .service-accordion-toggle::after {
+  opacity: 0;
+}
+.service-accordion-body {
+  padding: 0 24px 24px 24px;
+}
+.service-accordion-body-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 24px;
+  padding-top: 6px;
+}
+.service-accordion-copy p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.78;
+}
+.service-accordion-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+.service-detail-list {
+  margin-top: 0;
+  padding: 0;
+}
+.service-stack-cta {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(var(--blue-rgb),0.10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.service-stack-cta strong {
+  display: block;
+  color: var(--navy);
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  line-height: 1.14;
+}
+.service-stack-cta p {
+  margin-top: 8px;
+  max-width: 700px;
+  color: var(--text-muted);
+}
 .service-card-media {
   margin: -28px -28px 20px;
   aspect-ratio: 16 / 10;
@@ -5447,6 +5634,8 @@ footer {
   section { padding: 96px 0; }
   footer { padding: 60px 32px 28px; }
   .service-hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .service-stack-intro,
+  .service-accordion-body-grid { grid-template-columns: 1fr; }
   .contact-grid { gap: 40px; }
   .updates-grid { grid-template-columns: 1fr; }
   .hero-focus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -5538,6 +5727,10 @@ footer {
   }
   .accounting-intro,
   .accounting-detail-grid { grid-template-columns: 1fr; }
+  .service-stack-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .section-visual-grid { grid-template-columns: 1fr; }
   .section-visual-art { min-height: 260px; }
   .formation-media,
@@ -5732,6 +5925,35 @@ footer {
   .tax-panel h3,
   .formation-card h3,
   .news-item h3 { font-size: 21px; }
+  .service-stack {
+    padding: 22px;
+    border-radius: 22px;
+  }
+  .service-stack-copy h3,
+  .service-stack-cta strong {
+    font-size: 26px;
+  }
+  .service-accordion-summary {
+    grid-template-columns: 54px minmax(0, 1fr) 38px;
+    gap: 14px;
+    padding: 18px;
+  }
+  .service-accordion-step {
+    width: 46px;
+    height: 46px;
+    border-radius: 16px;
+    font-size: 18px;
+  }
+  .service-accordion-head strong {
+    font-size: 22px;
+  }
+  .service-accordion-body {
+    padding: 0 18px 18px 18px;
+  }
+  .service-stack-cta .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
   .offshore-service-toggle {
     grid-template-columns: 1fr;
   }
@@ -7929,125 +8151,134 @@ body.intro-active {
     <h2 class="section-title reveal" data-tr="Muhasebe, vergi ve mali danışmanlık hizmet alanlarımız" data-en="Our accounting, tax and financial advisory services" data-ru="Наши услуги по бухгалтерии, налогам и финансовому консалтингу" data-fa="مجالات خدماتنا في المحاسبة والضرائب والاستشارات المالية">Muhasebe, vergi ve mali danışmanlık hizmet alanlarımız</h2>
     <p class="section-sub reveal" data-tr="Muhasebe yönetiminden vergi planlamasına, bordro takibinden resmi kayıt süreçlerine kadar ihtiyaç duyduğunuz başlıkları tek çatı altında, net sorumluluk alanlarıyla ve profesyonel takip disipliniyle sunuyoruz." data-en="From accounting management to tax planning, from payroll follow-up to official registration processes, we deliver the services your business needs under one roof with clear responsibility and professional follow-through." data-ru="От ведения бухгалтерии до налогового планирования, от сопровождения зарплат до официальных регистрационных процессов — мы предоставляем все нужные бизнесу услуги в одном месте, с чёткой ответственностью и профессиональным сопровождением." data-fa="من إدارة المحاسبة إلى التخطيط الضريبي، ومن متابعة الرواتب إلى إجراءات التسجيل الرسمية، نقدم الخدمات التي يحتاجها عملك تحت سقف واحد بمسؤوليات واضحة ومتابعة مهنية.">Muhasebe yönetiminden vergi planlamasına, bordro takibinden resmi kayıt süreçlerine kadar ihtiyaç duyduğunuz başlıkları tek çatı altında, net sorumluluk alanlarıyla ve profesyonel takip disipliniyle sunuyoruz.</p>
 
-    <article class="section-visual-panel service-visual-panel reveal">
-      <div class="section-visual-grid service-visual-grid">
-        <div class="section-visual-copy">
-          <div class="section-tag" data-tr="KKTC Odağı" data-en="TRNC Focus" data-ru="Фокус на ТРСК" data-fa="التركيز على شمال قبرص">KKTC Odağı</div>
-          <h3 data-tr="Kuzey Kıbrıs'ın ritmini bilen, sahadan beslenen mali danışmanlık akışı" data-en="A field-informed financial advisory flow that knows the rhythm of Northern Cyprus" data-ru="Финансовое сопровождение, питающееся практикой и понимающее ритм Северного Кипра" data-fa="مسار استشاري مالي يستند إلى الواقع ويفهم إيقاع شمال قبرص">Kuzey Kıbrıs'ın ritmini bilen, sahadan beslenen mali danışmanlık akışı</h3>
-          <p data-tr="Lefkoşa'daki resmi süreçlerden Girne'deki ticari harekete kadar adanın iş yapma dinamiğini tanıyan bir ekiple ilerliyoruz. Bu yüzden hizmetlerimizi yalnızca başlık olarak değil, Kuzey Kıbrıs bağlamını hissettiren güçlü görsellerle de destekledik." data-en="We move with a team that knows the island’s business dynamics, from official processes in Nicosia to commercial activity in Kyrenia. That is why we supported this section not only with service headings but also with visuals that convey the North Cyprus context." data-ru="Мы работаем с командой, которая знает деловую динамику острова: от официальных процедур в Никосии до коммерческой активности в Кирении. Поэтому этот блок поддержан не только перечнем услуг, но и визуалами, передающими контекст Северного Кипра." data-fa="نعمل مع فريق يعرف ديناميكية الأعمال في الجزيرة، من الإجراءات الرسمية في نيقوسيا إلى الحركة التجارية في كيرينيا. لذلك دعمنا هذا القسم ليس فقط بعناوين الخدمات بل أيضًا بصور تعكس سياق شمال قبرص.">Lefkoşa'daki resmi süreçlerden Girne'deki ticari harekete kadar adanın iş yapma dinamiğini tanıyan bir ekiple ilerliyoruz. Bu yüzden hizmetlerimizi yalnızca başlık olarak değil, Kuzey Kıbrıs bağlamını hissettiren güçlü görsellerle de destekledik.</p>
-          <div class="section-visual-points">
-            <span data-tr="Lefkoşa merkezli düzenli süreç takibi" data-en="Regular process follow-up based in Nicosia" data-ru="Системное сопровождение процессов из Никосии" data-fa="متابعة منتظمة للإجراءات انطلاقًا من نيقوسيا">Lefkoşa merkezli düzenli süreç takibi</span>
-            <span data-tr="Girne hattındaki yatırım ve ticaret temposuna yakın saha bilgisi" data-en="Field insight close to the investment and trade pace of the Kyrenia line" data-ru="Практическое понимание инвестиционного и торгового темпа Кирении" data-fa="معرفة ميدانية قريبة من وتيرة الاستثمار والتجارة في كيرينيا">Girne hattındaki yatırım ve ticaret temposuna yakın saha bilgisi</span>
-            <span data-tr="Kuruluş, vergi ve muhasebe başlıklarını tek akışta toplama" data-en="Bringing formation, tax and accounting topics into one flow" data-ru="Объединение регистрации, налогов и бухгалтерии в единый поток" data-fa="جمع التأسيس والضرائب والمحاسبة ضمن مسار واحد">Kuruluş, vergi ve muhasebe başlıklarını tek akışta toplama</span>
-          </div>
+    <article class="service-stack reveal">
+      <div class="service-stack-intro">
+        <div class="service-stack-copy">
+          <div class="card-kicker"><span class="kicker-dot"></span>Tek Akışta Hizmet</div>
+          <h3>Vergi, muhasebe ve danışmanlığı tek merkezde topluyoruz</h3>
+          <p>İhtiyacınız ister resmi tasdik, ister vergi stratejisi, ister kurumsal yapılanma olsun; başlıkları birbirinden koparmadan aynı danışmanlık akışı içinde yönetiyoruz. Böylece hem sorumluluk alanları net kalıyor hem de dosya farklı kişiler arasında dağılmadan ilerliyor.</p>
         </div>
-        <div class="service-visual-gallery">
-          <figure class="service-visual-card service-visual-card-wide">
-            <img src="assets/hero-cyprus-harbor.webp" width="1080" height="1080" alt="Girne Limanı ve çevresindeki ticari hareketi gösteren Kıbrıs fotoğrafı" loading="lazy" decoding="async">
-            <p data-tr="Girne Limanı ve çevresindeki ticari hareket" data-en="Commercial activity around Kyrenia Harbour" data-ru="Деловая активность вокруг гавани Кирении" data-fa="الحركة التجارية حول ميناء كيرينيا">Girne Limanı ve çevresindeki ticari hareket</p>
-          </figure>
-          <figure class="service-visual-card">
-            <img src="assets/hero-cyprus-castle.webp" width="1200" height="675" alt="Kıbrıs'ta tarihi kale ve deniz hattını gösteren fotoğraf" loading="lazy" decoding="async">
-            <p data-tr="Tarihi yapı, kurumsal zemin ve uzun vadeli güven" data-en="Historic structure, institutional footing and long-term trust" data-ru="Историческая основа, институциональная опора и долгосрочное доверие" data-fa="بنية تاريخية وأرضية مؤسسية وثقة طويلة الأمد">Tarihi yapı, kurumsal zemin ve uzun vadeli güven</p>
-          </figure>
-          <figure class="service-visual-card">
-            <img src="assets/hero-kyrenia-flags-hd.jpg" width="1920" height="1280" alt="KKTC bayrağı ve kıyı hattını gösteren Kıbrıs manzarası" loading="lazy" decoding="async">
-            <p data-tr="Yerel mevzuat bilgisiyle güçlenen KKTC odağı" data-en="A TRNC focus strengthened by local regulatory knowledge" data-ru="Фокус на ТРСК, усиленный знанием местного регулирования" data-fa="تركيز على شمال قبرص مدعوم بمعرفة الأنظمة المحلية">Yerel mevzuat bilgisiyle güçlenen KKTC odağı</p>
-          </figure>
+        <div class="service-stack-points">
+          <span>Lefkoşa merkezli düzenli süreç takibi</span>
+          <span>KKTC mevzuatına hakim saha bilgisi</span>
+          <span>Kuruluş, vergi ve muhasebe için tek temas noktası</span>
         </div>
       </div>
+
+      <div class="service-accordion">
+        <details class="service-accordion-item" open>
+          <summary class="service-accordion-summary">
+            <span class="service-accordion-step">01</span>
+            <div class="service-accordion-head">
+              <span class="service-accordion-kicker">Vergi ve Tasdik</span>
+              <strong>Vergi ve Tasdik Hizmetleri</strong>
+              <p>Vergi uyumu, resmi tasdik süreçleri ve özel amaçlı raporlamalar için ihtiyaç duyulan denetim ve onay başlıkları.</p>
+            </div>
+            <span class="service-accordion-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="service-accordion-body">
+            <div class="service-accordion-body-grid">
+              <div class="service-accordion-copy">
+                <p>Şirketlerin vergi uyumu, resmi tasdik süreçleri ve özel raporlama ihtiyaçlarını mevzuata uygun, düzenli ve takip edilebilir bir sistem içinde yürütüyoruz. Hedefimiz yalnızca belge üretmek değil, sürecin doğru zeminde ve eksiksiz ilerlemesini sağlamaktır.</p>
+                <div class="service-accordion-pills">
+                  <span>Resmi uyum</span>
+                  <span>Tasdik</span>
+                  <span>Denetim ve onay</span>
+                </div>
+              </div>
+              <ul class="detail-list service-detail-list">
+                <li>Tam Tasdik</li>
+                <li>KDV İade Tasdiki</li>
+                <li>Yerli İmalat Durum Belgesi Tasdiki</li>
+                <li>ÖTV Tecil-Terkin Tasdiki</li>
+                <li>Yatırım İndirimi Tasdiki</li>
+                <li>Ödenmiş Sermaye Tespiti ve Sermaye Artırım Raporları</li>
+                <li>TÜBİTAK, Avrupa Birliği Kaynaklı Ar-Ge Harcamalarının Tasdiki</li>
+                <li>Özel Amaçlı Diğer Tasdikler</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="service-accordion-item">
+          <summary class="service-accordion-summary">
+            <span class="service-accordion-step">02</span>
+            <div class="service-accordion-head">
+              <span class="service-accordion-kicker">Mali Danışmanlık</span>
+              <strong>Mali Danışmanlık Hizmetleri</strong>
+              <p>Vergi stratejisi, teşvik yapıları, yabancı şirketler için yönlendirme ve kritik karar süreçlerinde danışmanlık desteği.</p>
+            </div>
+            <span class="service-accordion-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="service-accordion-body">
+            <div class="service-accordion-body-grid">
+              <div class="service-accordion-copy">
+                <p>Vergi stratejisi, yatırım planı, teşvik alanları ve uyuşmazlık riski gibi karar kalitesini etkileyen başlıklarda şirketlere güvenli bir çerçeve sunuyoruz. Özellikle yerli ve yabancı yatırımcıların doğru yapıyı kurmasında karar desteği üretiyoruz.</p>
+                <div class="service-accordion-pills">
+                  <span>Vergi stratejisi</span>
+                  <span>Yatırım planı</span>
+                  <span>Yabancı şirket desteği</span>
+                </div>
+              </div>
+              <ul class="detail-list service-detail-list">
+                <li>Kurumsal Vergi Danışmanlığı</li>
+                <li>Bireysel Vergi Danışmanlığı</li>
+                <li>Vergisel Teşvikler, İstisna ve Muafiyet Danışmanlığı</li>
+                <li>Serbest Bölgeler Uygulama Danışmanlığı</li>
+                <li>Teknoparklar ve Ar-Ge İndirimleri Danışmanlıkları</li>
+                <li>Vergi Anlaşmaları Danışmanlığı</li>
+                <li>Vergi Uyuşmazlıkları Danışmanlığı</li>
+                <li>Revizyon Hizmetleri</li>
+                <li>Yabancı Şirketlere Mali Danışmanlık Hizmetleri</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="service-accordion-item">
+          <summary class="service-accordion-summary">
+            <span class="service-accordion-step">03</span>
+            <div class="service-accordion-head">
+              <span class="service-accordion-kicker">Kurumsal Yapı</span>
+              <strong>Diğer Danışmanlık Hizmetleri</strong>
+              <p>Muhasebe sistemi kurulumu, iç kontrol, birleşme-devir ve şirket yapılanması gibi kurumsal zemini güçlendiren destekler.</p>
+            </div>
+            <span class="service-accordion-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="service-accordion-body">
+            <div class="service-accordion-body-grid">
+              <div class="service-accordion-copy">
+                <p>Muhasebe sistemlerinin kurulmasından iç kontrol yapılarına, birleşme-devir süreçlerinden kuruluş ve tescil işlemlerine kadar kurumsal yapılanmayı güçlendiren geniş bir danışmanlık alanında çalışıyoruz. Amaç, yalnızca bugünü yönetmek değil, işletmenin yapısını daha sağlıklı hale getirmektir.</p>
+                <div class="service-accordion-pills">
+                  <span>Sistem kurulumu</span>
+                  <span>İç kontrol</span>
+                  <span>Kurumsal yapılandırma</span>
+                </div>
+              </div>
+              <ul class="detail-list service-detail-list">
+                <li>Muhasebe Sistemi Kurulumu ve Yeniden Yapılandırılması</li>
+                <li>Kamu İç Kontrol Standartları Kapsamında İç Kontrol Sistemi Kurulumu</li>
+                <li>İç Denetim-İç Kontrol Sistemi Danışmanlığı</li>
+                <li>Maliyet Kontrol Sistemleri Danışmanlığı</li>
+                <li>Şirket Satın Alma, Devir, Birleşme ve Bölünme Danışmanlığı</li>
+                <li>Yeniden Yapılandırma (Revizyon)</li>
+                <li>Sermaye Piyasası, Sosyal Güvenlik Mevzuatı ve Yatırım Teşvik Mevzuatı Danışmanlıkları</li>
+                <li>Yerli-Yabancı Şirket Kuruluşları</li>
+                <li>Şirketler Hukuku ve Şirketler Muhasebesi Danışmanlığı</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="service-stack-cta">
+        <div>
+          <strong>Hangi başlıkta desteğe ihtiyacınız olduğunu birlikte netleştirelim.</strong>
+          <p>İlk görüşmede dosyanızın hangi hizmet grubuna girdiğini ayırır, doğru akışı birlikte kurarız.</p>
+        </div>
+        <a class="btn-primary" href="./bize-ulasin.html">İletişime Geç</a>
+      </div>
     </article>
-
-    <div class="service-hub-grid">
-      <article class="service-hub-card reveal">
-        <figure class="service-card-media is-photo">
-          <img
-            src="assets/hero-cyprus-flag.jpg"
-            width="2048"
-            height="1024"
-            alt="KKTC bayrağını gösteren yerel uyum görseli"
-            loading="lazy"
-            decoding="async">
-          <div class="service-card-meta">
-            <span class="service-card-chip" data-tr="Resmi Uyum" data-en="Official Compliance" data-ru="Официальное соответствие" data-fa="الامتثال الرسمي">Resmi Uyum</span>
-            <p data-tr="Yerel çerçeveyi bilen ekip, tasdik ve vergi süreçlerini güvenli zeminde tutar." data-en="A team that knows the local framework keeps certification and tax processes on solid ground." data-ru="Команда, знающая местные рамки, удерживает процессы подтверждения и налогов на надёжной основе." data-fa="الفريق الذي يعرف الإطار المحلي يحافظ على إجراءات التصديق والضرائب على أرضية آمنة.">Yerel çerçeveyi bilen ekip, tasdik ve vergi süreçlerini güvenli zeminde tutar.</p>
-          </div>
-        </figure>
-        <div class="card-kicker"><span class="kicker-dot"></span>Vergi ve Tasdik</div>
-        <h3>Vergi ve Tasdik Hizmetleri</h3>
-        <p>Vergi uyumu, resmi tasdik süreçleri ve özel amaçlı raporlamalar için şirketlerin ihtiyaç duyduğu denetim ve onay başlıklarını tek çatı altında, mevzuata uygun ve düzenli biçimde yürütüyoruz.</p>
-        <ul class="detail-list">
-          <li>Tam Tasdik</li>
-          <li>KDV İade Tasdiki</li>
-          <li>Yerli İmalat Durum Belgesi Tasdiki</li>
-          <li>ÖTV Tecil-Terkin Tasdiki</li>
-          <li>Yatırım İndirimi Tasdiki</li>
-          <li>Ödenmiş Sermaye Tespiti ve Sermaye Artırım Raporları</li>
-          <li>TÜBİTAK, Avrupa Birliği Kaynaklı Ar-Ge Harcamalarının Tasdiki</li>
-          <li>Özel Amaçlı Diğer Tasdikler</li>
-        </ul>
-      </article>
-
-      <article class="service-hub-card reveal">
-        <figure class="service-card-media is-photo">
-          <img
-            src="assets/hero-cyprus-harbor.webp"
-            width="1080"
-            height="1080"
-            alt="Girne Limanı ve yatırım hareketini gösteren Kıbrıs görseli"
-            loading="lazy"
-            decoding="async">
-          <div class="service-card-meta">
-            <span class="service-card-chip" data-tr="Yatırım Ritmi" data-en="Investment Pace" data-ru="Инвестиционный ритм" data-fa="وتيرة الاستثمار">Yatırım Ritmi</span>
-            <p data-tr="Ticari hareketin içinden gelen saha bilgisi, karar desteğini daha somut hale getirir." data-en="Field insight drawn from commercial activity makes decision support more concrete." data-ru="Практика, идущая из коммерческой активности, делает поддержку решений более осязаемой." data-fa="المعرفة الميدانية القادمة من الحركة التجارية تجعل دعم القرار أكثر واقعية.">Ticari hareketin içinden gelen saha bilgisi, karar desteğini daha somut hale getirir.</p>
-          </div>
-        </figure>
-        <div class="card-kicker"><span class="kicker-dot"></span>Mali Danışmanlık</div>
-        <h3>Mali Danışmanlık Hizmetleri</h3>
-        <p>Vergi stratejisi, teşvik yapıları, yabancı şirketler için mali yönlendirme ve vergi uyuşmazlıkları gibi kritik konularda, karar sürecini güvenli hale getiren kapsamlı danışmanlık desteği sunuyoruz.</p>
-        <ul class="detail-list">
-          <li>Kurumsal Vergi Danışmanlığı</li>
-          <li>Bireysel Vergi Danışmanlığı</li>
-          <li>Vergisel Teşvikler, İstisna ve Muafiyet Danışmanlığı</li>
-          <li>Serbest Bölgeler Uygulama Danışmanlığı</li>
-          <li>Teknoparklar ve Ar-Ge İndirimleri Danışmanlıkları</li>
-          <li>Vergi Anlaşmaları Danışmanlığı</li>
-          <li>Vergi Uyuşmazlıkları Danışmanlığı</li>
-          <li>Revizyon Hizmetleri</li>
-          <li>Yabancı Şirketlere Mali Danışmanlık Hizmetleri</li>
-        </ul>
-      </article>
-
-      <article class="service-hub-card reveal">
-        <figure class="service-card-media is-photo">
-          <img
-            src="assets/hero-cyprus-castle.webp"
-            width="1200"
-            height="675"
-            alt="Kıbrıs'ta tarihi kale ve yapı desteğini çağrıştıran kurumsal görsel"
-            loading="lazy"
-            decoding="async">
-          <div class="service-card-meta">
-            <span class="service-card-chip" data-tr="Yapı Desteği" data-en="Structure Support" data-ru="Поддержка структуры" data-fa="دعم الهيكلة">Yapı Desteği</span>
-            <p data-tr="Kurumsal yapılanma, yerel gerçekliği hissettiren daha güçlü bir zeminde anlatılır." data-en="Corporate structuring is presented on a stronger ground that reflects local reality." data-ru="Корпоративное структурирование подаётся на более сильной основе, отражающей местную реальность." data-fa="يُعرض الهيكل المؤسسي على أرضية أقوى تعكس الواقع المحلي.">Kurumsal yapılanma, yerel gerçekliği hissettiren daha güçlü bir zeminde anlatılır.</p>
-          </div>
-        </figure>
-        <div class="card-kicker"><span class="kicker-dot"></span>Diğer Danışmanlık</div>
-        <h3>Diğer Danışmanlık Hizmetleri</h3>
-        <p data-tr="Muhasebe sistemlerinin kurulmasından iç kontrol yapılarına, birleşme-devir süreçlerinden kuruluş ve tescil işlemlerine kadar kurumsal yapılanmayı güçlendiren geniş bir danışmanlık alanında çalışıyoruz." data-en="We work across a broad advisory field that strengthens corporate structure, from building accounting systems and internal controls to mergers, transfers and setup-registration processes." data-ru="Мы работаем в широком поле консалтинга, усиливающем корпоративную структуру: от построения бухгалтерских систем и внутреннего контроля до слияний, передач бизнеса и процессов регистрации." data-fa="نعمل في نطاق استشاري واسع يعزز البنية المؤسسية، من بناء الأنظمة المحاسبية والرقابة الداخلية إلى الاندماج ونقل الملكية وعمليات التأسيس والتسجيل.">Muhasebe sistemlerinin kurulmasından iç kontrol yapılarına, birleşme-devir süreçlerinden kuruluş ve tescil işlemlerine kadar kurumsal yapılanmayı güçlendiren geniş bir danışmanlık alanında çalışıyoruz.</p>
-        <ul class="detail-list">
-          <li>Muhasebe Sistemi Kurulumu ve Yeniden Yapılandırılması</li>
-          <li>Kamu İç Kontrol Standartları Kapsamında İç Kontrol Sistemi Kurulumu</li>
-          <li>İç Denetim-İç Kontrol Sistemi Danışmanlığı</li>
-          <li>Maliyet Kontrol Sistemleri Danışmanlığı</li>
-          <li>Şirket Satın Alma, Devir, Birleşme ve Bölünme Danışmanlığı</li>
-          <li>Yeniden Yapılandırma (Revizyon)</li>
-          <li>Sermaye Piyasası, Sosyal Güvenlik Mevzuatı ve Yatırım Teşvik Mevzuatı Danışmanlıkları</li>
-          <li>Yerli-Yabancı Şirket Kuruluşları</li>
-          <li>Şirketler Hukuku ve Şirketler Muhasebesi Danışmanlığı</li>
-        </ul>
-      </article>
-    </div>
   </div>
 </section>
 

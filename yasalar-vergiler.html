@@ -9,6 +9,167 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/guide-pages.css">
+  <style>
+    .laws-page-shell {
+      width: min(calc(var(--layout-max) + 120px), calc(100% - clamp(18px, 2.8vw, 40px)));
+    }
+
+    .laws-hero-banner {
+      min-height: auto;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+    }
+
+    .laws-hero-cover {
+      position: relative;
+      min-height: clamp(560px, 78vh, 760px);
+      overflow: hidden;
+      isolation: isolate;
+      border-radius: 0;
+      border-top: 1px solid rgba(184, 146, 69, 0.14);
+      border-bottom: 1px solid rgba(184, 146, 69, 0.14);
+      background: #161210;
+    }
+
+    .laws-hero-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .laws-hero-slide {
+      position: absolute;
+      inset: 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      opacity: 0;
+      transform: scale(1.06);
+      animation: lawsHeroSlideCycle 16s ease-in-out infinite;
+      will-change: opacity, transform;
+    }
+
+    .laws-hero-slide-1 {
+      background-image: url('./assets/laws-hero-library.png');
+      animation-delay: 0s;
+    }
+
+    .laws-hero-slide-2 {
+      background-image: url('./assets/laws-hero-open-book.png');
+      animation-delay: 8s;
+    }
+
+    @keyframes lawsHeroSlideCycle {
+      0% {
+        opacity: 0;
+        transform: scale(1.08);
+      }
+
+      8%,
+      42% {
+        opacity: 1;
+        transform: scale(1.02);
+      }
+
+      50%,
+      100% {
+        opacity: 0;
+        transform: scale(1);
+      }
+    }
+
+    .laws-hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(14, 11, 9, 0.84) 0%, rgba(14, 11, 9, 0.62) 34%, rgba(14, 11, 9, 0.26) 64%, rgba(14, 11, 9, 0.14) 100%),
+        linear-gradient(180deg, rgba(14, 11, 9, 0.08) 0%, rgba(14, 11, 9, 0.34) 100%);
+    }
+
+    .laws-hero-cover::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -120px -80px;
+      z-index: 1;
+      width: 340px;
+      height: 340px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(184, 146, 69, 0.24) 0%, rgba(184, 146, 69, 0.08) 42%, transparent 72%);
+      filter: blur(12px);
+    }
+
+    .laws-hero-copy {
+      position: relative;
+      z-index: 2;
+      min-height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 16px;
+      max-width: 760px;
+      padding: clamp(40px, 6vw, 84px) clamp(32px, 6vw, 96px) clamp(56px, 8vw, 112px);
+    }
+
+    .laws-hero-copy .eyebrow {
+      color: #f0dbab;
+      border-color: rgba(240, 219, 171, 0.28);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .laws-hero-copy h1 {
+      color: #ffffff;
+      font-size: clamp(52px, 9vw, 96px);
+      line-height: 0.9;
+      max-width: 10ch;
+    }
+
+    .laws-hero-copy .lead {
+      max-width: 54ch;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 16px;
+      line-height: 1.78;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .laws-hero-slide {
+        animation: none;
+        opacity: 0;
+      }
+
+      .laws-hero-slide-1 {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .laws-page-shell {
+        width: min(calc(var(--layout-max) + 40px), calc(100% - 20px));
+      }
+
+      .laws-hero-banner {
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .laws-hero-cover {
+        min-height: 500px;
+        border-radius: 28px;
+        border: 1px solid rgba(184, 146, 69, 0.14);
+      }
+
+      .laws-hero-copy {
+        padding: 26px;
+      }
+
+      .laws-hero-copy h1 {
+        font-size: clamp(40px, 14vw, 64px);
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -48,38 +209,19 @@
     </div>
   </header>
 
-  <main class="page-shell">
-    <section class="hero">
-      <article class="hero-copy">
-        <span class="eyebrow">Yasalar / Vergiler</span>
-        <h1>KKTC vergi, şirketler, ticaret ve finans mevzuatını açılır rehber yapısında tek yerde görün</h1>
-        <p class="lead">Vergi yasaları ile şirket kuruluşu, yabancı yatırım, bankacılık ve sigorta çerçevesini tek sayfada topladık. Böylece hangi mevzuatın hangi konuya temas ettiğini daha hızlı ayırabilir, ilgili başlığı açıp özet kapsamı kolayca okuyabilirsiniz.</p>
-        <div class="hero-facts">
-          <div class="fact-card">
-            <div class="fact-label">Ana Küme</div>
-            <strong>Vergi + Kurumsal Mevzuat</strong>
-          </div>
-          <div class="fact-card">
-            <div class="fact-label">Kapsam</div>
-            <strong>15 temel başlık</strong>
-          </div>
-          <div class="fact-card">
-            <div class="fact-label">Yapı</div>
-            <strong>Açılır ve kapanır içerik</strong>
-          </div>
+  <main class="page-shell laws-page-shell">
+    <section class="hero hero-single laws-hero-banner">
+      <article class="laws-hero-cover">
+        <div class="laws-hero-stage" aria-hidden="true">
+          <div class="laws-hero-slide laws-hero-slide-1"></div>
+          <div class="laws-hero-slide laws-hero-slide-2"></div>
         </div>
-        <div class="hero-actions">
-          <a class="btn-primary" href="./kktc-sirket-kurma.html#contact">Dosyanızı Değerlendirelim</a>
-          <a class="btn-secondary" href="./kktc-sirket-kurma.html#taxes-hub">Ana sayfadaki bölüme dön</a>
+        <div class="laws-hero-copy">
+          <span class="eyebrow">Yasalar / Vergiler</span>
+          <h1>Yasalar / Vergiler</h1>
+          <p class="lead">KKTC vergi, şirketler, ticaret, bankacılık ve sigorta mevzuatındaki temel başlıkları daha sade, daha görünür ve daha hızlı taranabilir bir rehber akışıyla aynı sayfada topluyoruz.</p>
         </div>
       </article>
-      <figure class="hero-media">
-        <img src="https://images.pexels.com/photos/6863203/pexels-photo-6863203.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Vergi ve belge planlaması yapan çalışma masası">
-        <figcaption class="hero-media-badge">
-          <strong>Her başlık kısa özet ve kapsam maddeleriyle açılır</strong>
-          <span>Vergi usulünden KDV'ye, şirket kuruluşundan bankacılık ve sigortacılık mevzuatına kadar temel çerçeveyi aynı sayfada okuyabilirsiniz.</span>
-        </figcaption>
-      </figure>
     </section>
 
     <section class="section">

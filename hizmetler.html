@@ -10,18 +10,321 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/guide-pages.css">
   <style>
-    .hero.services-hero-stack {
-      grid-template-columns: 1fr;
-      min-height: auto;
+    .services-page-shell {
+      width: min(calc(var(--layout-max) + 120px), calc(100% - clamp(18px, 2.8vw, 40px)));
     }
 
-    .hero.services-hero-stack .hero-copy,
-    .hero.services-hero-stack .hero-media {
+    .services-hero-banner {
       min-height: auto;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
     }
 
-    .hero.services-hero-stack .hero-service-stage {
-      padding: 24px;
+    .services-hero-cover {
+      position: relative;
+      min-height: clamp(560px, 78vh, 760px);
+      overflow: hidden;
+      isolation: isolate;
+      border-radius: 0;
+      border-top: 1px solid rgba(184, 146, 69, 0.14);
+      border-bottom: 1px solid rgba(184, 146, 69, 0.14);
+      border-left: 0;
+      border-right: 0;
+      background: #15110d;
+      box-shadow: none;
+    }
+
+    .services-hero-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .services-hero-slide {
+      position: absolute;
+      inset: 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      opacity: 0;
+      transform: scale(1.06);
+      animation: servicesHeroSlideCycle 16s ease-in-out infinite;
+      will-change: opacity, transform;
+    }
+
+    .services-hero-slide-1 {
+      background-image: url('./assets/services-hero-handshake.png');
+      animation-delay: 0s;
+    }
+
+    .services-hero-slide-2 {
+      background-image: url('./assets/services-hero-signing.png');
+      animation-delay: 8s;
+    }
+
+    @keyframes servicesHeroSlideCycle {
+      0% {
+        opacity: 0;
+        transform: scale(1.08);
+      }
+
+      8%,
+      42% {
+        opacity: 1;
+        transform: scale(1.02);
+      }
+
+      50%,
+      100% {
+        opacity: 0;
+        transform: scale(1);
+      }
+    }
+
+    .services-hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(16, 12, 9, 0.82) 0%, rgba(16, 12, 9, 0.6) 30%, rgba(16, 12, 9, 0.2) 62%, rgba(16, 12, 9, 0.12) 100%),
+        linear-gradient(180deg, rgba(16, 12, 9, 0.06) 0%, rgba(16, 12, 9, 0.32) 100%);
+    }
+
+    .services-hero-cover::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -120px -80px;
+      z-index: 1;
+      width: 340px;
+      height: 340px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(184, 146, 69, 0.26) 0%, rgba(184, 146, 69, 0.08) 42%, transparent 72%);
+      filter: blur(12px);
+    }
+
+    .services-hero-copy {
+      position: relative;
+      z-index: 2;
+      min-height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 16px;
+      max-width: 720px;
+      padding: clamp(40px, 6vw, 84px) clamp(32px, 6vw, 96px) clamp(56px, 8vw, 112px);
+    }
+
+    .services-hero-copy .eyebrow {
+      color: #f0dbab;
+      border-color: rgba(240, 219, 171, 0.28);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .services-hero-copy h1 {
+      color: #ffffff;
+      font-size: clamp(52px, 9vw, 96px);
+      line-height: 0.9;
+      max-width: 10ch;
+    }
+
+    .services-hero-copy .lead {
+      max-width: 50ch;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 16px;
+      line-height: 1.78;
+    }
+
+    .services-hero-stack {
+      display: grid;
+      gap: 0;
+    }
+
+    .services-overview-card {
+      width: 100%;
+      padding: clamp(28px, 4vw, 42px);
+      border-radius: 28px;
+      border: 1px solid rgba(184, 146, 69, 0.14);
+      background:
+        radial-gradient(circle at top right, rgba(204, 175, 107, 0.16) 0%, transparent 28%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(248, 244, 236, 0.98) 100%);
+      box-shadow: 0 20px 48px rgba(17, 17, 17, 0.08);
+    }
+
+    .services-overview-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+      gap: 24px;
+      align-items: end;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(184, 146, 69, 0.12);
+    }
+
+    .services-overview-copy h2 {
+      font-size: clamp(40px, 5vw, 58px);
+      line-height: 0.98;
+      color: var(--navy);
+    }
+
+    .services-overview-copy .lead {
+      max-width: 780px;
+      margin-top: 16px;
+      color: var(--ink-soft);
+      font-size: 16px;
+      line-height: 1.78;
+    }
+
+    .services-overview-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start;
+      align-content: flex-start;
+    }
+
+    .services-overview-points span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(184, 146, 69, 0.14);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .services-accordion {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .services-accordion-item {
+      border-radius: 24px;
+      border: 1px solid rgba(184, 146, 69, 0.14);
+      background: rgba(255, 255, 255, 0.86);
+      overflow: hidden;
+    }
+
+    .services-accordion-item summary {
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .services-accordion-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .services-accordion-summary {
+      display: grid;
+      grid-template-columns: 62px minmax(0, 1fr) 42px;
+      gap: 18px;
+      align-items: start;
+      padding: 22px 24px;
+    }
+
+    .services-accordion-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(184, 146, 69, 0.16), rgba(184, 146, 69, 0.08));
+      border: 1px solid rgba(184, 146, 69, 0.14);
+      color: var(--navy);
+      font-size: 20px;
+      font-weight: 700;
+      font-family: "Playfair Display", serif;
+    }
+
+    .services-accordion-head {
+      min-width: 0;
+    }
+
+    .services-accordion-kicker {
+      display: inline-flex;
+      margin-bottom: 10px;
+      color: #7a5d24;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .services-accordion-head strong {
+      display: block;
+      color: var(--navy);
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      line-height: 1.14;
+    }
+
+    .services-accordion-head p {
+      margin-top: 10px;
+      max-width: 58ch;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.72;
+    }
+
+    .services-accordion-toggle {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      border: 1px solid rgba(184, 146, 69, 0.14);
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .services-accordion-toggle::before,
+    .services-accordion-toggle::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 14px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--navy);
+      transform: translate(-50%, -50%);
+    }
+
+    .services-accordion-toggle::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .services-accordion-item[open] .services-accordion-toggle::after {
+      opacity: 0;
+    }
+
+    .services-accordion-body {
+      padding: 0 24px 24px 24px;
+    }
+
+    .services-accordion-flow {
+      max-width: 96ch;
+      padding-top: 4px;
+    }
+
+    .services-accordion-flow p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.82;
+    }
+
+    .services-accordion-flow p + p {
+      margin-top: 16px;
+    }
+
+    .services-accordion-flow strong {
+      color: var(--navy);
+      font-weight: 700;
     }
 
     .service-clusters {
@@ -269,9 +572,65 @@
     }
 
     @media (max-width: 980px) {
+      .services-overview-head,
       .service-band-shell,
       .service-band-list {
         grid-template-columns: 1fr;
+      }
+
+      .services-page-shell {
+        width: min(calc(var(--layout-max) + 40px), calc(100% - 20px));
+      }
+
+      .services-hero-banner {
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .services-hero-cover {
+        min-height: 500px;
+        border-radius: 28px;
+        border: 1px solid rgba(184, 146, 69, 0.14);
+        box-shadow: 0 18px 40px rgba(17, 17, 17, 0.14);
+      }
+
+      .services-hero-copy {
+        padding: 26px;
+      }
+
+      .services-hero-copy h1 {
+        font-size: clamp(40px, 14vw, 64px);
+      }
+
+      .services-overview-card {
+        padding: 24px;
+        border-radius: 24px;
+      }
+
+      .services-overview-copy h2 {
+        font-size: clamp(34px, 10vw, 46px);
+      }
+
+      .services-accordion-summary {
+        grid-template-columns: 54px minmax(0, 1fr) 38px;
+        gap: 14px;
+        padding: 18px;
+      }
+
+      .services-accordion-step {
+        width: 46px;
+        height: 46px;
+        border-radius: 16px;
+        font-size: 18px;
+      }
+
+      .services-accordion-head strong {
+        font-size: 24px;
+      }
+
+      .services-accordion-body {
+        padding: 0 18px 18px 18px;
       }
     }
   </style>
@@ -314,229 +673,132 @@
     </div>
   </header>
 
-  <main class="page-shell">
-    <section class="hero services-hero-stack">
-      <article class="hero-copy">
-        <span class="eyebrow">Hizmetler</span>
-        <h1>Muhasebe, vergi ve mali danışmanlık hizmet alanlarımız</h1>
-        <p class="lead">İşletmenin günlük kayıt düzeninden stratejik vergi planına, bordro takibinden kuruluş sürecine kadar ihtiyaç duyduğu başlıkları tek çatı altında yönetiyoruz.</p>
-        <div class="hero-facts">
-          <div class="fact-card">
-            <div class="fact-label">Operasyon</div>
-            <strong>Muhasebe ve mali işler</strong>
-          </div>
-          <div class="fact-card">
-            <div class="fact-label">Uyum</div>
-            <strong>Vergi, tasdik ve resmi takip</strong>
-          </div>
-          <div class="fact-card">
-            <div class="fact-label">Karar</div>
-            <strong>Kuruluş, danışmanlık ve yapı desteği</strong>
-          </div>
+  <main class="page-shell services-page-shell">
+    <section class="hero hero-single services-hero-banner">
+      <article class="services-hero-cover">
+        <div class="services-hero-stage" aria-hidden="true">
+          <div class="services-hero-slide services-hero-slide-1"></div>
+          <div class="services-hero-slide services-hero-slide-2"></div>
+        </div>
+        <div class="services-hero-copy">
+          <span class="eyebrow">Hizmetler</span>
+          <h1>Hizmetlerimiz</h1>
+          <p class="lead">Kuruluş, muhasebe, vergi, bordro ve mali danışmanlık başlıklarını daha görünür, daha sade ve daha güven veren bir akışla yönetiyoruz.</p>
         </div>
       </article>
-      <figure class="hero-media hero-service-stage">
-        <div class="service-stage-shell">
-          <div class="service-stage-top">
-            <span class="service-stage-tag">Kuruluştan düzenli takibe</span>
-            <span class="service-stage-note">Tek ekipte ilerleyen akış</span>
-          </div>
-          <div class="service-stage-grid">
-            <article class="service-stage-card service-stage-card-primary">
-              <span class="service-stage-step">01</span>
-              <strong>Şirket kuruluşu ve yapı seçimi</strong>
-              <p>Yerel limited, yabancı şube veya doğru başlangıç modeli için dosyanın çerçevesini en başta netleştiririz.</p>
-              <div class="service-stage-pills">
-                <span>Kuruluş ön hazırlığı</span>
-                <span>Evrak akışı</span>
-                <span>Kuruluş sonrası başlangıç</span>
-              </div>
-            </article>
-            <article class="service-stage-card">
-              <span class="service-stage-step">02</span>
-              <strong>Vergi ve resmi kayıt düzeni</strong>
-              <p>Kuruluş sonrası takvim, beyan ve resmi takip başlıklarını dağılmadan planlarız.</p>
-            </article>
-            <article class="service-stage-card">
-              <span class="service-stage-step">03</span>
-              <strong>Muhasebe ve bordro omurgası</strong>
-              <p>Şirket çalışmaya başladığında günlük mali süreci düzenli bir zemine oturturuz.</p>
-            </article>
-          </div>
-        </div>
-        <figcaption class="hero-media-badge">
-          <strong>Kuruluşla başlayıp mali takiple devam eden hizmet çerçevesi</strong>
-          <span>Tek seferlik bir kuruluş desteği değil; şirket açılışından sonra muhasebe, vergi ve resmi süreç tarafını da aynı akış içinde taşırız.</span>
-        </figcaption>
-      </figure>
     </section>
 
-    <section class="section">
-      <article class="section-card">
-        <div class="section-head">
-          <h2>Ana hizmet kümelerimiz</h2>
-          <p class="section-intro">Her hizmet alanını daha sade, daha net ve kısa bir akışta topladık. Böylece hangi başlığın sizin için öne çıktığı daha rahat görülür.</p>
+    <section class="services-hero-stack">
+      <article class="services-overview-card">
+        <div class="services-overview-head">
+          <div class="services-overview-copy">
+            <span class="eyebrow">Hizmetler</span>
+            <h2>Muhasebe, vergi ve mali danışmanlık hizmet alanlarımız</h2>
+            <p class="lead">İşletmenin günlük kayıt düzeninden stratejik vergi planına, bordro takibinden kuruluş sürecine kadar ihtiyaç duyduğu başlıkları tek çatı altında, daha sade ve daha görünür bir akışla yönetiyoruz.</p>
+          </div>
+          <div class="services-overview-points">
+            <span>Muhasebe ve mali işler</span>
+            <span>Vergi, tasdik ve resmi takip</span>
+            <span>Kuruluş, danışmanlık ve yapı desteği</span>
+            <span>Tek temas noktası</span>
+          </div>
         </div>
-        <div class="service-clusters">
-          <article class="service-band-card">
-            <div class="service-band-shell">
-              <div class="service-band-copy">
-                <span class="service-band-kicker">01 · Kuruluş</span>
-                <h3>Kuruluş ve yapı seçimi</h3>
+
+        <div class="services-accordion">
+          <details class="services-accordion-item" open>
+            <summary class="services-accordion-summary">
+              <span class="services-accordion-step">01</span>
+              <div class="services-accordion-head">
+                <span class="services-accordion-kicker">Kuruluş</span>
+                <strong>Kuruluş ve yapı seçimi</strong>
                 <p>Kuruluşta amaç yalnızca başvuru yapmak değil, doğru yapıyla başlamaktır. Modeli sonraki mali düzenle birlikte okuruz.</p>
-                <ul class="list-check service-band-list">
-                  <li>Yapı seçimi</li>
-                  <li>Evrak ve başvuru sırası</li>
-                  <li>Kuruluş sonrası başlangıç</li>
-                </ul>
               </div>
-              <aside class="service-band-side">
-                <figure class="service-band-visual">
-                  <img src="./assets/hero-handshake.jpg" alt="Şirket kuruluşu görüşmesini temsil eden el sıkışma sahnesi" loading="lazy" decoding="async">
-                  <span class="service-band-badge">Kuruluş</span>
-                  <figcaption class="service-band-visual-note">İlk adımda yapı ve resmi hazırlık netleşir.</figcaption>
-                </figure>
-                <strong>Ne zaman öne çıkar?</strong>
-                <p class="service-band-note">Yeni şirket, ortaklık değişimi veya yabancı yatırımcı teması varsa.</p>
-                <div class="service-band-tags">
-                  <span>Yapı seçimi</span>
-                  <span>Evrak akışı</span>
-                  <span>Resmi başlangıç</span>
-                </div>
-              </aside>
+              <span class="services-accordion-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="services-accordion-body">
+              <div class="services-accordion-flow">
+                <p>Yerel limited, yabancı şube veya doğru başlangıç modeli için dosyanın çerçevesini en başta netleştiririz. Yeni şirket, ortaklık değişimi veya yabancı yatırımcı teması varsa bu başlık daha çok öne çıkar.</p>
+                <p>Yapı seçimini, evrak ve başvuru sırasını, kuruluş sonrası ilk adımları birlikte planlarız.</p>
+                <p>Bu başlık özellikle yeni şirket kuruluşlarında, ortaklık yapısı değiştiğinde veya yabancı yatırımcıyla başlangıç planlandığında daha fazla önem kazanır.</p>
+              </div>
             </div>
-          </article>
+          </details>
 
-          <article class="service-band-card is-soft">
-            <div class="service-band-shell">
-              <div class="service-band-copy">
-                <span class="service-band-kicker">02 · Muhasebe</span>
-                <h3>Muhasebe ve mali işler</h3>
+          <details class="services-accordion-item">
+            <summary class="services-accordion-summary">
+              <span class="services-accordion-step">02</span>
+              <div class="services-accordion-head">
+                <span class="services-accordion-kicker">Muhasebe</span>
+                <strong>Muhasebe ve mali işler</strong>
                 <p>Kayıt düzenini kurar, mali tabloyu daha okunur hale getiririz. Günlük akış ile dönem sonu aynı zeminde ilerler.</p>
-                <ul class="list-check service-band-list">
-                  <li>Aylık kayıt takibi</li>
-                  <li>Gelir-gider görünürlüğü</li>
-                  <li>Dönemsel mali veri</li>
-                </ul>
               </div>
-              <aside class="service-band-side">
-                <figure class="service-band-visual">
-                  <img src="./assets/kayaplus-office-wall.jpeg" alt="Muhasebe hizmetlerini temsil eden çalışma alanı ve belge düzeni" loading="lazy" decoding="async">
-                  <span class="service-band-badge">Muhasebe</span>
-                  <figcaption class="service-band-visual-note">Düzenli kayıt, daha rahat okunan mali görünürlük sağlar.</figcaption>
-                </figure>
-                <strong>Neyi netleştirir?</strong>
-                <p class="service-band-note">Gelirin, giderin ve mali ritmin daha sade okunmasını.</p>
-                <div class="service-band-tags">
-                  <span>Kayıt düzeni</span>
-                  <span>Aylık takip</span>
-                  <span>Mali takip</span>
-                </div>
-              </aside>
+              <span class="services-accordion-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="services-accordion-body">
+              <div class="services-accordion-flow">
+                <p>Gelirin, giderin ve mali ritmin daha sade okunmasını hedefleriz. Kayıt düzeni kurulduğunda şirket sahibi yalnızca evrak değil, daha anlaşılır bir mali görünürlük de kazanır.</p>
+                <p>Aylık kayıt takibini, gelir-gider görünürlüğünü ve dönemsel mali veri düzenini aynı çerçevede toplarız.</p>
+                <p>Böylece şirket sahibi geliri, gideri ve dönemsel mali ritmi daha net okuyabilir.</p>
+              </div>
             </div>
-          </article>
+          </details>
 
-          <article class="service-band-card is-ink">
-            <div class="service-band-shell">
-              <div class="service-band-copy">
-                <span class="service-band-kicker">03 · Vergi ve Uyum</span>
-                <h3>Vergi ve resmi takip</h3>
+          <details class="services-accordion-item">
+            <summary class="services-accordion-summary">
+              <span class="services-accordion-step">03</span>
+              <div class="services-accordion-head">
+                <span class="services-accordion-kicker">Vergi ve Uyum</span>
+                <strong>Vergi ve resmi takip</strong>
                 <p>Vergi, tasdik ve resmi sorumlulukları tek takvimde toplarız. Amaç, uyum tarafını dağılmadan yürütmektir.</p>
-                <ul class="list-check service-band-list">
-                  <li>Vergi uyumu</li>
-                  <li>Tasdik desteği</li>
-                  <li>Resmi süreç takibi</li>
-                </ul>
               </div>
-              <aside class="service-band-side">
-                <figure class="service-band-visual service-band-visual-audit" aria-label="Vergi ve resmi takip hizmetlerini temsil eden belge ve onay düzeni">
-                  <span class="service-band-badge">Uyum</span>
-                  <div class="service-band-paper">
-                    <strong>Vergi Takvimi</strong>
-                    <div class="service-band-line"></div>
-                    <div class="service-band-line"></div>
-                    <div class="service-band-line short"></div>
-                  </div>
-                  <div class="service-band-paper is-offset">
-                    <strong>Resmi Süreç</strong>
-                    <div class="service-band-line"></div>
-                    <div class="service-band-line"></div>
-                    <div class="service-band-line short"></div>
-                  </div>
-                  <div class="service-band-seal" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2l2.3 4.65 5.14.75-3.72 3.62.88 5.12L12 13.77l-4.6 2.37.88-5.12L4.56 7.4l5.14-.75L12 2zm-1.24 9.77 3.95-3.95 1.41 1.41-5.36 5.37-2.83-2.83 1.42-1.41 1.41 1.41z"/>
-                    </svg>
-                  </div>
-                </figure>
-                <strong>Ana odak</strong>
-                <p class="service-band-note">Tarihleri, beyanları ve resmi akışı tek yerde tutmak.</p>
-                <div class="service-band-tags">
-                  <span>Vergi uyumu</span>
-                  <span>Tasdik</span>
-                  <span>Resmi takip</span>
-                </div>
-              </aside>
+              <span class="services-accordion-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="services-accordion-body">
+              <div class="services-accordion-flow">
+                <p>Tarihleri, beyanları ve resmi akışı tek yerde tutarız. Kuruluş sonrası takvim, beyan ve resmi takip başlıklarını dağılmadan planladığımız için süreç daha kontrollü ilerler.</p>
+                <p>Vergi uyumunu, tasdik desteğini ve resmi süreç takibini aynı düzen içinde yönetiriz.</p>
+                <p>Buradaki amaç, tarihleri ve beyanları tek yerde tutarak sürecin dağılmasını önlemektir.</p>
+              </div>
             </div>
-          </article>
+          </details>
 
-          <article class="service-band-card is-sand">
-            <div class="service-band-shell">
-              <div class="service-band-copy">
-                <span class="service-band-kicker">04 · Bordro</span>
-                <h3>Bordro ve personel akışı</h3>
+          <details class="services-accordion-item">
+            <summary class="services-accordion-summary">
+              <span class="services-accordion-step">04</span>
+              <div class="services-accordion-head">
+                <span class="services-accordion-kicker">Bordro</span>
+                <strong>Bordro ve personel akışı</strong>
                 <p>Bordro tarafında maaş, sosyal sigorta ve personel hareketlerini birlikte izleriz. Böylece ekip büyüdükçe düzen korunur.</p>
-                <ul class="list-check service-band-list">
-                  <li>Maaş ve bordro takibi</li>
-                  <li>Sosyal sigorta akışı</li>
-                  <li>Personel giriş-çıkış takibi</li>
-                </ul>
               </div>
-              <aside class="service-band-side">
-                <figure class="service-band-visual">
-                  <img src="./assets/kayaplus-office-front.jpeg" alt="Bordro ve personel akışını temsil eden kurumsal ofis görünümü" loading="lazy" decoding="async">
-                  <span class="service-band-badge">Bordro</span>
-                  <figcaption class="service-band-visual-note">Ekip büyürken personel akışı daha kontrollü kalır.</figcaption>
-                </figure>
-                <strong>Kimler için kritik?</strong>
-                <p class="service-band-note">Ekip sayısı artan veya personel hareketi yoğun olan yapılarda.</p>
-                <div class="service-band-tags">
-                  <span>Bordro</span>
-                  <span>Çalışan takibi</span>
-                  <span>Sigorta akışı</span>
-                </div>
-              </aside>
+              <span class="services-accordion-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="services-accordion-body">
+              <div class="services-accordion-flow">
+                <p>Ekip sayısı artan veya personel hareketi yoğun olan yapılarda bordro akışının dağılmaması kritik hale gelir. Maaş, sosyal sigorta ve personel takibini aynı çerçevede tutarız.</p>
+                <p>Maaş ve bordro takibini, sosyal sigorta akışını ve personel giriş-çıkış sürecini aynı düzen içinde toplarız.</p>
+                <p>Bu akış özellikle ekip büyüdüğünde, işe giriş-çıkış hareketi yoğunlaştığında veya personel takibini tek yerde tutmak gerektiğinde kritik hale gelir.</p>
+              </div>
             </div>
-          </article>
+          </details>
 
-          <article class="service-band-card">
-            <div class="service-band-shell">
-              <div class="service-band-copy">
-                <span class="service-band-kicker">05 · Danışmanlık</span>
-                <h3>Mali danışmanlık</h3>
+          <details class="services-accordion-item">
+            <summary class="services-accordion-summary">
+              <span class="services-accordion-step">05</span>
+              <div class="services-accordion-head">
+                <span class="services-accordion-kicker">Danışmanlık</span>
+                <strong>Mali danışmanlık</strong>
                 <p>Yeni yatırım, ortaklık değişimi veya yapı güncellemesi gerektiğinde daha net bir karar çerçevesi kurarız.</p>
-                <ul class="list-check service-band-list">
-                  <li>Yapı ve dönüşüm kararları</li>
-                  <li>Yatırım planına ön okuma</li>
-                  <li>Karar desteği</li>
-                </ul>
               </div>
-              <aside class="service-band-side">
-                <figure class="service-band-visual">
-                  <img src="./assets/yasar-kaya-card.jpeg" alt="Mali danışmanlık hizmetini temsil eden profesyonel danışman portresi" loading="lazy" decoding="async">
-                  <span class="service-band-badge">Danışmanlık</span>
-                  <figcaption class="service-band-visual-note">Yön değiştiğinde dosyaya daha net bir çerçeve kurulur.</figcaption>
-                </figure>
-                <strong>Ne zaman devreye girer?</strong>
-                <p class="service-band-note">Dosyanın yeni bir yön veya yeni bir yapı istediği anlarda.</p>
-                <div class="service-band-tags">
-                  <span>Yatırım planı</span>
-                  <span>Yapı güncellemesi</span>
-                  <span>Karar desteği</span>
-                </div>
-              </aside>
+              <span class="services-accordion-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="services-accordion-body">
+              <div class="services-accordion-flow">
+                <p>Dosyanın yeni bir yön veya yeni bir yapı istediği anlarda devreye gireriz. Yatırım planı, yapı güncellemesi ve karar desteği başlıklarında şirketin önünü daha net görmesini sağlarız.</p>
+                <p>Yapı ve dönüşüm kararlarını, yatırım planına ön okumayı ve karar desteğini aynı çerçevede ele alırız.</p>
+                <p>Bu destek, dosya yeni bir yön istediğinde, ortaklık yapısı değiştiğinde veya yatırım kararı daha net çerçevelenmek istendiğinde devreye girer.</p>
+              </div>
             </div>
-          </article>
+          </details>
         </div>
       </article>
     </section>
