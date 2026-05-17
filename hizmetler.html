@@ -633,6 +633,89 @@
         padding: 0 18px 18px 18px;
       }
     }
+
+    @media (max-width: 760px) {
+      .services-page-shell {
+        width: min(calc(var(--layout-max) + 20px), calc(100% - 16px));
+      }
+
+      .services-hero-cover {
+        min-height: 440px;
+        border-radius: 22px;
+      }
+
+      .services-hero-copy {
+        gap: 14px;
+        padding: 22px 18px 34px;
+      }
+
+      .services-hero-copy h1 {
+        font-size: clamp(34px, 12vw, 48px);
+        max-width: 11ch;
+      }
+
+      .services-hero-copy .lead {
+        max-width: none;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .services-overview-card {
+        padding: 20px;
+        border-radius: 20px;
+      }
+
+      .services-overview-head {
+        gap: 16px;
+        padding-bottom: 18px;
+      }
+
+      .services-overview-points {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+      }
+
+      .services-overview-points::-webkit-scrollbar {
+        display: none;
+      }
+
+      .services-overview-points span {
+        flex: 0 0 auto;
+      }
+
+      .services-accordion-item {
+        border-radius: 20px;
+      }
+
+      .services-accordion-summary {
+        grid-template-columns: 48px minmax(0, 1fr) 34px;
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .services-accordion-step {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        font-size: 16px;
+      }
+
+      .services-accordion-head strong {
+        font-size: 20px;
+      }
+
+      .services-accordion-head p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .services-accordion-body {
+        padding: 0 16px 16px 16px;
+      }
+    }
   </style>
 </head>
 <body>
