@@ -9,6 +9,399 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/guide-pages.css">
+  <style>
+    .kktcde-hero-banner {
+      min-height: auto;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+    }
+
+    .kktcde-hero-cover {
+      position: relative;
+      min-height: clamp(560px, 78vh, 760px);
+      overflow: hidden;
+      isolation: isolate;
+      border-top: 1px solid rgba(184, 146, 69, 0.14);
+      border-bottom: 1px solid rgba(184, 146, 69, 0.14);
+      background: #15110d;
+    }
+
+    .kktcde-hero-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .kktcde-hero-slide {
+      position: absolute;
+      inset: 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      opacity: 0;
+      transform: scale(1.06);
+      animation: kktcdeHeroSlideCycle 16s ease-in-out infinite;
+      will-change: opacity, transform;
+    }
+
+    .kktcde-hero-slide-1 {
+      background-image: url('./assets/kktcde-hero-cyprus-map.png');
+      animation-delay: 0s;
+    }
+
+    .kktcde-hero-slide-2 {
+      background-image: url('./assets/kktcde-hero-varosha.jpg');
+      animation-delay: 8s;
+    }
+
+    @keyframes kktcdeHeroSlideCycle {
+      0% {
+        opacity: 0;
+        transform: scale(1.08);
+      }
+
+      8%,
+      42% {
+        opacity: 1;
+        transform: scale(1.02);
+      }
+
+      50%,
+      100% {
+        opacity: 0;
+        transform: scale(1);
+      }
+    }
+
+    .kktcde-hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(12, 16, 20, 0.86) 0%, rgba(12, 16, 20, 0.62) 34%, rgba(12, 16, 20, 0.28) 66%, rgba(12, 16, 20, 0.14) 100%),
+        linear-gradient(180deg, rgba(12, 16, 20, 0.06) 0%, rgba(12, 16, 20, 0.34) 100%);
+    }
+
+    .kktcde-hero-cover::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -120px -80px;
+      z-index: 1;
+      width: 340px;
+      height: 340px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(184, 146, 69, 0.24) 0%, rgba(184, 146, 69, 0.08) 42%, transparent 72%);
+      filter: blur(12px);
+    }
+
+    .kktcde-hero-banner .hero-copy {
+      position: relative;
+      z-index: 2;
+      min-height: inherit;
+      max-width: 860px;
+      padding: clamp(40px, 6vw, 84px) clamp(32px, 6vw, 96px) clamp(56px, 8vw, 112px);
+      border: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      justify-content: flex-end;
+    }
+
+    .kktcde-hero-banner .hero-copy h1 {
+      color: #ffffff;
+      font-size: clamp(52px, 9vw, 96px);
+      line-height: 0.9;
+      max-width: 10ch;
+    }
+
+    .kktcde-hero-banner .hero-copy .lead {
+      max-width: 52ch;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 16px;
+      line-height: 1.78;
+    }
+
+    .kktcde-hero-banner .eyebrow {
+      color: #f0dbab;
+      border-color: rgba(240, 219, 171, 0.28);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .kktcde-hero-banner .hero-facts {
+      max-width: 820px;
+    }
+
+    .kktcde-hero-banner .fact-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(240, 219, 171, 0.18);
+      backdrop-filter: blur(8px);
+    }
+
+    .kktcde-hero-banner .fact-label {
+      color: #f0dbab;
+    }
+
+    .kktcde-hero-banner .fact-card strong {
+      color: rgba(255, 255, 255, 0.96);
+    }
+
+    .kktcde-hero-banner .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(240, 219, 171, 0.22);
+      color: rgba(255, 255, 255, 0.96);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .kktcde-hero-slide {
+        animation: none;
+        opacity: 0;
+      }
+
+      .kktcde-hero-slide-1 {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .kktcde-hero-banner {
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .kktcde-hero-cover {
+        min-height: 500px;
+        border-radius: 28px;
+        border: 1px solid rgba(184, 146, 69, 0.14);
+      }
+
+      .kktcde-hero-banner .hero-copy {
+        padding: 26px;
+      }
+
+      .kktcde-hero-banner .hero-copy h1 {
+        font-size: clamp(40px, 14vw, 64px);
+      }
+    }
+
+    .structure-hub {
+      padding: clamp(28px, 4vw, 42px);
+      display: grid;
+      gap: 26px;
+    }
+
+    .structure-hub .section-head {
+      gap: 14px;
+      max-width: 860px;
+    }
+
+    .structure-hub .section-head p {
+      color: var(--ink-soft);
+      max-width: 70ch;
+    }
+
+    .structure-switcher {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      overflow: visible;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(184, 146, 69, 0.35) transparent;
+    }
+
+    .structure-switcher::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .structure-switcher::-webkit-scrollbar-thumb {
+      background: rgba(184, 146, 69, 0.28);
+      border-radius: 999px;
+    }
+
+    .structure-tab {
+      border: 1px solid rgba(184, 146, 69, 0.18);
+      background: #ffffff;
+      color: #171410;
+      padding: 16px 20px;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.1;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 0 10px 24px rgba(17, 17, 17, 0.04);
+    }
+
+    .structure-tab:hover {
+      transform: translateY(-1px);
+      border-color: rgba(184, 146, 69, 0.3);
+    }
+
+    .structure-tab.active {
+      background: linear-gradient(135deg, #1d1a16, #2a241c);
+      color: #f5e2b4;
+      border-color: rgba(184, 146, 69, 0.44);
+      box-shadow: 0 16px 34px rgba(17, 17, 17, 0.14);
+    }
+
+    .structure-panel {
+      display: none;
+      gap: 24px;
+      padding: clamp(24px, 3vw, 34px);
+      border-radius: 30px;
+      border: 1px solid rgba(184, 146, 69, 0.16);
+      background:
+        radial-gradient(circle at top right, rgba(184, 146, 69, 0.12) 0%, rgba(184, 146, 69, 0.03) 28%, transparent 54%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(255, 250, 242, 0.98) 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.64);
+    }
+
+    .structure-panel.active {
+      display: grid;
+    }
+
+    .structure-panel-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .structure-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 14px;
+    }
+
+    .structure-kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(184, 146, 69, 0.12);
+    }
+
+    .structure-panel-copy h3 {
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 0.98;
+      margin-bottom: 16px;
+    }
+
+    .structure-panel-copy p + p {
+      margin-top: 14px;
+    }
+
+    .structure-panel-copy p {
+      color: #433b32;
+      max-width: 68ch;
+    }
+
+    .structure-panel-note {
+      align-self: stretch;
+      padding-left: 24px;
+      border-left: 1px solid rgba(184, 146, 69, 0.18);
+      display: grid;
+      gap: 18px;
+    }
+
+    .structure-panel-note strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+
+    .structure-panel-note p {
+      color: #4a433a;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .structure-panel-bottom {
+      display: grid;
+      gap: 18px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(184, 146, 69, 0.14);
+    }
+
+    .structure-panel-bottom h4 {
+      font-size: 26px;
+      line-height: 1.08;
+    }
+
+    .structure-panel-bottom ul {
+      margin: 0;
+      padding-left: 22px;
+      display: grid;
+      gap: 10px;
+      color: #332d27;
+    }
+
+    .structure-panel-bottom li::marker {
+      color: var(--gold);
+    }
+
+    .structure-panel-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding-top: 8px;
+    }
+
+    .structure-panel-actions .btn-secondary {
+      background: transparent;
+    }
+
+    @media (max-width: 980px) {
+      .structure-hub {
+        padding: 24px;
+      }
+
+      .structure-panel {
+        padding: 22px;
+      }
+
+      .structure-panel-top {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .structure-panel-note {
+        padding-left: 0;
+        padding-top: 18px;
+        border-left: 0;
+        border-top: 1px solid rgba(184, 146, 69, 0.14);
+      }
+
+      .structure-panel-copy h3 {
+        font-size: clamp(30px, 11vw, 44px);
+      }
+
+      .structure-switcher {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+
+      .structure-tab {
+        padding: 14px 18px;
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -49,114 +442,238 @@
   </header>
 
   <main class="page-shell">
-    <section class="hero">
-      <article class="hero-copy">
-        <span class="eyebrow">KKTC'de Şirket Kurma</span>
-        <h1>Şirket kuruluşu, yabancı şirket ve uluslararası yapı seçenekleri</h1>
-        <p class="lead">KKTC'de yeni şirket kuracak, yabancı şirket şubesi açacak veya uluslararası yapı düşünen yatırımcı için ilk ayrım; faaliyet yönünü, pazarını ve resmi beklentileri doğru okumaktır. Bu sayfa ana seçenekleri tek yerde toplar.</p>
-        <div class="hero-facts">
-          <div class="fact-card">
-            <div class="fact-label">Yerel Yapı</div>
-            <strong>Yerel limited ve benzeri modeller</strong>
-          </div>
-          <div class="fact-card">
-            <div class="fact-label">Yabancı Model</div>
-            <strong>Şube ve yabancı sermaye kurgusu</strong>
-          </div>
-          <div class="fact-card">
-            <div class="fact-label">Uluslararası</div>
-            <strong>UİŞ ve dış pazar odaklı yapı</strong>
-          </div>
+    <section class="hero hero-single kktcde-hero-banner">
+      <article class="kktcde-hero-cover">
+        <div class="kktcde-hero-stage" aria-hidden="true">
+          <div class="kktcde-hero-slide kktcde-hero-slide-1"></div>
+          <div class="kktcde-hero-slide kktcde-hero-slide-2"></div>
         </div>
-        <div class="hero-actions">
-          <a class="btn-primary" href="./yerel-limited-uis-yabanci-sube-karsilastirma.html">Yapıları Karşılaştır</a>
-          <a class="btn-secondary" href="./sirket-kurmanin-temel-sartlari.html">Temel Şartları Gör</a>
-        </div>
-      </article>
-      <figure class="hero-media">
-        <img src="./assets/offshore-global-cyprus-card.jpg" alt="Kıbrıs ve uluslararası işletme temalı görsel">
-        <figcaption class="hero-media-badge">
-          <strong>Doğru yapı seçimi tüm akışı değiştirir</strong>
-          <span>Vergi, tescil, banka, resmi süreç ve sonraki muhasebe düzeni seçilen yapıya göre farklılaşır.</span>
-        </figcaption>
-      </figure>
-    </section>
-
-    <section class="section">
-      <article class="section-card">
-        <div class="section-head">
-          <h2>İlk bakışta ana kurulum yolları</h2>
-        </div>
-        <div class="grid-3">
-          <div class="mini-card">
-            <h3>KKTC'de yeni şirket kurma</h3>
-            <p>Yerel faaliyet, yeni yatırım ve kurumsal başlangıç için en çok başvurulan kurulum zemini.</p>
-          </div>
-          <div class="mini-card">
-            <h3>Yabancı şirket şubesi</h3>
-            <p>Merkezi yurt dışında olan şirketlerin KKTC'de faaliyet göstermek için değerlendirdiği temsil modeli.</p>
-            <div class="hero-actions">
-              <a class="btn-secondary" href="./yabanci-sirket-subesi-rehberi.html">Şube Rehberini Aç</a>
+        <div class="hero-copy">
+          <span class="eyebrow">KKTC'de Şirket Kurma</span>
+          <h1>Şirket kuruluşu, yabancı şirket ve uluslararası yapı seçenekleri</h1>
+          <p class="lead">KKTC'de yeni şirket kuracak, yabancı şirket şubesi açacak veya uluslararası yapı düşünen yatırımcı için ilk ayrım; faaliyet yönünü, pazarını ve resmi beklentileri doğru okumaktır. Bu sayfa ana seçenekleri tek yerde toplar.</p>
+          <div class="hero-facts">
+            <div class="fact-card">
+              <div class="fact-label">Yerel Yapı</div>
+              <strong>Yerel limited ve benzeri modeller</strong>
+            </div>
+            <div class="fact-card">
+              <div class="fact-label">Yabancı Model</div>
+              <strong>Şube ve yabancı sermaye kurgusu</strong>
+            </div>
+            <div class="fact-card">
+              <div class="fact-label">Uluslararası</div>
+              <strong>UİŞ ve dış pazar odaklı yapı</strong>
             </div>
           </div>
-          <div class="mini-card">
-            <h3>Uluslararası İşletme Şirketi</h3>
-            <p>Faaliyeti ağırlıklı olarak yurt dışına dönük kurgulayan girişimciler için ayrı bir değerlendirme alanı.</p>
-            <div class="hero-actions">
-              <a class="btn-secondary" href="./uis-rehberi.html">UİŞ Rehberini Aç</a>
-            </div>
+          <div class="hero-actions">
+            <a class="btn-primary" href="./yerel-limited-uis-yabanci-sube-karsilastirma.html">Yapıları Karşılaştır</a>
+            <a class="btn-secondary" href="./sirket-kurmanin-temel-sartlari.html">Temel Şartları Gör</a>
           </div>
         </div>
       </article>
     </section>
 
     <section class="section">
-      <article class="section-card">
+      <article class="section-card structure-hub">
         <div class="section-head">
-          <h2>İşletme yapıları</h2>
+          <h2>İşletme yapıları için tek kartta detaylı bakış</h2>
+          <p>KKTC'de doğru şirket türünü seçmek yalnızca kuruluş evrakını değil; vergi ritmini, banka sürecini, ortaklık yapısını, sorumluluk sınırını ve büyüme planını da etkiler. Aşağıdaki başlıklarda yerel yapıdan uluslararası modele kadar ana seçenekleri tek yerde, daha temiz bir dille ve pratik dosya mantığıyla okuyabilirsiniz. Kanuni eşikler, sermaye ve belge başlıkları ise başvuru gününde ayrıca teyit edilerek netleştirilir.</p>
         </div>
-        <div class="grid-4">
-          <div class="mini-card">
-            <h3>Şahıs işletmesi</h3>
-            <p>Küçük ölçekli veya bireysel başlangıç için en hızlı ve en yalın yapı.</p>
-          </div>
-          <div class="mini-card">
-            <h3>Yerel limited</h3>
-            <p>KKTC iç pazarında faaliyet yürüten işletmeler için en yaygın kurumsal model.</p>
-          </div>
-          <div class="mini-card">
-            <h3>Yabancı şirket şubesi</h3>
-            <p>Ana şirketi dışarıda tutup KKTC'de resmi temsil açmak isteyen yatırımcı profiline yaklaşır.</p>
-          </div>
-          <div class="mini-card">
-            <h3>Uluslararası işletme şirketi</h3>
-            <p>Dış pazara odaklanan işlerde daha temiz bir kurumsal ayrım ve farklı vergi mantığı sunar.</p>
-          </div>
-        </div>
-      </article>
-    </section>
 
-    <section class="section">
-      <article class="section-card">
-        <div class="section-head">
-          <h2>Yeni kuruluş için hangi yapı daha uygun?</h2>
+        <div class="structure-switcher" role="tablist" aria-label="İşletme yapıları">
+          <button type="button" class="structure-tab active" data-structure-tab="limited" aria-selected="true">Yerel limited</button>
+          <button type="button" class="structure-tab" data-structure-tab="sahis" aria-selected="false">Şahıs işletmesi</button>
+          <button type="button" class="structure-tab" data-structure-tab="sube" aria-selected="false">Yabancı şirket şubesi</button>
+          <button type="button" class="structure-tab" data-structure-tab="serbest" aria-selected="false">Serbest Liman ve Bölge Şirketi</button>
+          <button type="button" class="structure-tab" data-structure-tab="uis" aria-selected="false">Uluslararası işletme şirketi</button>
         </div>
-        <div class="grid-2">
-          <div class="mini-card">
-            <h3>Karşılaştırma ile ilerleyin</h3>
-            <p>Yerel limited mi, UİŞ mi, yabancı şirket şubesi mi sorusunu tablolu görünümle daha rahat ayırabilirsiniz.</p>
-            <div class="hero-actions">
-              <a class="btn-secondary" href="./yerel-limited-uis-yabanci-sube-karsilastirma.html">Karşılaştırmaya Git</a>
+
+        <article class="structure-panel active" data-structure-panel="limited">
+          <div class="structure-panel-top">
+            <div class="structure-panel-copy">
+              <span class="structure-kicker">Yerel limited</span>
+              <h3>KKTC'de yabancı yatırımcıların en çok kullandığı yerel şirket omurgası</h3>
+              <p>Yerel limited şirket, KKTC Şirketler Yasası altında sınırlı sorumlulukla tescil edilen ve özellikle yerel pazarda düzenli faaliyet yürütmek isteyen girişimciler için en çok kullanılan kurumsal yapılardan biridir. Uygulamada yabancı yatırımcıların KKTC içinde iş yapmak için en sık yöneldiği yerel model de limited şirkettir.</p>
+              <p>Bu modelde yalnızca şirketi açmak yetmez; ortaklık düzeninin, müdürlük yapısının, şirket ünvanının, faaliyet başlığının ve ana sözleşmenin işe göre hazırlanması gerekir. Biz süreci hazır kalıp metinlerle değil, işinize uygun tüzük ve ana sözleşme mantığıyla kurarız; böylece kuruluş sonrası muhasebe, banka ve operasyon akışı daha temiz ilerler. Şirketin ana sözleşmesi ile tüzüğü, iç yönetimden hisse devrine kadar birçok başlığı taşıdığı için dosyanın kalbini oluşturur.</p>
+            </div>
+            <div class="structure-panel-note">
+              <div>
+                <strong>Kimler için uygundur?</strong>
+                <p>KKTC'de yerel faaliyet gösterecek yabancılar, ortaklı bir kurgu isteyen yatırımcılar ve işini daha kurumsal zeminde başlatmak isteyen girişimciler için en net seçeneklerden biridir. İç pazarda çalışan şirketlerde güven veren ana omurgayı çoğu zaman limited yapı oluşturur.</p>
+              </div>
+              <div>
+                <strong>Dosyada neyi netleştiririz?</strong>
+                <p>Ortak sayısı, müdür yapısı, ana sözleşme kapsamı, sermaye kurgusu, hisse devri mantığı ve direktörlük tarafındaki banka beklentileri dosyanın başında netleştirilir; böylece sonradan sürpriz çıkması önlenir.</p>
+              </div>
             </div>
           </div>
-          <div class="mini-card">
-            <h3>Yasal zemini önce görün</h3>
-            <p>Ünvan, hissedar, adres, tescil ve ana belge beklentileri temel şartlar sayfasında daha net durur.</p>
-            <div class="hero-actions">
-              <a class="btn-secondary" href="./sirket-kurmanin-temel-sartlari.html">Temel Şartları Aç</a>
+          <div class="structure-panel-bottom">
+            <h4>Yerel limited kurulurken öne çıkan başlıklar</h4>
+            <ul>
+              <li>Özel limited yapıda en az iki hissedarla ilerlenmesi; halka açık yapılarda ise daha farklı hissedar ve direktör eşiklerinin devreye girmesi</li>
+              <li>Yabancı ortaklı dosyalarda uygulamada en az iki ortakla ilerlenmesi ve kimlik ya da pasaport, sabıka kaydı ile adres belgesi gibi ana evrakların hazırlanması</li>
+              <li>Şirkete özel ana sözleşme ve tüzüğün, faaliyet alanına göre yazılması ve kuruluş dosyasına buna göre yön verilmesi</li>
+              <li>Şirket adının uygunluğu, adın sonunda “limited” kullanım mantığı ve şirket amaçlarının ana sözleşmede doğru tanımlanması</li>
+              <li>Yabancı yatırımcı dosyalarında ödenmiş sermaye eşiği, bloke gerekliliği ve müdürlük yapısına bağlı banka beklentilerinin başvuru anındaki güncel kurala göre ayrıca teyit edilmesi</li>
+              <li>Özel şirkette en az bir, halka açık yapıda en az iki direktör gerekliliği ile sekreterlik ve imza akışının doğru kurgulanması</li>
+              <li>Özel limited yapılarda hisselerin devrinde mevcut hissedar önceliğinin ve tüzükteki kısıtlama mantığının doğru kurulması</li>
+              <li>Genel kurul, oy hakları, pay devri, direktör yetkileri, temettü, hesaplar ve denetim hükümlerinin tüzükte açık bırakılmaması</li>
+            </ul>
+            <div class="structure-panel-actions">
+              <a class="btn-primary" href="./yerel-limited-uis-yabanci-sube-karsilastirma.html">Karşılaştırmayı Aç</a>
+              <a class="btn-secondary" href="./sirket-kurmanin-temel-sartlari.html">Temel Şartları Gör</a>
             </div>
           </div>
-        </div>
+        </article>
+
+        <article class="structure-panel" data-structure-panel="sahis">
+          <div class="structure-panel-top">
+            <div class="structure-panel-copy">
+              <span class="structure-kicker">Şahıs işletmesi</span>
+              <h3>Küçük ölçekli başlangıçlarda en hızlı ve en yalın giriş modeli</h3>
+              <p>Şahıs işletmesi, ticaret, sanayi, tarım, montaj, tamirat veya hizmet gibi alanlarda kendi adına iş yapmak isteyen gerçek kişilerin başvurduğu en yalın başlangıç modellerinden biridir. KKTC'de bu yapı, işyeri sahibinin kendi adına tescil ve vergi kaydı açtırmasıyla ilerler; vergi mükellefi işyeri değil doğrudan iş sahibidir.</p>
+              <p>Bu model, karar alma sürecini tek merkezde tutmak ve işi hızlı başlatmak isteyen yerel girişimciler için pratiktir. Uygulamada işletme, kişinin kendi adıyla ya da Fasıl 116 çerçevesinde kaydedilebilir bir iş adıyla yürütülebilir; iş adı kaydında işletme adı, faaliyet konusu, işin temel yeri, başvuranın bilgileri ve iş başlangıç tarihi önem taşır. Yabancı yatırımcı tarafında ise kullanılan ana yerel model limited olduğu için, yabancıların şahıs işletmesi veya klasik yerel ortaklık türleri yerine limited şirket üzerinden değerlendirme yapması gerekir.</p>
+            </div>
+            <div class="structure-panel-note">
+              <div>
+                <strong>Kimler için uygundur?</strong>
+                <p>KKTC vatandaşı olup işe kendi adıyla veya küçük ekipli biçimde başlamak isteyen, ilk aşamada mümkün olduğunca sade vergi ve operasyon akışı arayan girişimciler için uygundur. Bireysel iş sahipliği mantığı burada çok daha belirgindir.</p>
+              </div>
+              <div>
+                <strong>Ne zaman sınıra gelir?</strong>
+                <p>Ortak alınacaksa, çalışan sayısı büyüyorsa, yatırım ve kurumsal sözleşme hacmi artıyorsa ya da markayı daha ayrı bir şirket çatısı altında taşımak isteniyorsa limited modele geçiş daha doğru olur. KKTC vatandaşları tarafında kollektif ve komandit gibi ortaklık türleri de burada ayrı değerlendirme alanı oluşturur.</p>
+              </div>
+            </div>
+          </div>
+          <div class="structure-panel-bottom">
+            <h4>Şahıs işletmesinde baktığımız ana noktalar</h4>
+            <ul>
+              <li>Faaliyet konusunun sade ama doğru yazılması ve gereksiz belge yükü doğurmayan başlangıç yapılması</li>
+              <li>İş adıyla tescil yapılacaksa, başlangıçtan kısa süre içinde verilecek beyanda iş adı, işin doğası, ana işyeri ve başvuranın bilgilerinin eksiksiz hazırlanması</li>
+              <li>Vergi, kayıt ve resmi takip düzeninin ilk aydan itibaren net kurulması</li>
+              <li>Banka, fatura ve günlük operasyon akışının tek kişi yönetimine uygun ilerlemesi</li>
+              <li>Kollektif ortaklıklarda ortakların sorumluluğunun sınırsız olduğunun; komandit yapıda ise sorumlu ve sorumsuz ortak ayrımının doğru anlaşılması</li>
+              <li>Komandit ortaklıklarda sorumluluğu olmayan ortakların yönetime giremeyeceği ve karar yetkisinin sorumlu ortaklarda kalacağı yapının baştan bilinmesi</li>
+              <li>Ortaklık kurulacaksa ismin, amacın, sürenin, ortakların yetkilerinin ve adres bilgilerinin kayıt dosyasında açık biçimde yer alması</li>
+              <li>Büyüme olursa limited yapıya geçişi zorlaştırmayacak temiz başlangıç zemininin korunması</li>
+            </ul>
+            <div class="structure-panel-actions">
+              <a class="btn-primary" href="./yerel-limited-uis-yabanci-sube-karsilastirma.html">Karşılaştırmayı Aç</a>
+              <a class="btn-secondary" href="./sirket-kurmanin-temel-sartlari.html">Temel Şartları Gör</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="structure-panel" data-structure-panel="sube">
+          <div class="structure-panel-top">
+            <div class="structure-panel-copy">
+              <span class="structure-kicker">Yabancı şirket şubesi</span>
+              <h3>Mevcut ana şirketi koruyup KKTC'de resmi temsil açmak isteyenler için</h3>
+              <p>Yabancı şirket şubesi, yönetim merkezi ve kayıtlı adresi KKTC dışında bulunan bir şirketin, aynı ana yapıyı koruyarak KKTC'de resmi tescil yaptırıp faaliyet göstermesi için değerlendirilir. Bu modelde amaç sıfırdan yeni bir yerel marka üretmek değil; mevcut ana şirketin kurumsal omurgasını koruyup KKTC'de resmi bir faaliyet kapısı açmaktır.</p>
+              <p>Yasal çerçevede şube yapısı yabancı şirket statüsünde olsa da, uygulamada yerel şirketlerle benzer şart ve koşullara bağlanan önemli başlıklar bulunur. Özellikle Bakanlar Kurulu kararı gerekliliği, Ekonomi Bakanlığı onayı, ana şirket sermaye yeterliliği ve yerel dosyanın merkeze bağlı işleyişi baştan dikkatle tanımlanmalıdır.</p>
+            </div>
+            <div class="structure-panel-note">
+              <div>
+                <strong>Kimler için uygundur?</strong>
+                <p>Yurt dışında aktif bir şirketi bulunan, KKTC'de temsil açmak, pazar test etmek veya bölgesel faaliyeti ana şirket üzerinden sürdürmek isteyen yatırımcı profiline yaklaşır. Grup şirketi mantığıyla ilerleyen dosyalarda daha anlamlı olabilir.</p>
+              </div>
+              <div>
+                <strong>Neyi baştan netleştiririz?</strong>
+                <p>Ana şirket ile yerel işleyiş arasındaki bağ, hangi sözleşmelerin merkez üzerinden hangi akışların yerelden ilerleyeceği, Bakanlar Kurulu onayı ve sermaye yeterliliği gibi başlıklar dosyanın en kritik bölümünü oluşturur.</p>
+              </div>
+            </div>
+          </div>
+            <div class="structure-panel-bottom">
+              <h4>Şube modelinde özellikle dikkat edilen noktalar</h4>
+              <ul>
+              <li>Ana şirketin kurumsal kimliği ile yerel temsili aynı dosya içinde uyumlu göstermek</li>
+              <li>Ana şirket için aranan sermaye ve yeterlilik eşiğini başvuru günündeki resmi şartlara göre önceden kontrol etmek</li>
+              <li>Şube tescili için gerekli Bakanlar Kurulu kararı, Ekonomi Bakanlığı onayı ve buna bağlı resmi sıra planını önceden hazırlamak</li>
+              <li>Yetki, imza, raporlama ve belge akışını merkez şirket düzeniyle çakıştırmadan kurmak</li>
+              <li>KKTC'deki operasyonun kapsamını, adresini ve yerel resmi temaslarını net tanımlamak</li>
+              <li>Vergi, muhasebe ve banka sürecini yerel temsil mantığına göre doğru kurgulamak</li>
+              </ul>
+              <div class="structure-panel-actions">
+                <a class="btn-primary" href="./yabanci-sirket-subesi-rehberi.html">Şube Rehberini Aç</a>
+                <a class="btn-secondary" href="./yerel-limited-uis-yabanci-sube-karsilastirma.html">Karşılaştırmayı Gör</a>
+              </div>
+            </div>
+        </article>
+
+        <article class="structure-panel" data-structure-panel="serbest">
+          <div class="structure-panel-top">
+            <div class="structure-panel-copy">
+              <span class="structure-kicker">Serbest Liman ve Bölge Şirketi</span>
+              <h3>Transit ticaret, yazılım ve dış odaklı hizmetlerde ayrı bir serbest bölge modeli</h3>
+              <p>Serbest Liman ve Bölge Şirketi, KKTC Serbest Liman ve Bölge Yasası çerçevesinde faaliyet gösteren ve özellikle dış ticaret, transit iş modeli, yazılım veya uluslararası hizmet akışı kuran girişimciler için ayrı bir değerlendirme alanı açan yapıdır. Burada ana konu yalnızca şirket açmak değil; faaliyetin serbest bölge mantığına gerçekten uyup uymadığını doğru okumaktır.</p>
+              <p>Uygulamada isim uygunluğu sorgusu, hissedar yapısı, sözleşme seti, sabıka ve adres belgeleri ile kimlik ya da pasaport kopyaları gibi başlıklar kuruluşun ana omurgasını oluşturur. Serbest bölge şirketlerini yerel yapılardan ayıran asıl nokta ise, depolama, ithal-ihracat, montaj, demontaj, üretim, survey, bankacılık veya sigortacılık gibi faaliyetlerde farklı vergi ve gümrük mantığıyla çalışmalarıdır.</p>
+            </div>
+            <div class="structure-panel-note">
+              <div>
+                <strong>Kimler için uygundur?</strong>
+                <p>Yazılım, uluslararası hizmet, transit ticaret ve KKTC iç pazarından ayrı bir operasyon dili kurmak isteyen girişimciler için daha güçlü bir alternatif olabilir. Özellikle vergi avantajını faaliyet yapısıyla birlikte değerlendiren dosyalarda öne çıkar.</p>
+              </div>
+              <div>
+                <strong>Neden uzmanlık ister?</strong>
+                <p>Çünkü serbest bölge tarafında yalnızca şirketler hukuku değil; faaliyet kapsamı, muafiyet alanı, gümrük mantığı ve fiili işleyişin birlikte okunması gerekir. Kurgu doğru kurulmazsa avantaj beklenen yerde karmaşa doğabilir ve vergi mantığı yanlış anlaşılabilir.</p>
+              </div>
+            </div>
+          </div>
+          <div class="structure-panel-bottom">
+            <h4>Serbest Liman ve Bölge Şirketi'nde öne çıkan başlıklar</h4>
+            <ul>
+              <li>Kuruluş öncesinde şirket adının uygunluk sorgusunun yapılması ve dosyanın faaliyet alanına göre hazırlanması</li>
+              <li>Uygulamada en az iki hissedarla ilerlenmesi, hissedarlar için sabıka kaydı ve adres gösteren belgelerin hazır edilmesi</li>
+              <li>Şirket sözleşmesinin KKTC mevzuatına ve serbest bölge mantığına uygun olarak düzenlenmesi</li>
+              <li>Yurt dışında veya serbest liman bölgesi içinde yürütülen faaliyetlerde kurumlar vergisi, gelir vergisi ve KDV tarafında gündeme gelen muafiyetlerin iş modeline göre değerlendirilmesi</li>
+              <li>Yabancı hissedar varsa sermaye eşiği, denetim ve raporlama beklentilerinin güncel resmi uygulamaya göre ayrıca teyit edilmesi</li>
+              <li>Şirketin esas yükümlülüğünün çoğu zaman çalıştırılan personelin vergi ve sosyal güvenlik yatırımları tarafında yoğunlaşacağının baştan anlatılması</li>
+              <li>Kar transferi, dış ticaret akışı, yıllık bağımsız denetim ve hizmetin KKTC iç pazarına yönelip yönelmediği gibi farkların kuruluş anında netleştirilmesi</li>
+            </ul>
+            <div class="structure-panel-actions">
+              <a class="btn-primary" href="./bize-ulasin.html">Detayları Sor</a>
+              <a class="btn-secondary" href="./yerel-limited-uis-yabanci-sube-karsilastirma.html">Karşılaştırmayı Gör</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="structure-panel" data-structure-panel="uis">
+          <div class="structure-panel-top">
+            <div class="structure-panel-copy">
+              <span class="structure-kicker">Uluslararası işletme şirketi</span>
+              <h3>Offshore mantığında dış pazara çalışan işlerde daha özel avantajlar sunan yapı</h3>
+              <p>Uluslararası işletme şirketi, eski offshore mantığının güncel karşılığı olarak, faaliyetini tamamen ya da ağırlıklı biçimde yurt dışına yönelten şirketler için ayrı bir kurgu sunar. Uluslararası ticaret, finans, bilişim, yazılım, aracılık ve benzeri dış pazar odaklı işlerde, gelirin kaynağı ile operasyon coğrafyası doğru kurulduğunda daha güçlü avantajlar ortaya çıkabilir.</p>
+              <p>Bu yapıda KKTC, Türkiye ile çalışan bankacılık düzeni, zaman farkı avantajı ve Avrupa-Asya-Afrika hattına yakın konumu nedeniyle operasyon üssü olarak değerlendirilir. Ancak burada isimden çok işleyiş önemlidir; tahsilat, hizmet, ofis açılışı, personel ihtiyacı ve para transfer düzeni gerçekten uluslararası modele oturuyorsa UİŞ mantığı daha doğru çalışır. Yasa mantığında gelirlerin yurt dışından doğması ve şirket faaliyetinin fiilen offshore karakter taşıması beklenir.</p>
+            </div>
+            <div class="structure-panel-note">
+              <div>
+                <strong>Kimler için uygundur?</strong>
+                <p>Hedef müşterisi yurt dışında olan, yazılım ve bilişim hizmeti veren, uluslararası ticaret yapan ya da çağrı merkezi, destek ve benzeri servislerini dış pazara sunmak isteyen şirketler için değerlendirilir. Faaliyetlerin esas yönü yurt dışı oldukça bu yapı daha anlamlı hale gelir.</p>
+              </div>
+              <div>
+                <strong>Neden dikkatli seçilir?</strong>
+                <p>Çünkü burada yapı ile fiili faaliyet birebir uyumlu olmalıdır. İç pazarda çalışıp yalnızca vergi avantajı bekleyen dosyalarda yanlış kurgular sorun yaratabilir; bu nedenle işin yönü, müşteri yapısı, transfer akışı ve personel planı önceden analiz edilir.</p>
+              </div>
+            </div>
+          </div>
+          <div class="structure-panel-bottom">
+            <h4>UİŞ tarafında masaya yatırdığımız başlıklar</h4>
+            <ul>
+              <li>Faaliyetlerin tamamen yurt dışına yönelik kurgulanması ve bu ayrımın dosya üzerinde net biçimde taşınması</li>
+              <li>Ödenmiş sermaye eşiği, lisans bedeli ve yıllık raporlama sürelerinin başvuru günündeki mevzuata göre ayrıca teyit edilmesi</li>
+              <li>Yıllık net kar üzerinden %1 kurumlar vergisi yaklaşımı, sabit yıllık lisans ücreti ve gelir vergisi dışındaki temel istisnaların baştan açıklanması</li>
+              <li>KKTC bankalarında hesap açılması, faiz gelirleri, temettü dağıtımı ve yurt dışına yapılan bazı ödemelerdeki vergi etkisinin doğru yorumlanması</li>
+              <li>Yurt dışına ödenen telif, faiz, hizmet ve benzeri bedellerin vergisel etkisinin iş modeline göre değerlendirilmesi</li>
+              <li>Personel çalıştırılması halinde esas yükümlülüğün personel vergi ve sosyal güvenlik tarafında yoğunlaştığının anlatılması</li>
+              <li>Ofis açılması halinde yabancı personel, çalışma izni, banka ilişkileri ve bazı ekipman/araç avantajlarının ayrıca planlanması</li>
+            </ul>
+            <div class="structure-panel-actions">
+              <a class="btn-primary" href="./uis-rehberi.html">UİŞ Rehberini Aç</a>
+              <a class="btn-secondary" href="./yerel-limited-uis-yabanci-sube-karsilastirma.html">Karşılaştırmayı Gör</a>
+            </div>
+          </div>
+        </article>
       </article>
     </section>
 
@@ -178,6 +695,32 @@
     </footer>
   </main>
   <script src="./assets/guide-language.js"></script>
+  <script>
+    (() => {
+      const tabs = Array.from(document.querySelectorAll("[data-structure-tab]"));
+      const panels = Array.from(document.querySelectorAll("[data-structure-panel]"));
+
+      if (!tabs.length || !panels.length) {
+        return;
+      }
+
+      const activateTab = (key) => {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.structureTab === key;
+          tab.classList.toggle("active", active);
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+        });
+
+        panels.forEach((panel) => {
+          panel.classList.toggle("active", panel.dataset.structurePanel === key);
+        });
+      };
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => activateTab(tab.dataset.structureTab));
+      });
+    })();
+  </script>
 </body>
 </html>
 
