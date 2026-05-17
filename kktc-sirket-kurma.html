@@ -3222,6 +3222,46 @@ section { padding: var(--section-space) 0; }
   min-height: 260px;
   overflow: hidden;
 }
+.requirements-summary-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.requirements-summary-slide {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0;
+  transform: scale(1.04);
+  animation: requirementsSummarySlide 14s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+.requirements-summary-slide-1 {
+  background-image: url('assets/basic-requirements-hero-1.jpg');
+  animation-delay: 0s;
+}
+.requirements-summary-slide-2 {
+  background-image: url('assets/basic-requirements-hero-2.jpg');
+  animation-delay: 7s;
+}
+@keyframes requirementsSummarySlide {
+  0% {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  10%,
+  40% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  50%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
 .requirements-summary-media::before {
   content: '';
   position: absolute;
@@ -3230,13 +3270,6 @@ section { padding: var(--section-space) 0; }
   background:
     linear-gradient(180deg, rgba(12,10,8,0.10) 0%, rgba(12,10,8,0.52) 100%),
     radial-gradient(circle at 78% 18%, rgba(var(--accent-rgb),0.18), transparent 26%);
-}
-.requirements-summary-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(0.9) contrast(1.02) brightness(0.88);
 }
 .requirements-summary-copy {
   display: grid;
@@ -3267,6 +3300,16 @@ section { padding: var(--section-space) 0; }
   height: 7px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--gold-light), var(--gold-deep));
+}
+@media (prefers-reduced-motion: reduce) {
+  .requirements-summary-slide {
+    animation: none;
+    opacity: 0;
+    transform: none;
+  }
+  .requirements-summary-slide-1 {
+    opacity: 1;
+  }
 }
 .requirements-list {
   display: grid;
@@ -5096,6 +5139,13 @@ section { padding: var(--section-space) 0; }
   min-height: 400px;
   display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
+}
+.map-embed-frame {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border: 0;
+  display: block;
 }
 .map-embed::after {
   content: '';
@@ -7728,7 +7778,7 @@ body.intro-active {
 <body class="intro-active">
 
 <div class="intro-overlay" id="site-intro" aria-hidden="false">
-  <video id="site-intro-video" autoplay playsinline preload="auto">
+  <video id="site-intro-video" autoplay muted playsinline preload="auto">
     <source src="assets/site-intro.mp4" type="video/mp4">
   </video>
 </div>
@@ -8883,13 +8933,10 @@ body.intro-active {
     <div class="requirements-grid reveal">
       <article class="requirements-summary">
         <div class="requirements-summary-media">
-          <img
-            src="assets/kayaplus-office-wall.jpeg"
-            width="1080"
-            height="1350"
-            alt="Kaya Plus çalışma alanı ve kurumsal ofis görünümü"
-            loading="lazy"
-            decoding="async">
+          <div class="requirements-summary-stage" aria-hidden="true">
+            <div class="requirements-summary-slide requirements-summary-slide-1"></div>
+            <div class="requirements-summary-slide requirements-summary-slide-2"></div>
+          </div>
         </div>
         <div class="requirements-summary-copy">
           <div class="card-kicker" data-tr="İlk Kontrol Listesi" data-en="First Checklist" data-ru="Первичный чек-лист" data-fa="قائمة التحقق الأولى"><span class="kicker-dot"></span>İlk Kontrol Listesi</div>
@@ -9964,14 +10011,19 @@ body.intro-active {
         <div class="map-address-icon">🟢</div>
         <div class="map-address-text"><strong data-tr="WhatsApp" data-en="WhatsApp" data-ru="WhatsApp" data-fa="واتساب">WhatsApp</strong><a href="https://wa.me/905338616552" style="color:var(--gold-light);text-decoration:none" data-tr="Hemen Mesaj Gönderin" data-en="Send a Message Now" data-ru="Написать сейчас" data-fa="أرسل رسالة الآن">Hemen Mesaj Gönderin</a></div>
       </div>
+      <div class="map-address-item">
+        <div class="map-address-icon">↗</div>
+        <div class="map-address-text"><strong data-tr="Harita" data-en="Map" data-ru="Карта" data-fa="الخريطة">Harita</strong><a href="https://www.google.com/maps?q=35.20845031738281,33.3785400390625&z=17&hl=tr" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);text-decoration:none" data-tr="Google Maps'te Aç" data-en="Open in Google Maps" data-ru="Открыть в Google Maps" data-fa="افتح في خرائط جوجل">Google Maps'te Aç</a></div>
+      </div>
     </div>
     <div class="map-embed">
-      <img
-        src="assets/kayaplus-office-front.jpeg"
-        alt="Kaya Plus ofis girişini gösteren kurumsal fotoğraf"
-        class="map-embed-media"
+      <iframe
+        class="map-embed-frame"
+        title="Kaya Plus ofis konumu"
+        src="https://www.google.com/maps?q=35.20845031738281,33.3785400390625&z=17&hl=tr&output=embed"
         loading="lazy"
-        decoding="async">
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
     </div>
   </div>
 </div>
@@ -11731,7 +11783,6 @@ function initSiteIntro() {
   }
 
   let introClosed = false;
-  let introStartedMuted = false;
 
   const closeIntro = () => {
     if (introClosed) return;
@@ -11746,44 +11797,17 @@ function initSiteIntro() {
 
   introVideo.addEventListener('ended', closeIntro, { once: true });
   introVideo.addEventListener('error', closeIntro, { once: true });
-  introVideo.muted = false;
-  introVideo.defaultMuted = false;
-  introVideo.removeAttribute('muted');
-  introVideo.volume = 1;
+  introVideo.muted = true;
+  introVideo.defaultMuted = true;
+  introVideo.setAttribute('muted', '');
+  introVideo.volume = 0;
   introVideo.playsInline = true;
   const playPromise = introVideo.play();
   if (playPromise && typeof playPromise.catch === 'function') {
     playPromise.catch(() => {
-      introStartedMuted = true;
-      introVideo.muted = true;
-      introVideo.defaultMuted = true;
-      introVideo.setAttribute('muted', '');
-      const mutedPlayPromise = introVideo.play();
-      if (mutedPlayPromise && typeof mutedPlayPromise.catch === 'function') {
-        mutedPlayPromise.catch(() => {
-          closeIntro();
-        });
-      }
+      closeIntro();
     });
   }
-
-  intro.addEventListener('pointerdown', () => {
-    if (!introStartedMuted || introClosed) return;
-    introStartedMuted = false;
-    introVideo.muted = false;
-    introVideo.defaultMuted = false;
-    introVideo.removeAttribute('muted');
-    introVideo.volume = 1;
-    const resumePromise = introVideo.play();
-    if (resumePromise && typeof resumePromise.catch === 'function') {
-      resumePromise.catch(() => {
-        introStartedMuted = true;
-        introVideo.muted = true;
-        introVideo.defaultMuted = true;
-        introVideo.setAttribute('muted', '');
-      });
-    }
-  });
 }
 
 // ── INITIAL LANG ──

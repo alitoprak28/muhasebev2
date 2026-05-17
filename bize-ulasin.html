@@ -9,6 +9,37 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/guide-pages.css">
+  <style>
+    .contact-office-card {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-map-frame-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(184, 146, 69, 0.18);
+      min-height: 320px;
+      background: #f4f1ea;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+    }
+
+    .contact-map-frame {
+      width: 100%;
+      min-height: 320px;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .contact-map-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -90,10 +121,22 @@
               <a class="btn-secondary" href="mailto:info@kayaplus.net">E-posta Gönder</a>
             </div>
           </div>
-          <div class="mini-card">
+          <div class="mini-card contact-office-card">
             <h3>Ofis bilgileri</h3>
             <p>Uludere Sokak No: 4/F, Küçük Kaymaklı, Lefkoşa / Kuzey Kıbrıs</p>
             <p class="muted">Çalışma saatleri: Pzt-Cum 08:00-17:00, Cmt 09:00-13:00</p>
+            <div class="contact-map-frame-wrap">
+              <iframe
+                class="contact-map-frame"
+                title="Kaya Plus ofis konumu"
+                src="https://www.google.com/maps?q=35.20845031738281,33.3785400390625&z=17&hl=tr&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen></iframe>
+            </div>
+            <div class="contact-map-actions">
+              <a class="btn-primary" href="https://www.google.com/maps?q=35.20845031738281,33.3785400390625&z=17&hl=tr" target="_blank" rel="noopener noreferrer">Haritada Aç</a>
+            </div>
             <div class="hero-actions">
               <a class="btn-secondary" href="https://wa.me/905338616552" target="_blank" rel="noopener noreferrer">WhatsApp'tan Yaz</a>
               <a class="btn-secondary" href="https://www.facebook.com/search/top/?q=Kaya%20Plus%20Muhasebe%20ve%20Mali%20Dan%C4%B1%C5%9Fmanl%C4%B1k" target="_blank" rel="noopener noreferrer">Facebook</a>

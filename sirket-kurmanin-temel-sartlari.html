@@ -9,6 +9,103 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/guide-pages.css">
+  <style>
+    .conditions-page-shell {
+      width: min(calc(var(--layout-max) + 120px), calc(100% - clamp(18px, 2.8vw, 40px)));
+    }
+
+    .conditions-hero-banner {
+      min-height: auto;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+    }
+
+    .conditions-hero-cover {
+      position: relative;
+      min-height: clamp(560px, 78vh, 760px);
+      overflow: hidden;
+      isolation: isolate;
+      border-radius: 0;
+      border-top: 1px solid rgba(184, 146, 69, 0.14);
+      border-bottom: 1px solid rgba(184, 146, 69, 0.14);
+      background:
+        linear-gradient(90deg, rgba(8, 15, 30, 0.68) 0%, rgba(8, 15, 30, 0.6) 28%, rgba(8, 15, 30, 0.34) 56%, rgba(8, 15, 30, 0.18) 100%),
+        url('./assets/basic-requirements-hero-2.jpg') center center / cover no-repeat;
+    }
+
+    .conditions-hero-cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(10, 18, 33, 0.9) 0%, rgba(10, 18, 33, 0.76) 30%, rgba(10, 18, 33, 0.4) 58%, rgba(10, 18, 33, 0.18) 100%),
+        linear-gradient(180deg, rgba(10, 18, 33, 0.08) 0%, rgba(10, 18, 33, 0.34) 100%);
+    }
+
+    .conditions-hero-cover::after {
+      content: '';
+      position: absolute;
+      inset: auto auto -120px -80px;
+      z-index: 1;
+      width: 340px;
+      height: 340px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(184, 146, 69, 0.24) 0%, rgba(184, 146, 69, 0.08) 42%, transparent 72%);
+      filter: blur(12px);
+    }
+
+    .conditions-hero-copy {
+      position: relative;
+      z-index: 2;
+      min-height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 16px;
+      max-width: 780px;
+      padding: clamp(40px, 6vw, 84px) clamp(32px, 6vw, 96px) clamp(56px, 8vw, 112px);
+    }
+
+    .conditions-hero-copy .eyebrow {
+      color: #f0dbab;
+      border-color: rgba(240, 219, 171, 0.28);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .conditions-hero-copy h1 {
+      color: #ffffff;
+      font-size: clamp(52px, 9vw, 96px);
+      line-height: 0.9;
+      max-width: 10ch;
+    }
+
+    .conditions-hero-copy .lead {
+      max-width: 54ch;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 16px;
+      line-height: 1.78;
+    }
+
+    @media (max-width: 980px) {
+      .conditions-page-shell {
+        width: min(calc(var(--layout-max) + 40px), calc(100% - 20px));
+      }
+
+      .conditions-hero-cover {
+        min-height: 500px;
+      }
+
+      .conditions-hero-copy {
+        padding: 26px;
+      }
+
+      .conditions-hero-copy h1 {
+        font-size: clamp(40px, 14vw, 64px);
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -48,38 +145,15 @@
     </div>
   </header>
 
-  <main class="page-shell">
-    <section class="hero">
-      <article class="hero-copy">
-        <span class="eyebrow">Kuruluş Rehberi</span>
-        <h1>Şirket kurmanın şartlarını ve yasal çerçevesini tek sayfada görün</h1>
-        <p class="lead">Bu sayfa; KKTC'de şirket kurmak isteyen girişimciler, yabancı yatırımcılar ve kurulum sürecini doğru sırayla görmek isteyen işletmeler için temel şartları ve temel yasaları sade bir akışta toplar.</p>
-        <div class="hero-facts">
-          <div class="fact-card">
-            <div class="fact-label">Kuruluş</div>
-            <strong>Hissedar, direktör, sekreter, kayıtlı adres</strong>
-          </div>
-          <div class="fact-card">
-            <div class="fact-label">Yasalar</div>
-            <strong>Fasıl 113 ve bağlı düzenlemeler</strong>
-          </div>
-          <div class="fact-card">
-            <div class="fact-label">Yatırımcı</div>
-            <strong>Yerli ve yabancı sermaye için açık çerçeve</strong>
-          </div>
-        </div>
-        <div class="hero-actions">
-          <a class="btn-primary" href="./kktc-sirket-kurma.html#contact">Kuruluş Dosyanı Değerlendir</a>
-          <a class="btn-secondary" href="./kktc-sirket-kurma.html#formation-hub">Şirket Kurma Bölümüne Dön</a>
+  <main class="page-shell conditions-page-shell">
+    <section class="hero hero-single conditions-hero-banner">
+      <article class="conditions-hero-cover">
+        <div class="conditions-hero-copy">
+          <span class="eyebrow">Kuruluş Rehberi</span>
+          <h1>Şirket kurmanın şartları ve yasal çerçevesi</h1>
+          <p class="lead">Hissedar, direktör, sekreter, kayıtlı adres ve temel yasal zemini; KKTC'de şirket kurmak isteyen girişimciler ve yatırımcılar için daha sade, daha görünür ve daha net bir akışla aynı sayfada topluyoruz.</p>
         </div>
       </article>
-      <figure class="hero-media">
-        <img src="./assets/hero-trust-scene.svg" alt="KKTC'de şirket kuruluşu için güven veren kurumsal iş birliği görseli">
-        <figcaption class="hero-media-badge">
-          <strong>Temel şartlar yalnızca form değil, doğru yapı kararının başlangıcıdır</strong>
-          <span>Kuruluş dosyası ne kadar erken netleşirse banka, vergi, resmi kayıt ve sonraki muhasebe düzeni o kadar sorunsuz ilerler.</span>
-        </figcaption>
-      </figure>
     </section>
 
     <section class="section">
