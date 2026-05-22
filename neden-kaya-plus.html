@@ -118,6 +118,31 @@
     }
     .gl-feat p { font-size: 14px; color: var(--gl-muted); line-height: 1.65; font-weight: 500; }
 
+    /* ── Özellik Kart İkon Badge ── */
+    .gl-feat-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: rgba(28, 94, 140, 0.07);
+      border: 1px solid rgba(28, 94, 140, 0.15);
+      color: var(--gl-gold);
+      margin-bottom: 16px;
+      flex-shrink: 0;
+      transition: background 0.22s ease, transform 0.22s ease;
+    }
+    .gl-feat:hover .gl-feat-icon {
+      background: rgba(28, 94, 140, 0.13);
+      transform: translateY(-2px);
+    }
+    .gl-feat-icon svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━
        YAKLAŞIM ŞERIDI
     ━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -150,6 +175,27 @@
     .gl-about {
       padding: clamp(44px,5vw,64px) clamp(32px,4vw,52px);
       border-right: 1px solid var(--gl-off2);
+    }
+    .gl-about-photo {
+      width: 100%;
+      height: clamp(180px, 22vw, 240px);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      border: 1px solid rgba(28, 94, 140, 0.10);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+    }
+    .gl-about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: saturate(0.82) brightness(0.90);
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+    .gl-about-photo:hover img {
+      transform: scale(1.04);
+      filter: saturate(0.90) brightness(0.95);
     }
     .gl-about-kicker {
       font-size: 11px; font-weight: 700; letter-spacing: .1em;
@@ -230,9 +276,13 @@
     .gl-step:hover::after { opacity: 1; }
     .gl-step-num {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(44px,5vw,56px); font-weight: 700;
-      color: transparent; -webkit-text-stroke: 1.5px rgba(28,94,140,.22);
-      line-height: 1; margin-bottom: 18px;
+      font-size: clamp(72px, 9vw, 96px);
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(28, 94, 140, 0.28);
+      line-height: 0.9;
+      margin-bottom: 14px;
+      letter-spacing: -2px;
     }
     .gl-step strong {
       font-size: clamp(15px,1.4vw,17px); font-weight: 700;
@@ -429,16 +479,36 @@
         <!-- ── ÖZELLİKLER ── -->
         <div class="gl-features">
           <article class="gl-feat">
+            <div class="gl-feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
             <div class="gl-feat-num">01</div>
             <strong>Dosya düzenli ilerler</strong>
             <p>Hangi aşamada olduğunuzu net biçimde görür, resmi akışın dağılmasına izin vermezsiniz.</p>
           </article>
           <article class="gl-feat">
+            <div class="gl-feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
             <div class="gl-feat-num">02</div>
             <strong>Dil sade kalır</strong>
             <p>Muhasebe, vergi ve bordro tarafını anlaşılır şekilde açıklar, gereksiz karmaşıklığı azaltırız.</p>
           </article>
           <article class="gl-feat">
+            <div class="gl-feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
             <div class="gl-feat-num">03</div>
             <strong>Tek noktadan yönlendirme</strong>
             <p>Kuruluş, operasyon ve resmi süreçler tek akışta toplanır; dosya parçalanmadan ilerler.</p>
@@ -464,6 +534,9 @@
         <!-- ── HAKKIMIZDA + MİSYON / VİZYON ── -->
         <div class="gl-story">
           <div class="gl-about">
+            <div class="gl-about-photo">
+              <img src="./assets/hakkimizda-photo.jpg" alt="Kaya Plus ekip çalışması" loading="lazy">
+            </div>
             <div class="gl-about-kicker">Hakkımızda</div>
             <h3>Yerel zemini bilen, süreci sakin yöneten bir ekip yapısı</h3>
             <p>Kaya Plus, KKTC'de şirket kuruluşundan günlük mali takibe kadar uzanan başlıklarda müvekkillerine gerçek ofis altyapısı, düzenli süreç disiplini ve anlaşılır iletişim sunmak için çalışan bir danışmanlık yapısıdır.</p>
