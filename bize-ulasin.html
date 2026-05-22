@@ -4,65 +4,331 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>İletişim | Kaya Plus</title>
-  <meta name="description" content="Kaya Plus ekibine telefon, e-posta, WhatsApp, Facebook ve ofis adresi üzerinden doğrudan ulaşın.">
+  <meta name="description" content="Kaya Plus ekibine telefon, e-posta, WhatsApp ve ofis adresi üzerinden doğrudan ulaşın. İlk görüşme ücretsizdir.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/guide-pages.css">
   <style>
-    .contact-office-card {
+    :root {
+      --c-gold: #1c5e8c;
+      --c-gold-rich: #2a78b0;
+      --c-gold-deep: #144878;
+      --c-gold-dim: rgba(28, 94, 140, 0.1);
+      --c-gold-border: rgba(28, 94, 140, 0.18);
+      --c-ink: #111111;
+      --c-ink-soft: #111111;
+      --c-surface: #ffffff;
+      --c-surface-soft: #f5f5f5;
+      --c-surface-muted: #e8e8e8;
+    }
+
+    /* ── HERO CONTACT ── */
+    .hero-contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .hero-contact-copy {
+      padding: clamp(24px, 3vw, 36px);
+      background: var(--panel);
+      border: 1px solid var(--c-gold-border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 16px;
     }
 
-    .contact-map-frame-wrap {
-      position: relative;
+    .hero-contact-copy h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(30px, 3.5vw, 46px);
+      color: var(--c-ink);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    .hero-contact-copy .lead {
+      color: var(--c-ink-soft);
+      font-size: 15px;
+      line-height: 1.75;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .status-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--c-ink-soft);
+      background: var(--c-surface-soft);
+      border: 1px solid var(--c-gold-border);
+      padding: 6px 13px;
+      border-radius: 20px;
+    }
+
+    .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .dot-green { background: #4caf7d; }
+    .dot-red   { background: #e05050; }
+    .dot-gold  { background: var(--c-gold); }
+
+    /* ── QUICK INFO ── */
+    .quick-info {
+      background: var(--c-surface);
+      border: 1px solid var(--c-gold-border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
       overflow: hidden;
-      border-radius: 24px;
-      border: 1px solid rgba(184, 146, 69, 0.18);
-      min-height: 320px;
-      background: #f4f1ea;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
     }
 
-    .contact-map-frame {
-      width: 100%;
-      min-height: 320px;
-      height: 100%;
-      border: 0;
+    .qi-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--c-surface-muted);
+    }
+
+    .qi-row:last-child { border-bottom: none; }
+
+    .qi-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      background: var(--c-gold-dim);
+      border: 1px solid var(--c-gold-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qi-icon svg { width: 18px; height: 18px; }
+
+    .qi-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--c-gold);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .qi-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--c-ink);
+      line-height: 1.4;
+    }
+
+    .qi-sub {
+      font-size: 12px;
+      color: var(--c-ink-soft);
+      margin-top: 2px;
+    }
+
+    /* ── CONTACT GRID ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .card-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: 6px;
       display: block;
     }
 
-    .contact-map-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+    .card-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(20px, 2vw, 26px);
+      font-weight: 700;
+      color: var(--c-ink);
+      margin: 0 0 16px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
     }
 
-    @media (max-width: 760px) {
-      .contact-map-frame-wrap,
-      .contact-map-frame {
-        min-height: 260px;
-      }
+    /* ── CHANNELS CARD ── */
+    .channels-card {
+      background: var(--c-surface);
+      border: 1px solid var(--c-gold-border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: clamp(20px, 2.5vw, 28px);
+    }
 
-      .contact-map-actions .btn-primary {
-        width: 100%;
-        justify-content: center;
-      }
+    .channel-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .channel-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--c-gold-border);
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      color: var(--c-ink);
+      background: var(--c-surface-soft);
+      transition: border-color .15s, background .15s, transform .1s;
+    }
+
+    .channel-btn:hover { background: var(--c-surface-muted); border-color: rgba(184,146,69,.32); }
+    .channel-btn:active { transform: scale(.98); }
+    .channel-btn svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--c-gold); }
+    .ch-meta { margin-left: auto; font-size: 11px; font-weight: 400; color: var(--c-ink-soft); }
+
+    .response-note {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: rgba(16, 16, 16, 0.05);
+      border: 1px solid var(--c-gold-border);
+      border-radius: 14px;
+      font-size: 12px;
+      color: var(--c-ink-soft);
+      line-height: 1.55;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .response-note svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; color: var(--c-gold); }
+
+    /* ── HOURS CARD ── */
+    .hours-card {
+      background: var(--c-surface-soft);
+      border: 1px solid var(--c-gold-border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: clamp(20px, 2.5vw, 28px);
+    }
+
+    .hours-card .card-title {
+      font-size: clamp(18px, 1.8vw, 22px);
+      margin-bottom: 14px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .status-open   { background: rgba(76, 175, 125, .12); color: #2e7d52; }
+    .status-closed { background: rgba(220, 80, 60, .1);   color: #b84040; }
+
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid var(--c-surface-muted); }
+    .hours-table tr:last-child { border-bottom: none; }
+    .hours-table td { padding: 10px 0; font-size: 13px; color: var(--c-ink-soft); }
+    .hours-table td:last-child { text-align: right; font-weight: 600; color: var(--c-ink); }
+    .hours-closed { color: var(--c-ink-soft) !important; font-weight: 400 !important; }
+
+    /* ── MAP CARD ── */
+    .map-card {
+      background: var(--c-surface);
+      border: 1px solid var(--c-gold-border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .map-frame-wrap { height: 260px; overflow: hidden; background: var(--c-surface-soft); }
+    .map-frame { width: 100%; height: 100%; border: 0; display: block; }
+
+    .map-footer {
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .map-address {
+      font-size: 13px;
+      color: var(--c-ink-soft);
+      line-height: 1.55;
+      font-style: normal;
+    }
+
+    .map-address strong {
+      display: block;
+      font-size: 10px;
+      color: var(--c-gold);
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .btn-map {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--c-gold-rich), var(--c-gold-deep));
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 10px 24px rgba(20, 72, 120, .22);
+      transition: opacity .15s;
+    }
+
+    .btn-map:hover { opacity: .9; }
+    .btn-map svg { width: 14px; height: 14px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-contact { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .map-footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
+
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="./kktc-sirket-kurma.html">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="5" width="4.5" height="15" rx="1.2" fill="#C5A04D"/>
-            <rect x="10.5" y="5" width="4.5" height="19" rx="1.2" fill="#C5A04D"/>
-            <rect x="17" y="5" width="4.5" height="12" rx="1.2" fill="#C5A04D"/>
-            <path d="M8 23.5c6-5.8 9.8-9.2 18-14.5" fill="none" stroke="#C5A04D" stroke-width="2.2" stroke-linecap="round"/>
+            <rect x="4" y="5" width="4.5" height="15" rx="1.2" fill="#1c5e8c"/>
+            <rect x="10.5" y="5" width="4.5" height="19" rx="1.2" fill="#1c5e8c"/>
+            <rect x="17" y="5" width="4.5" height="12" rx="1.2" fill="#1c5e8c"/>
+            <path d="M8 23.5c6-5.8 9.8-9.2 18-14.5" fill="none" stroke="#1c5e8c" stroke-width="2.2" stroke-linecap="round"/>
             <path d="M11.2 26.5c5.6-5 9.8-8.2 16.8-12.3" fill="none" stroke="#E6CC8E" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </span>
@@ -92,81 +358,148 @@
   </header>
 
   <main class="page-shell">
-    <section class="hero hero-single">
-      <article class="hero-copy">
+
+    <!-- HERO -->
+    <section class="hero-contact">
+      <div class="hero-contact-copy">
         <span class="eyebrow">İletişim</span>
-        <h1>Kaya Plus ekibine doğrudan ulaşın</h1>
-        <p class="lead">Telefon, e-posta, WhatsApp, Facebook ve ofis kanallarımız üzerinden bizimle doğrudan iletişime geçebilirsiniz. İlk görüşmede ihtiyacınızı netleştirip doğru hizmet başlığına yönlenebiliriz.</p>
-        <div class="hero-facts">
-          <div class="fact-card">
-            <div class="fact-label">Telefon</div>
-            <strong>+90 533 861 65 52</strong>
-          </div>
-          <div class="fact-card">
-            <div class="fact-label">E-posta</div>
-            <strong>info@kayaplus.net</strong>
-          </div>
-          <div class="fact-card">
-            <div class="fact-label">Konum</div>
-            <strong>Küçük Kaymaklı, Lefkoşa</strong>
-          </div>
+        <h1>Bir adım uzağınızdayız</h1>
+        <p class="lead">Muhasebe, vergi, bordro veya şirket kuruluşu hakkında soru sormak için doğrudan arayın ya da WhatsApp'tan yazın. İlk görüşme ücretsiz ve bağlayıcı değildir.</p>
+        <div class="status-chips">
+          <span class="status-chip" id="heroChip">
+            <span class="dot dot-green" id="heroDot"></span>
+            <span id="heroStatus">Şu an açık</span>
+          </span>
+          <span class="status-chip"><span class="dot dot-gold"></span>Genellikle 2 saat içinde yanıt</span>
+          <span class="status-chip"><span class="dot dot-gold"></span>25+ yıl deneyim</span>
         </div>
-      </article>
-    </section>
+      </div>
 
-    <section class="section">
-      <article class="section-card">
-        <div class="section-head">
-          <h2>İletişim kanalları</h2>
-        </div>
-        <div class="grid-2">
-          <div class="mini-card">
-            <h3>Doğrudan iletişim</h3>
-            <ul class="list-check">
-              <li>Telefon: +90 533 861 65 52</li>
-              <li>E-posta: info@kayaplus.net</li>
-              <li>WhatsApp: Hızlı ilk temas için açık kanal</li>
-              <li>Facebook: Kurumsal bağlantı ve görünürlük</li>
-            </ul>
-            <div class="hero-actions">
-              <a class="btn-primary" href="tel:+905338616552">Hemen Ara</a>
-              <a class="btn-secondary" href="mailto:info@kayaplus.net">E-posta Gönder</a>
-            </div>
-          </div>
-          <div class="mini-card contact-office-card">
-            <h3>Ofis bilgileri</h3>
-            <p>Uludere Sokak No: 4/F, Küçük Kaymaklı, Lefkoşa / Kuzey Kıbrıs</p>
-            <p class="muted">Çalışma saatleri: Pzt-Cum 08:00-17:00, Cmt 09:00-13:00</p>
-            <div class="contact-map-frame-wrap">
-              <iframe
-                class="contact-map-frame"
-                title="Kaya Plus ofis konumu"
-                src="https://www.google.com/maps?q=35.20845031738281,33.3785400390625&z=17&hl=tr&output=embed"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                allowfullscreen></iframe>
-            </div>
-            <div class="contact-map-actions">
-              <a class="btn-primary" href="https://www.google.com/maps?q=35.20845031738281,33.3785400390625&z=17&hl=tr" target="_blank" rel="noopener noreferrer">Haritada Aç</a>
-            </div>
-            <div class="hero-actions">
-              <a class="btn-secondary" href="https://wa.me/905338616552" target="_blank" rel="noopener noreferrer">WhatsApp'tan Yaz</a>
-              <a class="btn-secondary" href="https://www.facebook.com/search/top/?q=Kaya%20Plus%20Muhasebe%20ve%20Mali%20Dan%C4%B1%C5%9Fmanl%C4%B1k" target="_blank" rel="noopener noreferrer">Facebook</a>
-            </div>
+      <div class="quick-info">
+        <div class="qi-row">
+          <span class="qi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1c5e8c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.82 19.79 19.79 0 01.05 2.2 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
+            </svg>
+          </span>
+          <div>
+            <div class="qi-label">Telefon</div>
+            <div class="qi-value">+90 533 861 65 52</div>
+            <div class="qi-sub">Pzt–Cum 08:00–17:00, Cmt 09:00–13:00</div>
           </div>
         </div>
-      </article>
-    </section>
-
-    <section class="section">
-      <div class="cta-band">
-        <div>
-          <h3>Kuruluş, muhasebe ya da vergi başlığınızı bize kısaca anlatın</h3>
-          <p>İlk yönlendirmeyi telefon veya WhatsApp üzerinden hızla yapabilir, dosya gerektiren konuları sonrasında daha net planlayabiliriz.</p>
+        <div class="qi-row">
+          <span class="qi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1c5e8c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </span>
+          <div>
+            <div class="qi-label">E-posta</div>
+            <div class="qi-value">info@kayaplus.net</div>
+            <div class="qi-sub">Her zaman ulaşılabilir</div>
+          </div>
         </div>
-        <a class="btn-primary" href="https://wa.me/905338616552" target="_blank" rel="noopener noreferrer">WhatsApp'tan Başlat</a>
+        <div class="qi-row">
+          <span class="qi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1c5e8c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </span>
+          <div>
+            <div class="qi-label">Adres</div>
+            <div class="qi-value">Uludere Sokak No: 4/F</div>
+            <div class="qi-sub">Küçük Kaymaklı, Lefkoşa / KKTC</div>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- CONTACT GRID -->
+    <div class="contact-grid">
+
+      <!-- CHANNELS -->
+      <div class="channels-card">
+        <span class="card-eyebrow">Hızlı iletişim</span>
+        <h3 class="card-title">Hemen ulaşın</h3>
+        <div class="channel-list">
+          <a class="channel-btn ch-whatsapp" href="https://wa.me/905338616552" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.108.547 4.089 1.505 5.813L.057 23.985l6.348-1.426A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.643-.514-5.147-1.407l-.37-.22-3.767.848.865-3.663-.242-.378A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            </svg>
+            WhatsApp'tan yaz
+            <span class="ch-meta">En hızlı yanıt</span>
+          </a>
+          <a class="channel-btn ch-phone" href="tel:+905338616552">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.82 19.79 19.79 0 01.05 2.2 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
+            </svg>
+            +90 533 861 65 52
+            <span class="ch-meta">Ara</span>
+          </a>
+          <a class="channel-btn ch-email" href="mailto:info@kayaplus.net">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            info@kayaplus.net
+            <span class="ch-meta">E-posta</span>
+          </a>
+        </div>
+        <div class="response-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Mesai saatlerinde gelen mesajlara genellikle 2 saat içinde yanıt veriyoruz.
+        </div>
+      </div>
+
+      <!-- HOURS -->
+      <div class="hours-card">
+        <span class="card-eyebrow">Çalışma saatleri</span>
+        <h3 class="card-title">Ne zaman ulaşabilirsiniz?</h3>
+        <div class="status-badge status-open" id="statusBadge">
+          <span class="dot dot-green" id="statusDot"></span>
+          <span id="statusText">Şu an açık</span>
+        </div>
+        <table class="hours-table">
+          <tr><td>Pazartesi – Cuma</td><td>08:00 – 17:00</td></tr>
+          <tr><td>Cumartesi</td><td>09:00 – 13:00</td></tr>
+          <tr><td>Pazar</td><td class="hours-closed">Kapalı</td></tr>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- MAP -->
+    <div class="map-card">
+      <div class="map-frame-wrap">
+        <iframe
+          class="map-frame"
+          title="Kaya Plus ofis konumu"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500!2d33.3785400390625!3d35.20845031738281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1a0000000001%3A0x0!2zMzXCsDEyJzMwLjQiTiAzM8KwMjInNDIuNiJF!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+      <div class="map-footer">
+        <address class="map-address">
+          <strong>Ofis adresi</strong>
+          Uludere Sokak No: 4/F, Küçük Kaymaklı<br>Lefkoşa / Kuzey Kıbrıs
+        </address>
+        <a class="btn-map" href="https://www.google.com/maps?q=35.20845031738281,33.3785400390625&z=17&hl=tr" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          Google Maps'te Aç
+        </a>
+      </div>
+    </div>
 
     <footer class="page-footer">
       <div class="page-footer-row">
@@ -174,11 +507,25 @@
         <span>Lefkoşa, Kuzey Kıbrıs</span>
       </div>
     </footer>
+
   </main>
+
   <script src="./assets/guide-language.js"></script>
+  <script>
+    (function updateStatus() {
+      var now  = new Date();
+      var day  = now.getDay();
+      var t    = now.getHours() + now.getMinutes() / 60;
+      var open = (day >= 1 && day <= 5 && t >= 8 && t < 17) ||
+                 (day === 6 && t >= 9 && t < 13);
+      if (open) return;
+
+      document.getElementById('statusBadge').className = 'status-badge status-closed';
+      document.getElementById('statusDot').className   = 'dot dot-red';
+      document.getElementById('statusText').textContent = 'Şu an kapalı';
+      document.getElementById('heroDot').className     = 'dot dot-red';
+      document.getElementById('heroStatus').textContent = 'Şu an kapalı';
+    })();
+  </script>
 </body>
 </html>
-
-
-
-

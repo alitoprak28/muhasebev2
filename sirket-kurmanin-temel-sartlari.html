@@ -12,6 +12,7 @@
   <style>
     .conditions-page-shell {
       width: min(calc(var(--layout-max) + 120px), calc(100% - clamp(18px, 2.8vw, 40px)));
+      padding-top: 0;
     }
 
     .conditions-hero-banner {
@@ -23,12 +24,13 @@
 
     .conditions-hero-cover {
       position: relative;
-      min-height: clamp(560px, 78vh, 760px);
+      height: clamp(560px, 78vh, 760px);
+      min-height: 0;
       overflow: hidden;
       isolation: isolate;
       border-radius: 0;
-      border-top: 1px solid rgba(184, 146, 69, 0.14);
-      border-bottom: 1px solid rgba(184, 146, 69, 0.14);
+      border-top: 1px solid rgba(28, 94, 140, 0.14);
+      border-bottom: 1px solid rgba(28, 94, 140, 0.14);
       background:
         linear-gradient(90deg, rgba(8, 15, 30, 0.68) 0%, rgba(8, 15, 30, 0.6) 28%, rgba(8, 15, 30, 0.34) 56%, rgba(8, 15, 30, 0.18) 100%),
         url('./assets/basic-requirements-hero-2.jpg') center center / cover no-repeat;
@@ -52,14 +54,14 @@
       width: 340px;
       height: 340px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(184, 146, 69, 0.24) 0%, rgba(184, 146, 69, 0.08) 42%, transparent 72%);
+      background: radial-gradient(circle, rgba(28, 94, 140, 0.24) 0%, rgba(28, 94, 140, 0.08) 42%, transparent 72%);
       filter: blur(12px);
     }
 
     .conditions-hero-copy {
       position: relative;
       z-index: 2;
-      min-height: inherit;
+      min-height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -69,9 +71,9 @@
     }
 
     .conditions-hero-copy .eyebrow {
-      color: #f0dbab;
-      border-color: rgba(240, 219, 171, 0.28);
-      background: rgba(255, 255, 255, 0.08);
+      color: #dcebfa;
+      border-color: rgba(110, 176, 224, 0.34);
+      background: rgba(12, 34, 56, 0.36);
     }
 
     .conditions-hero-copy h1 {
@@ -94,7 +96,8 @@
       }
 
       .conditions-hero-cover {
-        min-height: 500px;
+        height: 500px;
+        min-height: 0;
       }
 
       .conditions-hero-copy {
@@ -112,7 +115,8 @@
       }
 
       .conditions-hero-cover {
-        min-height: 440px;
+        height: 440px;
+        min-height: 0;
         border-radius: 22px;
       }
 
@@ -141,10 +145,10 @@
       <a class="brand" href="./kktc-sirket-kurma.html">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="5" width="4.5" height="15" rx="1.2" fill="#C5A04D"/>
-            <rect x="10.5" y="5" width="4.5" height="19" rx="1.2" fill="#C5A04D"/>
-            <rect x="17" y="5" width="4.5" height="12" rx="1.2" fill="#C5A04D"/>
-            <path d="M8 23.5c6-5.8 9.8-9.2 18-14.5" fill="none" stroke="#C5A04D" stroke-width="2.2" stroke-linecap="round"/>
+            <rect x="4" y="5" width="4.5" height="15" rx="1.2" fill="#1c5e8c"/>
+            <rect x="10.5" y="5" width="4.5" height="19" rx="1.2" fill="#1c5e8c"/>
+            <rect x="17" y="5" width="4.5" height="12" rx="1.2" fill="#1c5e8c"/>
+            <path d="M8 23.5c6-5.8 9.8-9.2 18-14.5" fill="none" stroke="#1c5e8c" stroke-width="2.2" stroke-linecap="round"/>
             <path d="M11.2 26.5c5.6-5 9.8-8.2 16.8-12.3" fill="none" stroke="#E6CC8E" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </span>
@@ -347,10 +351,6 @@
           </div>
           <figure class="media-card">
             <img src="./assets/kayaplus-office-wall.jpeg" alt="Kurumsal ofis ortamında şirket kuruluşu planlaması">
-            <figcaption class="media-note">
-              <strong>Profesyonel destek süreci hızlandırır</strong>
-              <span>Kuruluş kararından resmi kayıtlara kadar tüm adımlar tek akışta planlandığında hata ve gecikme riski ciddi biçimde azalır.</span>
-            </figcaption>
           </figure>
         </div>
       </article>

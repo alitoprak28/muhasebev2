@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9 Renk Paleti — Kaya Plus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #1a1a1a;
+      padding: 48px 24px 80px;
+      min-height: 100vh;
+    }
+
+    .page-head {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .page-head h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 34px);
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .page-head p {
+      color: rgba(255,255,255,0.52);
+      font-size: 14px;
+    }
+    .page-head p strong { color: rgba(255,255,255,0.8); }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── THUMBNAIL CARD ── */
+    .thumb {
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.18s, box-shadow 0.18s;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    .thumb:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.65);
+    }
+    .thumb:hover .thumb-zoom {
+      opacity: 1;
+    }
+
+    .thumb-zoom {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.18s;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.06em;
+      gap: 7px;
+    }
+    .thumb-zoom svg { width: 18px; height: 18px; }
+
+    /* ── PALETTE CONTENT (reused in both thumb & modal) ── */
+    .pal-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
+    .pal-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .pal-nav { display: flex; gap: 12px; }
+    .pal-nav span { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.6); }
+
+    .pal-hero {
+      padding: 24px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .pal-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid;
+      width: fit-content;
+    }
+    .pal-eyebrow::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .pal-hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      line-height: 1.15;
+      color: #fff;
+    }
+    .pal-hero p { font-size: 11.5px; line-height: 1.65; color: rgba(255,255,255,0.65); max-width: 34ch; }
+
+    .pal-body { padding: 16px 16px 20px; background: #fff; display: flex; flex-direction: column; gap: 12px; }
+
+    .pal-card {
+      border-radius: 11px;
+      border: 1px solid;
+      padding: 12px 13px;
+      background: #f9f9f9;
+    }
+    .pal-kicker { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+    .pal-card strong { font-size: 12.5px; font-weight: 600; color: #111; display: block; line-height: 1.4; }
+    .pal-card p { font-size: 11px; line-height: 1.6; color: #777; margin-top: 3px; }
+
+    .pal-btns { display: flex; gap: 8px; }
+    .pal-btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      border: none;
+    }
+    .pal-btn-ghost {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      background: transparent;
+      border: 1.5px solid rgba(0,0,0,0.18);
+      color: #111;
+    }
+
+    .pal-swatches {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding-top: 2px;
+    }
+    .sw { width: 26px; height: 26px; border-radius: 6px; flex-shrink: 0; }
+    .sw-info { font-size: 10px; line-height: 1.5; color: #666; }
+    .sw-info strong { color: #222; font-size: 10.5px; }
+
+    .pal-label {
+      padding: 12px 16px 10px;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .pal-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #bbb;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .pal-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s;
+    }
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox-inner {
+      background: #fff;
+      border-radius: 22px;
+      overflow: hidden;
+      width: min(680px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+      transform: scale(0.94);
+      transition: transform 0.22s;
+    }
+    .lightbox.open .lightbox-inner { transform: scale(1); }
+
+    /* Lightbox bigger sizes */
+    .lightbox .pal-logo { font-size: 18px; }
+    .lightbox .pal-nav span { font-size: 13px; }
+    .lightbox .pal-topbar { padding: 14px 28px; }
+    .lightbox .pal-hero { padding: 36px 32px 32px; gap: 13px; }
+    .lightbox .pal-eyebrow { font-size: 11px; padding: 7px 14px; }
+    .lightbox .pal-hero h2 { font-size: 30px; }
+    .lightbox .pal-hero p { font-size: 15px; max-width: 48ch; }
+    .lightbox .pal-body { padding: 24px 28px 32px; gap: 18px; }
+    .lightbox .pal-card { padding: 16px 18px; border-radius: 14px; }
+    .lightbox .pal-kicker { font-size: 11px; margin-bottom: 7px; }
+    .lightbox .pal-card strong { font-size: 16px; }
+    .lightbox .pal-card p { font-size: 13px; margin-top: 5px; }
+    .lightbox .pal-btn, .lightbox .pal-btn-ghost { padding: 12px 22px; font-size: 14px; border-radius: 11px; }
+    .lightbox .sw { width: 36px; height: 36px; border-radius: 9px; }
+    .lightbox .sw-info { font-size: 12.5px; }
+    .lightbox .sw-info strong { font-size: 13px; }
+    .lightbox .pal-label { padding: 16px 28px 14px; }
+    .lightbox .pal-num { font-size: 13px; }
+    .lightbox .pal-name { font-size: 20px; }
+
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 22px;
+      transition: background 0.15s;
+      z-index: 1001;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+    /* NAV ARROWS */
+    .lightbox-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1001;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      font-size: 22px;
+      transition: background 0.15s;
+    }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.22); }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+
+    /* ── KEYBOARD HINT ── */
+    .hint {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .lightbox-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-head">
+  <h1>Kaya Plus — 9 Renk Paleti</h1>
+  <p>Bir kartın üzerine tıklayın, <strong>büyütülmüş</strong> halde inceleyin. Ok tuşlarıyla geçiş yapabilirsiniz.</p>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="hint">← → ok tuşlarıyla geçiş · ESC ile kapat</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&#8592;</button>
+  <button class="lightbox-nav lightbox-next" id="lbNext">&#8594;</button>
+  <div class="lightbox-inner" id="lbContent"></div>
+</div>
+
+<script>
+  const palettes = [
+    // ── GRUP 1: Alternatif Yönler ──
+    {
+      num: 'A',
+      name: 'Gerçek Lacivert',
+      dark: '#0E1C2F',
+      gold: '#B89245',
+      darkGrad: 'linear-gradient(160deg,#0E1C2F 0%,#162944 100%)',
+      btnColor: '#fff',
+      info: 'Klasik kurumsal finans tonu'
+    },
+    {
+      num: 'B',
+      name: 'Ofis Duvarı (Teal)',
+      dark: '#1A2E2B',
+      gold: '#C49A3C',
+      darkGrad: 'linear-gradient(160deg,#1A2E2B 0%,#213c37 100%)',
+      btnColor: '#fff',
+      info: 'Ofis duvarıyla birebir uyum'
+    },
+    {
+      num: 'C',
+      name: 'Antrasit + Canlı Altın',
+      dark: '#1C1C1E',
+      gold: '#D4A843',
+      darkGrad: 'linear-gradient(160deg,#1C1C1E 0%,#2c2c2e 100%)',
+      btnColor: '#1C1C1E',
+      info: 'Modern premium, minimal his'
+    },
+    // ── GRUP 2: Siyah + Altın ──
+    {
+      num: '1',
+      name: 'Saf Siyah + Klasik Altın',
+      dark: '#111111',
+      gold: '#B8973A',
+      darkGrad: 'linear-gradient(160deg,#111111 0%,#1a1a1a 100%)',
+      btnColor: '#fff',
+      info: 'Şu ankine en yakın, daha net'
+    },
+    {
+      num: '2',
+      name: 'Sıcak Siyah + Derin Altın',
+      dark: '#100E0A',
+      gold: '#C49228',
+      darkGrad: 'linear-gradient(160deg,#100E0A 0%,#1c180f 100%)',
+      btnColor: '#100E0A',
+      info: 'Siyahta çok az sıcaklık, altın koyu'
+    },
+    {
+      num: '3',
+      name: 'Grafit + Parlak Altın',
+      dark: '#181818',
+      gold: '#E0AE38',
+      darkGrad: 'linear-gradient(160deg,#181818 0%,#222222 100%)',
+      btnColor: '#181818',
+      info: 'En yüksek kontrast, altın çarpıcı'
+    },
+    {
+      num: '4',
+      name: 'Soğuk Siyah + Platin Altın',
+      dark: '#0C0C10',
+      gold: '#A89878',
+      darkGrad: 'linear-gradient(160deg,#0C0C10 0%,#16161c 100%)',
+      btnColor: '#fff',
+      info: 'Soğuk, modern, mesafeli'
+    },
+    {
+      num: '5',
+      name: 'Derin Siyah + Şampanya',
+      dark: '#080808',
+      gold: '#D6BC82',
+      darkGrad: 'linear-gradient(160deg,#080808 0%,#141414 100%)',
+      btnColor: '#080808',
+      info: 'En zarif, lüks his'
+    },
+    {
+      num: '6',
+      name: 'Kömür Gri + Vurgulu Altın',
+      dark: '#141210',
+      gold: '#CF9B2E',
+      darkGrad: 'linear-gradient(160deg,#141210 0%,#201c16 100%)',
+      btnColor: '#141210',
+      info: 'Sıcak kömür, güçlü ve dengeli'
+    },
+  ];
+
+  function buildPalette(p, size = 'sm') {
+    const eyebrowAlpha = size === 'lg' ? '0.14' : '0.1';
+    return `
+      <div class="pal-label">
+        <span class="pal-num">${p.num}</span>
+        <span class="pal-name">${p.name}</span>
+      </div>
+      <div class="pal-topbar" style="background:${p.dark}">
+        <span class="pal-logo" style="color:${p.gold}">Kaya Plus</span>
+        <div class="pal-nav"><span>Hizmetler</span><span>İletişim</span></div>
+      </div>
+      <div class="pal-hero" style="background:${p.darkGrad}">
+        <div class="pal-eyebrow" style="color:${p.gold};border-color:${p.gold}44;background:${p.gold}${eyebrowAlpha === '0.14' ? '24' : '18'}">
+          <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:${p.gold};flex-shrink:0"></span>
+          KKTC Muhasebe
+        </div>
+        <h2>Kuruluş, vergi ve mali takibi aynı hizmet içinde.</h2>
+        <p>Dosyanın her adımını görünür ve takip edilebilir tutuyoruz. İşletmenizin ihtiyacına göre şekillendiririz.</p>
+      </div>
+      <div class="pal-body">
+        <div class="pal-card" style="border-color:${p.gold}28">
+          <div class="pal-kicker" style="color:${p.gold}cc">&bullet; Kuruluş ve Yapı</div>
+          <strong>Doğru başlangıç modelini ilk çerçevede netleştiririz.</strong>
+          <p>Limited, anonim veya yabancı şube — en uygun yapıyı birlikte belirleriz.</p>
+        </div>
+        <div class="pal-btns">
+          <div class="pal-btn" style="background:${p.gold};color:${p.btnColor}">Bizimle Çalışın</div>
+          <div class="pal-btn-ghost">Daha Fazla</div>
+        </div>
+        <div class="pal-swatches">
+          <div class="sw" style="background:${p.dark}"></div>
+          <div class="sw" style="background:${p.gold}"></div>
+          <div class="sw" style="background:#ffffff;border:1px solid #ddd"></div>
+          <div class="sw-info"><strong>${p.dark} + ${p.gold}</strong><br>${p.info}</div>
+        </div>
+      </div>`;
+  }
+
+  // Build thumbnails
+  const grid = document.getElementById('grid');
+  palettes.forEach((p, i) => {
+    const div = document.createElement('div');
+    div.className = 'thumb';
+    div.innerHTML = buildPalette(p, 'sm') + `
+      <div class="thumb-zoom">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+        </svg>
+        Büyüt
+      </div>`;
+    div.addEventListener('click', () => openLightbox(i));
+    grid.appendChild(div);
+  });
+
+  // Lightbox
+  let current = 0;
+  const lb = document.getElementById('lightbox');
+  const lbContent = document.getElementById('lbContent');
+
+  function openLightbox(i) {
+    current = i;
+    renderLb();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function renderLb() {
+    lbContent.innerHTML = buildPalette(palettes[current], 'lg');
+    lbContent.scrollTop = 0;
+  }
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+
+  document.getElementById('lbPrev').addEventListener('click', () => {
+    current = (current - 1 + palettes.length) % palettes.length;
+    renderLb();
+  });
+  document.getElementById('lbNext').addEventListener('click', () => {
+    current = (current + 1) % palettes.length;
+    renderLb();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') { current = (current - 1 + palettes.length) % palettes.length; renderLb(); }
+    if (e.key === 'ArrowRight') { current = (current + 1) % palettes.length; renderLb(); }
+  });
+</script>
+
+</body>
+</html>

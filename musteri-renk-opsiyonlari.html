@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musteri Renk Opsiyonlari</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(201, 164, 92, 0.12) 0%, transparent 24%),
+      linear-gradient(180deg, #0d0f12 0%, #171a20 100%);
+    color: #f4efe6;
+    min-height: 100vh;
+    padding: 44px 20px 72px;
+  }
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  h1 {
+    margin: 0 0 12px;
+    font-size: clamp(34px, 6vw, 58px);
+    line-height: 1.02;
+  }
+  .intro {
+    max-width: 820px;
+    color: #d1c4b0;
+    line-height: 1.7;
+    margin: 0 0 36px;
+    font-size: 15px;
+  }
+  .section-title {
+    margin: 42px 0 16px;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c9a45c;
+    font-weight: 700;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 20px;
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(180deg, rgba(20,22,27,0.96), rgba(30,33,40,0.92));
+    box-shadow: 0 20px 42px rgba(0,0,0,0.22);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(201,164,92,0.34);
+  }
+  .tone {
+    display: inline-block;
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .card strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .card p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #cfc4b2;
+  }
+  .note {
+    margin-top: 36px;
+    color: #a9a092;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Musteri Icin Renk Yonleri</h1>
+    <p class="intro">Asil sunum mantigi burada ikiye ayrildi: once birbirinden gercekten farkli ana renk yonleri, sonra istersek sadece siyah-altin ailesi icinde alt varyasyonlar. Boylece musteri once renk karakterini secip sonra detay tona inebilir.</p>
+
+    <div class="section-title">Ana Yonler</div>
+    <div class="grid">
+      <a class="card" href="./kktc-sirket-kurma-zumrut.html">
+        <span class="tone" style="background:linear-gradient(90deg,#143a2f,#2f8b68,#d6e6dc)"></span>
+        <strong>Zumrut</strong>
+        <p>Daha guven veren, dogal ve sofistike yesil yon. Finansal istikrar ve sakinlik hissi verir.</p>
+      </a>
+      <a class="card" href="./kktc-sirket-kurma-buz-mavisi.html">
+        <span class="tone" style="background:linear-gradient(90deg,#123149,#5d9dc8,#e6f3fb)"></span>
+        <strong>Buz Mavisi</strong>
+        <p>Daha modern, temiz ve teknik gorunen mavi yon. Kurumsal ve dijital tarafi guclu.</p>
+      </a>
+      <a class="card" href="./kktc-sirket-kurma-yakut-bordo.html">
+        <span class="tone" style="background:linear-gradient(90deg,#351217,#842a3b,#f0d9dd)"></span>
+        <strong>Yakut Bordo</strong>
+        <p>Daha prestijli, daha agir ve luks his veren bordo yon. Danismanlikta elit algi uretir.</p>
+      </a>
+      <a class="card" href="./kktc-sirket-kurma-antrasit-platin.html">
+        <span class="tone" style="background:linear-gradient(90deg,#191b20,#6f7682,#e3e5ea)"></span>
+        <strong>Antrasit Platin</strong>
+        <p>Daha sert, profesyonel ve ust segment kurumsal yon. Sade ama guclu durur.</p>
+      </a>
+      <a class="card" href="./kktc-sirket-kurma-siyah-altin.html">
+        <span class="tone" style="background:linear-gradient(90deg,#060606,#b89245,#f5efe0)"></span>
+        <strong>Siyah Altin</strong>
+        <p>Daha luks, premium ve vitrin odakli ana siyah-altin yon. En teatrik seceneklerden biri.</p>
+      </a>
+    </div>
+
+    <div class="section-title">Siyah Altin Alt Varyasyonlari</div>
+    <div class="grid">
+      <a class="card" href="./kktc-sirket-kurma-siyah-altin-01-obsidyen.html">
+        <span class="tone" style="background:linear-gradient(90deg,#050505,#796039,#efe4cf)"></span>
+        <strong>01 Obsidyen</strong>
+        <p>Daha keskin, daha koyu ve daha metalik siyah-altin.</p>
+      </a>
+      <a class="card" href="./kktc-sirket-kurma-siyah-altin-02-sampanya.html">
+        <span class="tone" style="background:linear-gradient(90deg,#0a0806,#d5b56e,#fbf2e3)"></span>
+        <strong>02 Sampanya</strong>
+        <p>Daha yumusak, daha acik ve daha parlak premium hava.</p>
+      </a>
+      <a class="card" href="./kktc-sirket-kurma-siyah-altin-05-kraliyet.html">
+        <span class="tone" style="background:linear-gradient(90deg,#050403,#d2aa50,#f0cf7a)"></span>
+        <strong>05 Kraliyet</strong>
+        <p>Daha gosterisli, sahne isigi etkili ve prestijli yorum.</p>
+      </a>
+      <a class="card" href="./kktc-sirket-kurma-siyah-altin-10-gece.html">
+        <span class="tone" style="background:linear-gradient(90deg,#020202,#9f7b32,#c6a25d)"></span>
+        <strong>10 Gece</strong>
+        <p>En karanlik, en dramatik ve en vitrin odakli siyah-altin yorum.</p>
+      </a>
+    </div>
+
+    <p class="note">Onerim: musteriye once ustteki 5 ana yonu gosterelim. Siyah-altin begenilirse alttaki alt varyasyonlari ikinci turda acalim.</p>
+  </div>
+</body>
+</html>

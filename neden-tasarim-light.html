@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neden Kaya Plus — Açık Tema Alternatifler</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:      #111111;
+  --dark-soft: #2a2520;
+  --gold:      #B89245;
+  --gold-rich: #CCAF6B;
+  --gold-pale: rgba(184,146,69,0.10);
+  --gold-line: rgba(184,146,69,0.22);
+  --text:      #111111;
+  --muted:     #111111;
+  --light-muted: #111111;
+  --white:     #FFFFFF;
+  --off:       #F9F8F6;
+  --off2:      #F3F1EE;
+  --border:    rgba(0,0,0,0.08);
+  --r:         14px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #DEDAD5;
+  padding: 40px 20px 80px;
+  color: var(--text);
+}
+
+/* ── NAVİGATÖR ── */
+.switcher {
+  display: flex; gap: 8px; justify-content: center;
+  margin-bottom: 40px; flex-wrap: wrap;
+}
+.sw-btn {
+  padding: 10px 22px; border-radius: 999px;
+  border: 2px solid #bbb; background: #fff;
+  font-family: inherit; font-size: 13px; font-weight: 700;
+  cursor: pointer; transition: all .18s; color: #666;
+}
+.sw-btn:hover { border-color: var(--gold); color: var(--gold); }
+.sw-btn.active { background: var(--dark); border-color: var(--dark); color: #fff; }
+
+.mockup { display: none; max-width: 900px; margin: 0 auto; }
+.mockup.visible { display: block; }
+.design-label {
+  text-align: center; margin-bottom: 24px;
+  font-size: 12px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: #999;
+}
+.design-label strong { color: var(--dark); }
+
+
+/* ═══════════════════════════════════════
+   TASARIM 1 — MEVCUT (Referans)
+   ═══════════════════════════════════════ */
+.r { border-radius: 20px; background: var(--white); overflow: hidden; box-shadow: 0 4px 28px rgba(0,0,0,.07); }
+.r-pad { padding: 52px 52px; }
+.r-kicker { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.r h2 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--dark); margin-bottom: 12px; line-height: 1.15; }
+.r-lead { font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 500px; }
+.r-top { display: grid; grid-template-columns: 1fr 280px; gap: 32px; align-items: start; margin-bottom: 40px; }
+.r-outcome { background: var(--off); border-radius: 12px; padding: 22px; border: 1px solid var(--border); }
+.r-outcome-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.r-outcome strong { font-size: 16px; font-weight: 700; display: block; margin-bottom: 6px; color: var(--dark); line-height: 1.3; }
+.r-outcome p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.r-features { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 32px; }
+.r-feat { background: var(--off); border-radius: 12px; padding: 24px; border: 1px solid var(--border); }
+.r-feat strong { font-size: 15px; font-weight: 700; display: block; margin-bottom: 6px; }
+.r-feat p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.r-glance { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 40px; }
+.r-g { padding: 18px; border-radius: 10px; border: 1px solid var(--border); }
+.r-g-lbl { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.r-g strong { font-size: 14px; font-weight: 600; color: var(--dark); line-height: 1.4; }
+.r-story { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 40px; background: var(--off); border-radius: 16px; padding: 32px; }
+.r-story h3 { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 700; margin-bottom: 12px; }
+.r-story p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
+.r-beliefs { display: flex; flex-direction: column; gap: 14px; }
+.r-belief { background: var(--white); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+.r-belief-k { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.r-belief strong { font-size: 14px; font-weight: 700; display: block; margin-bottom: 4px; }
+.r-belief p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.r-flow { margin-bottom: 40px; }
+.r-flow h3 { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 700; margin-bottom: 6px; }
+.r-flow-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+.r-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.r-step { background: var(--off); border-radius: 12px; padding: 22px; border: 1px solid var(--border); }
+.r-step-n { font-size: 11px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+.r-step strong { font-size: 15px; font-weight: 700; display: block; margin-bottom: 5px; }
+.r-step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.r-cta { display: flex; align-items: center; justify-content: space-between; background: var(--off); border-radius: 16px; padding: 32px; gap: 32px; }
+.r-cta h3 { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 700; margin-bottom: 6px; }
+.r-cta p { font-size: 14px; color: var(--muted); }
+.btn-gold { padding: 14px 28px; border-radius: 10px; background: linear-gradient(135deg, var(--gold), #8E6A24); color: #fff; font-family: inherit; font-size: 14px; font-weight: 700; border: none; cursor: pointer; white-space: nowrap; }
+
+
+/* ═══════════════════════════════════════
+   TASARIM 2 — GOLDLINE
+   Güçlü altın çizgiler, editorial tipografi
+   ═══════════════════════════════════════ */
+
+.b-wrap { border-radius: 20px; background: var(--white); overflow: hidden; box-shadow: 0 4px 28px rgba(0,0,0,.08); }
+
+/* B — Üst başlık bölümü */
+.b-hero { padding: 64px 56px 56px; border-bottom: 1px solid var(--off2); }
+.b-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; }
+.b-kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+}
+.b-kicker::before { content:''; width: 28px; height: 1.5px; background: var(--gold); display: block; }
+.b-hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px; font-weight: 700; line-height: 1.08; color: var(--dark);
+  margin-bottom: 20px;
+}
+.b-hero h2 em { font-style: italic; color: var(--gold); }
+.b-lead { font-size: 16px; color: var(--muted); line-height: 1.75; }
+
+.b-outcome {
+  border: 1.5px solid var(--gold-line);
+  border-radius: 16px; padding: 28px;
+  position: relative; overflow: hidden;
+}
+.b-outcome::before {
+  content:''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-rich), transparent);
+}
+.b-outcome-lbl { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.b-outcome strong { font-size: 19px; font-weight: 700; color: var(--dark); line-height: 1.25; display: block; margin-bottom: 10px; }
+.b-outcome p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* B — Özellikler */
+.b-features { display: grid; grid-template-columns: repeat(3,1fr); }
+.b-feat {
+  padding: 36px; border-right: 1px solid var(--off2); border-bottom: 1px solid var(--off2);
+  position: relative;
+}
+.b-feat:last-child { border-right: none; }
+.b-feat::before {
+  content:''; position: absolute; top: 0; left: 36px; width: 32px; height: 3px;
+  background: var(--gold); border-radius: 0 0 3px 3px;
+}
+.b-feat-num { font-size: 11px; font-weight: 700; color: rgba(184,146,69,0.5); margin-bottom: 20px; margin-top: 12px; }
+.b-feat strong { font-size: 16px; font-weight: 700; color: var(--dark); display: block; margin-bottom: 8px; }
+.b-feat p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* B — Glance şerit */
+.b-glance-band {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  background: var(--off); border-bottom: 1px solid var(--off2);
+}
+.b-gc { padding: 28px 36px; border-right: 1px solid var(--off2); }
+.b-gc:last-child { border-right: none; }
+.b-gc-lbl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.b-gc strong { font-size: 15px; font-weight: 600; color: var(--dark); line-height: 1.5; }
+
+/* B — About + Beliefs */
+.b-story { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--off2); }
+.b-about {
+  padding: 56px; border-right: 1px solid var(--off2);
+}
+.b-about-kicker { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.b-about h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 700; color: var(--dark);
+  line-height: 1.25; margin-bottom: 20px;
+}
+.b-about p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 14px; }
+.b-quote {
+  border-left: 3px solid var(--gold); padding-left: 20px; margin-top: 24px;
+  font-size: 15px; font-style: italic; color: var(--dark-soft); line-height: 1.65;
+}
+.b-beliefs { display: flex; flex-direction: column; }
+.b-belief {
+  flex: 1; padding: 48px 44px;
+  border-bottom: 1px solid var(--off2); position: relative;
+}
+.b-belief:last-child { border-bottom: none; }
+.b-belief::before {
+  content:''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+}
+.b-bel-kicker { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.b-belief strong { font-size: 17px; font-weight: 700; color: var(--dark); display: block; margin-bottom: 10px; line-height: 1.35; }
+.b-belief p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* B — Süreç */
+.b-flow { padding: 64px 56px; border-bottom: 1px solid var(--off2); }
+.b-flow-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 52px; gap: 40px; }
+.b-flow-head h3 { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; color: var(--dark); line-height: 1.18; }
+.b-flow-sub { font-size: 15px; color: var(--muted); max-width: 300px; line-height: 1.65; text-align: right; }
+.b-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.b-step {
+  padding: 32px; border-radius: 16px;
+  border: 1px solid var(--off2); background: var(--off);
+  position: relative; overflow: hidden;
+}
+.b-step::after {
+  content:''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  opacity: 0; transition: opacity .2s;
+}
+.b-step:hover::after { opacity: 1; }
+.b-step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px; font-weight: 700;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(184,146,69,.28);
+  line-height: 1; margin-bottom: 20px;
+}
+.b-step strong { font-size: 17px; font-weight: 700; color: var(--dark); display: block; margin-bottom: 8px; }
+.b-step p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* B — CTA */
+.b-cta {
+  padding: 56px;
+  background: linear-gradient(135deg, rgba(184,146,69,.06) 0%, rgba(184,146,69,.02) 60%, transparent 100%);
+  border-top: 1.5px solid var(--gold-line);
+  display: flex; align-items: center; justify-content: space-between; gap: 48px;
+}
+.b-cta-copy h3 { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: var(--dark); line-height: 1.2; margin-bottom: 8px; }
+.b-cta-copy p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+.b-cta-tags { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.b-cta-tag { font-size: 11px; font-weight: 600; padding: 5px 13px; border-radius: 999px; background: rgba(184,146,69,.1); color: var(--gold); border: 1px solid var(--gold-line); }
+.btn-b {
+  padding: 16px 36px; border-radius: 12px; white-space: nowrap;
+  background: var(--dark); color: #fff;
+  font-family: inherit; font-size: 15px; font-weight: 700; border: none; cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,.16);
+  transition: background .2s;
+}
+.btn-b:hover { background: var(--gold); }
+
+
+/* ═══════════════════════════════════════
+   TASARIM 3 — STRUCTURED
+   Grid odaklı, büyük sayılar, hava dolu
+   ═══════════════════════════════════════ */
+
+.c-wrap { border-radius: 20px; background: var(--white); overflow: hidden; box-shadow: 0 4px 28px rgba(0,0,0,.08); }
+
+/* C — Üst */
+.c-top {
+  padding: 72px 56px 64px;
+  border-bottom: 1px solid var(--off2);
+}
+.c-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.c-eyebrow::after { content:''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold-line), transparent); }
+.c-top-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
+.c-top h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px; font-weight: 700; line-height: 1.05;
+  color: var(--dark); margin-bottom: 24px;
+  letter-spacing: -.5px;
+}
+.c-top h2 em { font-style: italic; }
+.c-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 24px; }
+.c-tag { font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 999px; background: var(--off2); color: var(--muted); }
+
+.c-outcome-big {
+  background: var(--dark); color: #fff;
+  border-radius: 18px; padding: 36px; margin-top: 8px;
+}
+.c-outcome-big .lbl { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.c-outcome-big strong { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; display: block; line-height: 1.3; margin-bottom: 12px; }
+.c-outcome-big p { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.65; }
+.c-outcome-big .gold-line { width: 40px; height: 2px; background: var(--gold); border-radius: 2px; margin-bottom: 20px; }
+
+/* C — Özellikler (büyük hücre grid) */
+.c-features { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--off2); }
+.c-feat {
+  padding: 40px 36px;
+  border-right: 1px solid var(--off2);
+}
+.c-feat:last-child { border-right: none; }
+.c-feat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 80px; font-weight: 700; line-height: .9;
+  color: transparent; -webkit-text-stroke: 1.5px var(--off2);
+  margin-bottom: 24px; display: block;
+}
+.c-feat strong { font-size: 17px; font-weight: 700; color: var(--dark); display: block; margin-bottom: 8px; }
+.c-feat p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* C — Glance full-width band */
+.c-glance {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  background: var(--off2); border-top: 1px solid var(--off2);
+}
+.c-gc { padding: 30px 36px; border-right: 1px solid rgba(0,0,0,.06); }
+.c-gc:last-child { border-right: none; }
+.c-gc::before { content: attr(data-lbl); display: block; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.c-gc strong { font-size: 15px; font-weight: 600; color: var(--dark); line-height: 1.5; }
+
+/* C — About / Beliefs iki sütun farklı */
+.c-story { display: grid; grid-template-columns: 5fr 4fr; border-top: 1px solid var(--off2); }
+.c-about-col { padding: 64px 52px; }
+.c-about-col .ck { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.c-about-col h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 20px; }
+.c-about-col p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; }
+.c-about-col blockquote {
+  margin-top: 28px; padding: 24px 28px;
+  background: var(--off); border-radius: 12px;
+  border-left: 4px solid var(--gold);
+  font-size: 16px; font-style: italic; color: var(--dark-soft); line-height: 1.65;
+}
+
+.c-beliefs-col { border-left: 1px solid var(--off2); }
+.c-bel {
+  padding: 44px 40px; border-bottom: 1px solid var(--off2);
+  position: relative;
+}
+.c-bel:last-child { border-bottom: none; }
+.c-bel .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px; font-weight: 700;
+  color: transparent; -webkit-text-stroke: 1px var(--off2);
+  line-height: 1; margin-bottom: 16px;
+}
+.c-bel-k { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.c-bel strong { font-size: 16px; font-weight: 700; color: var(--dark); display: block; margin-bottom: 8px; line-height: 1.35; }
+.c-bel p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* C — Süreç */
+.c-flow { padding: 72px 56px 64px; border-top: 1px solid var(--off2); }
+.c-flow-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.c-flow h3 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--dark); line-height: 1.18; margin-bottom: 8px; }
+.c-flow-desc { font-size: 15px; color: var(--muted); margin-bottom: 52px; max-width: 520px; line-height: 1.7; }
+
+.c-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.c-step { background: var(--off); padding: 36px; position: relative; }
+.c-step:first-child { border-radius: 16px 0 0 16px; }
+.c-step:last-child { border-radius: 0 16px 16px 0; }
+.c-step-arrow {
+  position: absolute; right: -13px; top: 50%; transform: translateY(-50%);
+  width: 26px; height: 26px; background: var(--white);
+  border: 1px solid var(--off2); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1; color: var(--gold); font-size: 12px; font-weight: 700;
+}
+.c-step:last-child .c-step-arrow { display: none; }
+.c-step-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 60px; font-weight: 700;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(184,146,69,.25);
+  line-height: .95; margin-bottom: 20px;
+}
+.c-step strong { font-size: 17px; font-weight: 700; color: var(--dark); display: block; margin-bottom: 8px; }
+.c-step p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* C — CTA */
+.c-cta {
+  margin: 0 56px 56px;
+  border-radius: 20px; padding: 48px 52px;
+  background: var(--dark);
+  display: flex; align-items: center; justify-content: space-between; gap: 48px;
+}
+.c-cta h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 8px; }
+.c-cta p { font-size: 15px; color: rgba(255,255,255,.55); line-height: 1.6; }
+.c-cta-tags { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.c-cta-tag { font-size: 11px; font-weight: 600; padding: 5px 13px; border-radius: 999px; border: 1px solid rgba(184,146,69,.3); color: rgba(184,146,69,.8); }
+.btn-c {
+  padding: 16px 36px; border-radius: 12px; white-space: nowrap;
+  background: linear-gradient(135deg, var(--gold), #8E6A24); color: #fff;
+  font-family: inherit; font-size: 15px; font-weight: 700; border: none; cursor: pointer;
+  box-shadow: 0 8px 24px rgba(184,146,69,.35);
+}
+</style>
+</head>
+<body>
+
+<div class="switcher">
+  <button class="sw-btn" onclick="show('r')">Mevcut (Referans)</button>
+  <button class="sw-btn active" onclick="show('b')">B — Goldline ⭐</button>
+  <button class="sw-btn" onclick="show('c')">C — Structured</button>
+</div>
+
+
+<!-- ═══ MEVCUT ═══ -->
+<div class="mockup" id="mockup-r">
+  <p class="design-label"><strong>Mevcut Tasarım</strong> — Referans</p>
+  <div class="r">
+    <div class="r-pad">
+      <div class="r-top">
+        <div>
+          <div class="r-kicker">Neden Kaya Plus?</div>
+          <h2>Neyi daha iyi yapıyoruz?</h2>
+          <p class="r-lead">Kuruluş, vergi ve bordro süreçlerini sadeleştirip tek akışta yönetiyor; dosyanın her adımını görünür ve takip edilebilir tutuyoruz.</p>
+        </div>
+        <div class="r-outcome">
+          <div class="r-outcome-label">Sonuç</div>
+          <strong>Daha az karmaşa, daha net iletişim</strong>
+          <p>Süreç görünür kalır, resmi adımlar dağılmadan ilerler.</p>
+        </div>
+      </div>
+      <div class="r-features">
+        <div class="r-feat"><strong>Dosya düzenli ilerler</strong><p>Hangi aşamada olduğunuzu net biçimde görür, resmi akışın dağılmasına izin vermezsiniz.</p></div>
+        <div class="r-feat"><strong>Dil sade kalır</strong><p>Muhasebe, vergi ve bordro tarafını anlaşılır şekilde açıklar, gereksiz karmaşıklığı azaltırız.</p></div>
+        <div class="r-feat"><strong>Tek noktadan yönlendirme</strong><p>Kuruluş, operasyon ve resmi süreçler tek akışta toplanır; dosya parçalanmadan ilerler.</p></div>
+      </div>
+      <div class="r-glance">
+        <div class="r-g"><div class="r-g-lbl">Yaklaşım</div><strong>Kuruluş, vergi ve bordro başlıklarını aynı çizgide yönetiriz.</strong></div>
+        <div class="r-g"><div class="r-g-lbl">Zemin</div><strong>Gerçek ofis altyapısı ve düzenli süreç disipliniyle ilerleriz.</strong></div>
+        <div class="r-g"><div class="r-g-lbl">İletişim</div><strong>Yerli ve yabancı müvekkil için dilin anlaşılır kalmasına dikkat ederiz.</strong></div>
+      </div>
+      <div class="r-story">
+        <div>
+          <h3>Yerel zemini bilen, süreci sakin yöneten bir ekip yapısı</h3>
+          <p>Kaya Plus, KKTC'de şirket kuruluşundan günlük mali takibe kadar uzanan başlıklarda müvekkillerine gerçek ofis altyapısı, düzenli süreç disiplini ve anlaşılır iletişim sunmak için çalışan bir danışmanlık yapısıdır.</p>
+          <p>Hedefimiz yalnızca işlemi tamamlamak değil, sürecin her aşamasını görünür ve güvenli hale getirmektir.</p>
+        </div>
+        <div class="r-beliefs">
+          <div class="r-belief"><div class="r-belief-k">Misyon</div><strong>Mali süreçleri sade, görünür ve sürdürülebilir hale getirmek</strong><p>Her dosyada doğru başlangıcı kurup, resmi ve operasyonel adımları aynı akışta toplarız.</p></div>
+          <div class="r-belief"><div class="r-belief-k">Vizyon</div><strong>KKTC'de güven veren danışmanlık standardı oluşturmak</strong><p>Gerçek ofis yapısı ve açık iletişimle kurumsal güven hissi veren bir model kurmayı hedefliyoruz.</p></div>
+        </div>
+      </div>
+      <div class="r-flow">
+        <h3>İlk temastan düzenli takibe kadar tek sistem</h3>
+        <p class="r-flow-sub">Amacımız dosyayı büyütmek değil, süreci sadeleştirip sizi doğru noktaya hızlıca ulaştırmak.</p>
+        <div class="r-steps">
+          <div class="r-step"><div class="r-step-n">01</div><strong>İlk görüşme</strong><p>İhtiyacı dinler, dosyanın ana başlığını netleştiririz.</p></div>
+          <div class="r-step"><div class="r-step-n">02</div><strong>Doğru yapı</strong><p>Uygun çerçeveyi kurup dosyayı sağlıklı zemine oturturuz.</p></div>
+          <div class="r-step"><div class="r-step-n">03</div><strong>Düzenli takip</strong><p>Belgeler, resmi adımlar ve günlük süreçler aynı çizgide ilerler.</p></div>
+        </div>
+      </div>
+      <div class="r-cta" style="margin-top:40px">
+        <div><h3>İlk görüşmede çerçeveyi netleştirelim</h3><p>Kuruluş, vergi, bordro veya mali takip için doğru başlangıcı birlikte kuralım.</p></div>
+        <button class="btn-gold">İletişime Geç →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ TASARIM B — GOLDLINE ═══ -->
+<div class="mockup visible" id="mockup-b">
+  <p class="design-label"><strong>Tasarım B — Goldline</strong> · Altın çizgi aksanlar, editorial tipografi, bölüm ritmleri</p>
+  <div class="b-wrap">
+
+    <div class="b-hero">
+      <div class="b-hero-inner">
+        <div>
+          <div class="b-kicker">Neden Kaya Plus?</div>
+          <h2>Neyi daha <em>iyi</em> yapıyoruz?</h2>
+          <p class="b-lead">Kuruluş, vergi ve bordro süreçlerini sadeleştirip tek akışta yönetiyor; dosyanın her adımını görünür ve takip edilebilir tutuyoruz.</p>
+        </div>
+        <div class="b-outcome">
+          <div class="b-outcome-lbl">Sonuç</div>
+          <strong>Daha az karmaşa, daha net iletişim</strong>
+          <p>Süreç görünür kalır, resmi adımlar dağılmadan ilerler ve hangi aşamada olduğunuzu kolayca görürsünüz.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-features">
+      <article class="b-feat">
+        <div class="b-feat-num">01</div>
+        <strong>Dosya düzenli ilerler</strong>
+        <p>Hangi aşamada olduğunuzu net biçimde görür, resmi akışın dağılmasına izin vermezsiniz.</p>
+      </article>
+      <article class="b-feat">
+        <div class="b-feat-num">02</div>
+        <strong>Dil sade kalır</strong>
+        <p>Muhasebe, vergi ve bordro tarafını anlaşılır şekilde açıklar, gereksiz karmaşıklığı azaltırız.</p>
+      </article>
+      <article class="b-feat">
+        <div class="b-feat-num">03</div>
+        <strong>Tek noktadan yönlendirme</strong>
+        <p>Kuruluş, operasyon ve resmi süreçler tek akışta toplanır; dosya parçalanmadan ilerler.</p>
+      </article>
+    </div>
+
+    <div class="b-glance-band">
+      <div class="b-gc"><div class="b-gc-lbl">Yaklaşım</div><strong>Kuruluş, vergi ve bordro başlıklarını aynı çizgide yönetiriz.</strong></div>
+      <div class="b-gc"><div class="b-gc-lbl">Zemin</div><strong>Gerçek ofis altyapısı ve düzenli süreç disipliniyle ilerleriz.</strong></div>
+      <div class="b-gc"><div class="b-gc-lbl">İletişim</div><strong>Yerli ve yabancı müvekkil için dilin anlaşılır kalmasına dikkat ederiz.</strong></div>
+    </div>
+
+    <div class="b-story">
+      <div class="b-about">
+        <div class="b-about-kicker">Hakkımızda</div>
+        <h3>Yerel zemini bilen, süreci sakin yöneten bir ekip yapısı</h3>
+        <p>Kaya Plus, KKTC'de şirket kuruluşundan günlük mali takibe kadar uzanan başlıklarda müvekkillerine gerçek ofis altyapısı, düzenli süreç disiplini ve anlaşılır iletişim sunmak için çalışan bir danışmanlık yapısıdır.</p>
+        <p>Hedefimiz yalnızca işlemi tamamlamak değil, sürecin her aşamasını görünür ve güvenli hale getirmektir.</p>
+        <blockquote class="b-quote">"Hedefimiz yalnızca işlemi tamamlamak değil, sürecin her aşamasını görünür ve güvenli hale getirmektir."</blockquote>
+      </div>
+      <div class="b-beliefs">
+        <article class="b-belief">
+          <div class="b-bel-kicker">Misyon</div>
+          <strong>Mali süreçleri sade, görünür ve sürdürülebilir hale getirmek</strong>
+          <p>Her dosyada doğru başlangıcı kurup, resmi ve operasyonel adımları aynı akışta toplar; müvekkilin neyin neden yapıldığını net biçimde görmesini sağlarız.</p>
+        </article>
+        <article class="b-belief">
+          <div class="b-bel-kicker">Vizyon</div>
+          <strong>KKTC'de güven veren danışmanlık standardı oluşturmak</strong>
+          <p>Gerçek ofis yapısı, düzenli takip ve açık iletişimle kurumsal güven hissi veren örnek bir danışmanlık modeli kurmayı hedefliyoruz.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="b-flow">
+      <div class="b-flow-head">
+        <div>
+          <div class="b-kicker" style="margin-bottom:10px">Nasıl çalışıyoruz?</div>
+          <h3>İlk temastan düzenli<br>takibe kadar tek sistem</h3>
+        </div>
+        <p class="b-flow-sub">Amacımız dosyayı büyütmek değil, süreci sadeleştirip sizi doğru noktaya hızlıca ulaştırmak.</p>
+      </div>
+      <div class="b-steps">
+        <article class="b-step">
+          <div class="b-step-num">01</div>
+          <strong>İlk görüşme</strong>
+          <p>İhtiyacı dinler, dosyanın ana başlığını ve öncelikli adımlarını netleştiririz.</p>
+        </article>
+        <article class="b-step">
+          <div class="b-step-num">02</div>
+          <strong>Doğru yapı</strong>
+          <p>Kuruluş, vergi ve operasyon tarafında uygun çerçeveyi kurup dosyayı sağlıklı zemine oturturuz.</p>
+        </article>
+        <article class="b-step">
+          <div class="b-step-num">03</div>
+          <strong>Düzenli takip</strong>
+          <p>Belgeler, resmi adımlar ve günlük mali süreçler aynı çizgide ilerler; iletişim düzenli kalır.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="b-cta">
+      <div class="b-cta-copy">
+        <h3>İlk görüşmede çerçeveyi netleştirelim</h3>
+        <p>Kuruluş, vergi, bordro veya genel mali takip için doğru başlangıcı birlikte kuralım.</p>
+        <div class="b-cta-tags">
+          <span class="b-cta-tag">İlk Çerçeve</span>
+          <span class="b-cta-tag">Net Başlangıç</span>
+          <span class="b-cta-tag">Düzenli İletişim</span>
+        </div>
+      </div>
+      <button class="btn-b">İletişime Geç →</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ TASARIM C — STRUCTURED ═══ -->
+<div class="mockup" id="mockup-c">
+  <p class="design-label"><strong>Tasarım C — Structured</strong> · Büyük sayılar, hava dolu grid, yüzen CTA kartı</p>
+  <div class="c-wrap">
+
+    <div class="c-top">
+      <div class="c-eyebrow">Neden Kaya Plus?</div>
+      <div class="c-top-grid">
+        <div>
+          <h2>Neyi daha<br><em>iyi</em> yapıyoruz?</h2>
+          <p style="font-size:16px;color:var(--muted);line-height:1.75">Kuruluş, vergi ve bordro süreçlerini sadeleştirip tek akışta yönetiyor; dosyanın her adımını görünür ve takip edilebilir tutuyoruz.</p>
+          <div class="c-tags">
+            <span class="c-tag">Kuruluş</span><span class="c-tag">Vergi</span>
+            <span class="c-tag">Bordro</span><span class="c-tag">Düzenli Takip</span><span class="c-tag">Yabancı Müvekkil</span>
+          </div>
+        </div>
+        <div class="c-outcome-big">
+          <div class="gold-line"></div>
+          <div class="lbl">Sonuç</div>
+          <strong>Daha az karmaşa, daha net iletişim</strong>
+          <p>Süreç görünür kalır, resmi adımlar dağılmadan ilerler ve hangi aşamada olduğunuzu kolayca görürsünüz.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-features">
+      <article class="c-feat">
+        <span class="c-feat-num">01</span>
+        <strong>Dosya düzenli ilerler</strong>
+        <p>Hangi aşamada olduğunuzu net biçimde görür, resmi akışın dağılmasına izin vermezsiniz.</p>
+      </article>
+      <article class="c-feat">
+        <span class="c-feat-num">02</span>
+        <strong>Dil sade kalır</strong>
+        <p>Muhasebe, vergi ve bordro tarafını anlaşılır şekilde açıklar, gereksiz karmaşıklığı azaltırız.</p>
+      </article>
+      <article class="c-feat">
+        <span class="c-feat-num">03</span>
+        <strong>Tek noktadan yönlendirme</strong>
+        <p>Kuruluş, operasyon ve resmi süreçler tek akışta toplanır; dosya parçalanmadan ilerler.</p>
+      </article>
+    </div>
+
+    <div class="c-glance">
+      <div class="c-gc" data-lbl="Yaklaşım"><strong>Kuruluş, vergi ve bordro başlıklarını aynı çizgide yönetiriz.</strong></div>
+      <div class="c-gc" data-lbl="Zemin"><strong>Gerçek ofis altyapısı ve düzenli süreç disipliniyle ilerleriz.</strong></div>
+      <div class="c-gc" data-lbl="İletişim"><strong>Yerli ve yabancı müvekkil için dilin anlaşılır kalmasına dikkat ederiz.</strong></div>
+    </div>
+
+    <div class="c-story">
+      <div class="c-about-col">
+        <div class="ck">Hakkımızda</div>
+        <h3>Yerel zemini bilen, süreci sakin yöneten bir ekip yapısı</h3>
+        <p>Kaya Plus, KKTC'de şirket kuruluşundan günlük mali takibe kadar uzanan başlıklarda müvekkillerine gerçek ofis altyapısı, düzenli süreç disiplini ve anlaşılır iletişim sunmak için çalışan bir danışmanlık yapısıdır.</p>
+        <p>Hedefimiz yalnızca işlemi tamamlamak değil, sürecin her aşamasını görünür ve güvenli hale getirmektir.</p>
+        <blockquote>"Hedefimiz yalnızca işlemi tamamlamak değil, sürecin her aşamasını görünür ve güvenli hale getirmektir."</blockquote>
+      </div>
+      <div class="c-beliefs-col">
+        <div class="c-bel">
+          <div class="num">M</div>
+          <div class="c-bel-k">Misyon</div>
+          <strong>Mali süreçleri sade, görünür ve sürdürülebilir hale getirmek</strong>
+          <p>Her dosyada doğru başlangıcı kurup, resmi ve operasyonel adımları aynı akışta toplar; müvekkilin neyin neden yapıldığını net biçimde görmesini sağlarız.</p>
+        </div>
+        <div class="c-bel">
+          <div class="num">V</div>
+          <div class="c-bel-k">Vizyon</div>
+          <strong>KKTC'de güven veren danışmanlık standardı oluşturmak</strong>
+          <p>Gerçek ofis yapısı, düzenli takip ve açık iletişimle kurumsal güven hissi veren örnek bir danışmanlık modeli kurmayı hedefliyoruz.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-flow">
+      <div class="c-flow-label">Nasıl çalışıyoruz?</div>
+      <h3>İlk temastan düzenli takibe kadar tek sistem</h3>
+      <p class="c-flow-desc">Amacımız dosyayı büyütmek değil, süreci sadeleştirip sizi doğru noktaya hızlıca ulaştırmak.</p>
+      <div class="c-steps">
+        <article class="c-step">
+          <div class="c-step-n">01</div>
+          <strong>İlk görüşme</strong>
+          <p>İhtiyacı dinler, dosyanın ana başlığını ve öncelikli adımlarını netleştiririz.</p>
+          <div class="c-step-arrow">›</div>
+        </article>
+        <article class="c-step">
+          <div class="c-step-n">02</div>
+          <strong>Doğru yapı</strong>
+          <p>Kuruluş, vergi ve operasyon tarafında uygun çerçeveyi kurup dosyayı sağlıklı zemine oturturuz.</p>
+          <div class="c-step-arrow">›</div>
+        </article>
+        <article class="c-step">
+          <div class="c-step-n">03</div>
+          <strong>Düzenli takip</strong>
+          <p>Belgeler, resmi adımlar ve günlük mali süreçler aynı çizgide ilerler; iletişim düzenli kalır.</p>
+          <div class="c-step-arrow">›</div>
+        </article>
+      </div>
+    </div>
+
+    <div class="c-cta">
+      <div>
+        <h3>İlk görüşmede çerçeveyi netleştirelim</h3>
+        <p>Kuruluş, vergi, bordro veya genel mali takip için doğru başlangıcı birlikte kuralım.</p>
+        <div class="c-cta-tags">
+          <span class="c-cta-tag">İlk Çerçeve</span>
+          <span class="c-cta-tag">Net Başlangıç</span>
+          <span class="c-cta-tag">Düzenli İletişim</span>
+        </div>
+      </div>
+      <button class="btn-c">İletişime Geç →</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function show(id) {
+    document.querySelectorAll('.mockup').forEach(m => m.classList.remove('visible'));
+    document.getElementById('mockup-' + id).classList.add('visible');
+    document.querySelectorAll('.sw-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>

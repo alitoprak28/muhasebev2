@@ -10,6 +10,10 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/guide-pages.css">
   <style>
+    .kktcde-page-shell {
+      padding-top: 0;
+    }
+
     .kktcde-hero-banner {
       min-height: auto;
       width: 100vw;
@@ -19,11 +23,12 @@
 
     .kktcde-hero-cover {
       position: relative;
-      min-height: clamp(560px, 78vh, 760px);
+      height: clamp(560px, 78vh, 760px);
+      min-height: 0;
       overflow: hidden;
       isolation: isolate;
-      border-top: 1px solid rgba(184, 146, 69, 0.14);
-      border-bottom: 1px solid rgba(184, 146, 69, 0.14);
+      border-top: 1px solid rgba(28, 94, 140, 0.14);
+      border-bottom: 1px solid rgba(28, 94, 140, 0.14);
       background: #15110d;
     }
 
@@ -92,65 +97,82 @@
       width: 340px;
       height: 340px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(184, 146, 69, 0.24) 0%, rgba(184, 146, 69, 0.08) 42%, transparent 72%);
+      background: radial-gradient(circle, rgba(28, 94, 140, 0.24) 0%, rgba(28, 94, 140, 0.08) 42%, transparent 72%);
       filter: blur(12px);
     }
 
     .kktcde-hero-banner .hero-copy {
       position: relative;
       z-index: 2;
-      min-height: inherit;
-      max-width: 860px;
+      min-height: 100%;
+      max-width: 780px;
       padding: clamp(40px, 6vw, 84px) clamp(32px, 6vw, 96px) clamp(56px, 8vw, 112px);
       border: 0;
       border-radius: 0;
       background: none;
       box-shadow: none;
+      gap: 14px;
       justify-content: flex-end;
     }
 
     .kktcde-hero-banner .hero-copy h1 {
       color: #ffffff;
-      font-size: clamp(52px, 9vw, 96px);
-      line-height: 0.9;
-      max-width: 10ch;
+      font-size: clamp(42px, 5.2vw, 70px);
+      line-height: 0.94;
+      max-width: 18ch;
     }
 
     .kktcde-hero-banner .hero-copy .lead {
-      max-width: 52ch;
+      max-width: 54ch;
       color: rgba(255, 255, 255, 0.84);
       font-size: 16px;
       line-height: 1.78;
     }
 
     .kktcde-hero-banner .eyebrow {
-      color: #f0dbab;
-      border-color: rgba(240, 219, 171, 0.28);
-      background: rgba(255, 255, 255, 0.08);
+      color: #dcebfa;
+      border-color: rgba(110, 176, 224, 0.34);
+      background: rgba(12, 34, 56, 0.36);
     }
 
-    .kktcde-hero-banner .hero-facts {
-      max-width: 820px;
+    .kktcde-hero-summary-section {
+      margin-top: clamp(18px, 3vw, 32px);
     }
 
-    .kktcde-hero-banner .fact-card {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(240, 219, 171, 0.18);
-      backdrop-filter: blur(8px);
+    .kktcde-hero-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: clamp(16px, 2vw, 22px);
+      border-radius: 28px;
+      border: 1px solid rgba(28, 94, 140, 0.16);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 18px 46px rgba(17, 17, 17, 0.06);
     }
 
-    .kktcde-hero-banner .fact-label {
-      color: #f0dbab;
+    .kktcde-hero-summary .hero-facts {
+      flex: 1;
+      max-width: none;
+      margin-top: 0;
     }
 
-    .kktcde-hero-banner .fact-card strong {
-      color: rgba(255, 255, 255, 0.96);
+    .kktcde-hero-summary .fact-card {
+      background: linear-gradient(180deg, rgba(248, 251, 255, 0.98) 0%, rgba(238, 245, 252, 0.96) 100%);
+      border-color: rgba(28, 94, 140, 0.16);
     }
 
-    .kktcde-hero-banner .btn-secondary {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(240, 219, 171, 0.22);
-      color: rgba(255, 255, 255, 0.96);
+    .kktcde-hero-summary .fact-label {
+      color: var(--gold-deep);
+    }
+
+    .kktcde-hero-summary .fact-card strong {
+      color: var(--navy);
+    }
+
+    .kktcde-hero-summary .hero-actions {
+      flex-shrink: 0;
+      margin-top: 0;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -172,9 +194,10 @@
       }
 
       .kktcde-hero-cover {
+        height: auto;
         min-height: 500px;
         border-radius: 28px;
-        border: 1px solid rgba(184, 146, 69, 0.14);
+        border: 1px solid rgba(28, 94, 140, 0.14);
       }
 
       .kktcde-hero-banner .hero-copy {
@@ -182,7 +205,13 @@
       }
 
       .kktcde-hero-banner .hero-copy h1 {
-        font-size: clamp(40px, 14vw, 64px);
+        font-size: clamp(40px, 10vw, 64px);
+        max-width: 13ch;
+      }
+
+      .kktcde-hero-summary {
+        align-items: stretch;
+        flex-direction: column;
       }
     }
 
@@ -209,7 +238,7 @@
       overflow: visible;
       padding-bottom: 4px;
       scrollbar-width: thin;
-      scrollbar-color: rgba(184, 146, 69, 0.35) transparent;
+      scrollbar-color: rgba(28, 94, 140, 0.35) transparent;
     }
 
     .structure-switcher::-webkit-scrollbar {
@@ -217,12 +246,12 @@
     }
 
     .structure-switcher::-webkit-scrollbar-thumb {
-      background: rgba(184, 146, 69, 0.28);
+      background: rgba(28, 94, 140, 0.28);
       border-radius: 999px;
     }
 
     .structure-tab {
-      border: 1px solid rgba(184, 146, 69, 0.18);
+      border: 1px solid rgba(28, 94, 140, 0.18);
       background: #ffffff;
       color: #171410;
       padding: 16px 20px;
@@ -239,13 +268,14 @@
 
     .structure-tab:hover {
       transform: translateY(-1px);
-      border-color: rgba(184, 146, 69, 0.3);
+      border-color: rgba(28, 94, 140, 0.3);
+      background: rgba(28, 94, 140, 0.06);
     }
 
     .structure-tab.active {
-      background: linear-gradient(135deg, #1d1a16, #2a241c);
-      color: #f5e2b4;
-      border-color: rgba(184, 146, 69, 0.44);
+      background: linear-gradient(135deg, #102238, #1c5e8c);
+      color: #eaf4ff;
+      border-color: rgba(28, 94, 140, 0.44);
       box-shadow: 0 16px 34px rgba(17, 17, 17, 0.14);
     }
 
@@ -254,11 +284,9 @@
       gap: 24px;
       padding: clamp(24px, 3vw, 34px);
       border-radius: 30px;
-      border: 1px solid rgba(184, 146, 69, 0.16);
-      background:
-        radial-gradient(circle at top right, rgba(184, 146, 69, 0.12) 0%, rgba(184, 146, 69, 0.03) 28%, transparent 54%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(255, 250, 242, 0.98) 100%);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.64);
+      border: 1px solid rgba(28, 94, 140, 0.16);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(243, 248, 253, 0.98) 100%);
+      box-shadow: 0 18px 38px rgba(17, 17, 17, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
     }
 
     .structure-panel.active {
@@ -290,7 +318,7 @@
       height: 8px;
       border-radius: 999px;
       background: var(--gold);
-      box-shadow: 0 0 0 5px rgba(184, 146, 69, 0.12);
+      box-shadow: 0 0 0 5px rgba(28, 94, 140, 0.12);
     }
 
     .structure-panel-copy h3 {
@@ -304,14 +332,14 @@
     }
 
     .structure-panel-copy p {
-      color: #433b32;
+      color: var(--ink-soft);
       max-width: 68ch;
     }
 
     .structure-panel-note {
       align-self: stretch;
       padding-left: 24px;
-      border-left: 1px solid rgba(184, 146, 69, 0.18);
+      border-left: 1px solid rgba(28, 94, 140, 0.18);
       display: grid;
       gap: 18px;
     }
@@ -327,7 +355,7 @@
     }
 
     .structure-panel-note p {
-      color: #4a433a;
+      color: var(--ink-soft);
       font-size: 15px;
       line-height: 1.7;
     }
@@ -336,7 +364,7 @@
       display: grid;
       gap: 18px;
       padding-top: 22px;
-      border-top: 1px solid rgba(184, 146, 69, 0.14);
+      border-top: 1px solid rgba(28, 94, 140, 0.14);
     }
 
     .structure-panel-bottom h4 {
@@ -349,7 +377,7 @@
       padding-left: 22px;
       display: grid;
       gap: 10px;
-      color: #332d27;
+      color: var(--ink-soft);
     }
 
     .structure-panel-bottom li::marker {
@@ -384,7 +412,7 @@
         padding-left: 0;
         padding-top: 18px;
         border-left: 0;
-        border-top: 1px solid rgba(184, 146, 69, 0.14);
+        border-top: 1px solid rgba(28, 94, 140, 0.14);
       }
 
       .structure-panel-copy h3 {
@@ -414,8 +442,12 @@
       }
 
       .kktcde-hero-banner .hero-copy h1 {
-        font-size: clamp(34px, 12vw, 48px);
-        max-width: 11ch;
+        font-size: clamp(34px, 11vw, 46px);
+        max-width: 12ch;
+      }
+
+      .kktcde-hero-summary {
+        border-radius: 22px;
       }
 
       .kktcde-hero-banner .hero-copy .lead {
@@ -493,11 +525,11 @@
       <a class="brand" href="./kktc-sirket-kurma.html">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="5" width="4.5" height="15" rx="1.2" fill="#C5A04D"/>
-            <rect x="10.5" y="5" width="4.5" height="19" rx="1.2" fill="#C5A04D"/>
-            <rect x="17" y="5" width="4.5" height="12" rx="1.2" fill="#C5A04D"/>
-            <path d="M8 23.5c6-5.8 9.8-9.2 18-14.5" fill="none" stroke="#C5A04D" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M11.2 26.5c5.6-5 9.8-8.2 16.8-12.3" fill="none" stroke="#E6CC8E" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="4" y="5" width="4.5" height="15" rx="1.2" fill="#1c5e8c"/>
+            <rect x="10.5" y="5" width="4.5" height="19" rx="1.2" fill="#1c5e8c"/>
+            <rect x="17" y="5" width="4.5" height="12" rx="1.2" fill="#1c5e8c"/>
+            <path d="M8 23.5c6-5.8 9.8-9.2 18-14.5" fill="none" stroke="#1c5e8c" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M11.2 26.5c5.6-5 9.8-8.2 16.8-12.3" fill="none" stroke="#6EB0E0" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </span>
         <span class="brand-copy">
@@ -525,7 +557,7 @@
     </div>
   </header>
 
-  <main class="page-shell">
+  <main class="page-shell kktcde-page-shell">
     <section class="hero hero-single kktcde-hero-banner">
       <article class="kktcde-hero-cover">
         <div class="kktcde-hero-stage" aria-hidden="true">
@@ -536,24 +568,29 @@
           <span class="eyebrow">KKTC'de Şirket Kurma</span>
           <h1>Şirket kuruluşu, yabancı şirket ve uluslararası yapı seçenekleri</h1>
           <p class="lead">KKTC'de yeni şirket kuracak, yabancı şirket şubesi açacak veya uluslararası yapı düşünen yatırımcı için ilk ayrım; faaliyet yönünü, pazarını ve resmi beklentileri doğru okumaktır. Bu sayfa ana seçenekleri tek yerde toplar.</p>
-          <div class="hero-facts">
-            <div class="fact-card">
-              <div class="fact-label">Yerel Yapı</div>
-              <strong>Yerel limited ve benzeri modeller</strong>
-            </div>
-            <div class="fact-card">
-              <div class="fact-label">Yabancı Model</div>
-              <strong>Şube ve yabancı sermaye kurgusu</strong>
-            </div>
-            <div class="fact-card">
-              <div class="fact-label">Uluslararası</div>
-              <strong>UİŞ ve dış pazar odaklı yapı</strong>
-            </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section kktcde-hero-summary-section" aria-label="Yapı seçenekleri özeti">
+      <article class="kktcde-hero-summary">
+        <div class="hero-facts">
+          <div class="fact-card">
+            <div class="fact-label">Yerel Yapı</div>
+            <strong>Yerel limited ve benzeri modeller</strong>
           </div>
-          <div class="hero-actions">
-            <a class="btn-primary" href="./yerel-limited-uis-yabanci-sube-karsilastirma.html">Yapıları Karşılaştır</a>
-            <a class="btn-secondary" href="./sirket-kurmanin-temel-sartlari.html">Temel Şartları Gör</a>
+          <div class="fact-card">
+            <div class="fact-label">Yabancı Model</div>
+            <strong>Şube ve yabancı sermaye kurgusu</strong>
           </div>
+          <div class="fact-card">
+            <div class="fact-label">Uluslararası</div>
+            <strong>UİŞ ve dış pazar odaklı yapı</strong>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a class="btn-primary" href="./yerel-limited-uis-yabanci-sube-karsilastirma.html">Yapıları Karşılaştır</a>
+          <a class="btn-secondary" href="./sirket-kurmanin-temel-sartlari.html">Temel Şartları Gör</a>
         </div>
       </article>
     </section>
@@ -807,7 +844,3 @@
   </script>
 </body>
 </html>
-
-
-
-
