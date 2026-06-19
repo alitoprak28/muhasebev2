@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medya | Kaya Plus</title>
+  <meta name="description" content="Kaya Plus ofis fotoğrafları — karşılama alanı, çalışma ofisleri ve yönetici odası görünümleri.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/guide-pages.css">
+  <style>
+    .media-page {
+      padding-top: 0;
+      padding-bottom: 80px;
+    }
+
+    /* ── Hero ── */
+    .media-hero {
+      position: relative;
+      width: 100%;
+      height: clamp(260px, 42vw, 500px);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .media-hero img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      transition: transform 0.5s ease;
+    }
+    .media-hero:hover img { transform: scale(1.03); }
+    .media-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,18,30,0.75) 0%, rgba(8,18,30,0.18) 55%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(24px, 4vw, 56px);
+    }
+    .media-hero-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 10px;
+    }
+    .media-hero-overlay h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(30px, 5vw, 54px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin: 0 0 10px;
+    }
+    .media-hero-overlay p {
+      color: rgba(255,255,255,0.6);
+      font-size: 15px;
+      margin: 0;
+    }
+    .media-hero-hint {
+      position: absolute;
+      bottom: 20px; right: 24px;
+      background: rgba(255,255,255,0.12);
+      border: 0.5px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* ── Section label ── */
+    .media-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1c5e8c;
+      padding: 0 clamp(20px, 5vw, 64px);
+      margin: 36px 0 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .media-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(28,94,140,0.15);
+    }
+
+    /* ── Featured ── */
+    .media-featured {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
+      padding: 0 clamp(20px, 5vw, 64px);
+    }
+    .media-feat-item {
+      position: relative;
+      height: clamp(190px, 26vw, 320px);
+      overflow: hidden;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+    .media-feat-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+    }
+    .media-feat-item:hover img { transform: scale(1.05); }
+    .media-feat-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 14px 16px 12px;
+      background: linear-gradient(to top, rgba(0,0,0,0.52) 0%, transparent 100%);
+      color: rgba(255,255,255,0.88);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* ── Gallery grid ── */
+    .media-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 0 clamp(20px, 5vw, 64px);
+    }
+    .media-grid-item {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .media-grid-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+    .media-grid-item:hover img { transform: scale(1.07); }
+    .media-grid-item::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(28,94,140,0);
+      transition: background 0.3s;
+      pointer-events: none;
+    }
+    .media-grid-item:hover::after {
+      background: rgba(28,94,140,0.1);
+    }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(4,10,18,0.93);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+    .lb-img-wrap {
+      max-width: 92vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lb-img-wrap img {
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 6px;
+      display: block;
+    }
+    .lb-close {
+      position: fixed;
+      top: 18px; right: 22px;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 0.5px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      line-height: 1;
+      transition: background 0.2s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,0.22); }
+    .lb-nav {
+      position: fixed;
+      top: 50%; transform: translateY(-50%);
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 0.5px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 26px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .lb-nav:hover { background: rgba(255,255,255,0.22); }
+    .lb-prev { left: 18px; }
+    .lb-next { right: 18px; }
+    .lb-counter {
+      position: fixed;
+      bottom: 18px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.45);
+      font-size: 13px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 760px) {
+      .media-featured { grid-template-columns: 1fr; }
+      .media-gallery { grid-template-columns: repeat(2, 1fr); }
+      .media-feat-item { height: clamp(160px, 52vw, 260px); }
+    }
+    @media (max-width: 480px) {
+      .media-gallery { grid-template-columns: 1fr; gap: 8px; }
+      .media-featured { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./kktc-sirket-kurma.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="5" width="4.5" height="15" rx="1.2" fill="#1c5e8c"/>
+            <rect x="10.5" y="5" width="4.5" height="19" rx="1.2" fill="#1c5e8c"/>
+            <rect x="17" y="5" width="4.5" height="12" rx="1.2" fill="#1c5e8c"/>
+            <path d="M8 23.5c6-5.8 9.8-9.2 18-14.5" fill="none" stroke="#1c5e8c" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M11.2 26.5c5.6-5 9.8-8.2 16.8-12.3" fill="none" stroke="#6EB0E0" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-title">Kaya Plus</span>
+          <span class="brand-sub">Şirket Kurma ve Mali Danışmanlık</span>
+        </span>
+      </a>
+      <nav class="topbar-links">
+        <a href="./kktc-sirket-kurma.html">Ana Sayfa</a>
+        <a href="./neden-kaya-plus.html">Neden Kaya Plus?</a>
+        <a href="./hizmetler.html">Hizmetler</a>
+        <a href="./yasalar-vergiler.html">Yasalar/Vergiler</a>
+        <a href="./kktcde-sirket-kurma.html">KKTC'de Şirket Kurma</a>
+        <a href="./sirket-kurmanin-temel-sartlari.html">Şirket Kurmanın Şartları</a>
+        <a href="./medya.html" class="active">Medya</a>
+        <a href="./bize-ulasin.html">İletişim</a>
+      </nav>
+      <div class="topbar-actions">
+        <div class="guide-lang-switcher" aria-label="Language switcher">
+          <button type="button" class="guide-lang-btn active" data-lang="tr">TR</button>
+          <button type="button" class="guide-lang-btn" data-lang="en">EN</button>
+          <button type="button" class="guide-lang-btn" data-lang="ru">RU</button>
+          <button type="button" class="guide-lang-btn" data-lang="fa">FA</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="media-page">
+
+    <!-- HERO — Foto #11 (yönetici odası, yeşil KAYAPLUS duvar) -->
+    <section class="media-hero" id="hero-item" data-idx="0">
+      <img src="./assets/medya-01-yonetici.jpg" alt="Kaya Plus yönetici odası">
+      <div class="media-hero-overlay">
+        <p class="media-hero-eyebrow">Kaya Plus</p>
+        <h1>Ofisimiz</h1>
+        <p>Kuzey Kıbrıs'ta modern, profesyonel çalışma ortamımız</p>
+      </div>
+      <span class="media-hero-hint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        Büyüt
+      </span>
+    </section>
+
+    <!-- FEATURED -->
+    <p class="media-label">Öne çıkan</p>
+    <div class="media-featured">
+      <!-- Foto #23 — Dış cephe tabela -->
+      <div class="media-feat-item" data-idx="1">
+        <img src="./assets/medya-02-dis-cephe.jpg" alt="Kaya Plus dış cephe tabelası">
+        <div class="media-feat-caption">Dış cephe</div>
+      </div>
+      <!-- Foto #4 — Karşılama alanı -->
+      <div class="media-feat-item" data-idx="2">
+        <img src="./assets/medya-03-resepsiyon.jpg" alt="Kaya Plus karşılama alanı">
+        <div class="media-feat-caption">Karşılama alanı</div>
+      </div>
+    </div>
+
+    <!-- GALLERY -->
+    <p class="media-label">Galeri</p>
+    <div class="media-gallery">
+      <!-- Foto #6 — Lobi üst görünüm (merdivenin başından) -->
+      <div class="media-grid-item" data-idx="3">
+        <img src="./assets/medya-04-lobi-ust.jpg" alt="Lobi üst görünüm">
+      </div>
+      <!-- Foto #8 — Lobi giriş seviyesi -->
+      <div class="media-grid-item" data-idx="4">
+        <img src="./assets/medya-05-lobi-giris.jpg" alt="Lobi giriş">
+      </div>
+      <!-- Foto #13 — Yönetici masası ve sertifikalar -->
+      <div class="media-grid-item" data-idx="5">
+        <img src="./assets/medya-06-masa.jpg" alt="Yönetici masası ve sertifikalar">
+      </div>
+      <!-- Foto #19 — Yönetici odası tam görünüm -->
+      <div class="media-grid-item" data-idx="6">
+        <img src="./assets/medya-07-yonetici-tam.jpg" alt="Yönetici odası tam görünüm">
+      </div>
+      <!-- Foto #12 — Yönetici odası yan açı -->
+      <div class="media-grid-item" data-idx="7">
+        <img src="./assets/medya-08-yonetici-yan.jpg" alt="Yönetici odası yan açı">
+      </div>
+      <!-- Foto #7 — Arşiv odası -->
+      <div class="media-grid-item" data-idx="8">
+        <img src="./assets/medya-09-arsiv.jpg" alt="Arşiv odası">
+      </div>
+    </div>
+
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Fotoğraf görüntüleyici">
+    <button class="lb-close" id="lb-close" aria-label="Kapat">&#x2715;</button>
+    <button class="lb-nav lb-prev" id="lb-prev" aria-label="Önceki fotoğraf">&#x2039;</button>
+    <div class="lb-img-wrap">
+      <img id="lb-img" src="" alt="">
+    </div>
+    <button class="lb-nav lb-next" id="lb-next" aria-label="Sonraki fotoğraf">&#x203A;</button>
+    <span class="lb-counter" id="lb-counter" aria-live="polite"></span>
+  </div>
+
+  <script>
+    const photos = [
+      { src: './assets/medya-01-yonetici.jpg',   alt: 'Yönetici odası' },
+      { src: './assets/medya-02-dis-cephe.jpg',  alt: 'Dış cephe' },
+      { src: './assets/medya-03-resepsiyon.jpg', alt: 'Karşılama alanı' },
+      { src: './assets/medya-04-lobi-ust.jpg',   alt: 'Lobi üst görünüm' },
+      { src: './assets/medya-05-lobi-giris.jpg', alt: 'Lobi giriş' },
+      { src: './assets/medya-06-masa.jpg',        alt: 'Yönetici masası' },
+      { src: './assets/medya-07-yonetici-tam.jpg',alt: 'Yönetici odası' },
+      { src: './assets/medya-08-yonetici-yan.jpg',alt: 'Yönetici odası yan' },
+      { src: './assets/medya-09-arsiv.jpg',       alt: 'Arşiv odası' }
+    ];
+
+    var current = 0;
+    var lb      = document.getElementById('lightbox');
+    var lbImg   = document.getElementById('lb-img');
+    var lbCtr   = document.getElementById('lb-counter');
+
+    function show(idx) {
+      current = (idx + photos.length) % photos.length;
+      lbImg.src = photos[current].src;
+      lbImg.alt = photos[current].alt;
+      lbCtr.textContent = (current + 1) + ' / ' + photos.length;
+    }
+
+    function open(idx) {
+      show(idx);
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lb-close').addEventListener('click', close);
+    document.getElementById('lb-prev').addEventListener('click', function() { show(current - 1); });
+    document.getElementById('lb-next').addEventListener('click', function() { show(current + 1); });
+
+    lb.addEventListener('click', function(e) {
+      if (e.target === lb) close();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape')      close();
+      if (e.key === 'ArrowLeft')   show(current - 1);
+      if (e.key === 'ArrowRight')  show(current + 1);
+    });
+
+    document.querySelectorAll('[data-idx]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        open(parseInt(el.dataset.idx, 10));
+      });
+    });
+  </script>
+
+</body>
+</html>
