@@ -103,7 +103,7 @@ p {
 .brand {
   position: relative;
   display: block;
-  width: clamp(200px, 18vw, 260px);
+  width: clamp(230px, 21vw, 310px);
   aspect-ratio: 1629 / 543;
   text-decoration: none;
   flex-shrink: 0;
@@ -203,9 +203,9 @@ p {
   font-size: 17px;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   white-space: nowrap;
-  padding: 4px 5px;
+  padding: 4px 3px;
   border-radius: 6px;
   transition: color 0.18s ease, background 0.18s ease;
 }
@@ -1737,7 +1737,7 @@ td {
   }
 
   .brand {
-    width: clamp(200px, 20vw, 270px);
+    width: clamp(220px, 21vw, 290px);
   }
 
   .topbar-links {
@@ -1756,7 +1756,7 @@ td {
   }
 
   .brand {
-    width: clamp(180px, 18vw, 240px);
+    width: clamp(200px, 20vw, 260px);
   }
 
   .topbar-links {
