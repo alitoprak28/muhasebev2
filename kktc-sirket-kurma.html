@@ -5800,12 +5800,13 @@ footer {
   #header {
     height: 72px;
     padding: 0 16px;
-    gap: 12px;
+    gap: 10px;
+    grid-template-columns: minmax(0, 1fr) auto;
   }
   .logo {
-    gap: 10px;
+    width: clamp(198px, 56vw, 248px);
     min-width: 0;
-    max-width: calc(100% - 60px);
+    max-width: calc(100% - 72px);
   }
   .logo-mark { width: 38px; height: 38px; }
   .logo-text {
@@ -5814,6 +5815,10 @@ footer {
   }
   .logo-sub { font-size: 10px; }
   nav { display: none; }
+  .header-actions {
+    justify-self: end;
+    margin-left: auto;
+  }
   .header-actions .btn-cta { display: none; }
   .lang-switcher { display: none; }
   .hamburger { display: flex; }

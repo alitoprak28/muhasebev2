@@ -698,6 +698,56 @@ const guideLiteralTranslations = {
     ru: "То, что структура подходит другому инвестору, не означает, что она подходит и вашему делу. Критерии нужно оценивать вместе.",
     fa: "كون الهيكل مناسبًا لمستثمر آخر لا يعني أنه مناسب أيضًا لملفك. يجب قراءة المعايير معًا.",
   },
+  "Medya | Kaya Plus": {
+    en: "Media | Kaya Plus",
+    ru: "Медиа | Kaya Plus",
+    fa: "الوسائط | كايا بلس",
+  },
+  "Kaya Plus ofis fotoğrafları: karşılama alanı, çalışma ofisleri ve yönetici odası görünümleri.": {
+    en: "Kaya Plus office photos: reception area, workspaces and executive office views.",
+    ru: "Фотографии офиса Kaya Plus: зона ресепшн, рабочие пространства и кабинет руководителя.",
+    fa: "صور مكتب كايا بلس: منطقة الاستقبال، ومساحات العمل، وإطلالات مكتب الإدارة.",
+  },
+  "Medya": {
+    en: "Media",
+    ru: "Медиа",
+    fa: "الوسائط",
+  },
+  "Ofisimiz": {
+    en: "Our Office",
+    ru: "Наш офис",
+    fa: "مكتبنا",
+  },
+  "Kuzey Kıbrıs'ta modern, profesyonel çalışma ortamımız": {
+    en: "Our modern, professional working environment in Northern Cyprus",
+    ru: "Наша современная профессиональная рабочая среда на Северном Кипре",
+    fa: "بيئة عملنا الحديثة والاحترافية في شمال قبرص",
+  },
+  "Büyüt": {
+    en: "Zoom",
+    ru: "Увеличить",
+    fa: "تكبير",
+  },
+  "Öne çıkan": {
+    en: "Featured",
+    ru: "Избранное",
+    fa: "الأبرز",
+  },
+  "Galeri": {
+    en: "Gallery",
+    ru: "Галерея",
+    fa: "المعرض",
+  },
+  "Dış cephe": {
+    en: "Exterior",
+    ru: "Внешний фасад",
+    fa: "الواجهة الخارجية",
+  },
+  "Karşılama alanı": {
+    en: "Reception area",
+    ru: "Зона ресепшн",
+    fa: "منطقة الاستقبال",
+  },
 
   "Hemen Ara": {
     en: "Call Now",
@@ -757,6 +807,71 @@ const guideAttrTranslations = {
     ru: "Профессионалы, работающие с документами и заметками за столом решений",
     fa: "محترفون يعملون على مستندات وملاحظات على طاولة القرار",
   },
+  "Kaya Plus yönetici odası": {
+    en: "Kaya Plus executive office",
+    ru: "Кабинет руководителя Kaya Plus",
+    fa: "مكتب الإدارة في كايا بلس",
+  },
+  "Kaya Plus dış cephe tabelası": {
+    en: "Kaya Plus exterior sign",
+    ru: "Наружная вывеска Kaya Plus",
+    fa: "اللافتة الخارجية لكايا بلس",
+  },
+  "Kaya Plus karşılama alanı": {
+    en: "Kaya Plus reception area",
+    ru: "Зона ресепшн Kaya Plus",
+    fa: "منطقة الاستقبال في كايا بلس",
+  },
+  "Lobi üst görünüm": {
+    en: "Upper lobby view",
+    ru: "Вид на лобби сверху",
+    fa: "منظر علوي للردهة",
+  },
+  "Lobi girişi": {
+    en: "Lobby entrance",
+    ru: "Вход в лобби",
+    fa: "مدخل الردهة",
+  },
+  "Yönetici masası ve sertifikalar": {
+    en: "Executive desk and certificates",
+    ru: "Рабочий стол руководителя и сертификаты",
+    fa: "مكتب الإدارة والشهادات",
+  },
+  "Yönetici odası tam görünüm": {
+    en: "Full executive office view",
+    ru: "Полный вид кабинета руководителя",
+    fa: "عرض كامل لمكتب الإدارة",
+  },
+  "Yönetici odası yan açı": {
+    en: "Executive office side angle",
+    ru: "Боковой ракурс кабинета руководителя",
+    fa: "زاوية جانبية لمكتب الإدارة",
+  },
+  "Arşiv odası": {
+    en: "Archive room",
+    ru: "Архивная комната",
+    fa: "غرفة الأرشيف",
+  },
+  "Fotoğraf görüntüleyici": {
+    en: "Photo viewer",
+    ru: "Просмотр фотографий",
+    fa: "عارض الصور",
+  },
+  "Kapat": {
+    en: "Close",
+    ru: "Закрыть",
+    fa: "إغلاق",
+  },
+  "Önceki fotoğraf": {
+    en: "Previous photo",
+    ru: "Предыдущее фото",
+    fa: "الصورة السابقة",
+  },
+  "Sonraki fotoğraf": {
+    en: "Next photo",
+    ru: "Следующее фото",
+    fa: "الصورة التالية",
+  },
 };
 
 const guideTextSelector = [
@@ -777,6 +892,11 @@ const guideTextSelector = [
   ".btn-primary",
   ".btn-secondary",
   ".page-footer-row span",
+  ".media-hero-eyebrow",
+  ".media-hero-overlay p",
+  ".media-hero-hint",
+  ".media-label",
+  ".media-feat-caption",
 ].join(", ");
 
 function translateGuideText(lang) {
@@ -794,6 +914,14 @@ function translateGuideText(lang) {
     if (!img.dataset.i18nAltBase) img.dataset.i18nAltBase = base;
     const locale = guideAttrTranslations[base];
     img.setAttribute("alt", lang === "tr" ? base : ((locale && locale[lang]) || base));
+  });
+
+  document.querySelectorAll("[aria-label]").forEach((el) => {
+    const base = el.dataset.i18nAriaBase || el.getAttribute("aria-label") || "";
+    if (!base) return;
+    if (!el.dataset.i18nAriaBase) el.dataset.i18nAriaBase = base;
+    const locale = guideAttrTranslations[base];
+    el.setAttribute("aria-label", lang === "tr" ? base : ((locale && locale[lang]) || base));
   });
 
   const baseTitle = document.documentElement.dataset.i18nTitleBase || document.title;

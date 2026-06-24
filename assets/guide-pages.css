@@ -2021,7 +2021,7 @@ td {
   }
 
   .brand {
-    width: clamp(140px, 40vw, 180px);
+    width: clamp(168px, 48vw, 210px);
   }
 
   .guide-lang-switcher {
