@@ -1810,7 +1810,9 @@ td {
   /* Logo solda, dil switcher sağda — aynı satır */
   .brand {
     flex: 0 0 auto;
+    background-image: url("./kaya-logo-crop.png");
     width: clamp(188px, 50vw, 250px);
+    aspect-ratio: 4506 / 964;
     max-width: none;
   }
 
@@ -2021,7 +2023,9 @@ td {
   }
 
   .brand {
+    background-image: url("./kaya-logo-crop.png");
     width: clamp(186px, 56vw, 236px);
+    aspect-ratio: 4506 / 964;
   }
 
   .guide-lang-switcher {
