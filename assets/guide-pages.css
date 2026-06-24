@@ -1810,7 +1810,7 @@ td {
   /* Logo solda, dil switcher sağda — aynı satır */
   .brand {
     flex: 0 0 auto;
-    width: clamp(160px, 42vw, 210px);
+    width: clamp(188px, 50vw, 250px);
     max-width: none;
   }
 
@@ -2021,7 +2021,7 @@ td {
   }
 
   .brand {
-    width: clamp(168px, 48vw, 210px);
+    width: clamp(186px, 56vw, 236px);
   }
 
   .guide-lang-switcher {

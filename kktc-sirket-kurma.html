@@ -5798,15 +5798,16 @@ footer {
 @media (max-width: 768px) {
   body.mobile-nav-open { overflow: hidden; }
   #header {
-    height: 72px;
-    padding: 0 16px;
-    gap: 10px;
+    height: 78px;
+    padding: 0 12px;
+    gap: 8px;
     grid-template-columns: minmax(0, 1fr) auto;
   }
   .logo {
-    width: clamp(198px, 56vw, 248px);
+    width: clamp(228px, 66vw, 310px);
     min-width: 0;
-    max-width: calc(100% - 72px);
+    max-width: calc(100vw - 84px);
+    background-size: 100% auto;
   }
   .logo-mark { width: 38px; height: 38px; }
   .logo-text {
