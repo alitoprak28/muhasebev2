@@ -103,14 +103,14 @@ p {
 .brand {
   position: relative;
   display: block;
-  width: clamp(230px, 21vw, 310px);
-  aspect-ratio: 4369 / 909;
+  width: clamp(216px, 19vw, 284px);
+  aspect-ratio: 1345 / 350;
   text-decoration: none;
   flex-shrink: 0;
   min-width: 0;
-  background: url("./kaya-logo-official-transparent.png") left center / contain no-repeat;
+  background: url("./kaya-logo-web-transparent-new.png") left center / contain no-repeat;
   filter: none;
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
 }
 
 .brand-mark,
@@ -1737,7 +1737,7 @@ td {
   }
 
   .brand {
-    width: clamp(220px, 21vw, 290px);
+    width: clamp(210px, 19vw, 268px);
   }
 
   .topbar-links {
@@ -1756,7 +1756,7 @@ td {
   }
 
   .brand {
-    width: clamp(200px, 20vw, 260px);
+    width: clamp(198px, 18vw, 244px);
   }
 
   .topbar-links {
@@ -1810,9 +1810,9 @@ td {
   /* Logo solda, dil switcher sağda — aynı satır */
   .brand {
     flex: 0 0 auto;
-    background-image: url("./kaya-logo-official-transparent.png");
+    background-image: url("./kaya-logo-black-bg.png");
     width: clamp(188px, 50vw, 250px);
-    aspect-ratio: 4369 / 909;
+    aspect-ratio: 1437 / 309;
     max-width: none;
   }
 
@@ -2023,9 +2023,9 @@ td {
   }
 
   .brand {
-    background-image: url("./kaya-logo-official-transparent.png");
+    background-image: url("./kaya-logo-black-bg.png");
     width: clamp(186px, 56vw, 236px);
-    aspect-ratio: 4369 / 909;
+    aspect-ratio: 1437 / 309;
   }
 
   .guide-lang-switcher {
