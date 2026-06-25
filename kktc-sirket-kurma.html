@@ -5802,6 +5802,15 @@ footer {
     padding: 0 10px;
     gap: 6px;
     grid-template-columns: minmax(0, 1fr) auto;
+    background: #000000;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+  #header.scrolled,
+  #header:not(.scrolled) {
+    background: #000000;
+    backdrop-filter: none;
+    box-shadow: none;
   }
   .logo {
     background-image: url('assets/kaya-logo-crop.png');
@@ -5810,6 +5819,7 @@ footer {
     min-width: 0;
     max-width: calc(100vw - 66px);
     background-size: 100% auto;
+    mix-blend-mode: normal;
   }
   .logo-mark { width: 38px; height: 38px; }
   .logo-text {
@@ -8131,6 +8141,25 @@ html[data-preview="1"] .theme-preview-chip {
     right: 14px;
     bottom: 14px;
     max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #header,
+  #header.scrolled,
+  #header:not(.scrolled) {
+    background: #000000 !important;
+    backdrop-filter: none !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+  }
+
+  #header .logo,
+  #header.scrolled .logo,
+  #header:not(.scrolled) .logo {
+    background-image: url("assets/kaya-logo-crop.png") !important;
+    background-size: 100% auto !important;
+    mix-blend-mode: normal !important;
   }
 }
 </style>
