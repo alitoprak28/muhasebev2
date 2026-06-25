@@ -228,27 +228,6 @@ h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
   white-space: nowrap;
   border: 0;
 }
-.logo-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-.logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 0.94;
-  letter-spacing: -0.04em;
-}
-.logo-sub {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
 
 nav {
   display: flex;
@@ -8178,76 +8157,9 @@ html[data-preview="1"] .theme-preview-chip {
   #header .logo,
   #header.scrolled .logo,
   #header:not(.scrolled) .logo {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    width: auto !important;
-    min-height: 54px !important;
-    max-width: calc(100vw - 58px) !important;
-    aspect-ratio: auto !important;
-    background: none !important;
+    background-image: url("assets/kaya-logo-crop.png") !important;
+    background-size: 100% auto !important;
     mix-blend-mode: normal !important;
-  }
-
-  #header .logo > div,
-  #header.scrolled .logo > div,
-  #header:not(.scrolled) .logo > div {
-    position: static !important;
-    width: auto !important;
-    height: auto !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: visible !important;
-    clip: auto !important;
-    white-space: normal !important;
-  }
-
-  #header .logo-mark,
-  #header.scrolled .logo-mark,
-  #header:not(.scrolled) .logo-mark {
-    flex: 0 0 38px !important;
-    width: 38px !important;
-    height: 38px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  #header .logo-mark rect,
-  #header.scrolled .logo-mark rect,
-  #header:not(.scrolled) .logo-mark rect {
-    fill: #c89a2d !important;
-  }
-
-  #header .logo-mark path,
-  #header.scrolled .logo-mark path,
-  #header:not(.scrolled) .logo-mark path {
-    stroke: #e4bf63 !important;
-  }
-
-  #header .logo-copy,
-  #header.scrolled .logo-copy,
-  #header:not(.scrolled) .logo-copy {
-    gap: 3px !important;
-  }
-
-  #header .logo-text,
-  #header.scrolled .logo-text,
-  #header:not(.scrolled) .logo-text {
-    font-size: clamp(22px, 7vw, 31px) !important;
-    line-height: 0.92 !important;
-    color: #e2b14a !important;
-  }
-
-  #header .logo-sub,
-  #header.scrolled .logo-sub,
-  #header:not(.scrolled) .logo-sub {
-    display: block !important;
-    font-size: clamp(9px, 2.7vw, 12px) !important;
-    line-height: 1.08 !important;
-    letter-spacing: 0.12em !important;
-    color: #f0d387 !important;
-    white-space: nowrap !important;
   }
 }
 </style>
@@ -8290,7 +8202,7 @@ html[data-preview="1"] .theme-preview-chip {
         <path d="M11.2 26.5c5.6-5 9.8-8.2 16.8-12.3" fill="none" stroke="#6EB0E0" stroke-width="1.8" stroke-linecap="round"/>
       </svg>
     </div>
-    <div class="logo-copy">
+    <div>
       <div class="logo-text">Kaya Plus</div>
       <div class="logo-sub" data-tr="Şirket Kurma ve Mali Danışmanlık" data-en="Company Formation and Financial Advisory" data-ru="Регистрация компаний и финансовый консалтинг" data-fa="تأسيس الشركات والاستشارات المالية">Şirket Kurma ve Mali Danışmanlık</div>
     </div>
