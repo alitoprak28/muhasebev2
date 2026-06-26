@@ -8211,6 +8211,36 @@ html[data-preview="1"] .theme-preview-chip {
     aspect-ratio: 1437 / 309 !important;
     mix-blend-mode: normal !important;
   }
+
+  #header .topbar-inner {
+    min-height: 80px !important;
+    padding: 0 10px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 6px !important;
+    max-width: 100% !important;
+    overflow-x: clip !important;
+  }
+
+  #header nav.topbar-links {
+    display: none !important;
+  }
+
+  #header .header-actions.topbar-actions {
+    display: flex !important;
+    justify-self: end !important;
+    margin-left: auto !important;
+    gap: 0 !important;
+  }
+
+  #header .lang-switcher {
+    display: none !important;
+  }
+
+  #header .hamburger {
+    display: flex !important;
+  }
 }
 
 @media (max-width: 480px) {

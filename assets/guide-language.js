@@ -910,13 +910,38 @@ const guideTextSelector = [
   ".media-feat-caption",
 ].join(", ");
 
+const guideFallbackTextSelector = [
+  "main h2",
+  "main h3",
+  "main h4",
+  "main p",
+  "main li",
+  "main strong",
+  "main span",
+  "main a",
+  "footer p",
+  "footer span",
+  "footer a",
+].join(", ");
+
+function translateGuideElement(el, lang) {
+  const base = el.dataset.i18nBase || el.textContent.trim();
+  if (!base) return;
+  if (!el.dataset.i18nBase) el.dataset.i18nBase = base;
+  const locale = guideLiteralTranslations[base];
+  if (!locale) return;
+  el.textContent = lang === "tr" ? base : ((locale && locale[lang]) || base);
+}
+
 function translateGuideText(lang) {
   document.querySelectorAll(guideTextSelector).forEach((el) => {
-    const base = el.dataset.i18nBase || el.textContent.trim();
-    if (!base) return;
-    if (!el.dataset.i18nBase) el.dataset.i18nBase = base;
-    const locale = guideLiteralTranslations[base];
-    el.textContent = lang === "tr" ? base : ((locale && locale[lang]) || base);
+    translateGuideElement(el, lang);
+  });
+
+  document.querySelectorAll(guideFallbackTextSelector).forEach((el) => {
+    if (el.closest(".lang-switcher, .topbar-links, .mobile-nav")) return;
+    if (el.children.length > 0) return;
+    translateGuideElement(el, lang);
   });
 
   document.querySelectorAll("img[alt]").forEach((img) => {
