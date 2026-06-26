@@ -203,12 +203,12 @@ p {
 
 .guide-mobile-nav {
   position: fixed;
-  top: 80px;
+  top: 72px;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 95;
-  background: rgba(246, 242, 236, 0.96);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
   padding: 28px 24px calc(28px + env(safe-area-inset-bottom));
   flex-direction: column;
@@ -235,11 +235,17 @@ p {
   color: #111111;
   font-family: "Playfair Display", serif;
   font-size: 22px;
+  font-weight: 600;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.15;
   text-decoration: none;
 }
 
 .guide-mobile-nav a.active {
-  color: #144878;
+  color: #111111;
+  font-weight: 600;
 }
 
 .guide-lang-switcher {
@@ -1863,18 +1869,50 @@ td {
 }
 
 @media (max-width: 760px) {
+  html {
+    scroll-padding-top: 96px;
+  }
+
   body.guide-mobile-nav-open {
     overflow: hidden;
   }
 
   .topbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
     background: #000000;
     border-bottom: 0;
     box-shadow: none;
   }
 
+  main {
+    padding-top: 0;
+  }
+
   .page-shell {
     width: min(var(--layout-max), calc(100% - 18px));
+  }
+
+  main > .hero:first-child,
+  main > .media-hero:first-child {
+    width: 100vw;
+    margin-top: 0;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  main > .hero:first-child > *,
+  main > .media-hero:first-child {
+    border-radius: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+  }
+
+  main > .hero-contact:first-child {
+    margin-top: 80px;
   }
 
   .topbar-inner {
@@ -2057,6 +2095,14 @@ td {
 }
 
 @media (max-width: 480px) {
+  .guide-mobile-nav {
+    padding: 20px 16px calc(28px + env(safe-area-inset-bottom));
+  }
+
+  .guide-mobile-nav a {
+    font-size: 19px;
+  }
+
   .topbar-inner {
     padding: 0 8px;
     gap: 4px;
@@ -2109,6 +2155,12 @@ td {
   .btn-secondary {
     padding: 13px 18px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .guide-mobile-nav a {
+    font-size: 18px;
   }
 }
 

@@ -5657,6 +5657,11 @@ footer {
   font-size: 22px;
   font-family: 'Playfair Display', serif;
   color: var(--navy);
+  font-weight: 600;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.15;
   text-decoration: none;
   padding: 12px 0;
   border-bottom: 0.5px solid var(--border);
@@ -8159,7 +8164,19 @@ html[data-preview="1"] .theme-preview-chip {
   #header:not(.scrolled) .logo {
     background-image: url("assets/kaya-logo-black-bg.png") !important;
     background-size: 100% auto !important;
+    width: clamp(248px, 72vw, 340px) !important;
+    max-width: calc(100vw - 66px) !important;
+    aspect-ratio: 1437 / 309 !important;
     mix-blend-mode: normal !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #header .logo,
+  #header.scrolled .logo,
+  #header:not(.scrolled) .logo {
+    width: clamp(258px, 76vw, 344px) !important;
+    max-width: calc(100vw - 60px) !important;
   }
 }
 </style>
