@@ -7,6 +7,11 @@
   --navy: #111111;
   --navy-mid: #191919;
   --navy-soft: #241d16;
+  --navy-rgb: 17, 17, 17;
+  --blue-rgb: 38, 38, 38;
+  --accent-rgb: 28, 94, 140;
+  --cream-rgb: 255, 255, 255;
+  --white-rgb: 255, 255, 255;
   --ink: #111111;
   --ink-soft: #111111;
   --border: rgba(28, 94, 140, 0.16);
@@ -160,55 +165,55 @@ p {
   justify-content: flex-end;
 }
 
-.guide-mobile-toggle,
-.guide-mobile-nav {
+.hamburger,
+.mobile-nav {
   display: none;
 }
 
-.guide-mobile-toggle {
+.hamburger {
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 5px;
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(28, 94, 140, 0.14);
   border-radius: 14px;
   padding: 0;
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  background: rgba(var(--white-rgb), 0.78);
+  border: 1px solid rgba(var(--blue-rgb), 0.14);
+  box-shadow: 0 12px 24px rgba(var(--navy-rgb), 0.10);
   cursor: pointer;
 }
 
-.guide-mobile-toggle span {
+.hamburger span {
   width: 20px;
   height: 2px;
   border-radius: 999px;
-  background: #111111;
+  background: var(--navy);
   display: block;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.guide-mobile-toggle.active span:nth-child(1) {
+.hamburger.active span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
 
-.guide-mobile-toggle.active span:nth-child(2) {
+.hamburger.active span:nth-child(2) {
   opacity: 0;
 }
 
-.guide-mobile-toggle.active span:nth-child(3) {
+.hamburger.active span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-.guide-mobile-nav {
+.mobile-nav {
   position: fixed;
   top: 72px;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 95;
-  background: rgba(255, 255, 255, 0.96);
+  z-index: 999;
+  background: rgba(var(--cream-rgb), 0.96);
   backdrop-filter: blur(16px);
   padding: 28px 24px calc(28px + env(safe-area-inset-bottom));
   flex-direction: column;
@@ -216,23 +221,19 @@ p {
   overflow-y: auto;
 }
 
-.guide-mobile-nav.open {
+.mobile-nav.open {
   display: flex;
 }
 
-.guide-mobile-nav-lang {
+.mobile-nav-lang {
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(28, 94, 140, 0.16);
+  border-bottom: 0.5px solid var(--border);
 }
 
-.guide-mobile-nav-links {
-  display: grid;
-}
-
-.guide-mobile-nav a {
+.mobile-nav a {
   padding: 12px 0;
-  border-bottom: 1px solid rgba(28, 94, 140, 0.16);
-  color: #111111;
+  border-bottom: 0.5px solid var(--border);
+  color: var(--navy);
   font-family: "Playfair Display", serif;
   font-size: 22px;
   font-weight: 600;
@@ -243,27 +244,26 @@ p {
   text-decoration: none;
 }
 
-.guide-mobile-nav a.active {
-  color: #111111;
+.mobile-nav a.active {
+  color: var(--navy);
   font-weight: 600;
 }
 
-.guide-lang-switcher {
+.lang-switcher {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 6px;
   border-radius: 999px;
-  border: 1px solid rgba(28, 94, 140, 0.18);
+  border: 1px solid rgba(var(--accent-rgb), 0.18);
   background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 10px 24px rgba(17, 17, 17, 0.08);
+  box-shadow: 0 10px 24px rgba(var(--navy-rgb), 0.08);
 }
 
-.guide-lang-btn {
+.lang-btn {
   border: 0;
   background: transparent;
   color: #111111;
-  font: inherit;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -273,13 +273,14 @@ p {
   border-radius: 999px;
   cursor: pointer;
   transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  font-family: "DM Sans", sans-serif;
 }
 
-.guide-lang-btn:hover {
+.lang-btn:hover {
   transform: translateY(-1px);
 }
 
-.guide-lang-btn.active {
+.lang-btn.active {
   background: linear-gradient(135deg, #f1f1f1, #dddddd);
   color: #111111;
   box-shadow: none;
@@ -1873,8 +1874,8 @@ td {
     scroll-padding-top: 96px;
   }
 
-  html.guide-mobile-nav-open,
-  body.guide-mobile-nav-open {
+  html.mobile-nav-open,
+  body.mobile-nav-open {
     overflow: hidden;
   }
 
@@ -1952,7 +1953,7 @@ td {
     display: none;
   }
 
-  .guide-mobile-toggle {
+  .hamburger {
     display: flex;
     justify-self: end;
   }
@@ -2096,11 +2097,11 @@ td {
 }
 
 @media (max-width: 480px) {
-  .guide-mobile-nav {
+  .mobile-nav {
     padding: 20px 16px calc(28px + env(safe-area-inset-bottom));
   }
 
-  .guide-mobile-nav a {
+  .mobile-nav a {
     font-size: 19px;
   }
 
@@ -2160,7 +2161,7 @@ td {
 }
 
 @media (max-width: 360px) {
-  .guide-mobile-nav a {
+  .mobile-nav a {
     font-size: 18px;
   }
 }

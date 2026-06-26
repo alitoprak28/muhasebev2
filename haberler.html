@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
@@ -501,11 +501,11 @@
         <a href="./bize-ulasin.html">İletişim</a>
       </nav>
       <div class="topbar-actions">
-        <div class="guide-lang-switcher" aria-label="Language switcher">
-          <button type="button" class="guide-lang-btn active" data-lang="tr">TR</button>
-          <button type="button" class="guide-lang-btn" data-lang="en">EN</button>
-          <button type="button" class="guide-lang-btn" data-lang="ru">RU</button>
-          <button type="button" class="guide-lang-btn" data-lang="fa">FA</button>
+        <div class="lang-switcher" aria-label="Language switcher">
+          <button type="button" class="lang-btn active" data-lang="tr">TR</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn" data-lang="fa">FA</button>
         </div>
       </div>
     </div>
@@ -871,7 +871,7 @@
     };
 
     function getNewsroomLang() {
-      return document.documentElement.lang || document.querySelector(".guide-lang-btn.active")?.dataset.lang || "tr";
+      return document.documentElement.lang || document.querySelector(".lang-btn.active")?.dataset.lang || "tr";
     }
 
     function syncNewsroomCopy() {
@@ -1068,7 +1068,7 @@
     initNewsroomLoadMore();
     initNewsroomRates();
 
-    document.querySelectorAll(".guide-lang-btn").forEach((button) => {
+    document.querySelectorAll(".lang-btn").forEach((button) => {
       button.addEventListener("click", () => {
         window.requestAnimationFrame(() => {
           syncNewsroomCopy();

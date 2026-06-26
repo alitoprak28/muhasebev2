@@ -887,7 +887,7 @@ const guideAttrTranslations = {
 const guideTextSelector = [
   ".brand-sub",
   ".topbar-links a",
-  ".guide-mobile-nav a",
+  ".mobile-nav a",
   ".eyebrow",
   "h1",
   ".lead",
@@ -952,8 +952,8 @@ function translateGuideText(lang) {
 }
 
 function setGuideMobileNav(open) {
-  const mobileNav = document.getElementById("guide-mobile-nav");
-  const toggle = document.querySelector(".guide-mobile-toggle");
+  const mobileNav = document.getElementById("mobile-nav");
+  const toggle = document.querySelector(".hamburger");
   if (!mobileNav || !toggle) return;
 
   const isMobileOpen = open && window.innerWidth <= 760;
@@ -961,44 +961,42 @@ function setGuideMobileNav(open) {
   mobileNav.setAttribute("aria-hidden", String(!open));
   toggle.classList.toggle("active", open);
   toggle.setAttribute("aria-expanded", String(open));
-  document.documentElement.classList.toggle("guide-mobile-nav-open", isMobileOpen);
-  document.body.classList.toggle("guide-mobile-nav-open", isMobileOpen);
+  document.documentElement.classList.toggle("mobile-nav-open", isMobileOpen);
+  document.body.classList.toggle("mobile-nav-open", isMobileOpen);
 }
 
 function initGuideMobileHeader() {
   const topbar = document.querySelector(".topbar");
   const inner = topbar?.querySelector(".topbar-inner");
   const links = topbar?.querySelector(".topbar-links");
-  const switcher = topbar?.querySelector(".guide-lang-switcher");
+  const switcher = topbar?.querySelector(".lang-switcher");
 
-  if (!topbar || !inner || !links || !switcher || document.getElementById("guide-mobile-nav")) {
+  if (!topbar || !inner || !links || !switcher || document.getElementById("mobile-nav")) {
     return;
   }
 
   const toggle = document.createElement("button");
   toggle.type = "button";
-  toggle.className = "guide-mobile-toggle";
+  toggle.className = "hamburger";
   toggle.setAttribute("aria-label", "Menu");
-  toggle.setAttribute("aria-controls", "guide-mobile-nav");
+  toggle.setAttribute("aria-controls", "mobile-nav");
   toggle.setAttribute("aria-expanded", "false");
   toggle.innerHTML = "<span></span><span></span><span></span>";
 
   const mobileNav = document.createElement("div");
-  mobileNav.className = "guide-mobile-nav";
-  mobileNav.id = "guide-mobile-nav";
+  mobileNav.className = "mobile-nav";
+  mobileNav.id = "mobile-nav";
   mobileNav.setAttribute("aria-hidden", "true");
 
   const mobileNavLang = document.createElement("div");
-  mobileNavLang.className = "guide-mobile-nav-lang";
+  mobileNavLang.className = "mobile-nav-lang";
   mobileNavLang.appendChild(switcher.cloneNode(true));
 
-  const mobileNavLinks = document.createElement("nav");
-  mobileNavLinks.className = "guide-mobile-nav-links";
   links.querySelectorAll("a").forEach((link) => {
-    mobileNavLinks.appendChild(link.cloneNode(true));
+    mobileNav.appendChild(link.cloneNode(true));
   });
 
-  mobileNav.append(mobileNavLang, mobileNavLinks);
+  mobileNav.prepend(mobileNavLang);
   topbar.insertAdjacentElement("afterend", mobileNav);
   inner.appendChild(toggle);
 
@@ -1020,12 +1018,12 @@ function initGuideMobileHeader() {
 }
 
 function bindGuideLangButtons() {
-  document.querySelectorAll(".guide-lang-btn").forEach((btn) => {
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
     if (btn.dataset.guideLangBound === "1") return;
     btn.dataset.guideLangBound = "1";
     btn.addEventListener("click", () => {
       setGuideLang(btn.dataset.lang || "tr");
-      if (btn.closest(".guide-mobile-nav")) setGuideMobileNav(false);
+      if (btn.closest(".mobile-nav")) setGuideMobileNav(false);
     });
   });
 }
@@ -1042,7 +1040,7 @@ function setGuideLang(lang) {
   document.documentElement.lang = nextLang;
   document.documentElement.dir = nextLang === "fa" ? "rtl" : "ltr";
 
-  document.querySelectorAll(".guide-lang-btn").forEach((btn) => {
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.lang === nextLang);
   });
 
