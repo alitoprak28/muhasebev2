@@ -1873,6 +1873,7 @@ td {
     scroll-padding-top: 96px;
   }
 
+  html.guide-mobile-nav-open,
   body.guide-mobile-nav-open {
     overflow: hidden;
   }

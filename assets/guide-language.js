@@ -956,11 +956,13 @@ function setGuideMobileNav(open) {
   const toggle = document.querySelector(".guide-mobile-toggle");
   if (!mobileNav || !toggle) return;
 
+  const isMobileOpen = open && window.innerWidth <= 760;
   mobileNav.classList.toggle("open", open);
   mobileNav.setAttribute("aria-hidden", String(!open));
   toggle.classList.toggle("active", open);
   toggle.setAttribute("aria-expanded", String(open));
-  document.body.classList.toggle("guide-mobile-nav-open", open && window.innerWidth <= 760);
+  document.documentElement.classList.toggle("guide-mobile-nav-open", isMobileOpen);
+  document.body.classList.toggle("guide-mobile-nav-open", isMobileOpen);
 }
 
 function initGuideMobileHeader() {
