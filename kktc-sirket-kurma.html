@@ -5803,13 +5803,24 @@ footer {
 @media (max-width: 768px) {
   body.mobile-nav-open { overflow: hidden; }
   #header {
-    height: 80px;
-    padding: 0 10px;
-    gap: 6px;
-    grid-template-columns: minmax(0, 1fr) auto;
+    height: auto;
+    padding: 0;
+    gap: 0;
+    grid-template-columns: none;
+    display: block;
     background: #000000;
     backdrop-filter: none;
     box-shadow: none;
+  }
+  #header .topbar-inner {
+    min-height: 80px;
+    padding: 0 10px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+    overflow-x: clip;
   }
   #header.scrolled,
   #header:not(.scrolled) {
@@ -5832,8 +5843,8 @@ footer {
     line-height: 1.1;
   }
   .logo-sub { font-size: 10px; }
-  nav { display: none; }
-  .header-actions {
+  nav.topbar-links { display: none; }
+  .header-actions.topbar-actions {
     justify-self: end;
     margin-left: auto;
   }
@@ -7525,11 +7536,23 @@ body.intro-active {
 }
 
 #header {
-  padding: 0 24px;
-  min-height: 72px;
+  padding: 0;
+  min-height: auto;
   max-width: 100vw;
   overflow-x: clip;
-  column-gap: 16px;
+  display: block;
+  column-gap: 0;
+}
+
+#header .topbar-inner {
+  width: 100%;
+  margin: 0;
+  padding: 0 24px;
+  min-height: 72px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
 }
 
 #header .logo {
@@ -7555,7 +7578,7 @@ body.intro-active {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
 }
 
-#header nav {
+#header nav.topbar-links {
   display: flex;
   flex: 1 1 auto;
   align-items: center;
@@ -7594,7 +7617,7 @@ body.intro-active {
   box-shadow: 0 10px 24px rgba(17, 17, 17, 0.08);
 }
 
-#header .header-actions {
+#header .header-actions.topbar-actions {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
@@ -7636,17 +7659,17 @@ body.intro-active {
 }
 
 @media (max-width: 1440px) {
-  #header {
+  #header .topbar-inner {
     padding: 0 20px;
     min-height: 68px;
-    column-gap: 14px;
+    gap: 14px;
   }
 
   #header .logo {
     width: clamp(210px, 19vw, 268px);
   }
 
-  #header nav {
+  #header nav.topbar-links {
     gap: 4px;
   }
 
@@ -7656,15 +7679,16 @@ body.intro-active {
 }
 
 @media (max-width: 1200px) {
-  #header {
+  #header .topbar-inner {
     padding: 0 16px;
+    gap: 12px;
   }
 
   #header .logo {
     width: clamp(198px, 18vw, 244px);
   }
 
-  #header nav {
+  #header nav.topbar-links {
     gap: 2px;
   }
 
@@ -8226,44 +8250,46 @@ html[data-preview="1"] .theme-preview-chip {
 <div class="theme-preview-chip" id="theme-preview-chip" hidden></div>
 
 <!-- HEADER -->
-<header id="header">
-  <a href="./kktc-sirket-kurma.html" class="logo">
-    <div class="logo-mark">
-      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="4" y="5" width="4.5" height="15" rx="1.2" fill="#1C5E8C"/>
-        <rect x="10.5" y="5" width="4.5" height="19" rx="1.2" fill="#1C5E8C"/>
-        <rect x="17" y="5" width="4.5" height="12" rx="1.2" fill="#1C5E8C"/>
-        <path d="M8 23.5c6-5.8 9.8-9.2 18-14.5" fill="none" stroke="#1C5E8C" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M11.2 26.5c5.6-5 9.8-8.2 16.8-12.3" fill="none" stroke="#6EB0E0" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div>
-      <div class="logo-text">Kaya Plus</div>
-      <div class="logo-sub" data-tr="Şirket Kurma ve Mali Danışmanlık" data-en="Company Formation and Financial Advisory" data-ru="Регистрация компаний и финансовый консалтинг" data-fa="تأسيس الشركات والاستشارات المالية">Şirket Kurma ve Mali Danışmanlık</div>
-    </div>
-  </a>
+<header id="header" class="topbar">
+  <div class="topbar-inner">
+    <a href="./kktc-sirket-kurma.html" class="logo brand">
+      <div class="logo-mark brand-mark">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="4" y="5" width="4.5" height="15" rx="1.2" fill="#1C5E8C"/>
+          <rect x="10.5" y="5" width="4.5" height="19" rx="1.2" fill="#1C5E8C"/>
+          <rect x="17" y="5" width="4.5" height="12" rx="1.2" fill="#1C5E8C"/>
+          <path d="M8 23.5c6-5.8 9.8-9.2 18-14.5" fill="none" stroke="#1C5E8C" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M11.2 26.5c5.6-5 9.8-8.2 16.8-12.3" fill="none" stroke="#6EB0E0" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-copy">
+        <div class="logo-text brand-title">Kaya Plus</div>
+        <div class="logo-sub brand-sub" data-tr="Şirket Kurma ve Mali Danışmanlık" data-en="Company Formation and Financial Advisory" data-ru="Регистрация компаний и финансовый консалтинг" data-fa="تأسيس الشركات والاستشارات المالية">Şirket Kurma ve Mali Danışmanlık</div>
+      </div>
+    </a>
 
-  <nav>
-    <a href="#hero" class="nav-link active" data-tr="Ana Sayfa" data-en="Home" data-ru="Главная" data-fa="الرئيسية">Ana Sayfa</a>
-    <a href="./neden-kaya-plus.html" class="nav-link" data-tr="Neden Kaya Plus?" data-en="Why Kaya Plus?" data-ru="Почему Kaya Plus?" data-fa="لماذا كايا بلس؟">Neden Kaya Plus?</a>
-    <a href="./hizmetler.html" class="nav-link" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-fa="الخدمات">Hizmetler</a>
-<a href="./yasalar-vergiler.html" class="nav-link" data-tr="Yasalar/Vergiler" data-en="Laws/Taxes" data-ru="Законы/Налоги" data-fa="القوانين/الضرائب">Yasalar/Vergiler</a>
-    <a href="./kktcde-sirket-kurma.html" class="nav-link" data-tr="KKTC'de Şirket Kurma" data-en="Starting a Company in TRNC" data-ru="Открытие компании в ТРСК" data-fa="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</a>
-    <a href="./sirket-kurmanin-temel-sartlari.html" class="nav-link" data-tr="Şirket Kurmanın Şartları" data-en="Company Formation Requirements" data-ru="Условия регистрации компании" data-fa="شروط تأسيس الشركة">Şirket Kurmanın Şartları</a>
-    <a href="./medya.html" class="nav-link" data-tr="Medya" data-en="Media" data-ru="Медиа" data-fa="ميديا">Medya</a>
-    <a href="./bize-ulasin.html" class="nav-link" data-tr="İletişim" data-en="Contact Us" data-ru="Свяжитесь с нами" data-fa="تواصل معنا">İletişim</a>
-  </nav>
+    <nav class="topbar-links">
+      <a href="#hero" class="nav-link active" data-tr="Ana Sayfa" data-en="Home" data-ru="Главная" data-fa="الرئيسية">Ana Sayfa</a>
+      <a href="./neden-kaya-plus.html" class="nav-link" data-tr="Neden Kaya Plus?" data-en="Why Kaya Plus?" data-ru="Почему Kaya Plus?" data-fa="لماذا كايا بلس؟">Neden Kaya Plus?</a>
+      <a href="./hizmetler.html" class="nav-link" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-fa="الخدمات">Hizmetler</a>
+      <a href="./yasalar-vergiler.html" class="nav-link" data-tr="Yasalar/Vergiler" data-en="Laws/Taxes" data-ru="Законы/Налоги" data-fa="القوانين/الضرائب">Yasalar/Vergiler</a>
+      <a href="./kktcde-sirket-kurma.html" class="nav-link" data-tr="KKTC'de Şirket Kurma" data-en="Starting a Company in TRNC" data-ru="Открытие компании в ТРСК" data-fa="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</a>
+      <a href="./sirket-kurmanin-temel-sartlari.html" class="nav-link" data-tr="Şirket Kurmanın Şartları" data-en="Company Formation Requirements" data-ru="Условия регистрации компании" data-fa="شروط تأسيس الشركة">Şirket Kurmanın Şartları</a>
+      <a href="./medya.html" class="nav-link" data-tr="Medya" data-en="Media" data-ru="Медиа" data-fa="ميديا">Medya</a>
+      <a href="./bize-ulasin.html" class="nav-link" data-tr="İletişim" data-en="Contact Us" data-ru="Свяжитесь с нами" data-fa="تواصل معنا">İletişim</a>
+    </nav>
 
-  <div class="header-actions">
-    <div class="lang-switcher">
-      <button class="lang-btn active" onclick="setLang('tr')">TR</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('ru')">RU</button>
-      <button class="lang-btn" onclick="setLang('fa')">FA</button>
+    <div class="header-actions topbar-actions">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('tr')">TR</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn" onclick="setLang('fa')">FA</button>
+      </div>
+      <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu" aria-controls="mobile-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu" aria-controls="mobile-nav" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </header>
 
