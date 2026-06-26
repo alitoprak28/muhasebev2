@@ -757,6 +757,16 @@ const guideLiteralTranslations = {
 };
 
 const guideAttrTranslations = {
+  "Menu": {
+    en: "Menu",
+    ru: "Меню",
+    fa: "القائمة",
+  },
+  "Language switcher": {
+    en: "Language switcher",
+    ru: "Переключатель языка",
+    fa: "مبدل اللغة",
+  },
   "Kaya Plus ofis girişi": {
     en: "Kaya Plus office entrance",
     ru: "Вход в офис Kaya Plus",
@@ -877,6 +887,7 @@ const guideAttrTranslations = {
 const guideTextSelector = [
   ".brand-sub",
   ".topbar-links a",
+  ".guide-mobile-nav a",
   ".eyebrow",
   "h1",
   ".lead",
@@ -940,6 +951,83 @@ function translateGuideText(lang) {
   }
 }
 
+function setGuideMobileNav(open) {
+  const mobileNav = document.getElementById("guide-mobile-nav");
+  const toggle = document.querySelector(".guide-mobile-toggle");
+  if (!mobileNav || !toggle) return;
+
+  mobileNav.classList.toggle("open", open);
+  mobileNav.setAttribute("aria-hidden", String(!open));
+  toggle.classList.toggle("active", open);
+  toggle.setAttribute("aria-expanded", String(open));
+  document.body.classList.toggle("guide-mobile-nav-open", open && window.innerWidth <= 760);
+}
+
+function initGuideMobileHeader() {
+  const topbar = document.querySelector(".topbar");
+  const inner = topbar?.querySelector(".topbar-inner");
+  const links = topbar?.querySelector(".topbar-links");
+  const switcher = topbar?.querySelector(".guide-lang-switcher");
+
+  if (!topbar || !inner || !links || !switcher || document.getElementById("guide-mobile-nav")) {
+    return;
+  }
+
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "guide-mobile-toggle";
+  toggle.setAttribute("aria-label", "Menu");
+  toggle.setAttribute("aria-controls", "guide-mobile-nav");
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.innerHTML = "<span></span><span></span><span></span>";
+
+  const mobileNav = document.createElement("div");
+  mobileNav.className = "guide-mobile-nav";
+  mobileNav.id = "guide-mobile-nav";
+  mobileNav.setAttribute("aria-hidden", "true");
+
+  const mobileNavLang = document.createElement("div");
+  mobileNavLang.className = "guide-mobile-nav-lang";
+  mobileNavLang.appendChild(switcher.cloneNode(true));
+
+  const mobileNavLinks = document.createElement("nav");
+  mobileNavLinks.className = "guide-mobile-nav-links";
+  links.querySelectorAll("a").forEach((link) => {
+    mobileNavLinks.appendChild(link.cloneNode(true));
+  });
+
+  mobileNav.append(mobileNavLang, mobileNavLinks);
+  topbar.insertAdjacentElement("afterend", mobileNav);
+  inner.appendChild(toggle);
+
+  toggle.addEventListener("click", () => {
+    setGuideMobileNav(!mobileNav.classList.contains("open"));
+  });
+
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setGuideMobileNav(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setGuideMobileNav(false);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 760) setGuideMobileNav(false);
+  });
+}
+
+function bindGuideLangButtons() {
+  document.querySelectorAll(".guide-lang-btn").forEach((btn) => {
+    if (btn.dataset.guideLangBound === "1") return;
+    btn.dataset.guideLangBound = "1";
+    btn.addEventListener("click", () => {
+      setGuideLang(btn.dataset.lang || "tr");
+      if (btn.closest(".guide-mobile-nav")) setGuideMobileNav(false);
+    });
+  });
+}
+
 function setGuideLang(lang) {
   const nextLang = ["tr", "en", "ru", "fa"].includes(lang) ? lang : "tr";
 
@@ -959,9 +1047,8 @@ function setGuideLang(lang) {
   translateGuideText(nextLang);
 }
 
-document.querySelectorAll(".guide-lang-btn").forEach((btn) => {
-  btn.addEventListener("click", () => setGuideLang(btn.dataset.lang || "tr"));
-});
+initGuideMobileHeader();
+bindGuideLangButtons();
 
 const initialGuideLang = (() => {
   try {
