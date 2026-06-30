@@ -425,14 +425,15 @@
       }
 
       .hours-table tr {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) max-content;
-        align-items: center;
-        gap: 12px;
+        display: block;
+        width: 100%;
+        padding: 12px 0;
       }
 
       .hours-table td {
-        padding: 12px 0;
+        display: block;
+        width: 100%;
+        padding: 0;
         line-height: 1.35;
         vertical-align: top;
         overflow-wrap: anywhere;
@@ -440,14 +441,15 @@
       }
 
       .hours-table td:first-child {
-        width: auto;
         padding-right: 0;
       }
 
       .hours-table td:last-child {
-        width: auto;
-        white-space: nowrap;
-        text-align: right;
+        margin-top: 4px;
+        white-space: normal;
+        text-align: left;
+        font-weight: 700;
+        color: var(--c-ink);
       }
 
       .map-footer { flex-direction: column; align-items: flex-start; }
