@@ -5236,18 +5236,29 @@ section { padding: var(--section-space) 0; }
 .live-support-social {
   width: 52px;
   height: 52px;
+  padding: 0;
+  border: 0;
   border-radius: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--white);
+  font: inherit;
   text-decoration: none;
+  cursor: pointer;
   box-shadow: 0 16px 30px rgba(var(--navy-rgb),0.18);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .live-support-social:hover {
   transform: translateY(-2px);
   box-shadow: 0 20px 36px rgba(var(--navy-rgb),0.22);
+}
+.live-support-social[aria-disabled="true"] {
+  cursor: default;
+}
+.live-support-social[aria-disabled="true"]:hover {
+  transform: none;
+  box-shadow: 0 16px 30px rgba(var(--navy-rgb),0.18);
 }
 .live-support-social.instagram {
   background: linear-gradient(135deg, #F58529 0%, #DD2A7B 52%, #8134AF 100%);
@@ -7923,6 +7934,40 @@ html[lang="fa"] #header nav.topbar-links a {
   padding-bottom: clamp(24px, 3vw, 32px);
 }
 
+@media (max-width: 768px) {
+  #formation-hub {
+    position: relative;
+    z-index: 3;
+    margin-top: -46px;
+    padding-top: 0 !important;
+    padding-bottom: 44px;
+  }
+
+  #formation-hub .section-shell {
+    padding: 28px 22px 0;
+    border-radius: 28px 28px 0 0;
+    box-shadow:
+      0 -18px 42px rgba(var(--navy-rgb),0.10),
+      0 22px 48px rgba(0,0,0,0.08) !important;
+  }
+
+  #formation-hub .formation-grid {
+    margin-top: 22px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #formation-hub {
+    margin-top: -38px;
+    padding-bottom: 36px;
+  }
+
+  #formation-hub .section-shell {
+    padding: 24px 18px 0;
+    border-radius: 24px 24px 0 0;
+  }
+}
+
 #quiz {
   padding-top: clamp(24px, 3vw, 32px);
   padding-bottom: clamp(20px, 2.6vw, 28px);
@@ -8548,11 +8593,21 @@ html[data-preview="1"] .theme-preview-chip {
 body.header-zoom-lock #header,
 body.header-zoom-lock #header.scrolled,
 body.header-zoom-lock #header:not(.scrolled) {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  z-index: 10000 !important;
   display: block !important;
+  width: calc(100vw / var(--header-zoom-scale, 1)) !important;
+  max-width: none !important;
   background: #ffffff !important;
   backdrop-filter: none !important;
   border-bottom: 1px solid rgba(28, 94, 140, 0.16) !important;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08) !important;
+  transform: scale(var(--header-zoom-scale, 1)) !important;
+  transform-origin: top left !important;
+  will-change: transform, width;
 }
 
 body.header-zoom-lock #header .topbar-inner {
@@ -11044,11 +11099,11 @@ body.header-zoom-lock #header .hamburger {
   </div>
   <div class="live-support-dock">
     <div class="live-support-socials">
-      <a class="live-support-social instagram" href="https://www.instagram.com/alitoprakkx/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <button type="button" class="live-support-social instagram" aria-label="Instagram" aria-disabled="true">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 6.85A5.15 5.15 0 1 1 6.85 12 5.16 5.16 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 15.35 12 3.35 3.35 0 0 0 12 8.65Z"/>
         </svg>
-      </a>
+      </button>
       <a class="live-support-social facebook" href="https://www.facebook.com/search/top/?q=Kaya%20Plus%20Muhasebe%20ve%20Mali%20Dan%C4%B1%C5%9Fmanl%C4%B1k" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M14.2 8.15V6.6c0-.74.48-.91.82-.91h2.08V2.18L14.24 2C11.05 2 10.33 4.38 10.33 5.9v2.25H7.82v3.92h2.51V22h4.12v-9.93h2.77l.36-3.92H14.2Z"/>
@@ -11059,7 +11114,7 @@ body.header-zoom-lock #header .hamburger {
           <path d="M12 2a9.84 9.84 0 0 0-8.48 14.82L2 22l5.33-1.47A9.83 9.83 0 1 0 12 2Zm0 17.8a8 8 0 0 1-4.08-1.12l-.29-.17-3.17.87.87-3.09-.19-.31A8 8 0 1 1 12 19.8Zm4.39-6.03c-.24-.12-1.43-.7-1.65-.78-.22-.08-.39-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.29.18-.53.06-.24-.12-1.03-.38-1.96-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.01-.37.11-.49.11-.11.24-.29.37-.43.12-.14.16-.24.24-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.75-1.82-.2-.48-.4-.42-.55-.43h-.47c-.16 0-.43.06-.66.31-.22.24-.86.84-.86 2.04 0 1.2.88 2.36 1 2.52.12.16 1.74 2.66 4.21 3.73.59.25 1.05.4 1.41.51.59.19 1.13.16 1.56.1.48-.07 1.43-.58 1.63-1.14.2-.57.2-1.05.14-1.15-.05-.11-.21-.17-.45-.29Z"/>
         </svg>
       </a>
-      <a class="live-support-social mail" href="mailto:info@kayaplus.net" aria-label="E-posta">
+      <a class="live-support-social mail" href="mailto:info@kayaplus.net?subject=Kaya%20Plus%20Iletisim" aria-label="E-posta">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M4.75 5h14.5A2.75 2.75 0 0 1 22 7.75v8.5A2.75 2.75 0 0 1 19.25 19H4.75A2.75 2.75 0 0 1 2 16.25v-8.5A2.75 2.75 0 0 1 4.75 5Zm.05 2 6.35 5.08c.5.4 1.2.4 1.7 0L19.2 7H4.8Zm15.2 1.78-5.9 4.72a3.38 3.38 0 0 1-4.2 0L4 8.78v7.47c0 .41.34.75.75.75h14.5c.41 0 .75-.34.75-.75V8.78Z"/>
         </svg>
@@ -11258,21 +11313,35 @@ function setMobileNav(open) {
   document.body.classList.toggle('mobile-nav-open', open && window.innerWidth <= 768 && !headerZoomLocked);
 }
 
-const HEADER_ZOOM_LOCK_MIN_EFFECTIVE_WIDTH = 1180;
+const HEADER_ZOOM_LOCK_TOLERANCE = 0.03;
 
 function supportsHeaderZoomLock() {
   return !window.matchMedia('(pointer: coarse)').matches && (navigator.maxTouchPoints || 0) === 0;
 }
 
-function shouldLockDesktopHeader() {
-  if (!supportsHeaderZoomLock()) return false;
-  if (window.innerWidth >= 769) return false;
-  const effectiveWidth = window.innerWidth * (window.devicePixelRatio || 1);
-  return effectiveWidth >= HEADER_ZOOM_LOCK_MIN_EFFECTIVE_WIDTH;
+function clampHeaderZoom(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function getHeaderBrowserZoom() {
+  const screenWidth = window.screen?.width || 0;
+  const innerWidth = window.innerWidth || document.documentElement.clientWidth || 0;
+  let zoom = 1;
+
+  if (screenWidth && innerWidth) {
+    zoom = screenWidth / innerWidth;
+  }
+
+  if (!Number.isFinite(zoom) || zoom <= 0) zoom = 1;
+  return clampHeaderZoom(zoom, 0.2, 5);
 }
 
 function syncHeaderZoomLock() {
-  const locked = shouldLockDesktopHeader();
+  const zoom = getHeaderBrowserZoom();
+  const scale = clampHeaderZoom(1 / zoom, 0.2, 5);
+  const locked = supportsHeaderZoomLock() && Math.abs(zoom - 1) > HEADER_ZOOM_LOCK_TOLERANCE;
+
+  document.body.style.setProperty('--header-zoom-scale', locked ? scale.toFixed(4) : '1');
   document.body.classList.toggle('header-zoom-lock', locked);
   if (locked) setMobileNav(false);
 }

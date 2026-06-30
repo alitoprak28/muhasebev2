@@ -3705,21 +3705,35 @@ function setGuideLang(lang) {
   translateGuideText(nextLang);
 }
 
-const GUIDE_HEADER_ZOOM_LOCK_MIN_EFFECTIVE_WIDTH = 1180;
+const GUIDE_HEADER_ZOOM_LOCK_TOLERANCE = 0.03;
 
 function supportsGuideHeaderZoomLock() {
   return !window.matchMedia("(pointer: coarse)").matches && (navigator.maxTouchPoints || 0) === 0;
 }
 
-function shouldLockGuideHeader() {
-  if (!supportsGuideHeaderZoomLock()) return false;
-  if (window.innerWidth >= 761) return false;
-  const effectiveWidth = window.innerWidth * (window.devicePixelRatio || 1);
-  return effectiveWidth >= GUIDE_HEADER_ZOOM_LOCK_MIN_EFFECTIVE_WIDTH;
+function clampGuideHeaderZoom(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function getGuideHeaderBrowserZoom() {
+  const screenWidth = window.screen?.width || 0;
+  const innerWidth = window.innerWidth || document.documentElement.clientWidth || 0;
+  let zoom = 1;
+
+  if (screenWidth && innerWidth) {
+    zoom = screenWidth / innerWidth;
+  }
+
+  if (!Number.isFinite(zoom) || zoom <= 0) zoom = 1;
+  return clampGuideHeaderZoom(zoom, 0.2, 5);
 }
 
 function syncGuideHeaderZoomLock() {
-  const locked = shouldLockGuideHeader();
+  const zoom = getGuideHeaderBrowserZoom();
+  const scale = clampGuideHeaderZoom(1 / zoom, 0.2, 5);
+  const locked = supportsGuideHeaderZoomLock() && Math.abs(zoom - 1) > GUIDE_HEADER_ZOOM_LOCK_TOLERANCE;
+
+  document.body.style.setProperty("--header-zoom-scale", locked ? scale.toFixed(4) : "1");
   document.body.classList.toggle("header-zoom-lock", locked);
   if (locked) setGuideMobileNav(false);
 }

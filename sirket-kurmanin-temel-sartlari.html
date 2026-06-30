@@ -395,11 +395,7 @@
         var screenWidth = window.screen && window.screen.width ? window.screen.width : 0;
         var innerWidth = window.innerWidth || 0;
         var zoom = screenWidth && innerWidth ? screenWidth / innerWidth : 1;
-        var availableWidth = window.screen && window.screen.availWidth ? window.screen.availWidth : screenWidth;
-        var outerWidth = window.outerWidth || innerWidth;
-        var likelyMaximized = !availableWidth || !outerWidth || outerWidth >= availableWidth - 96;
 
-        if (!likelyMaximized && zoom > 1) zoom = 1;
         if (!Number.isFinite(zoom) || zoom <= 0) zoom = 1;
         return clamp(zoom, 0.35, 5);
       }
