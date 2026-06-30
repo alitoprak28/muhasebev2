@@ -329,18 +329,18 @@
       }
 
       .page-shell {
-        width: 100%;
-        max-width: 100%;
-        padding-left: 8px;
-        padding-right: 8px;
-        overflow-x: hidden;
+        width: min(100%, calc(100vw - 14px));
+        max-width: calc(100vw - 14px);
+        padding-left: 0;
+        padding-right: 0;
+        overflow-x: visible;
       }
 
       .hero-contact,
       .contact-grid {
         width: 100%;
         max-width: 100%;
-        overflow-x: hidden;
+        overflow-x: visible;
       }
 
       .hero-contact-copy,
@@ -356,11 +356,20 @@
       }
 
       .channels-card {
-        width: 100%;
-        max-width: 100%;
+        width: min(100%, calc(100vw - 14px));
+        max-width: calc(100vw - 14px);
+        margin-left: auto;
+        margin-right: auto;
         padding: 18px;
         border-radius: 24px;
         overflow: hidden;
+      }
+
+      .map-card {
+        width: min(100%, calc(100vw - 14px));
+        max-width: calc(100vw - 14px);
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .channel-list {
@@ -386,7 +395,11 @@
       }
 
       .hours-card {
-        padding: 18px 18px 16px;
+        width: min(100%, calc(100vw - 14px));
+        max-width: calc(100vw - 14px);
+        margin-left: auto;
+        margin-right: auto;
+        padding: 18px 16px 16px;
         border-radius: 24px;
         overflow: hidden;
       }
@@ -402,7 +415,20 @@
       }
 
       .hours-table {
+        display: block;
         table-layout: fixed;
+      }
+
+      .hours-table tbody {
+        display: block;
+        width: 100%;
+      }
+
+      .hours-table tr {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) max-content;
+        align-items: center;
+        gap: 12px;
       }
 
       .hours-table td {
@@ -410,16 +436,18 @@
         line-height: 1.35;
         vertical-align: top;
         overflow-wrap: anywhere;
+        min-width: 0;
       }
 
       .hours-table td:first-child {
-        width: 54%;
-        padding-right: 12px;
+        width: auto;
+        padding-right: 0;
       }
 
       .hours-table td:last-child {
-        width: 46%;
-        white-space: normal;
+        width: auto;
+        white-space: nowrap;
+        text-align: right;
       }
 
       .map-footer { flex-direction: column; align-items: flex-start; }
@@ -427,8 +455,8 @@
 
     @media (max-width: 600px) {
       .page-shell {
-        padding-left: 6px;
-        padding-right: 6px;
+        width: min(100%, calc(100vw - 10px));
+        max-width: calc(100vw - 10px);
       }
     }
   </style>
