@@ -7938,13 +7938,14 @@ html[lang="fa"] #header nav.topbar-links a {
   #formation-hub {
     position: relative;
     z-index: 3;
-    margin-top: -46px;
+    margin-top: -24px;
     padding-top: 0 !important;
     padding-bottom: 44px;
   }
 
   #formation-hub .section-shell {
-    padding: 28px 22px 0;
+    width: calc(100% - 12px);
+    padding: 28px 16px 0;
     border-radius: 28px 28px 0 0;
     box-shadow:
       0 -18px 42px rgba(var(--navy-rgb),0.10),
@@ -7958,12 +7959,13 @@ html[lang="fa"] #header nav.topbar-links a {
 
 @media (max-width: 480px) {
   #formation-hub {
-    margin-top: -38px;
+    margin-top: -18px;
     padding-bottom: 36px;
   }
 
   #formation-hub .section-shell {
-    padding: 24px 18px 0;
+    width: calc(100% - 6px);
+    padding: 24px 12px 0;
     border-radius: 24px 24px 0 0;
   }
 }
