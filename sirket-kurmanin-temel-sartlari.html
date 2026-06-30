@@ -137,12 +137,291 @@
         line-height: 1.7;
       }
     }
+
+    #header {
+      padding: 0 !important;
+      min-height: auto !important;
+      max-width: 100vw !important;
+      overflow-x: clip !important;
+      display: block !important;
+      column-gap: 0 !important;
+      background: #ffffff !important;
+      backdrop-filter: none !important;
+      border-bottom: 1px solid rgba(28, 94, 140, 0.16) !important;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    #header .topbar-inner {
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 24px !important;
+      min-height: 72px !important;
+      display: grid !important;
+      grid-template-columns: 284px minmax(0, 1fr) auto !important;
+      align-items: center !important;
+      gap: 16px !important;
+      max-width: 100% !important;
+      overflow-x: clip !important;
+    }
+
+    #header .logo {
+      gap: 0 !important;
+      width: 284px !important;
+      min-width: 284px !important;
+      max-width: none !important;
+      aspect-ratio: 1345 / 350 !important;
+      background-image: url("./assets/kaya-logo-web-transparent-new.png") !important;
+      background-size: contain !important;
+      background-position: left center !important;
+      background-repeat: no-repeat !important;
+    }
+
+    #header nav.topbar-links {
+      display: flex !important;
+      flex: 1 1 auto !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 4px !important;
+      min-width: 0 !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      scrollbar-width: none !important;
+      overscroll-behavior-x: contain !important;
+    }
+
+    #header nav.topbar-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    #header nav a {
+      color: #111111 !important;
+      font-family: "DM Sans", sans-serif !important;
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      line-height: 1 !important;
+      letter-spacing: -0.02em !important;
+      white-space: nowrap !important;
+      padding: 4px 3px !important;
+      border-radius: 6px !important;
+      text-decoration: none !important;
+      flex: 0 0 auto !important;
+      transition: color 0.18s ease, background 0.18s ease !important;
+    }
+
+    html[lang="en"] #header nav.topbar-links,
+    html[lang="ru"] #header nav.topbar-links,
+    html[lang="fa"] #header nav.topbar-links {
+      justify-content: flex-start !important;
+      gap: 12px !important;
+    }
+
+    html[lang="en"] #header nav.topbar-links a,
+    html[lang="ru"] #header nav.topbar-links a,
+    html[lang="fa"] #header nav.topbar-links a {
+      font-size: 15px !important;
+      letter-spacing: -0.03em !important;
+    }
+
+    #header .topbar-actions,
+    #header .lang-switcher {
+      min-width: max-content !important;
+    }
+
+    #header .header-actions.topbar-actions {
+      display: flex !important;
+      flex: 0 0 auto !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 0 !important;
+    }
+
+    #header .lang-switcher {
+      display: inline-flex !important;
+      background: rgba(255, 255, 255, 0.92) !important;
+      border: 1px solid rgba(28, 94, 140, 0.18) !important;
+      box-shadow: 0 10px 24px rgba(17, 17, 17, 0.08) !important;
+    }
+
+    #header .lang-btn {
+      color: #1a1a1a !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.04em !important;
+      min-width: 38px !important;
+      min-height: 34px !important;
+      padding: 0 10px !important;
+      border-radius: 999px !important;
+    }
+
+    #header .lang-btn.active {
+      background: linear-gradient(135deg, #f1f1f1, #dddddd) !important;
+      color: #111111 !important;
+      box-shadow: none !important;
+    }
+
+    @media (max-width: 760px) {
+      body:not(.header-zoom-lock) #header {
+        background: #000000;
+        border-bottom: 0;
+        box-shadow: none;
+      }
+
+      body:not(.header-zoom-lock) #header .topbar-inner {
+        min-height: 80px;
+        padding: 0 10px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 6px;
+      }
+
+      body:not(.header-zoom-lock) #header .logo {
+        width: clamp(248px, 72vw, 340px);
+        min-width: 0;
+        max-width: calc(100vw - 66px);
+        aspect-ratio: 1437 / 309;
+        background-image: url("./assets/kaya-logo-black-bg.png");
+        background-size: 100% auto;
+      }
+
+      body:not(.header-zoom-lock) #header .topbar-links,
+      body:not(.header-zoom-lock) #header .topbar-actions {
+        display: none;
+      }
+
+      body:not(.header-zoom-lock) #header .hamburger {
+        display: flex;
+      }
+    }
+
+    html.conditions-header-radical {
+      --conditions-header-scale: 1;
+      --conditions-header-reserved: 75px;
+    }
+
+    html.conditions-header-radical #header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: auto !important;
+      z-index: 10000 !important;
+      width: calc(100vw / var(--conditions-header-scale)) !important;
+      max-width: none !important;
+      display: block !important;
+      background: #ffffff !important;
+      border-bottom: 1px solid rgba(28, 94, 140, 0.16) !important;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08) !important;
+      transform: scale(var(--conditions-header-scale)) !important;
+      transform-origin: top left !important;
+      will-change: transform, width;
+    }
+
+    html.conditions-header-radical #header .topbar-inner {
+      display: grid !important;
+      width: 100% !important;
+      min-height: 72px !important;
+      padding: 0 24px !important;
+      grid-template-columns: 284px minmax(0, 1fr) auto !important;
+      align-items: center !important;
+      gap: 16px !important;
+      max-width: 100% !important;
+      overflow-x: clip !important;
+    }
+
+    html.conditions-header-radical #header .logo {
+      width: 284px !important;
+      min-width: 284px !important;
+      max-width: none !important;
+      aspect-ratio: 1345 / 350 !important;
+      background-image: url("./assets/kaya-logo-web-transparent-new.png") !important;
+      background-size: contain !important;
+      background-position: left center !important;
+      background-repeat: no-repeat !important;
+    }
+
+    html.conditions-header-radical #header nav.topbar-links {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 4px !important;
+      min-width: 0 !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      scrollbar-width: none !important;
+    }
+
+    html.conditions-header-radical #header nav a {
+      color: #111111 !important;
+      font-family: "DM Sans", sans-serif !important;
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      line-height: 1 !important;
+      letter-spacing: -0.02em !important;
+      white-space: nowrap !important;
+      padding: 4px 3px !important;
+      flex: 0 0 auto !important;
+    }
+
+    html.conditions-header-radical #header .topbar-actions {
+      display: flex !important;
+      justify-content: flex-end !important;
+      min-width: max-content !important;
+    }
+
+    html.conditions-header-radical #header .lang-switcher {
+      display: inline-flex !important;
+      min-width: max-content !important;
+    }
+
+    html.conditions-header-radical #header .hamburger,
+    html.conditions-header-radical .mobile-nav {
+      display: none !important;
+    }
+
+    html.conditions-header-radical .conditions-page-shell {
+      padding-top: var(--conditions-header-reserved) !important;
+    }
   </style>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var designHeaderHeight = 75;
+
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function getZoomFactor() {
+        var screenWidth = window.screen && window.screen.width ? window.screen.width : 0;
+        var innerWidth = window.innerWidth || 0;
+        var zoom = screenWidth && innerWidth ? screenWidth / innerWidth : 1;
+        var availableWidth = window.screen && window.screen.availWidth ? window.screen.availWidth : screenWidth;
+        var outerWidth = window.outerWidth || innerWidth;
+        var likelyMaximized = !availableWidth || !outerWidth || outerWidth >= availableWidth - 96;
+
+        if (!likelyMaximized && zoom > 1) zoom = 1;
+        if (!Number.isFinite(zoom) || zoom <= 0) zoom = 1;
+        return clamp(zoom, 0.35, 5);
+      }
+
+      function syncRadicalHeader() {
+        var scale = clamp(1 / getZoomFactor(), 0.2, 2.85);
+        root.classList.add("conditions-header-radical");
+        root.style.setProperty("--conditions-header-scale", scale.toFixed(4));
+        root.style.setProperty("--conditions-header-reserved", Math.ceil(designHeaderHeight * scale) + "px");
+      }
+
+      syncRadicalHeader();
+      window.addEventListener("resize", syncRadicalHeader, { passive: true });
+      window.addEventListener("orientationchange", syncRadicalHeader, { passive: true });
+      window.visualViewport?.addEventListener("resize", syncRadicalHeader, { passive: true });
+    }());
+  </script>
 </head>
 <body>
-  <header class="topbar">
+  <header id="header" class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="./kktc-sirket-kurma.html">
+      <a class="logo brand" href="./kktc-sirket-kurma.html">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
             <rect x="4" y="5" width="4.5" height="15" rx="1.2" fill="#1c5e8c"/>
@@ -167,7 +446,7 @@
         <a href="./medya.html">Medya</a>
         <a href="./bize-ulasin.html">İletişim</a>
       </nav>
-      <div class="topbar-actions">
+      <div class="header-actions topbar-actions">
         <div class="lang-switcher" aria-label="Language switcher">
           <button type="button" class="lang-btn active" data-lang="tr">TR</button>
           <button type="button" class="lang-btn" data-lang="en">EN</button>

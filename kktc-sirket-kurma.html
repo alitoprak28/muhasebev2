@@ -7601,6 +7601,18 @@ body.intro-active {
   transition: color 0.18s ease, background 0.18s ease;
 }
 
+html[lang="en"] #header nav.topbar-links {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+html[lang="en"] #header nav.topbar-links a,
+html[lang="ru"] #header nav.topbar-links a,
+html[lang="fa"] #header nav.topbar-links a {
+  font-size: 15px;
+  letter-spacing: -0.03em;
+}
+
 #header nav a:hover,
 #header nav a.active,
 #header.scrolled nav a:hover,
@@ -7676,6 +7688,12 @@ body.intro-active {
   #header nav a {
     font-size: 16px;
   }
+
+  html[lang="en"] #header nav.topbar-links a,
+  html[lang="ru"] #header nav.topbar-links a,
+  html[lang="fa"] #header nav.topbar-links a {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -7695,6 +7713,68 @@ body.intro-active {
   #header nav a {
     font-size: 15px;
     padding: 4px 6px;
+  }
+
+  html[lang="en"] #header nav.topbar-links a,
+  html[lang="ru"] #header nav.topbar-links a,
+  html[lang="fa"] #header nav.topbar-links a {
+    font-size: 13px;
+  }
+
+  html[lang="en"] #header nav.topbar-links {
+    gap: 8px;
+  }
+}
+
+@media (min-width: 769px) {
+  /* Keep the desktop header scale stable during browser zoom/resizing */
+  #header .topbar-inner {
+    padding: 0 24px;
+    min-height: 72px;
+    gap: 16px;
+    grid-template-columns: 284px minmax(0, 1fr) auto;
+  }
+
+  #header .logo {
+    width: 284px;
+    min-width: 284px;
+  }
+
+  #header nav.topbar-links {
+    gap: 4px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  #header nav.topbar-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  #header nav a {
+    font-size: 17px;
+    padding: 4px 3px;
+    flex: 0 0 auto;
+  }
+
+  html[lang="en"] #header nav.topbar-links,
+  html[lang="ru"] #header nav.topbar-links,
+  html[lang="fa"] #header nav.topbar-links {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  html[lang="en"] #header nav.topbar-links a,
+  html[lang="ru"] #header nav.topbar-links a,
+  html[lang="fa"] #header nav.topbar-links a {
+    font-size: 15px;
+  }
+
+  #header .header-actions.topbar-actions,
+  #header .lang-switcher {
+    min-width: max-content;
   }
 }
 
@@ -7850,6 +7930,218 @@ body.intro-active {
 
 #quiz .quiz-container {
   margin-top: 20px !important;
+}
+
+/* Quiz selection polish */
+#quiz .quiz-nav {
+  gap: 16px;
+}
+
+#quiz .quiz-progress {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(var(--accent-rgb), 0.06);
+  border: 1px solid rgba(var(--accent-rgb), 0.12);
+  box-shadow: inset 0 1px 0 rgba(var(--white-rgb), 0.7);
+}
+
+#quiz .quiz-dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(var(--accent-rgb), 0.16);
+}
+
+#quiz .quiz-dot.done {
+  background: rgba(var(--blue-rgb), 0.92);
+  box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.08);
+}
+
+#quiz .quiz-dot.active {
+  width: 28px;
+  background: linear-gradient(135deg, #58a2df 0%, #2a78b0 48%, #1c5e8c 100%);
+  box-shadow: 0 8px 18px rgba(28, 94, 140, 0.24);
+}
+
+#quiz .quiz-option {
+  position: relative;
+  min-height: 92px;
+  padding: 18px 72px 18px 20px;
+  border: 1px solid rgba(var(--accent-rgb), 0.16);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(var(--white-rgb), 0.98) 0%, rgba(245, 248, 251, 0.96) 100%);
+  box-shadow: 0 14px 30px rgba(16, 34, 56, 0.05);
+  color: var(--navy) !important;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+#quiz .quiz-option::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #58a2df 0%, #1c5e8c 100%);
+  opacity: 0;
+  transform: scaleY(0.45);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+#quiz .quiz-option::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--white-rgb), 0.82);
+  border: 1.5px solid rgba(var(--accent-rgb), 0.24);
+  box-shadow: inset 0 1px 0 rgba(var(--white-rgb), 0.78);
+  color: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0.9;
+  transform: translateY(-50%) scale(0.9);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+#quiz .quiz-option:hover {
+  transform: translateY(-2px);
+  border-color: rgba(var(--accent-rgb), 0.28);
+  background: linear-gradient(180deg, rgba(var(--white-rgb), 1) 0%, rgba(236, 244, 250, 0.94) 100%);
+  box-shadow: 0 18px 34px rgba(28, 94, 140, 0.12);
+}
+
+#quiz .quiz-option.selected {
+  border-color: #2a78b0 !important;
+  background: linear-gradient(135deg, rgba(88, 162, 223, 0.16) 0%, rgba(var(--white-rgb), 0.99) 58%, rgba(28, 94, 140, 0.08) 100%) !important;
+  box-shadow: 0 22px 40px rgba(28, 94, 140, 0.18), 0 0 0 1px rgba(88, 162, 223, 0.18);
+  transform: translateY(-3px);
+}
+
+#quiz .quiz-option.selected::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+#quiz .quiz-option.selected::after {
+  content: "\2713";
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+  background: linear-gradient(135deg, #58a2df 0%, #2a78b0 52%, #1c5e8c 100%);
+  border-color: transparent;
+  color: var(--white);
+  box-shadow: 0 12px 24px rgba(28, 94, 140, 0.24);
+}
+
+#quiz .quiz-option:focus-visible {
+  outline: none;
+  border-color: #2a78b0;
+  box-shadow: 0 0 0 4px rgba(88, 162, 223, 0.22), 0 16px 34px rgba(28, 94, 140, 0.12);
+}
+
+#quiz .quiz-option-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(88, 162, 223, 0.14) 0%, rgba(var(--white-rgb), 0.96) 100%);
+  box-shadow: inset 0 1px 0 rgba(var(--white-rgb), 0.72);
+  transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+#quiz .quiz-option:hover .quiz-option-icon,
+#quiz .quiz-option.selected .quiz-option-icon {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, rgba(var(--white-rgb), 0.98) 0%, rgba(88, 162, 223, 0.18) 100%);
+  box-shadow: 0 12px 24px rgba(28, 94, 140, 0.16);
+}
+
+#quiz .quiz-option > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 8px;
+}
+
+#quiz .quiz-option-title {
+  font-size: 16px;
+  font-weight: 700 !important;
+  line-height: 1.35;
+  color: var(--navy) !important;
+}
+
+#quiz .quiz-option-subtitle {
+  margin-top: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.4;
+  color: rgba(var(--navy-rgb), 0.62) !important;
+}
+
+#quiz .quiz-option.selected .quiz-option-subtitle {
+  color: rgba(var(--navy-rgb), 0.82) !important;
+}
+
+#quiz .quiz-back,
+#quiz .quiz-next {
+  min-height: 50px;
+}
+
+#quiz .quiz-next {
+  min-width: 172px;
+  justify-content: center;
+}
+
+#quiz .quiz-next:disabled {
+  background: linear-gradient(135deg, rgba(42, 120, 176, 0.18) 0%, rgba(28, 94, 140, 0.28) 100%);
+  color: rgba(var(--white-rgb), 0.78) !important;
+  box-shadow: none;
+  opacity: 1;
+}
+
+#quiz .quiz-next:not(:disabled) {
+  box-shadow: 0 18px 36px rgba(28, 94, 140, 0.24);
+}
+
+@media (max-width: 720px) {
+  #quiz .quiz-option {
+    min-height: 84px;
+    padding: 16px 58px 16px 16px;
+    border-radius: 16px;
+  }
+
+  #quiz .quiz-option::after {
+    right: 14px;
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+
+  #quiz .quiz-option-title {
+    font-size: 15px;
+  }
+
+  #quiz .quiz-option-subtitle {
+    font-size: 12px !important;
+  }
+
+  #quiz .quiz-progress {
+    align-self: center;
+  }
 }
 
 #types {
@@ -8251,6 +8543,97 @@ html[data-preview="1"] .theme-preview-chip {
     max-width: calc(100vw - 60px) !important;
   }
 }
+
+/* Preserve the desktop header layout when browser zoom shrinks the CSS viewport */
+body.header-zoom-lock #header,
+body.header-zoom-lock #header.scrolled,
+body.header-zoom-lock #header:not(.scrolled) {
+  display: block !important;
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  border-bottom: 1px solid rgba(28, 94, 140, 0.16) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08) !important;
+}
+
+body.header-zoom-lock #header .topbar-inner {
+  min-height: 72px !important;
+  padding: 0 24px !important;
+  display: grid !important;
+  grid-template-columns: 284px minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 16px !important;
+  max-width: 100% !important;
+  overflow-x: clip !important;
+}
+
+body.header-zoom-lock #header .logo,
+body.header-zoom-lock #header.scrolled .logo,
+body.header-zoom-lock #header:not(.scrolled) .logo {
+  background-image: url("assets/kaya-logo-web-transparent-new.png") !important;
+  background-size: contain !important;
+  width: 284px !important;
+  min-width: 284px !important;
+  max-width: none !important;
+  aspect-ratio: 1345 / 350 !important;
+  mix-blend-mode: normal !important;
+}
+
+body.header-zoom-lock #header nav.topbar-links {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+body.header-zoom-lock #header nav.topbar-links::-webkit-scrollbar {
+  display: none;
+}
+
+body.header-zoom-lock #header nav a,
+body.header-zoom-lock #header.scrolled nav a,
+body.header-zoom-lock #header:not(.scrolled) nav a {
+  font-size: 17px !important;
+  padding: 4px 3px !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+  color: #111111 !important;
+}
+
+html[lang="en"] body.header-zoom-lock #header nav.topbar-links,
+html[lang="ru"] body.header-zoom-lock #header nav.topbar-links,
+html[lang="fa"] body.header-zoom-lock #header nav.topbar-links {
+  justify-content: flex-start !important;
+  gap: 12px !important;
+}
+
+html[lang="en"] body.header-zoom-lock #header nav.topbar-links a,
+html[lang="ru"] body.header-zoom-lock #header nav.topbar-links a,
+html[lang="fa"] body.header-zoom-lock #header nav.topbar-links a {
+  font-size: 15px !important;
+}
+
+body.header-zoom-lock #header .header-actions.topbar-actions {
+  display: flex !important;
+  justify-self: auto !important;
+  margin-left: 0 !important;
+  justify-content: flex-end !important;
+  gap: 0 !important;
+  min-width: max-content !important;
+}
+
+body.header-zoom-lock #header .lang-switcher {
+  display: inline-flex !important;
+  min-width: max-content !important;
+}
+
+body.header-zoom-lock #header .hamburger {
+  display: none !important;
+}
 </style>
 <script src="assets/home-theme-presets.js"></script>
 <script>
@@ -8303,10 +8686,10 @@ html[data-preview="1"] .theme-preview-chip {
       <a href="./neden-kaya-plus.html" class="nav-link" data-tr="Neden Kaya Plus?" data-en="Why Kaya Plus?" data-ru="Почему Kaya Plus?" data-fa="لماذا كايا بلس؟">Neden Kaya Plus?</a>
       <a href="./hizmetler.html" class="nav-link" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-fa="الخدمات">Hizmetler</a>
       <a href="./yasalar-vergiler.html" class="nav-link" data-tr="Yasalar/Vergiler" data-en="Laws/Taxes" data-ru="Законы/Налоги" data-fa="القوانين/الضرائب">Yasalar/Vergiler</a>
-      <a href="./kktcde-sirket-kurma.html" class="nav-link" data-tr="KKTC'de Şirket Kurma" data-en="Starting a Company in TRNC" data-ru="Открытие компании в ТРСК" data-fa="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</a>
-      <a href="./sirket-kurmanin-temel-sartlari.html" class="nav-link" data-tr="Şirket Kurmanın Şartları" data-en="Company Formation Requirements" data-ru="Условия регистрации компании" data-fa="شروط تأسيس الشركة">Şirket Kurmanın Şartları</a>
+      <a href="./kktcde-sirket-kurma.html" class="nav-link" data-tr="KKTC'de Şirket Kurma" data-en="TRNC Company Setup" data-ru="Открытие компании в ТРСК" data-fa="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</a>
+      <a href="./sirket-kurmanin-temel-sartlari.html" class="nav-link" data-tr="Şirket Kurmanın Şartları" data-en="Formation Requirements" data-ru="Условия регистрации компании" data-fa="متطلبات التأسيس">Şirket Kurmanın Şartları</a>
       <a href="./medya.html" class="nav-link" data-tr="Medya" data-en="Media" data-ru="Медиа" data-fa="ميديا">Medya</a>
-      <a href="./bize-ulasin.html" class="nav-link" data-tr="İletişim" data-en="Contact Us" data-ru="Свяжитесь с нами" data-fa="تواصل معنا">İletişim</a>
+      <a href="./bize-ulasin.html" class="nav-link" data-tr="İletişim" data-en="Contact" data-ru="Контакты" data-fa="تواصل">İletişim</a>
     </nav>
 
     <div class="header-actions topbar-actions">
@@ -8337,10 +8720,10 @@ html[data-preview="1"] .theme-preview-chip {
     <a href="./neden-kaya-plus.html" onclick="toggleMobileNav()" data-tr="Neden Kaya Plus?" data-en="Why Kaya Plus?" data-ru="Почему Kaya Plus?" data-fa="لماذا كايا بلس؟">Neden Kaya Plus?</a>
     <a href="./hizmetler.html" onclick="toggleMobileNav()" data-tr="Hizmetler" data-en="Services" data-ru="Услуги" data-fa="الخدمات">Hizmetler</a>
 <a href="./yasalar-vergiler.html" onclick="toggleMobileNav()" data-tr="Yasalar/Vergiler" data-en="Laws/Taxes" data-ru="Законы/Налоги" data-fa="القوانين/الضرائب">Yasalar/Vergiler</a>
-    <a href="./kktcde-sirket-kurma.html" onclick="toggleMobileNav()" data-tr="KKTC'de Şirket Kurma" data-en="Starting a Company in TRNC" data-ru="Открытие компании в ТРСК" data-fa="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</a>
-    <a href="./sirket-kurmanin-temel-sartlari.html" onclick="toggleMobileNav()" data-tr="Şirket Kurmanın Şartları" data-en="Company Formation Requirements" data-ru="Условия регистрации компании" data-fa="شروط تأسيس الشركة">Şirket Kurmanın Şartları</a>
+    <a href="./kktcde-sirket-kurma.html" onclick="toggleMobileNav()" data-tr="KKTC'de Şirket Kurma" data-en="TRNC Company Setup" data-ru="Открытие компании в ТРСК" data-fa="تأسيس شركة في شمال قبرص">KKTC'de Şirket Kurma</a>
+    <a href="./sirket-kurmanin-temel-sartlari.html" onclick="toggleMobileNav()" data-tr="Şirket Kurmanın Şartları" data-en="Formation Requirements" data-ru="Условия регистрации компании" data-fa="متطلبات التأسيس">Şirket Kurmanın Şartları</a>
     <a href="./medya.html" onclick="toggleMobileNav()" data-tr="Medya" data-en="Media" data-ru="Медиа" data-fa="ميديا">Medya</a>
-    <a href="./bize-ulasin.html" onclick="toggleMobileNav()" data-tr="İletişim" data-en="Contact Us" data-ru="Свяжитесь с нами" data-fa="تواصل معنا">İletişim</a>
+    <a href="./bize-ulasin.html" onclick="toggleMobileNav()" data-tr="İletişim" data-en="Contact" data-ru="Контакты" data-fa="تواصل">İletişim</a>
 </div>
 
 <!-- HERO -->
@@ -8357,7 +8740,7 @@ html[data-preview="1"] .theme-preview-chip {
       <span data-tr="Kaya Plus" data-en="Kaya Plus" data-ru="Kaya Plus" data-fa="كايا بلس">Kaya Plus</span><br>
       <span class="gold-text" data-tr="Şirket Kurma ve Mali Danışmanlık" data-en="Company Formation and Financial Advisory" data-ru="Регистрация компаний и финансовый консалтинг" data-fa="تأسيس الشركات والاستشارات المالية">Şirket Kurma ve Mali Danışmanlık</span>
     </h1>
-    <p class="hero-sub" data-tr="Kaya Plus; KKTC'de şirket kurma, yönetme, muhasebe, vergi, bordro, kuruluş, tescil ve mali danışmanlık başlıklarında yerli ve yabancı müvekkillere gerçek ofis altyapısı, düzenli süreç takibi ve güven veren danışmanlık desteği sunar." data-en="Kaya Plus provides local and foreign clients in the TRNC with real office infrastructure, disciplined process follow-up and trusted advisory support across company formation, management, accounting, tax, payroll, registration and financial consulting." data-ru="Kaya Plus предоставляет местным и иностранным клиентам в ТРСК реальную офисную инфраструктуру, регулярное сопровождение процессов и внушающую доверие консультационную поддержку по регистрации и управлению компаниями, бухгалтерии, налогам, payroll и финансовому консалтингу." data-fa="تقدم كايا بلس للعملاء المحليين والأجانب في شمال قبرص بنية مكتبية حقيقية ومتابعة منتظمة للإجراءات ودعماً استشارياً موثوقاً في تأسيس الشركات وإدارتها والمحاسبة والضرائب والرواتب والتسجيل والاستشارات المالية.">Kaya Plus; KKTC'de şirket kurma, yönetme, muhasebe, vergi, bordro, kuruluş, tescil ve mali danışmanlık başlıklarında yerli ve yabancı müvekkillere gerçek ofis altyapısı, düzenli süreç takibi ve güven veren danışmanlık desteği sunar.</p>
+    <p class="hero-sub" data-tr="Kaya Plus; KKTC'de şirket kurma, yönetme, muhasebe, vergi, bordro, kuruluş, tescil ve mali danışmanlık başlıklarında yerli ve yabancı müvekkillere gerçek ofis altyapısı, düzenli süreç takibi ve güven veren danışmanlık desteği sunar." data-en="Kaya Plus provides local and foreign clients in the TRNC with real office infrastructure, disciplined process follow-up and trusted advisory support across company formation, management, accounting, tax, payroll, registration and financial consulting." data-ru="Kaya Plus предоставляет местным и иностранным клиентам в ТРСК реальную офисную инфраструктуру, регулярное сопровождение процессов и внушающую доверие консультационную поддержку по регистрации и управлению компаниями, бухгалтерии, налогам, зарплате и финансовому консалтингу." data-fa="تقدم كايا بلس للعملاء المحليين والأجانب في شمال قبرص بنية مكتبية حقيقية ومتابعة منتظمة للإجراءات ودعماً استشارياً موثوقاً في تأسيس الشركات وإدارتها والمحاسبة والضرائب والرواتب والتسجيل والاستشارات المالية.">Kaya Plus; KKTC'de şirket kurma, yönetme, muhasebe, vergi, bordro, kuruluş, tescil ve mali danışmanlık başlıklarında yerli ve yabancı müvekkillere gerçek ofis altyapısı, düzenli süreç takibi ve güven veren danışmanlık desteği sunar.</p>
   </div>
 </section>
 
@@ -8460,7 +8843,7 @@ html[data-preview="1"] .theme-preview-chip {
               loading="lazy"
               decoding="async">
             <div class="accounting-support-copy">
-              <strong data-tr="Bordro ve ödeme planı" data-en="Payroll and payment planning" data-ru="Планирование payroll и выплат" data-fa="تخطيط الرواتب والمدفوعات">Bordro ve ödeme planı</strong>
+              <strong data-tr="Bordro ve ödeme planı" data-en="Payroll and payment planning" data-ru="Планирование зарплаты и выплат" data-fa="تخطيط الرواتب والمدفوعات">Bordro ve ödeme planı</strong>
               <span data-tr="Brüt, kesinti ve net ödeme dengesi düzenli takip edildiğinde operasyon rahatlar." data-en="Operations become smoother when gross pay, deductions and net payments are tracked regularly." data-ru="Операционные процессы упрощаются, когда начисления, удержания и чистые выплаты регулярно отслеживаются." data-fa="تصبح العمليات أكثر سلاسة عندما تتم متابعة الإجمالي والاستقطاعات وصافي المدفوعات بانتظام.">Brüt, kesinti ve net ödeme dengesi düzenli takip edildiğinde operasyon rahatlar.</span>
             </div>
           </article>
@@ -9125,7 +9508,7 @@ html[data-preview="1"] .theme-preview-chip {
               <div class="home-newsroom-label" data-tr="Resmi Gündem" data-en="Official Agenda" data-ru="Официальная повестка" data-fa="الأجندة الرسمية">Resmi Gündem</div>
               <h3 data-tr="İşletmeleri etkileyen güncel başlıklar" data-en="Current items affecting businesses" data-ru="Актуальные темы, влияющие на бизнес" data-fa="عناوين حديثة تؤثر في الشركات">İşletmeleri etkileyen güncel başlıklar</h3>
             </div>
-            <p data-tr="Her kart resmi kaynağa bağlıdır ve bordro, vergi, beyan veya uyum planını etkileyen somut bir başlığı özetler." data-en="Each card is tied to an official source and summarises a concrete item affecting payroll, tax, filing or compliance planning." data-ru="Каждая карточка привязана к официальному источнику и кратко излагает конкретный вопрос, влияющий на payroll, налоги, отчётность или compliance." data-fa="كل بطاقة مرتبطة بمصدر رسمي وتلخص عنوانًا عمليًا يؤثر في الرواتب أو الضرائب أو الإقرارات أو الامتثال.">Her kart resmi kaynağa bağlıdır ve bordro, vergi, beyan veya uyum planını etkileyen somut bir başlığı özetler.</p>
+            <p data-tr="Her kart resmi kaynağa bağlıdır ve bordro, vergi, beyan veya uyum planını etkileyen somut bir başlığı özetler." data-en="Each card is tied to an official source and summarises a concrete item affecting payroll, tax, filing or compliance planning." data-ru="Каждая карточка привязана к официальному источнику и кратко излагает конкретный вопрос, влияющий на зарплату, налоги, отчётность или комплаенс." data-fa="كل بطاقة مرتبطة بمصدر رسمي وتلخص عنوانًا عمليًا يؤثر في الرواتب أو الضرائب أو الإقرارات أو الامتثال.">Her kart resmi kaynağa bağlıdır ve bordro, vergi, beyan veya uyum planını etkileyen somut bir başlığı özetler.</p>
           </div>
 
           <div class="home-newsroom-feed" id="home-news-feed">
@@ -9156,7 +9539,7 @@ html[data-preview="1"] .theme-preview-chip {
                   <span data-tr="Çalışma Bakanlığı" data-en="Ministry of Labour" data-ru="Министерство труда" data-fa="وزارة العمل">Çalışma Bakanlığı</span>
                 </div>
                 <h4 data-tr="01 Ocak 2026 itibarıyla brüt asgari ücret 60.618 TL" data-en="Gross minimum wage is TRY 60,618 as of 01 January 2026" data-ru="С 01 января 2026 года валовая минимальная зарплата составляет 60 618 турецких лир" data-fa="اعتبارًا من 01 يناير 2026 أصبح الحد الأدنى الإجمالي للأجور 60,618 ليرة تركية">01 Ocak 2026 itibarıyla brüt asgari ücret 60.618 TL</h4>
-                <p data-tr="Çalışma ve Sosyal Güvenlik Bakanlığı sayfasında yayımlanan bilgiye göre net tutar 52.738 TL. Bu değişiklik bordro, işveren maliyeti ve personel bütçesi açısından ana referans başlıklardan biri." data-en="According to the Ministry of Labour and Social Security page, the net amount is TRY 52,738. This update is one of the core reference points for payroll, employer cost and staff budgeting." data-ru="Согласно странице Министерства труда и социального обеспечения, чистая сумма составляет 52 738 турецких лир. Это одно из ключевых ориентиров для payroll, затрат работодателя и бюджета персонала." data-fa="بحسب صفحة وزارة العمل والضمان الاجتماعي فإن الصافي هو 52,738 ليرة تركية. ويعد هذا التحديث من أهم المراجع للرواتب وتكلفة صاحب العمل وميزانية الموظفين.">Çalışma ve Sosyal Güvenlik Bakanlığı sayfasında yayımlanan bilgiye göre net tutar 52.738 TL. Bu değişiklik bordro, işveren maliyeti ve personel bütçesi açısından ana referans başlıklardan biri.</p>
+                <p data-tr="Çalışma ve Sosyal Güvenlik Bakanlığı sayfasında yayımlanan bilgiye göre net tutar 52.738 TL. Bu değişiklik bordro, işveren maliyeti ve personel bütçesi açısından ana referans başlıklardan biri." data-en="According to the Ministry of Labour and Social Security page, the net amount is TRY 52,738. This update is one of the core reference points for payroll, employer cost and staff budgeting." data-ru="Согласно странице Министерства труда и социального обеспечения, чистая сумма составляет 52 738 турецких лир. Это один из ключевых ориентиров для зарплаты, затрат работодателя и бюджета персонала." data-fa="بحسب صفحة وزارة العمل والضمان الاجتماعي فإن الصافي هو 52,738 ليرة تركية. ويعد هذا التحديث من أهم المراجع للرواتب وتكلفة صاحب العمل وميزانية الموظفين.">Çalışma ve Sosyal Güvenlik Bakanlığı sayfasında yayımlanan bilgiye göre net tutar 52.738 TL. Bu değişiklik bordro, işveren maliyeti ve personel bütçesi açısından ana referans başlıklardan biri.</p>
                 <a class="home-newsroom-link" href="https://csgb.gov.ct.tr/ASGAR%C4%B0-%C3%9CCRET" target="_blank" rel="noopener noreferrer" data-tr="Asgari Ücret Sayfasını Aç" data-en="Open Minimum Wage Page" data-ru="Открыть страницу минимальной зарплаты" data-fa="افتح صفحة الحد الأدنى للأجور">Asgari Ücret Sayfasını Aç</a>
               </div>
             </article>
@@ -9204,7 +9587,7 @@ html[data-preview="1"] .theme-preview-chip {
                   <span data-tr="Devlet Basımevi" data-en="State Printing House" data-ru="Гостипография" data-fa="مطبعة الدولة">Devlet Basımevi</span>
                 </div>
                 <h4 data-tr="Resmi Gazete günlük karar ve düzeltme akışı" data-en="Daily decisions and correction flow in the Official Gazette" data-ru="Ежедневный поток решений и исправлений в Официальной газете" data-fa="التدفق اليومي للقرارات والتصحيحات في الجريدة الرسمية">Resmi Gazete günlük karar ve düzeltme akışı</h4>
-                <p data-tr="Tüzük, kararname, kurul kararı ve düzeltmelerin güncel akışı için Devlet Basımevi ana sayfası temel referans kaynaktır. Uyum planı yapan işletmeler için özellikle resmi değişikliklerin ilk duyurusu burada izlenir." data-en="The State Printing House homepage is the core reference source for the current flow of regulations, decrees, board decisions and corrections. For businesses planning compliance, official changes are typically tracked here first." data-ru="Главная страница Гостипографии является базовым справочным источником текущего потока положений, указов, решений советов и исправлений. Для бизнеса, планирующего compliance, именно здесь обычно сначала отслеживаются официальные изменения." data-fa="تُعد الصفحة الرئيسية لمطبعة الدولة المصدر المرجعي الأساسي للتدفق الحالي للوائح والمراسيم وقرارات المجالس والتصحيحات. وبالنسبة للشركات التي تخطط للامتثال فإن التغييرات الرسمية تُتابع هنا أولاً عادةً.">Tüzük, kararname, kurul kararı ve düzeltmelerin güncel akışı için Devlet Basımevi ana sayfası temel referans kaynaktır. Uyum planı yapan işletmeler için özellikle resmi değişikliklerin ilk duyurusu burada izlenir.</p>
+                <p data-tr="Tüzük, kararname, kurul kararı ve düzeltmelerin güncel akışı için Devlet Basımevi ana sayfası temel referans kaynaktır. Uyum planı yapan işletmeler için özellikle resmi değişikliklerin ilk duyurusu burada izlenir." data-en="The State Printing House homepage is the core reference source for the current flow of regulations, decrees, board decisions and corrections. For businesses planning compliance, official changes are typically tracked here first." data-ru="Главная страница Гостипографии является базовым справочным источником текущего потока положений, указов, решений советов и исправлений. Для бизнеса, планирующего комплаенс, именно здесь обычно сначала отслеживаются официальные изменения." data-fa="تُعد الصفحة الرئيسية لمطبعة الدولة المصدر المرجعي الأساسي للتدفق الحالي للوائح والمراسيم وقرارات المجالس والتصحيحات. وبالنسبة للشركات التي تخطط للامتثال فإن التغييرات الرسمية تُتابع هنا أولاً عادةً.">Tüzük, kararname, kurul kararı ve düzeltmelerin güncel akışı için Devlet Basımevi ana sayfası temel referans kaynaktır. Uyum planı yapan işletmeler için özellikle resmi değişikliklerin ilk duyurusu burada izlenir.</p>
                 <a class="home-newsroom-link" href="https://basimevi.gov.ct.tr/" target="_blank" rel="noopener noreferrer" data-tr="Resmi Gazete'yi Aç" data-en="Open the Official Gazette" data-ru="Открыть Официальную газету" data-fa="افتح الجريدة الرسمية">Resmi Gazete'yi Aç</a>
               </div>
             </article>
@@ -9219,7 +9602,7 @@ html[data-preview="1"] .theme-preview-chip {
               <div class="home-newsroom-label" data-tr="Resmi Araçlar" data-en="Official Tools" data-ru="Официальные инструменты" data-fa="الأدوات الرسمية">Resmi Araçlar</div>
               <h3 data-tr="Kur, takvim ve dijital vergi araçları" data-en="Rates, calendar and digital tax tools" data-ru="Курсы, календарь и цифровые налоговые инструменты" data-fa="الأسعار والتقويم وأدوات الضرائب الرقمية">Kur, takvim ve dijital vergi araçları</h3>
             </div>
-            <p data-tr="Canlı kur ekranını koruyoruz; yanına resmi vergi takvimi, uzatma duyuruları ve e-Fatura gibi günlük iş akışında işe yarayan dijital başlıkları ekliyoruz." data-en="We keep the live rate screen and pair it with digital items that are useful in day-to-day operations such as the official tax calendar, extension notices and e-Invoice." data-ru="Мы сохраняем экран живых курсов и дополняем его цифровыми темами, полезными в ежедневной работе, такими как официальный налоговый календарь, уведомления о продлении и e-Invoice." data-fa="نحافظ على شاشة الأسعار المباشرة ونضيف إليها عناوين رقمية مفيدة في سير العمل اليومي مثل التقويم الضريبي الرسمي وإعلانات التمديد والفاتورة الإلكترونية.">Canlı kur ekranını koruyoruz; yanına resmi vergi takvimi, uzatma duyuruları ve e-Fatura gibi günlük iş akışında işe yarayan dijital başlıkları ekliyoruz.</p>
+            <p data-tr="Canlı kur ekranını koruyoruz; yanına resmi vergi takvimi, uzatma duyuruları ve e-Fatura gibi günlük iş akışında işe yarayan dijital başlıkları ekliyoruz." data-en="We keep the live rate screen and pair it with digital items that are useful in day-to-day operations such as the official tax calendar, extension notices and e-Invoice." data-ru="Мы сохраняем экран живых курсов и дополняем его цифровыми темами, полезными в ежедневной работе, такими как официальный налоговый календарь, уведомления о продлении и e-Fatura." data-fa="نحافظ على شاشة الأسعار المباشرة ونضيف إليها عناوين رقمية مفيدة في سير العمل اليومي مثل التقويم الضريبي الرسمي وإعلانات التمديد والفاتورة الإلكترونية.">Canlı kur ekranını koruyoruz; yanına resmi vergi takvimi, uzatma duyuruları ve e-Fatura gibi günlük iş akışında işe yarayan dijital başlıkları ekliyoruz.</p>
           </div>
 
           <div class="home-newsroom-feed" id="home-notice-feed">
@@ -9295,22 +9678,22 @@ html[data-preview="1"] .theme-preview-chip {
             <article class="home-newsroom-card reveal" hidden data-home-news-hidden="true">
               <div class="home-newsroom-media media-holiday">
                 <img class="home-newsroom-media-photo" src="https://images.pexels.com/photos/8962472/pexels-photo-8962472.jpeg?auto=compress&cs=tinysrgb&w=1400" width="1400" height="934" alt="e-Fatura ve dijital vergi süreçlerini temsil eden telefon ve muhasebe belgeleri" loading="lazy" decoding="async">
-                <span class="home-newsroom-media-badge" data-tr="e-Fatura" data-en="e-Invoice" data-ru="e-Invoice" data-fa="الفاتورة الإلكترونية">e-Fatura</span>
+                <span class="home-newsroom-media-badge" data-tr="e-Fatura" data-en="e-Invoice" data-ru="e-Fatura" data-fa="الفاتورة الإلكترونية">e-Fatura</span>
                 <strong class="home-newsroom-media-strong" data-tr="Portal" data-en="Portal" data-ru="Портал" data-fa="البوابة">Portal</strong>
                 <span class="home-newsroom-media-note" data-tr="Başvuru ve entegrasyon seçenekleri" data-en="Application and integration options" data-ru="Варианты подачи и интеграции" data-fa="خيارات التقديم والتكامل">Başvuru ve entegrasyon seçenekleri</span>
               </div>
               <div class="home-newsroom-copy">
                 <div class="home-newsroom-meta">
                   <span data-tr="Vergi Dairesi" data-en="Tax Department" data-ru="Налоговое управление" data-fa="دائرة الضرائب">Vergi Dairesi</span>
-                  <span data-tr="Portal / Web Servis" data-en="Portal / Web Service" data-ru="Портал / Web Service" data-fa="البوابة / خدمة الويب">Portal / Web Servis</span>
+                  <span data-tr="Portal / Web Servis" data-en="Portal / Web Service" data-ru="Портал / веб-сервис" data-fa="البوابة / خدمة الويب">Portal / Web Servis</span>
                 </div>
-                <h4 data-tr="e-Fatura başvurusu için portal ve web servis seçenekleri" data-en="Portal and web-service options for e-Invoice application" data-ru="Варианты портала и web-service для подачи на e-Invoice" data-fa="خيارات البوابة وخدمة الويب للتقديم على الفاتورة الإلكترونية">e-Fatura başvurusu için portal ve web servis seçenekleri</h4>
-                <p data-tr="Fatura düzenleme zorunluluğu bulunan gerçek ve tüzel kişi yükümlüler, İnternet Vergi Dairesi üzerinden E-Portal yöntemi veya doğrudan entegrasyon seçeneği ile e-Fatura sistemine başvurabiliyor." data-en="Individual and corporate taxpayers who are required to issue invoices can apply to the e-Invoice system through the Internet Tax Office using either the e-Portal method or direct integration." data-ru="Физические и юридические налогоплательщики, обязанные выставлять счета, могут подать заявку в систему e-Invoice через Интернет-налоговую службу с помощью метода e-Portal или прямой интеграции." data-fa="يمكن للمكلفين الأفراد والشركات الملزمين بإصدار الفواتير التقدم إلى نظام الفاتورة الإلكترونية عبر دائرة الضرائب على الإنترنت باستخدام طريقة البوابة الإلكترونية أو خيار التكامل المباشر.">Fatura düzenleme zorunluluğu bulunan gerçek ve tüzel kişi yükümlüler, İnternet Vergi Dairesi üzerinden E-Portal yöntemi veya doğrudan entegrasyon seçeneği ile e-Fatura sistemine başvurabiliyor.</p>
+                <h4 data-tr="e-Fatura başvurusu için portal ve web servis seçenekleri" data-en="Portal and web-service options for e-Invoice application" data-ru="Варианты портала и веб-сервиса для подачи на e-Fatura" data-fa="خيارات البوابة وخدمة الويب للتقديم على الفاتورة الإلكترونية">e-Fatura başvurusu için portal ve web servis seçenekleri</h4>
+                <p data-tr="Fatura düzenleme zorunluluğu bulunan gerçek ve tüzel kişi yükümlüler, İnternet Vergi Dairesi üzerinden E-Portal yöntemi veya doğrudan entegrasyon seçeneği ile e-Fatura sistemine başvurabiliyor." data-en="Individual and corporate taxpayers who are required to issue invoices can apply to the e-Invoice system through the Internet Tax Office using either the e-Portal method or direct integration." data-ru="Физические и юридические налогоплательщики, обязанные выставлять счета, могут подать заявку в систему e-Fatura через Интернет-налоговую службу с помощью метода e-Portal или прямой интеграции." data-fa="يمكن للمكلفين الأفراد والشركات الملزمين بإصدار الفواتير التقدم إلى نظام الفاتورة الإلكترونية عبر دائرة الضرائب على الإنترنت باستخدام طريقة البوابة الإلكترونية أو خيار التكامل المباشر.">Fatura düzenleme zorunluluğu bulunan gerçek ve tüzel kişi yükümlüler, İnternet Vergi Dairesi üzerinden E-Portal yöntemi veya doğrudan entegrasyon seçeneği ile e-Fatura sistemine başvurabiliyor.</p>
                 <div class="home-newsroom-points">
-                  <div class="home-newsroom-point"><span data-tr="Başvuru yöntemi" data-en="Application method" data-ru="Метод подачи" data-fa="طريقة التقديم">Başvuru yöntemi</span><strong data-tr="Portal veya Web Servis" data-en="Portal or Web Service" data-ru="Портал или Web Service" data-fa="البوابة أو خدمة الويب">Portal veya Web Servis</strong></div>
+                  <div class="home-newsroom-point"><span data-tr="Başvuru yöntemi" data-en="Application method" data-ru="Способ подачи" data-fa="طريقة التقديم">Başvuru yöntemi</span><strong data-tr="Portal veya Web Servis" data-en="Portal or Web Service" data-ru="Портал или веб-сервис" data-fa="البوابة أو خدمة الويب">Portal veya Web Servis</strong></div>
                   <div class="home-newsroom-point"><span data-tr="Giriş noktası" data-en="Entry point" data-ru="Точка входа" data-fa="نقطة الدخول">Giriş noktası</span><strong data-tr="İnternet Vergi Dairesi" data-en="Internet Tax Office" data-ru="Интернет-налоговая служба" data-fa="دائرة الضرائب على الإنترنت">İnternet Vergi Dairesi</strong></div>
                 </div>
-                <a class="home-newsroom-link" href="https://efatura.vergi.gov.ct.tr/?q=content%2Fe-fatura-uygulamasina-ba%C5%9Fvurmak-isteyenlerin-bilgisine" target="_blank" rel="noopener noreferrer" data-tr="e-Fatura Bilgisini Aç" data-en="Open e-Invoice Info" data-ru="Открыть информацию по e-Invoice" data-fa="افتح معلومات الفاتورة الإلكترونية">e-Fatura Bilgisini Aç</a>
+                <a class="home-newsroom-link" href="https://efatura.vergi.gov.ct.tr/?q=content%2Fe-fatura-uygulamasina-ba%C5%9Fvurmak-isteyenlerin-bilgisine" target="_blank" rel="noopener noreferrer" data-tr="e-Fatura Bilgisini Aç" data-en="Open e-Invoice Info" data-ru="Открыть информацию по e-Fatura" data-fa="افتح معلومات الفاتورة الإلكترونية">e-Fatura Bilgisini Aç</a>
               </div>
             </article>
           </div>
@@ -9320,7 +9703,7 @@ html[data-preview="1"] .theme-preview-chip {
       </div>
     </article>
 
-    <div class="updates-note reveal" data-tr="Not: Bu alan hızlı takip ve ilk değerlendirme amacıyla kurgulandı. Özellikle vergi, bordro, KDV ve resmi son tarih başlıklarında işlem yapmadan önce ilgili resmi kaynaktan son doğrulama yapılmalıdır." data-en="Note: This area is designed for fast tracking and initial evaluation. Especially for tax, payroll, VAT and official deadline topics, a final confirmation should be made from the relevant official source before action." data-ru="Примечание: этот блок предназначен для быстрого мониторинга и первичной оценки. Особенно по налогам, payroll, НДС и официальным срокам перед действием нужно сделать финальную проверку по соответствующему официальному источнику." data-fa="ملاحظة: صُمم هذا القسم للمتابعة السريعة والتقييم الأولي. وخصوصًا في موضوعات الضرائب والرواتب وضريبة القيمة المضافة والمواعيد الرسمية يجب إجراء التحقق الأخير من المصدر الرسمي المعني قبل أي إجراء.">Not: Bu alan hızlı takip ve ilk değerlendirme amacıyla kurgulandı. Özellikle vergi, bordro, KDV ve resmi son tarih başlıklarında işlem yapmadan önce ilgili resmi kaynaktan son doğrulama yapılmalıdır.</div>
+    <div class="updates-note reveal" data-tr="Not: Bu alan hızlı takip ve ilk değerlendirme amacıyla kurgulandı. Özellikle vergi, bordro, KDV ve resmi son tarih başlıklarında işlem yapmadan önce ilgili resmi kaynaktan son doğrulama yapılmalıdır." data-en="Note: This area is designed for fast tracking and initial evaluation. Especially for tax, payroll, VAT and official deadline topics, a final confirmation should be made from the relevant official source before action." data-ru="Примечание: этот блок предназначен для быстрого мониторинга и первичной оценки. Особенно по налогам, зарплате, НДС и официальным срокам перед действием нужно сделать финальную проверку по соответствующему официальному источнику." data-fa="ملاحظة: صُمم هذا القسم للمتابعة السريعة والتقييم الأولي. وخصوصًا في موضوعات الضرائب والرواتب وضريبة القيمة المضافة والمواعيد الرسمية يجب إجراء التحقق الأخير من المصدر الرسمي المعني قبل أي إجراء.">Not: Bu alan hızlı takip ve ilk değerlendirme amacıyla kurgulandı. Özellikle vergi, bordro, KDV ve resmi son tarih başlıklarında işlem yapmadan önce ilgili resmi kaynaktan son doğrulama yapılmalıdır.</div>
   </div>
 </section>
 
@@ -9660,25 +10043,25 @@ html[data-preview="1"] .theme-preview-chip {
       <div class="quiz-step active" id="qstep-1">
         <div class="quiz-question" data-tr="Faaliyetiniz nerede olacak?" data-en="Where will your business operate?" data-ru="Где будет вести деятельность ваш бизнес?" data-fa="أين سينشط عملك؟">Faaliyetiniz nerede olacak?</div>
         <div class="quiz-options">
-          <div class="quiz-option" onclick="selectOption(this,'q1','local')">
+          <div class="quiz-option" role="button" tabindex="0" aria-pressed="false" onclick="selectOption(this,'q1','local')">
             <div class="quiz-option-icon">🏢</div>
             <div>
-              <div style="font-weight:500" data-tr="Sadece KKTC içinde" data-en="Only within TRNC" data-ru="Только в Северном Кипре" data-fa="داخل شمال قبرص فقط">Sadece KKTC içinde</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Yerel pazar odaklı" data-en="Local market focused" data-ru="Ориентация на местный рынок" data-fa="التركيز على السوق المحلية">Yerel pazar odaklı</div>
+              <div class="quiz-option-title" data-tr="Sadece KKTC içinde" data-en="Only within TRNC" data-ru="Только в Северном Кипре" data-fa="داخل شمال قبرص فقط">Sadece KKTC içinde</div>
+              <div class="quiz-option-subtitle" data-tr="Yerel pazar odaklı" data-en="Local market focused" data-ru="Ориентация на местный рынок" data-fa="التركيز على السوق المحلية">Yerel pazar odaklı</div>
             </div>
           </div>
-          <div class="quiz-option" onclick="selectOption(this,'q1','international')">
+          <div class="quiz-option" role="button" tabindex="0" aria-pressed="false" onclick="selectOption(this,'q1','international')">
             <div class="quiz-option-icon">🌍</div>
             <div>
-              <div style="font-weight:500" data-tr="Tamamen yurt dışına yönelik" data-en="Entirely international" data-ru="Полностью за рубежом" data-fa="موجه بالكامل للخارج">Tamamen yurt dışına yönelik</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Küresel pazar" data-en="Global market" data-ru="Глобальный рынок" data-fa="السوق العالمية">Küresel pazar</div>
+              <div class="quiz-option-title" data-tr="Tamamen yurt dışına yönelik" data-en="Entirely international" data-ru="Полностью за рубежом" data-fa="موجه بالكامل للخارج">Tamamen yurt dışına yönelik</div>
+              <div class="quiz-option-subtitle" data-tr="Küresel pazar" data-en="Global market" data-ru="Глобальный рынок" data-fa="السوق العالمية">Küresel pazar</div>
             </div>
           </div>
-          <div class="quiz-option" onclick="selectOption(this,'q1','freezone')">
+          <div class="quiz-option" role="button" tabindex="0" aria-pressed="false" onclick="selectOption(this,'q1','freezone')">
             <div class="quiz-option-icon">🏭</div>
             <div>
-              <div style="font-weight:500" data-tr="Serbest Liman Bölgesinde" data-en="In the Free Zone" data-ru="В свободной зоне" data-fa="في المنطقة الحرة">Serbest Liman Bölgesinde</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Özel vergi avantajları" data-en="Special tax advantages" data-ru="Особые налоговые льготы" data-fa="مزايا ضريبية خاصة">Özel vergi avantajları</div>
+              <div class="quiz-option-title" data-tr="Serbest Liman Bölgesinde" data-en="In the Free Zone" data-ru="В свободной зоне" data-fa="في المنطقة الحرة">Serbest Liman Bölgesinde</div>
+              <div class="quiz-option-subtitle" data-tr="Özel vergi avantajları" data-en="Special tax advantages" data-ru="Особые налоговые льготы" data-fa="مزايا ضريبية خاصة">Özel vergi avantajları</div>
             </div>
           </div>
         </div>
@@ -9696,25 +10079,25 @@ html[data-preview="1"] .theme-preview-chip {
       <div class="quiz-step" id="qstep-2">
         <div class="quiz-question" data-tr="Kaç kişiyle şirket kuracaksınız?" data-en="How many people will establish the company?" data-ru="Сколько человек будет учреждать компанию?" data-fa="كم شخص سيؤسس الشركة؟">Kaç kişiyle şirket kuracaksınız?</div>
         <div class="quiz-options">
-          <div class="quiz-option" onclick="selectOption(this,'q2','solo')">
+          <div class="quiz-option" role="button" tabindex="0" aria-pressed="false" onclick="selectOption(this,'q2','solo')">
             <div class="quiz-option-icon">👤</div>
             <div>
-              <div style="font-weight:500" data-tr="Tek başıma" data-en="Just me" data-ru="Только я" data-fa="وحدي فقط">Tek başıma</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Şahıs işletmesi" data-en="Sole proprietorship" data-ru="Индивидуальный предприниматель" data-fa="مؤسسة فردية">Şahıs işletmesi</div>
+              <div class="quiz-option-title" data-tr="Tek başıma" data-en="Just me" data-ru="Только я" data-fa="وحدي فقط">Tek başıma</div>
+              <div class="quiz-option-subtitle" data-tr="Şahıs işletmesi" data-en="Sole proprietorship" data-ru="Индивидуальный предприниматель" data-fa="مؤسسة فردية">Şahıs işletmesi</div>
             </div>
           </div>
-          <div class="quiz-option" onclick="selectOption(this,'q2','partner')">
+          <div class="quiz-option" role="button" tabindex="0" aria-pressed="false" onclick="selectOption(this,'q2','partner')">
             <div class="quiz-option-icon">👥</div>
             <div>
-              <div style="font-weight:500" data-tr="2-6 ortak" data-en="2–6 partners" data-ru="2–6 партнёров" data-fa="من 2 إلى 6 شركاء">2-6 ortak</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Küçük ortaklık" data-en="Small partnership" data-ru="Малое партнёрство" data-fa="شراكة صغيرة">Küçük ortaklık</div>
+              <div class="quiz-option-title" data-tr="2-6 ortak" data-en="2–6 partners" data-ru="2–6 партнёров" data-fa="من 2 إلى 6 شركاء">2-6 ortak</div>
+              <div class="quiz-option-subtitle" data-tr="Küçük ortaklık" data-en="Small partnership" data-ru="Малое партнёрство" data-fa="شراكة صغيرة">Küçük ortaklık</div>
             </div>
           </div>
-          <div class="quiz-option" onclick="selectOption(this,'q2','public')">
+          <div class="quiz-option" role="button" tabindex="0" aria-pressed="false" onclick="selectOption(this,'q2','public')">
             <div class="quiz-option-icon">🏛️</div>
             <div>
-              <div style="font-weight:500" data-tr="7+ hissedar" data-en="7+ shareholders" data-ru="7+ акционеров" data-fa="7 مساهمين أو أكثر">7+ hissedar</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Büyük ölçekli" data-en="Large scale" data-ru="Крупный масштаб" data-fa="نطاق واسع">Büyük ölçekli</div>
+              <div class="quiz-option-title" data-tr="7+ hissedar" data-en="7+ shareholders" data-ru="7+ акционеров" data-fa="7 مساهمين أو أكثر">7+ hissedar</div>
+              <div class="quiz-option-subtitle" data-tr="Büyük ölçekli" data-en="Large scale" data-ru="Крупный масштаб" data-fa="نطاق واسع">Büyük ölçekli</div>
             </div>
           </div>
         </div>
@@ -9733,25 +10116,25 @@ html[data-preview="1"] .theme-preview-chip {
       <div class="quiz-step" id="qstep-3">
         <div class="quiz-question" data-tr="Vergi konusundaki önceliğiniz nedir?" data-en="What is your priority regarding taxes?" data-ru="Каков ваш приоритет в отношении налогов?" data-fa="ما أولويتك بشأن الضرائب؟">Vergi konusundaki önceliğiniz nedir?</div>
         <div class="quiz-options">
-          <div class="quiz-option" onclick="selectOption(this,'q3','mintax')">
+          <div class="quiz-option" role="button" tabindex="0" aria-pressed="false" onclick="selectOption(this,'q3','mintax')">
             <div class="quiz-option-icon">💰</div>
             <div>
-              <div style="font-weight:500" data-tr="En düşük vergi oranı" data-en="Lowest tax rate" data-ru="Минимальная налоговая ставка" data-fa="أدنى معدل ضريبي">En düşük vergi oranı</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="%1 Kurumlar Vergisi" data-en="1% Corporate Tax" data-ru="1% корпоративный налог" data-fa="1% ضريبة على الشركات">%1 Kurumlar Vergisi</div>
+              <div class="quiz-option-title" data-tr="En düşük vergi oranı" data-en="Lowest tax rate" data-ru="Минимальная налоговая ставка" data-fa="أدنى معدل ضريبي">En düşük vergi oranı</div>
+              <div class="quiz-option-subtitle" data-tr="%1 Kurumlar Vergisi" data-en="1% Corporate Tax" data-ru="1% корпоративный налог" data-fa="1% ضريبة على الشركات">%1 Kurumlar Vergisi</div>
             </div>
           </div>
-          <div class="quiz-option" onclick="selectOption(this,'q3','zerotax')">
+          <div class="quiz-option" role="button" tabindex="0" aria-pressed="false" onclick="selectOption(this,'q3','zerotax')">
             <div class="quiz-option-icon">🚀</div>
             <div>
-              <div style="font-weight:500" data-tr="Sıfır kurumlar vergisi" data-en="Zero corporate tax" data-ru="Нулевой корпоративный налог" data-fa="صفر ضريبة على الشركات">Sıfır kurumlar vergisi</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Serbest Bölge avantajı" data-en="Free Zone advantage" data-ru="Преимущество свободной зоны" data-fa="ميزة المنطقة الحرة">Serbest Bölge avantajı</div>
+              <div class="quiz-option-title" data-tr="Sıfır kurumlar vergisi" data-en="Zero corporate tax" data-ru="Нулевой корпоративный налог" data-fa="صفر ضريبة على الشركات">Sıfır kurumlar vergisi</div>
+              <div class="quiz-option-subtitle" data-tr="Serbest Bölge avantajı" data-en="Free Zone advantage" data-ru="Преимущество свободной зоны" data-fa="ميزة المنطقة الحرة">Serbest Bölge avantajı</div>
             </div>
           </div>
-          <div class="quiz-option" onclick="selectOption(this,'q3','standard')">
+          <div class="quiz-option" role="button" tabindex="0" aria-pressed="false" onclick="selectOption(this,'q3','standard')">
             <div class="quiz-option-icon">📋</div>
             <div>
-              <div style="font-weight:500" data-tr="Standart vergi, tam yerel haklar" data-en="Standard tax, full local rights" data-ru="Стандартный налог, все местные права" data-fa="ضريبة عادية، حقوق محلية كاملة">Standart vergi, tam yerel haklar</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:2px" data-tr="Yerel şirket esnekliği" data-en="Local company flexibility" data-ru="Гибкость местной компании" data-fa="مرونة الشركة المحلية">Yerel şirket esnekliği</div>
+              <div class="quiz-option-title" data-tr="Standart vergi, tam yerel haklar" data-en="Standard tax, full local rights" data-ru="Стандартный налог, все местные права" data-fa="ضريبة عادية، حقوق محلية كاملة">Standart vergi, tam yerel haklar</div>
+              <div class="quiz-option-subtitle" data-tr="Yerel şirket esnekliği" data-en="Local company flexibility" data-ru="Гибкость местной компании" data-fa="مرونة الشركة المحلية">Yerel şirket esnekliği</div>
             </div>
           </div>
         </div>
@@ -10074,7 +10457,7 @@ html[data-preview="1"] .theme-preview-chip {
       <div class="corporate-lead-copy reveal-left">
         <div class="card-kicker"><span class="kicker-dot"></span><span data-tr="Kaya Plus Farkı" data-en="The Kaya Plus Difference" data-ru="Отличие Kaya Plus" data-fa="ما يميز كايا بلس">Kaya Plus Farkı</span></div>
         <h3 data-tr="Gerçek ofis altyapısı, güçlü marka hissi ve net mali rehberlik" data-en="Real office presence, strong brand identity and clear financial guidance" data-ru="Реальный офис, сильный бренд и чёткое финансовое сопровождение" data-fa="حضور مكتبي حقيقي وهوية قوية وإرشاد مالي واضح">Gerçek ofis altyapısı, güçlü marka hissi ve net mali rehberlik</h3>
-        <p data-tr="Kaya Plus; yalnızca resmi işlemleri takip eden bir ofis değil, müvekkilinin mali yapısını daha düzenli, daha güvenli ve daha yönetilebilir hale getirmeyi hedefleyen profesyonel bir çalışma düzenidir. Muhasebe, vergi, bordro ve kuruluş süreçlerinde ihtiyacınız olan açıklığı, disiplini ve güveni tek çatı altında sunuyoruz." data-en="Kaya Plus is more than an office following formal procedures; it is a professional operating model focused on making the client’s financial structure more orderly, secure and manageable. We bring the clarity, discipline and trust you need in accounting, tax, payroll and setup processes under one roof." data-ru="Kaya Plus — это не просто офис, который ведёт формальные процедуры, а профессиональная модель работы, направленная на то, чтобы финансовая структура клиента была более упорядоченной, безопасной и управляемой. Мы объединяем под одной крышей ясность, дисциплину и доверие в бухгалтерии, налогах, payroll и регистрационных процессах." data-fa="كايا بلس ليست مجرد مكتب يتابع الإجراءات الرسمية، بل هي أسلوب عمل مهني يهدف إلى جعل الهيكل المالي للعميل أكثر انتظامًا وأمانًا وقابلية للإدارة. نحن نجمع تحت سقف واحد الوضوح والانضباط والثقة في المحاسبة والضرائب والرواتب وإجراءات التأسيس.">Kaya Plus; yalnızca resmi işlemleri takip eden bir ofis değil, müvekkilinin mali yapısını daha düzenli, daha güvenli ve daha yönetilebilir hale getirmeyi hedefleyen profesyonel bir çalışma düzenidir. Muhasebe, vergi, bordro ve kuruluş süreçlerinde ihtiyacınız olan açıklığı, disiplini ve güveni tek çatı altında sunuyoruz.</p>
+        <p data-tr="Kaya Plus; yalnızca resmi işlemleri takip eden bir ofis değil, müvekkilinin mali yapısını daha düzenli, daha güvenli ve daha yönetilebilir hale getirmeyi hedefleyen profesyonel bir çalışma düzenidir. Muhasebe, vergi, bordro ve kuruluş süreçlerinde ihtiyacınız olan açıklığı, disiplini ve güveni tek çatı altında sunuyoruz." data-en="Kaya Plus is more than an office following formal procedures; it is a professional operating model focused on making the client’s financial structure more orderly, secure and manageable. We bring the clarity, discipline and trust you need in accounting, tax, payroll and setup processes under one roof." data-ru="Kaya Plus — это не просто офис, который ведёт формальные процедуры, а профессиональная модель работы, направленная на то, чтобы финансовая структура клиента была более упорядоченной, безопасной и управляемой. Мы объединяем под одной крышей ясность, дисциплину и доверие в бухгалтерии, налогах, зарплате и регистрационных процессах." data-fa="كايا بلس ليست مجرد مكتب يتابع الإجراءات الرسمية، بل هي أسلوب عمل مهني يهدف إلى جعل الهيكل المالي للعميل أكثر انتظامًا وأمانًا وقابلية للإدارة. نحن نجمع تحت سقف واحد الوضوح والانضباط والثقة في المحاسبة والضرائب والرواتب وإجراءات التأسيس.">Kaya Plus; yalnızca resmi işlemleri takip eden bir ofis değil, müvekkilinin mali yapısını daha düzenli, daha güvenli ve daha yönetilebilir hale getirmeyi hedefleyen profesyonel bir çalışma düzenidir. Muhasebe, vergi, bordro ve kuruluş süreçlerinde ihtiyacınız olan açıklığı, disiplini ve güveni tek çatı altında sunuyoruz.</p>
         <div class="corporate-pill-list">
           <span class="corporate-pill" data-tr="Siyah-altın premium marka kimliği" data-en="Black-and-gold premium brand identity" data-ru="Премиальная чёрно-золотая айдентика" data-fa="هوية فاخرة بالأسود والذهبي">Siyah-altın premium marka kimliği</span>
           <span class="corporate-pill" data-tr="Gerçek ofis ve düzenli süreç takibi" data-en="Real office presence and disciplined process tracking" data-ru="Реальный офис и дисциплинированное сопровождение" data-fa="مكتب حقيقي ومتابعة منضبطة للإجراءات">Gerçek ofis ve düzenli süreç takibi</span>
@@ -10116,7 +10499,7 @@ html[data-preview="1"] .theme-preview-chip {
         <p data-tr="Kaya Plus Muhasebe ve Mali Danışmanlık; engin bilgi birikimi, saha tecrübesi ve güven veren çalışma anlayışıyla, gerek yerel işletmelere gerek yabancı yatırımcılara profesyonel hizmet sunan güçlü kurumsal yapılardan biri olma hedefiyle hareket eder." data-en="Kaya Plus moves with the goal of being one of the strong corporate structures serving both local businesses and foreign investors through deep expertise, field experience and a confidence-building style of work." data-ru="Kaya Plus стремится быть одной из сильных корпоративных структур, предоставляющих профессиональные услуги как местному бизнесу, так и иностранным инвесторам, опираясь на глубокую экспертизу и практический опыт." data-fa="تتحرك كايا بلس بهدف أن تكون من الجهات المؤسسية القوية التي تقدم خدمات مهنية للشركات المحلية والمستثمرين الأجانب، بالاعتماد على المعرفة العميقة والخبرة العملية وأسلوب عمل يعزز الثقة.">Kaya Plus Muhasebe ve Mali Danışmanlık; engin bilgi birikimi, saha tecrübesi ve güven veren çalışma anlayışıyla, gerek yerel işletmelere gerek yabancı yatırımcılara profesyonel hizmet sunan güçlü kurumsal yapılardan biri olma hedefiyle hareket eder.</p>
         <ul class="detail-list">
           <li data-tr="Yerli ve yabancı müvekkile aynı anda hitap eden danışmanlık omurgası" data-en="An advisory structure serving both local and foreign clients" data-ru="Консалтинговая структура для местных и иностранных клиентов" data-fa="هيكل استشاري يخدم العملاء المحليين والأجانب">Yerli ve yabancı müvekkile aynı anda hitap eden danışmanlık omurgası</li>
-          <li data-tr="Muhasebe, vergi, bordro ve kuruluş süreçlerinde tek çatı çözümü" data-en="One-roof support for accounting, tax, payroll and setup processes" data-ru="Поддержка под одной крышей по бухгалтерии, налогам, payroll и регистрации" data-fa="حل متكامل في المحاسبة والضرائب والرواتب والتأسيس">Muhasebe, vergi, bordro ve kuruluş süreçlerinde tek çatı çözümü</li>
+          <li data-tr="Muhasebe, vergi, bordro ve kuruluş süreçlerinde tek çatı çözümü" data-en="One-roof support for accounting, tax, payroll and setup processes" data-ru="Поддержка под одной крышей по бухгалтерии, налогам, зарплате и регистрации" data-fa="حل متكامل في المحاسبة والضرائب والرواتب والتأسيس">Muhasebe, vergi, bordro ve kuruluş süreçlerinde tek çatı çözümü</li>
           <li data-tr="İtibar, düzen ve güven duygusunu aynı anda güçlendiren yaklaşım" data-en="An approach that strengthens reputation, order and trust together" data-ru="Подход, усиливающий репутацию, порядок и доверие" data-fa="نهج يعزز السمعة والتنظيم والثقة معًا">İtibar, düzen ve güven duygusunu aynı anda güçlendiren yaklaşım</li>
         </ul>
       </article>
@@ -10351,17 +10734,17 @@ html[data-preview="1"] .theme-preview-chip {
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
-        <span data-tr="Bordro hizmeti işletmeye ne kazandırır?" data-en="What does payroll service add to a business?" data-ru="Что даёт бизнесу payroll-сопровождение?" data-fa="ما الذي تضيفه خدمة الرواتب إلى العمل؟">Bordro hizmeti işletmeye ne kazandırır?</span>
+        <span data-tr="Bordro hizmeti işletmeye ne kazandırır?" data-en="What does payroll service add to a business?" data-ru="Что даёт бизнесу зарплатное сопровождение?" data-fa="ما الذي تضيفه خدمة الرواتب إلى العمل؟">Bordro hizmeti işletmeye ne kazandırır?</span>
         <div class="faq-icon">+</div>
       </div>
-      <div class="faq-a" data-tr="Düzenli bordro hizmeti; maaş hesaplamalarının doğru yapılmasını, sosyal sigorta ve ihtiyat sandığı yükümlülüklerinin zamanında izlenmesini ve personel giriş-çıkış süreçlerinin daha güvenli yürütülmesini sağlar. Özellikle büyüyen işletmeler için ciddi operasyon kolaylığı sunar." data-en="Regular payroll service ensures accurate salary calculations, timely tracking of social insurance and provident fund obligations, and safer management of employee onboarding and exits. It provides major operational ease for growing businesses." data-ru="Регулярное payroll-сопровождение обеспечивает корректный расчет зарплат, своевременный контроль соцстраха и пенсионных обязательств, а также более безопасное ведение кадровых процессов. Для растущего бизнеса это даёт серьёзное операционное удобство." data-fa="تضمن خدمة الرواتب المنتظمة صحة احتساب الرواتب، ومتابعة التزامات الضمان الاجتماعي وصندوق الادخار في وقتها، وإدارة إجراءات دخول وخروج الموظفين بشكل أكثر أمانًا. وهي تمنح الشركات المتنامية سهولة تشغيلية كبيرة.">Düzenli bordro hizmeti; maaş hesaplamalarının doğru yapılmasını, sosyal sigorta ve ihtiyat sandığı yükümlülüklerinin zamanında izlenmesini ve personel giriş-çıkış süreçlerinin daha güvenli yürütülmesini sağlar. Özellikle büyüyen işletmeler için ciddi operasyon kolaylığı sunar.</div>
+      <div class="faq-a" data-tr="Düzenli bordro hizmeti; maaş hesaplamalarının doğru yapılmasını, sosyal sigorta ve ihtiyat sandığı yükümlülüklerinin zamanında izlenmesini ve personel giriş-çıkış süreçlerinin daha güvenli yürütülmesini sağlar. Özellikle büyüyen işletmeler için ciddi operasyon kolaylığı sunar." data-en="Regular payroll service ensures accurate salary calculations, timely tracking of social insurance and provident fund obligations, and safer management of employee onboarding and exits. It provides major operational ease for growing businesses." data-ru="Регулярное зарплатное сопровождение обеспечивает корректный расчёт зарплат, своевременный контроль соцстраха и пенсионных обязательств, а также более безопасное ведение кадровых процессов. Для растущего бизнеса это даёт серьёзное операционное удобство." data-fa="تضمن خدمة الرواتب المنتظمة صحة احتساب الرواتب، ومتابعة التزامات الضمان الاجتماعي وصندوق الادخار في وقتها، وإدارة إجراءات دخول وخروج الموظفين بشكل أكثر أمانًا. وهي تمنح الشركات المتنامية سهولة تشغيلية كبيرة.">Düzenli bordro hizmeti; maaş hesaplamalarının doğru yapılmasını, sosyal sigorta ve ihtiyat sandığı yükümlülüklerinin zamanında izlenmesini ve personel giriş-çıkış süreçlerinin daha güvenli yürütülmesini sağlar. Özellikle büyüyen işletmeler için ciddi operasyon kolaylığı sunar.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
         <span data-tr="Şirket kuruluşundan sonra muhasebe hizmeti de alabilir miyim?" data-en="Can I also receive accounting services after company formation?" data-ru="Могу ли я получить бухгалтерские услуги после регистрации?" data-fa="هل يمكنني الحصول على خدمات محاسبية بعد تأسيس الشركة؟">Şirket kuruluşundan sonra muhasebe hizmeti de alabilir miyim?</span>
         <div class="faq-icon">+</div>
       </div>
-      <div class="faq-a" data-tr="Evet. Kaya Plus Muhasebe ve Mali Danışmanlık olarak şirket kuruluşunun yanı sıra muhasebe, vergi danışmanlığı, bordro, denetim bakışı ve yasal uyumluluk hizmetleri de sunuyoruz. Müvekkillerimizin büyük bölümü kuruluş sonrasında da bizimle çalışmaya devam eder." data-en="Yes. Kaya Plus also provides accounting, tax advisory, payroll, audit-minded review and compliance services after formation. Most clients continue working with us after setup." data-ru="Да. Kaya Plus также оказывает бухгалтерские, налоговые, payroll и compliance-услуги после регистрации. Большинство клиентов продолжают работать с нами и после запуска." data-fa="نعم. تقدم كايا بلس أيضاً خدمات المحاسبة والاستشارات الضريبية والرواتب والمراجعة والامتثال بعد التأسيس. ويستمر معظم العملاء معنا بعد بدء النشاط.">Evet. Kaya Plus Muhasebe ve Mali Danışmanlık olarak şirket kuruluşunun yanı sıra muhasebe, vergi danışmanlığı, bordro, denetim bakışı ve yasal uyumluluk hizmetleri de sunuyoruz.</div>
+      <div class="faq-a" data-tr="Evet. Kaya Plus Muhasebe ve Mali Danışmanlık olarak şirket kuruluşunun yanı sıra muhasebe, vergi danışmanlığı, bordro, denetim bakışı ve yasal uyumluluk hizmetleri de sunuyoruz. Müvekkillerimizin büyük bölümü kuruluş sonrasında da bizimle çalışmaya devam eder." data-en="Yes. Kaya Plus also provides accounting, tax advisory, payroll, audit-minded review and compliance services after formation. Most clients continue working with us after setup." data-ru="Да. Kaya Plus также оказывает после регистрации бухгалтерские и налоговые услуги, зарплатное сопровождение, консультативный аудит и комплаенс-поддержку. Большинство клиентов продолжают работать с нами и после запуска." data-fa="نعم. تقدم كايا بلس أيضاً خدمات المحاسبة والاستشارات الضريبية والرواتب والمراجعة والامتثال بعد التأسيس. ويستمر معظم العملاء معنا بعد بدء النشاط.">Evet. Kaya Plus Muhasebe ve Mali Danışmanlık olarak şirket kuruluşunun yanı sıra muhasebe, vergi danışmanlığı, bordro, denetim bakışı ve yasal uyumluluk hizmetleri de sunuyoruz.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
@@ -10375,7 +10758,7 @@ html[data-preview="1"] .theme-preview-chip {
         <span data-tr="Muhasebe danışmanlığı sadece kayıt tutmak mı demektir?" data-en="Is accounting advisory only about bookkeeping?" data-ru="Означает ли бухгалтерский консалтинг только ведение записей?" data-fa="هل تعني الاستشارات المحاسبية مجرد مسك الدفاتر؟">Muhasebe danışmanlığı sadece kayıt tutmak mı demektir?</span>
         <div class="faq-icon">+</div>
       </div>
-      <div class="faq-a" data-tr="Hayır. Güçlü bir muhasebe danışmanlığı; kayıt düzeninin kurulması, vergi ve bordro süreçlerinin izlenmesi, resmi yükümlülüklerin kontrolü, mali tabloların daha anlaşılır hale getirilmesi ve işletme sahibine karar desteği sağlanması gibi daha geniş bir hizmet alanını kapsar." data-en="No. Strong accounting advisory covers a wider service area such as setting up the record structure, tracking tax and payroll processes, controlling official obligations, making financial statements easier to understand and supporting management decisions." data-ru="Нет. Сильный бухгалтерский консалтинг охватывает более широкий спектр: постановку учета, сопровождение налогов и payroll, контроль официальных обязательств, упрощение финансовой отчетности и поддержку управленческих решений." data-fa="لا. فالاستشارات المحاسبية القوية تشمل نطاقًا أوسع مثل تنظيم السجلات ومتابعة الضرائب والرواتب ومراقبة الالتزامات الرسمية وتبسيط القوائم المالية ودعم قرارات الإدارة.">Hayır. Güçlü bir muhasebe danışmanlığı; kayıt düzeninin kurulması, vergi ve bordro süreçlerinin izlenmesi, resmi yükümlülüklerin kontrolü, mali tabloların daha anlaşılır hale getirilmesi ve işletme sahibine karar desteği sağlanması gibi daha geniş bir hizmet alanını kapsar.</div>
+      <div class="faq-a" data-tr="Hayır. Güçlü bir muhasebe danışmanlığı; kayıt düzeninin kurulması, vergi ve bordro süreçlerinin izlenmesi, resmi yükümlülüklerin kontrolü, mali tabloların daha anlaşılır hale getirilmesi ve işletme sahibine karar desteği sağlanması gibi daha geniş bir hizmet alanını kapsar." data-en="No. Strong accounting advisory covers a wider service area such as setting up the record structure, tracking tax and payroll processes, controlling official obligations, making financial statements easier to understand and supporting management decisions." data-ru="Нет. Сильный бухгалтерский консалтинг охватывает более широкий спектр: постановку учета, сопровождение налогов и зарплаты, контроль официальных обязательств, упрощение финансовой отчетности и поддержку управленческих решений." data-fa="لا. فالاستشارات المحاسبية القوية تشمل نطاقًا أوسع مثل تنظيم السجلات ومتابعة الضرائب والرواتب ومراقبة الالتزامات الرسمية وتبسيط القوائم المالية ودعم قرارات الإدارة.">Hayır. Güçlü bir muhasebe danışmanlığı; kayıt düzeninin kurulması, vergi ve bordro süreçlerinin izlenmesi, resmi yükümlülüklerin kontrolü, mali tabloların daha anlaşılır hale getirilmesi ve işletme sahibine karar desteği sağlanması gibi daha geniş bir hizmet alanını kapsar.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">
@@ -10391,7 +10774,7 @@ html[data-preview="1"] .theme-preview-chip {
 <section id="contact">
   <div class="section-tag" data-tr="İletişim" data-en="Contact Us" data-ru="Свяжитесь с нами" data-fa="تواصل معنا">İletişim</div>
   <h2 class="section-title reveal" data-tr="Kaya Plus ekibine doğrudan ulaşın" data-en="Reach the Kaya Plus team directly" data-ru="Свяжитесь с командой Kaya Plus напрямую" data-fa="تواصل مباشرة مع فريق كايا بلس">Kaya Plus ekibine doğrudan ulaşın</h2>
-  <p class="section-sub reveal" data-tr="Telefon, e-posta, WhatsApp, Instagram ve Facebook üzerinden bize ulaşın. Talebinizi aldıktan sonra muhasebe, vergi, bordro ya da kuruluş süreciniz için en doğru ilk adımı birlikte netleştirelim." data-en="Reach us by phone, email, WhatsApp, Instagram or Facebook. Once we receive your request, we will clarify the right first step for your accounting, tax, payroll or company setup process." data-ru="Свяжитесь с нами по телефону, e-mail, WhatsApp, Instagram или Facebook. Получив запрос, мы поможем определить правильный первый шаг по бухгалтерии, налогам, payroll или регистрации компании." data-fa="تواصل معنا عبر الهاتف أو البريد الإلكتروني أو واتساب أو إنستغرام أو فيسبوك. بعد استلام طلبك نحدد معًا الخطوة الأولى الأنسب للمحاسبة أو الضرائب أو الرواتب أو تأسيس الشركة.">Telefon, e-posta, WhatsApp, Instagram ve Facebook üzerinden bize ulaşın. Talebinizi aldıktan sonra muhasebe, vergi, bordro ya da kuruluş süreciniz için en doğru ilk adımı birlikte netleştirelim.</p>
+  <p class="section-sub reveal" data-tr="Telefon, e-posta, WhatsApp, Instagram ve Facebook üzerinden bize ulaşın. Talebinizi aldıktan sonra muhasebe, vergi, bordro ya da kuruluş süreciniz için en doğru ilk adımı birlikte netleştirelim." data-en="Reach us by phone, email, WhatsApp, Instagram or Facebook. Once we receive your request, we will clarify the right first step for your accounting, tax, payroll or company setup process." data-ru="Свяжитесь с нами по телефону, электронной почте, WhatsApp, Instagram или Facebook. Получив запрос, мы поможем определить правильный первый шаг по бухгалтерии, налогам, зарплате или регистрации компании." data-fa="تواصل معنا عبر الهاتف أو البريد الإلكتروني أو واتساب أو إنستغرام أو فيسبوك. بعد استلام طلبك نحدد معًا الخطوة الأولى الأنسب للمحاسبة أو الضرائب أو الرواتب أو تأسيس الشركة.">Telefon, e-posta, WhatsApp, Instagram ve Facebook üzerinden bize ulaşın. Talebinizi aldıktan sonra muhasebe, vergi, bordro ya da kuruluş süreciniz için en doğru ilk adımı birlikte netleştirelim.</p>
 
   <div class="contact-grid">
     <div class="contact-info-block">
@@ -10453,28 +10836,28 @@ html[data-preview="1"] .theme-preview-chip {
       </div>
       <div id="form-wrap">
         <div class="form-title" data-tr="Tek pencerede lead toplama ve sohbet" data-en="Lead capture and chat in one window" data-ru="Сбор лида и чат в одном окне" data-fa="جمع العملاء والدردشة في نافذة واحدة">Tek pencerede lead toplama ve sohbet</div>
-        <div class="form-sub" data-tr="Sağ alttaki canlı destek butonu açıldığında ziyaretçiden önce ad soyad ve e-posta istenir, ardından muhasebe, vergi, bordro veya kuruluş ihtiyacını netleştiren kısa sohbet akışı başlar." data-en="When the live support button in the bottom-right opens, visitors are asked for their full name and email first, then a short qualifying chat begins to clarify accounting, tax, payroll or setup needs." data-ru="При открытии кнопки поддержки в правом нижнем углу сначала запрашиваются имя и e-mail, затем начинается короткий чат, который помогает уточнить потребность в бухгалтерии, налогах, payroll или регистрации." data-fa="عند فتح زر الدعم المباشر في أسفل اليمين، يُطلب أولاً الاسم الكامل والبريد الإلكتروني، ثم تبدأ محادثة قصيرة لتحديد احتياجك في المحاسبة أو الضرائب أو الرواتب أو التأسيس.">Sağ alttaki canlı destek butonu açıldığında ziyaretçiden önce ad soyad ve e-posta istenir, ardından muhasebe, vergi, bordro veya kuruluş ihtiyacını netleştiren kısa sohbet akışı başlar.</div>
+        <div class="form-sub" data-tr="Sağ alttaki canlı destek butonu açıldığında ziyaretçiden önce ad soyad ve e-posta istenir, ardından muhasebe, vergi, bordro veya kuruluş ihtiyacını netleştiren kısa sohbet akışı başlar." data-en="When the live support button in the bottom-right opens, visitors are asked for their full name and email first, then a short qualifying chat begins to clarify accounting, tax, payroll or setup needs." data-ru="При открытии кнопки поддержки в правом нижнем углу сначала запрашиваются имя и электронная почта, затем начинается короткий чат, который помогает уточнить потребность в бухгалтерии, налогах, зарплате или регистрации." data-fa="عند فتح زر الدعم المباشر في أسفل اليمين، يُطلب أولاً الاسم الكامل والبريد الإلكتروني، ثم تبدأ محادثة قصيرة لتحديد احتياجك في المحاسبة أو الضرائب أو الرواتب أو التأسيس.">Sağ alttaki canlı destek butonu açıldığında ziyaretçiden önce ad soyad ve e-posta istenir, ardından muhasebe, vergi, bordro veya kuruluş ihtiyacını netleştiren kısa sohbet akışı başlar.</div>
 
         <div class="support-flow">
           <div class="support-flow-item">
             <span class="support-flow-num">1</span>
             <div class="support-flow-text">
               <strong data-tr="Ziyaretçiyi tanıyın" data-en="Capture the visitor" data-ru="Узнайте посетителя" data-fa="تعرّف على الزائر">Ziyaretçiyi tanıyın</strong>
-              <span data-tr="Ad soyad ve e-posta ile lead bilgisini ilk adımda toplayın." data-en="Collect the lead with full name and email in the first step." data-ru="Соберите имя и e-mail на первом шаге." data-fa="اجمع الاسم الكامل والبريد الإلكتروني في الخطوة الأولى.">Ad soyad ve e-posta ile lead bilgisini ilk adımda toplayın.</span>
+              <span data-tr="Ad soyad ve e-posta ile lead bilgisini ilk adımda toplayın." data-en="Collect the lead with full name and email in the first step." data-ru="Соберите имя и электронную почту на первом шаге." data-fa="اجمع الاسم الكامل والبريد الإلكتروني في الخطوة الأولى.">Ad soyad ve e-posta ile lead bilgisini ilk adımda toplayın.</span>
             </div>
           </div>
           <div class="support-flow-item">
             <span class="support-flow-num">2</span>
             <div class="support-flow-text">
               <strong data-tr="İhtiyacı netleştirin" data-en="Qualify the need" data-ru="Уточните потребность" data-fa="حدّد الاحتياج">İhtiyacı netleştirin</strong>
-                <span data-tr="Muhasebe, vergi, bordro veya kuruluş ihtiyacını birkaç kısa soruyla netleştirin." data-en="Clarify accounting, tax, payroll or setup needs with a few short questions." data-ru="Уточните потребности в бухгалтерии, налогах, payroll или регистрации с помощью нескольких коротких вопросов." data-fa="حدّد احتياج المحاسبة أو الضرائب أو الرواتب أو التأسيس عبر بضع أسئلة قصيرة.">Muhasebe, vergi, bordro veya kuruluş ihtiyacını birkaç kısa soruyla netleştirin.</span>
+                <span data-tr="Muhasebe, vergi, bordro veya kuruluş ihtiyacını birkaç kısa soruyla netleştirin." data-en="Clarify accounting, tax, payroll or setup needs with a few short questions." data-ru="Уточните потребности в бухгалтерии, налогах, зарплате или регистрации с помощью нескольких коротких вопросов." data-fa="حدّد احتياج المحاسبة أو الضرائب أو الرواتب أو التأسيس عبر بضع أسئلة قصيرة.">Muhasebe, vergi, bordro veya kuruluş ihtiyacını birkaç kısa soruyla netleştirin.</span>
               </div>
             </div>
           <div class="support-flow-item">
             <span class="support-flow-num">3</span>
             <div class="support-flow-text">
               <strong data-tr="Takibe hazır hale getirin" data-en="Prepare for follow-up" data-ru="Подготовьте к последующему контакту" data-fa="جهّزه للمتابعة">Takibe hazır hale getirin</strong>
-              <span data-tr="E-postaya düşecek net bir talep özetiyle satış ekibini hızlandırın." data-en="Give your team a clear request summary for faster follow-up by email." data-ru="Передайте команде чёткое резюме запроса для быстрого ответа по e-mail." data-fa="امنح فريقك ملخصاً واضحاً للطلب لتسريع المتابعة عبر البريد الإلكتروني.">E-postaya düşecek net bir talep özetiyle satış ekibini hızlandırın.</span>
+              <span data-tr="E-postaya düşecek net bir talep özetiyle satış ekibini hızlandırın." data-en="Give your team a clear request summary for faster follow-up by email." data-ru="Передайте команде чёткое резюме запроса для быстрого ответа по электронной почте." data-fa="امنح فريقك ملخصاً واضحاً للطلب لتسريع المتابعة عبر البريد الإلكتروني.">E-postaya düşecek net bir talep özetiyle satış ekibini hızlandırın.</span>
             </div>
           </div>
         </div>
@@ -10538,7 +10921,7 @@ html[data-preview="1"] .theme-preview-chip {
       <div class="mission-points">
         <div class="mission-point">
           <strong data-tr="Misyonumuz" data-en="Our Mission" data-ru="Наша миссия" data-fa="رسالتنا">Misyonumuz</strong>
-          <span data-tr="Muhasebe, vergi, bordro ve tescil süreçlerinde mevzuata uygun, zamanında ve anlaşılır destek sunarak işletmelerin mali düzenini güvenli hale getirmek." data-en="To make financial operations safer by delivering timely, compliant and easy-to-understand support in accounting, tax, payroll and registration processes." data-ru="Сделать финансовые процессы безопаснее, предоставляя своевременную, понятную и соответствующую законодательству поддержку по бухгалтерии, налогам, payroll и регистрации." data-fa="جعل العمليات المالية أكثر أمانًا من خلال تقديم دعم واضح ومتوافق مع التشريعات وفي الوقت المناسب في المحاسبة والضرائب والرواتب والتسجيل.">Muhasebe, vergi, bordro ve tescil süreçlerinde mevzuata uygun, zamanında ve anlaşılır destek sunarak işletmelerin mali düzenini güvenli hale getirmek.</span>
+          <span data-tr="Muhasebe, vergi, bordro ve tescil süreçlerinde mevzuata uygun, zamanında ve anlaşılır destek sunarak işletmelerin mali düzenini güvenli hale getirmek." data-en="To make financial operations safer by delivering timely, compliant and easy-to-understand support in accounting, tax, payroll and registration processes." data-ru="Сделать финансовые процессы безопаснее, предоставляя своевременную, понятную и соответствующую законодательству поддержку по бухгалтерии, налогам, зарплате и регистрации." data-fa="جعل العمليات المالية أكثر أمانًا من خلال تقديم دعم واضح ومتوافق مع التشريعات وفي الوقت المناسب في المحاسبة والضرائب والرواتب والتسجيل.">Muhasebe, vergi, bordro ve tescil süreçlerinde mevzuata uygun, zamanında ve anlaşılır destek sunarak işletmelerin mali düzenini güvenli hale getirmek.</span>
         </div>
         <div class="mission-point">
           <strong data-tr="Vizyonumuz" data-en="Our Vision" data-ru="Наше видение" data-fa="رؤيتنا">Vizyonumuz</strong>
@@ -10604,7 +10987,7 @@ html[data-preview="1"] .theme-preview-chip {
     </div>
   </div>
   <div class="footer-bottom">
-    <span data-tr="© 2025 Kaya Plus Muhasebe ve Mali Danışmanlık. Tüm hakları saklıdır." data-en="© 2025 Kaya Plus Accounting and Financial Advisory. All rights reserved." data-ru="© 2025 Kaya Plus Accounting and Financial Advisory. Все права защищены." data-fa="© 2025 Kaya Plus Accounting and Financial Advisory. جميع الحقوق محفوظة.">© 2025 Kaya Plus Muhasebe ve Mali Danışmanlık. Tüm hakları saklıdır.</span>
+    <span data-tr="© 2025 Kaya Plus Muhasebe ve Mali Danışmanlık. Tüm hakları saklıdır." data-en="© 2025 Kaya Plus Accounting and Financial Advisory. All rights reserved." data-ru="© 2025 Kaya Plus Бухгалтерия и финансовый консалтинг. Все права защищены." data-fa="© 2025 Kaya Plus Accounting and Financial Advisory. جميع الحقوق محفوظة.">© 2025 Kaya Plus Muhasebe ve Mali Danışmanlık. Tüm hakları saklıdır.</span>
     <span data-tr="Lefkoşa, Kuzey Kıbrıs" data-en="Nicosia, North Cyprus" data-ru="Никосия, Северный Кипр" data-fa="نيقوسيا، شمال قبرص">Lefkoşa, Kuzey Kıbrıs</span>
   </div>
   <div class="footer-photo-credit">
@@ -10637,7 +11020,7 @@ html[data-preview="1"] .theme-preview-chip {
               <input id="support-name" type="text" autocomplete="name" placeholder="Adınız ve soyadınız" data-ph-tr="Adınız ve soyadınız" data-ph-en="Your full name" data-ph-ru="Ваше полное имя" data-ph-ar="اسمك الكامل">
             </div>
             <div class="live-support-field">
-              <label for="support-email" data-tr="E-posta adresiniz" data-en="Your email address" data-ru="Ваш e-mail" data-fa="بريدك الإلكتروني">E-posta adresiniz</label>
+              <label for="support-email" data-tr="E-posta adresiniz" data-en="Your email address" data-ru="Ваш адрес электронной почты" data-fa="بريدك الإلكتروني">E-posta adresiniz</label>
               <input id="support-email" type="email" autocomplete="email" placeholder="ornek@email.com" data-ph-tr="ornek@email.com" data-ph-en="name@email.com" data-ph-ru="name@email.com" data-ph-ar="name@email.com">
             </div>
           </div>
@@ -10866,11 +11249,32 @@ function setMobileNav(open) {
   const mobileNav = document.getElementById('mobile-nav');
   const hamburger = document.querySelector('.hamburger');
   if (!mobileNav || !hamburger) return;
+  const headerZoomLocked = document.body.classList.contains('header-zoom-lock');
+  if (headerZoomLocked) open = false;
 
   mobileNav.classList.toggle('open', open);
   hamburger.classList.toggle('active', open);
   hamburger.setAttribute('aria-expanded', String(open));
-  document.body.classList.toggle('mobile-nav-open', open && window.innerWidth <= 768);
+  document.body.classList.toggle('mobile-nav-open', open && window.innerWidth <= 768 && !headerZoomLocked);
+}
+
+const HEADER_ZOOM_LOCK_MIN_EFFECTIVE_WIDTH = 1180;
+
+function supportsHeaderZoomLock() {
+  return !window.matchMedia('(pointer: coarse)').matches && (navigator.maxTouchPoints || 0) === 0;
+}
+
+function shouldLockDesktopHeader() {
+  if (!supportsHeaderZoomLock()) return false;
+  if (window.innerWidth >= 769) return false;
+  const effectiveWidth = window.innerWidth * (window.devicePixelRatio || 1);
+  return effectiveWidth >= HEADER_ZOOM_LOCK_MIN_EFFECTIVE_WIDTH;
+}
+
+function syncHeaderZoomLock() {
+  const locked = shouldLockDesktopHeader();
+  document.body.classList.toggle('header-zoom-lock', locked);
+  if (locked) setMobileNav(false);
 }
 
 function openLiveSupport(event) {
@@ -11913,6 +12317,584 @@ function initExchangeRatesCard() {
 }
 
 // ── LANGUAGE SYSTEM ──
+const HOME_FA_TEXT_OVERRIDES = {
+  "Kaya Plus": "کایا پلاس",
+  "Ana Sayfa": "صفحه اصلی",
+  "Neden Kaya Plus?": "چرا کایا پلاس؟",
+  "Hizmetler": "خدمات",
+  "Yasalar/Vergiler": "قوانین/مالیات",
+  "KKTC'de Şirket Kurma": "ثبت شرکت در قبرس شمالی",
+  "Şirket Kurmanın Şartları": "شرایط تأسیس شرکت",
+  "Medya": "رسانه",
+  "İletişim": "تماس",
+  "Şirket Kurma ve Mali Danışmanlık": "ثبت شرکت و مشاوره مالی",
+  "Kaya Plus; KKTC'de şirket kurma, yönetme, muhasebe, vergi, bordro, kuruluş, tescil ve mali danışmanlık başlıklarında yerli ve yabancı müvekkillere gerçek ofis altyapısı, düzenli süreç takibi ve güven veren danışmanlık desteği sunar.": "کایا پلاس به مشتریان داخلی و خارجی در قبرس شمالی برای ثبت و مدیریت شرکت، حسابداری، مالیات، حقوق و دستمزد، امور تأسیس و ثبت و مشاوره مالی، زیرساخت واقعی دفتر، پیگیری منظم فرایندها و پشتیبانی مشاوره‌ای قابل اعتماد ارائه می‌دهد.",
+  "Muhasebe Danışmanlığı": "مشاوره حسابداری",
+  "Muhasebe ve Mali İşler Hizmetleri": "خدمات حسابداری و امور مالی",
+  "Değişen mevzuat ve ekonomik koşullar içinde işletmelerin kayıt düzenini doğru kurması ve yasal yükümlülüklerini düzenli yürütmesi için kapsamlı muhasebe desteği sunuyoruz.": "در شرایط متغیر مقررات و اقتصاد، پشتیبانی جامع حسابداری ارائه می‌دهیم تا کسب‌وکارها ساختار ثبت خود را درست بنا کنند و تعهدات قانونی‌شان را منظم پیش ببرند.",
+  "Mali görünürlüğü güçlendiren çalışma düzeni": "نظم کاری که شفافیت مالی را تقویت می‌کند",
+  "Belge akışı, hesap kontrolü ve düzenli raporlama aynı çerçevede ilerlediğinde işletme daha güvenli hareket eder.": "وقتی جریان اسناد، کنترل حساب‌ها و گزارش‌دهی منظم در یک چارچوب پیش برود، کسب‌وکار با اطمینان بیشتری حرکت می‌کند.",
+  "Birebir danışmanlık akışı": "فرایند مشاوره فردی",
+  "Yöneticinin ihtiyacına göre yapılan net görüşmeler, muhasebe ve vergi tarafında doğru adımların daha hızlı atılmasını sağlar.": "گفت‌وگوهای شفاف متناسب با نیاز مدیر، باعث می‌شود گام‌های درست در حسابداری و مالیات سریع‌تر برداشته شود.",
+  "Güven veren mali iş ortaklığı": "همکاری مالی مبتنی بر اعتماد",
+  "Muhasebe desteği yalnızca kayıt değil; uzun vadeli güven, şeffaf iletişim ve sürdürülebilir iş ilişkisi anlamına gelir.": "پشتیبانی حسابداری فقط ثبت اسناد نیست؛ بلکه به معنای اعتماد بلندمدت، ارتباط شفاف و رابطه کاری پایدار است.",
+  "Muhasebe Altyapısı": "زیرساخت حسابداری",
+  "Şirketinizin mali düzenini daha net, güvenli ve sürdürülebilir hale getirin": "نظم مالی شرکت خود را شفاف‌تر، امن‌تر و پایدارتر کنید",
+  "Kaya Plus Muhasebe ve Mali Danışmanlık olarak işletmelere muhasebe, bordro, vergi muhasebesi ve tescil işlemlerinde düzenli ve mevzuata uyumlu destek veriyoruz. Hedefimiz, mali yapınızı daha görünür, daha güvenli ve daha yönetilebilir hale getirmektir.": "در Kaya Plus برای حسابداری، حقوق و دستمزد، حسابداری مالیاتی و امور ثبت، پشتیبانی منظم و منطبق با مقررات ارائه می‌دهیم. هدف ما این است که ساختار مالی شما شفاف‌تر، امن‌تر و قابل مدیریت‌تر شود.",
+  "Muhasebe Düzeni": "نظم حسابداری",
+  "Günlük kayıt akışı ve hesap planı aynı sistem içinde ilerler.": "جریان ثبت روزانه و سرفصل حساب‌ها در یک سیستم واحد پیش می‌رود.",
+  "Bordro Akışı": "فرایند حقوق و دستمزد",
+  "Personel süreçleri, sosyal sigorta ve ihtiyat sandığı takibi birlikte yürür.": "فرایندهای پرسنلی، بیمه اجتماعی و پیگیری صندوق احتیاط به‌صورت هماهنگ انجام می‌شود.",
+  "Vergi Takibi": "پیگیری مالیات",
+  "Beyan dönemleri ve hesaplamalar zamanında ilerleyecek şekilde planlanır.": "دوره‌های اظهارنامه و محاسبات طوری برنامه‌ریزی می‌شوند که به‌موقع پیش بروند.",
+  "Tescil Süreci": "فرایند ثبت",
+  "Resmi açılış, kurum kayıtları ve başvuru adımları düzenli biçimde takip edilir.": "افتتاح رسمی، ثبت در نهادها و مراحل درخواست به‌صورت منظم پیگیری می‌شود.",
+  "Düzenli muhasebe takibi, nakit akışını, gider yapısını ve vergi yükünü daha net görmeyi sağlar.": "پیگیری منظم حسابداری باعث می‌شود جریان نقدی، ساختار هزینه و بار مالیاتی را شفاف‌تر ببینید.",
+  "Bu yüzden muhasebe, bordro, vergi planlaması ve resmi kayıt süreçlerini tek bir sistem içinde birlikte yönetiyoruz.": "به همین دلیل حسابداری، حقوق و دستمزد، برنامه‌ریزی مالیاتی و فرایندهای رسمی ثبت را در یک سیستم واحد با هم مدیریت می‌کنیم.",
+  "Günlük kayıt akışı kontrollü ilerler": "جریان ثبت روزانه به‌صورت کنترل‌شده پیش می‌رود",
+  "Evrak, hesap planı ve dönem içi hareketler tek sistem içinde daha okunur hale gelir.": "اسناد، سرفصل حساب‌ها و حرکات دوره‌ای در یک سیستم واحد خواناتر می‌شوند.",
+  "Bordro ve ödeme planı": "برنامه حقوق و پرداخت",
+  "Brüt, kesinti ve net ödeme dengesi düzenli takip edildiğinde operasyon rahatlar.": "وقتی تعادل حقوق ناخالص، کسورات و پرداخت خالص منظم پیگیری شود، عملیات روان‌تر می‌شود.",
+  "Resmi adımlar görünür kalır": "مراحل رسمی شفاف می‌مانند",
+  "Tescil, kurum kayıtları ve başvuru dosyaları düzenli ilerlediğinde süreç hız kazanır.": "وقتی ثبت، پرونده‌های نهادی و درخواست‌ها منظم پیش برود، کل فرایند سریع‌تر می‌شود.",
+  "Muhasebe takip çerçevemiz": "چارچوب پیگیری حسابداری ما",
+  "İşletmenin günlük mali akışını daha düzenli yönetebilmesi için ana başlıkları birlikte takip ediyoruz.": "برای اینکه کسب‌وکار بتواند جریان مالی روزانه خود را منظم‌تر مدیریت کند، سرفصل‌های اصلی را با هم پیگیری می‌کنیم.",
+  "4 Alan": "۴ حوزه",
+  "Nakit Akışı": "جریان نقدی",
+  "Gider, tahsilat ve dönemsel hareketlerin daha okunur hale gelmesine yardımcı oluruz.": "کمک می‌کنیم هزینه‌ها، وصول‌ها و حرکات دوره‌ای شفاف‌تر و قابل خواندن‌تر شوند.",
+  "Vergi Planı": "برنامه مالیاتی",
+  "Beyan dönemleri, yükümlülükler ve hesaplamalar aynı takvim içinde düzenlenir.": "دوره‌های اظهارنامه، تعهدات و محاسبات در یک تقویم مشترک تنظیم می‌شوند.",
+  "Bordro Takibi": "پیگیری حقوق و دستمزد",
+  "Personel kayıtları, sosyal sigorta ve ihtiyat sandığı süreçleri birlikte ele alınır.": "سوابق پرسنل، بیمه اجتماعی و فرایندهای صندوق احتیاط با هم مدیریت می‌شوند.",
+  "Karar Desteği": "پشتیبانی تصمیم‌گیری",
+  "Mali tablo düzeni sayesinde işletme sahibi daha hızlı ve güvenli karar alabilir.": "به کمک نظم صورت‌های مالی، صاحب کسب‌وکار می‌تواند سریع‌تر و مطمئن‌تر تصمیم بگیرد.",
+  "Aylık": "ماهانه",
+  "Düzenli beyan, raporlama ve kontrol takibiyle işletme ritmi korunur.": "با اظهارنامه، گزارش‌دهی و کنترل منظم، ریتم کسب‌وکار حفظ می‌شود.",
+  "Net": "شفاف",
+  "İşletme sahibi için anlaşılır mali görünürlük ve sade danışmanlık dili sunulur.": "برای صاحب کسب‌وکار، دید مالی قابل‌فهم و زبان مشاوره‌ای ساده ارائه می‌شود.",
+  "Uyum": "انطباق",
+  "Vergi, bordro ve resmi kayıt süreçleri aynı çerçevede ilerletilir.": "فرایندهای مالیات، حقوق و دستمزد و ثبت رسمی در یک چارچوب واحد پیش برده می‌شوند.",
+  "Muhasebe": "حسابداری",
+  "Muhasebe süreci dikkat ve kontrol ister": "فرایند حسابداری به دقت و کنترل نیاز دارد",
+  "Kayıtların doğru kurulması ve düzenli kontrolü, şirketin mali temelini daha güçlü hale getirir.": "چیدمان درست سوابق و کنترل منظم آن‌ها، پایه مالی شرکت را محکم‌تر می‌کند.",
+  "Bordro": "حقوق و دستمزد",
+  "Bordro akışı düzenli hesaplama ister": "فرایند حقوق و دستمزد به محاسبه منظم نیاز دارد",
+  "Personel kayıtları, kesintiler ve resmi bildirimler aynı akış içinde doğru planlandığında süreç güvenli ilerler.": "وقتی سوابق پرسنل، کسورات و اعلام‌های رسمی در یک جریان درست برنامه‌ریزی شوند، فرایند با اطمینان پیش می‌رود.",
+  "Vergi": "مالیات",
+  "Vergi dönemleri planlı ilerlemelidir": "دوره‌های مالیاتی باید برنامه‌مند پیش بروند",
+  "Beyanname hazırlığı, hesaplama ve zamanında gönderim aynı düzen içinde yürütüldüğünde risk azalır.": "وقتی تهیه اظهارنامه، محاسبه و ارسال به‌موقع در یک نظم واحد انجام شود، ریسک کاهش می‌یابد.",
+  "Tescil": "ثبت",
+  "Tescil süreci doğru evrakla başlar": "فرایند ثبت با اسناد درست آغاز می‌شود",
+  "Vergi, sosyal sigorta ve diğer resmi kayıt adımları eksiksiz ilerlediğinde sonraki süreçler daha sağlam kurulur.": "وقتی مراحل مالیات، بیمه اجتماعی و سایر ثبت‌های رسمی بدون نقص پیش بروند، مراحل بعدی نیز محکم‌تر شکل می‌گیرند.",
+  "KKTC iş gündemi ve resmi duyurular": "دستور کار کسب‌وکار در قبرس شمالی و اطلاعیه‌های رسمی",
+  "Bu alanda hayat pahalılığı yerine işletmeleri doğrudan etkileyen resmi başlıkları öne çıkarıyoruz: asgari ücret, vergi dilimleri, KDV süreleri, Resmi Gazete akışı ve çevrimiçi vergi araçları.": "در این بخش به‌جای موضوع هزینه زندگی، سرفصل‌های رسمی‌ای را برجسته می‌کنیم که مستقیماً بر کسب‌وکارها اثر می‌گذارند: حداقل دستمزد، طبقات مالیاتی، مهلت‌های VAT، جریان روزنامه رسمی و ابزارهای آنلاین مالیاتی.",
+  "Resmi Gündem": "دستور کار رسمی",
+  "İşletmeleri etkileyen güncel başlıklar": "موضوعات روزی که بر کسب‌وکارها اثر می‌گذارند",
+  "Her kart resmi kaynağa bağlıdır ve bordro, vergi, beyan veya uyum planını etkileyen somut bir başlığı özetler.": "هر کارت به یک منبع رسمی متصل است و یک موضوع مشخص را که بر حقوق و دستمزد، مالیات، اظهارنامه یا برنامه انطباق اثر می‌گذارد خلاصه می‌کند.",
+  "Gelir Vergisi": "مالیات بر درآمد",
+  "28 Ocak 2026": "۲۸ ژانویه ۲۰۲۶",
+  "Vergi Dairesi": "اداره مالیات",
+  "2026 gelir vergisi matrah dilimleri ve kişisel indirimler yayımlandı": "طبقات پایه مالیات بر درآمد و معافیت‌های شخصی سال ۲۰۲۶ منتشر شد",
+  "Vergi Dairesi duyurusuna göre 28 Ocak 2026 tarihli 16 sayılı Resmi Gazete EK IV dayanağıyla 2026 vergilendirme dönemi kişisel indirim miktarı 655.000 TL olarak belirlendi.": "طبق اطلاعیه اداره مالیات و بر مبنای پیوست چهارم روزنامه رسمی شماره ۱۶ مورخ ۲۸ ژانویه ۲۰۲۶، مبلغ معافیت شخصی برای دوره مالیاتی ۲۰۲۶ برابر با ۶۵۵٬۰۰۰ لیر تعیین شد.",
+  "Resmi Duyuruyu Aç": "اطلاعیه رسمی را باز کنید",
+  "Asgari Ücret": "حداقل دستمزد",
+  "01 Ocak 2026": "۰۱ ژانویه ۲۰۲۶",
+  "Çalışma Bakanlığı": "وزارت کار",
+  "01 Ocak 2026 itibarıyla brüt asgari ücret 60.618 TL": "از ۰۱ ژانویه ۲۰۲۶ حداقل دستمزد ناخالص ۶۰٬۶۱۸ لیر است",
+  "Çalışma ve Sosyal Güvenlik Bakanlığı sayfasında yayımlanan bilgiye göre net tutar 52.738 TL. Bu değişiklik bordro, işveren maliyeti ve personel bütçesi açısından ana referans başlıklardan biri.": "طبق اطلاعات منتشرشده در صفحه وزارت کار و تأمین اجتماعی، مبلغ خالص ۵۲٬۷۳۸ لیر است. این تغییر یکی از مراجع اصلی برای حقوق و دستمزد، هزینه کارفرما و بودجه پرسنل به‌شمار می‌رود.",
+  "Asgari Ücret Sayfasını Aç": "صفحه حداقل دستمزد را باز کنید",
+  "Vergi Uygulaması": "اجرای مالیات",
+  "17 Nisan 2026": "۱۷ آوریل ۲۰۲۶",
+  "Kredi kartı kabulü ve ALO 116 vergi ihbar hattı vurgusu": "تأکید بر پذیرش کارت اعتباری و خط گزارش مالیاتی ALO 116",
+  "Vergi Dairesi açıklamasında, işletmelerin kartla ödeme talebini kabul etmek zorunda olduğu ve fiş-fatura ihlallerinde cezai yaptırım uygulanabileceği yeniden hatırlatıldı.": "در توضیح اداره مالیات دوباره یادآوری شد که کسب‌وکارها موظف‌اند درخواست پرداخت با کارت را بپذیرند و در تخلف‌های مربوط به رسید و فاکتور ممکن است جریمه اعمال شود.",
+  "ALO 116 Duyurusunu Aç": "اطلاعیه ALO 116 را باز کنید",
+  "KDV Süresi": "مهلت VAT",
+  "25 Mart 2026": "۲۵ مارس ۲۰۲۶",
+  "Şubat 2026 KDV beyan ve ödeme süresi 25 Mart'a uzatıldı": "مهلت اظهار و پرداخت VAT مربوط به فوریه ۲۰۲۶ تا ۲۵ مارس تمدید شد",
+  "Vergi Dairesi duyurusuna göre kurumlar vergisi yükümlülerinin 20 Mart 2026'ya kadar yerine getirmesi gereken Şubat 2026 dönemi KDV beyan ve ödeme süresi, Ramazan Bayramı nedeniyle 25 Mart 2026 Çarşamba gününe uzatıldı.": "طبق اطلاعیه اداره مالیات، مهلت اظهار و پرداخت VAT دوره فوریه ۲۰۲۶ که مؤدیان مالیات شرکت‌ها باید تا ۲۰ مارس ۲۰۲۶ انجام می‌دادند، به‌دلیل عید رمضان تا چهارشنبه ۲۵ مارس ۲۰۲۶ تمدید شد.",
+  "KDV Duyurusunu Aç": "اطلاعیه VAT را باز کنید",
+  "Resmi Gazete": "روزنامه رسمی",
+  "Mayıs 2026": "مه ۲۰۲۶",
+  "Devlet Basımevi": "چاپخانه دولتی",
+  "Resmi Gazete günlük karar ve düzeltme akışı": "جریان روزانه تصمیم‌ها و اصلاحیه‌های روزنامه رسمی",
+  "Tüzük, kararname, kurul kararı ve düzeltmelerin güncel akışı için Devlet Basımevi ana sayfası temel referans kaynaktır. Uyum planı yapan işletmeler için özellikle resmi değişikliklerin ilk duyurusu burada izlenir.": "برای پیگیری به‌روز آیین‌نامه‌ها، بخشنامه‌ها، تصمیم‌های هیئت‌ها و اصلاحیه‌ها، صفحه اصلی چاپخانه دولتی منبع مرجع اصلی است. برای کسب‌وکارهایی که برنامه انطباق دارند، نخستین اعلام تغییرات رسمی معمولاً از اینجا دنبال می‌شود.",
+  "Resmi Gazete'yi Aç": "روزنامه رسمی را باز کنید",
+  "Daha Fazla Haber Göster": "خبرهای بیشتری نمایش دهید",
+  "Sık Sorulan Sorular": "سوالات متداول",
+  "Her Şeyin Cevabı Burada": "پاسخ همه چیز اینجاست",
+  "Muhasebe, vergi, bordro ve kuruluş süreçleri hakkında en çok sorulan sorular.": "پرتکرارترین سوالات درباره حسابداری، مالیات، حقوق و دستمزد و فرایندهای تأسیس شرکت.",
+  "KKTC'de şirket kurmak ne kadar sürer?": "ثبت شرکت در قبرس شمالی چقدر زمان می‌برد؟",
+  "Gerekli belgeler hazırlandıktan sonra yerel limited şirket için ortalama 1-2 hafta, Uluslararası İşletme Şirketi için 2-3 hafta sürmektedir. Yabancı şirket şubeleri için Bakanlar Kurulu onayı gerektiğinden süreç daha uzun olabilir.": "پس از آماده شدن مدارک لازم، ثبت یک شرکت محدود محلی به‌طور میانگین ۱ تا ۲ هفته و برای شرکت بازرگانی بین‌المللی ۲ تا ۳ هفته زمان می‌برد. برای شعبه شرکت‌های خارجی به‌دلیل نیاز به تأیید شورای وزیران، این فرایند ممکن است طولانی‌تر باشد.",
+  "Muhasebe kayıtları ne sıklıkla kontrol edilmeli?": "سوابق حسابداری هر چند وقت یک‌بار باید بررسی شود؟",
+  "İşletmenin işlem yoğunluğuna göre değişmekle birlikte muhasebe kayıtlarının aylık olarak kontrol edilmesi en sağlıklı yöntemdir. Bu sayede gelir-gider dengesi, vergi yükümlülükleri ve eksik evraklar yıl sonunu beklemeden görülebilir.": "بسته به حجم عملیات کسب‌وکار متفاوت است، اما بررسی ماهانه سوابق حسابداری سالم‌ترین روش محسوب می‌شود. به این ترتیب می‌توان تعادل درآمد و هزینه، تعهدات مالیاتی و مدارک ناقص را بدون انتظار تا پایان سال مشاهده کرد.",
+  "Uluslararası İşletme Şirketinin %1 vergi avantajı nasıl işler?": "مزیت مالیاتی ۱٪ برای شرکت بازرگانی بین‌المللی چگونه عمل می‌کند؟",
+  "UİŞ'ler faaliyetlerini tamamen KKTC dışında yürütmeleri koşuluyla yıllık net vergilendirilebilir karları üzerinden yalnızca %1 Kurumlar Vergisi öderler. Bunun dışında KDV, stopaj vergisi veya temettü vergisinden muaftırlar.": "شرکت‌های بین‌المللی به شرط آنکه فعالیت خود را کاملاً خارج از قبرس شمالی انجام دهند، فقط ۱٪ مالیات شرکت‌ها بر سود خالص مشمول مالیات سالانه می‌پردازند. همچنین از VAT، مالیات تکلیفی و مالیات سود سهام معاف هستند.",
+  "Bordro hizmeti işletmeye ne kazandırır?": "خدمات حقوق و دستمزد چه مزیتی برای کسب‌وکار دارد؟",
+  "Düzenli bordro hizmeti; maaş hesaplamalarının doğru yapılmasını, sosyal sigorta ve ihtiyat sandığı yükümlülüklerinin zamanında izlenmesini ve personel giriş-çıkış süreçlerinin daha güvenli yürütülmesini sağlar. Özellikle büyüyen işletmeler için ciddi operasyon kolaylığı sunar.": "خدمات منظم حقوق و دستمزد باعث می‌شود محاسبه حقوق درست انجام شود، تعهدات بیمه اجتماعی و صندوق احتیاط به‌موقع پیگیری شود و ورود و خروج پرسنل با امنیت بیشتری مدیریت گردد. به‌ویژه برای کسب‌وکارهای در حال رشد، سهولت عملیاتی جدی ایجاد می‌کند.",
+  "Şirket kuruluşundan sonra muhasebe hizmeti de alabilir miyim?": "آیا بعد از ثبت شرکت می‌توانم خدمات حسابداری هم دریافت کنم؟",
+  "Evet. Kaya Plus Muhasebe ve Mali Danışmanlık olarak şirket kuruluşunun yanı sıra muhasebe, vergi danışmanlığı, bordro, denetim bakışı ve yasal uyumluluk hizmetleri de sunuyoruz. Müvekkillerimizin büyük bölümü kuruluş sonrasında da bizimle çalışmaya devam eder.": "بله. در Kaya Plus علاوه بر ثبت شرکت، خدمات حسابداری، مشاوره مالیاتی, حقوق و دستمزد، نگاه کنترلی و انطباق قانونی نیز ارائه می‌کنیم. بخش بزرگی از مشتریان ما پس از تأسیس شرکت هم به همکاری با ما ادامه می‌دهند.",
+  "Vergi muhasebesi ile genel muhasebe arasındaki fark nedir?": "تفاوت حسابداری مالیاتی با حسابداری عمومی چیست؟",
+  "Genel muhasebe işletmenin tüm mali hareketlerini kayıt altına alır ve yönetim için görünürlük sağlar. Vergi muhasebesi ise bu kayıtların vergi mevzuatına uygun şekilde değerlendirilmesi, beyanname hazırlığı ve vergi yükümlülüklerinin doğru hesaplanması tarafına odaklanır.": "حسابداری عمومی همه حرکات مالی کسب‌وکار را ثبت می‌کند و برای مدیریت شفافیت ایجاد می‌کند. حسابداری مالیاتی بر ارزیابی این سوابق مطابق مقررات مالیاتی، تهیه اظهارنامه و محاسبه درست تعهدات مالیاتی تمرکز دارد.",
+  "Muhasebe danışmanlığı sadece kayıt tutmak mı demektir?": "آیا مشاوره حسابداری فقط به معنای ثبت اسناد است؟",
+  "Hayır. Güçlü bir muhasebe danışmanlığı; kayıt düzeninin kurulması, vergi ve bordro süreçlerinin izlenmesi, resmi yükümlülüklerin kontrolü, mali tabloların daha anlaşılır hale getirilmesi ve işletme sahibine karar desteği sağlanması gibi daha geniş bir hizmet alanını kapsar.": "خیر. مشاوره حسابداری قوی دامنه گسترده‌تری را پوشش می‌دهد؛ از ایجاد نظم ثبت، پیگیری فرایندهای مالیات و حقوق و دستمزد، کنترل تعهدات رسمی و قابل‌فهم‌تر کردن صورت‌های مالی تا پشتیبانی از تصمیم‌گیری صاحب کسب‌وکار.",
+  "Şirket için fiziksel olarak KKTC'ye gelmem gerekiyor mu?": "آیا برای شرکت باید حضوری به قبرس شمالی بیایم؟",
+  "Çoğu işlem noter onaylı vekâletname ile uzaktan yürütülebilir. Ancak bazı süreçler için fiziki varlık gerekebilir; bu konuda müvekkillerimize süreç başında tam bilgi verilmektedir.": "بیشتر مراحل را می‌توان از راه دور و با وکالت‌نامه رسمی انجام داد. با این حال، برای برخی فرایندها حضور فیزیکی لازم است و ما در ابتدای مسیر اطلاعات کامل را در اختیار مشتری قرار می‌دهیم.",
+  "İletişim": "تماس",
+  "Kaya Plus ekibine doğrudan ulaşın": "مستقیماً با تیم کایا پلاس در تماس باشید",
+  "Telefon, e-posta, WhatsApp, Instagram ve Facebook üzerinden bize ulaşın. Talebinizi aldıktan sonra muhasebe, vergi, bordro ya da kuruluş süreciniz için en doğru ilk adımı birlikte netleştirelim.": "از طریق تلفن، ایمیل، واتساپ، اینستاگرام یا فیسبوک با ما تماس بگیرید. پس از دریافت درخواست شما، مناسب‌ترین گام نخست را برای حسابداری، مالیات، حقوق و دستمزد یا فرایند تأسیس شرکت با هم مشخص می‌کنیم.",
+  "İlk temastan itibaren net ve güven veren iletişim": "ارتباطی شفاف و اعتمادآفرین از نخستین تماس",
+  "Facebook": "فیسبوک",
+  "WhatsApp'tan Yaz": "در واتساپ پیام دهید",
+  "Adres": "آدرس",
+  "Telefon": "تلفن",
+  "E-posta": "ایمیل",
+  "Çalışma Saatleri": "ساعات کاری",
+  "Pzt–Cum: 08:00–17:00 | Cmt: 09:00–13:00": "دوشنبه تا جمعه: 08:00–17:00 | شنبه: 09:00–13:00",
+  "Temsilciler çevrimiçi": "کارشناسان آنلاین هستند",
+  "Tek pencerede lead toplama ve sohbet": "دریافت لید و گفت‌وگو در یک پنجره",
+  "Sağ alttaki canlı destek butonu açıldığında ziyaretçiden önce ad soyad ve e-posta istenir, ardından muhasebe, vergi, bordro veya kuruluş ihtiyacını netleştiren kısa sohbet akışı başlar.": "وقتی دکمه پشتیبانی زنده در پایین سمت راست باز می‌شود، ابتدا نام و نام خانوادگی و ایمیل بازدیدکننده گرفته می‌شود و سپس گفت‌وگویی کوتاه برای روشن شدن نیاز حسابداری، مالیات، حقوق و دستمزد یا تأسیس شرکت آغاز می‌شود.",
+  "Ziyaretçiyi tanıyın": "بازدیدکننده را بشناسید",
+  "Ad soyad ve e-posta ile lead bilgisini ilk adımda toplayın.": "در همان گام نخست، اطلاعات سرنخ را با نام و نام خانوادگی و ایمیل جمع‌آوری کنید.",
+  "İhtiyacı netleştirin": "نیاز را روشن کنید",
+  "Muhasebe, vergi, bordro veya kuruluş ihtiyacını birkaç kısa soruyla netleştirin.": "نیاز مربوط به حسابداری، مالیات، حقوق و دستمزد یا تأسیس را با چند سوال کوتاه روشن کنید.",
+  "Takibe hazır hale getirin": "برای پیگیری آماده کنید",
+  "E-postaya düşecek net bir talep özetiyle satış ekibini hızlandırın.": "با یک خلاصه روشن از درخواست که به ایمیل می‌رسد، کار تیم فروش را سریع‌تر کنید.",
+  "Canlı Sohbeti Aç": "گفت‌وگوی زنده را باز کنید",
+  "Sohbet penceresi sağ alt köşede açılır ve bilgiler aynı akış içinde toplanır.": "پنجره گفت‌وگو در پایین سمت راست باز می‌شود و اطلاعات در همان جریان جمع‌آوری می‌گردد.",
+  "Canlı Destek": "پشتیبانی زنده",
+  "Lütfen mesajınızı girin": "لطفاً پیام خود را وارد کنید",
+  "Merhaba, yardıma ihtiyacım var.": "سلام، به کمک نیاز دارم.",
+  "Sizi daha yakından tanıyabilir miyiz?": "می‌توانیم کمی بیشتر شما را بشناسیم؟",
+  "Ad Soyad": "نام و نام خانوادگی",
+  "E-posta adresiniz": "آدرس ایمیل شما",
+  "Sohbeti Başlat": "شروع گفت‌وگو",
+  "Bilgileriniz, size özel teklif ve geri dönüş hazırlamak için kullanılır.": "اطلاعات شما برای آماده‌سازی پیشنهاد و پیگیری متناسب با نیازتان استفاده می‌شود.",
+  "Görüşmeyi Bitir": "پایان گفت‌وگو",
+  "Misyonumuz & Vizyonumuz": "ماموریت و چشم‌انداز ما",
+  "Kaya Plus yaklaşımını en sonda ama net biçimde görün": "رویکرد کایا پلاس را در پایان، اما کاملاً شفاف ببینید",
+  "Kaya Plus Muhasebe ve Mali Danışmanlık olarak hedefimiz; mükelleflerimize yalnızca işlem yapan değil, kararlarını güçlendiren, kayıt düzenini görünür kılan ve resmi süreçleri güvenle yöneten bir danışmanlık zemini sunmaktır.": "هدف ما در Kaya Plus این است که فقط انجام‌دهنده کارها نباشیم، بلکه بستری مشاوره‌ای ارائه دهیم که تصمیم‌های مشتری را تقویت کند، نظم ثبت را شفاف سازد و فرایندهای رسمی را با اطمینان مدیریت کند.",
+  "Misyonumuz": "ماموریت ما",
+  "Muhasebe, vergi, bordro ve tescil süreçlerinde mevzuata uygun, zamanında ve anlaşılır destek sunarak işletmelerin mali düzenini güvenli hale getirmek.": "ایمن‌تر کردن نظم مالی کسب‌وکارها با ارائه پشتیبانی به‌موقع، قابل‌فهم و منطبق با مقررات در حسابداری، مالیات، حقوق و دستمزد و فرایندهای ثبت.",
+  "Vizyonumuz": "چشم‌انداز ما",
+  "KKTC'de yerel işletmelerin, yabancı yatırımcıların ve yeni girişimlerin güvenle başvurduğu görünür ve itibarlı mali danışmanlık markalarından biri olmak.": "این‌که در قبرس شمالی یکی از برندهای معتبر و قابل اعتماد مشاوره مالی باشیم که کسب‌وکارهای محلی، سرمایه‌گذاران خارجی و کارآفرینان جدید با اطمینان به آن مراجعه می‌کنند.",
+  "Çalışma Çizgimiz": "شیوه کاری ما",
+  "Gerçek ofis, gerçek iletişim, düzenli raporlama ve şeffaf süreç yönetimiyle mükellefin yanında duran uzun vadeli bir iş ortaklığı kurmak.": "ایجاد یک همکاری بلندمدت در کنار مشتری با تکیه بر دفتر واقعی، ارتباط واقعی، گزارش‌دهی منظم و مدیریت شفاف فرایندها."
+};
+
+const HOME_FA_TEXT_EXTRA_OVERRIDES = {
+  "Muhasebe, vergi ve mali danışmanlık hizmet alanlarımız": "حوزه‌های خدمات حسابداری، مالیات و مشاوره مالی ما",
+  "Muhasebe yönetiminden vergi planlamasına, bordro takibinden resmi kayıt süreçlerine kadar ihtiyaç duyduğunuz başlıkları tek çatı altında, net sorumluluk alanlarıyla ve profesyonel takip disipliniyle sunuyoruz.": "از مدیریت حسابداری و برنامه‌ریزی مالیاتی تا پیگیری حقوق و دستمزد و فرایندهای ثبت رسمی، سرفصل‌های موردنیاز شما را زیر یک سقف، با مسئولیت‌های روشن و انضباط پیگیری حرفه‌ای ارائه می‌کنیم.",
+  "Kaya Plus'ın uzmanlık sunduğu sektörler": "بخش‌هایی که Kaya Plus در آن‌ها تخصص ارائه می‌دهد",
+  "Her sektörün muhasebe, denetim, raporlama ve vergi ihtiyacı farklıdır. Deneyim sahibi olduğumuz alanları görerek işletmenize uygun danışmanlık yaklaşımını daha net değerlendirebilirsiniz.": "نیازهای هر بخش در حسابداری، کنترل، گزارش‌دهی و مالیات متفاوت است. با دیدن حوزه‌هایی که در آن‌ها تجربه داریم، می‌توانید رویکرد مشاوره‌ای مناسب کسب‌وکار خود را شفاف‌تر ارزیابی کنید.",
+  "Kuruluş Şartları": "شرایط تأسیس",
+  "KKTC'de şirket kurmak için gerekli temel şartlar": "الزامات اصلی برای ثبت شرکت در قبرس شمالی",
+  "Şirketler farklı yasal düzenlemelere bağlı olarak faaliyet gösterebilir; ancak temel kuruluş yapısı bakımından KKTC Şirketler Yasası'nda belirtilen ana şartlara bağlı kalmak zorundadır. Buna göre KKTC'de temsil edilen her şirket, yabancı şirket şubeleri hariç, aşağıdaki koşulları yerine getirmelidir.": "شرکت‌ها می‌توانند بر اساس مقررات قانونی متفاوتی فعالیت کنند، اما از نظر ساختار پایه تأسیس باید به شرایط اصلی مندرج در قانون شرکت‌های قبرس شمالی پایبند باشند. بر این اساس، هر شرکتی که در قبرس شمالی نمایندگی می‌شود، به‌جز شعبه‌های شرکت‌های خارجی، باید شرایط زیر را برآورده کند.",
+  "İlk Kontrol Listesi": "چک‌لیست اولیه",
+  "Kuruluş başvurusu öncesinde ortaklık yapısı, yönetim kadrosu, sekreter tanımı ve şirketin kayıtlı adresi netleştirilmelidir. Bu dört başlık, resmi dosyanın omurgasını oluşturur.": "پیش از درخواست تأسیس، ساختار شراکت، تیم مدیریتی، تعریف سمت دبیر شرکت و نشانی ثبت‌شده شرکت باید شفاف شود. این چهار سرفصل ستون فقرات پرونده رسمی را تشکیل می‌دهند.",
+  "Şirket kuruluşu, yabancı şirket ve uluslararası yapı seçenekleri": "گزینه‌های ثبت شرکت، شعبه خارجی و ساختارهای بین‌المللی",
+  "KKTC'de yeni şirket kuracak, yabancı şirket şubesi açacak veya uluslararası işletme yapısını değerlendirecek müvekkiller için avantajları, resmi şartları ve doğru yapı seçeneklerini tek akışta özetliyoruz.": "برای مشتریانی که در قبرس شمالی شرکت جدید ثبت می‌کنند، شعبه شرکت خارجی راه‌اندازی می‌کنند یا ساختار بازرگانی بین‌المللی را بررسی می‌کنند، مزایا، شروط رسمی و گزینه‌های درست ساختار را در یک مسیر واحد خلاصه می‌کنیم.",
+  "KKTC'de Şirket Kurma Avantajları": "مزایای ثبت شرکت در قبرس شمالی",
+  "Kıbrıs'ta Yabancı Şirket Kurma": "ثبت شرکت خارجی در قبرس",
+  "ULUSLARARASI (OFFSHORE) ŞİRKET KURULUM HİZMETİ": "خدمات تأسیس شرکت بین‌المللی (آفشور)",
+  "Kuruluş ve Tescilde Temel Başlıklar": "سرفصل‌های اصلی در تأسیس و ثبت",
+  "İşletme Yapıları": "ساختارهای کسب‌وکار",
+  "Yerel kuruluş avantajları": "مزایای تأسیس محلی",
+  "Kuzey Kıbrıs'ta şirket kurmanın avantajları": "مزایای ثبت شرکت در قبرس شمالی",
+  "Kuzey Kıbrıs Türk Cumhuriyeti; düşük vergi oranları, esnek şirket yapıları ve hızlı kurulum süreciyle girişimciler için güçlü bir başlangıç zemini sunar.": "جمهوری ترک قبرس شمالی با نرخ‌های مالیاتی پایین، ساختارهای انعطاف‌پذیر شرکت و فرایند راه‌اندازی سریع، بستر قدرتمندی برای شروع کارآفرینان فراهم می‌کند.",
+  "Vergi odağı": "تمرکز مالیاتی",
+  "Düşük oranlı planlama": "برنامه‌ریزی با نرخ پایین",
+  "Kurulum akışı": "فرایند راه‌اندازی",
+  "Daha pratik başvuru süreci": "فرایند درخواست عملی‌تر",
+  "Pazar erişimi": "دسترسی به بازار",
+  "Türkiye, Avrupa, Orta Doğu": "ترکیه، اروپا، خاورمیانه",
+  "Düşük işletme maliyeti yatırım planını daha kontrollü yürütmeye yardımcı olur.": "هزینه پایین‌تر اداره کسب‌وکار به پیشبرد کنترل‌شده‌تر برنامه سرمایه‌گذاری کمک می‌کند.",
+  "Esnek şirket yapıları ve tek ortaklı kuruluş seçeneği sunulabilir.": "می‌توان از ساختارهای منعطف شرکت و گزینه تأسیس با یک شریک استفاده کرد.",
+  "Turizm, eğitim, gayrimenkul ve hizmet alanlarında büyüme potansiyeli yüksektir.": "پتانسیل رشد در گردشگری، آموزش، املاک و حوزه خدمات بالاست.",
+  "Yaşam kalitesi ve güvenli ortam, uzun vadeli yerleşim planını destekler.": "کیفیت زندگی و محیط امن از برنامه‌ریزی برای استقرار بلندمدت پشتیبانی می‌کند.",
+  "Temel Şartları Gör": "شرایط اصلی را ببینید",
+  "Yapıları Karşılaştır": "ساختارها را مقایسه کنید",
+  "Yabancı hissedar yapısı": "ساختار سهامداران خارجی",
+  "Kuzey Kıbrıs'ta yabancı yatırımcılar için kolay ve avantajlı şirket kurulumu": "تأسیس آسان و مزیت‌دار شرکت برای سرمایه‌گذاران خارجی در قبرس شمالی",
+  "Esnek mevzuat yapısı sayesinde yabancı ortaklı veya tamamen yabancı sermayeli şirketler için kuruluş süreci planlı ve güvenli şekilde yürütülebilir.": "به‌لطف ساختار مقرراتی منعطف، فرایند تأسیس برای شرکت‌های دارای شریک خارجی یا کاملاً با سرمایه خارجی می‌تواند به‌شکل برنامه‌مند و امن پیش برود.",
+  "Hissedar yapısı": "ساختار سهامداری",
+  "Yabancı veya karma ortaklık": "شراکت خارجی یا ترکیبی",
+  "Kurulum planı": "برنامه راه‌اندازی",
+  "İzin ve tescil eşzamanlı": "مجوز و ثبت به‌صورت هم‌زمان",
+  "Operasyon": "عملیات",
+  "Banka ve muhasebe uyumu": "هماهنگی بانکی و حسابداری",
+  "Ortaklık ve sermaye yapısı dosyanın başında netleştirilmelidir.": "ساختار شراکت و سرمایه باید از ابتدای پرونده روشن شود.",
+  "Faaliyet alanına göre izin, lisans veya kurul onayı gerekebilir.": "بسته به حوزه فعالیت، ممکن است مجوز، پروانه یا تأیید هیئت لازم باشد.",
+  "Banka hesabı ve muhasebe düzeni yabancı hissedar yapısına göre planlanmalıdır.": "حساب بانکی و نظم حسابداری باید متناسب با ساختار سهامداران خارجی برنامه‌ریزی شود.",
+  "Uluslararası pazara açılmak isteyen girişimciler için güçlü bir başlangıç sunar.": "برای کارآفرینانی که می‌خواهند وارد بازار بین‌المللی شوند، شروع قدرتمندی فراهم می‌کند.",
+  "Yabancı Şube Rehberi": "راهنمای شعبه خارجی",
+  "İletişime Geç": "تماس بگیرید",
+  "Yurt dışı odaklı yapı": "ساختار متمرکز بر خارج از کشور",
+  "KKTC'de kurulan uluslararası işletme şirketleri ile işinizi global seviyeye taşıyın": "با شرکت‌های بازرگانی بین‌المللی ثبت‌شده در قبرس شمالی، کسب‌وکار خود را به سطح جهانی ببرید",
+  "Uluslararası İşletme Şirketi yapısı; yurt dışına odaklı ticaret, hizmet ve yatırım faaliyetlerini daha verimli kurgulamak isteyen girişimciler için güçlü bir çözüm sunar.": "ساختار شرکت بازرگانی بین‌المللی برای کارآفرینانی که می‌خواهند فعالیت‌های تجاری، خدماتی و سرمایه‌گذاری برون‌مرزی خود را کارآمدتر طراحی کنند، راه‌حلی قدرتمند ارائه می‌دهد.",
+  "Kurumlar vergisi": "مالیات شرکت‌ها",
+  "%1 hedef oran": "نرخ هدف ۱٪",
+  "Hedef süre": "مدت هدف",
+  "3-4 hafta planı": "برنامه ۳ تا ۴ هفته‌ای",
+  "Asgari sermaye": "حداقل سرمایه",
+  "20.000 EUR": "۲۰٬۰۰۰ یورو",
+  "Faaliyetler esas olarak yurt dışına yönelik planlanmalıdır.": "فعالیت‌ها باید اساساً برای بازارهای خارج از کشور برنامه‌ریزی شوند.",
+  "KKTC içinde ticaret yapılamaz; model faaliyet kapsamına göre dikkatle seçilmelidir.": "در داخل قبرس شمالی امکان تجارت وجود ندارد؛ این مدل باید با توجه به دامنه فعالیت با دقت انتخاب شود.",
+  "Ön izin, tescil, vergi ve muhasebe açılışı tek dosyada planlanabilir.": "مجوز اولیه، ثبت، مالیات و راه‌اندازی حسابداری را می‌توان در یک پرونده واحد برنامه‌ریزی کرد.",
+  "Adres, yasal temsilci ve operasyon hazırlığı kuruluşla birlikte ele alınmalıdır.": "نشانی، نماینده قانونی و آمادگی عملیاتی باید هم‌زمان با تأسیس بررسی شوند.",
+  "UİŞ Rehberi": "راهنمای UİŞ",
+  "WhatsApp'tan Bilgi Al": "از واتساپ اطلاعات بگیرید",
+  "Başvuru ve tescil akışı": "فرایند درخواست و ثبت",
+  "Kıbrıs'ta kimler şirket kurabilir?": "چه کسانی در قبرس می‌توانند شرکت ثبت کنند؟",
+  "KKTC'de yerel girişimciler, yabancı gerçek kişiler ve yurt dışı merkezli şirketler; faaliyet alanına ve tercih edilen yapıya göre şirket kurabilir. Kritik nokta, doğru modeli dosyanın en başında netleştirmektir.": "در قبرس شمالی، کارآفرینان محلی، اشخاص حقیقی خارجی و شرکت‌های مستقر در خارج از کشور می‌توانند بسته به حوزه فعالیت و ساختار انتخابی شرکت ثبت کنند. نکته کلیدی این است که مدل درست از همان ابتدای پرونده روشن شود.",
+  "Başvuru profili": "پروفایل متقاضی",
+  "Yerel, yabancı, ana şirket": "محلی، خارجی، شرکت مادر",
+  "Belgeler": "مدارک",
+  "Hissedar, sermaye, resmi evrak": "سهامدار، سرمایه، اسناد رسمی",
+  "Etkisi": "اثر",
+  "Vergi, banka, tescil": "مالیات، بانک، ثبت",
+  "KKTC vatandaşları ve yerel girişimciler uygun yerel yapı ile hızlı başlayabilir.": "شهروندان قبرس شمالی و کارآفرینان محلی می‌توانند با ساختار مناسب محلی سریع‌تر شروع کنند.",
+  "Yabancı ortaklı şirketlerde hissedar yapısı ve asgari sermaye beklentisi baştan planlanmalıdır.": "در شرکت‌های دارای شریک خارجی، ساختار سهامداری و انتظار حداقل سرمایه باید از ابتدا برنامه‌ریزی شود.",
+  "Yurt dışı merkezli şirketler şube modeli veya uygun şirket yapısı ile ilerleyebilir.": "شرکت‌های مستقر در خارج از کشور می‌توانند از طریق مدل شعبه یا ساختار مناسب شرکتی پیش بروند.",
+  "Doğru model seçimi; vergi, banka ve sonraki muhasebe düzenini doğrudan etkiler.": "انتخاب مدل درست مستقیماً بر مالیات، بانک و نظم حسابداری بعدی اثر می‌گذارد.",
+  "Kuruluş Adımlarını İncele": "مراحل تأسیس را بررسی کنید",
+  "Yapı seçimi özeti": "خلاصه انتخاب ساختار",
+  "Kıbrıs'taki şirket türlerini tek bakışta değerlendirin": "نوع شرکت‌ها در قبرس را در یک نگاه ارزیابی کنید",
+  "Yeni kuruluş veya yeniden yapılanma ihtiyacı varsa işletme yapılarını; faaliyet alanı, vergi etkisi, sorumluluk yapısı ve büyüme planına göre daha kolay karşılaştırılabilir biçimde ele almak gerekir.": "اگر نیاز به تأسیس جدید یا بازساخت وجود دارد، باید ساختارهای کسب‌وکار را بر اساس حوزه فعالیت، اثر مالیاتی، نوع مسئولیت و برنامه رشد به‌شکلی قابل مقایسه‌تر بررسی کرد.",
+  "Yerel limited": "شرکت با مسئولیت محدود محلی",
+  "En yaygın kurumsal yapı": "رایج‌ترین ساختار شرکتی",
+  "Şube modeli": "مدل شعبه",
+  "Ana şirket bağlantılı": "وابسته به شرکت مادر",
+  "UİŞ / serbest liman": "UİŞ / بندر آزاد",
+  "Amaç odaklı özel yapılar": "ساختارهای ویژه مبتنی بر هدف",
+  "Şahıs işletmesi tek kişi adına tescil edilir ve sorumluluk doğrudan iş sahibine aittir.": "کسب‌وکار انفرادی به نام یک نفر ثبت می‌شود و مسئولیت مستقیماً بر عهده صاحب کسب‌وکار است.",
+  "Kollektif ve komandit ortaklıklar, ortakların sorumluluk seviyesine göre ayrılır.": "شراکت‌های تضامنی و مختلط بر اساس سطح مسئولیت شرکا از هم تفکیک می‌شوند.",
+  "Yerel limited, yabancı şube, serbest liman ve uluslararası işletme modelleri amaç ve faaliyete göre seçilir.": "مدل‌های محدود محلی، شعبه خارجی، بندر آزاد و شرکت بازرگانی بین‌المللی بر اساس هدف و نوع فعالیت انتخاب می‌شوند.",
+  "Doğru yapı seçimi büyüme planı ile sonraki vergi ve muhasebe düzenini dengeler.": "انتخاب ساختار درست میان برنامه رشد و نظم بعدی مالیات و حسابداری تعادل ایجاد می‌کند.",
+  "Kuruluş Adımlarını Gör": "مراحل تأسیس را ببینید",
+  "Yeni kuruluş için hangi yapı daha uygun?": "برای تأسیس جدید کدام ساختار مناسب‌تر است؟",
+  "Yeni şirket kurmayı planlıyorsanız 3 basit soruyla size en uygun yapıyı hızlıca görün.": "اگر قصد ثبت شرکت جدید دارید، با ۳ پرسش ساده سریعاً مناسب‌ترین ساختار را برای خود ببینید.",
+  "Yapı Öneri Aracı": "ابزار پیشنهاد ساختار",
+  "Kuruluş öncesi hızlı yönlendirme alın": "پیش از تأسیس، راهنمایی سریع بگیرید",
+  "Faaliyetiniz nerede olacak?": "فعالیت شما کجا انجام خواهد شد؟",
+  "Sadece KKTC içinde": "فقط داخل قبرس شمالی",
+  "Yerel pazar odaklı": "متمرکز بر بازار محلی",
+  "Tamamen yurt dışına yönelik": "کاملاً متمرکز بر خارج از کشور",
+  "Küresel pazar": "بازار جهانی",
+  "Serbest Liman Bölgesinde": "در منطقه بندر آزاد",
+  "Özel vergi avantajları": "مزایای مالیاتی ویژه",
+  "Devam Et →": "ادامه →",
+  "Kaç kişiyle şirket kuracaksınız?": "شرکت را با چند نفر تأسیس می‌کنید؟",
+  "Tek başıma": "به‌تنهایی",
+  "Şahıs işletmesi": "کسب‌وکار انفرادی",
+  "2-6 ortak": "۲ تا ۶ شریک",
+  "Küçük ortaklık": "شراکت کوچک",
+  "7+ hissedar": "۷+ سهامدار",
+  "Büyük ölçekli": "مقیاس بزرگ",
+  "← Geri": "← بازگشت",
+  "Vergi konusundaki önceliğiniz nedir?": "اولویت شما در موضوع مالیات چیست؟",
+  "En düşük vergi oranı": "کمترین نرخ مالیات",
+  "%1 Kurumlar Vergisi": "۱٪ مالیات شرکت‌ها",
+  "Sıfır kurumlar vergisi": "صفر مالیات شرکت‌ها",
+  "Serbest Bölge avantajı": "مزیت منطقه آزاد",
+  "Standart vergi, tam yerel haklar": "مالیات استاندارد، حقوق کامل محلی",
+  "Yerel şirket esnekliği": "انعطاف‌پذیری شرکت محلی",
+  "Sonucu Gör →": "مشاهده نتیجه →",
+  "Size önerilen yapı:": "ساختار پیشنهادی برای شما:",
+  "Danışmanlık İsteyin →": "درخواست مشاوره →",
+  "Tekrar Dene": "دوباره امتحان کنید",
+  "Destek Süreci": "فرایند پشتیبانی",
+  "Kuruluş ve resmi işlem desteği": "پشتیبانی برای تأسیس و امور رسمی",
+  "Yeni şirket kuracak müşteriler için resmi süreci 4 adımda yönetiyor, ardından muhasebe düzeninin sağlıklı kurulmasına eşlik ediyoruz.": "برای مشتریانی که شرکت جدید ثبت می‌کنند، فرایند رسمی را در ۴ گام مدیریت می‌کنیم و سپس در استقرار درست نظم حسابداری همراهی می‌کنیم.",
+  "İlk Görüşme": "گفت‌وگوی اولیه",
+  "İhtiyaçlarınızı dinler, işletmeniz için uygun yapı ve kayıt planını birlikte netleştiririz.": "نیازهای شما را می‌شنویم و ساختار مناسب و برنامه ثبت را برای کسب‌وکارتان با هم روشن می‌کنیم.",
+  "Belge Hazırlığı": "آماده‌سازی مدارک",
+  "Ana sözleşme, kayıt evrakları ve ilgili resmi belgeler ekibimiz tarafından hazırlanır.": "اساسنامه، مدارک ثبت و اسناد رسمی مرتبط توسط تیم ما آماده می‌شود.",
+  "Resmi Tescil": "ثبت رسمی",
+  "KKTC Şirketler Mukayyitliği'nde tescil işlemlerini tamamlarız.": "مراحل ثبت را در اداره ثبت شرکت‌های قبرس شمالی تکمیل می‌کنیم.",
+  "Muhasebe Başlangıcı": "شروع حسابداری",
+  "Vergi kaydı, banka hesabı açılışı ve sonraki muhasebe düzeninin kurulmasında da yanınızdayız.": "در ثبت مالیاتی، افتتاح حساب بانکی و استقرار نظم حسابداری بعدی نیز در کنار شما هستیم.",
+  "İşletme Yapıları": "ساختارهای کسب‌وکار",
+  "Kuruluş ihtiyacı olan müşteriler için değerlendirilebilecek temel işletme yapıları ve özellikleri.": "ساختارهای پایه کسب‌وکار و ویژگی‌های آن‌ها که برای مشتریان نیازمند تأسیس قابل بررسی است.",
+  "Şahıs İşletmesi": "کسب‌وکار انفرادی",
+  "Tek bir şahsa ait, tüm sorumluluk sahibine aittir. Ticaret, sanayi, hizmet sektöründe faaliyet gösterebilir.": "متعلق به یک شخص است و تمام مسئولیت‌ها بر عهده همان فرد قرار دارد. می‌تواند در تجارت، صنعت و خدمات فعالیت کند.",
+  "Kolay Kurulum": "تأسیس آسان",
+  "Düşük Maliyet": "هزینه پایین",
+  "Sınırsız Sorumluluk": "مسئولیت نامحدود",
+  "Kollektif / Komandit": "شرکت تضامنی / مختلط",
+  "İki veya daha fazla kişinin kar amacıyla oluşturduğu ortaklık. Kollektifte sorumluluk sınırsız, Komandit'te bazı ortaklar için sınırlıdır.": "شراکتی است که توسط دو یا چند نفر با هدف سودآوری تشکیل می‌شود. در شرکت تضامنی مسئولیت نامحدود است و در شرکت مختلط برای برخی شرکا محدود می‌شود.",
+  "2+ Ortak": "۲+ شریک",
+  "Vergi Ortaklara Ait": "مالیات بر عهده شرکا",
+  "Yerel Limited Şirket": "شرکت با مسئولیت محدود محلی",
+  "KKTC Şirketler Yasası Fasıl 113 altında tescil edilen, hissedar sorumluluğu ödedikleri sermaye ile sınırlı şirket. Özel veya Halka Açık olabilir.": "شرکتی است که تحت فصل ۱۱۳ قانون شرکت‌های قبرس شمالی ثبت می‌شود و مسئولیت سهامداران آن به میزان سرمایه پرداختی‌شان محدود است. می‌تواند خصوصی یا عام باشد.",
+  "Min. 2 Hissedar": "حداقل ۲ سهامدار",
+  "Sınırlı Sorumluluk": "مسئولیت محدود",
+  "En Yaygın": "رایج‌ترین",
+  "Yabancı Şirket Şubesi": "شعبه شرکت خارجی",
+  "Yönetim merkezi yurt dışında olan şirketin KKTC şubesi. Bakanlar Kurulu kararı ve min. 100.000 USD sermaye şart.": "شعبه شرکت خارجی که مرکز مدیریت آن در خارج از کشور است. نیازمند تصمیم شورای وزیران و حداقل ۱۰۰٬۰۰۰ دلار سرمایه است.",
+  "Bakanlar Kurulu Onayı": "تأیید شورای وزیران",
+  "Min. $100.000": "حداقل 100,000 دلار",
+  "Serbest Liman Şirketi": "شرکت بندر آزاد",
+  "KDV, Gelir Vergisi ve Kurumlar Vergisinden muaf. Serbest Bölge Yönetimine kayıtlı, yurt dışı ve serbest bölge faaliyetleri için ideal.": "از VAT، مالیات بر درآمد و مالیات شرکت‌ها معاف است. در مدیریت منطقه آزاد ثبت می‌شود و برای فعالیت‌های برون‌مرزی و منطقه آزاد ایده‌آل است.",
+  "Sıfır KDV": "VAT صفر",
+  "Sıfır Kurumlar V.": "مالیات شرکت‌ها صفر",
+  "Uluslararası İşletme Şirketi": "شرکت بازرگانی بین‌المللی",
+  "Faaliyetlerini tamamen yurt dışına yönelik yürüten şirketler. Yalnızca %1 Kurumlar Vergisi, başka hiçbir vergi yok.": "شرکت‌هایی که فعالیت خود را کاملاً برای خارج از کشور انجام می‌دهند. فقط ۱٪ مالیات شرکت‌ها می‌پردازند و مالیات دیگری ندارند.",
+  "Global Faaliyet": "فعالیت جهانی",
+  "Karşılaştırma": "مقایسه",
+  "İşletme Yapıları Karşılaştırması": "مقایسه ساختارهای کسب‌وکار",
+  "Yeni kuruluş planlıyorsanız hangi yapının size daha yakın olduğunu tek bakışta görün.": "اگر برنامه تأسیس جدید دارید، در یک نگاه ببینید کدام ساختار به نیاز شما نزدیک‌تر است.",
+  "Şirket Türü": "نوع شرکت",
+  "Min. Hissedar": "حداقل سهامدار",
+  "Sorumluluk": "مسئولیت",
+  "KDV": "VAT",
+  "Yabancı Sermaye": "سرمایه خارجی",
+  "Tavsiye Edilen Profil": "پروفایل پیشنهادی",
+  "Sınırsız": "نامحدود",
+  "Küçük esnaf, serbest meslek": "کسبه کوچک، مشاغل آزاد",
+  "Kollektif Ortaklık": "شراکت تضامنی",
+  "Ortaklara Yansır": "به شرکا منتقل می‌شود",
+  "Aile şirketleri, küçük ortaklıklar": "شرکت‌های خانوادگی، شراکت‌های کوچک",
+  "Yerel Limited (Özel)": "شرکت محدود محلی (خصوصی)",
+  "Sınırlı": "محدود",
+  "Standart": "استاندارد",
+  "Çoğu yerli ve yabancı yatırımcı": "بیشتر سرمایه‌گذاران داخلی و خارجی",
+  "Yerel Limited (Halka Açık)": "شرکت محدود محلی (عام)",
+  "Büyük ölçekli girişimler": "سرمایه‌گذاری‌ها و ابتکارات بزرگ",
+  "%0 (Muaf)": "۰٪ (معاف)",
+  "İhracat, lojistik, üretim": "صادرات، لجستیک، تولید",
+  "%1 Net Kar": "۱٪ سود خالص",
+  "Muaf": "معاف",
+  "Global işletmeler, dijital şirketler": "کسب‌وکارهای جهانی، شرکت‌های دیجیتال",
+  "Planlama Aracı": "ابزار برنامه‌ریزی",
+  "Kuruluş ve Tescil Maliyet Planlayıcısı": "برنامه‌ریز هزینه تأسیس و ثبت",
+  "Yeni bir yapı kurulacaksa işletme türünüze göre tahmini başlangıç maliyetini hesaplayın.": "اگر ساختار جدیدی قرار است راه‌اندازی شود، هزینه آغازین تخمینی را بر اساس نوع کسب‌وکار خود محاسبه کنید.",
+  "İşletme Yapısı": "ساختار کسب‌وکار",
+  "Tahmini Yıllık Ciro (USD)": "گردش مالی سالانه تخمینی (USD)",
+  "Hissedar Sayısı": "تعداد سهامداران",
+  "Hesapla": "محاسبه",
+  "Tahmini Başlangıç Maliyeti": "هزینه آغازین تخمینی",
+  "Yıllık Vergi Tahmini": "برآورد مالیات سالانه",
+  "KDV Durumu": "وضعیت VAT",
+  "Tescil Süresi": "مدت ثبت",
+  "Yıllık Tasarruf Potansiyeli": "پتانسیل صرفه‌جویی سالانه",
+  "* Tahminler genel bilgi amaçlıdır. Kesin rakamlar için ücretsiz danışmanlık alın.": "* این برآوردها فقط برای اطلاع عمومی است. برای ارقام قطعی، مشاوره رایگان دریافت کنید.",
+  "Yasal Çerçeve": "چارچوب قانونی",
+  "İlgili Yasalar": "قوانین مرتبط",
+  "KKTC'de şirket kuruluşunu düzenleyen temel mevzuat.": "مقررات پایه‌ای که ثبت شرکت در قبرس شمالی را تنظیم می‌کند.",
+  "KKTC Şirketler Yasası Fasıl 113": "قانون شرکت‌های قبرس شمالی فصل ۱۱۳",
+  "Tüm şirketlerin tabi olduğu temel yasa": "قانون پایه‌ای که همه شرکت‌ها تابع آن هستند",
+  "Kollektif ve Komandit Şirketler Yasası": "قانون شرکت‌های تضامنی و مختلط",
+  "Ortaklık yapıları için düzenleyici yasa": "قانون تنظیم‌کننده ساختارهای شراکتی",
+  "Yabancı Sermaye Yasası": "قانون سرمایه خارجی",
+  "Yabancı yatırımlar için özel düzenlemeler": "مقررات ویژه برای سرمایه‌گذاری‌های خارجی",
+  "KKTC Bankalar Yasası": "قانون بانک‌های قبرس شمالی",
+  "Bankacılık sektörü düzenlemeleri": "مقررات بخش بانکداری",
+  "Serbest Liman ve Bölge Yasası": "قانون بندر و منطقه آزاد",
+  "Serbest bölge şirketlerine özel avantajlar": "مزایای ویژه برای شرکت‌های منطقه آزاد",
+  "Uluslararası İşletme Şirketleri Yasası": "قانون شرکت‌های بازرگانی بین‌المللی",
+  "%1 vergi avantajı ile global faaliyet": "فعالیت جهانی با مزیت مالیاتی ۱٪",
+  "Uluslararası Bankacılık Birimleri Yasası": "قانون واحدهای بانکداری بین‌المللی",
+  "Uluslararası bankacılık operasyonları": "عملیات بانکداری بین‌المللی",
+  "Sigorta Hizmetleri Yasası": "قانون خدمات بیمه",
+  "Sigorta şirketi kuruluş ve denetim kuralları": "قواعد تأسیس و نظارت بر شرکت‌های بیمه",
+  "Yıl Deneyim": "سال تجربه",
+  "Destek Verilen İşletme": "کسب‌وکار پشتیبانی‌شده",
+  "Ülkeden Müvekkil": "مشتری از کشور",
+  "Uzman Personel": "کارشناس متخصص",
+  "Kısaca neden Kaya Plus?": "در یک نگاه چرا Kaya Plus؟",
+  "Kaya Plus Muhasebe ve Mali Danışmanlık; gerçek ofis altyapısı, düzenli süreç yönetimi, güven veren yönetim yaklaşımı ve yerli-yabancı müvekkile uygun rehberliğiyle işletmelere daha düzenli ve daha güvenli bir mali yapı sunar.": "کایا پلاس حسابداری و مشاوره مالی با زیرساخت واقعی دفتر، مدیریت منظم فرایندها، رویکرد مدیریتی اعتمادآفرین و راهنمایی متناسب با مشتریان داخلی و خارجی، ساختار مالی منظم‌تر و امن‌تری به کسب‌وکارها ارائه می‌دهد.",
+  "Kaya Plus Farkı": "تفاوت Kaya Plus",
+  "Gerçek ofis altyapısı, güçlü marka hissi ve net mali rehberlik": "زیرساخت واقعی دفتر، حس قدرتمند برند و راهنمایی مالی شفاف",
+  "Kaya Plus; yalnızca resmi işlemleri takip eden bir ofis değil, müvekkilinin mali yapısını daha düzenli, daha güvenli ve daha yönetilebilir hale getirmeyi hedefleyen profesyonel bir çalışma düzenidir. Muhasebe, vergi, bordro ve kuruluş süreçlerinde ihtiyacınız olan açıklığı, disiplini ve güveni tek çatı altında sunuyoruz.": "Kaya Plus فقط دفتری برای پیگیری امور رسمی نیست؛ بلکه نظم کاری حرفه‌ای‌ای است که هدف آن منظم‌تر، امن‌تر و قابل‌مدیریت‌تر کردن ساختار مالی مشتری است. ما شفافیت، انضباط و اعتمادی را که در حسابداری، مالیات، حقوق و دستمزد و فرایندهای تأسیس نیاز دارید، زیر یک سقف ارائه می‌کنیم.",
+  "Siyah-altın premium marka kimliği": "هویت برند پریمیوم مشکی-طلایی",
+  "Gerçek ofis ve düzenli süreç takibi": "دفتر واقعی و پیگیری منظم فرایندها",
+  "Yerli ve yabancı müvekkile uygun rehberlik": "راهنمایی متناسب برای مشتریان داخلی و خارجی",
+  "Gerçek ofis, görünür marka ve profesyonel ilk izlenim": "دفتر واقعی، برند قابل مشاهده و نخستین برداشت حرفه‌ای",
+  "Müvekkil siteye girdiği anda karşısında rastgele bir stok görsel değil, Kaya Plus'ın kendi çalışma dünyasını görür.": "وقتی مشتری وارد سایت می‌شود، به‌جای یک تصویر تصادفی استوک، دنیای کاری واقعی Kaya Plus را می‌بیند.",
+  "Gerçek Ekip / Yönetim": "تیم واقعی / مدیریت",
+  "Müvekkilin karşısına yalnızca kurumsal bir vitrin değil; karar anında yön verebilen, mevzuatı okuyabilen ve süreci sakin biçimde yönetebilen gerçek bir ekip çıkarmayı hedefliyoruz.": "هدف ما این است که در برابر مشتری فقط یک ویترین سازمانی قرار ندهیم، بلکه تیمی واقعی ارائه کنیم که بتواند در لحظه تصمیم‌گیری جهت بدهد، مقررات را درست بخواند و فرایند را با آرامش مدیریت کند.",
+  "KKTC'de güçlü muhasebe, vergi ve mali danışmanlık altyapısı": "زیرساخت قوی حسابداری، مالیات و مشاوره مالی در قبرس شمالی",
+  "Kaya Plus Muhasebe ve Mali Danışmanlık; engin bilgi birikimi, saha tecrübesi ve güven veren çalışma anlayışıyla, gerek yerel işletmelere gerek yabancı yatırımcılara profesyonel hizmet sunan güçlü kurumsal yapılardan biri olma hedefiyle hareket eder.": "Kaya Plus با دانش گسترده، تجربه میدانی و شیوه کاری اعتمادآفرین، با هدف تبدیل شدن به یکی از ساختارهای سازمانی قدرتمند ارائه‌دهنده خدمات حرفه‌ای به کسب‌وکارهای محلی و سرمایه‌گذاران خارجی فعالیت می‌کند.",
+  "Yerli ve yabancı müvekkile aynı anda hitap eden danışmanlık omurgası": "چارچوب مشاوره‌ای که هم‌زمان برای مشتریان داخلی و خارجی مناسب است",
+  "Muhasebe, vergi, bordro ve kuruluş süreçlerinde tek çatı çözümü": "راهکار یکپارچه برای حسابداری، مالیات، حقوق و دستمزد و فرایندهای تأسیس",
+  "İtibar, düzen ve güven duygusunu aynı anda güçlendiren yaklaşım": "رویکردی که هم‌زمان اعتبار، نظم و حس اعتماد را تقویت می‌کند",
+  "Dürüstlük, itibar ve saygı merkezde": "صداقت، اعتبار و احترام در مرکز رویکرد ماست",
+  "Müvekkilin mali yapısına saygı duyan, markasını koruyan ve iletişimde şeffaf kalan bir danışmanlık anlayışını benimsiyoruz. Her süreçte güven duygusunu artıran, abartısız ama net bir çalışma disipliniyle ilerliyoruz.": "ما رویکردی مشاوره‌ای را پذیرفته‌ایم که به ساختار مالی مشتری احترام می‌گذارد، از برند او محافظت می‌کند و در ارتباط شفاف می‌ماند. در هر فرایند با نظمی کاری روشن، بدون اغراق اما اعتمادآفرین پیش می‌رویم.",
+  "Müvekkil ve kurumlarla açık iletişim": "ارتباط شفاف با مشتریان و نهادها",
+  "Marka itibarı ile müşteri itibarını birlikte koruma": "حفاظت هم‌زمان از اعتبار برند و اعتبار مشتری",
+  "Şeffaf, anlaşılır ve sorumluluk alan danışmanlık dili": "زبان مشاوره‌ای شفاف، قابل‌فهم و مسئولیت‌پذیر",
+  "Topluma, mevzuata ve müvekkil güvenine karşı sorumlu duruş": "رویکردی مسئولانه در برابر جامعه، مقررات و اعتماد مشتری",
+  "Kaya Plus için kurumsal sorumluluk, yalnızca resmi yükümlülüklere uymak değil; müvekkilin karşısında görünür, ulaşılabilir ve hesap verebilir bir marka olmak anlamına gelir. Bu nedenle iletişimimizde açıklık, süreçlerimizde düzen ve belgelerde doğruluk esastır.": "برای Kaya Plus، مسئولیت سازمانی فقط به رعایت تعهدات رسمی محدود نمی‌شود؛ بلکه یعنی برندی باشیم که در برابر مشتری قابل مشاهده، در دسترس و پاسخگو است. به همین دلیل شفافیت در ارتباط، نظم در فرایندها و دقت در اسناد برای ما اصل است.",
+  "Müvekkilin güven duygusunu güçlendiren açık çalışma modeli": "مدل کاری شفافی که حس اعتماد مشتری را تقویت می‌کند",
+  "Resmi kurumlarla uyumlu, düzenli ve eksiksiz süreç yönetimi": "مدیریت منظم، کامل و هماهنگ با نهادهای رسمی",
+  "Gerçek ofis ve görünür kurumsal yapı sayesinde güçlü ilk izlenim": "نخستین برداشت قدرتمند به‌واسطه دفتر واقعی و ساختار سازمانی قابل مشاهده",
+  "Tecrübeli, sakin ve güven veren yönetim bakışı": "نگاه مدیریتی باتجربه، آرام و اعتمادآفرین",
+  "Yönetim katmanımız; mevzuat bilgisi, saha deneyimi ve müvekkilin önceliğini doğru okuyabilen danışmanlık refleksiyle hareket eder. Süreci gereksiz karmaşıklaştırmadan, doğru adımı doğru zamanda atmaya odaklanan bu yaklaşım Kaya Plus'ı güven veren bir iş ortağına dönüştürür.": "لایه مدیریتی ما با دانش مقررات، تجربه میدانی و واکنش مشاوره‌ای‌ای که اولویت مشتری را درست تشخیص می‌دهد عمل می‌کند. این رویکرد بدون پیچیده‌سازی غیرضروری مسیر، بر برداشتن گام درست در زمان درست تمرکز دارد و Kaya Plus را به یک شریک کاری قابل اعتماد تبدیل می‌کند.",
+  "Mevzuatı yorumlayabilen güçlü profesyonel liderlik": "رهبری حرفه‌ای قدرتمند با توان تفسیر مقررات",
+  "Müvekkile güven veren sakin ve kontrollü süreç yönetimi": "مدیریت آرام و کنترل‌شده فرایند که به مشتری اعتماد می‌دهد",
+  "Karar anlarında hız kazandıran tecrübeli danışmanlık bakışı": "نگاه مشاوره‌ای باتجربه‌ای که در لحظه تصمیم‌گیری سرعت ایجاد می‌کند",
+  "Ofisimizden Kareler": "تصاویری از دفتر ما",
+  "Kaya Plus ofisinden kareler": "نماهایی از دفتر Kaya Plus",
+  "Kaya Plus'ı anlatırken yalnızca metin kullanmıyoruz. Ofisimizin girişi, çalışma alanımız ve marka kimliğimiz; müvekkilin karşısına güven veren, görünür ve profesyonel bir yapı çıkarıyor.": "برای معرفی Kaya Plus فقط از متن استفاده نمی‌کنیم. ورودی دفتر، فضای کار و هویت برند ما ساختاری قابل مشاهده، حرفه‌ای و اعتمادآفرین را در برابر مشتری قرار می‌دهد.",
+  "Ofis Girişimiz": "ورودی دفتر ما",
+  "Ziyaretçi siteye geldiğinde yalnızca bir danışmanlık vaadi değil, fiziksel olarak var olan ve kurumsal duruşu güçlü bir ofis görsün istiyoruz.": "می‌خواهیم بازدیدکننده هنگام ورود به سایت فقط یک وعده مشاوره نبیند، بلکه دفتری واقعی با حضور فیزیکی و هویت سازمانی قدرتمند را ببیند.",
+  "Çalışma Alanımız": "فضای کاری ما",
+  "Ofis içindeki görsel dil de markanın parçası. Siyah, altın ve doğal dokularla desteklenen bu alan; premium ama abartısız bir muhasebe danışmanlığı kimliği kuruyor.": "زبان بصری داخل دفتر نیز بخشی از برند ماست. این فضا که با مشکی، طلایی و بافت‌های طبیعی پشتیبانی می‌شود، هویتی پریمیوم اما بدون اغراق برای مشاوره حسابداری می‌سازد.",
+  "Ofisten Bir Kesit": "نمایی از دفتر",
+  "Hareketli bir görüntü, markanın yalnızca tasarım değil yaşam alanı da olduğunu hissettirir. Kaya Plus'ın düzenli, canlı ve çalışan bir ofis yapısı olduğu ilk bakışta anlaşılır.": "یک تصویر پویا نشان می‌دهد که این برند فقط طراحی نیست، بلکه یک فضای زنده کاری هم دارد. از همان نگاه اول می‌توان فهمید که Kaya Plus دفتری منظم، فعال و واقعی دارد.",
+  "Ekibimiz": "تیم ما",
+  "Kuruluştan günlük operasyona kadar müvekkil dosyalarını sahiplenen, sakin ve düzenli ilerleyen ekip yapımızı ana hatlarıyla görün.": "در یک نگاه، ساختار تیمی ما را ببینید که از تأسیس تا عملیات روزانه، پرونده‌های مشتری را با آرامش و نظم پیش می‌برد.",
+  "Ekibimiz bölümünde yalnızca gerçek ekip fotoğrafları ve o kişilere ait bilgiler yer alır. Şu anda kurucu kimliğiyle Yaşar Kaya'yı öne çıkarıyoruz.": "در بخش تیم ما فقط عکس‌های واقعی اعضای تیم و اطلاعات مربوط به همان افراد قرار می‌گیرد. در حال حاضر Yaşar Kaya را با هویت بنیان‌گذار برجسته می‌کنیم.",
+  "Kurucu": "بنیان‌گذار",
+  "Yaşar Kaya, Kaya Plus'ın kurucu çizgisini temsil eder. Müvekkil ilişkilerinde güven veren yaklaşımı, süreçlerde düzeni önceleyen yönetim anlayışı ve markanın siyah-altın duruşunu sahaya taşıyan net liderlik diliyle öne çıkar.": "Yaşar Kaya نماینده خط بنیان‌گذاری Kaya Plus است. او با رویکرد اعتمادآفرین در روابط با مشتری، نگاه مدیریتی مبتنی بر نظم در فرایندها و زبان رهبری روشنی که هویت مشکی-طلایی برند را به عمل تبدیل می‌کند، برجسته می‌شود.",
+  "Ekibimizin çalışma modelini detaylı incele": "مدل کاری تیم ما را با جزئیات بررسی کنید",
+  "Mükellef Yorumları": "نظرات مؤدیان",
+  "Mükelleflerimiz Anlatıyor": "مشتریان ما می‌گویند",
+  "Kaya Plus ekibi muhasebe sistemimizi çok daha düzenli ve kontrol edilebilir hale getirdi. Artık gelir-gider akışımızı, kayıtlarımızı ve aylık yükümlülüklerimizi çok daha net görüyoruz.": "تیم Kaya Plus سیستم حسابداری ما را بسیار منظم‌تر و قابل‌کنترل‌تر کرد. حالا جریان درآمد و هزینه، سوابق و تعهدات ماهانه‌مان را خیلی شفاف‌تر می‌بینیم.",
+  "En çok memnun kaldığımız nokta, muhasebe sisteminin bize sade ve anlaşılır biçimde kurulmuş olmasıydı. Bordro, vergi ve raporlama tarafında her şey tek düzen içinde ilerlediği için yönetim kararlarımız da hızlandı.": "بیشترین رضایت ما از این بود که سیستم حسابداری به شکلی ساده و قابل‌فهم برای ما پیاده‌سازی شد. چون حقوق و دستمزد، مالیات و گزارش‌دهی همه در یک نظم واحد پیش می‌رود، تصمیم‌های مدیریتی ما هم سریع‌تر شده است.",
+  "Muhasebe altyapımız kurulduktan sonra işletme içindeki dağınıklık ciddi biçimde azaldı. Beyan dönemleri, resmi kayıtlar ve finansal görünürlük aynı sistem içinde toplandığı için artık süreci çok daha güvenle yönetiyoruz.": "بعد از راه‌اندازی زیرساخت حسابداری، پراکندگی داخل کسب‌وکار ما به‌طور جدی کاهش یافت. چون دوره‌های اظهارنامه، ثبت‌های رسمی و شفافیت مالی در یک سیستم واحد جمع شده‌اند، حالا این مسیر را با اطمینان خیلی بیشتری مدیریت می‌کنیم.",
+  "Resmi Araçlar": "ابزارهای رسمی",
+  "Kur, takvim ve dijital vergi araçları": "نرخ ارز، تقویم و ابزارهای دیجیتال مالیاتی",
+  "Canlı kur ekranını koruyoruz; yanına resmi vergi takvimi, uzatma duyuruları ve e-Fatura gibi günlük iş akışında işe yarayan dijital başlıkları ekliyoruz.": "بخش نرخ زنده ارز را حفظ کرده‌ایم و در کنار آن، سرفصل‌های دیجیتال مفیدی مانند تقویم رسمی مالیات، اطلاعیه‌های تمدید و فاکتور الکترونیکی را برای جریان کاری روزانه افزوده‌ایم.",
+  "Canlı Kur": "نرخ زنده",
+  "KKTC Merkez Bankası kur akışı": "جریان نرخ ارز بانک مرکزی قبرس شمالی",
+  "KKTC Merkez Bankası": "بانک مرکزی قبرس شمالی",
+  "KKTC Merkez Bankası gösterge kurları": "نرخ‌های مرجع بانک مرکزی قبرس شمالی",
+  "Kur kartı resmi Merkez Bankası kaynağından beslenir ve sayfa açık kaldıkça düzenli aralıklarla yeniden kontrol edilir.": "کارت نرخ ارز از منبع رسمی بانک مرکزی تغذیه می‌شود و تا زمانی که صفحه باز بماند، در بازه‌های منظم دوباره بررسی خواهد شد.",
+  "Alış": "خرید",
+  "Satış": "فروش",
+  "Resmi Kur Kaynağını Aç": "منبع رسمی نرخ ارز را باز کنید",
+  "Vergi Takvimi": "تقویم مالیاتی",
+  "25 Mayıs": "۲۵ مه",
+  "2025 GV/KV beyanı için öne çıkan tarih": "تاریخ مهم برای اظهارنامه مالیات بر درآمد و شرکت‌ها در ۲۰۲۵",
+  "2025 GV/KV beyannameleri için uzatılan son tarih": "آخرین مهلت تمدیدشده برای اظهارنامه‌های GV/KV سال ۲۰۲۵",
+  "Vergi Dairesi ana sayfasındaki duyuruya göre 30 Nisan 2026'ya kadar sunulması gereken 2025 yılı Gelir Vergisi ve Kurumlar Vergisi beyannameleri için süre 25 Mayıs 2026 Pazartesi günü mesai bitimine kadar uzatıldı.": "طبق اطلاعیه منتشرشده در صفحه اصلی اداره مالیات، مهلت ارائه اظهارنامه‌های مالیات بر درآمد و مالیات شرکت‌ها برای سال ۲۰۲۵ که باید تا ۳۰ آوریل ۲۰۲۶ تسلیم می‌شد، تا پایان وقت اداری روز دوشنبه ۲۵ مه ۲۰۲۶ تمدید شده است.",
+  "2025 GV/KV Beyanı": "اظهارنامه GV/KV سال ۲۰۲۵",
+  "Dayanak": "مبنا",
+  "Vergi Dairesi duyurusu": "اطلاعیه اداره مالیات",
+  "Vergi Takvimini Aç": "تقویم مالیاتی را باز کنید",
+  "25 Mart": "۲۵ مارس",
+  "Şubat 2026 dönemi için uzatma duyurusu": "اطلاعیه تمدید برای دوره فوریه ۲۰۲۶",
+  "Kurumlar vergisi yükümlüleri için Şubat 2026 KDV uzatması": "تمدید VAT فوریه ۲۰۲۶ برای مؤدیان مالیات شرکت‌ها",
+  "20 Mart 2026'ya kadar beyan ve ödeme yükümlülüğü bulunan Şubat 2026 dönemi KDV için süre, Ramazan Bayramı vesilesiyle 25 Mart 2026 Çarşamba mesai bitimine kadar uzatıldı.": "مهلت اظهار و پرداخت VAT مربوط به دوره فوریه ۲۰۲۶ که باید تا ۲۰ مارس ۲۰۲۶ انجام می‌شد، به مناسبت عید رمضان تا پایان وقت اداری چهارشنبه ۲۵ مارس ۲۰۲۶ تمدید شده است.",
+  "Dönem": "دوره",
+  "2026 Şubat KDV": "VAT فوریه ۲۰۲۶",
+  "Yeni son tarih": "مهلت نهایی جدید",
+  "Uzatma Duyurusunu Aç": "اطلاعیه تمدید را باز کنید",
+  "e-Fatura": "فاکتور الکترونیکی",
+  "Portal": "پرتال",
+  "Başvuru ve entegrasyon seçenekleri": "گزینه‌های درخواست و یکپارچه‌سازی",
+  "Portal / Web Servis": "پرتال / وب‌سرویس",
+  "e-Fatura başvurusu için portal ve web servis seçenekleri": "گزینه‌های پرتال و وب‌سرویس برای درخواست فاکتور الکترونیکی",
+  "Fatura düzenleme zorunluluğu bulunan gerçek ve tüzel kişi yükümlüler, İnternet Vergi Dairesi üzerinden E-Portal yöntemi veya doğrudan entegrasyon seçeneği ile e-Fatura sistemine başvurabiliyor.": "مؤدیان حقیقی و حقوقی که ملزم به صدور فاکتور هستند، می‌توانند از طریق اداره مالیات اینترنتی و با روش E-Portal یا گزینه یکپارچه‌سازی مستقیم برای سیستم فاکتور الکترونیکی درخواست بدهند.",
+  "Başvuru yöntemi": "روش درخواست",
+  "Portal veya Web Servis": "پرتال یا وب‌سرویس",
+  "Giriş noktası": "نقطه ورود",
+  "İnternet Vergi Dairesi": "اداره مالیات اینترنتی",
+  "e-Fatura Bilgisini Aç": "اطلاعات فاکتور الکترونیکی را باز کنید",
+  "Daha Fazla Duyuru Göster": "اطلاعیه‌های بیشتری نمایش دهید",
+  "Not: Bu alan hızlı takip ve ilk değerlendirme amacıyla kurgulandı. Özellikle vergi, bordro, KDV ve resmi son tarih başlıklarında işlem yapmadan önce ilgili resmi kaynaktan son doğrulama yapılmalıdır.": "نکته: این بخش برای پیگیری سریع و ارزیابی اولیه طراحی شده است. به‌ویژه در موضوعات مالیات، حقوق و دستمزد، VAT و مهلت‌های رسمی، پیش از هر اقدام باید آخرین تأیید از منبع رسمی مربوطه انجام شود.",
+  "Kurumlar Vergisi": "مالیات شرکت‌ها",
+  "Bizi Ziyaret Edin": "به ما سر بزنید",
+  "Ofisimize Hoş Geldiniz": "به دفتر ما خوش آمدید",
+  "WhatsApp": "واتساپ",
+  "Hemen Mesaj Gönderin": "همین حالا پیام بفرستید",
+  "Harita": "نقشه",
+  "Google Maps'te Aç": "در Google Maps باز کنید",
+  "KKTC'de 25 yılı aşkın deneyimimizle muhasebe, vergi, bordro, tescil ve mali danışmanlık hizmetleri sunuyoruz.": "با بیش از ۲۵ سال تجربه در قبرس شمالی، خدمات حسابداری، مالیات، حقوق و دستمزد، ثبت و مشاوره مالی ارائه می‌دهیم.",
+  "Vergi Danışmanlığı": "مشاوره مالیاتی",
+  "Muhasebe Hizmetleri": "خدمات حسابداری",
+  "Kurumsal Yapı": "ساختار شرکتی",
+  "Yerel Limited": "شرکت محدود محلی",
+  "UİŞ": "شرکت بین‌المللی",
+  "Serbest Liman": "بندر آزاد",
+  "Yabancı Şube": "شعبه خارجی",
+  "Rehberler": "راهنماها",
+  "Yapı Karşılaştırması": "مقایسه ساختارها",
+  "Yasalar / Vergiler": "قوانین / مالیات",
+  "Temel Şartlar": "شرایط پایه",
+  "Ofisimiz": "دفتر ما",
+  "© 2025 Kaya Plus Muhasebe ve Mali Danışmanlık. Tüm hakları saklıdır.": "© 2025 Kaya Plus حسابداری و مشاوره مالی. تمامی حقوق محفوظ است.",
+  "Lefkoşa, Kuzey Kıbrıs": "لفکوشا، قبرس شمالی",
+  "Hero görselleri:": "تصاویر بخش اصلی:",
+  "KKTC bayrağı, kale ve liman görselleri sırasıyla gösterilir.": "تصاویر پرچم قبرس شمالی، قلعه و بندر به‌ترتیب نمایش داده می‌شوند."
+};
+
+const HOME_FA_PLACEHOLDER_OVERRIDES = {
+  "Adınız ve soyadınız": "نام و نام خانوادگی شما",
+  "ornek@email.com": "name@email.com",
+  "Buraya yazın": "اینجا بنویسید"
+};
+
+const homeArabicToPersianReplacements = [
+  ["كايا بلس", "کایا پلاس"],
+  ["شمال قبرص", "قبرس شمالی"],
+  ["الرئيسية", "صفحه اصلی"],
+  ["الخدمات", "خدمات"],
+  ["الأخبار", "اخبار"],
+  ["تواصل", "تماس"],
+  ["ميديا", "رسانه"],
+  ["القوانين", "قوانین"],
+  ["الضرائب", "مالیات"],
+  ["الاستشارات", "مشاوره"],
+  ["المحاسبة", "حسابداری"],
+  ["المالية", "مالی"],
+  ["الرواتب", "حقوق و دستمزد"],
+  ["الشركات", "شرکت‌ها"],
+  ["الشركة", "شرکت"],
+  ["شركة", "شرکت"],
+  ["تأسيس", "تأسیس"],
+  ["الرسمية", "رسمی"],
+  ["العملاء", "مشتریان"],
+  ["المحليين والأجانب", "داخلی و خارجی"],
+  ["اسمك الكامل", "نام و نام خانوادگی شما"],
+  ["بريدك الإلكتروني", "ایمیل شما"],
+  ["اكتب هنا", "اینجا بنویسید"],
+  ["يمكن", "می‌تواند"],
+  ["هذه", "این"],
+  ["هذا", "این"],
+  ["مع", "با"],
+  ["عبر", "از طریق"],
+  ["بعد", "پس از"],
+  ["قبل", "پیش از"],
+  ["ثم", "سپس"],
+  ["أو", "یا"],
+  ["كل", "همه"],
+  ["على", "بر"],
+  ["إلى", "به"],
+  ["من", "از"],
+  ["في", "در"]
+];
+
+function normalizeLegacyArabicToPersian(text) {
+  if (!text) return text;
+  let normalized = text;
+  homeArabicToPersianReplacements.forEach(([from, to]) => {
+    normalized = normalized.split(from).join(to);
+  });
+  return normalized;
+}
+
+function resolveHomeText(base, raw, lang) {
+  if (lang !== 'fa') return raw;
+  if (HOME_FA_TEXT_OVERRIDES[base]) return HOME_FA_TEXT_OVERRIDES[base];
+  if (HOME_FA_TEXT_EXTRA_OVERRIDES[base]) return HOME_FA_TEXT_EXTRA_OVERRIDES[base];
+  return normalizeLegacyArabicToPersian(raw || base);
+}
+
+function resolveHomePlaceholder(base, raw, lang) {
+  if (lang !== 'fa') return raw;
+  if (HOME_FA_PLACEHOLDER_OVERRIDES[base]) return HOME_FA_PLACEHOLDER_OVERRIDES[base];
+  return normalizeLegacyArabicToPersian(raw || base);
+}
+
+function getLocalizedDataValue(element, prefix, lang, fallbackLang = 'tr') {
+  const legacyLang = lang === 'fa' ? 'ar' : null;
+  return element.getAttribute(prefix + lang)
+    || (legacyLang ? element.getAttribute(prefix + legacyLang) : null)
+    || element.getAttribute(prefix + fallbackLang);
+}
+
 function setLang(lang) {
   currentLang = lang;
   try {
@@ -11928,21 +12910,27 @@ function setLang(lang) {
     btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
   });
 
-  // Update all data-tr/en/ru/ar elements
+  // Update all localized data-* elements, including older fa->ar fallbacks
   document.querySelectorAll('[data-tr]').forEach(el => {
-    const val = el.getAttribute('data-' + lang) || el.getAttribute('data-tr');
+    const base = el.getAttribute('data-tr') || '';
+    const raw = getLocalizedDataValue(el, 'data-', lang);
+    const val = resolveHomeText(base, raw, lang);
     if (val) el.textContent = val;
   });
 
   // Update select options
   document.querySelectorAll('select option[data-tr]').forEach(opt => {
-    const val = opt.getAttribute('data-' + lang) || opt.getAttribute('data-tr');
+    const base = opt.getAttribute('data-tr') || '';
+    const raw = getLocalizedDataValue(opt, 'data-', lang);
+    const val = resolveHomeText(base, raw, lang);
     if (val) opt.textContent = val;
   });
 
   // Update form placeholders
   document.querySelectorAll('[data-ph-tr]').forEach(input => {
-    const val = input.getAttribute('data-ph-' + lang) || input.getAttribute('data-ph-tr');
+    const base = input.getAttribute('data-ph-tr') || '';
+    const raw = getLocalizedDataValue(input, 'data-ph-', lang);
+    const val = resolveHomePlaceholder(base, raw, lang);
     if (val) input.placeholder = val;
   });
 
@@ -12120,8 +13108,12 @@ document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => 
 // ── QUIZ ──
 const quizAnswers = {};
 function selectOption(el, q, val) {
-  el.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  el.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(o => {
+    o.classList.remove('selected');
+    o.setAttribute('aria-pressed', 'false');
+  });
   el.classList.add('selected');
+  el.setAttribute('aria-pressed', 'true');
   quizAnswers[q] = val;
   const stepNum = q.replace('q','');
   const nextBtn = document.getElementById('qnext-' + stepNum);
@@ -12134,10 +13126,22 @@ function nextStep(num) {
 function prevStep(num) { nextStep(num); }
 function resetQuiz() {
   Object.keys(quizAnswers).forEach(k => delete quizAnswers[k]);
-  document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.quiz-option').forEach(o => {
+    o.classList.remove('selected');
+    o.setAttribute('aria-pressed', 'false');
+  });
   document.querySelectorAll('.quiz-next').forEach(b => b.disabled = true);
   nextStep(1);
 }
+
+document.querySelectorAll('.quiz-option').forEach(option => {
+  option.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      option.click();
+    }
+  });
+});
 
 const quizResults = {
   tr: {
@@ -12247,9 +13251,14 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setMobileNav(false);
 });
 
+syncHeaderZoomLock();
+
 window.addEventListener('resize', () => {
-  if (window.innerWidth > 768) setMobileNav(false);
+  syncHeaderZoomLock();
+  if (window.innerWidth > 768 || document.body.classList.contains('header-zoom-lock')) setMobileNav(false);
 });
+
+window.visualViewport?.addEventListener('resize', syncHeaderZoomLock);
 
 document.getElementById('support-name')?.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {

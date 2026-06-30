@@ -299,6 +299,18 @@ p {
   transition: color 0.18s ease, background 0.18s ease;
 }
 
+html[lang="en"] .topbar-links {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+html[lang="en"] .topbar-links a,
+html[lang="ru"] .topbar-links a,
+html[lang="fa"] .topbar-links a {
+  font-size: 15px;
+  letter-spacing: -0.03em;
+}
+
 .topbar-links a:hover,
 .topbar-links a.active {
   color: #000000;
@@ -1836,6 +1848,12 @@ td {
   .topbar-links a {
     font-size: 16px;
   }
+
+  html[lang="en"] .topbar-links a,
+  html[lang="ru"] .topbar-links a,
+  html[lang="fa"] .topbar-links a {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -1855,6 +1873,16 @@ td {
   .topbar-links a {
     font-size: 15px;
     padding: 4px 6px;
+  }
+
+  html[lang="en"] .topbar-links a,
+  html[lang="ru"] .topbar-links a,
+  html[lang="fa"] .topbar-links a {
+    font-size: 13px;
+  }
+
+  html[lang="en"] .topbar-links {
+    gap: 8px;
   }
 }
 
@@ -2574,4 +2602,140 @@ td {
     height: 48px;
     border-radius: 16px;
   }
+}
+
+@media (min-width: 761px) {
+  .topbar-inner {
+    padding: 0 24px;
+    min-height: 72px;
+    grid-template-columns: 284px minmax(0, 1fr) auto;
+    gap: 16px;
+  }
+
+  .brand {
+    width: 284px;
+    min-width: 284px;
+    max-width: none;
+  }
+
+  .topbar-links {
+    justify-content: flex-start;
+    gap: 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .topbar-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .topbar-links a {
+    font-size: 17px;
+    padding: 4px 3px;
+    flex: 0 0 auto;
+  }
+
+  html[lang="en"] .topbar-links,
+  html[lang="ru"] .topbar-links,
+  html[lang="fa"] .topbar-links {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  html[lang="en"] .topbar-links a,
+  html[lang="ru"] .topbar-links a,
+  html[lang="fa"] .topbar-links a {
+    font-size: 15px;
+  }
+
+  .topbar-actions,
+  .lang-switcher {
+    min-width: max-content;
+  }
+}
+
+body.header-zoom-lock .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  max-width: 100vw;
+  overflow-x: clip;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(28, 94, 140, 0.16);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+body.header-zoom-lock .topbar-inner {
+  display: grid;
+  padding: 0 24px;
+  min-height: 72px;
+  grid-template-columns: 284px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body.header-zoom-lock .brand {
+  background-image: url("./kaya-logo-web-transparent-new.png");
+  background-size: contain;
+  aspect-ratio: 1345 / 350;
+  width: 284px;
+  min-width: 284px;
+  max-width: none;
+}
+
+body.header-zoom-lock .topbar-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+body.header-zoom-lock .topbar-links::-webkit-scrollbar {
+  display: none;
+}
+
+body.header-zoom-lock .topbar-links a {
+  font-size: 17px;
+  padding: 4px 3px;
+  flex: 0 0 auto;
+}
+
+html[lang="en"] body.header-zoom-lock .topbar-links,
+html[lang="ru"] body.header-zoom-lock .topbar-links,
+html[lang="fa"] body.header-zoom-lock .topbar-links {
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+html[lang="en"] body.header-zoom-lock .topbar-links a,
+html[lang="ru"] body.header-zoom-lock .topbar-links a,
+html[lang="fa"] body.header-zoom-lock .topbar-links a {
+  font-size: 15px;
+}
+
+body.header-zoom-lock .topbar-actions {
+  display: flex;
+  justify-content: flex-end;
+  min-width: max-content;
+}
+
+body.header-zoom-lock .lang-switcher {
+  display: inline-flex;
+  min-width: max-content;
+}
+
+body.header-zoom-lock .hamburger {
+  display: none;
+}
+
+body.header-zoom-lock .mobile-nav {
+  display: none !important;
 }

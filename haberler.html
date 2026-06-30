@@ -870,14 +870,148 @@
       initialized: false,
     };
 
+    const NEWSROOM_FA_COPY_OVERRIDES = {
+      "Vergi Dairesi": "اداره مالیات",
+      "Takip Merkezi": "مرکز پیگیری",
+      "Haberler ve güncel takip tek editoryal akışta": "اخبار و پیگیری روز در یک جریان تحریری واحد",
+      "Vergi gündemi, iş hayatı düzenlemeleri, kur akışı ve resmi son tarihler artık aynı sayfada iki net kolon halinde okunabiliyor. Yapıyı, karar verirken hız kazandıracak ama kurumsal görünümü zayıflatmayacak şekilde kurguladık.": "موضوعات مالیاتی، تغییرات فضای کار، جریان نرخ ارز و مهلت‌های رسمی اکنون در یک صفحه و در دو ستون روشن قابل خواندن است. این ساختار را طوری طراحی کردیم که تصمیم‌گیری را سریع‌تر کند و در عین حال ظاهر سازمانی را تضعیف نکند.",
+      "Vergi ve Mevzuat Rehberi": "راهنمای مالیات و مقررات",
+      "Ekiple Görüş": "با تیم صحبت کنید",
+      "Haberler": "اخبار",
+      "Mevzuat, çalışma hayatı ve finansal kararları etkileyen başlıkları kısa, okunabilir kartlarda topladık.": "موضوعاتی را که بر مقررات، زندگی کاری و تصمیم‌های مالی اثر می‌گذارند در کارت‌های کوتاه و خوانا گردآوری کرده‌ایم.",
+      "Vergi": "مالیات",
+      "2026 Planı": "برنامه 2026",
+      "Matrah, muafiyet ve kurumlar vergisi görünümü": "نمای کلی پایه مالیاتی، معافیت‌ها و مالیات شرکت‌ها",
+      "Şubat 2026": "فوریه 2026",
+      "Öne çıkan": "برجسته",
+      "Gelir vergisi kişisel muafiyet ve matrah görünümü": "نمای کلی معافیت شخصی و پایه مالیات بر درآمد",
+      "Yıl başında netleşen muafiyet ve basamak yapısı özellikle ücret bordrosu, ortak dağıtımı ve yıl içi vergi planı yapan işletmeler için ana referans olur.": "ساختار معافیت و طبقات مالیاتی که در ابتدای سال روشن می‌شود، به‌ویژه برای کسب‌وکارهایی که حقوق و دستمزد، توزیع بین شرکا و برنامه مالیاتی سالانه را مدیریت می‌کنند، مرجع اصلی است.",
+      "Detaya Geç": "مشاهده جزئیات",
+      "Bordro": "حقوق و دستمزد",
+      "İşveren Yükü": "بار کارفرما",
+      "Asgari ücret ve sosyal güvenlik etkisi": "اثر حداقل دستمزد و تأمین اجتماعی",
+      "Operasyon": "عملیات",
+      "Maliyet": "هزینه",
+      "Asgari ücret, bordro planı ve işveren maliyetleri": "حداقل دستمزد، برنامه حقوق و دستمزد و هزینه‌های کارفرما",
+      "Asgari ücret ve sigorta çarpanlarındaki değişiklikler bordro düzeni, nakit akışı ve aylık personel planlamasında doğrudan etkili olduğu için ayrı bir haber akışı gibi izlenmelidir.": "از آنجا که تغییرات حداقل دستمزد و ضرایب بیمه مستقیماً بر نظم حقوق و دستمزد، جریان نقدی و برنامه‌ریزی ماهانه نیروی انسانی اثر می‌گذارد، باید تقریباً مانند یک جریان خبری مستقل دنبال شود.",
+      "İlgili Hizmeti Gör": "خدمت مرتبط را ببینید",
+      "Resmi Gazete": "روزنامه رسمی",
+      "Karar Akışı": "جریان تصمیم‌ها",
+      "Tüzük, kurul ve mevzuat güncellemeleri": "به‌روزرسانی آیین‌نامه‌ها، هیئت‌ها و مقررات",
+      "Uyum": "انطباق",
+      "Resmi akış": "جریان رسمی",
+      "Resmi gazete, tüzük ve kurul kararlarının etkisi": "اثر روزنامه رسمی، آیین‌نامه‌ها و تصمیم‌های هیئت‌ها",
+      "Kuruluş, izin, personel ve beyan süreçleri çoğu zaman tek büyük yasa değişikliğinden değil küçük kurul ve tüzük kararlarından etkilenir; bu yüzden kısa özet akış önemlidir.": "فرایندهای تأسیس، مجوز، پرسنل و اظهارنامه‌ها اغلب نه با یک تغییر بزرگ قانونی، بلکه با تصمیم‌های کوچک هیئت‌ها و آیین‌نامه‌ها دگرگون می‌شوند؛ به همین دلیل یک جریان خلاصه و فشرده اهمیت زیادی دارد.",
+      "Mevzuat Rehberine Git": "به راهنمای مقررات بروید",
+      "Sektör": "بخش",
+      "Lisans ve Vergi": "مجوز و مالیات",
+      "Faaliyete göre değişen başlıklar": "موضوعاتی که بر اساس نوع فعالیت تغییر می‌کنند",
+      "Sürekli izleme": "پایش مداوم",
+      "Sektörel etki": "اثر بخشی",
+      "Sektörel vergi, lisans ve operasyon düzenlemeleri": "مقررات مالیاتی، مجوزی و عملیاتیِ بخشی",
+      "Turizm, ithalat, inşaat, enerji ve hizmet sektörlerinde aynı vergi çerçevesi yeterli olmaz. Sektöre özel kararlar ayrı haber kartlarıyla izlenmelidir.": "در گردشگری، واردات، ساخت‌وساز، انرژی و خدمات، یک چارچوب مالیاتی عمومی کافی نیست. تصمیم‌های خاص هر بخش باید در کارت‌های خبری جداگانه پیگیری شوند.",
+      "Sektör Başlıklarını Aç": "موضوعات بخشی را باز کنید",
+      "Yatırım": "سرمایه‌گذاری",
+      "Kur ve Sözleşme": "نرخ ارز و قرارداد",
+      "Dövizli dosyalarda karar hızı": "سرعت تصمیم‌گیری در پرونده‌های ارزی",
+      "Kur etkisi": "اثر نرخ ارز",
+      "Sözleşme": "قرارداد",
+      "Yatırım dosyalarında kur hareketi ve sözleşme dili": "حرکت نرخ ارز و زبان قرارداد در پرونده‌های سرمایه‌گذاری",
+      "Dövizli kira, sermaye ve hizmet sözleşmeleri hazırlanırken kur yönü tek başına fiyat değil, nakit akışı ve ödeme temposu açısından da yeniden okunmalıdır.": "هنگام تنظیم قراردادهای اجاره، سرمایه یا خدمات ارزی، جهت حرکت نرخ ارز باید نه فقط از نظر قیمت، بلکه از نظر جریان نقدی و ریتم پرداخت نیز دوباره بررسی شود.",
+      "Kuruluş Akışına Git": "به جریان تأسیس بروید",
+      "Çalışma Hayatı": "زندگی کاری",
+      "İş Yasası": "قانون کار",
+      "Mesai, izin ve işveren yükümlülükleri": "اضافه‌کار، مرخصی و تعهدات کارفرما",
+      "İK": "منابع انسانی",
+      "Günlük uygulama": "اجرای روزانه",
+      "Mesai, izin ve personel düzenlemelerinde güncel okuma ihtiyacı": "نیاز به خوانش به‌روز در اضافه‌کار، مرخصی و مقررات پرسنلی",
+      "Küçük metin değişiklikleri dahi işveren uygulamasını, bordro kalemlerini ve sözleşme dipnotlarını etkileyebildiği için bu alan sadece hukuk değil operasyon takibidir.": "حتی تغییرات کوچک متنی نیز می‌تواند بر اجرای کارفرما، اقلام حقوق و دستمزد و بندهای قرارداد اثر بگذارد؛ بنابراین این حوزه فقط یک موضوع حقوقی نیست، بلکه بخشی از پیگیری عملیاتی روزانه است.",
+      "SSS ve Süreçleri Aç": "سوالات متداول و فرایندها را باز کنید",
+      "Daha Fazla Haber Göster": "خبرهای بیشتری نمایش دهید",
+      "Güncel Takip": "پیگیری روز",
+      "Kurlar, vergi takvimi, son başvuru tarihleri ve resmi doğrulama akışını tek bakışta izleyin.": "نرخ ارز، تقویم مالیاتی، آخرین مهلت‌های درخواست و جریان تأیید رسمی را در یک نگاه دنبال کنید.",
+      "Canlı Kur": "نرخ زنده",
+      "KKTC Merkez Bankası XML akışı": "خوراک XML بانک مرکزی قبرس شمالی",
+      "Kur Takibi": "پیگیری نرخ ارز",
+      "KKTC Merkez Bankası gösterge kurları": "نرخ‌های مرجع بانک مرکزی قبرس شمالی",
+      "Kur kartı resmi XML kaynağından beslenir ve sayfa açık kaldıkça düzenli aralıklarla yeniden kontrol edilir.": "کارت نرخ ارز از منبع رسمی XML تغذیه می‌شود و تا زمانی که صفحه باز است، در فواصل منظم دوباره بررسی می‌شود.",
+      "Alış": "خرید",
+      "Satış": "فروش",
+      "XML Kaynağını Aç": "منبع XML را باز کنید",
+      "Vergi Takvimi": "تقویم مالیاتی",
+      "25 Mayıs": "25 مه",
+      "2025 GV/KV beyanı için öne çıkan tarih": "تاریخ مهم برای اظهارنامه‌های 2025 مالیات بر درآمد و شرکت‌ها",
+      "Resmi takvim": "تقویم رسمی",
+      "2026": "2026",
+      "Öne çıkan vergi takvimi ve beyan gündemi": "تقویم مهم مالیاتی و دستور کار اظهارنامه‌ها",
+      "Beyan tarihleri, resmi uzatma kararları ve takvim dokümanları işletme sahiplerinin ay sonu akışında erken görülmesi gereken başlıklardır.": "تاریخ‌های اظهارنامه، تصمیم‌های رسمی تمدید و اسناد تقویمی از موضوعاتی هستند که صاحبان کسب‌وکار باید آن‌ها را زودتر در جریان پایان ماه خود ببینند.",
+      "2025 GV/KV Beyanı": "اظهارنامه 2025 مالیات بر درآمد/شرکت‌ها",
+      "Vergi takvimi dokümanı": "سند تقویم مالیاتی",
+      "Resmi sitede": "در سایت رسمی",
+      "Vergi Takvimini Aç": "تقویم مالیاتی را باز کنید",
+      "Başvuru": "درخواست",
+      "Portal ve Son Tarih": "پرتال و مهلت نهایی",
+      "Yetkili ekranlar ve duyuru akışı": "صفحه‌های رسمی و جریان اطلاعیه‌ها",
+      "Yakın takip": "پیگیری نزدیک",
+      "Portal": "پرتال",
+      "Yakın takip gerektiren başvuru ve işlem başlıkları": "موضوعات درخواست و فرایندهایی که به پیگیری نزدیک نیاز دارند",
+      "Beyan uzatmaları, portal duyuruları ve kurum bazlı işlem ekranları yıl içinde ani değişebildiği için bu kart operasyon ekipleri için günlük kısa kontrol listesi gibi çalışır.": "از آنجا که تمدید اظهارنامه‌ها، اطلاعیه‌های پرتال و صفحه‌های فرایندیِ نهادها ممکن است در طول سال ناگهانی تغییر کنند، این کارت برای تیم‌های عملیاتی مانند یک فهرست کنترل کوتاه روزانه عمل می‌کند.",
+      "Gelir/Kurumlar Vergisi uzatması": "تمدید مالیات بر درآمد/شرکت‌ها",
+      "Vergi portalı ve e-tebligat": "پرتال مالیاتی و ابلاغ الکترونیکی",
+      "Düzenli kontrol": "بررسی منظم",
+      "Vergi Duyurularını Aç": "اطلاعیه‌های مالیاتی را باز کنید",
+      "Resmi Tarihler": "تاریخ‌های رسمی",
+      "Tatil Planı": "برنامه تعطیلات",
+      "Bordro ve ödeme akışına etki eden günler": "روزهایی که بر جریان حقوق و پرداخت اثر می‌گذارند",
+      "Planlama": "برنامه‌ریزی",
+      "Planlamada öne çıkan resmi tatiller ve işlem günleri": "تعطیلات رسمی و روزهای مهم فرایندی در برنامه‌ریزی",
+      "Resmi tatiller yalnızca çalışma günü takvimi değil; bordro kapanışı, ödeme temposu, banka hareketi ve resmi randevu yoğunluğu açısından da önceden okunmalıdır.": "تعطیلات رسمی فقط به تعداد روزهای کاری مربوط نیست؛ بلکه باید از نظر بسته‌شدن حقوق و دستمزد، ریتم پرداخت، حرکت بانکی و تراکم وقت‌های رسمی نیز از قبل دیده شود.",
+      "Barış ve Özgürlük Bayramı": "روز صلح و آزادی",
+      "Cumhuriyet Bayramı (KKTC)": "روز جمهوری (قبرس شمالی)",
+      "Planlama Desteği Al": "پشتیبانی برنامه‌ریزی بگیرید",
+      "Resmi Kaynaklar": "منابع رسمی",
+      "Doğrulama Akışı": "جریان اعتبارسنجی",
+      "Nihai işlem öncesi son kontrol hattı": "آخرین خط کنترل پیش از اقدام نهایی",
+      "Kontrol listesi": "فهرست کنترل",
+      "Resmi ekran": "صفحه رسمی",
+      "Nihai işlem öncesi kontrol edilmesi gereken kaynaklar": "منابعی که باید پیش از اقدام نهایی بررسی شوند",
+      "Bu bölüm hızlı ön okuma sunar; kesin işlem öncesinde resmi kur sayfası, vergi duyurusu, e-tebligat ekranı ve ilgili kurum portalı mutlaka son kez açılmalıdır.": "این بخش یک مرور سریع اولیه ارائه می‌دهد؛ اما پیش از هر اقدام قطعی، صفحه رسمی نرخ ارز، اطلاعیه مالیاتی، صفحه ابلاغ الکترونیکی و پرتال نهاد مربوطه باید حتماً یک بار دیگر باز شود.",
+      "KKTC Merkez Bankası": "بانک مرکزی قبرس شمالی",
+      "Kur ekranı": "صفحه نرخ ارز",
+      "Duyuru ve takvim": "اطلاعیه و تقویم",
+      "Kaynak Çerçevesini Gör": "چارچوب منابع را ببینید",
+      "Daha Fazla Duyuru Göster": "اطلاعیه‌های بیشتری نمایش دهید",
+      "Not: Bu haber merkezi hızlı takip ve ilk değerlendirme amacıyla kurgulandı. Özellikle vergi, beyan, son başvuru ve dini tatil tarihlerinde nihai işlemden önce resmi kaynaktan son doğrulama yapılmalıdır.": "نکته: این مرکز خبری برای پیگیری سریع و ارزیابی اولیه طراحی شده است. به‌ویژه در موضوعات مالیات، اظهارنامه، مهلت نهایی و تعطیلات مذهبی، پیش از اقدام نهایی باید آخرین تأیید از منبع رسمی انجام شود.",
+      "Haber akışını mevzuat rehberiyle birlikte okuyun": "جریان اخبار را همراه با راهنمای مقررات بخوانید",
+      "Hangi duyurunun hangi yasa başlığına temas ettiğini daha net ayırmak için Yasalar / Vergiler sayfasıyla birlikte ilerlemek karar kalitesini yükseltir.": "پیش رفتن هم‌زمان با صفحه قوانین / مالیات کمک می‌کند روشن‌تر ببینید هر اطلاعیه با کدام سرفصل قانونی مرتبط است و کیفیت تصمیم‌گیری را بالا می‌برد.",
+      "Yasalar / Vergiler Sayfası": "صفحه قوانین / مالیات"
+    };
+
+    const NEWSROOM_FA_RATE_TEXT = {
+      source: "منبع: خوراک رسمی XML بانک مرکزی قبرس شمالی.",
+      loadingDate: "آخرین بررسی: در حال بارگذاری...",
+      loadingStatus: "داده‌های زنده نرخ ارز در حال بارگذاری است...",
+      checkedAt(value) { return `آخرین بررسی: ${value}`; },
+      liveStatus(value, minutes) { return `تاریخ رسمی نرخ ${value} است. این کارت هر ${minutes} دقیقه دوباره بررسی می‌شود.`; },
+      errorStatus(value) { return `به‌روزرسانی زنده در حال حاضر کامل نشد. آخرین تاریخ رسمی ${value} است. لطفاً پیش از اقدام، منبع رسمی را هم باز کنید.`; },
+      unavailable: "داده‌های نرخ ارز در حال حاضر در دسترس نیست. لطفاً کمی بعد دوباره تلاش کنید.",
+    };
+
     function getNewsroomLang() {
       return document.documentElement.lang || document.querySelector(".lang-btn.active")?.dataset.lang || "tr";
+    }
+
+    function getNewsroomRateText(lang) {
+      return lang === "fa" ? NEWSROOM_FA_RATE_TEXT : (NEWSROOM_RATE_TEXT[lang] || NEWSROOM_RATE_TEXT.tr);
     }
 
     function syncNewsroomCopy() {
       const lang = getNewsroomLang();
       document.querySelectorAll("[data-copy-tr]").forEach((el) => {
-        const value = el.getAttribute(`data-copy-${lang}`) || el.getAttribute("data-copy-tr");
+        const base = el.getAttribute("data-copy-tr") || "";
+        const value = lang === "fa"
+          ? (NEWSROOM_FA_COPY_OVERRIDES[base] || el.getAttribute("data-copy-fa") || el.getAttribute("data-copy-ar") || base)
+          : (el.getAttribute(`data-copy-${lang}`) || el.getAttribute("data-copy-tr"));
         if (value) el.textContent = value;
       });
     }
@@ -972,7 +1106,7 @@
       const elements = getNewsroomRateElements();
       if (!elements) return;
 
-      const text = NEWSROOM_RATE_TEXT[getNewsroomLang()] || NEWSROOM_RATE_TEXT.tr;
+      const text = getNewsroomRateText(getNewsroomLang());
       elements.source.textContent = text.source;
 
       if (!newsroomRatesState.data) {
