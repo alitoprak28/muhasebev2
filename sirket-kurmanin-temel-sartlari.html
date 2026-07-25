@@ -381,6 +381,40 @@
     html.conditions-header-radical .conditions-page-shell {
       padding-top: var(--conditions-header-reserved) !important;
     }
+
+    /* On phones, use the shared guide header instead of the fixed desktop layout. */
+    @media (max-width: 760px) {
+      html:not(.conditions-header-radical) #header {
+        background: #000000 !important;
+        border-bottom: 0 !important;
+        box-shadow: none !important;
+      }
+
+      html:not(.conditions-header-radical) #header .topbar-inner {
+        min-height: 80px !important;
+        padding: 0 10px !important;
+        grid-template-columns: minmax(0, 1fr) auto !important;
+        gap: 6px !important;
+      }
+
+      html:not(.conditions-header-radical) #header .logo {
+        width: clamp(248px, 72vw, 340px) !important;
+        min-width: 0 !important;
+        max-width: calc(100vw - 66px) !important;
+        aspect-ratio: 1437 / 309 !important;
+        background-image: url("./assets/kaya-logo-black-bg.png") !important;
+        background-size: 100% auto !important;
+      }
+
+      html:not(.conditions-header-radical) #header .topbar-links,
+      html:not(.conditions-header-radical) #header .topbar-actions {
+        display: none !important;
+      }
+
+      html:not(.conditions-header-radical) #header .hamburger {
+        display: flex !important;
+      }
+    }
   </style>
   <script>
     (function () {
@@ -401,6 +435,13 @@
       }
 
       function syncRadicalHeader() {
+        if (window.innerWidth <= 760) {
+          root.classList.remove("conditions-header-radical");
+          root.style.removeProperty("--conditions-header-scale");
+          root.style.removeProperty("--conditions-header-reserved");
+          return;
+        }
+
         var scale = clamp(1 / getZoomFactor(), 0.2, 2.85);
         root.classList.add("conditions-header-radical");
         root.style.setProperty("--conditions-header-scale", scale.toFixed(4));
