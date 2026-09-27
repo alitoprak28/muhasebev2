@@ -273,6 +273,51 @@ function resolveGuideTranslation(base, lang, locale) {
 }
 
 const guideLiteralTranslations = {
+  "Nasıl ilerliyoruz?": {
+    en: "How do we proceed?",
+    ru: "Как мы работаем?",
+    fa: "چگونه پیش می‌رویم؟",
+  },
+  "Karşılaştırmayı Gör": {
+    en: "See Comparison",
+    ru: "Смотреть сравнение",
+    fa: "مشاهده مقایسه",
+  },
+  "\"Hedefimiz yalnızca işlemi tamamlamak değil, sürecin her aşamasını görünür ve güvenli hale getirmektir.\"": {
+    en: "\"Our aim is not merely to complete the transaction, but to make every stage of the process visible and secure.\"",
+    ru: "«Наша цель — не просто завершить операцию, а сделать каждый этап процесса прозрачным и надёжным.»",
+    fa: "«هدف ما تنها تکمیل معامله نیست، بلکه شفاف و ایمن کردن تمام مراحل فرآیند است.»",
+  },
+  "Önemli not: Bu sayfa genel bilgilendirme amaçlıdır. Vergi oranları, uygulama detayları ve mevzuat yorumları zaman içinde güncellenebilir; nihai işlem öncesinde güncel resmi kaynak teyidi yapılmalıdır.": {
+    en: "Important note: This page is for general information only. Tax rates, application details and interpretations of the legislation may be updated over time; current official sources should be confirmed before any final transaction.",
+    ru: "Важное примечание: эта страница носит общий информационный характер. Налоговые ставки, детали применения и толкование законодательства со временем могут обновляться; перед совершением окончательной операции следует свериться с актуальными официальными источниками.",
+    fa: "نکته مهم: این صفحه صرفاً جنبه اطلاع‌رسانی عمومی دارد. نرخ‌های مالیاتی، جزئیات اجرا و تفسیر مقررات ممکن است در طول زمان به‌روز شود؛ پیش از هر اقدام نهایی باید منابع رسمی روز تأیید شود.",
+  },
+  "Önemli not: Vergi oranları, uygulama detayları, bildirim usulleri ve resmi prosedürler zaman içinde değişebilir. Bu rehber merkezi genel yönlendirme içindir; işlem öncesi güncel mevzuat teyidi yapılmalıdır.": {
+    en: "Important note: Tax rates, application details, filing procedures and official processes may change over time. This guide centre is intended for general orientation; current legislation should be confirmed before proceeding.",
+    ru: "Важное примечание: налоговые ставки, детали применения, порядок подачи отчётности и официальные процедуры со временем могут меняться. Этот справочный центр предназначен для общей ориентации; перед совершением операции следует подтвердить действующее законодательство.",
+    fa: "نکته مهم: نرخ‌های مالیاتی، جزئیات اجرا، رویه‌های اظهار و فرآیندهای رسمی ممکن است در طول زمان تغییر کند. این مرکز راهنما برای جهت‌دهی کلی است؛ پیش از اقدام باید مقررات روز تأیید شود.",
+  },
+  "Önemli not: Yasalar, uygulama detayları, lisans gereklilikleri ve resmi prosedürler zaman içinde değişebilir. İşlem öncesinde güncel mevzuat teyidi yapılmalıdır.": {
+    en: "Important note: Laws, application details, licence requirements and official procedures may change over time. Current legislation should be confirmed before proceeding.",
+    ru: "Важное примечание: законы, детали применения, лицензионные требования и официальные процедуры со временем могут меняться. Перед совершением операции следует подтвердить действующее законодательство.",
+    fa: "نکته مهم: قوانین، جزئیات اجرا، الزامات مجوز و رویه‌های رسمی ممکن است در طول زمان تغییر کند. پیش از اقدام باید مقررات روز تأیید شود.",
+  },
+  "Not: UİŞ ile ilgili güncel uygunluk, vergi rejimi, operasyon kapsamı ve belge listesi dosya bazında değişebilir. Nihai karar öncesinde güncel mevzuat ve uygulama şartlarının teyit edilmesi gerekir.": {
+    en: "Note: Current eligibility, the tax regime, the scope of operations and the list of documents for an IBC may differ from file to file. Current legislation and application conditions should be confirmed before a final decision.",
+    ru: "Примечание: актуальные условия соответствия, налоговый режим, объём операций и перечень документов для МБК могут различаться в каждом деле. Перед принятием окончательного решения необходимо подтвердить действующее законодательство и условия применения.",
+    fa: "توجه: شرایط احراز، رژیم مالیاتی، دامنه عملیات و فهرست مدارک شرکت بین‌المللی ممکن است بسته به پرونده متفاوت باشد. پیش از تصمیم نهایی باید مقررات و شرایط اجرایی روز تأیید شود.",
+  },
+  "Not: Yabancı şirket şubelerinde uygulama şartları, resmi onay akışı ve gerekli evrak kapsamı dosyanın niteliğine göre değişebilir. Güncel süreç her başvuru öncesinde ayrıca teyit edilmelidir.": {
+    en: "Note: For branches of foreign companies, the application conditions, the official approval flow and the required documents may vary with the nature of the file. The current process should be confirmed separately before each application.",
+    ru: "Примечание: для филиалов иностранных компаний условия подачи, порядок официального одобрения и перечень необходимых документов могут различаться в зависимости от характера дела. Перед каждой подачей актуальный процесс следует подтверждать отдельно.",
+    fa: "توجه: در شعب شرکت‌های خارجی، شرایط اجرا، روند تأیید رسمی و دامنه مدارک لازم بسته به ماهیت پرونده متفاوت است. فرآیند روز باید پیش از هر درخواست جداگانه تأیید شود.",
+  },
+  "Not: Nihai yapı seçimi yalnızca genel avantaj listesiyle değil, faaliyet kapsamı, hissedar profili, banka akışı, resmi uygunluk ve güncel mevzuat değerlendirmesiyle yapılmalıdır.": {
+    en: "Note: The final choice of structure should be based not only on a general list of advantages, but on the scope of activity, the shareholder profile, banking flow, official eligibility and an assessment of current legislation.",
+    ru: "Примечание: окончательный выбор структуры следует делать не только по общему списку преимуществ, но и с учётом объёма деятельности, профиля акционеров, банковских процессов, официального соответствия и оценки действующего законодательства.",
+    fa: "توجه: انتخاب نهایی ساختار نباید تنها بر پایه فهرست کلی مزایا باشد؛ دامنه فعالیت، مشخصات سهامداران، جریان بانکی، انطباق رسمی و ارزیابی مقررات روز نیز باید در نظر گرفته شود.",
+  },
   "Şirket Kurma ve Mali Danışmanlık": {
     en: "Company Formation and Financial Advisory",
     ru: "Регистрация компаний и финансовый консалтинг",
@@ -342,6 +387,66 @@ const guideLiteralTranslations = {
     en: "© 2026 Kaya Plus Accounting and Financial Advisory",
     ru: "© 2026 Kaya Plus Бухгалтерский и финансовый консалтинг",
     fa: "© 2026 كايا بلس للمحاسبة والاستشارات المالية",
+  },
+  "İşletme Yapıları": {
+    en: "Business Structures",
+    ru: "Структуры бизнеса",
+    fa: "هياكل الأعمال",
+  },
+  "Rehberler": {
+    en: "Guides",
+    ru: "Гиды",
+    fa: "الأدلة",
+  },
+  "Vergi Danışmanlığı": {
+    en: "Tax Advisory",
+    ru: "Налоговый консалтинг",
+    fa: "الاستشارات الضريبية",
+  },
+  "Muhasebe Hizmetleri": {
+    en: "Accounting Services",
+    ru: "Бухгалтерские услуги",
+    fa: "خدمات المحاسبة",
+  },
+  "Kurumsal Yapı": {
+    en: "Corporate Profile",
+    ru: "Корпоративный профиль",
+    fa: "الملف المؤسسي",
+  },
+  "Uluslararası İşletme": {
+    en: "IBC",
+    ru: "МБК",
+    fa: "شركة أعمال دولية",
+  },
+  "Serbest Liman": {
+    en: "Free Zone",
+    ru: "СЭЗ",
+    fa: "المنطقة الحرة",
+  },
+  "UİŞ Rehberi": {
+    en: "IBC Guide",
+    ru: "Гид по МБК",
+    fa: "دليل شركة الأعمال الدولية",
+  },
+  "Yapı Karşılaştırması": {
+    en: "Structure Comparison",
+    ru: "Сравнение структур",
+    fa: "مقارنة الهياكل",
+  },
+  "Temel Şartlar": {
+    en: "Basic Requirements",
+    ru: "Основные условия",
+    fa: "الشروط الأساسية",
+  },
+  "KKTC'de 25 yılı aşkın deneyimimizle muhasebe, vergi, bordro, tescil ve mali danışmanlık hizmetleri sunuyoruz.": {
+    en: "With more than 25 years of experience in the TRNC, we provide accounting, tax, payroll, registration and financial advisory services.",
+    ru: "Более 25 лет мы предоставляем в ТРСК услуги по бухгалтерии, налогам, зарплате, регистрации и финансовому консалтингу.",
+    fa: "بأكثر من 25 عامًا من الخبرة في شمال قبرص، نقدم خدمات المحاسبة والضرائب والرواتب والتسجيل والاستشارات المالية.",
+  },
+  "© 2025 Kaya Plus Muhasebe ve Mali Danışmanlık. Tüm hakları saklıdır.": {
+    en: "© 2025 Kaya Plus Accounting and Financial Advisory. All rights reserved.",
+    ru: "© 2025 Kaya Plus Бухгалтерия и финансовый консалтинг. Все права защищены.",
+    fa: "© 2025 كايا بلس للمحاسبة والاستشارات المالية. جميع الحقوق محفوظة.",
   },
   "Lefkoşa, Kuzey Kıbrıs": {
     en: "Nicosia, Northern Cyprus",
@@ -3486,11 +3591,17 @@ const guideTextSelector = [
   ".btn-primary",
   ".btn-secondary",
   ".page-footer-row span",
+  ".footer-desc",
+  ".footer-col-title",
+  ".footer-links a",
+  ".footer-bottom span",
   ".media-hero-eyebrow",
   ".media-hero-overlay p",
   ".media-hero-hint",
   ".media-label",
   ".media-feat-caption",
+  // Bilgilendirme/uyari kutulari: div oldugu icin yedek secicinin kapsamina girmiyor
+  ".notice",
 ].join(", ");
 
 const guideFallbackTextSelector = [
@@ -3706,6 +3817,7 @@ function setGuideLang(lang) {
 }
 
 const GUIDE_HEADER_ZOOM_LOCK_TOLERANCE = 0.03;
+const GUIDE_HEADER_ZOOM_STEPS = [0.25, 0.33, 0.5, 0.67, 0.75, 0.8, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2, 2.5, 3, 4, 5];
 
 function supportsGuideHeaderZoomLock() {
   return !window.matchMedia("(pointer: coarse)").matches && (navigator.maxTouchPoints || 0) === 0;
@@ -3715,14 +3827,35 @@ function clampGuideHeaderZoom(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
-function getGuideHeaderBrowserZoom() {
-  const screenWidth = window.screen?.width || 0;
-  const innerWidth = window.innerWidth || document.documentElement.clientWidth || 0;
-  let zoom = 1;
+function snapGuideHeaderZoom(value) {
+  return GUIDE_HEADER_ZOOM_STEPS.reduce((best, step) =>
+    Math.abs(step - value) < Math.abs(best - value) ? step : best
+  , 1);
+}
 
-  if (screenWidth && innerWidth) {
-    zoom = screenWidth / innerWidth;
-  }
+/*
+ * The page can be opened while the browser is already zoomed, so the zoom level
+ * has to be read on load instead of only tracking later changes. outerWidth is
+ * unaffected by page zoom while innerWidth shrinks/grows with it, so their ratio
+ * gives the zoom; snapping it to a standard browser step removes the error that
+ * window borders and the scrollbar introduce. That gives the display's own pixel
+ * ratio, and every later reading is taken from devicePixelRatio, which — unlike
+ * the width ratio — does not shift when devtools are docked beside the page.
+ */
+function measureGuideHeaderInitialZoom() {
+  const outer = window.outerWidth || 0;
+  const inner = window.innerWidth || 0;
+  if (outer <= 0 || inner <= 0) return 1;
+
+  return snapGuideHeaderZoom(clampGuideHeaderZoom(outer / inner, 0.2, 5));
+}
+
+const GUIDE_HEADER_ZOOM_BASE_DPR =
+  (window.devicePixelRatio || 1) / measureGuideHeaderInitialZoom();
+
+function getGuideHeaderBrowserZoom() {
+  const dpr = window.devicePixelRatio || 1;
+  let zoom = GUIDE_HEADER_ZOOM_BASE_DPR ? dpr / GUIDE_HEADER_ZOOM_BASE_DPR : 1;
 
   if (!Number.isFinite(zoom) || zoom <= 0) zoom = 1;
   return clampGuideHeaderZoom(zoom, 0.2, 5);
