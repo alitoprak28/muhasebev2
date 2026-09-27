@@ -273,6 +273,21 @@ function resolveGuideTranslation(base, lang, locale) {
 }
 
 const guideLiteralTranslations = {
+  "25 Mayıs 2026": {
+    en: "25 May 2026",
+    ru: "25 мая 2026",
+    fa: "۲۵ مه ۲۰۲۶",
+  },
+  "20 Temmuz 2026": {
+    en: "20 July 2026",
+    ru: "20 июля 2026",
+    fa: "۲۰ ژوئیه ۲۰۲۶",
+  },
+  "15 Kasım 2026": {
+    en: "15 November 2026",
+    ru: "15 ноября 2026",
+    fa: "۱۵ نوامبر ۲۰۲۶",
+  },
   "Nasıl ilerliyoruz?": {
     en: "How do we proceed?",
     ru: "Как мы работаем?",
@@ -443,10 +458,10 @@ const guideLiteralTranslations = {
     ru: "Более 25 лет мы предоставляем в ТРСК услуги по бухгалтерии, налогам, зарплате, регистрации и финансовому консалтингу.",
     fa: "بأكثر من 25 عامًا من الخبرة في شمال قبرص، نقدم خدمات المحاسبة والضرائب والرواتب والتسجيل والاستشارات المالية.",
   },
-  "© 2025 Kaya Plus Muhasebe ve Mali Danışmanlık. Tüm hakları saklıdır.": {
-    en: "© 2025 Kaya Plus Accounting and Financial Advisory. All rights reserved.",
-    ru: "© 2025 Kaya Plus Бухгалтерия и финансовый консалтинг. Все права защищены.",
-    fa: "© 2025 كايا بلس للمحاسبة والاستشارات المالية. جميع الحقوق محفوظة.",
+  "© 2026 Kaya Plus Muhasebe ve Mali Danışmanlık. Tüm hakları saklıdır.": {
+    en: "© 2026 Kaya Plus Accounting and Financial Advisory. All rights reserved.",
+    ru: "© 2026 Kaya Plus Бухгалтерия и финансовый консалтинг. Все права защищены.",
+    fa: "© 2026 كايا بلس للمحاسبة والاستشارات المالية. جميع الحقوق محفوظة.",
   },
   "Lefkoşa, Kuzey Kıbrıs": {
     en: "Nicosia, Northern Cyprus",
