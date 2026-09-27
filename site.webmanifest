@@ -1,0 +1,27 @@
+{
+  "name": "Kaya Plus Muhasebe ve Mali Danışmanlık",
+  "short_name": "Kaya Plus",
+  "description": "KKTC'de muhasebe, vergi, bordro, şirket kuruluşu ve mali danışmanlık hizmetleri.",
+  "lang": "tr",
+  "start_url": "./kktc-sirket-kurma.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0D1B2E",
+  "icons": [
+    {
+      "src": "./assets/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
