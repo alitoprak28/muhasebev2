@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+<link rel="manifest" href="./site.webmanifest">
+<meta name="theme-color" content="#0D1B2E">
 <title>Kaya Plus Muhasebe ve Mali Danışmanlık | KKTC Muhasebe, Vergi ve Kuruluş Desteği</title>
 <meta name="description" content="Kaya Plus Muhasebe ve Mali Danışmanlık; KKTC'de muhasebe, vergi, bordro, kuruluş, tescil ve mali danışmanlık alanlarında yerli ve yabancı müvekkillere güven veren profesyonel destek sunar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -4343,15 +4350,50 @@ section { padding: var(--section-space) 0; }
     grid-template-columns: 1fr;
   }
 }
+/* Dar ekranda sekme seridi yerine acilir liste kullanilir: basliklar uzun
+   oldugu icin yatay kaydirmada yarida kesiliyordu. */
+.formation-tabs-select {
+  display: none;
+  position: relative;
+}
+.formation-tabs-select select {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 44px 12px 16px;
+  border: 1px solid rgba(var(--accent-rgb),0.24);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.16) 0%, rgba(var(--white-rgb),0.98) 100%);
+  box-shadow: 0 14px 26px rgba(var(--navy-rgb),0.08);
+  color: var(--navy);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.formation-tabs-select select:focus-visible {
+  outline: 2px solid rgba(var(--accent-rgb),0.55);
+  outline-offset: 2px;
+}
+.formation-tabs-select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--accent);
+}
+
 @media (max-width: 760px) {
-  .formation-tabs-nav {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 6px;
-    scrollbar-width: thin;
+  .formation-tabs-select {
+    display: block;
   }
-  .formation-tab-btn {
-    flex: 0 0 220px;
+  .formation-tabs-nav {
+    display: none;
   }
 }
 .action-row {
@@ -7264,7 +7306,8 @@ footer {
 .calc-result-title,
 .calc-result-val,
 .map-address-text strong,
-.footer-brand {
+.footer-brand,
+.footer-logo-text {
   color: var(--navy) !important;
 }
 
@@ -8581,7 +8624,7 @@ body.header-zoom-lock #header:not(.scrolled) {
   right: auto !important;
   z-index: 10000 !important;
   display: block !important;
-  width: calc(100vw / var(--header-zoom-scale, 1)) !important;
+  width: calc(100% / var(--header-zoom-scale, 1)) !important;
   max-width: none !important;
   background: #ffffff !important;
   backdrop-filter: none !important;
@@ -8702,6 +8745,79 @@ body.header-zoom-lock #header .hamburger {
     document.documentElement.dataset.preview = '1';
   }
 })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["AccountingService", "ProfessionalService"],
+      "@id": "https://kayaplus.net/#organization",
+      "name": "Kaya Plus Muhasebe ve Mali Danışmanlık",
+      "alternateName": "Kaya Plus",
+      "url": "https://kayaplus.net/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://kayaplus.net/assets/kayaplus-logo-schema.png",
+        "width": 1320,
+        "height": 370
+      },
+      "image": "https://kayaplus.net/assets/kayaplus-logo-schema.png",
+      "description": "KKTC'de muhasebe, vergi, bordro, şirket kuruluşu, tescil ve mali danışmanlık hizmetleri sunan, 25 yılı aşkın deneyime sahip mali müşavirlik ofisi.",
+      "telephone": "+90-533-861-65-52",
+      "email": "info@kayaplus.net",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Uludere Sokak No: 4/F, Küçük Kaymaklı",
+        "addressLocality": "Lefkoşa",
+        "addressRegion": "Kuzey Kıbrıs",
+        "addressCountry": "CY"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.2084503,
+        "longitude": 33.3785400
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ],
+      "areaServed": {
+        "@type": "Place",
+        "name": "Kuzey Kıbrıs Türk Cumhuriyeti"
+      },
+      "knowsLanguage": ["tr", "en", "ru", "fa"],
+      "knowsAbout": [
+        "KKTC'de şirket kurma",
+        "Muhasebe ve defter tutma",
+        "Vergi danışmanlığı",
+        "Bordro ve sosyal sigorta işlemleri",
+        "Şirket tescil işlemleri",
+        "Uluslararası İşletme Şirketi (UİŞ) kuruluşu",
+        "Yabancı şirket şubesi açılışı",
+        "Mali müşavirlik"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kayaplus.net/#website",
+      "url": "https://kayaplus.net/",
+      "name": "Kaya Plus Muhasebe ve Mali Danışmanlık",
+      "publisher": { "@id": "https://kayaplus.net/#organization" },
+      "inLanguage": ["tr", "en", "ru", "fa"]
+    }
+  ]
+}
 </script>
 </head>
 <body class="intro-active">
@@ -9930,6 +10046,17 @@ body.header-zoom-lock #header .hamburger {
 
     <div class="formation-grid">
       <article class="formation-card formation-tabs-card reveal">
+        <div class="formation-tabs-select">
+          <select id="formation-tabs-select" aria-label="Şirket kuruluş konusu seçin">
+            <option value="formation-panel-advantages" data-tr="KKTC'de Şirket Kurma Avantajları" data-en="Advantages of Starting a Company in TRNC">KKTC'de Şirket Kurma Avantajları</option>
+            <option value="formation-panel-foreign" data-tr="Kıbrıs'ta Yabancı Şirket Kurma" data-en="Starting a Foreign-Owned Company in Cyprus">Kıbrıs'ta Yabancı Şirket Kurma</option>
+            <option value="formation-panel-offshore" data-tr="ULUSLARARASI (OFFSHORE) ŞİRKET KURULUM HİZMETİ" data-en="International (Offshore) Company Setup Service">ULUSLARARASI (OFFSHORE) ŞİRKET KURULUM HİZMETİ</option>
+            <option value="formation-panel-basics" data-tr="Kuruluş ve Tescilde Temel Başlıklar" data-en="Core Topics in Setup and Registration">Kuruluş ve Tescilde Temel Başlıklar</option>
+            <option value="formation-panel-structures" data-tr="İşletme Yapıları" data-en="Business Structures">İşletme Yapıları</option>
+          </select>
+          <svg class="formation-tabs-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+
         <div class="formation-tabs-nav" role="tablist" aria-label="Şirket kuruluş sekmeleri">
           <button type="button" class="formation-tab-btn is-active" id="formation-tab-advantages" role="tab" aria-selected="true" aria-controls="formation-panel-advantages" data-tab-target="formation-panel-advantages" tabindex="0" data-tr="KKTC'de Şirket Kurma Avantajları" data-en="Advantages of Starting a Company in TRNC">KKTC'de Şirket Kurma Avantajları</button>
           <button type="button" class="formation-tab-btn" id="formation-tab-foreign" role="tab" aria-selected="false" aria-controls="formation-panel-foreign" data-tab-target="formation-panel-foreign" tabindex="-1" data-tr="Kıbrıs'ta Yabancı Şirket Kurma" data-en="Starting a Foreign-Owned Company in Cyprus">Kıbrıs'ta Yabancı Şirket Kurma</button>
@@ -11310,6 +11437,7 @@ function setMobileNav(open) {
 }
 
 const HEADER_ZOOM_LOCK_TOLERANCE = 0.03;
+const HEADER_ZOOM_STEPS = [0.25, 0.33, 0.5, 0.67, 0.75, 0.8, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2, 2.5, 3, 4, 5];
 
 function supportsHeaderZoomLock() {
   return !window.matchMedia('(pointer: coarse)').matches && (navigator.maxTouchPoints || 0) === 0;
@@ -11319,14 +11447,34 @@ function clampHeaderZoom(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
-function getHeaderBrowserZoom() {
-  const screenWidth = window.screen?.width || 0;
-  const innerWidth = window.innerWidth || document.documentElement.clientWidth || 0;
-  let zoom = 1;
+function snapHeaderZoom(value) {
+  return HEADER_ZOOM_STEPS.reduce((best, step) =>
+    Math.abs(step - value) < Math.abs(best - value) ? step : best
+  , 1);
+}
 
-  if (screenWidth && innerWidth) {
-    zoom = screenWidth / innerWidth;
-  }
+/*
+ * The page can be opened while the browser is already zoomed, so the zoom level
+ * has to be read on load instead of only tracking later changes. outerWidth is
+ * unaffected by page zoom while innerWidth shrinks/grows with it, so their ratio
+ * gives the zoom; snapping it to a standard browser step removes the error that
+ * window borders and the scrollbar introduce. That gives the display's own pixel
+ * ratio, and every later reading is taken from devicePixelRatio, which — unlike
+ * the width ratio — does not shift when devtools are docked beside the page.
+ */
+function measureHeaderInitialZoom() {
+  const outer = window.outerWidth || 0;
+  const inner = window.innerWidth || 0;
+  if (outer <= 0 || inner <= 0) return 1;
+
+  return snapHeaderZoom(clampHeaderZoom(outer / inner, 0.2, 5));
+}
+
+const HEADER_ZOOM_BASE_DPR = (window.devicePixelRatio || 1) / measureHeaderInitialZoom();
+
+function getHeaderBrowserZoom() {
+  const dpr = window.devicePixelRatio || 1;
+  let zoom = HEADER_ZOOM_BASE_DPR ? dpr / HEADER_ZOOM_BASE_DPR : 1;
 
   if (!Number.isFinite(zoom) || zoom <= 0) zoom = 1;
   return clampHeaderZoom(zoom, 0.2, 5);
@@ -11818,13 +11966,13 @@ const EXCHANGE_RATES_TRACKED_CODES = ['USD', 'EUR', 'GBP'];
 const EXCHANGE_RATES_EMBEDDED_FALLBACK = {
   source: 'KKTC Merkez Bankasi',
   sourceUrl: 'https://mb.gov.ct.tr/kur/gunluk.xml',
-  officialDate: '2026-05-15',
-  fetchedAt: '2026-05-15T14:52:35.904Z',
+  officialDate: '2026-09-28',
+  fetchedAt: '2026-09-27T00:00:00.000Z',
   refreshIntervalMinutes: 15,
   currencies: {
-    USD: { code: 'USD', unit: 1, buy: '45.3482', sell: '45.4299', effectiveBuy: '45.3165', effectiveSell: '45.4981', name: 'AMERIKAN DOLARI' },
-    EUR: { code: 'EUR', unit: 1, buy: '53.0971', sell: '53.1928', effectiveBuy: '53.0599', effectiveSell: '53.2726', name: 'EURO' },
-    GBP: { code: 'GBP', unit: 1, buy: '61.1737', sell: '61.4926', effectiveBuy: '61.1308', effectiveSell: '61.5848', name: 'INGILIZ STERLINI' },
+    USD: { code: 'USD', unit: 1, buy: '48.7901', sell: '48.8780', effectiveBuy: '48.7560', effectiveSell: '48.9514', name: 'AMERIKAN DOLARI' },
+    EUR: { code: 'EUR', unit: 1, buy: '55.5878', sell: '55.6880', effectiveBuy: '55.5489', effectiveSell: '55.7715', name: 'EURO' },
+    GBP: { code: 'GBP', unit: 1, buy: '64.4761', sell: '64.8122', effectiveBuy: '64.4309', effectiveSell: '64.9094', name: 'INGILIZ STERLINI' },
   },
 };
 const EXCHANGE_RATES_LOCALES = {
@@ -12940,7 +13088,98 @@ function normalizeLegacyArabicToPersian(text) {
   return normalized;
 }
 
+// Bu metinlerde data-ru bulunmadigi icin Rusca secildiginde Turkce kaliyordu.
+const HOME_RU_TEXT_OVERRIDES = {
+  "KKTC'de Şirket Kurma Avantajları": "Преимущества регистрации компании в ТРСК",
+  "Kıbrıs'ta Yabancı Şirket Kurma": "Открытие иностранной компании на Кипре",
+  'ULUSLARARASI (OFFSHORE) ŞİRKET KURULUM HİZMETİ': 'УСЛУГА РЕГИСТРАЦИИ МЕЖДУНАРОДНОЙ (ОФШОРНОЙ) КОМПАНИИ',
+  'Kuruluş ve Tescilde Temel Başlıklar': 'Основные вопросы учреждения и регистрации',
+  'İşletme Yapıları': 'Структуры бизнеса',
+  'Yerel kuruluş avantajları': 'Преимущества местной регистрации',
+  "Kuzey Kıbrıs'ta şirket kurmanın avantajları": 'Преимущества открытия компании на Северном Кипре',
+  'Kuzey Kıbrıs Türk Cumhuriyeti; düşük vergi oranları, esnek şirket yapıları ve hızlı kurulum süreciyle girişimciler için güçlü bir başlangıç zemini sunar.': 'Турецкая Республика Северного Кипра предлагает предпринимателям прочную стартовую базу: низкие налоговые ставки, гибкие корпоративные структуры и быстрый процесс регистрации.',
+  'Vergi odağı': 'Налоговый фокус',
+  'Düşük oranlı planlama': 'Планирование по низким ставкам',
+  'Kurulum akışı': 'Процесс регистрации',
+  'Daha pratik başvuru süreci': 'Более удобная процедура подачи',
+  'Pazar erişimi': 'Доступ к рынкам',
+  'Türkiye, Avrupa, Orta Doğu': 'Турция, Европа, Ближний Восток',
+  'Düşük işletme maliyeti yatırım planını daha kontrollü yürütmeye yardımcı olur.': 'Низкие операционные расходы помогают вести инвестиционный план под большим контролем.',
+  'Esnek şirket yapıları ve tek ortaklı kuruluş seçeneği sunulabilir.': 'Возможны гибкие корпоративные структуры и регистрация с одним участником.',
+  'Turizm, eğitim, gayrimenkul ve hizmet alanlarında büyüme potansiyeli yüksektir.': 'Высокий потенциал роста в туризме, образовании, недвижимости и сфере услуг.',
+  'Yaşam kalitesi ve güvenli ortam, uzun vadeli yerleşim planını destekler.': 'Качество жизни и безопасная среда поддерживают долгосрочные планы обустройства.',
+  'Temel Şartları Gör': 'Смотреть основные условия',
+  'Yapıları Karşılaştır': 'Сравнить структуры',
+  'Yabancı hissedar yapısı': 'Структура с иностранными акционерами',
+  "Kuzey Kıbrıs'ta yabancı yatırımcılar için kolay ve avantajlı şirket kurulumu": 'Простая и выгодная регистрация компании для иностранных инвесторов на Северном Кипре',
+  'Esnek mevzuat yapısı sayesinde yabancı ortaklı veya tamamen yabancı sermayeli şirketler için kuruluş süreci planlı ve güvenli şekilde yürütülebilir.': 'Благодаря гибкому законодательству процесс регистрации компаний с иностранным участием или полностью иностранным капиталом можно вести планомерно и безопасно.',
+  'Hissedar yapısı': 'Структура акционеров',
+  'Yabancı veya karma ortaklık': 'Иностранное или смешанное участие',
+  'Kurulum planı': 'План регистрации',
+  'İzin ve tescil eşzamanlı': 'Разрешения и регистрация параллельно',
+  'Operasyon': 'Операционная деятельность',
+  'Banka ve muhasebe uyumu': 'Согласование банковских и бухгалтерских процессов',
+  'Ortaklık ve sermaye yapısı dosyanın başında netleştirilmelidir.': 'Структуру участия и капитала следует определить в самом начале дела.',
+  'Faaliyet alanına göre izin, lisans veya kurul onayı gerekebilir.': 'В зависимости от вида деятельности могут потребоваться разрешение, лицензия или одобрение совета.',
+  'Banka hesabı ve muhasebe düzeni yabancı hissedar yapısına göre planlanmalıdır.': 'Банковский счёт и порядок учёта следует планировать с учётом структуры иностранных акционеров.',
+  'Uluslararası pazara açılmak isteyen girişimciler için güçlü bir başlangıç sunar.': 'Это даёт прочный старт предпринимателям, стремящимся выйти на международный рынок.',
+  'Yabancı Şube Rehberi': 'Руководство по иностранному филиалу',
+  'İletişime Geç': 'Связаться с нами',
+  'Yurt dışı odaklı yapı': 'Структура, ориентированная на зарубежные рынки',
+  "KKTC'de kurulan uluslararası işletme şirketleri ile işinizi global seviyeye taşıyın": 'Выведите свой бизнес на глобальный уровень с международной бизнес-компанией в ТРСК',
+  'Uluslararası İşletme Şirketi yapısı; yurt dışına odaklı ticaret, hizmet ve yatırım faaliyetlerini daha verimli kurgulamak isteyen girişimciler için güçlü bir çözüm sunar.': 'Модель международной бизнес-компании — сильное решение для предпринимателей, которые хотят эффективнее выстроить торговую, сервисную и инвестиционную деятельность за пределами острова.',
+  'Kurumlar vergisi': 'Налог на прибыль',
+  '%1 hedef oran': 'Целевая ставка 1%',
+  'Hedef süre': 'Целевой срок',
+  '3-4 hafta planı': 'План на 3–4 недели',
+  'Asgari sermaye': 'Минимальный капитал',
+  '20.000 EUR': '20 000 EUR',
+  'Faaliyetler esas olarak yurt dışına yönelik planlanmalıdır.': 'Деятельность следует планировать преимущественно на зарубежные рынки.',
+  'KKTC içinde ticaret yapılamaz; model faaliyet kapsamına göre dikkatle seçilmelidir.': 'Торговля внутри ТРСК не допускается; модель следует выбирать внимательно, исходя из объёма деятельности.',
+  'Ön izin, tescil, vergi ve muhasebe açılışı tek dosyada planlanabilir.': 'Предварительное разрешение, регистрацию, налоговый и бухгалтерский старт можно спланировать в одном деле.',
+  'Adres, yasal temsilci ve operasyon hazırlığı kuruluşla birlikte ele alınmalıdır.': 'Адрес, законного представителя и операционную готовность следует решать одновременно с учреждением.',
+  'UİŞ Rehberi': 'Руководство по МБК',
+  "WhatsApp'tan Bilgi Al": 'Получить информацию в WhatsApp',
+  'Başvuru ve tescil akışı': 'Процесс подачи и регистрации',
+  "Kıbrıs'ta kimler şirket kurabilir?": 'Кто может открыть компанию на Кипре?',
+  "KKTC'de yerel girişimciler, yabancı gerçek kişiler ve yurt dışı merkezli şirketler; faaliyet alanına ve tercih edilen yapıya göre şirket kurabilir. Kritik nokta, doğru modeli dosyanın en başında netleştirmektir.": 'В ТРСК компанию могут открыть местные предприниматели, иностранные физические лица и компании с зарубежной регистрацией — в зависимости от вида деятельности и выбранной структуры. Главное — определить правильную модель в самом начале дела.',
+  'Başvuru profili': 'Профиль заявителя',
+  'Yerel, yabancı, ana şirket': 'Местный, иностранный, материнская компания',
+  'Belgeler': 'Документы',
+  'Hissedar, sermaye, resmi evrak': 'Акционеры, капитал, официальные документы',
+  'Etkisi': 'Влияние',
+  'Vergi, banka, tescil': 'Налоги, банк, регистрация',
+  'KKTC vatandaşları ve yerel girişimciler uygun yerel yapı ile hızlı başlayabilir.': 'Граждане ТРСК и местные предприниматели могут быстро начать с подходящей местной структурой.',
+  'Yabancı ortaklı şirketlerde hissedar yapısı ve asgari sermaye beklentisi baştan planlanmalıdır.': 'В компаниях с иностранным участием структуру акционеров и требования к минимальному капиталу следует планировать с самого начала.',
+  'Yurt dışı merkezli şirketler şube modeli veya uygun şirket yapısı ile ilerleyebilir.': 'Компании с зарубежной регистрацией могут действовать через модель филиала или иную подходящую структуру.',
+  'Doğru model seçimi; vergi, banka ve sonraki muhasebe düzenini doğrudan etkiler.': 'Выбор правильной модели напрямую влияет на налоги, банковские процессы и последующий порядок учёта.',
+  'Kuruluş Adımlarını İncele': 'Изучить этапы регистрации',
+  'Yapı seçimi özeti': 'Краткий обзор выбора структуры',
+  "Kıbrıs'taki şirket türlerini tek bakışta değerlendirin": 'Оцените типы компаний на Кипре с одного взгляда',
+  'Yeni kuruluş veya yeniden yapılanma ihtiyacı varsa işletme yapılarını; faaliyet alanı, vergi etkisi, sorumluluk yapısı ve büyüme planına göre daha kolay karşılaştırılabilir biçimde ele almak gerekir.': 'При новом учреждении или реструктуризации бизнес-структуры следует рассматривать так, чтобы легче было сравнить вид деятельности, налоговый эффект, характер ответственности и план роста.',
+  'Yerel limited': 'Местное ООО',
+  'En yaygın kurumsal yapı': 'Самая распространённая корпоративная структура',
+  'Şube modeli': 'Модель филиала',
+  'Ana şirket bağlantılı': 'Связана с материнской компанией',
+  'UİŞ / serbest liman': 'МБК / свободный порт',
+  'Amaç odaklı özel yapılar': 'Специальные структуры под конкретную цель',
+  'Şahıs işletmesi tek kişi adına tescil edilir ve sorumluluk doğrudan iş sahibine aittir.': 'Индивидуальное предприятие регистрируется на одно лицо, и ответственность несёт непосредственно владелец.',
+  'Kollektif ve komandit ortaklıklar, ortakların sorumluluk seviyesine göre ayrılır.': 'Полные и коммандитные товарищества различаются по уровню ответственности участников.',
+  'Yerel limited, yabancı şube, serbest liman ve uluslararası işletme modelleri amaç ve faaliyete göre seçilir.': 'Местное ООО, иностранный филиал, свободный порт и международная бизнес-компания выбираются исходя из цели и деятельности.',
+  'Doğru yapı seçimi büyüme planı ile sonraki vergi ve muhasebe düzenini dengeler.': 'Правильный выбор структуры уравновешивает план роста с последующим налоговым и бухгалтерским порядком.',
+  'Kuruluş Adımlarını Gör': 'Смотреть этапы регистрации',
+  'e-Fatura': 'Электронный счёт-фактура',
+  'Ana Sayfa': 'Главная',
+  'Ekibimiz': 'Наша команда',
+  'Kuruluştan günlük operasyona kadar müvekkil dosyalarını sahiplenen, sakin ve düzenli ilerleyen ekip yapımızı ana hatlarıyla görün.': 'Познакомьтесь в общих чертах с нашей командой, которая ведёт дела клиентов от учреждения до повседневных операций спокойно и организованно.',
+  "Ekibimiz bölümünde yalnızca gerçek ekip fotoğrafları ve o kişilere ait bilgiler yer alır. Şu anda kurucu kimliğiyle Yaşar Kaya'yı öne çıkarıyoruz.": 'В разделе о команде размещены только настоящие фотографии сотрудников и относящаяся к ним информация. Сейчас мы представляем Яшара Кая в роли основателя.',
+  'Kurucu': 'Основатель',
+  "Yaşar Kaya, Kaya Plus'ın kurucu çizgisini temsil eder. Müvekkil ilişkilerinde güven veren yaklaşımı, süreçlerde düzeni önceleyen yönetim anlayışı ve markanın siyah-altın duruşunu sahaya taşıyan net liderlik diliyle öne çıkar.": 'Яшар Кая олицетворяет основательскую линию Kaya Plus. Его отличают подход, вызывающий доверие в отношениях с клиентами, управленческий стиль с приоритетом порядка в процессах и чёткий язык лидерства, переносящий чёрно-золотой облик бренда в практику.',
+  'Ekibimizin çalışma modelini detaylı incele': 'Подробнее о модели работы нашей команды',
+};
+
 function resolveHomeText(base, raw, lang) {
+  if (lang === 'ru' && HOME_RU_TEXT_OVERRIDES[base]) return HOME_RU_TEXT_OVERRIDES[base];
   if (lang !== 'fa') return raw;
   if (HOME_FA_TEXT_OVERRIDES[base]) return HOME_FA_TEXT_OVERRIDES[base];
   if (HOME_FA_TEXT_EXTRA_OVERRIDES[base]) return HOME_FA_TEXT_EXTRA_OVERRIDES[base];
@@ -13088,6 +13327,9 @@ function initFormationTabs() {
   const panels = Array.from(card.querySelectorAll('[role="tabpanel"]'));
   if (!tabs.length || !panels.length) return;
 
+  // Dar ekranda sekmelerin yerini alan acilir liste
+  const select = card.querySelector('#formation-tabs-select');
+
   const activateTab = (nextTab, options = {}) => {
     const { focus = false } = options;
     const targetId = nextTab.dataset.tabTarget;
@@ -13103,8 +13345,18 @@ function initFormationTabs() {
       panel.hidden = panel.id !== targetId;
     });
 
+    // Iki gorunum ayni paneli gostersin: ekran genisligi degisince secim kaymasin
+    if (select && select.value !== targetId) select.value = targetId;
+
     if (focus) nextTab.focus();
   };
+
+  if (select) {
+    select.addEventListener('change', () => {
+      const match = tabs.find((tab) => tab.dataset.tabTarget === select.value);
+      if (match) activateTab(match);
+    });
+  }
 
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => activateTab(tab));
